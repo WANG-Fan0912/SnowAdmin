@@ -1,9 +1,9 @@
 <template>
-  <div></div>
+  <div>{{ val }}</div>
 </template>
 <script setup lang="ts">
 import { ref } from "vue";
-const val = ref<number>(200);
+const val = ref<number>(300);
 </script>
 <style scoped lang="scss">
 .read-the-docs {
