@@ -46,6 +46,7 @@
     "prettier": "^3.2.5",
     "sass": "^1.72.0",
     "scss": "^0.2.4",
+    "terser": "^5.29.2",
     "typescript": "^5.2.2",
     "vite": "^5.2.0",
     "vite-plugin-svg-icons": "^2.0.1",
