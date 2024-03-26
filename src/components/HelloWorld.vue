@@ -3,12 +3,12 @@
     <div class="bbb">{{ val }}</div>
     <img :src="Tom" />
     <SvgIcon :name="'snow'" :size="20" />
+    <SvgIcon :name="'bill'" :size="20" />
   </div>
 </template>
 <script setup lang="ts">
-import { ref } from "vue";
 import Tom from "@assets/img/tom.jpg";
-const val = ref<number>(300);
+const val = ref<number>(600);
 </script>
 <style scoped lang="scss">
 .read-the-docs {

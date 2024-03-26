@@ -48,6 +48,8 @@
     "scss": "^0.2.4",
     "terser": "^5.29.2",
     "typescript": "^5.2.2",
+    "unplugin-auto-import": "^0.17.5",
+    "unplugin-vue-components": "^0.26.0",
     "vite": "^5.2.0",
     "vite-plugin-svg-icons": "^2.0.1",
     "vue-tsc": "^2.0.6"

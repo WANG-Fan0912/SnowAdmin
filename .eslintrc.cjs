@@ -16,6 +16,7 @@ module.exports = {
 
   // 继承配置
   extends: [
+    "./.eslintrc-auto-import.json", // 与vite.config.ts中的filepath路径一致
     "plugin:vue/vue3-recommended",
     "plugin:@typescript-eslint/recommended",
     "prettier",

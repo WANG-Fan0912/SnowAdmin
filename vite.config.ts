@@ -2,6 +2,8 @@ import { defineConfig, normalizePath, loadEnv } from "vite";
 import vue from "@vitejs/plugin-vue";
 import path from "path";
 import postcssPresetEnv from "postcss-preset-env";
+import AutoImport from "unplugin-auto-import/vite";
+import Components from "unplugin-vue-components/vite";
 import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
 const variablePath = normalizePath(path.normalize("./src/style/variable.scss"));
 
@@ -20,6 +22,27 @@ export default defineConfig(({ mode }) => {
         // 配置src下存放svg的路径，这里表示在src/icons文件夹下
         iconDirs: [path.resolve(process.cwd(), "src/icons")],
         symbolId: "icon-[dir]-[name]"
+      }),
+      AutoImport({
+        // 自动导入 Vue 相关函数，如：ref, reactive, toRef 等
+        imports: ["vue", "vue-router"],
+        // 解决eslint报错问题
+        eslintrc: {
+          // 这里先设置成true然后npm run dev 运行之后会生成 .eslintrc-auto-import.json 文件之后，在改为false
+          enabled: false,
+          filepath: "./.eslintrc-auto-import.json", // 生成的文件路径
+          globalsPropValue: true
+        },
+        // 配置文件生成位置
+        dts: "src/auto-import.d.ts"
+      }),
+      Components({
+        // 自动加载组件的目录配置,默认的为 'src/components'
+        dirs: ["src/components"],
+        // 组件的有效文件扩展名
+        extensions: ["vue"],
+        // 配置文件生成位置
+        dts: "src/components.d.ts"
       })
     ],
     resolve: {
