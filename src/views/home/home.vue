@@ -1,5 +1,5 @@
 <template>
-  <div><router-view /><aaa /></div>
+  <div>首页</div>
 </template>
 
 <script setup></script>

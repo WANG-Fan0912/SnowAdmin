@@ -1,5 +1,5 @@
 <template>
-  <div><router-view /><aaa /></div>
+  <div><a-button type="primary">Primary</a-button></div>
 </template>
 
 <script setup></script>

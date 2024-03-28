@@ -21,10 +21,13 @@
     "noFallthroughCasesInSwitch": true
   },
   "include": [
+    "src/**/*",
     "src/**/*.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
+    "vite.config.ts",
     "src/auto-import.d.ts" // 与vite.config.ts中的dts路径一致
-  ],
+  ], // 指定被编译文件所在的目录
+  "exclude": ["node_modules", "dist", "**/*.js"], // 指定不需要被编译的目录
   "references": [{ "path": "./tsconfig.node.json" }]
 }

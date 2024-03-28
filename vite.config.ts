@@ -4,6 +4,8 @@ import path from "path";
 import postcssPresetEnv from "postcss-preset-env";
 import AutoImport from "unplugin-auto-import/vite";
 import Components from "unplugin-vue-components/vite";
+import { ArcoResolver } from "unplugin-vue-components/resolvers";
+import { vitePluginForArco } from "@arco-plugins/vite-vue";
 import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
 const variablePath = normalizePath(path.normalize("./src/style/variable.scss"));
 
@@ -18,6 +20,9 @@ export default defineConfig(({ mode }) => {
     base: env.VITE_PUBLIC_PATH,
     plugins: [
       vue(),
+      vitePluginForArco({
+        style: "css"
+      }),
       createSvgIconsPlugin({
         // 配置src下存放svg的路径，这里表示在src/icons文件夹下
         iconDirs: [path.resolve(process.cwd(), "src/icons")],
@@ -26,6 +31,7 @@ export default defineConfig(({ mode }) => {
       AutoImport({
         // 自动导入 Vue 相关函数，如：ref, reactive, toRef 等
         imports: ["vue", "vue-router"],
+        resolvers: [ArcoResolver()],
         // 解决eslint报错问题
         eslintrc: {
           // 这里先设置成true然后npm run dev 运行之后会生成 .eslintrc-auto-import.json 文件之后，在改为false
@@ -37,6 +43,11 @@ export default defineConfig(({ mode }) => {
         dts: "src/auto-import.d.ts"
       }),
       Components({
+        resolvers: [
+          ArcoResolver({
+            sideEffect: true
+          })
+        ],
         // 自动加载组件的目录配置,默认的为 'src/components'
         dirs: ["src/components"],
         // 组件的有效文件扩展名
