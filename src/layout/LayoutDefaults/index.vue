@@ -1,7 +1,7 @@
 <template>
-  <div><router-view /></div>
+  <div>默认布局</div>
 </template>
 
-<script setup></script>
+<script setup lang="ts"></script>
 
 <style lang="scss" scoped></style>

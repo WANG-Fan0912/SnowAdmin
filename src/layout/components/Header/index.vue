@@ -1,7 +1,7 @@
 <template>
-  <div><router-view /></div>
+  <div>头部header</div>
 </template>
 
-<script setup></script>
+<script setup lang="ts"></script>
 
 <style lang="scss" scoped></style>

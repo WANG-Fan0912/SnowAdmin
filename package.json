@@ -23,7 +23,9 @@
   },
   "dependencies": {
     "dc-admin": "link:",
-    "vue": "^3.4.21"
+    "nprogress": "^0.2.0",
+    "vue": "^3.4.21",
+    "vue-router": "^4.3.0"
   },
   "devDependencies": {
     "@arco-design/web-vue": "^2.55.0",

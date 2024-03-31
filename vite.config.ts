@@ -1,6 +1,7 @@
 import { defineConfig, normalizePath, loadEnv } from "vite";
 import vue from "@vitejs/plugin-vue";
 import path from "path";
+import { resolve } from "path";
 import postcssPresetEnv from "postcss-preset-env";
 import AutoImport from "unplugin-auto-import/vite";
 import Components from "unplugin-vue-components/vite";
@@ -57,9 +58,10 @@ export default defineConfig(({ mode }) => {
       })
     ],
     resolve: {
-      // 配置别名
+      // 配置别名-绝对路径
       alias: {
-        "@assets": path.join(__dirname, "src/assets")
+        "@assets": path.join(__dirname, "src/assets"),
+        "@": resolve(__dirname, "./src")
       }
     },
     css: {

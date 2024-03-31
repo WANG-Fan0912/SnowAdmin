@@ -1,7 +1,7 @@
 <template>
-  <div><router-view /></div>
+  <div>tabs栏</div>
 </template>
 
-<script setup></script>
+<script setup lang="ts"></script>
 
 <style lang="scss" scoped></style>
