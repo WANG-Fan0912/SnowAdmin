@@ -1,6 +1,6 @@
 <template>
   <a-layout class="layout">
-    <a-layout-sider>Sider</a-layout-sider>
+    <Aside />
     <a-layout>
       <a-layout-header>Header</a-layout-header>
       <a-layout-content>Content</a-layout-content>
@@ -10,6 +10,7 @@
 </template>
 
 <script setup lang="ts">
+import Aside from "@/layout/components/Aside/index.vue";
 defineOptions({ name: "LayoutDefaults" });
 </script>
 
