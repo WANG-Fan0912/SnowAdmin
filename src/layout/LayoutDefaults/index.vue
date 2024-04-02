@@ -2,15 +2,18 @@
   <a-layout class="layout">
     <Aside />
     <a-layout>
-      <a-layout-header>Header</a-layout-header>
-      <a-layout-content>Content</a-layout-content>
+      <Header />
+      <Main />
+      <Footer />
     </a-layout>
-    <a-layout-footer>Footer</a-layout-footer>
   </a-layout>
 </template>
 
 <script setup lang="ts">
 import Aside from "@/layout/components/Aside/index.vue";
+import Header from "@/layout/components/Header/index.vue";
+import Main from "@/layout/components/Main/index.vue";
+import Footer from "@/layout/components/Footer/index.vue";
 defineOptions({ name: "LayoutDefaults" });
 </script>
 

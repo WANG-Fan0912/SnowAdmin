@@ -9,6 +9,14 @@ $border-1: 1px; // 常规
 $border-2: 2px; // 较粗
 $border-3: 3px; // 粗
 
+// 默认不占位边框
+$border-no-1: inset 0 0 0 1px red;
+$border-no-2: inset 0 0 0 1px cyan;
+$border-no-3: inset 0 0 0 1px blue;
+$border-no-4: inset 0 0 0 1px gold;
+$border-no-5: inset 0 0 0 1px violet;
+$border-no-6: inset 0 0 0 1px green;
+
 // 设置全局主题色：https://arco.design/vue/docs/token
 $color-primary: rgb(var(--primary-6)); // 主题色
 $color-success: rgb(var(--success-6)); // 成功色

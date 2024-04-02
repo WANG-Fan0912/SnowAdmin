@@ -34,7 +34,7 @@ const onCollapse = (type: boolean) => {
 .aside {
   height: 100vh;
 }
-
+// 头部
 .logo_head {
   height: 60px;
   display: flex;
@@ -53,10 +53,11 @@ const onCollapse = (type: boolean) => {
 
 .layout_side {
   height: calc(100% - 60px);
+  .scrollbar {
+    height: 100%;
+  }
 }
-.scrollbar {
-  height: 100%;
-}
+// 修改左侧滚动条宽度
 :deep(.arco-scrollbar-thumb-direction-vertical .arco-scrollbar-thumb-bar) {
   width: 4px;
   margin-left: 8px;
