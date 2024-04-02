@@ -1,4 +1,2 @@
 #!/usr/bin/env sh
-. "$(dirname "$0")/husky.sh"
-
-npm run lint-staged
+. "${0%/*}/h"

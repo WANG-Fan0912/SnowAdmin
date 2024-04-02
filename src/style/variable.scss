@@ -40,15 +40,16 @@ $shadow1-center: 0 -2px 5px rgba(0, 0, 0, 0.1); // 阴影样式1
 $shadow2-center: 0 0 10px rgba(0, 0, 0, 0.1); // 阴影样式2
 $shadow3-center: 0 0 20px rgba(0, 0, 0, 0.1); // 阴影样式3
 
+// 常规大小为字体对应的首选项
 // 字体大小
 $font-size-body-3: 14px; // 默认大小-正文-常规
-$font-size-body-2: 13px; // 常规大小的小号字体
+$font-size-body-2: 13px; // 默认的小号字体
 $font-size-body-1: 12px; // 说明描述-辅助文案/次要文案
 // 标题
 $font-size-title-1: 16px; // h3-标题-小
-$font-size-title-2: 20px; // h2-标题-中
+$font-size-title-2: 20px; // 常规-h2-标题-中
 $font-size-title-3: 24px; // h1-标题-大
 // 运营标题
 $font-size-display-1: 36px; // 运营标题-小
-$font-size-display-2: 48px; // 运营标题-中
+$font-size-display-2: 48px; // 常规-运营标题-中
 $font-size-display-3: 56px; // 运营标题-大

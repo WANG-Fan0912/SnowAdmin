@@ -5,12 +5,12 @@
 // Read more: https://github.com/vuejs/core/pull/3399
 export {}
 
-declare module "vue" {
+declare module 'vue' {
   export interface GlobalComponents {
-    Aaa: (typeof import("./components/aaa.vue"))["default"];
-    HelloWorld: (typeof import("./components/HelloWorld.vue"))["default"];
-    RouterLink: (typeof import("vue-router"))["RouterLink"];
-    RouterView: (typeof import("vue-router"))["RouterView"];
-    SvgIcon: (typeof import("./components/SvgIcon/index.vue"))["default"];
+    Aaa: typeof import('./components/aaa.vue')['default']
+    HelloWorld: (typeof import("./components/HelloWorld.vue"))["default"]
+    RouterLink: typeof import('vue-router')['RouterLink']
+    RouterView: typeof import('vue-router')['RouterView']
+    SvgIcon: typeof import('./components/SvgIcon/index.vue')['default']
   }
 }
