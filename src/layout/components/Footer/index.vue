@@ -1,6 +1,6 @@
 <template>
   <a-layout-footer class="footer">
-    <div class="footer_title">dc admin by 兔子先森</div>
+    <div class="footer_title">dc-admin by 兔子先森</div>
   </a-layout-footer>
 </template>
 
@@ -8,7 +8,7 @@
 
 <style lang="scss" scoped>
 .footer {
-  height: 40px;
+  height: 30px;
   box-sizing: border-box;
   border-top: $border-1 solid $color-border-1;
   display: flex;
