@@ -6,7 +6,7 @@
     </div>
     <a-layout-sider :collapsed="collapsed" breakpoint="xl" class="layout_side" :width="220">
       <a-scrollbar style="height: 100%; overflow: auto" outer-class="scrollbar">
-        <a-menu show-collapse-button @collapse="onCollapse">
+        <a-menu show-collapse-button breakpoint="xl" @collapse="onCollapse">
           <a-menu-item key="0_0_0" data-obj="1">Menu 1</a-menu-item>
           <a-sub-menu :key="item" v-for="item in 20">
             <template #icon><icon-apps></icon-apps></template>
@@ -41,7 +41,7 @@ const onCollapse = (type: boolean) => {
   justify-content: space-around;
   align-items: center;
   box-sizing: border-box;
-  border-bottom: $border-1 solid $color-border-1;
+  border-right: $border-1 solid $color-border-2;
   .logo {
     width: 30px;
   }
@@ -61,5 +61,10 @@ const onCollapse = (type: boolean) => {
 :deep(.arco-scrollbar-thumb-direction-vertical .arco-scrollbar-thumb-bar) {
   width: 4px;
   margin-left: 8px;
+}
+// 去掉右侧阴影并替换为边线
+:deep(.arco-layout-sider-light) {
+  box-shadow: unset;
+  border-right: $border-1 solid $color-border-2;
 }
 </style>
