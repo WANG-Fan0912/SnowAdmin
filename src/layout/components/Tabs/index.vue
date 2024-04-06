@@ -91,15 +91,7 @@ const handleDelete = (key: any) => {
     margin: 0 0 0 $margin;
     .setting {
       margin-right: $margin;
-      transform: rotate(0deg);
       color: $color-text-2;
-      // transition:
-      //   transform 0.2s,
-      //   color 0.2s;
-      // &:hover {
-      //   transform: rotate(180deg);
-      //   color: $color-primary;
-      // }
     }
   }
 }

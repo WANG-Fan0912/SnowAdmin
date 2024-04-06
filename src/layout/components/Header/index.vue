@@ -42,13 +42,14 @@
           </template>
         </a-button>
       </a-tooltip>
-      <a-tooltip content="通知">
-        <a-button size="mini" type="text" class="icon_btn">
+      <a-popover position="bottom" trigger="click">
+        <a-button size="mini" type="text" class="icon_btn notice">
           <template #icon>
             <icon-notification :size="18" />
           </template>
         </a-button>
-      </a-tooltip>
+        <template #content><Notice /></template>
+      </a-popover>
       <a-tooltip content="全屏">
         <a-button size="mini" type="text" class="icon_btn">
           <template #icon>
@@ -73,7 +74,7 @@
       <!-- 我的 -->
       <a-dropdown trigger="hover">
         <div class="my_setting">
-          <a-image width="32" fit="contain" :src="Tom" class="my_image" />
+          <a-image width="32" height="32" fit="cover" :src="Tom" class="my_image" />
           <span>admin</span>
           <div class="icon_down">
             <icon-down style="stroke-width: 3" />
@@ -81,29 +82,29 @@
         </div>
         <template #content>
           <a-doption>
-            <template #icon>
-              <icon-location />
+            <template #default>
+              <SvgIcon :name="'user'" :size="18" />
+              <span class="margin-left-text">个人信息</span>
             </template>
-            <template #default>个人信息</template>
           </a-doption>
           <a-doption>
-            <template #icon>
-              <icon-location />
+            <template #default>
+              <SvgIcon :name="'lock-pwd'" :size="18" />
+              <span class="margin-left-text">修改密码</span>
             </template>
-            <template #default>修改密码</template>
           </a-doption>
           <a-doption>
-            <template #icon>
-              <icon-location />
+            <template #default>
+              <SvgIcon :name="'gitee'" :size="18" />
+              <span class="margin-left-text">项目地址</span>
             </template>
-            <template #default>项目地址</template>
           </a-doption>
           <a-divider margin="0" />
           <a-doption>
-            <template #icon>
-              <icon-location />
+            <template #default>
+              <SvgIcon :name="'exit'" :size="18" />
+              <span class="margin-left-text">退出登录</span>
             </template>
-            <template #default>退出登录</template>
           </a-doption>
         </template>
       </a-dropdown>
@@ -111,6 +112,7 @@
   </a-layout-header>
 </template>
 <script setup lang="ts">
+import Notice from "@/layout/components/Header/components/Notice/index.vue";
 import Tom from "@/assets/img/tom.jpg";
 </script>
 
@@ -159,9 +161,7 @@ import Tom from "@/assets/img/tom.jpg";
     }
 
     .my_setting {
-      // width: 32px;
       height: 32px;
-      // border-radius: 50%;
       margin-left: $margin;
       overflow: hidden;
       display: flex;
@@ -177,6 +177,20 @@ import Tom from "@/assets/img/tom.jpg";
         transition: transform 0.2s;
       }
     }
+  }
+}
+.notice {
+  position: relative;
+  &::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    position: absolute;
+    right: -2px;
+    top: -4px;
+    background: $color-danger;
   }
 }
 :deep(.arco-dropdown-open) {
