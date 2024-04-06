@@ -1,6 +1,14 @@
 <template>
   <div class="tabs">
-    <a-tabs :editable="true" :hide-content="true" size="medium" show-add-button @add="handleAdd" @delete="handleDelete">
+    <a-tabs
+      :editable="true"
+      :hide-content="true"
+      size="medium"
+      type="line"
+      show-add-button
+      @add="handleAdd"
+      @delete="handleDelete"
+    >
       <a-tab-pane v-for="(item, index) of data" :key="item.key" :title="item.title" :closable="index !== 2" />
     </a-tabs>
     <div class="tabs_setting">
@@ -84,6 +92,30 @@ const handleDelete = key => {
     .setting {
       margin-right: $margin;
     }
+  }
+}
+:deep(.arco-tabs-nav-tab) {
+  // 移入展示关闭icon
+  .arco-tabs-tab-closable {
+    svg {
+      width: 0px;
+      transition: all 0.2s;
+    }
+    &:hover {
+      svg {
+        width: 1em;
+      }
+    }
+  }
+  // 消除tab移入的背景色
+  &:hover .arco-tabs-tab-title::before {
+    background: unset;
+  }
+}
+// 消除tabs底部边线
+:deep(.arco-tabs-nav) {
+  &::before {
+    background: unset;
   }
 }
 </style>
