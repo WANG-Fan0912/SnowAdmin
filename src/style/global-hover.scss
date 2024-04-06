@@ -1,0 +1,9 @@
+// global hover css
+// 鼠标移入过渡
+.move-fill {
+  background: rgba($color-fill-1, 0);
+  transition: background 0.2s;
+}
+.move-fill:hover {
+  background: rgba($color-fill-1, 1);
+}

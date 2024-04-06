@@ -2,7 +2,9 @@
 
 $margin: 14px; // 盒子间距
 $padding: 16px; // 盒子和内容的间距
-$radius-box: 2px; // 边框圆角
+$radius-box: 4px; // 边框圆角
+$icon-box: 24px; // icon盒子通用大小
+$icon-size: 18px; // icon通用大小
 
 // 边框宽度
 $border-1: 1px; // 常规-主要
@@ -24,7 +26,7 @@ $shadow-border-5: inset 0 0 0 1px violet;
 $shadow-border-6: inset 0 0 0 1px green;
 
 // 填充色
-$color-fill-1: #eeeeee; // 常规填充色/白底悬浮
+$color-fill-1: #eeeeee; // 常规填充色/灰底悬浮
 $color-fill-2: #d1d1d1; // 深/灰底悬浮
 $color-fill-3: #b6b6b6; // 重/特殊场景
 $color-fill-4: #9b9b9b; // 浅/禁用
