@@ -70,7 +70,43 @@
           </template>
         </a-button>
       </a-tooltip>
-      <div class="my_image"><a-image width="36" :src="Tom" /></div>
+      <!-- 我的 -->
+      <a-dropdown trigger="hover">
+        <div class="my_setting">
+          <a-image width="32" fit="contain" :src="Tom" class="my_image" />
+          <span>admin</span>
+          <div class="icon_down">
+            <icon-down style="stroke-width: 3" />
+          </div>
+        </div>
+        <template #content>
+          <a-doption>
+            <template #icon>
+              <icon-location />
+            </template>
+            <template #default>个人信息</template>
+          </a-doption>
+          <a-doption>
+            <template #icon>
+              <icon-location />
+            </template>
+            <template #default>修改密码</template>
+          </a-doption>
+          <a-doption>
+            <template #icon>
+              <icon-location />
+            </template>
+            <template #default>项目地址</template>
+          </a-doption>
+          <a-divider margin="0" />
+          <a-doption>
+            <template #icon>
+              <icon-location />
+            </template>
+            <template #default>退出登录</template>
+          </a-doption>
+        </template>
+      </a-dropdown>
     </div>
   </a-layout-header>
 </template>
@@ -122,13 +158,30 @@ import Tom from "@/assets/img/tom.jpg";
       color: $color-text-1;
     }
 
-    .my_image {
-      width: 32px;
+    .my_setting {
+      // width: 32px;
       height: 32px;
-      border-radius: 50%;
+      // border-radius: 50%;
       margin-left: $margin;
       overflow: hidden;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .my_image {
+        border-radius: 50%;
+        margin-right: 8px;
+      }
+      .icon_down {
+        transform: rotate(0deg);
+        margin: 0 0 0 5px;
+        transition: transform 0.2s;
+      }
     }
+  }
+}
+:deep(.arco-dropdown-open) {
+  .icon_down {
+    transform: rotate(180deg) !important;
   }
 }
 </style>

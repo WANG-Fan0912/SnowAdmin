@@ -1,0 +1,9 @@
+/* global css transition */
+// 旋转180deg
+.rotate-180 {
+  transform: rotate(0deg);
+  transition: transform 0.2s;
+  &:hover {
+    transform: rotate(180deg);
+  }
+}

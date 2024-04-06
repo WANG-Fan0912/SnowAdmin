@@ -13,7 +13,7 @@
     </a-tabs>
     <div class="tabs_setting">
       <a-dropdown trigger="hover">
-        <div class="setting"><icon-sync :size="18" /></div>
+        <div class="setting"><icon-loop :size="18" /></div>
         <template #content>
           <a-doption>
             <template #icon><icon-refresh /></template>
@@ -74,7 +74,7 @@ const handleAdd = () => {
     content: `Content of New Tab Panel ${number}`
   });
 };
-const handleDelete = key => {
+const handleDelete = (key: any) => {
   data.value = data.value.filter(item => item.key !== key);
 };
 </script>
@@ -91,6 +91,15 @@ const handleDelete = key => {
     margin: 0 0 0 $margin;
     .setting {
       margin-right: $margin;
+      transform: rotate(0deg);
+      color: $color-text-2;
+      // transition:
+      //   transform 0.2s,
+      //   color 0.2s;
+      // &:hover {
+      //   transform: rotate(180deg);
+      //   color: $color-primary;
+      // }
     }
   }
 }
