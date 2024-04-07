@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- <router-view /> -->
     <component :is="layouts['defaults']"></component>
   </div>
 </template>

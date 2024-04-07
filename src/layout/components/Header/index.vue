@@ -74,7 +74,7 @@
       <!-- 我的 -->
       <a-dropdown trigger="hover">
         <div class="my_setting">
-          <a-image width="32" height="32" fit="cover" :src="Tom" class="my_image" />
+          <a-image width="32" height="32" fit="cover" :src="myImage" class="my_image" />
           <span>admin</span>
           <div class="icon_down">
             <icon-down style="stroke-width: 3" />
@@ -113,7 +113,7 @@
 </template>
 <script setup lang="ts">
 import Notice from "@/layout/components/Header/components/Notice/index.vue";
-import Tom from "@/assets/img/tom.jpg";
+import myImage from "@/assets/img/my-image.jpg";
 </script>
 
 <style lang="scss" scoped>

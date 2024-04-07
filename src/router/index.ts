@@ -1,5 +1,6 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import { dynamicRoutes, staticRoutes, notFoundAndNoPower } from "@/router/route.ts";
+import { initSetRouter } from "@/router/route-output.ts";
 import NProgress from "@/config/nprogress";
 
 /**
@@ -21,6 +22,7 @@ export const router = createRouter({
 // 路由加载前
 router.beforeEach(async (to, from, next) => {
   NProgress.start(); // 开启进度条
+  initSetRouter();
   next();
   console.log(to, from);
   // if (to.path === "/login" && !sessionStorage.getItem("token")) {
