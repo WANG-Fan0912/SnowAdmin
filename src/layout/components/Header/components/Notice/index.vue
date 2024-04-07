@@ -39,14 +39,19 @@ const noticeData = ref([
   margin-bottom: $margin;
   display: flex;
   align-items: center;
+  border: 1px solid red;
   .notice_img {
     width: 36px;
     height: 36px;
     border-radius: 50%;
   }
   .content {
-    width: 120px;
+    width: 200px;
     border: 1px solid blue;
   }
+}
+// 解决tabs宽度异常的bug
+:deep(.arco-tabs-content .arco-tabs-content-list) {
+  display: unset;
 }
 </style>
