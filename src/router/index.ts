@@ -22,9 +22,16 @@ export const router = createRouter({
 // 路由加载前
 router.beforeEach(async (to, from, next) => {
   NProgress.start(); // 开启进度条
-  initSetRouter();
-  next();
   console.log(to, from);
+  if (to.path === "/login" && !sessionStorage.getItem("token")) {
+    next();
+  } else if (!sessionStorage.getItem("token")) {
+    next("/login");
+  } else if (to.path === "/login" && sessionStorage.getItem("token")) {
+    next("/home");
+  } else {
+    await initSetRouter();
+  }
   // if (to.path === "/login" && !sessionStorage.getItem("token")) {
   //   next();
   // } else if (!sessionStorage.getItem("token")) {
