@@ -1,90 +1,105 @@
 <template>
   <div class="container">
-    <div class="logo_box">
-      <img :src="myImage" alt="logo" class="logo margin-right-text" />
-      DC Admin
+    <div class="login">
+      <div class="banner_box"></div>
+      <div class="login_box">
+        <div class="login_title">DC Admin</div>
+        <div class="login_title_desc">丰富的的页面模板，覆盖大多数典型业务场景</div>
+        <div class="login_title_desc">国际化，路由配置，状态管理应有尽有</div>
+        <div class="login_form_box">
+          <a-form :model="form" layout="vertical">
+            <a-form-item field="username" label="账号">
+              <a-input v-model="form.username" placeholder="请输入账号" />
+            </a-form-item>
+            <a-form-item field="password" label="密码">
+              <a-input v-model="form.password" placeholder="请输入密码" />
+            </a-form-item>
+            <a-form-item field="remember">
+              <div class="remember">
+                <a-checkbox v-model="form.remember">记住密码</a-checkbox>
+                <div class="forgot-password">忘记密码</div>
+              </div>
+            </a-form-item>
+            <a-form-item>
+              <a-button long type="primary">登录</a-button>
+            </a-form-item>
+          </a-form>
+        </div>
+        <div class="register">注册账号</div>
+        <div class="desc">DC-Admin by 兔子先森</div>
+      </div>
     </div>
-    <div class="banner">
-      <a-carousel
-        :style="{
-          width: '100%',
-          height: '100%'
-        }"
-        :default-current="2"
-        :auto-play="true"
-        animation-name="fade"
-        indicator-type="dot"
-        show-arrow="hover"
-        class="banner_box"
-      >
-        <a-carousel-item v-for="item in banner" :key="item.id">
-          <div class="banner_inner"></div>
-        </a-carousel-item>
-      </a-carousel>
-    </div>
-    <div class="login">登录</div>
   </div>
 </template>
 
 <script setup lang="ts">
-import myImage from "@/assets/img/my-image.jpg";
-const banner = ref([
-  {
-    id: 1,
-    title: "开箱即用的高质量模板",
-    desc: "丰富的的页面模板，覆盖大多数典型业务场景",
-    src: "https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/cd7a1aaea8e1c5e3d26fe2591e561798.png~tplv-uwbnlip3yd-webp.webp"
-  },
-  {
-    id: 2,
-    title: "内置了常见问题的解决方案",
-    desc: "国际化，路由配置，状态管理应有尽有",
-    src: "https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/6480dbc69be1b5de95010289787d64f1.png~tplv-uwbnlip3yd-webp.webp"
-  },
-  {
-    id: 3,
-    title: "接入可视化增强工具",
-    desc: "实现灵活的区块式开发",
-    src: "https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/0265a04fddbd77a19602a15d9d55d797.png~tplv-uwbnlip3yd-webp.webp"
-  }
-]);
+const form = ref({
+  username: null,
+  password: null,
+  remember: null
+});
 </script>
 
 <style lang="scss" scoped>
 .container {
   height: 100vh;
-  display: flex;
   position: relative;
-  .banner {
-    width: 550px;
-    height: 100%;
-    background: #eee;
+  .login {
+    width: 1000px;
+    height: 500px;
+    left: 50%;
+    top: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    box-shadow: 0 0 8px 1px $color-fill-1;
     .banner_box {
+      width: 650px;
       height: 100%;
-      background: linear-gradient(163.85deg, #1d2129 0%, #00308f 100%);
-      .banner_inner {
-        height: 100%;
+      background: linear-gradient(45deg, #3d65f9, #ffffff);
+    }
+    .login_box {
+      width: 350px;
+      height: 100%;
+      box-sizing: border-box;
+      padding: 40px 30px 30px 30px;
+      position: relative;
+      .login_title {
+        font-size: $font-size-title-2;
+        color: $color-text-1;
+        margin-bottom: $margin-text;
+      }
+      .login_title_desc {
+        font-size: $font-size-body-1;
+        color: $color-text-3;
+      }
+      .login_form_box {
+        margin-top: 28px;
+        .remember {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          .forgot-password {
+            color: $color-primary;
+            cursor: pointer;
+          }
+        }
+      }
+      .register {
+        text-align: center;
+        color: $color-text-3;
+        font-size: $font-size-body-1;
+        cursor: pointer;
+      }
+      .desc {
+        color: $color-text-4;
+        font-size: $font-size-body-1;
+        position: absolute;
+        bottom: 30px;
       }
     }
-  }
-  .login {
-    width: 100%;
-    height: 100%;
-  }
-}
-.logo_box {
-  position: absolute;
-  left: $margin;
-  top: $margin;
-  margin: $margin;
-  color: #fff;
-  font-size: $font-size-title-2;
-  display: flex;
-  align-items: center;
-  z-index: 1000;
-  .logo {
-    width: 50px;
-    border-radius: 50%;
   }
 }
 </style>
