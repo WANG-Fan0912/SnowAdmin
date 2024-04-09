@@ -8,11 +8,17 @@
         <div class="login_title_desc">国际化，路由配置，状态管理应有尽有</div>
         <div class="login_form_box">
           <a-form :model="form" layout="vertical">
-            <a-form-item field="username" label="账号">
+            <a-form-item field="username">
               <a-input v-model="form.username" placeholder="请输入账号" />
             </a-form-item>
-            <a-form-item field="password" label="密码">
+            <a-form-item field="password">
               <a-input v-model="form.password" placeholder="请输入密码" />
+            </a-form-item>
+            <a-form-item field="verifyCode">
+              <div class="verifyCode">
+                <a-input style="width: 160px" v-model="form.verifyCode" placeholder="请输入验证码" />
+                <VerifyCode :content-height="32" :content-width="100" />
+              </div>
             </a-form-item>
             <a-form-item field="remember">
               <div class="remember">
@@ -34,9 +40,10 @@
 
 <script setup lang="ts">
 const form = ref({
-  username: null,
-  password: null,
-  remember: null
+  username: "admin",
+  password: "123456",
+  verifyCode: null,
+  remember: false
 });
 </script>
 
@@ -76,6 +83,12 @@ const form = ref({
       }
       .login_form_box {
         margin-top: 28px;
+        .verifyCode {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
         .remember {
           width: 100%;
           display: flex;
