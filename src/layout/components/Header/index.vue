@@ -100,7 +100,7 @@
             </template>
           </a-doption>
           <a-divider margin="0" />
-          <a-doption>
+          <a-doption @click="logOut">
             <template #default>
               <SvgIcon :name="'exit'" :size="18" />
               <span class="margin-left-text">退出登录</span>
@@ -114,6 +114,27 @@
 <script setup lang="ts">
 import Notice from "@/layout/components/Header/components/Notice/index.vue";
 import myImage from "@/assets/img/my-image.jpg";
+import { Modal } from "@arco-design/web-vue";
+import { useRouter } from "vue-router";
+const router = useRouter();
+
+const logOut = () => {
+  Modal.warning({
+    title: "提示",
+    content: "确定退出登录？",
+    hideCancel: false,
+    closable: true,
+    onBeforeOk: () => {
+      try {
+        sessionStorage.removeItem("token");
+        router.replace("/login");
+        return true;
+      } catch {
+        return false;
+      }
+    }
+  });
+};
 </script>
 
 <style lang="scss" scoped>

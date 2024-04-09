@@ -4,20 +4,28 @@
       <div class="banner_box"></div>
       <div class="login_box">
         <div class="login_title">DC Admin</div>
-        <div class="login_title_desc">丰富的的页面模板，覆盖大多数典型业务场景</div>
         <div class="login_title_desc">国际化，路由配置，状态管理应有尽有</div>
+        <div class="login_title_desc">丰富的的页面模板，覆盖大多数典型业务场景</div>
         <div class="login_form_box">
-          <a-form :model="form" layout="vertical">
-            <a-form-item field="username">
-              <a-input v-model="form.username" placeholder="请输入账号" />
+          <a-form :rules="rules" :model="form" layout="vertical" @submit="onSubmit">
+            <a-form-item field="username" :hide-asterisk="true">
+              <a-input v-model="form.username" allow-clear placeholder="请输入账号">
+                <template #prefix>
+                  <icon-user />
+                </template>
+              </a-input>
             </a-form-item>
-            <a-form-item field="password">
-              <a-input v-model="form.password" placeholder="请输入密码" />
+            <a-form-item field="password" :hide-asterisk="true">
+              <a-input-password v-model="form.password" allow-clear placeholder="请输入密码">
+                <template #prefix>
+                  <icon-lock />
+                </template>
+              </a-input-password>
             </a-form-item>
-            <a-form-item field="verifyCode">
+            <a-form-item field="verifyCode" :hide-asterisk="true">
               <div class="verifyCode">
-                <a-input style="width: 160px" v-model="form.verifyCode" placeholder="请输入验证码" />
-                <VerifyCode :content-height="32" :content-width="100" />
+                <a-input style="width: 160px" v-model="form.verifyCode" allow-clear placeholder="请输入验证码" />
+                <VerifyCode :content-height="30" :content-width="100" @verify-code-change="verifyCodeChange" />
               </div>
             </a-form-item>
             <a-form-item field="remember">
@@ -27,7 +35,7 @@
               </div>
             </a-form-item>
             <a-form-item>
-              <a-button long type="primary">登录</a-button>
+              <a-button long type="primary" html-type="submit">登录</a-button>
             </a-form-item>
           </a-form>
         </div>
@@ -39,12 +47,75 @@
 </template>
 
 <script setup lang="ts">
+import { Message } from "@arco-design/web-vue";
+import { useRouter } from "vue-router";
+const router = useRouter();
 const form = ref({
   username: "admin",
   password: "123456",
   verifyCode: null,
   remember: false
 });
+const rules = ref({
+  username: [
+    {
+      required: true,
+      message: "请输入账号"
+    },
+    {
+      validator: (value: string, cb: any) => {
+        if (value !== verify.value.username) {
+          cb("请输入正确的账号");
+        } else {
+          cb();
+        }
+      }
+    }
+  ],
+  password: [
+    {
+      required: true,
+      message: "请输入密码"
+    },
+    {
+      validator: (value: string, cb: any) => {
+        if (value !== verify.value.password) {
+          cb("请输入正确的密码");
+        } else {
+          cb();
+        }
+      }
+    }
+  ],
+  verifyCode: [
+    {
+      required: true,
+      message: "请输入验证码"
+    },
+    {
+      validator: (value: string, cb: any) => {
+        if (value !== verify.value.verifyCode) {
+          cb("请输入正确的验证码");
+        } else {
+          cb();
+        }
+      }
+    }
+  ]
+});
+const verify = ref({
+  username: "admin",
+  password: "123456",
+  verifyCode: ""
+});
+const verifyCodeChange = (code: string) => (verify.value.verifyCode = code);
+
+const onSubmit = ({ errors }: any) => {
+  if (errors) return;
+  sessionStorage.setItem("token", "DC-Admin");
+  Message.success("登录成功");
+  router.push("/home");
+};
 </script>
 
 <style lang="scss" scoped>

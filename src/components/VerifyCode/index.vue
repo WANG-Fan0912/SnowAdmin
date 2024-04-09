@@ -11,7 +11,7 @@ const props = defineProps({
   identifyCodes: {
     //验证码从该字段中抽取生成
     type: String,
-    default: "1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    default: "1234567890abcdefghijklmnopqrstuvwxyz"
   },
   fontSizeMin: {
     // 字体最小值
@@ -54,7 +54,7 @@ const props = defineProps({
     default: 44
   }
 });
-const emit = defineEmits(["update:changeCode"]);
+const emit = defineEmits(["verifyCodeChange"]);
 const identifyCode = ref("");
 watch(identifyCode, () => {
   drawPic();
@@ -75,9 +75,10 @@ const randomColor = (min: any, max: any) => {
   return "rgb(" + r + "," + g + "," + b + ")";
 };
 const drawPic = () => {
-  let canvas = document.getElementById("s-canvas");
+  let canvas = <HTMLCanvasElement>document.getElementById("s-canvas");
   if (!canvas) return;
   let ctx = canvas.getContext("2d");
+  if (!ctx) return;
   ctx.textBaseline = "bottom";
   // 绘制背景
   ctx.fillStyle = randomColor(props.backgroundColorMin, props.backgroundColorMax);
@@ -131,7 +132,7 @@ const makeCode = (e: any, n: any) => {
   for (let i = 0; i < n; i++) {
     identifyCode.value += e[randomNum(0, e.length)];
   }
-  emit("update:changeCode", identifyCode.value);
+  emit("verifyCodeChange", identifyCode.value);
 };
 /*切换验证码end*/
 </script>
