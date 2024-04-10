@@ -1,5 +1,6 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import { dynamicRoutes, staticRoutes, notFoundAndNoPower } from "@/router/route.ts";
+import { initSetRouter } from "@/router/route-output";
 import NProgress from "@/config/nprogress";
 
 /**
@@ -29,6 +30,7 @@ router.beforeEach(async (to, from, next) => {
   } else if (to.path === "/login" && sessionStorage.getItem("token")) {
     next("/home");
   } else {
+    initSetRouter();
     next();
   }
   // if (to.path === "/login" && !sessionStorage.getItem("token")) {

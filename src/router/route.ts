@@ -36,7 +36,7 @@ export const dynamicRoutes = [
         path: "/home",
         name: "home",
         component: () => import("@/views/home/home.vue"),
-        meat: {
+        meta: {
           title: "home", // 国际化
           isHide: false, // 是否隐藏此路由
           isKeepAlive: true, // 缓存组件状态
@@ -44,6 +44,21 @@ export const dynamicRoutes = [
           isLink: "", // 是否外链
           isIframe: false, // 是否内嵌窗口
           roles: ["admin", "common"], // 路由权限
+          icon: "home" // 菜单图标
+        }
+      },
+      {
+        path: "/home2",
+        name: "home2",
+        component: () => import("@/views/home/home.vue"),
+        meta: {
+          title: "home2", // 国际化
+          isHide: false, // 是否隐藏此路由
+          isKeepAlive: true, // 缓存组件状态
+          isAffix: true, // 固定在tagesView栏上
+          isLink: "", // 是否外链
+          isIframe: false, // 是否内嵌窗口
+          roles: ["common"], // 路由权限
           icon: "home" // 菜单图标
         }
       },
