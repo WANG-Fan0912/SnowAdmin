@@ -116,6 +116,8 @@ import Notice from "@/layout/components/Header/components/Notice/index.vue";
 import myImage from "@/assets/img/my-image.jpg";
 import { Modal } from "@arco-design/web-vue";
 import { useRouter } from "vue-router";
+import pinia from "@/store/index";
+import { useUserInfoStore } from "@/store/user-info";
 const router = useRouter();
 
 const logOut = () => {
@@ -124,9 +126,10 @@ const logOut = () => {
     content: "确定退出登录？",
     hideCancel: false,
     closable: true,
-    onBeforeOk: () => {
+    onBeforeOk: async () => {
       try {
-        sessionStorage.removeItem("token");
+        const store = useUserInfoStore(pinia);
+        await store.logOut();
         router.replace("/login");
         return true;
       } catch {

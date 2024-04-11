@@ -1,6 +1,10 @@
 import { dynamicRoutes } from "@/router/route";
+import pinia from "@/store/index";
+import { storeToRefs } from "pinia";
+import { useUserInfoStore } from "@/store/user-info";
+// import { useRoutesListStore } from "@/store/route-list";
+
 export function initSetRouter() {
-  console.log("路由数据处理");
   // 过滤后的结果
   let filteredData = filterByRole(dynamicRoutes[0].children);
   console.log("路由处理完", filteredData);
@@ -19,6 +23,7 @@ export const filterByRole = (nodes: any) => {
 
 // 校验角色权限
 export const roleBase = (roles: Array<string>) => {
-  let userRoles = ["admin"];
-  return userRoles.some(el => roles.includes(el));
+  const store = useUserInfoStore(pinia);
+  const { account } = storeToRefs(store);
+  return account.value.roles.some((item: string) => roles.includes(item));
 };

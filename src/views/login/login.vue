@@ -49,6 +49,8 @@
 <script setup lang="ts">
 import { Message } from "@arco-design/web-vue";
 import { useRouter } from "vue-router";
+import pinia from "@/store/index";
+import { useUserInfoStore } from "@/store/user-info";
 const router = useRouter();
 const form = ref({
   username: "admin",
@@ -112,7 +114,14 @@ const verifyCodeChange = (code: string) => (verify.value.verifyCode = code);
 
 const onSubmit = ({ errors }: any) => {
   if (errors) return;
-  sessionStorage.setItem("token", "DC-Admin");
+  // 存储用户信息
+  let stores = useUserInfoStore(pinia);
+  let account = {
+    username: form.value.username,
+    roles: ["admin"]
+  };
+  stores.setAccount(account);
+  stores.setToken("DC-Admin");
   Message.success("登录成功");
   router.push("/home");
 };

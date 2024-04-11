@@ -2,6 +2,9 @@ import { createRouter, createWebHashHistory } from "vue-router";
 import { dynamicRoutes, staticRoutes, notFoundAndNoPower } from "@/router/route.ts";
 import { initSetRouter } from "@/router/route-output";
 import NProgress from "@/config/nprogress";
+import pinia from "@/store/index";
+import { storeToRefs } from "pinia";
+import { useUserInfoStore } from "@/store/user-info";
 
 /**
  * 创建vue的路由示例
@@ -22,12 +25,14 @@ export const router = createRouter({
 // 路由加载前
 router.beforeEach(async (to, from, next) => {
   NProgress.start(); // 开启进度条
+  const store = useUserInfoStore(pinia);
+  const { token } = storeToRefs(store);
   console.log(to, from);
-  if (to.path === "/login" && !sessionStorage.getItem("token")) {
+  if (to.path === "/login" && !token.value) {
     next();
-  } else if (!sessionStorage.getItem("token")) {
+  } else if (!token.value) {
     next("/login");
-  } else if (to.path === "/login" && sessionStorage.getItem("token")) {
+  } else if (to.path === "/login" && token.value) {
     next("/home");
   } else {
     initSetRouter();

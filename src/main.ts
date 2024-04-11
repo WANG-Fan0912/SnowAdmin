@@ -4,9 +4,11 @@ import App from "@/App.vue";
 import ArcoVue from "@arco-design/web-vue";
 import router from "@/router/index";
 import pinia from "@/store/index";
+import piniaPluginPersist from "pinia-plugin-persist";
 import "virtual:svg-icons-register";
 import "@arco-design/web-vue/dist/arco.css";
 
+pinia.use(piniaPluginPersist);
 const app = createApp(App);
 app.use(ArcoVue, {
   // 用于改变使用组件时的前缀名称
