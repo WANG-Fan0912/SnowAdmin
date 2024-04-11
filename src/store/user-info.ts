@@ -6,7 +6,7 @@ import { defineStore } from "pinia";
  * @methods setToken 设置token
  * @methods logOut 退出登录
  */
-export const useUserInfoStore = defineStore("routeList", {
+export const useUserInfoStore = defineStore("userInfo", {
   state: (): any => ({
     account: {
       username: "",
