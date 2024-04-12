@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory } from "vue-router";
-import { dynamicRoutes, staticRoutes, notFoundAndNoPower } from "@/router/route.ts";
+import { staticRoutes, notFoundAndNoPower } from "@/router/route.ts";
 import { initSetRouter } from "@/router/route-output";
 import NProgress from "@/config/nprogress";
 import pinia from "@/store/index";
@@ -11,7 +11,7 @@ import { useUserInfoStore } from "@/store/user-info";
  * @method createRouter(options: RouterOptions): Router
  * @link 参考：https://next.router.vuejs.org/zh/api/#createrouter
  */
-export const router = createRouter({
+const router = createRouter({
   history: createWebHashHistory(),
   /**
    * 说明：
@@ -19,7 +19,7 @@ export const router = createRouter({
    * 2、后端控制路由中也需要添加 notFoundAndNoPower 404、401界面
    * 防止 404、401 不在 layout 布局中，不设置的话，404、401界面将全屏显示
    */
-  routes: [...dynamicRoutes, ...staticRoutes, ...notFoundAndNoPower] // 这里只需要设置兜底路由即可，其它的路由通过addRoute动态添加
+  routes: [...staticRoutes, ...notFoundAndNoPower] // 这里只需要设置兜底路由即可，其它的路由通过addRoute动态添加
 });
 
 // 路由加载前
