@@ -12,13 +12,13 @@ export const useRoutesListStore = defineStore("routeList", {
     routeNames: [] // 路由名称
   }),
   actions: {
-    async setRouteTree(data: any) {
+    setRouteTree(data: any) {
       this.routeTree = data;
     },
-    async setRouteList(data: Array<string>) {
+    setRouteList(data: Array<string>) {
       this.routesList = data;
     },
-    async setrouteNames(data: Array<string>) {
+    setrouteNames(data: Array<string>) {
       this.routeNames = data;
     }
   },

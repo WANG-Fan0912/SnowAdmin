@@ -9,13 +9,17 @@ import { useRoutesListStore } from "@/store/route-list";
  * 1、过滤有权限的路由树，缓存，addRoutes添加路由
  * 2、通过有权限的路由树生成路由name数组，缓存
  */
-export function initSetRouter() {
+export async function initSetRouter() {
   const store = useRoutesListStore(pinia);
+  const { routeTree, routeNames } = storeToRefs(store);
   // 根据角色权限过滤树
-  let filteredData = filterByRole(dynamicRoutes[0].children);
-  store.setRouteTree(filteredData);
+  let filteredTree = filterByRole(dynamicRoutes[0].children);
+  console.log("一维", filteredTree);
+  await store.setRouteTree(filteredTree);
+  console.log("一维?", routeTree.value);
   // 根据树生成一维路由数组
-  const flattenedArray = linearArray(filteredData);
+  const flattenedArray = linearArray(filteredTree);
+  console.log("二维?", flattenedArray);
   // 设置完整的路由，二维路由，顶层路由 + 二级的一维路由
   const twoStoryTree = dynamicRoutes.map(item => {
     if (flattenedArray.length > 0) item.redirect = flattenedArray[0].path;
@@ -26,8 +30,7 @@ export function initSetRouter() {
   twoStoryTree.forEach((route: any) => router.addRoute(route));
   // 根据一维路由设置缓存name
   setCacheName(flattenedArray);
-  const { routeTree, routeNames } = storeToRefs(store);
-  console.log("一维数组", routeTree.value, routeNames.value); // 缓存需要修改，路由树这里没有数据
+  // console.log("一维数组", filteredTree, routeTree.value, routeNames.value); // 缓存需要修改，路由树这里没有数据
 }
 
 // 设置缓存name
