@@ -52,7 +52,7 @@ export const dynamicRoutes = [
         name: "home2",
         component: () => import("@/views/home/home.vue"),
         meta: {
-          title: "home2", // 国际化
+          title: "home", // 国际化
           isHide: false, // 是否隐藏此路由
           isKeepAlive: true, // 缓存组件状态
           isAffix: true, // 固定在tagesView栏上

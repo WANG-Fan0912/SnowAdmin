@@ -2,8 +2,9 @@ import { defineStore } from "pinia";
 
 /**
  * 路由列表
- * @methods setRoutesList 设置路由数据
- * @methods setrouteNames 设置路由名称
+ * @methods setRouteTree  设置路由树
+ * @methods setRoutesList 设置路由一维数据
+ * @methods setrouteNames 设置路由名称集合
  */
 export const useRoutesListStore = defineStore("routeList", {
   state: (): any => ({
@@ -15,14 +16,11 @@ export const useRoutesListStore = defineStore("routeList", {
     setRouteTree(data: any) {
       this.routeTree = data;
     },
-    setRouteList(data: Array<string>) {
-      this.routesList = data;
+    setRouteList(data: any) {
+      this.routeList = data;
     },
     setrouteNames(data: Array<string>) {
       this.routeNames = data;
     }
-  },
-  persist: {
-    enabled: true
   }
 });

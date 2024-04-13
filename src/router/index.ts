@@ -1,10 +1,11 @@
+import NProgress from "@/config/nprogress";
+import pinia from "@/store/index";
 import { createRouter, createWebHashHistory } from "vue-router";
 import { staticRoutes, notFoundAndNoPower } from "@/router/route.ts";
 import { initSetRouter } from "@/router/route-output";
-import NProgress from "@/config/nprogress";
-import pinia from "@/store/index";
 import { storeToRefs } from "pinia";
 import { useUserInfoStore } from "@/store/user-info";
+import { useRoutesListStore } from "@/store/route-list";
 
 /**
  * 创建vue的路由示例
@@ -14,15 +15,26 @@ import { useUserInfoStore } from "@/store/user-info";
 const router = createRouter({
   history: createWebHashHistory(),
   /**
-   * 说明：
-   * 1、notFoundAndNoPower 添加默认 404、401界面，防止提示 No match found for location with path 'xxx'
+   * 设置静态路由，其它的路由通过addRoute动态添加
+   * 1、staticRoutes登录页
+   * 2、notFoundAndNoPower 添加默认 404、401界面，防止提示 No match found for location with path 'xxx'
    * 2、后端控制路由中也需要添加 notFoundAndNoPower 404、401界面
-   * 防止 404、401 不在 layout 布局中，不设置的话，404、401界面将全屏显示
+   * 静态添加 notFoundAndNoPower 404、401界面将全屏显示
+   * 如果要 notFoundAndNoPower 在layout容器展示，则需要移除静态添加并将其添加到缓存路由树
    */
-  routes: [...staticRoutes, ...notFoundAndNoPower] // 这里只需要设置兜底路由即可，其它的路由通过addRoute动态添加
+  routes: [...staticRoutes, ...notFoundAndNoPower]
 });
 
-// 路由加载前
+/**
+ * 路由加载前需要判断用户是否登录
+ * 1、去登录页，无token，放行
+ * 2、没有token，直接重定向到登录页
+ * 3、去登录页，有token，直接重定向到home页
+ * 4、去非登录页，有token，校验是否动态添加过路由，添加过则放行，未添加则执行路由初始化
+ * 注意：
+ * 全局routeTree不能持久化缓存
+ * 页面刷新会导致addRoute动态添加的路由失效，需要重新初始化路由
+ */
 router.beforeEach(async (to, from, next) => {
   NProgress.start(); // 开启进度条
   const store = useUserInfoStore(pinia);
@@ -35,30 +47,18 @@ router.beforeEach(async (to, from, next) => {
   } else if (to.path === "/login" && token.value) {
     next("/home");
   } else {
-    initSetRouter();
-    next();
+    const routeStore = useRoutesListStore(pinia);
+    const { routeTree } = storeToRefs(routeStore);
+    // 如果缓存的路由是0，则说明未动态添加路由，先添加再跳转
+    // 解决刷新页面404的问题
+    if (routeTree.value.length == 0) {
+      await initSetRouter();
+      next({ path: to.path, query: to.query });
+    } else {
+      // 动态路由添加过走这里，直接放行
+      next();
+    }
   }
-  // if (to.path === "/login" && !sessionStorage.getItem("token")) {
-  //   next();
-  // } else if (!sessionStorage.getItem("token")) {
-  //   next("/login");
-  // } else if (to.path === "/login" && sessionStorage.getItem("token")) {
-  //   next("/home");
-  // } else {
-  //   // 如果进的不是login，则判断路由，动态添加
-  //   // 获取缓存的路由store
-  //   const stores = useRoutesListStore(pinia);
-  //   const { routesList } = storeToRefs(stores);
-  //   // 如果缓存的路由是0，则说明未动态添加路由，先添加再跳转
-  //   // 解决刷新页面404的问题
-  //   if (routesList.value.length == 0) {
-  //     await initSetRouter();
-  //     next({ path: to.path, query: to.query });
-  //   } else {
-  //     // 动态路由添加后走这里，直接放行
-  //     next();
-  //   }
-  // }
 });
 
 // 路由跳转错误
