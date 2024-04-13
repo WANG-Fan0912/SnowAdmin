@@ -2,9 +2,10 @@
   <a-layout-header class="header">
     <div class="header_crumb">
       <div class="menu_fold">
-        <a-button size="mini" type="text" class="menu_fold_icon">
+        <a-button size="mini" type="text" class="menu_fold_icon" @click="onCollapsed">
           <template #icon>
-            <icon-menu-fold :size="18" />
+            <icon-menu-fold :size="18" v-if="!collapsed" />
+            <icon-menu-unfold :size="18" v-if="collapsed" />
           </template>
         </a-button>
       </div>
@@ -114,11 +115,19 @@
 <script setup lang="ts">
 import Notice from "@/layout/components/Header/components/Notice/index.vue";
 import myImage from "@/assets/img/my-image.jpg";
+import pinia from "@/store/index";
 import { Modal } from "@arco-design/web-vue";
 import { useRouter } from "vue-router";
-import pinia from "@/store/index";
+import { storeToRefs } from "pinia";
 import { useUserInfoStore } from "@/store/user-info";
+import { useThemeConfig } from "@/store/theme-config";
 const router = useRouter();
+const themeStore = useThemeConfig();
+const { collapsed } = storeToRefs(themeStore);
+
+const onCollapsed = () => {
+  themeStore.setCollapsed(!collapsed.value);
+};
 
 const logOut = () => {
   Modal.warning({

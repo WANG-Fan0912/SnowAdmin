@@ -5,29 +5,19 @@
       <span class="logo_title" v-if="!collapsed">dc admin</span>
     </div>
     <a-layout-sider :collapsed="collapsed" breakpoint="xl" class="layout_side" :width="220">
-      <a-scrollbar style="height: 100%; overflow: auto" outer-class="scrollbar">
-        <a-menu show-collapse-button breakpoint="xl" @collapse="onCollapse">
-          <a-menu-item key="0_0_0" data-obj="1">Menu 1</a-menu-item>
-          <a-sub-menu :key="item" v-for="item in 20">
-            <template #icon><icon-apps></icon-apps></template>
-            <template #title>Navigation 1</template>
-            <a-menu-item key="0_0">Menu 1</a-menu-item>
-            <a-menu-item key="0_1">Menu 2</a-menu-item>
-            <a-menu-item key="0_2" disabled>Menu 3</a-menu-item>
-          </a-sub-menu>
-        </a-menu>
-      </a-scrollbar>
+      <a-scrollbar style="height: 100%; overflow: auto" outer-class="scrollbar"><Menu /></a-scrollbar>
     </a-layout-sider>
   </div>
 </template>
 
 <script setup lang="ts">
 import Logo from "@/assets/img/logo.jpg";
+import Menu from "@/layout/components/Menu/index.vue";
+import { storeToRefs } from "pinia";
+import { useThemeConfig } from "@/store/theme-config";
 
-const collapsed = ref<boolean>(false);
-const onCollapse = (type: boolean) => {
-  collapsed.value = type;
-};
+const themeStore = useThemeConfig();
+const { collapsed } = storeToRefs(themeStore);
 </script>
 
 <style lang="scss" scoped>
