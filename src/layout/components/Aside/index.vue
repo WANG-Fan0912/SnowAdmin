@@ -57,4 +57,22 @@ const { collapsed } = storeToRefs(themeStore);
   box-shadow: unset;
   border-right: $border-1 solid $color-border-2;
 }
+
+// 解决折叠菜单的icon不居中问题
+:deep(.arco-menu-vertical.arco-menu-collapsed) {
+  // 消除icon的自带padding值，并且让元素居中
+  .arco-menu-has-icon {
+    padding: 0;
+    justify-content: center;
+  }
+  // 消除icon的自带margin-right值，并且设置icon的padding值以保留icon空隙
+  .arco-menu-icon {
+    margin-right: 0;
+    padding: 10px 0;
+  }
+  // 消除title占位
+  .arco-menu-title {
+    display: none;
+  }
+}
 </style>
