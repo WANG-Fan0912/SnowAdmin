@@ -44,7 +44,7 @@ export const dynamicRoutes = [
           isLink: "", // 是否外链
           isIframe: false, // 是否内嵌窗口
           roles: ["admin", "common"], // 路由权限
-          icon: "home" // 菜单图标
+          svgIcon: "home" // 菜单图标
         }
       },
       {
@@ -59,7 +59,7 @@ export const dynamicRoutes = [
           isLink: "", // 是否外链
           isIframe: false, // 是否内嵌窗口
           roles: ["common"], // 路由权限
-          icon: "home" // 菜单图标
+          svgIcon: "home" // 菜单图标
         }
       },
       {
@@ -75,7 +75,7 @@ export const dynamicRoutes = [
           isAffix: true,
           isIframe: false,
           roles: ["admin"],
-          icon: "set"
+          svgIcon: "set"
         },
         children: [
           {
@@ -90,7 +90,7 @@ export const dynamicRoutes = [
               isAffix: false,
               isIframe: false,
               roles: ["admin"],
-              icon: "common"
+              icon: "icon-menu"
             }
           }
         ]
@@ -108,7 +108,7 @@ export const dynamicRoutes = [
           isAffix: true,
           isIframe: false,
           roles: ["admin"],
-          icon: "switch"
+          svgIcon: "switch"
         },
         children: [
           {
@@ -123,7 +123,7 @@ export const dynamicRoutes = [
               isAffix: false,
               isIframe: false,
               roles: ["admin"],
-              icon: "common"
+              icon: "icon-menu"
             },
             children: [
               {
@@ -138,12 +138,27 @@ export const dynamicRoutes = [
                   isAffix: false,
                   isIframe: false,
                   roles: ["admin"],
-                  icon: "common"
+                  icon: "icon-menu"
                 }
               }
             ]
           }
         ]
+      },
+      {
+        path: "/about-project",
+        name: "about-project",
+        component: () => import("@/views/about-project/about-project.vue"),
+        meta: {
+          title: "about-project",
+          isHide: false,
+          isKeepAlive: true,
+          isAffix: true,
+          isLink: "",
+          isIframe: false,
+          roles: ["admin", "common"],
+          svgIcon: "about"
+        }
       }
     ]
   }

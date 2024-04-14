@@ -1,20 +1,24 @@
 <template>
   <template v-for="item in props.routeTree" :key="item.name">
     <a-sub-menu v-if="item.children && item.children.length > 0" :key="item.name">
-      <template #icon><SvgIcon :name="item.meta.icon" :size="25" /></template>
+      <template #icon v-if="item.meta.svgIcon || item.meta.icon">
+        <IconCommon :svg-icon="item.meta.svgIcon" :icon="item.meta.icon" />
+      </template>
       <template #title>{{ item.meta.title }}</template>
       <MenuItem :route-tree="item.children" />
     </a-sub-menu>
     <a-menu-item v-else :key="item.name">
-      <template #icon><SvgIcon :name="item.meta.icon" :size="25" /></template>
+      <template #icon v-if="item.meta.svgIcon || item.meta.icon">
+        <IconCommon :svg-icon="item.meta.svgIcon" :icon="item.meta.icon" />
+      </template>
       <div>{{ item.meta.title }}</div>
     </a-menu-item>
   </template>
 </template>
 
 <script setup lang="ts">
+import IconCommon from "@/layout/components/Menu/icon-common.vue";
 defineOptions({ name: "MenuItem" });
-// 通过defineProps接收父组件的值
 const props = defineProps({
   routeTree: {
     type: Array,
