@@ -1,3 +1,4 @@
+import { RouteRecordRaw } from "vue-router";
 /**
  * 路由path路径与文件夹名称相同，找文件可以浏览器地址快速查找，方便定位文件
  *
@@ -21,13 +22,13 @@
  * 依此类推
  */
 
-export const dynamicRoutes = [
+export const dynamicRoutes: RouteRecordRaw[] = [
   {
     path: "/",
     name: "/",
     redirect: "/home",
     component: () => import("@/layout/index.vue"), // 容器布局-顶层路由
-    meat: {
+    meta: {
       isKeepAlive: true
     },
     // 二级路由-主要渲染页面

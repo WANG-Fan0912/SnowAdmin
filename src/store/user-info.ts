@@ -1,5 +1,4 @@
 import { defineStore } from "pinia";
-
 /**
  * 用户信息
  * @methods setAccount 设置账号信息

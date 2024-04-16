@@ -18,12 +18,15 @@
 
 <script setup lang="ts">
 import IconCommon from "@/layout/components/Menu/icon-common.vue";
+import { RouteRecordRaw } from "vue-router";
 defineOptions({ name: "MenuItem" });
-const props = defineProps({
-  routeTree: {
-    type: Array,
-    default: () => []
-  }
+
+interface Props {
+  routeTree: RouteRecordRaw[];
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  routeTree: () => []
 });
 </script>
 
