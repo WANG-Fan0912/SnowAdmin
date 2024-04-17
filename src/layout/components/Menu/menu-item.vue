@@ -7,7 +7,7 @@
       <template #title>{{ item.meta.title }}</template>
       <MenuItem :route-tree="item.children" />
     </a-sub-menu>
-    <a-menu-item v-else :key="item.name">
+    <a-menu-item v-else :key="item?.name">
       <template #icon v-if="item.meta.svgIcon || item.meta.icon">
         <IconCommon :svg-icon="item.meta.svgIcon" :icon="item.meta.icon" />
       </template>

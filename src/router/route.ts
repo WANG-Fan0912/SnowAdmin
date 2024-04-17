@@ -191,20 +191,19 @@ export const staticRoutes = [
  * @link 参考：https://router.vuejs.org/zh/guide/essentials/history-mode.html#netlify
  */
 export const notFoundAndNoPower = [
-  // 未找到页面的时候跳转该页面
   {
-    path: "/:path(.*)*",
-    name: "notFound",
-    component: () => import("@/views/error/404.vue"),
+    path: "/401",
+    name: "noPower",
+    component: () => import("@/views/error/401.vue"),
     meta: {
       title: "notFound",
       isHide: true
     }
   },
   {
-    path: "/401",
-    name: "noPower",
-    component: () => import("@/views/error/401.vue"),
+    path: "/:path(.*)*", // 匹配任意路由，兜底，未找到页面的时候跳转该页面
+    name: "notFound",
+    component: () => import("@/views/error/404.vue"),
     meta: {
       title: "notFound",
       isHide: true

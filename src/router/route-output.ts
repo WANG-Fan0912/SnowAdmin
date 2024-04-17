@@ -39,7 +39,7 @@ export async function initSetRouter() {
 export function setCacheName(flattenedArray: any) {
   const store = useRoutesListStore(pinia);
   const cacheName = flattenedArray.map((item: any) => item.name);
-  store.setrouteNames(cacheName); // 缓存路由name
+  store.setRouteNames(cacheName); // 缓存路由name
   store.setRouteList(flattenedArray); // 缓存路由
 }
 

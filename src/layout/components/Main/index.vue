@@ -3,7 +3,7 @@
     <Tabs />
     <a-scrollbar style="height: 100%; overflow: auto" outer-class="scrollbar">
       <div class="main">
-        <div class="main_box"></div>
+        <router-view />
       </div>
     </a-scrollbar>
   </a-layout-content>
@@ -22,10 +22,6 @@ import Tabs from "@/layout/components/Tabs/index.vue";
 }
 .main {
   padding: $padding;
-  .main_box {
-    height: 1000px;
-    background: #eee;
-  }
 }
 // 修改左侧滚动条宽度
 :deep(.arco-scrollbar-thumb-direction-vertical .arco-scrollbar-thumb-bar) {
