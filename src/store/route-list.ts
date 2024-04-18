@@ -11,10 +11,11 @@ export const useRoutesListStore = defineStore("routeList", {
     routeTree: [], // 路由树
     routeList: [], // 路由数据-一维
     routeNames: [], // 路由名称
-    tagsList: [] // 标签页数据
+    tagsList: [], // 标签页数据
+    currentRoute: {} // 当前路由
   }),
   actions: {
-    setRouteTree(data: any) {
+    setRouteTree(data: Menu.MenuOptions) {
       this.routeTree = data;
     },
     setRouteList(data: any) {
@@ -28,6 +29,9 @@ export const useRoutesListStore = defineStore("routeList", {
       if (!isExist) {
         this.tagsList.push(data);
       }
+    },
+    setCurrentRoute(data: any) {
+      this.currentRoute = data;
     }
   }
 });

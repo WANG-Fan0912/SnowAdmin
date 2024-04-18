@@ -78,3 +78,14 @@ export const roleBase = (roles: Array<string>) => {
   const { account } = storeToRefs(store);
   return account.value.roles.some((item: string) => roles.includes(item));
 };
+
+/**
+ * 路由跳转，将路由存入store
+ * @param {object} to 需要跳转的路由
+ * @returns 是否有权限 true是 false否
+ */
+export const currentlyRoute = (to: any) => {
+  // const store = useRoutesListStore(pinia);
+  // const { routeList, currentRoute, tagsList } = storeToRefs(store);
+  console.log("当前路由", to);
+};

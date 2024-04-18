@@ -2,7 +2,7 @@ import NProgress from "@/config/nprogress";
 import pinia from "@/store/index";
 import { createRouter, createWebHashHistory } from "vue-router";
 import { staticRoutes, notFoundAndNoPower } from "@/router/route.ts";
-import { initSetRouter } from "@/router/route-output";
+import { initSetRouter, currentlyRoute } from "@/router/route-output";
 import { storeToRefs } from "pinia";
 import { useUserInfoStore } from "@/store/user-info";
 import { useRoutesListStore } from "@/store/route-list";
@@ -46,6 +46,7 @@ router.beforeEach(async (to, from, next) => {
     next("/login");
   } else if (to.path === "/login" && token.value) {
     next("/home");
+    currentlyRoute(to);
   } else {
     const routeStore = useRoutesListStore(pinia);
     const { routeTree } = storeToRefs(routeStore);
@@ -57,6 +58,7 @@ router.beforeEach(async (to, from, next) => {
     } else {
       // 动态路由添加过走这里，直接放行
       next();
+      currentlyRoute(to);
     }
   }
 });
