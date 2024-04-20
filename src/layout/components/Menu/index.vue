@@ -1,5 +1,12 @@
 <template>
-  <a-menu breakpoint="xl" :collapsed="collapsed" @menu-item-click="onMenuItem">
+  <a-menu
+    breakpoint="xl"
+    :collapsed="collapsed"
+    :auto-open-selected="true"
+    :accordion="true"
+    :selected-keys="[currentRoute.name]"
+    @menu-item-click="onMenuItem"
+  >
     <MenuItem :route-tree="routeTree" />
   </a-menu>
 </template>
@@ -10,19 +17,18 @@ import { storeToRefs } from "pinia";
 import { useThemeConfig } from "@/store/theme-config";
 import { useRoutesListStore } from "@/store/route-list";
 import { useRouter } from "vue-router";
+import { useRoutingMethod } from "@/hooks/useRoutingMethod";
 const router = useRouter();
 const routerStore = useRoutesListStore();
-const { routeTree, routeList } = storeToRefs(routerStore);
+const { routeTree, currentRoute } = storeToRefs(routerStore);
 const themeStore = useThemeConfig();
 const { collapsed } = storeToRefs(themeStore);
 
-console.log("路由树", routeTree.value);
-
 const onMenuItem = (key: string) => {
-  let find = routeList.value.find((item: Menu.MenuOptions) => item.name === key);
-  console.log("当前", find);
+  const { findLinearArray } = useRoutingMethod();
+  const find = findLinearArray(key);
   if (find) {
-    routerStore.setTagsList(find);
+    routerStore.setTabs(find);
     router.push(find.path);
   } else {
     router.push("/404");

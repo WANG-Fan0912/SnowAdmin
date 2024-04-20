@@ -41,23 +41,30 @@ router.beforeEach(async (to, from, next) => {
   const { token } = storeToRefs(store);
   console.log(to, from);
   if (to.path === "/login" && !token.value) {
+    // 1、去登录页，无token，放行
     next();
   } else if (!token.value) {
+    // 2、没有token，直接重定向到登录页
     next("/login");
   } else if (to.path === "/login" && token.value) {
+    // 3、去登录页，有token，直接重定向到home页
     next("/home");
+    // 项目内的跳转，处理跳转路由高亮
     currentlyRoute(to);
   } else {
+    // 4、去非登录页，有token，校验是否动态添加过路由，添加过则放行，未添加则执行路由初始化
     const routeStore = useRoutesListStore(pinia);
     const { routeTree } = storeToRefs(routeStore);
     // 如果缓存的路由是0，则说明未动态添加路由，先添加再跳转
     // 解决刷新页面404的问题
     if (routeTree.value.length == 0) {
       await initSetRouter();
+      // 处理完重新跳转
       next({ path: to.path, query: to.query });
     } else {
       // 动态路由添加过走这里，直接放行
       next();
+      // 项目内的跳转，处理跳转路由高亮
       currentlyRoute(to);
     }
   }

@@ -1,7 +1,15 @@
 <template>
   <div class="tabs">
-    <a-tabs :editable="true" :hide-content="true" size="medium" type="line" @delete="handleDelete">
-      <a-tab-pane v-for="item of tagsList" :key="item.name" :title="item.meta.title" :closable="!item.meta.isAffix" />
+    <a-tabs
+      :editable="true"
+      :hide-content="true"
+      :active-key="currentRoute.name"
+      size="medium"
+      type="line"
+      @tab-click="onTabs"
+      @delete="handleDelete"
+    >
+      <a-tab-pane v-for="item of tabsList" :key="item.name" :title="item.meta.title" :closable="!item.meta.isAffix" />
     </a-tabs>
     <div class="tabs_setting">
       <a-dropdown trigger="hover">
@@ -34,22 +42,27 @@
 </template>
 
 <script setup lang="ts">
+import { useRouter } from "vue-router";
 import { storeToRefs } from "pinia";
 import { useRoutesListStore } from "@/store/route-list";
+import { useRoutingMethod } from "@/hooks/useRoutingMethod";
+const router = useRouter();
 const routerStore = useRoutesListStore();
-const { tagsList } = storeToRefs(routerStore);
+const { tabsList, currentRoute } = storeToRefs(routerStore);
 
-watch(
-  tagsList.value,
-  newV => {
-    console.log("tagsList", newV);
-  },
-  { flush: "post" }
-);
+const onTabs = (key: string) => {
+  const { findTagsList } = useRoutingMethod();
+  const find = findTagsList(key);
+  if (find != undefined) {
+    routerStore.setCurrentRoute(find);
+    router.push(find.path);
+  }
+};
 
-const handleDelete = (key: any) => {
-  console.log("关闭tags", key);
-  // data.value = data.value.filter(item => item.key !== key);
+const handleDelete = (key: string) => {
+  routerStore.removeTabsList(key);
+  if (tabsList.value.length == 0) return;
+  router.push(tabsList.value.at(-1).path);
 };
 </script>
 

@@ -5,6 +5,7 @@ import { storeToRefs } from "pinia";
 import { useUserInfoStore } from "@/store/user-info";
 import { useRoutesListStore } from "@/store/route-list";
 import { deepClone, arrayFlattened } from "@/utils/index";
+import { useRoutingMethod } from "@/hooks/useRoutingMethod";
 
 /**
  * 初始化
@@ -55,11 +56,11 @@ export function linearArray(tree: any) {
 
 /**
  * 过滤路由树，返回有权限的树
- * @param {array} nodes 根据角色权限过滤原始路由树
+ * @param {array} tree 根据角色权限过滤原始路由树
  * @returns 返回有权限的树
  */
-export const filterByRole = (nodes: any) => {
-  return nodes.filter((item: any) => {
+export const filterByRole = (tree: any) => {
+  return tree.filter((item: any) => {
     if (item.meta && item.meta.roles) {
       if (!roleBase(item.meta.roles)) return false;
     }
@@ -80,12 +81,23 @@ export const roleBase = (roles: Array<string>) => {
 };
 
 /**
- * 路由跳转，将路由存入store
+ * 处理tabs，跳转路由如果存在，则存入store
  * @param {object} to 需要跳转的路由
- * @returns 是否有权限 true是 false否
  */
 export const currentlyRoute = (to: any) => {
-  // const store = useRoutesListStore(pinia);
-  // const { routeList, currentRoute, tagsList } = storeToRefs(store);
-  console.log("当前路由", to);
+  const store = useRoutesListStore(pinia);
+  const { tabsList, routeList } = storeToRefs(store);
+  console.log("刷新", tabsList.value, routeList.value);
+  // tabs无数据则默认添加首页
+  if (tabsList.value.length == 0 && routeList.value.length != 0) {
+    store.setTabs(routeList.value[0]);
+  }
+  const { findLinearArray } = useRoutingMethod();
+  const find = findLinearArray(to.name);
+  if (find != undefined) {
+    // 存入当前路由
+    store.setCurrentRoute(find);
+    store.setTabs(find);
+  }
+  console.log("刷新", tabsList.value);
 };
