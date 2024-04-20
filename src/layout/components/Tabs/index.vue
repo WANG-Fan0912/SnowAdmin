@@ -7,7 +7,7 @@
       size="medium"
       type="line"
       @tab-click="onTabs"
-      @delete="handleDelete"
+      @delete="onDelete"
     >
       <a-tab-pane v-for="item of tabsList" :key="item.name" :title="item.meta.title" :closable="!item.meta.isAffix" />
     </a-tabs>
@@ -50,6 +50,7 @@ const router = useRouter();
 const routerStore = useRoutesListStore();
 const { tabsList, currentRoute } = storeToRefs(routerStore);
 
+// 点击标签页，如果标签页存在，则跳转
 const onTabs = (key: string) => {
   const { findTagsList } = useRoutingMethod();
   const find = findTagsList(key);
@@ -59,7 +60,8 @@ const onTabs = (key: string) => {
   }
 };
 
-const handleDelete = (key: string) => {
+// 删除当前标签页并跳转到最后一个标签页
+const onDelete = (key: string) => {
   routerStore.removeTabsList(key);
   if (tabsList.value.length == 0) return;
   router.push(tabsList.value.at(-1).path);

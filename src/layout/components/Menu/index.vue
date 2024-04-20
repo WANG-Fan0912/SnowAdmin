@@ -24,9 +24,14 @@ const { routeTree, currentRoute } = storeToRefs(routerStore);
 const themeStore = useThemeConfig();
 const { collapsed } = storeToRefs(themeStore);
 
+/**
+ * @description 菜单点击事件
+ * @param {String} key
+ */
 const onMenuItem = (key: string) => {
   const { findLinearArray } = useRoutingMethod();
   const find = findLinearArray(key);
+  // 路由存在则存入并跳转，不存在则跳404
   if (find) {
     routerStore.setTabs(find);
     router.push(find.path);

@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <div>表单数据</div>
-  </div>
+  <div>动态表单</div>
 </template>
 
 <script setup lang="ts"></script>

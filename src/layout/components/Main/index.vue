@@ -3,7 +3,11 @@
     <Tabs />
     <a-scrollbar style="height: 100%; overflow: auto" outer-class="scrollbar">
       <div class="main">
-        <router-view />
+        <router-view v-slot="{ Component }">
+          <keep-alive :include="cacheRoutes">
+            <component :is="Component" />
+          </keep-alive>
+        </router-view>
       </div>
     </a-scrollbar>
   </a-layout-content>
@@ -11,6 +15,10 @@
 
 <script setup lang="ts">
 import Tabs from "@/layout/components/Tabs/index.vue";
+import { storeToRefs } from "pinia";
+import { useRoutesListStore } from "@/store/route-list";
+const routerStore = useRoutesListStore();
+const { cacheRoutes } = storeToRefs(routerStore);
 </script>
 
 <style lang="scss" scoped>

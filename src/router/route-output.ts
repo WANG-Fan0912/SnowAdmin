@@ -27,6 +27,7 @@ export async function initSetRouter() {
     item.children = flattenedArray;
     return item;
   });
+
   // 动态添加路由
   twoStoryTree.forEach((route: any) => router.addRoute(route));
   // 根据一维路由设置缓存name
@@ -34,12 +35,15 @@ export async function initSetRouter() {
 }
 
 /**
- * 将一维路由数组和路由name存入store
+ * 将一维路由数组中可缓存的路由name存入store
+ * 通过isKeepAlive判断路由是否可缓存
  * @param {array} flattenedArray 一维路由数组
  */
 export function setCacheName(flattenedArray: any) {
   const store = useRoutesListStore(pinia);
-  const cacheName = flattenedArray.map((item: any) => item.name);
+  const cacheName = flattenedArray
+    .filter((item: Menu.MenuOptions) => item.meta.isKeepAlive)
+    .map((item: Menu.MenuOptions) => item.name);
   store.setRouteNames(cacheName); // 缓存路由name
   store.setRouteList(flattenedArray); // 缓存路由
 }
@@ -87,7 +91,6 @@ export const roleBase = (roles: Array<string>) => {
 export const currentlyRoute = (to: any) => {
   const store = useRoutesListStore(pinia);
   const { tabsList, routeList } = storeToRefs(store);
-  console.log("刷新", tabsList.value, routeList.value);
   // tabs无数据则默认添加首页
   if (tabsList.value.length == 0 && routeList.value.length != 0) {
     store.setTabs(routeList.value[0]);
@@ -99,5 +102,4 @@ export const currentlyRoute = (to: any) => {
     store.setCurrentRoute(find);
     store.setTabs(find);
   }
-  console.log("刷新", tabsList.value);
 };

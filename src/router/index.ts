@@ -39,7 +39,7 @@ router.beforeEach(async (to, from, next) => {
   NProgress.start(); // 开启进度条
   const store = useUserInfoStore(pinia);
   const { token } = storeToRefs(store);
-  console.log(to, from);
+  console.log("去", to, "来自", from);
   if (to.path === "/login" && !token.value) {
     // 1、去登录页，无token，放行
     next();

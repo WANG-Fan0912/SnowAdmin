@@ -5,16 +5,23 @@ import { defineStore } from "pinia";
  * @methods setRouteTree  设置路由树
  * @methods setRoutesList 设置路由一维数据
  * @methods setRouteNames 设置路由名称集合
+ * @methods setTabs 添加tabs标签页
+ * @methods setCurrentRoute 设置系统内的当前路由
+ * @methods removeTabsList 删除tabs页的指定路由
  */
 export const useRoutesListStore = defineStore("routeList", {
   state: (): any => ({
     routeTree: [], // 有访问权限的路由树
     routeList: [], // 有访问权限的一维路由数组
-    routeNames: [], // 有访问权限的路由名称
+    cacheRoutes: [], // 所有可缓存路由的路由名
     tabsList: [], // 标签页数据
     currentRoute: {} // 当前路由
   }),
   actions: {
+    /**
+     * 设置有访问权限的路由树
+     * @param {Array} data 一维路由数组
+     */
     setRouteTree(data: Menu.MenuOptions) {
       this.routeTree = data;
     },
@@ -30,7 +37,7 @@ export const useRoutesListStore = defineStore("routeList", {
      * @param {Array} data 路由名数组
      */
     setRouteNames(data: Array<string>) {
-      this.routeNames = data;
+      this.cacheRoutes = data;
     },
     /**
      * 添加tabs标签页

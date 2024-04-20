@@ -67,7 +67,6 @@ export const dynamicRoutes: RouteRecordRaw[] = [
         path: "/common-components",
         name: "common-components",
         redirect: "/common-components/form-component",
-        component: () => import("@/views/common-components/form-component/form-component.vue"),
         meta: {
           title: "common-components",
           isLink: "",
@@ -93,6 +92,21 @@ export const dynamicRoutes: RouteRecordRaw[] = [
               roles: ["admin"],
               icon: "icon-menu"
             }
+          },
+          {
+            path: "/common-components/dynamic-form",
+            name: "dynamic-form",
+            component: () => import("@/views/common-components/dynamic-form/dynamic-form.vue"),
+            meta: {
+              title: "dynamic-form",
+              isLink: "",
+              isHide: false,
+              isKeepAlive: true,
+              isAffix: false,
+              isIframe: false,
+              roles: ["admin"],
+              icon: "icon-menu"
+            }
           }
         ]
       },
@@ -100,7 +114,6 @@ export const dynamicRoutes: RouteRecordRaw[] = [
         path: "/multilevel-menu",
         name: "multilevel-menu",
         redirect: "/multilevel-menu/second-menu",
-        component: () => import("@/views/multilevel-menu/second-menu/second-menu.vue"),
         meta: {
           title: "multilevel-menu",
           isLink: "",
@@ -113,11 +126,25 @@ export const dynamicRoutes: RouteRecordRaw[] = [
         },
         children: [
           {
-            path: "/multilevel-menu/second-menu",
-            name: "second-menu",
-            component: () => import("@/views/multilevel-menu/second-menu/second-menu.vue"),
+            path: "/multilevel-menu/second-menu-1",
+            name: "second-menu-1",
+            component: () => import("@/views/multilevel-menu/second-menu/second-menu-1.vue"),
             meta: {
-              title: "second-menu",
+              title: "second-menu-1",
+              isLink: "",
+              isHide: false,
+              isKeepAlive: true,
+              isAffix: false,
+              isIframe: false,
+              roles: ["admin"],
+              icon: "icon-menu"
+            }
+          },
+          {
+            path: "/multilevel-menu/second-menu-2",
+            name: "second-menu-2",
+            meta: {
+              title: "second-menu-2",
               isLink: "",
               isHide: false,
               isKeepAlive: true,
@@ -128,11 +155,26 @@ export const dynamicRoutes: RouteRecordRaw[] = [
             },
             children: [
               {
-                path: "/multilevel-menu/third-menu",
-                name: "third-menu",
-                component: () => import("@/views/multilevel-menu/third-menu/third-menu.vue"),
+                path: "/multilevel-menu/third-menu-1",
+                name: "third-menu-1",
+                component: () => import("@/views/multilevel-menu/third-menu/third-menu-1.vue"),
                 meta: {
-                  title: "third-menu",
+                  title: "third-menu-1",
+                  isLink: "",
+                  isHide: false,
+                  isKeepAlive: true,
+                  isAffix: false,
+                  isIframe: false,
+                  roles: ["admin"],
+                  icon: "icon-menu"
+                }
+              },
+              {
+                path: "/multilevel-menu/third-menu-2",
+                name: "third-menu-2",
+                component: () => import("@/views/multilevel-menu/third-menu/third-menu-2.vue"),
+                meta: {
+                  title: "third-menu-2",
                   isLink: "",
                   isHide: false,
                   isKeepAlive: true,
