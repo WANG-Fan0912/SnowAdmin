@@ -128,7 +128,7 @@ const closeOther = (type: string) => {
   tabsList.value = tabsList.value.filter((item: Menu.MenuOptions) => !rightNames.includes(item.name));
   // 删除缓存
   routerStore.removeRouteNames(rightNames);
-  // 关闭全部，跳转最后一个
+  // 关闭全部，若当前被关闭则跳转最后一个
   if (tabsList.value.length != 0 && !currentRoute.value.meta.affix && type == "all") {
     router.push(tabsList.value.at(-1).path);
   }
