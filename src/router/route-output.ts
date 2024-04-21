@@ -30,22 +30,17 @@ export async function initSetRouter() {
 
   // 动态添加路由
   twoStoryTree.forEach((route: any) => router.addRoute(route));
-  // 根据一维路由设置缓存name
-  setCacheName(flattenedArray);
+  // 设置一维路由
+  setRouting(flattenedArray);
 }
 
 /**
- * 将一维路由数组中可缓存的路由name存入store
- * 通过isKeepAlive判断路由是否可缓存
+ * 设置有访问权限的一维路由数组
  * @param {array} flattenedArray 一维路由数组
  */
-export function setCacheName(flattenedArray: any) {
+export function setRouting(flattenedArray: any) {
   const store = useRoutesListStore(pinia);
-  const cacheName = flattenedArray
-    .filter((item: Menu.MenuOptions) => item.meta.isKeepAlive)
-    .map((item: Menu.MenuOptions) => item.name);
-  store.setRouteNames(cacheName); // 缓存路由name
-  store.setRouteList(flattenedArray); // 缓存路由
+  store.setRouteList(flattenedArray); // 缓存一维路由
 }
 
 /**
@@ -85,7 +80,9 @@ export const roleBase = (roles: Array<string>) => {
 };
 
 /**
- * 处理tabs，跳转路由如果存在，则存入store
+ * 统一处理所有的路由跳转：当前路由高亮、tabs栏数据
+ * 处理项目内跳转，存入当前跳转路由和tabs标签栏数据
+ * menu和tabs以及手动刷新浏览器等功能只需要跳转即可，缓存和高亮的逻辑这边负责
  * @param {object} to 需要跳转的路由
  */
 export const currentlyRoute = (to: any) => {
@@ -95,11 +92,13 @@ export const currentlyRoute = (to: any) => {
   if (tabsList.value.length == 0 && routeList.value.length != 0) {
     store.setTabs(routeList.value[0]);
   }
+  // 跳转路由是有权限的，缓存跳转路由
   const { findLinearArray } = useRoutingMethod();
   const find = findLinearArray(to.name);
-  if (find != undefined) {
-    // 存入当前路由
-    store.setCurrentRoute(find);
-    store.setTabs(find);
-  }
+  if (find === undefined) return;
+  // 存入当前路由
+  store.setCurrentRoute(find);
+  store.setTabs(find);
+  if (!find.meta.keepAlive) return;
+  store.setRouteNames(find.name); // 缓存路由name
 };

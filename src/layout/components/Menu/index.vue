@@ -33,7 +33,6 @@ const onMenuItem = (key: string) => {
   const find = findLinearArray(key);
   // 路由存在则存入并跳转，不存在则跳404
   if (find) {
-    routerStore.setTabs(find);
     router.push(find.path);
   } else {
     router.push("/404");

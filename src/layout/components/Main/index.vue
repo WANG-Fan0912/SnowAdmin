@@ -4,9 +4,11 @@
     <a-scrollbar style="height: 100%; overflow: auto" outer-class="scrollbar">
       <div class="main">
         <router-view v-slot="{ Component }">
-          <keep-alive :include="cacheRoutes">
-            <component :is="Component" />
-          </keep-alive>
+          <MainTransition>
+            <keep-alive :include="cacheRoutes">
+              <component :is="Component" />
+            </keep-alive>
+          </MainTransition>
         </router-view>
       </div>
     </a-scrollbar>

@@ -1,17 +1,19 @@
 import { RouteRecordRaw } from "vue-router";
+import { testMultilevelMenu } from "@/mock/testRoute";
 /**
  * 路由path路径与文件夹名称相同，找文件可以浏览器地址快速查找，方便定位文件
  *
  * 路由meta对象参数，我们通常将属性放到meta对象中
  * meta: {
- * title:       菜单栏以及 tagsView 栏、菜单搜索名称（国际化）
- * isLink:      是否是超链接菜单，开启外链条件：1、 isLink：链接地址不为空  2、isIframe: false
- * isHide:      是否隐藏此路由
- * isKeepAlive: 是否缓存组件状态
- * isAffix:     是否固定在 tagsView 栏上
- * isIframe:    是否内嵌窗口，开启条件：1、isIframe：true  2、isLike：链接地址不为空
+ * title:       菜单栏以及 tabsView 栏、菜单搜索名称（国际化）
+ * link:        是否是超链接菜单，开启外链条件：1、 link：链接地址不为空  2、iframe: false
+ * hide:        是否隐藏此路由
+ * keepAlive:   是否缓存组件状态
+ * affix:       是否固定在 tabsView 栏上
+ * iframe:      是否内嵌窗口，开启条件：1、iframe：true  2、link：链接地址不为空
  * roles:       当前路由权限表示，取角色管理。路由控制显示、隐藏。 超级管理员：admin；普通角色：common
- * icon:        菜单、tagsView 图标等
+ * icon:        菜单、tabsView 图标等
+ * svgIcon:     svg图标
  * }
  */
 
@@ -29,7 +31,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
     redirect: "/home",
     component: () => import("@/layout/index.vue"), // 容器布局-顶层路由
     meta: {
-      isKeepAlive: true
+      keepAlive: true
     },
     // 二级路由-主要渲染页面
     children: [
@@ -39,11 +41,11 @@ export const dynamicRoutes: RouteRecordRaw[] = [
         component: () => import("@/views/home/home.vue"),
         meta: {
           title: "home", // 国际化
-          isHide: false, // 是否隐藏此路由
-          isKeepAlive: true, // 缓存组件状态
-          isAffix: true, // 固定在tagesView栏上
-          isLink: "", // 是否外链
-          isIframe: false, // 是否内嵌窗口
+          hide: false, // 是否隐藏此路由
+          keepAlive: true, // 缓存组件状态
+          affix: true, // 固定在tagesView栏上
+          link: "", // 是否外链
+          iframe: false, // 是否内嵌窗口
           roles: ["admin", "common"], // 路由权限
           svgIcon: "home" // 菜单图标
         }
@@ -54,11 +56,11 @@ export const dynamicRoutes: RouteRecordRaw[] = [
         component: () => import("@/views/home/home.vue"),
         meta: {
           title: "home", // 国际化
-          isHide: false, // 是否隐藏此路由
-          isKeepAlive: true, // 缓存组件状态
-          isAffix: true, // 固定在tagesView栏上
-          isLink: "", // 是否外链
-          isIframe: false, // 是否内嵌窗口
+          hide: false, // 是否隐藏此路由
+          keepAlive: true, // 缓存组件状态
+          affix: true, // 固定在tagesView栏上
+          link: "", // 是否外链
+          iframe: false, // 是否内嵌窗口
           roles: ["common"], // 路由权限
           svgIcon: "home" // 菜单图标
         }
@@ -69,11 +71,11 @@ export const dynamicRoutes: RouteRecordRaw[] = [
         redirect: "/common-components/form-component",
         meta: {
           title: "common-components",
-          isLink: "",
-          isHide: false,
-          isKeepAlive: true,
-          isAffix: true,
-          isIframe: false,
+          link: "",
+          hide: false,
+          keepAlive: true,
+          affix: true,
+          iframe: false,
           roles: ["admin"],
           svgIcon: "set"
         },
@@ -84,11 +86,11 @@ export const dynamicRoutes: RouteRecordRaw[] = [
             component: () => import("@/views/common-components/form-component/form-component.vue"),
             meta: {
               title: "form-component",
-              isLink: "",
-              isHide: false,
-              isKeepAlive: true,
-              isAffix: false,
-              isIframe: false,
+              link: "",
+              hide: false,
+              keepAlive: true,
+              affix: false,
+              iframe: false,
               roles: ["admin"],
               icon: "icon-menu"
             }
@@ -99,11 +101,11 @@ export const dynamicRoutes: RouteRecordRaw[] = [
             component: () => import("@/views/common-components/dynamic-form/dynamic-form.vue"),
             meta: {
               title: "dynamic-form",
-              isLink: "",
-              isHide: false,
-              isKeepAlive: true,
-              isAffix: false,
-              isIframe: false,
+              link: "",
+              hide: false,
+              keepAlive: true,
+              affix: false,
+              iframe: false,
               roles: ["admin"],
               icon: "icon-menu"
             }
@@ -116,11 +118,11 @@ export const dynamicRoutes: RouteRecordRaw[] = [
         redirect: "/multilevel-menu/second-menu",
         meta: {
           title: "multilevel-menu",
-          isLink: "",
-          isHide: false,
-          isKeepAlive: true,
-          isAffix: true,
-          isIframe: false,
+          link: "",
+          hide: false,
+          keepAlive: true,
+          affix: true,
+          iframe: false,
           roles: ["admin"],
           svgIcon: "switch"
         },
@@ -131,11 +133,11 @@ export const dynamicRoutes: RouteRecordRaw[] = [
             component: () => import("@/views/multilevel-menu/second-menu/second-menu-1.vue"),
             meta: {
               title: "second-menu-1",
-              isLink: "",
-              isHide: false,
-              isKeepAlive: true,
-              isAffix: false,
-              isIframe: false,
+              link: "",
+              hide: false,
+              keepAlive: true,
+              affix: false,
+              iframe: false,
               roles: ["admin"],
               icon: "icon-menu"
             }
@@ -145,11 +147,11 @@ export const dynamicRoutes: RouteRecordRaw[] = [
             name: "second-menu-2",
             meta: {
               title: "second-menu-2",
-              isLink: "",
-              isHide: false,
-              isKeepAlive: true,
-              isAffix: false,
-              isIframe: false,
+              link: "",
+              hide: false,
+              keepAlive: true,
+              affix: false,
+              iframe: false,
               roles: ["admin"],
               icon: "icon-menu"
             },
@@ -160,11 +162,11 @@ export const dynamicRoutes: RouteRecordRaw[] = [
                 component: () => import("@/views/multilevel-menu/third-menu/third-menu-1.vue"),
                 meta: {
                   title: "third-menu-1",
-                  isLink: "",
-                  isHide: false,
-                  isKeepAlive: true,
-                  isAffix: false,
-                  isIframe: false,
+                  link: "",
+                  hide: false,
+                  keepAlive: true,
+                  affix: false,
+                  iframe: false,
                   roles: ["admin"],
                   icon: "icon-menu"
                 }
@@ -175,15 +177,16 @@ export const dynamicRoutes: RouteRecordRaw[] = [
                 component: () => import("@/views/multilevel-menu/third-menu/third-menu-2.vue"),
                 meta: {
                   title: "third-menu-2",
-                  isLink: "",
-                  isHide: false,
-                  isKeepAlive: true,
-                  isAffix: false,
-                  isIframe: false,
+                  link: "",
+                  hide: false,
+                  keepAlive: true,
+                  affix: false,
+                  iframe: false,
                   roles: ["admin"],
                   icon: "icon-menu"
                 }
-              }
+              },
+              ...testMultilevelMenu
             ]
           }
         ]
@@ -194,11 +197,11 @@ export const dynamicRoutes: RouteRecordRaw[] = [
         component: () => import("@/views/about-project/about-project.vue"),
         meta: {
           title: "about-project",
-          isHide: false,
-          isKeepAlive: true,
-          isAffix: false,
-          isLink: "",
-          isIframe: false,
+          hide: false,
+          keepAlive: true,
+          affix: false,
+          link: "",
+          iframe: false,
           roles: ["admin", "common"],
           svgIcon: "about"
         }
@@ -239,7 +242,7 @@ export const notFoundAndNoPower = [
     component: () => import("@/views/error/401.vue"),
     meta: {
       title: "notFound",
-      isHide: true
+      hide: true
     }
   },
   {
@@ -248,7 +251,7 @@ export const notFoundAndNoPower = [
     component: () => import("@/views/error/404.vue"),
     meta: {
       title: "notFound",
-      isHide: true
+      hide: true
     }
   }
 ];

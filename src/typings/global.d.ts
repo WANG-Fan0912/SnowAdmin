@@ -11,13 +11,24 @@ declare namespace Menu {
   }
   interface MetaType {
     title: string;
-    isHide: boolean;
-    isKeepAlive: boolean;
-    isAffix: boolean;
-    isLink?: string;
-    isIframe?: boolean;
+    hide: boolean;
+    keepAlive: boolean;
+    affix: boolean;
+    link?: string;
+    iframe?: boolean;
     roles: Array<string>;
     icon?: string;
     svgIcon?: string;
+  }
+}
+/* tabs菜单 */
+declare namespace TabsMenu {
+  interface list {
+    list: Array<{ type: number; icon: string; title: string }>;
+  }
+  interface menu {
+    type: number;
+    icon: string;
+    title: string;
   }
 }

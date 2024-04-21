@@ -22,7 +22,7 @@ export const useRoutesListStore = defineStore("routeList", {
      * 设置有访问权限的路由树
      * @param {Array} data 一维路由数组
      */
-    setRouteTree(data: Menu.MenuOptions) {
+    async setRouteTree(data: Menu.MenuOptions) {
       this.routeTree = data;
     },
     /**
@@ -34,10 +34,12 @@ export const useRoutesListStore = defineStore("routeList", {
     },
     /**
      * 设置所有可缓存路由的路由名
-     * @param {Array} data 路由名数组
+     * @param {string} name 路由名
      */
-    setRouteNames(data: Array<string>) {
-      this.cacheRoutes = data;
+    setRouteNames(name: string) {
+      let state = this.cacheRoutes.some((item: string) => item === name);
+      if (state) return;
+      this.cacheRoutes.push(name);
     },
     /**
      * 添加tabs标签页
@@ -65,6 +67,15 @@ export const useRoutesListStore = defineStore("routeList", {
       const index = this.tabsList.findIndex((item: Menu.MenuOptions) => item.name === key);
       if (index === -1) return;
       this.tabsList.splice(index, 1);
+    },
+    /**
+     * 删除缓存路由名，用于取消页面缓存
+     * @param {string} key 路由名
+     */
+    removeRouteNames(key: string) {
+      const index = this.cacheRoutes.findIndex((item: string) => item === key);
+      if (index === -1) return;
+      this.cacheRoutes.splice(index, 1);
     }
   }
 });

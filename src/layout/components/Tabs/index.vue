@@ -9,10 +9,11 @@
       @tab-click="onTabs"
       @delete="onDelete"
     >
-      <a-tab-pane v-for="item of tabsList" :key="item.name" :title="item.meta.title" :closable="!item.meta.isAffix" />
+      <a-tab-pane v-for="item of tabsList" :key="item.name" :title="item.meta.title" :closable="!item.meta.affix" />
     </a-tabs>
     <div class="tabs_setting">
-      <a-dropdown trigger="hover">
+      <contextmenu />
+      <!-- <a-dropdown trigger="hover">
         <div class="setting"><icon-loop :size="18" /></div>
         <template #content>
           <a-doption>
@@ -36,12 +37,13 @@
             <template #default>全部关闭</template>
           </a-doption>
         </template>
-      </a-dropdown>
+      </a-dropdown> -->
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import contextmenu from "@/layout/components/Tabs/contextmenu.vue";
 import { useRouter } from "vue-router";
 import { storeToRefs } from "pinia";
 import { useRoutesListStore } from "@/store/route-list";
@@ -55,7 +57,6 @@ const onTabs = (key: string) => {
   const { findTagsList } = useRoutingMethod();
   const find = findTagsList(key);
   if (find != undefined) {
-    routerStore.setCurrentRoute(find);
     router.push(find.path);
   }
 };
@@ -63,6 +64,7 @@ const onTabs = (key: string) => {
 // 删除当前标签页并跳转到最后一个标签页
 const onDelete = (key: string) => {
   routerStore.removeTabsList(key);
+  routerStore.removeRouteNames(key);
   if (tabsList.value.length == 0) return;
   router.push(tabsList.value.at(-1).path);
 };
@@ -78,10 +80,6 @@ const onDelete = (key: string) => {
   align-items: center;
   .tabs_setting {
     margin: 0 0 0 $margin;
-    .setting {
-      margin-right: $margin;
-      color: $color-text-2;
-    }
   }
 }
 :deep(.arco-tabs-nav-tab) {
