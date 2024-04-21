@@ -19,23 +19,23 @@
             <template #icon><icon-refresh /></template>
             <template #default>刷新</template>
           </a-doption>
-          <a-doption>
+          <a-doption @click="closeCurrent">
             <template #icon><icon-close /></template>
             <template #default>关闭当前</template>
           </a-doption>
-          <a-doption>
+          <a-doption @click="closeSides('left')">
             <template #icon><icon-left /></template>
             <template #default>关闭左侧</template>
           </a-doption>
-          <a-doption>
+          <a-doption @click="closeSides('right')">
             <template #icon><icon-right /></template>
             <template #default>关闭右侧</template>
           </a-doption>
-          <a-doption>
+          <a-doption @click="closeOther('other')">
             <template #icon><icon-close-circle /></template>
             <template #default>关闭其它</template>
           </a-doption>
-          <a-doption>
+          <a-doption @click="closeOther('all')">
             <template #icon><icon-folder-delete /></template>
             <template #default>全部关闭</template>
           </a-doption>
@@ -67,7 +67,7 @@ const onTabs = (key: string) => {
 // 删除当前标签页并跳转到最后一个标签页
 const onDelete = (key: string) => {
   routerStore.removeTabsList(key);
-  routerStore.removeRouteNames(key);
+  routerStore.removeRouteName(key);
   if (tabsList.value.length == 0) return;
   router.push(tabsList.value.at(-1).path);
 };
@@ -76,11 +76,62 @@ const onDelete = (key: string) => {
 const refresh = () => {
   const themeStore = useThemeConfig();
   themeStore.setRefreshPage(false);
-  currentRoute.value.meta.keepAlive && routerStore.removeRouteNames(currentRoute.value.name);
+  currentRoute.value.meta.keepAlive && routerStore.removeRouteName(currentRoute.value.name);
   setTimeout(() => {
     themeStore.setRefreshPage(true);
     currentRoute.value.meta.keepAlive && routerStore.setRouteNames(currentRoute.value.name);
   }, 0);
+};
+
+// 关闭当前
+const closeCurrent = () => {
+  onDelete(currentRoute.value.name);
+};
+
+// 关闭右侧&关闭左侧
+const closeSides = (type: string) => {
+  // 获得当前index
+  let currentIndex = tabsList.value.findIndex((item: Menu.MenuOptions) => item.name === currentRoute.value.name);
+  // 过滤出两侧可关闭的 affix: false 表示可关闭
+  let rightList = tabsList.value.filter((item: Menu.MenuOptions, index: number) => {
+    if (type == "right") {
+      if (index > currentIndex && !item.meta.affix) return item;
+    } else {
+      if (index < currentIndex && !item.meta.affix) return item;
+    }
+  });
+  // 返回可关闭名称
+  let rightNames = rightList.map((item: Menu.MenuOptions) => item.name);
+  // 删除右侧
+  tabsList.value = tabsList.value.filter((item: Menu.MenuOptions) => !rightNames.includes(item.name));
+  // 删除缓存
+  routerStore.removeRouteNames(rightNames);
+};
+
+// 关闭其它&关闭全部
+const closeOther = (type: string) => {
+  // 过滤出可关闭项 affix: false 表示可关闭
+  let list = tabsList.value.filter((item: Menu.MenuOptions) => {
+    if (type == "other") {
+      if (item.name != currentRoute.value.name && !item.meta.affix) {
+        return item;
+      }
+    } else {
+      if (!item.meta.affix) {
+        return item;
+      }
+    }
+  });
+  // 返回可关闭名称
+  let rightNames = list.map((item: Menu.MenuOptions) => item.name);
+  // 删除可关闭项
+  tabsList.value = tabsList.value.filter((item: Menu.MenuOptions) => !rightNames.includes(item.name));
+  // 删除缓存
+  routerStore.removeRouteNames(rightNames);
+  // 关闭全部，跳转最后一个
+  if (tabsList.value.length != 0 && !currentRoute.value.meta.affix && type == "all") {
+    router.push(tabsList.value.at(-1).path);
+  }
 };
 </script>
 

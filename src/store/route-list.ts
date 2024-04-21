@@ -69,13 +69,20 @@ export const useRoutesListStore = defineStore("routeList", {
       this.tabsList.splice(index, 1);
     },
     /**
-     * 删除缓存路由名，用于取消页面缓存
+     * 删除缓存路由名，用于取消页面缓存，单个删除
      * @param {string} key 路由名
      */
-    removeRouteNames(key: string) {
+    removeRouteName(key: string) {
       const index = this.cacheRoutes.findIndex((item: string) => item === key);
       if (index === -1) return;
       this.cacheRoutes.splice(index, 1);
+    },
+    /**
+     * 删除缓存路由名，用于取消页面缓存，批量删除
+     * @param {Array} list 路由名
+     */
+    removeRouteNames(list: Array<string>) {
+      this.cacheRoutes = this.cacheRoutes.filter((item: string) => !list.includes(item));
     }
   }
 });

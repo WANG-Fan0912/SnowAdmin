@@ -199,7 +199,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
           title: "about-project",
           hide: false,
           keepAlive: true,
-          affix: false,
+          affix: true,
           link: "",
           iframe: false,
           roles: ["admin", "common"],
