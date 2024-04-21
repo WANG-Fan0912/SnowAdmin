@@ -33,7 +33,7 @@ export const useRoutesListStore = defineStore("routeList", {
       this.routeList = data;
     },
     /**
-     * 设置所有可缓存路由的路由名
+     * 设置可缓存路由的路由名
      * @param {string} name 路由名
      */
     setRouteNames(name: string) {

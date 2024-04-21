@@ -3,12 +3,12 @@
     <Tabs />
     <a-scrollbar style="height: 100%; overflow: auto" outer-class="scrollbar">
       <div class="main">
-        <router-view v-slot="{ Component }">
-          <MainTransition>
+        <router-view v-slot="{ Component, route }">
+          <main-transition>
             <keep-alive :include="cacheRoutes">
-              <component :is="Component" />
+              <component :is="Component" :key="route.name" v-if="refreshPage" />
             </keep-alive>
-          </MainTransition>
+          </main-transition>
         </router-view>
       </div>
     </a-scrollbar>
@@ -18,7 +18,10 @@
 <script setup lang="ts">
 import Tabs from "@/layout/components/Tabs/index.vue";
 import { storeToRefs } from "pinia";
+import { useThemeConfig } from "@/store/theme-config";
 import { useRoutesListStore } from "@/store/route-list";
+const themeStore = useThemeConfig();
+let { refreshPage } = storeToRefs(themeStore);
 const routerStore = useRoutesListStore();
 const { cacheRoutes } = storeToRefs(routerStore);
 </script>
