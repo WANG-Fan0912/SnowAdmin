@@ -10,22 +10,7 @@
         </a-button>
       </div>
       <div class="breadcrumb">
-        <a-space direction="vertical">
-          <a-breadcrumb>
-            <a-breadcrumb-item>
-              <icon-home />
-              首页
-            </a-breadcrumb-item>
-            <a-breadcrumb-item>
-              <icon-at />
-              常用组件
-            </a-breadcrumb-item>
-            <a-breadcrumb-item>
-              <icon-at />
-              文件上传
-            </a-breadcrumb-item>
-          </a-breadcrumb>
-        </a-space>
+        <Breadcrumb />
       </div>
     </div>
     <div class="header_setting">
@@ -114,6 +99,7 @@
 </template>
 <script setup lang="ts">
 import Notice from "@/layout/components/Header/components/Notice/index.vue";
+import Breadcrumb from "@/layout/components/Header/components/Breadcrumb/index.vue";
 import myImage from "@/assets/img/my-image.jpg";
 import pinia from "@/store/index";
 import { Modal } from "@arco-design/web-vue";
