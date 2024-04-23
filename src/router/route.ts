@@ -115,7 +115,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
       {
         path: "/multilevel-menu",
         name: "multilevel-menu",
-        redirect: "/multilevel-menu/second-menu",
+        redirect: "/multilevel-menu/second-menu-1",
         meta: {
           title: "multilevel-menu",
           link: "",
@@ -145,6 +145,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
           {
             path: "/multilevel-menu/second-menu-2",
             name: "second-menu-2",
+            redirect: "/multilevel-menu/third-menu-1",
             meta: {
               title: "second-menu-2",
               link: "",
