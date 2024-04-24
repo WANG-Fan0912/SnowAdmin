@@ -47,9 +47,11 @@ const onBreadcrumb = (route: RouteLocationMatched) => {
 <style lang="scss" scoped>
 .main_button {
   color: $color-text-1;
+  cursor: pointer;
 }
 .route_button {
   color: $color-text-2;
+  cursor: pointer;
   &:hover {
     color: $color-primary;
   }
