@@ -7,12 +7,10 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    MainTransition: typeof import('./components/MainTransition/index.vue')['default']
-    MyTransition: typeof import('./components/MyTransition/index.vue')['default']
+    MainTransition: typeof import('./components/main-transition/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    SvgIcon: typeof import('./components/SvgIcon/index.vue')['default']
-    Transition: typeof import('./components/Transition/index.vue')['default']
-    VerifyCode: typeof import('./components/VerifyCode/index.vue')['default']
+    SvgIcon: typeof import('./components/svg-icon/index.vue')['default']
+    VerifyCode: typeof import('./components/verify-code/index.vue')['default']
   }
 }

@@ -98,8 +98,8 @@
   </a-layout-header>
 </template>
 <script setup lang="ts">
-import Notice from "@/layout/components/Header/components/Notice/index.vue";
-import Breadcrumb from "@/layout/components/Header/components/Breadcrumb/index.vue";
+import Notice from "@/layout/components/Header/components/notice/index.vue";
+import Breadcrumb from "@/layout/components/Header/components/breadcrumb/index.vue";
 import myImage from "@/assets/img/my-image.jpg";
 import pinia from "@/store/index";
 import { Modal } from "@arco-design/web-vue";
