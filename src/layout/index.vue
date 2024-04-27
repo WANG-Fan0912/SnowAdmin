@@ -1,6 +1,8 @@
 <template>
   <div>
-    <component :is="layouts['defaults']"></component>
+    <lang-provider>
+      <component :is="layouts['defaults']" />
+    </lang-provider>
   </div>
 </template>
 

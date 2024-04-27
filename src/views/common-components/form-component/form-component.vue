@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>表单数据</div>
+    <div>表单数据<a-date-picker style="width: 200px" /></div>
   </div>
 </template>
 
