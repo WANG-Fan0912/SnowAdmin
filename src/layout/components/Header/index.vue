@@ -14,13 +14,17 @@
       </div>
     </div>
     <div class="header_setting">
-      <a-tooltip content="语言">
+      <a-dropdown trigger="hover" @select="onLange">
         <a-button size="mini" type="text" class="icon_btn">
           <template #icon>
             <icon-language :size="18" />
           </template>
         </a-button>
-      </a-tooltip>
+        <template #content>
+          <a-doption :disabled="language === 'zh-CN'">{{ $t(`language.zh-CN`) }}</a-doption>
+          <a-doption :disabled="language === 'en-US'">{{ $t(`language.en-US`) }}</a-doption>
+        </template>
+      </a-dropdown>
       <a-tooltip content="切换黑夜模式">
         <a-button size="mini" type="text" class="icon_btn">
           <template #icon>
@@ -102,17 +106,29 @@ import Notice from "@/layout/components/Header/components/notice/index.vue";
 import Breadcrumb from "@/layout/components/Header/components/breadcrumb/index.vue";
 import myImage from "@/assets/img/my-image.jpg";
 import pinia from "@/store/index";
+import { useI18n } from "vue-i18n";
 import { Modal } from "@arco-design/web-vue";
 import { useRouter } from "vue-router";
 import { storeToRefs } from "pinia";
 import { useUserInfoStore } from "@/store/user-info";
 import { useThemeConfig } from "@/store/theme-config";
+const i18n = useI18n();
 const router = useRouter();
-const themeStore = useThemeConfig();
-const { collapsed } = storeToRefs(themeStore);
+const themeStore = useThemeConfig(pinia);
+const { collapsed, language } = storeToRefs(themeStore);
 
 const onCollapsed = () => {
   themeStore.setCollapsed(!collapsed.value);
+};
+
+// 语言
+const onLange = (e: string) => {
+  if (e === "Chinese" || e === "中文") {
+    themeStore.setLanguage("zh-CN");
+  } else {
+    themeStore.setLanguage("en-US");
+  }
+  i18n.locale.value = language.value;
 };
 
 const logOut = () => {

@@ -26,6 +26,7 @@ export const useUserInfoStore = defineStore("userInfo", {
     }
   },
   persist: {
-    enabled: true // 开启数据缓存-默认缓存全部数据
+    enabled: true, // 开启数据缓存-默认缓存全部数据
+    key: "userInfo"
   }
 });

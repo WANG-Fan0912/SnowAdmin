@@ -4,11 +4,11 @@
     <a-scrollbar style="height: 100%; overflow: auto" outer-class="scrollbar">
       <div class="main">
         <router-view v-slot="{ Component, route }">
-          <main-transition>
+          <MainTransition>
             <keep-alive :include="cacheRoutes">
               <component :is="Component" :key="route.name" v-if="refreshPage" />
             </keep-alive>
-          </main-transition>
+          </MainTransition>
         </router-view>
       </div>
     </a-scrollbar>

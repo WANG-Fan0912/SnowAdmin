@@ -59,3 +59,15 @@ export function arrayFlattened(tree: any, term: string) {
   }
   return result.reverse();
 }
+
+/**
+ * 获取浏览器默认语言
+ * @returns 语言类型
+ */
+export function webDefaultLanguage() {
+  if (navigator.language === "zh-CN") {
+    return "zhCN";
+  } else {
+    return "enUS";
+  }
+}

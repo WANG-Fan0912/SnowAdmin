@@ -1,0 +1,33 @@
+export default {
+  language: {
+    ["login"]: "login",
+    ["home"]: "home",
+    ["common-components"]: "common components",
+    ["form-component"]: "form components",
+    ["dynamic-form"]: "dynamic form",
+    ["multilevel-menu"]: "multilevel menu",
+    ["second-menu-1"]: "second-menu-1",
+    ["second-menu-2"]: "second-menu-2",
+    ["third-menu-1"]: "third-menu-1",
+    ["third-menu-2"]: "third-menu-2",
+    ["third-menu-3"]: "third-menu-3",
+    ["third-menu-4"]: "third-menu-4",
+    ["third-menu-5"]: "third-menu-5",
+    ["third-menu-6"]: "third-menu-6",
+    ["third-menu-7"]: "third-menu-7",
+    ["third-menu-8"]: "third-menu-8",
+    ["third-menu-9"]: "third-menu-9",
+    ["about-project"]: "about project",
+    ["not-power"]: "No permission",
+    ["not-found"]: "Page not found",
+    ["zh-CN"]: "Chinese",
+    ["en-US"]: "English",
+    ["refresh"]: "refresh",
+    ["close-current"]: "close current",
+    ["close-left-side"]: "close left side",
+    ["close-right-side"]: "close right side",
+    ["close-other"]: "close other",
+    ["close-all"]: "close all",
+    ["internationalization"]: "internationalization"
+  }
+};

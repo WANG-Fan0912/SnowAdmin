@@ -9,13 +9,13 @@ import "virtual:svg-icons-register";
 import "@arco-design/web-vue/dist/arco.css";
 // 额外引入图标库
 import ArcoVueIcon from "@arco-design/web-vue/es/icon";
-
+import i18n from "@/lang/index";
 pinia.use(piniaPluginPersist);
 const app = createApp(App);
 app.use(ArcoVue, {
-  // 用于改变使用组件时的前缀名称
   componentPrefix: "arco"
 });
+app.use(i18n);
 app.use(ArcoVueIcon);
 app.use(pinia);
 app.use(router);

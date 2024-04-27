@@ -7,7 +7,8 @@ import { defineStore } from "pinia";
 export const useThemeConfig = defineStore("themeConfig", {
   state: (): any => ({
     collapsed: false, // 是否折叠菜单
-    refreshPage: true // 刷新页面
+    refreshPage: true, // 刷新页面
+    language: "zh-CN" // 系统语言
   }),
   actions: {
     // 折叠菜单
@@ -17,9 +18,14 @@ export const useThemeConfig = defineStore("themeConfig", {
     // 刷新页面
     setRefreshPage(data: Boolean) {
       this.refreshPage = data;
+    },
+    // 设置语言
+    setLanguage(data: string) {
+      this.language = data;
     }
   },
   persist: {
-    enabled: true
+    enabled: true, // 开启数据缓存-默认缓存全部数据
+    key: "themeConfig"
   }
 });

@@ -193,6 +193,21 @@ export const dynamicRoutes: RouteRecordRaw[] = [
         ]
       },
       {
+        path: "/internationalization",
+        name: "internationalization",
+        component: () => import("@/views/internationalization/internationalization.vue"),
+        meta: {
+          title: "internationalization",
+          hide: false,
+          keepAlive: true,
+          affix: false,
+          link: "",
+          iframe: false,
+          roles: ["admin", "common"],
+          svgIcon: "earth"
+        }
+      },
+      {
         path: "/about-project",
         name: "about-project",
         component: () => import("@/views/about-project/about-project.vue"),
@@ -223,7 +238,7 @@ export const staticRoutes = [
     name: "login",
     component: () => import("@/views/login/login.vue"),
     meta: {
-      title: "登录"
+      title: "login"
     }
   }
   /**
@@ -239,19 +254,19 @@ export const staticRoutes = [
 export const notFoundAndNoPower = [
   {
     path: "/401",
-    name: "noPower",
+    name: "no-power",
     component: () => import("@/views/error/401.vue"),
     meta: {
-      title: "notFound",
+      title: "not-power",
       hide: true
     }
   },
   {
     path: "/:path(.*)*", // 匹配任意路由，兜底，未找到页面的时候跳转该页面
-    name: "notFound",
+    name: "not-found",
     component: () => import("@/views/error/404.vue"),
     meta: {
-      title: "notFound",
+      title: "not-found",
       hide: true
     }
   }

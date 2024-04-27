@@ -1,0 +1,33 @@
+export default {
+  language: {
+    ["login"]: "登录",
+    ["home"]: "首页",
+    ["common-components"]: "常用组件",
+    ["form-component"]: "表单组件",
+    ["dynamic-form"]: "动态表单",
+    ["multilevel-menu"]: "多级菜单",
+    ["second-menu-1"]: "二级菜单-1",
+    ["second-menu-2"]: "二级菜单-2",
+    ["third-menu-1"]: "三级菜单-1",
+    ["third-menu-2"]: "三级菜单-2",
+    ["third-menu-3"]: "三级菜单-3",
+    ["third-menu-4"]: "三级菜单-4",
+    ["third-menu-5"]: "三级菜单-5",
+    ["third-menu-6"]: "三级菜单-6",
+    ["third-menu-7"]: "三级菜单-7",
+    ["third-menu-8"]: "三级菜单-8",
+    ["third-menu-9"]: "三级菜单-9",
+    ["about-project"]: "关于项目",
+    ["not-power"]: "没有权限",
+    ["not-found"]: "未找到页面",
+    ["zh-CN"]: "中文",
+    ["en-US"]: "English",
+    ["refresh"]: "刷新",
+    ["close-current"]: "关闭当前",
+    ["close-left-side"]: "关闭左侧",
+    ["close-right-side"]: "关闭右侧",
+    ["close-other"]: "关闭其它",
+    ["close-all"]: "关闭全部",
+    ["internationalization"]: "国际化"
+  }
+};

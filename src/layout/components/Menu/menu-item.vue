@@ -4,14 +4,14 @@
       <template #icon v-if="item.meta.svgIcon || item.meta.icon">
         <MenuItemIcon :svg-icon="item.meta.svgIcon" :icon="item.meta.icon" />
       </template>
-      <template #title>{{ item.meta.title }}</template>
+      <template #title>{{ $t(`language.${item.meta.title}`) }}</template>
       <MenuItem :route-tree="item.children" />
     </a-sub-menu>
     <a-menu-item v-else :key="item?.name">
       <template #icon v-if="item.meta.svgIcon || item.meta.icon">
         <MenuItemIcon :svg-icon="item.meta.svgIcon" :icon="item.meta.icon" />
       </template>
-      <div>{{ item.meta.title }}</div>
+      <div>{{ $t(`language.${item.meta.title}`) }}</div>
     </a-menu-item>
   </template>
 </template>

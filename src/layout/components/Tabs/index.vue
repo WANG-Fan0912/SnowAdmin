@@ -9,7 +9,12 @@
       @tab-click="onTabs"
       @delete="onDelete"
     >
-      <a-tab-pane v-for="item of tabsList" :key="item.name" :title="item.meta.title" :closable="!item.meta.affix" />
+      <a-tab-pane
+        v-for="item of tabsList"
+        :key="item.name"
+        :title="$t(`language.${item.meta.title}`)"
+        :closable="!item.meta.affix"
+      />
     </a-tabs>
     <div class="tabs_setting">
       <a-dropdown trigger="hover" :popup-max-height="false">
@@ -17,27 +22,27 @@
         <template #content>
           <a-doption @click="refresh">
             <template #icon><icon-refresh /></template>
-            <template #default>刷新</template>
+            <template #default>{{ $t(`language.refresh`) }}</template>
           </a-doption>
           <a-doption @click="closeCurrent">
             <template #icon><icon-close /></template>
-            <template #default>关闭当前</template>
+            <template #default>{{ $t(`language.close-current`) }}</template>
           </a-doption>
           <a-doption @click="closeSides('left')">
             <template #icon><icon-left /></template>
-            <template #default>关闭左侧</template>
+            <template #default>{{ $t(`language.close-left-side`) }}</template>
           </a-doption>
           <a-doption @click="closeSides('right')">
             <template #icon><icon-right /></template>
-            <template #default>关闭右侧</template>
+            <template #default>{{ $t(`language.close-right-side`) }}</template>
           </a-doption>
           <a-doption @click="closeOther('other')">
             <template #icon><icon-close-circle /></template>
-            <template #default>关闭其它</template>
+            <template #default>{{ $t(`language.close-other`) }}</template>
           </a-doption>
           <a-doption @click="closeOther('all')">
             <template #icon><icon-folder-delete /></template>
-            <template #default>全部关闭</template>
+            <template #default>{{ $t(`language.close-all`) }}</template>
           </a-doption>
         </template>
       </a-dropdown>
