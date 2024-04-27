@@ -12,7 +12,6 @@ import { useRoutingMethod } from "@/hooks/useRoutingMethod";
  * 1、过滤有权限的路由树并存入store，用于菜单生成
  * 2、根据路由树生成一维数组
  * 3、设置完整的路由，顶层路由 + 一维路由数组，addRoute动态添加路由，KeepAlive支持二级路由缓存
- * 4、将一维数组和路由name存入store，用于后续路由匹配和缓存
  */
 export async function initSetRouter() {
   const store = useRoutesListStore(pinia);
