@@ -25,8 +25,5 @@ export const useThemeConfig = defineStore("theme-config", {
       this.language = data;
     }
   },
-  persist: {
-    key: "theme-config",
-    storage: localStorage
-  }
+  persist: true
 });

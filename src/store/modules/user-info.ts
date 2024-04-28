@@ -25,8 +25,5 @@ export const useUserInfoStore = defineStore("user-info", {
       this.token = "";
     }
   },
-  persist: {
-    key: "user-info",
-    storage: localStorage
-  }
+  persist: true
 });
