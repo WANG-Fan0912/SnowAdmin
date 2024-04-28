@@ -5,7 +5,7 @@ import { defineStore } from "pinia";
  * @methods setToken 设置token
  * @methods logOut 退出登录
  */
-export const useUserInfoStore = defineStore("userInfo", {
+export const useUserInfoStore = defineStore("user-info", {
   state: (): any => ({
     account: {
       username: "",
@@ -26,7 +26,6 @@ export const useUserInfoStore = defineStore("userInfo", {
     }
   },
   persist: {
-    enabled: true, // 开启数据缓存-默认缓存全部数据
-    key: "userInfo"
+    key: "user-info"
   }
 });

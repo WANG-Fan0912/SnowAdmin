@@ -5,4 +5,4 @@ declare module "*.vue" {
   export default component;
 }
 
-declare module "pinia-plugin-persist";
+declare module "vue-i18n";
