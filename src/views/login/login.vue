@@ -50,7 +50,7 @@
 import { Message } from "@arco-design/web-vue";
 import { useRouter } from "vue-router";
 import pinia from "@/store/index";
-import { useUserInfoStore } from "@/store/user-info";
+import { useUserInfoStore } from "@/store/modules/user-info";
 const router = useRouter();
 const form = ref({
   username: "admin",

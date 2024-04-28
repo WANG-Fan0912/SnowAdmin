@@ -10,7 +10,7 @@
 import zhCN from "@arco-design/web-vue/es/locale/lang/zh-cn";
 import enUS from "@arco-design/web-vue/es/locale/lang/en-us";
 import { storeToRefs } from "pinia";
-import { useThemeConfig } from "@/store/theme-config";
+import { useThemeConfig } from "@/store/modules/theme-config";
 const themeStore = useThemeConfig();
 const { language } = storeToRefs(themeStore);
 interface Lang {

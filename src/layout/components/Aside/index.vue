@@ -14,7 +14,7 @@
 import Logo from "@/assets/img/logo.jpg";
 import Menu from "@/layout/components/Menu/index.vue";
 import { storeToRefs } from "pinia";
-import { useThemeConfig } from "@/store/theme-config";
+import { useThemeConfig } from "@/store/modules/theme-config";
 
 const themeStore = useThemeConfig();
 const { collapsed } = storeToRefs(themeStore);

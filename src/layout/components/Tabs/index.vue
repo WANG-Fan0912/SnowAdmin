@@ -53,9 +53,9 @@
 <script setup lang="ts">
 import { useRouter } from "vue-router";
 import { storeToRefs } from "pinia";
-import { useRoutesListStore } from "@/store/route-list";
+import { useRoutesListStore } from "@/store/modules/route-list";
 import { useRoutingMethod } from "@/hooks/useRoutingMethod";
-import { useThemeConfig } from "@/store/theme-config";
+import { useThemeConfig } from "@/store/modules/theme-config";
 const router = useRouter();
 const routerStore = useRoutesListStore();
 const { tabsList, currentRoute } = storeToRefs(routerStore);

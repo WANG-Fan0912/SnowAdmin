@@ -3,7 +3,7 @@ import zhCN from "@/lang/modules/zhCN";
 import enUS from "@/lang/modules/enUS";
 import pinia from "@/store/index";
 import { storeToRefs } from "pinia";
-import { useThemeConfig } from "@/store/theme-config";
+import { useThemeConfig } from "@/store/modules/theme-config";
 const themeStore = useThemeConfig(pinia);
 const { language } = storeToRefs(themeStore);
 /* 这里必须是messages名称 */

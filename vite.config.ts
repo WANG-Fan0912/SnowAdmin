@@ -30,8 +30,8 @@ export default defineConfig(({ mode }) => {
         style: "css"
       }),
       createSvgIconsPlugin({
-        // 配置src下存放svg的路径，这里表示在src/icons文件夹下
-        iconDirs: [path.resolve(process.cwd(), "src/assets/icons")],
+        // 配置src下存放svg的路径，这里表示在src/assets/svgs文件夹下
+        iconDirs: [path.resolve(process.cwd(), "src/assets/svgs")],
         symbolId: "icon-[dir]-[name]"
       }),
       AutoImport({

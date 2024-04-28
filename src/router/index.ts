@@ -4,8 +4,8 @@ import { createRouter, createWebHashHistory } from "vue-router";
 import { staticRoutes, notFoundAndNoPower } from "@/router/route.ts";
 import { initSetRouter, currentlyRoute } from "@/router/route-output";
 import { storeToRefs } from "pinia";
-import { useUserInfoStore } from "@/store/user-info";
-import { useRoutesListStore } from "@/store/route-list";
+import { useUserInfoStore } from "@/store/modules/user-info";
+import { useRoutesListStore } from "@/store/modules/route-list";
 
 /**
  * 创建vue的路由示例

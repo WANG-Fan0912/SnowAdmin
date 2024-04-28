@@ -18,8 +18,8 @@
 <script setup lang="ts">
 import Tabs from "@/layout/components/Tabs/index.vue";
 import { storeToRefs } from "pinia";
-import { useThemeConfig } from "@/store/theme-config";
-import { useRoutesListStore } from "@/store/route-list";
+import { useThemeConfig } from "@/store/modules/theme-config";
+import { useRoutesListStore } from "@/store/modules/route-list";
 const themeStore = useThemeConfig();
 let { refreshPage } = storeToRefs(themeStore);
 const routerStore = useRoutesListStore();

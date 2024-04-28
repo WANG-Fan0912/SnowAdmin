@@ -2,8 +2,8 @@ import pinia from "@/store/index";
 import router from "@/router/index.ts";
 import { dynamicRoutes } from "@/router/route";
 import { storeToRefs } from "pinia";
-import { useUserInfoStore } from "@/store/user-info";
-import { useRoutesListStore } from "@/store/route-list";
+import { useUserInfoStore } from "@/store/modules/user-info";
+import { useRoutesListStore } from "@/store/modules/route-list";
 import { deepClone, arrayFlattened } from "@/utils/index";
 import { useRoutingMethod } from "@/hooks/useRoutingMethod";
 

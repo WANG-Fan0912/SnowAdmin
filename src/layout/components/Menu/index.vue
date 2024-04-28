@@ -14,8 +14,8 @@
 <script setup lang="ts">
 import MenuItem from "@/layout/components/Menu/menu-item.vue";
 import { storeToRefs } from "pinia";
-import { useThemeConfig } from "@/store/theme-config";
-import { useRoutesListStore } from "@/store/route-list";
+import { useThemeConfig } from "@/store/modules/theme-config";
+import { useRoutesListStore } from "@/store/modules/route-list";
 import { useRouter } from "vue-router";
 import { useRoutingMethod } from "@/hooks/useRoutingMethod";
 const router = useRouter();

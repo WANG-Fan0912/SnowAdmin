@@ -1,9 +1,5 @@
 lockfileVersion: '6.0'
 
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
-
 dependencies:
   dc-admin:
     specifier: 'link:'
@@ -21,8 +17,8 @@ dependencies:
     specifier: ^3.4.21
     version: 3.4.21(typescript@5.4.3)
   vue-i18n:
-    specifier: 10.0.0-alpha.2
-    version: 10.0.0-alpha.2(vue@3.4.21)
+    specifier: 10.0.0-alpha.3
+    version: 10.0.0-alpha.3(vue@3.4.21)
   vue-router:
     specifier: ^4.3.0
     version: 4.3.0(vue@3.4.21)
@@ -1126,24 +1122,24 @@ packages:
     resolution: {integrity: sha512-6EwiSjwWYP7pTckG6I5eyFANjPhmPjUX9JRLUSfNPC7FX7zK9gyZAfUEaECL6ALTpGX5AjnBq3C9XmVWPitNpw==}
     dev: true
 
-  /@intlify/core-base@10.0.0-alpha.2:
-    resolution: {integrity: sha512-bT+RwQtJ2BOwpt/lLlDtJM8+lfNG9TdWWGRYphDsV8123SiGb4Qm6iEjBN3/RKC/9hX+EHl2ENslURfioov3dQ==}
+  /@intlify/core-base@10.0.0-alpha.3:
+    resolution: {integrity: sha512-geqr/gY+g/PeAIMeFpi3hypeG7p+gGsHftc9K+jagW8775j6x4pvpeWa5CeHKm6b3lSKfGYZ9BPg74TOKt8B4Q==}
     engines: {node: '>= 16'}
     dependencies:
-      '@intlify/message-compiler': 10.0.0-alpha.2
-      '@intlify/shared': 10.0.0-alpha.2
+      '@intlify/message-compiler': 10.0.0-alpha.3
+      '@intlify/shared': 10.0.0-alpha.3
     dev: false
 
-  /@intlify/message-compiler@10.0.0-alpha.2:
-    resolution: {integrity: sha512-OGwttsMwB2BUzhZLraoAfAqcza5UyLMEU013ort3LbmdE6ke/pFONFyxjNQdmFWzW2K868AIVgwx4zo8lbmhjg==}
+  /@intlify/message-compiler@10.0.0-alpha.3:
+    resolution: {integrity: sha512-WjM1KAl5enpOfprfVAJ3FzwACmizZFPgyV0sn+QXoWH8BG2ahVkf7uVEqQH0mvUr2rKKaScwpzhH3wZ5F7ZdPw==}
     engines: {node: '>= 16'}
     dependencies:
-      '@intlify/shared': 10.0.0-alpha.2
+      '@intlify/shared': 10.0.0-alpha.3
       source-map-js: 1.2.0
     dev: false
 
-  /@intlify/shared@10.0.0-alpha.2:
-    resolution: {integrity: sha512-pWlpsC3IqkDuIH/5bNlyyiUbAXYymeNXkznORzPWT3qpAe8MazPOm14wMHGn/wESCdB5b9txQson4+CH0ym1hQ==}
+  /@intlify/shared@10.0.0-alpha.3:
+    resolution: {integrity: sha512-fi2q48i+C6sSCAt3vOj/9LD3tkr1wcvLt+ifZEHrpPiwHCyKLDYGp5qBNUHUBBA/iqFTeWdtHUbHE9z9OeTXkw==}
     engines: {node: '>= 16'}
     dev: false
 
@@ -5189,14 +5185,14 @@ packages:
       - supports-color
     dev: true
 
-  /vue-i18n@10.0.0-alpha.2(vue@3.4.21):
-    resolution: {integrity: sha512-wP3+3k0TbdqvYDUn5lS5v7dtAsX0lP9J+CRcoP7mTQXsmkGurfruyd0rvw+DBnW+mULsoP/oygtj75HZFPp6YQ==}
+  /vue-i18n@10.0.0-alpha.3(vue@3.4.21):
+    resolution: {integrity: sha512-4+NpYfOUmeG7RKwaqJ2HglqQNbql7hmcy9w/1QZeVwCT0pDG/j93PZlqmsiGSEx7Fz2Ok+dWbd/vEUrOohVwYQ==}
     engines: {node: '>= 16'}
     peerDependencies:
       vue: ^3.0.0
     dependencies:
-      '@intlify/core-base': 10.0.0-alpha.2
-      '@intlify/shared': 10.0.0-alpha.2
+      '@intlify/core-base': 10.0.0-alpha.3
+      '@intlify/shared': 10.0.0-alpha.3
       '@vue/devtools-api': 6.6.1
       vue: 3.4.21(typescript@5.4.3)
     dev: false
@@ -5329,3 +5325,7 @@ packages:
     resolution: {integrity: sha512-9bnSc/HEW2uRy67wc+T8UwauLuPJVn28jb+GtJY16iiKWyvmYJRXVT4UamsAEGQfPohgr2q4Tq0sQbQlxTfi1g==}
     engines: {node: '>=12.20'}
     dev: true
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false

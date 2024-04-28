@@ -1,6 +1,6 @@
 import pinia from "@/store/index";
 import { storeToRefs } from "pinia";
-import { useRoutesListStore } from "@/store/route-list";
+import { useRoutesListStore } from "@/store/modules/route-list";
 /**
  * 路由处理hooks，内置多种路由处理场景
  * @returns 路由方法
