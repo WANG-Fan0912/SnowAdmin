@@ -1,8 +1,9 @@
 import { defineStore } from "pinia";
-
 /**
  * 全局配置
  * @methods setCollapsed 设置菜单折叠
+ * @methods setRefreshPage 刷新页面
+ * @methods setLanguage 设置语言
  */
 export const useThemeConfig = defineStore("theme-config", {
   state: (): any => ({
@@ -25,6 +26,7 @@ export const useThemeConfig = defineStore("theme-config", {
     }
   },
   persist: {
-    key: "theme-config"
+    key: "theme-config",
+    storage: localStorage
   }
 });

@@ -105,7 +105,6 @@
 import Notice from "@/layout/components/Header/components/notice/index.vue";
 import Breadcrumb from "@/layout/components/Header/components/breadcrumb/index.vue";
 import myImage from "@/assets/img/my-image.jpg";
-import pinia from "@/store/index";
 import { useI18n } from "vue-i18n";
 import { Modal } from "@arco-design/web-vue";
 import { useRouter } from "vue-router";
@@ -114,7 +113,7 @@ import { useUserInfoStore } from "@/store/modules/user-info";
 import { useThemeConfig } from "@/store/modules/theme-config";
 const i18n = useI18n();
 const router = useRouter();
-const themeStore = useThemeConfig(pinia);
+const themeStore = useThemeConfig();
 const { collapsed, language } = storeToRefs(themeStore);
 
 const onCollapsed = () => {
@@ -129,6 +128,7 @@ const onLange = (e: string) => {
     themeStore.setLanguage("en-US");
   }
   i18n.locale.value = language.value;
+  console.log("国际化", language.value);
 };
 
 const logOut = () => {
@@ -139,7 +139,7 @@ const logOut = () => {
     closable: true,
     onBeforeOk: async () => {
       try {
-        const store = useUserInfoStore(pinia);
+        const store = useUserInfoStore();
         await store.logOut();
         router.replace("/login");
         return true;

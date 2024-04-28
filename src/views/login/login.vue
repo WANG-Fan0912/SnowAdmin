@@ -49,7 +49,6 @@
 <script setup lang="ts">
 import { Message } from "@arco-design/web-vue";
 import { useRouter } from "vue-router";
-import pinia from "@/store/index";
 import { useUserInfoStore } from "@/store/modules/user-info";
 const router = useRouter();
 const form = ref({
@@ -115,7 +114,7 @@ const verifyCodeChange = (code: string) => (verify.value.verifyCode = code);
 const onSubmit = ({ errors }: any) => {
   if (errors) return;
   // 存储用户信息
-  let stores = useUserInfoStore(pinia);
+  let stores = useUserInfoStore();
   let account = {
     username: form.value.username,
     roles: ["admin"]

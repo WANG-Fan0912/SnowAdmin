@@ -9,7 +9,7 @@ import { defineStore } from "pinia";
  * @methods setCurrentRoute 设置系统内的当前路由
  * @methods removeTabsList 删除tabs页的指定路由
  */
-export const useRoutesListStore = defineStore("routeList", {
+export const useRoutesListStore = defineStore("route-list", {
   state: (): any => ({
     routeTree: [], // 有访问权限的路由树
     routeList: [], // 有访问权限的一维路由数组
