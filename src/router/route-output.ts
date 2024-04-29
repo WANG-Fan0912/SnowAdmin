@@ -6,6 +6,7 @@ import { useUserInfoStore } from "@/store/modules/user-info";
 import { useRoutesListStore } from "@/store/modules/route-list";
 import { deepClone, arrayFlattened } from "@/utils/index";
 import { useRoutingMethod } from "@/hooks/useRoutingMethod";
+import { loadingPage } from "@/utils/loading-page";
 
 /**
  * 初始化
@@ -14,6 +15,8 @@ import { useRoutingMethod } from "@/hooks/useRoutingMethod";
  * 3、设置完整的路由，顶层路由 + 一维路由数组，addRoute动态添加路由，KeepAlive支持二级路由缓存
  */
 export async function initSetRouter() {
+  // 初始化路由，渲染loading
+  loadingPage.start();
   const store = useRoutesListStore(pinia);
   // 根据角色权限过滤树
   let filteredTree = filterByRole(dynamicRoutes[0].children);
