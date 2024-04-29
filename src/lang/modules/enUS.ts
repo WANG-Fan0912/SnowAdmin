@@ -28,6 +28,18 @@ export default {
     ["close-right-side"]: "close right side",
     ["close-other"]: "close other",
     ["close-all"]: "close all",
-    ["internationalization"]: "internationalization"
+    ["internationalization"]: "internationalization",
+    ["switch-to-night-mode"]: "switch to night mode",
+    ["switch-to-daytime-mode"]: "switch to daytime mode",
+    ["full-screen"]: "full screen",
+    ["system-settings"]: "system settings",
+    ["theme-settings"]: "theme settings",
+    ["personal-information"]: "personal information",
+    ["change-password"]: "change password",
+    ["project-address"]: "project address",
+    ["logout"]: "logout",
+    ["notice"]: "Notice",
+    ["message"]: "Message",
+    ["backlog"]: "Backlog"
   }
 };

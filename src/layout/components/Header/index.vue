@@ -14,6 +14,7 @@
       </div>
     </div>
     <div class="header_setting">
+      <!-- 国际化 -->
       <a-dropdown trigger="hover" @select="onLange">
         <a-button size="mini" type="text" class="icon_btn">
           <template #icon>
@@ -25,13 +26,15 @@
           <a-doption :disabled="language === 'en-US'">{{ $t(`language.en-US`) }}</a-doption>
         </template>
       </a-dropdown>
-      <a-tooltip content="切换黑夜模式">
+      <!-- 切换黑夜模式 -->
+      <a-tooltip :content="$t(`language.switch-to-night-mode`)">
         <a-button size="mini" type="text" class="icon_btn">
           <template #icon>
             <icon-sun-fill :size="18" />
           </template>
         </a-button>
       </a-tooltip>
+      <!-- 通知 -->
       <a-popover position="bottom" trigger="click">
         <a-button size="mini" type="text" class="icon_btn notice">
           <template #icon>
@@ -40,21 +43,24 @@
         </a-button>
         <template #content><Notice /></template>
       </a-popover>
-      <a-tooltip content="全屏">
+      <!-- 全屏 -->
+      <a-tooltip :content="$t(`language.full-screen`)">
         <a-button size="mini" type="text" class="icon_btn">
           <template #icon>
             <icon-fullscreen :size="18" />
           </template>
         </a-button>
       </a-tooltip>
-      <a-tooltip content="系统设置">
+      <!-- 系统设置 -->
+      <a-tooltip :content="$t(`language.system-settings`)">
         <a-button size="mini" type="text" class="icon_btn">
           <template #icon>
             <icon-settings :size="18" />
           </template>
         </a-button>
       </a-tooltip>
-      <a-tooltip content="主题设置">
+      <!-- 主题设置 -->
+      <a-tooltip :content="$t(`language.theme-settings`)">
         <a-button size="mini" type="text" class="icon_btn">
           <template #icon>
             <icon-skin :size="18" />
@@ -71,29 +77,33 @@
           </div>
         </div>
         <template #content>
+          <!-- 个人中心 -->
           <a-doption>
             <template #default>
               <SvgIcon :name="'user'" :size="18" />
-              <span class="margin-left-text">个人信息</span>
+              <span class="margin-left-text">{{ $t(`language.personal-information`) }}</span>
             </template>
           </a-doption>
+          <!-- 修改密码 -->
           <a-doption>
             <template #default>
               <SvgIcon :name="'lock-pwd'" :size="18" />
-              <span class="margin-left-text">修改密码</span>
+              <span class="margin-left-text">{{ $t(`language.change-password`) }}</span>
             </template>
           </a-doption>
+          <!-- 项目地址 -->
           <a-doption>
             <template #default>
               <SvgIcon :name="'gitee'" :size="18" />
-              <span class="margin-left-text">项目地址</span>
+              <span class="margin-left-text">{{ $t(`language.project-address`) }}</span>
             </template>
           </a-doption>
           <a-divider margin="0" />
+          <!-- 退出登录 -->
           <a-doption @click="logOut">
             <template #default>
               <SvgIcon :name="'exit'" :size="18" />
-              <span class="margin-left-text">退出登录</span>
+              <span class="margin-left-text">{{ $t(`language.logout`) }}</span>
             </template>
           </a-doption>
         </template>

@@ -1,7 +1,7 @@
 <template>
   <a-tabs :default-active-key="current" :active-key="current" @tab-click="onTab">
     <a-tab-pane v-for="item in noticeData" :key="item.id">
-      <template #title>{{ `${item.title}(${item.data.length})` }}</template>
+      <template #title>{{ `${$t(`language.${item.title}`)}(${item.data.length})` }}</template>
       <div class="notice" v-for="content in item.data" :key="content.id">
         <a-image width="36" height="36" fit="cover" :src="myImage" class="notice_img" />
         <div class="content margin-left-text">
@@ -27,11 +27,11 @@ const data = ref([
 const noticeData = ref([
   {
     id: 1,
-    title: "通知",
+    title: "notice",
     data: data.value
   },
-  { id: 2, title: "消息", data: [] },
-  { id: 3, title: "代办", data: [] }
+  { id: 2, title: "message", data: [] },
+  { id: 3, title: "backlog", data: [] }
 ]);
 const current = ref<number>(1);
 const onTab = (key: number) => {

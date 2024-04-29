@@ -1,12 +1,7 @@
 <template>
-  <div>
-    首页
-    <img :src="tom" />
-  </div>
+  <div>首页</div>
 </template>
 
-<script setup>
-import tom from "@/assets/img/tom.jpg";
-</script>
+<script setup lang="ts"></script>
 
 <style lang="scss" scoped></style>

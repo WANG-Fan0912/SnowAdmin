@@ -28,6 +28,18 @@ export default {
     ["close-right-side"]: "关闭右侧",
     ["close-other"]: "关闭其它",
     ["close-all"]: "关闭全部",
-    ["internationalization"]: "国际化"
+    ["internationalization"]: "国际化",
+    ["switch-to-night-mode"]: "切换黑夜模式",
+    ["switch-to-daytime-mode"]: "切换白天模式",
+    ["full-screen"]: "全屏",
+    ["system-settings"]: "系统设置",
+    ["theme-settings"]: "主题设置",
+    ["personal-information"]: "个人信息",
+    ["change-password"]: "修改密码",
+    ["project-address"]: "项目地址",
+    ["logout"]: "退出登录",
+    ["notice"]: "通知",
+    ["message"]: "消息",
+    ["backlog"]: "待办"
   }
 };
