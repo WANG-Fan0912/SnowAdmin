@@ -20,7 +20,7 @@ export default {
     ["about-project"]: "about project",
     ["not-power"]: "No permission",
     ["not-found"]: "Page not found",
-    ["zh-CN"]: "Chinese",
+    ["zh-CN"]: "中文",
     ["en-US"]: "English",
     ["refresh"]: "refresh",
     ["close-current"]: "close current",

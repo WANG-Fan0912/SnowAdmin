@@ -122,7 +122,7 @@ const onSubmit = ({ errors }: any) => {
   stores.setAccount(account);
   stores.setToken("DC-Admin");
   Message.success("登录成功");
-  router.push("/home");
+  router.replace("/home");
 };
 </script>
 

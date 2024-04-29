@@ -128,9 +128,9 @@ const onLange = (e: string) => {
     themeStore.setLanguage("en-US");
   }
   i18n.locale.value = language.value;
-  console.log("国际化", language.value);
 };
 
+// 退出登录
 const logOut = () => {
   Modal.warning({
     title: "提示",
