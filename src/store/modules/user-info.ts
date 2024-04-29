@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import persistedstateConfig from "@/store/config/index";
 /**
  * 用户信息
  * @methods setAccount 设置账号信息
@@ -25,5 +26,5 @@ export const useUserInfoStore = defineStore("user-info", {
       this.token = "";
     }
   },
-  persist: true
+  persist: persistedstateConfig("user-info")
 });

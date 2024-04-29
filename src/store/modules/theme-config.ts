@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import persistedstateConfig from "@/store/config/index";
 /**
  * 全局配置
  * @methods setCollapsed 设置菜单折叠
@@ -25,5 +26,5 @@ export const useThemeConfig = defineStore("theme-config", {
       this.language = data;
     }
   },
-  persist: true
+  persist: persistedstateConfig("theme-config")
 });

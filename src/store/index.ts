@@ -1,4 +1,5 @@
 // https://pinia.vuejs.org/zh/
+// https://prazdevs.github.io/pinia-plugin-persistedstate/zh/
 // store/index.js
 import { createPinia } from "pinia";
 import piniaPluginPersistedstate from "pinia-plugin-persistedstate";

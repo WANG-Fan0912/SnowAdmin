@@ -1,19 +1,16 @@
-import { PersistedStateOptions } from "pinia-plugin-persistedstate";
-
 /**
- * @description pinia 持久化参数配置
- * @param {String} key 存储到持久化的 name
- * @param {Array} paths 需要持久化的 state name
- * @return persist
- * */
-const piniaPersistConfig = (key: string, paths?: string[]) => {
-  const persist: PersistedStateOptions = {
+ * https://prazdevs.github.io/pinia-plugin-persistedstate/zh/guide/config.html
+ * @description: 持久化配置
+ * @param {string} key 存储的key
+ * @param {Array<string>} paths 需要持久化的字段
+ * @return {*}
+ */
+const persistedstateConfig = (key: string, paths?: Array<string>) => {
+  return {
     key,
-    storage: localStorage,
-    // storage: sessionStorage,
+    storage: localStorage, // 存储方式，使用localStorage，也可以使用sessionStorage
     paths
   };
-  return persist;
 };
 
-export default piniaPersistConfig;
+export default persistedstateConfig;
