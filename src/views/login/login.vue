@@ -139,7 +139,7 @@ const onSubmit = ({ errors }: any) => {
     transform: translate(-50%, -50%);
     display: flex;
     align-items: center;
-    box-shadow: 0 0 8px 1px $color-fill-1;
+    box-shadow: 0 0 8px 1px $color-fill-2;
     .banner_box {
       width: 650px;
       height: 100%;

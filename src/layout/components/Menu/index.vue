@@ -40,4 +40,11 @@ const onMenuItem = (key: string) => {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+// .arco-menu-light {
+//   background: unset;
+// }
+// .arco-menu-light .arco-menu-item {
+//   background: unset;
+// }
+</style>

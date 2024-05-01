@@ -75,4 +75,9 @@ const { collapsed } = storeToRefs(themeStore);
     display: none;
   }
 }
+
+// 去掉sider背景
+.arco-layout-sider {
+  background: unset;
+}
 </style>

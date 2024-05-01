@@ -10,7 +10,8 @@ export const useThemeConfig = defineStore("theme-config", {
   state: (): any => ({
     collapsed: false, // 是否折叠菜单
     refreshPage: true, // 刷新页面
-    language: "zh-CN" // 系统语言
+    language: "zh-CN", // 系统语言
+    darkMode: false // 黑暗模式
   }),
   actions: {
     // 折叠菜单

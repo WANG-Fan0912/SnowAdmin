@@ -27,10 +27,11 @@
         </template>
       </a-dropdown>
       <!-- 切换黑夜模式 -->
-      <a-tooltip :content="$t(`language.switch-to-night-mode`)">
-        <a-button size="mini" type="text" class="icon_btn">
+      <a-tooltip :content="$t(`language.${!darkMode ? 'switch-to-night-mode' : 'switch-to-daytime-mode'}`)">
+        <a-button size="mini" type="text" class="icon_btn" @click="onNightMode">
           <template #icon>
-            <icon-sun-fill :size="18" />
+            <icon-sun-fill :size="18" v-if="!darkMode" />
+            <icon-moon-fill :size="18" v-else />
           </template>
         </a-button>
       </a-tooltip>
@@ -124,10 +125,23 @@ import { useThemeConfig } from "@/store/modules/theme-config";
 const i18n = useI18n();
 const router = useRouter();
 const themeStore = useThemeConfig();
-const { collapsed, language } = storeToRefs(themeStore);
+const { collapsed, language, darkMode } = storeToRefs(themeStore);
 
 const onCollapsed = () => {
   themeStore.setCollapsed(!collapsed.value);
+};
+
+// 黑暗模式
+const onNightMode = () => {
+  darkMode.value = !darkMode.value;
+  if (darkMode.value) {
+    // 设置为暗黑主题
+    document.body.setAttribute("arco-theme", "dark");
+  } else {
+    // 恢复亮色主题
+    document.body.removeAttribute("arco-theme");
+  }
+  console.log("黑暗模式", darkMode.value);
 };
 
 // 语言
