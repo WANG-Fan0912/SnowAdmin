@@ -141,7 +141,6 @@ const onNightMode = () => {
     // 恢复亮色主题
     document.body.removeAttribute("arco-theme");
   }
-  console.log("黑暗模式", darkMode.value);
 };
 
 // 语言
