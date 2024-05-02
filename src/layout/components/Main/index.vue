@@ -29,10 +29,10 @@ const { cacheRoutes } = storeToRefs(routerStore);
 <style lang="scss" scoped>
 .content {
   height: calc(100vh - 60px - 30px); // 动态切类名-去掉footer
-  background: $color-bg-3; // 背景颜色
 }
 .scrollbar {
   height: calc(100% - 40px);
+  background: $color-border-1; // 背景颜色
 }
 .main {
   padding: $padding;
