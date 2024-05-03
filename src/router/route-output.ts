@@ -86,9 +86,9 @@ export const roleBase = (roles: Array<string>) => {
  * 统一处理所有的路由跳转：当前路由高亮、tabs栏数据
  * 处理项目内跳转，存入当前跳转路由和tabs标签栏数据
  * menu和tabs以及手动刷新浏览器等功能只需要跳转即可，缓存和高亮的逻辑这边负责
- * @param {object} to 需要跳转的路由
+ * @param {object} name 需要跳转的路由
  */
-export const currentlyRoute = (to: any) => {
+export const currentlyRoute = (name: string) => {
   const themeStore = useThemeConfig();
   const { isTabs } = storeToRefs(themeStore);
   const store = useRoutesListStore(pinia);
@@ -99,13 +99,13 @@ export const currentlyRoute = (to: any) => {
   }
   // 跳转路由是有权限的，缓存跳转路由
   const { findLinearArray } = useRoutingMethod();
-  const find = findLinearArray(to.name);
+  const find = findLinearArray(name);
   if (find === undefined) return;
   // 存入当前路由-高亮
   store.setCurrentRoute(find);
   // 存入tabs栏数据：如果系统配置里允许展示标签栏则存入
   if (isTabs.value) store.setTabs(find);
-  // 是否缓存路由
-  if (!find.meta.keepAlive) return;
+  // 是否缓存路由 || 是否渲染tabs，符合任意条件则不缓存路由
+  if (!find.meta.keepAlive || !isTabs.value) return;
   store.setRouteNames(find.name); // 缓存路由name
 };

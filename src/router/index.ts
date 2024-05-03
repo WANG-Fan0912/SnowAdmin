@@ -50,7 +50,7 @@ router.beforeEach(async (to, from, next) => {
     // 3、去登录页，有token，直接重定向到home页
     next("/home");
     // 项目内的跳转，处理跳转路由高亮
-    currentlyRoute(to);
+    currentlyRoute(to.name as string);
   } else {
     // 4、去非登录页，有token，校验是否动态添加过路由，添加过则放行，未添加则执行路由初始化
     const routeStore = useRoutesListStore(pinia);
@@ -65,7 +65,7 @@ router.beforeEach(async (to, from, next) => {
       // 动态路由添加过走这里，直接放行
       next();
       // 项目内的跳转，处理跳转路由高亮
-      currentlyRoute(to);
+      currentlyRoute(to.name as string);
     }
   }
 });

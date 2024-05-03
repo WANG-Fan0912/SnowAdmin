@@ -14,7 +14,7 @@
         </div>
         <div class="flex-row">
           <div>标签栏</div>
-          <a-switch v-model="isTabs" />
+          <a-switch v-model="isTabs" @change="tabsChange" />
         </div>
         <div class="flex-row">
           <div>底部栏</div>
@@ -50,15 +50,31 @@
 
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
+import { useRoutesListStore } from "@/store/modules/route-list";
 import { useThemeConfig } from "@/store/modules/theme-config";
+import { currentlyRoute } from "@/router/route-output";
 const themeStore = useThemeConfig();
+const routerStore = useRoutesListStore();
 const { collapsed, isBreadcrumb, isTabs, isFooter } = storeToRefs(themeStore);
+const { tabsList, cacheRoutes } = storeToRefs(routerStore);
+const route = useRoute();
 const props = defineProps({
   systemOpen: {
     type: Boolean,
     default: false
   }
 });
+// 是否关闭tabs栏
+// 如果关闭，那么所有tabs全部取消、所有页面缓存全部取消
+// 如果开启，那么添加当前路由到tabs
+const tabsChange = (e: Boolean) => {
+  if (!e) {
+    tabsList.value = [];
+    cacheRoutes.value = [];
+  } else {
+    currentlyRoute(route.name as string);
+  }
+};
 const emits = defineEmits(["systemCancel"]);
 const handleOk = () => {
   emits("systemCancel");
