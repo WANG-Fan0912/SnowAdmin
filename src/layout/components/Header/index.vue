@@ -45,10 +45,11 @@
         <template #content><Notice /></template>
       </a-popover>
       <!-- 全屏 -->
-      <a-tooltip :content="$t(`language.full-screen`)">
-        <a-button size="mini" type="text" class="icon_btn">
+      <a-tooltip :content="$t(`language.${fullScreen ? 'full-screen' : 'exit-full-screen'}`)">
+        <a-button size="mini" type="text" class="icon_btn" @click="onFullScreen">
           <template #icon>
-            <icon-fullscreen :size="18" />
+            <icon-fullscreen :size="18" v-if="fullScreen" />
+            <icon-fullscreen-exit :size="18" v-else />
           </template>
         </a-button>
       </a-tooltip>
@@ -127,8 +128,23 @@ const router = useRouter();
 const themeStore = useThemeConfig();
 const { collapsed, language, darkMode } = storeToRefs(themeStore);
 
+// 折叠
 const onCollapsed = () => {
   themeStore.setCollapsed(!collapsed.value);
+};
+
+// 全屏
+const fullScreen = ref(true);
+const onFullScreen = () => {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen();
+    fullScreen.value = false;
+  } else {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+      fullScreen.value = true;
+    }
+  }
 };
 
 // 黑暗模式

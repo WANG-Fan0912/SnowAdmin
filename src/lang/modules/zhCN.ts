@@ -32,6 +32,7 @@ export default {
     ["switch-to-night-mode"]: "切换黑夜模式",
     ["switch-to-daytime-mode"]: "切换白天模式",
     ["full-screen"]: "全屏",
+    ["exit-full-screen"]: "退出全屏",
     ["system-settings"]: "系统设置",
     ["theme-settings"]: "主题设置",
     ["personal-information"]: "个人信息",

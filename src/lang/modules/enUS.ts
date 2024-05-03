@@ -32,6 +32,7 @@ export default {
     ["switch-to-night-mode"]: "switch to night mode",
     ["switch-to-daytime-mode"]: "switch to daytime mode",
     ["full-screen"]: "full screen",
+    ["exit-full-screen"]: "exit full screen",
     ["system-settings"]: "system settings",
     ["theme-settings"]: "theme settings",
     ["personal-information"]: "personal information",
