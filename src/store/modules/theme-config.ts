@@ -11,7 +11,10 @@ export const useThemeConfig = defineStore("theme-config", {
     collapsed: false, // 是否折叠菜单
     refreshPage: true, // 刷新页面
     language: "zh-CN", // 系统语言
-    darkMode: false // 黑暗模式
+    darkMode: false, // 黑暗模式
+    isBreadcrumb: true, // 面包屑渲染
+    isTabs: true, // 标签栏渲染
+    isFooter: true // 页脚渲染
   }),
   actions: {
     // 折叠菜单

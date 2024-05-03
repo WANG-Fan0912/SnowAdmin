@@ -4,6 +4,7 @@ import { dynamicRoutes } from "@/router/route";
 import { storeToRefs } from "pinia";
 import { useUserInfoStore } from "@/store/modules/user-info";
 import { useRoutesListStore } from "@/store/modules/route-list";
+import { useThemeConfig } from "@/store/modules/theme-config";
 import { deepClone, arrayFlattened } from "@/utils/index";
 import { useRoutingMethod } from "@/hooks/useRoutingMethod";
 import { loadingPage } from "@/utils/loading-page";
@@ -88,6 +89,8 @@ export const roleBase = (roles: Array<string>) => {
  * @param {object} to 需要跳转的路由
  */
 export const currentlyRoute = (to: any) => {
+  const themeStore = useThemeConfig();
+  const { isTabs } = storeToRefs(themeStore);
   const store = useRoutesListStore(pinia);
   const { tabsList, routeList } = storeToRefs(store);
   // tabs无数据则默认添加首页
@@ -98,9 +101,11 @@ export const currentlyRoute = (to: any) => {
   const { findLinearArray } = useRoutingMethod();
   const find = findLinearArray(to.name);
   if (find === undefined) return;
-  // 存入当前路由
+  // 存入当前路由-高亮
   store.setCurrentRoute(find);
-  store.setTabs(find);
+  // 存入tabs栏数据：如果系统配置里允许展示标签栏则存入
+  if (isTabs.value) store.setTabs(find);
+  // 是否缓存路由
   if (!find.meta.keepAlive) return;
   store.setRouteNames(find.name); // 缓存路由name
 };

@@ -9,7 +9,7 @@
           </template>
         </a-button>
       </div>
-      <div class="breadcrumb">
+      <div class="breadcrumb" v-if="isBreadcrumb">
         <Breadcrumb />
       </div>
     </div>
@@ -55,7 +55,7 @@
       </a-tooltip>
       <!-- 系统设置 -->
       <a-tooltip :content="$t(`language.system-settings`)">
-        <a-button size="mini" type="text" class="icon_btn">
+        <a-button size="mini" type="text" class="icon_btn" @click="onSystemSetting">
           <template #icon>
             <icon-settings :size="18" />
           </template>
@@ -111,11 +111,13 @@
         </template>
       </a-dropdown>
     </div>
+    <SystemSettings :system-open="systemOpen" @system-cancel="systemOpen = false" />
   </a-layout-header>
 </template>
 <script setup lang="ts">
 import Notice from "@/layout/components/Header/components/notice/index.vue";
 import Breadcrumb from "@/layout/components/Header/components/breadcrumb/index.vue";
+import SystemSettings from "@/layout/components/Header/components/system-settings/index.vue";
 import myImage from "@/assets/img/my-image.jpg";
 import { useI18n } from "vue-i18n";
 import { Modal } from "@arco-design/web-vue";
@@ -126,13 +128,18 @@ import { useThemeConfig } from "@/store/modules/theme-config";
 const i18n = useI18n();
 const router = useRouter();
 const themeStore = useThemeConfig();
-const { collapsed, language, darkMode } = storeToRefs(themeStore);
+const { collapsed, language, darkMode, isBreadcrumb } = storeToRefs(themeStore);
 
 // 折叠
 const onCollapsed = () => {
   themeStore.setCollapsed(!collapsed.value);
 };
 
+// 系统设置
+const systemOpen = ref(false);
+const onSystemSetting = () => {
+  systemOpen.value = true;
+};
 // 全屏
 const fullScreen = ref(true);
 const onFullScreen = () => {

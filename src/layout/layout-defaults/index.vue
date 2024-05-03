@@ -4,7 +4,7 @@
     <a-layout>
       <Header />
       <Main />
-      <Footer />
+      <Footer v-if="isFooter" />
     </a-layout>
   </a-layout>
 </template>
@@ -14,7 +14,13 @@ import Aside from "@/layout/components/Aside/index.vue";
 import Header from "@/layout/components/Header/index.vue";
 import Main from "@/layout/components/Main/index.vue";
 import Footer from "@/layout/components/Footer/index.vue";
+import { storeToRefs } from "pinia";
+import { useThemeConfig } from "@/store/modules/theme-config";
+
 defineOptions({ name: "LayoutDefaults" });
+
+const themeStore = useThemeConfig();
+let { isFooter } = storeToRefs(themeStore);
 </script>
 
 <style lang="scss" scoped>
