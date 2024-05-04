@@ -4,7 +4,7 @@
     <div>
       <div>
         <a-divider orientation="center">导航模式</a-divider>
-        <div class="flex-common">
+        <div class="flex-center">
           <a-tooltip v-for="item in layoutList" :key="item.value" :content="item.label" position="top" mini>
             <div
               :class="layoutType === item.value ? `current-layout ${item.class}` : item.class"
@@ -15,12 +15,25 @@
           </a-tooltip>
         </div>
       </div>
-      <div>
+      <div class="box-gap">
         <a-divider orientation="center">主题设置</a-divider>
-        <div class="flex-row">
-          <div>主题色</div>
+        <div class="flex-center">
+          <a-color-picker default-value="#12D2AC" hide-trigger show-preset />
+        </div>
+        <!-- <div class="flex-row">
+          <div>色弱模式</div>
           <a-switch />
         </div>
+        <div class="flex-row">
+          <div>灰色模式</div>
+          <a-switch />
+        </div>
+        <div class="flex-row">
+          <div>侧边栏深色</div>
+          <a-switch />
+        </div> -->
+      </div>
+      <div class="box-gap">
         <div class="flex-row">
           <div>色弱模式</div>
           <a-switch />
@@ -82,7 +95,7 @@ const handleCancel = () => {
 
 <style lang="scss" scoped>
 .box-gap {
-  margin-top: $margin;
+  margin-top: 30px;
 }
 .flex-row {
   display: flex;
@@ -90,7 +103,7 @@ const handleCancel = () => {
   align-items: center;
   margin-bottom: $margin;
 }
-.flex-common {
+.flex-center {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -172,5 +185,9 @@ const handleCancel = () => {
     height: calc(100% - 15px);
     background: #fff;
   }
+}
+
+:deep(.arco-divider-text) {
+  background: $color-bg-3;
 }
 </style>
