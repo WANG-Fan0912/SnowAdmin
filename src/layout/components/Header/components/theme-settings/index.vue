@@ -20,18 +20,6 @@
         <div class="flex-center">
           <a-color-picker default-value="#12D2AC" hide-trigger show-preset />
         </div>
-        <!-- <div class="flex-row">
-          <div>色弱模式</div>
-          <a-switch />
-        </div>
-        <div class="flex-row">
-          <div>灰色模式</div>
-          <a-switch />
-        </div>
-        <div class="flex-row">
-          <div>侧边栏深色</div>
-          <a-switch />
-        </div> -->
       </div>
       <div class="box-gap">
         <div class="flex-row">
@@ -45,6 +33,13 @@
         <div class="flex-row">
           <div>侧边栏深色</div>
           <a-switch />
+        </div>
+        <div class="flex-row">
+          <div>页面过渡</div>
+          <a-select :style="{ width: '100px' }" placeholder="请选择">
+            <a-option>轻过渡</a-option>
+            <a-option>卡片</a-option>
+          </a-select>
         </div>
       </div>
     </div>

@@ -21,7 +21,7 @@
           <a-switch v-model="isTabs" @change="tabsChange" />
         </div>
         <div class="flex-row">
-          <div>底部栏</div>
+          <div>页脚</div>
           <a-switch v-model="isFooter" />
         </div>
       </div>
