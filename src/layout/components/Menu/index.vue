@@ -2,8 +2,9 @@
   <a-menu
     breakpoint="xl"
     :collapsed="collapsed"
+    :auto-scroll-into-view="true"
     :auto-open-selected="true"
-    :accordion="true"
+    :accordion="isAccordion"
     :selected-keys="[currentRoute.name]"
     @menu-item-click="onMenuItem"
   >
@@ -22,7 +23,7 @@ const router = useRouter();
 const routerStore = useRoutesListStore();
 const { routeTree, currentRoute } = storeToRefs(routerStore);
 const themeStore = useThemeConfig();
-const { collapsed } = storeToRefs(themeStore);
+const { collapsed, isAccordion } = storeToRefs(themeStore);
 
 /**
  * @description 菜单点击事件

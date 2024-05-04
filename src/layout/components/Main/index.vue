@@ -1,18 +1,20 @@
 <template>
-  <a-layout-content :class="isFooter ? 'content' : 'content-no-footer'">
-    <Tabs v-if="isTabs" />
-    <a-scrollbar style="height: 100%; overflow: auto" :outer-class="isTabs ? 'scrollbar' : 'scrollbar-no-tabs'">
-      <div class="main">
-        <router-view v-slot="{ Component, route }">
-          <MainTransition>
-            <keep-alive :include="cacheRoutes">
-              <component :is="Component" :key="route.name" v-if="refreshPage" />
-            </keep-alive>
-          </MainTransition>
-        </router-view>
-      </div>
-    </a-scrollbar>
-  </a-layout-content>
+  <a-watermark :content="watermark" v-bind="watermarkConfig">
+    <a-layout-content :class="isFooter ? 'content' : 'content-no-footer'">
+      <Tabs v-if="isTabs" />
+      <a-scrollbar style="height: 100%; overflow: auto" :outer-class="isTabs ? 'scrollbar' : 'scrollbar-no-tabs'">
+        <div class="main">
+          <router-view v-slot="{ Component, route }">
+            <MainTransition>
+              <keep-alive :include="cacheRoutes">
+                <component :is="Component" :key="route.name" v-if="refreshPage" />
+              </keep-alive>
+            </MainTransition>
+          </router-view>
+        </div>
+      </a-scrollbar>
+    </a-layout-content>
+  </a-watermark>
 </template>
 
 <script setup lang="ts">
@@ -21,9 +23,22 @@ import { storeToRefs } from "pinia";
 import { useThemeConfig } from "@/store/modules/theme-config";
 import { useRoutesListStore } from "@/store/modules/route-list";
 const themeStore = useThemeConfig();
-let { refreshPage, isTabs, isFooter } = storeToRefs(themeStore);
+let { refreshPage, isTabs, isFooter, watermark, watermarkStyle, watermarkRotate, watermarkGap } = storeToRefs(themeStore);
 const routerStore = useRoutesListStore();
 const { cacheRoutes } = storeToRefs(routerStore);
+
+// 水印配置
+const watermarkConfig = computed(() => {
+  return {
+    font: watermarkStyle.value,
+    rotate: watermarkRotate.value,
+    gap: watermarkGap.value
+  };
+});
+
+watch(watermarkConfig, newv => {
+  console.log(newv);
+});
 </script>
 
 <style lang="scss" scoped>

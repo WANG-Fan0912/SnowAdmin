@@ -63,7 +63,7 @@
       </a-tooltip>
       <!-- 主题设置 -->
       <a-tooltip :content="$t(`language.theme-settings`)">
-        <a-button size="mini" type="text" class="icon_btn">
+        <a-button size="mini" type="text" class="icon_btn" @click="onThemeSetting">
           <template #icon>
             <icon-skin :size="18" />
           </template>
@@ -112,12 +112,14 @@
       </a-dropdown>
     </div>
     <SystemSettings :system-open="systemOpen" @system-cancel="systemOpen = false" />
+    <ThemeSettings :theme-open="themeOpen" @theme-cancel="themeOpen = false" />
   </a-layout-header>
 </template>
 <script setup lang="ts">
 import Notice from "@/layout/components/Header/components/notice/index.vue";
 import Breadcrumb from "@/layout/components/Header/components/breadcrumb/index.vue";
 import SystemSettings from "@/layout/components/Header/components/system-settings/index.vue";
+import ThemeSettings from "@/layout/components/Header/components/theme-settings/index.vue";
 import myImage from "@/assets/img/my-image.jpg";
 import { useI18n } from "vue-i18n";
 import { Modal } from "@arco-design/web-vue";
@@ -139,6 +141,12 @@ const onCollapsed = () => {
 const systemOpen = ref(false);
 const onSystemSetting = () => {
   systemOpen.value = true;
+};
+
+// 主题设置
+const themeOpen = ref(false);
+const onThemeSetting = () => {
+  themeOpen.value = true;
 };
 // 全屏
 const fullScreen = ref(true);
