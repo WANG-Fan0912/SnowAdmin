@@ -15,6 +15,7 @@ interface ThemeConfig {
   watermarkRotate: number;
   watermarkGap: Array<number>;
   layoutType: string;
+  themeColor: string;
 }
 
 /**
@@ -40,7 +41,8 @@ export const useThemeConfig = defineStore("theme-config", {
     }, // 水印风格
     watermarkRotate: 330, // 水印角度
     watermarkGap: [100, 100], // 水印间隙
-    layoutType: "layoutDefaults" // 布局模式：layoutDefaults、layoutHead、layoutMixing
+    layoutType: "layoutDefaults", // 布局模式：layoutDefaults、layoutHead、layoutMixing
+    themeColor: "#165dff" // 主题色
   }),
   actions: {
     // 折叠菜单

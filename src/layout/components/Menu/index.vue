@@ -1,6 +1,7 @@
 <template>
   <a-menu
-    breakpoint="xl"
+    :breakpoint="layoutType === 'layoutDefaults' ? undefined : 'xl'"
+    :mode="'vertical'"
     :collapsed="collapsed"
     :auto-scroll-into-view="true"
     :auto-open-selected="true"
@@ -23,7 +24,7 @@ const router = useRouter();
 const routerStore = useRoutesListStore();
 const { routeTree, currentRoute } = storeToRefs(routerStore);
 const themeStore = useThemeConfig();
-const { collapsed, isAccordion } = storeToRefs(themeStore);
+const { collapsed, isAccordion, layoutType } = storeToRefs(themeStore);
 
 /**
  * @description 菜单点击事件
@@ -39,13 +40,14 @@ const onMenuItem = (key: string) => {
     router.push("/404");
   }
 };
+
+// const mode = computed(() => {
+//   if (layoutType.value === "layoutDefaults") {
+//     return "vertical";
+//   } else {
+//     return "horizontal";
+//   }
+// });
 </script>
 
-<style lang="scss" scoped>
-// .arco-menu-light {
-//   background: unset;
-// }
-// .arco-menu-light .arco-menu-item {
-//   background: unset;
-// }
-</style>
+<style lang="scss" scoped></style>

@@ -6,3 +6,4 @@ declare module "*.vue" {
 }
 
 declare module "vue-i18n";
+declare module "@arco-design/color";

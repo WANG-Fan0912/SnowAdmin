@@ -18,7 +18,7 @@
       <div class="box-gap">
         <a-divider orientation="center">主题设置</a-divider>
         <div class="flex-center">
-          <a-color-picker default-value="#12D2AC" hide-trigger show-preset />
+          <a-color-picker v-model="themeColor" hide-trigger show-preset @change="themeColorChange" />
         </div>
       </div>
       <div class="box-gap">
@@ -49,9 +49,10 @@
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
 import { useThemeConfig } from "@/store/modules/theme-config";
+import { generate, getRgbStr } from "@arco-design/color";
 
 const themeStore = useThemeConfig();
-const { layoutType } = storeToRefs(themeStore);
+const { layoutType, themeColor, darkMode } = storeToRefs(themeStore);
 
 const layoutList = reactive({
   layoutDefaults: {
@@ -71,6 +72,19 @@ const layoutList = reactive({
   }
 });
 
+// 主题色设置
+const themeColorChange = (value: string) => {
+  themeColor.value = value;
+  // 对于给定的颜色，使用算法生成包含10种颜色的渐变样本。这适用于光模式和暗模式。
+  let list = generate(themeColor.value, { list: true, dark: darkMode.value });
+  list.forEach((color: string, index: number) => {
+    // https://arco.design/palette/list
+    // arco的颜色等级为1-10，这里需要index+1
+    document.body.style.setProperty(`--primary-${index + 1}`, getRgbStr(color));
+  });
+};
+
+// 布局变化
 const layouetChange = (type: string) => {
   layoutType.value = type;
 };

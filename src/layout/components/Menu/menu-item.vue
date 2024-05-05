@@ -11,14 +11,15 @@
       <template #icon v-if="item.meta.svgIcon || item.meta.icon">
         <MenuItemIcon :svg-icon="item.meta.svgIcon" :icon="item.meta.icon" />
       </template>
-      <div>{{ $t(`language.${item.meta.title}`) }}</div>
+      <span>{{ $t(`language.${item.meta.title}`) }}</span>
     </a-menu-item>
   </template>
 </template>
 
 <script setup lang="ts">
+import MenuItem from "@/layout/components/Menu/menu-item.vue";
 import MenuItemIcon from "@/layout/components/Menu/menu-item-icon.vue";
-defineOptions({ name: "MenuItem" });
+defineOptions({ name: "MenuItem", inheritAttrs: false });
 
 interface Props {
   routeTree: Menu.MenuOptions[];

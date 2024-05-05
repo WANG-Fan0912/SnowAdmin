@@ -1,8 +1,6 @@
 <template>
-  <div>
-    <SvgIcon v-if="props.svgIcon" :name="props.svgIcon" :size="25" />
-    <component v-else-if="props.icon" :is="props.icon"></component>
-  </div>
+  <SvgIcon v-if="props.svgIcon" :name="props.svgIcon" :size="25" />
+  <component v-else-if="props.icon" :is="props.icon"></component>
 </template>
 
 <script setup lang="ts">
