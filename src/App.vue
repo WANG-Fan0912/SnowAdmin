@@ -10,9 +10,8 @@ import { useThemeMethods } from "@/hooks/useThemeMethods";
 
 // 初始化主题
 const onTheme = () => {
-  let { setDarkMode, setThemeColor } = useThemeMethods();
-  setDarkMode();
-  setThemeColor();
+  let { initTheme } = useThemeMethods();
+  initTheme();
 };
 onTheme();
 

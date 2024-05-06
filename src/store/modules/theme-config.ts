@@ -15,7 +15,10 @@ interface ThemeConfig {
   watermarkRotate: number;
   watermarkGap: Array<number>;
   layoutType: string;
+  grayMode: Boolean;
+  colorWeakMode: Boolean;
   themeColor: string;
+  presetColors: Array<string>;
 }
 
 /**
@@ -42,7 +45,33 @@ export const useThemeConfig = defineStore("theme-config", {
     watermarkRotate: 330, // 水印角度
     watermarkGap: [100, 100], // 水印间隙
     layoutType: "layoutDefaults", // 布局模式：layoutDefaults、layoutHead、layoutMixing
-    themeColor: "#165dff" // 主题色
+    colorWeakMode: false, // 色弱模式
+    grayMode: false, // 灰色模式
+    themeColor: "#165DFF", // 主题色
+    presetColors: [
+      "#165DFF",
+      "#F53F3F",
+      "#F77234",
+      "#FF7D00",
+      "#F7BA1E",
+      "#FADC19",
+      "#9FDB1D",
+      "#00B42A",
+      "#14C9C9",
+      "#3491FA",
+      "#165DFF",
+      "#722ED1",
+      "#D91AD9",
+      "#F5319D",
+      "#67C23A",
+      "#E6A23C",
+      "#F56C6C",
+      "#409EFF",
+      "#a27b42",
+      "#dfc683",
+      "#59a680",
+      "#b1d391"
+    ]
   }),
   actions: {
     // 折叠菜单

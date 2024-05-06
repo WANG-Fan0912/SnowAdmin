@@ -18,17 +18,23 @@
       <div class="box-gap">
         <a-divider orientation="center">主题设置</a-divider>
         <div class="flex-center">
-          <a-color-picker v-model="themeColor" hide-trigger show-preset @change="themeColorChange" />
+          <a-color-picker
+            v-model="themeColor"
+            hide-trigger
+            show-preset
+            :preset-colors="presetColors"
+            @change="themeColorChange"
+          />
         </div>
       </div>
       <div class="box-gap">
         <div class="flex-row">
           <div>色弱模式</div>
-          <a-switch />
+          <a-switch v-model="colorWeakMode" @change="onColorWeak" />
         </div>
         <div class="flex-row">
           <div>灰色模式</div>
-          <a-switch />
+          <a-switch v-model="grayMode" @change="onGray" />
         </div>
         <div class="flex-row">
           <div>侧边栏深色</div>
@@ -52,7 +58,7 @@ import { useThemeConfig } from "@/store/modules/theme-config";
 import { useThemeMethods } from "@/hooks/useThemeMethods";
 
 const themeStore = useThemeConfig();
-const { layoutType, themeColor } = storeToRefs(themeStore);
+const { layoutType, themeColor, presetColors, colorWeakMode, grayMode } = storeToRefs(themeStore);
 
 const layoutList = reactive({
   layoutDefaults: {
@@ -79,6 +85,18 @@ const themeColorChange = (value: string) => {
   setThemeColor();
 };
 
+// 色弱模式
+const onColorWeak = () => {
+  const { setColorWeak } = useThemeMethods();
+  setColorWeak();
+};
+
+// 灰色模式
+const onGray = () => {
+  const { setGray } = useThemeMethods();
+  setGray();
+};
+
 // 布局变化
 const layouetChange = (type: string) => {
   layoutType.value = type;
@@ -101,12 +119,14 @@ const handleCancel = () => {
 .box-gap {
   margin-top: 30px;
 }
+
 .flex-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: $margin;
 }
+
 .flex-center {
   display: flex;
   align-items: center;
@@ -124,12 +144,15 @@ const handleCancel = () => {
   border-radius: $radius-box;
   overflow: hidden;
   box-shadow: $shadow-special;
+
   .layout-icon {
     display: none;
   }
 }
+
 .current-layout {
   position: relative;
+
   .layout-icon {
     display: block;
     position: absolute;
@@ -139,8 +162,10 @@ const handleCancel = () => {
     color: $color-primary;
   }
 }
+
 .layout-defaults {
   position: relative;
+
   &::before {
     content: "";
     position: absolute;
@@ -149,6 +174,7 @@ const handleCancel = () => {
     height: 100%;
     background: #232324;
   }
+
   &::after {
     content: "";
     position: absolute;
@@ -159,8 +185,10 @@ const handleCancel = () => {
     background: #fff;
   }
 }
+
 .layout-head {
   position: relative;
+
   &::before {
     content: "";
     position: absolute;
@@ -170,8 +198,10 @@ const handleCancel = () => {
     background: #232324;
   }
 }
+
 .layout-mixing {
   position: relative;
+
   &::before {
     content: "";
     position: absolute;
@@ -180,6 +210,7 @@ const handleCancel = () => {
     height: 15px;
     background: #232324;
   }
+
   &::after {
     content: "";
     position: absolute;

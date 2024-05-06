@@ -4,6 +4,22 @@ import { generate, getRgbStr } from "@arco-design/color";
 /* 主题处理hooks */
 export const useThemeMethods = () => {
   /**
+   * @description: 初始化主题
+   */
+  const initTheme = () => {
+    // 黑暗模式和主题色
+    setDarkMode();
+    // 色弱模式和灰色模式
+    const themeStore = useThemeConfig();
+    const { grayMode } = storeToRefs(themeStore);
+    if (grayMode.value) {
+      setGray();
+    } else {
+      setColorWeak();
+    }
+  };
+
+  /**
    * @description: 暗黑模式
    */
   const setDarkMode = () => {
@@ -16,6 +32,8 @@ export const useThemeMethods = () => {
       // 恢复亮色主题
       document.body.removeAttribute("arco-theme");
     }
+    // 黑暗模式切换后需要更新主题色
+    setThemeColor();
   };
 
   /**
@@ -33,8 +51,45 @@ export const useThemeMethods = () => {
     });
   };
 
+  /**
+   * @description: 色弱模式
+   */
+  const setColorWeak = () => {
+    // 获取html
+    const htmlCase = document.querySelector("html") as HTMLHtmlElement | null;
+    if (!htmlCase) return;
+    const themeStore = useThemeConfig();
+    const { colorWeakMode, grayMode } = storeToRefs(themeStore);
+    if (colorWeakMode.value) {
+      grayMode.value = false; // 色弱模式和灰色模式互斥
+      htmlCase.style.filter = "invert(80%)"; // 反转色80%
+    } else {
+      htmlCase.style.filter = "";
+    }
+  };
+
+  /**
+   * @description: 灰色模式
+   */
+  const setGray = () => {
+    // 获取html
+    const htmlCase = document.querySelector("html") as HTMLHtmlElement | null;
+    if (!htmlCase) return;
+    const themeStore = useThemeConfig();
+    const { colorWeakMode, grayMode } = storeToRefs(themeStore);
+    if (grayMode.value) {
+      colorWeakMode.value = false; // 色弱模式和灰色模式互斥
+      htmlCase.style.filter = "grayscale(100%)"; // 灰度100%
+    } else {
+      htmlCase.style.filter = "";
+    }
+  };
+
   return {
+    initTheme,
     setDarkMode,
-    setThemeColor
+    setThemeColor,
+    setColorWeak,
+    setGray
   };
 };
