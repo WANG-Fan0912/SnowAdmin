@@ -42,9 +42,8 @@
         </div>
         <div class="flex-row">
           <div>页面过渡</div>
-          <a-select :style="{ width: '100px' }" placeholder="请选择">
-            <a-option>轻过渡</a-option>
-            <a-option>卡片</a-option>
+          <a-select v-model="transitionPage" :style="{ width: '100px' }" placeholder="请选择">
+            <a-option v-for="item in transitions" :key="item.value" :value="item.value" :label="item.label" />
           </a-select>
         </div>
       </div>
@@ -58,7 +57,8 @@ import { useThemeConfig } from "@/store/modules/theme-config";
 import { useThemeMethods } from "@/hooks/useThemeMethods";
 
 const themeStore = useThemeConfig();
-const { layoutType, themeColor, presetColors, colorWeakMode, grayMode, darkMode, asideDark } = storeToRefs(themeStore);
+const { layoutType, themeColor, presetColors, colorWeakMode, grayMode, darkMode, asideDark, transitionPage } =
+  storeToRefs(themeStore);
 
 const layoutList = reactive({
   layoutDefaults: {
@@ -78,6 +78,10 @@ const layoutList = reactive({
   }
 });
 
+const transitions = ref([
+  { value: "fadeInOut", label: "轻过渡" },
+  { value: "cardInOut", label: "卡片" }
+]);
 // 主题色设置
 const themeColorChange = (value: string) => {
   themeColor.value = value;

@@ -18,6 +18,7 @@ interface ThemeConfig {
   grayMode: Boolean;
   colorWeakMode: Boolean;
   asideDark: Boolean;
+  transitionPage: string;
   themeColor: string;
   presetColors: Array<string>;
 }
@@ -49,6 +50,7 @@ export const useThemeConfig = defineStore("theme-config", {
     colorWeakMode: false, // 色弱模式
     grayMode: false, // 灰色模式
     asideDark: false, // 侧边栏深色
+    transitionPage: "fadeInOut", // 页面过渡方式
     themeColor: "#165DFF", // 主题色
     presetColors: [
       "#165DFF",

@@ -1,9 +1,62 @@
 /* global css transition */
-// 旋转180deg
-.rotate-180 {
-  transform: rotate(0deg);
-  transition: transform 0.2s;
-  &:hover {
-    transform: rotate(180deg);
+// Transition过渡动画
+
+/* 轻过渡 */
+// 进入
+.fadeInOut-enter-active {
+  animation: slide-enter-right 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+// 离开
+.fadeInOut-leave-active {
+  animation: slide-leave-right 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+@keyframes slide-enter-right {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes slide-leave-right {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+}
+
+/* 卡片 */
+// 进入
+.cardInOut-enter-active {
+  animation: slide-in-bck-center 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+// 离开
+.cardInOut-leave-active {
+  animation: slide-out-bck-center 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+}
+@keyframes slide-in-bck-center {
+  0% {
+    transform: translateZ(600px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateZ(0);
+    opacity: 1;
+  }
+}
+@keyframes slide-out-bck-center {
+  0% {
+    transform: translateZ(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateZ(-1100px);
+    opacity: 0;
   }
 }
