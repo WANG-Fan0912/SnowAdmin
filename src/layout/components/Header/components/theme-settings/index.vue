@@ -38,7 +38,7 @@
         </div>
         <div class="flex-row">
           <div>侧边栏深色</div>
-          <a-switch />
+          <a-switch :disabled="darkMode" v-model="asideDark" />
         </div>
         <div class="flex-row">
           <div>页面过渡</div>
@@ -58,7 +58,7 @@ import { useThemeConfig } from "@/store/modules/theme-config";
 import { useThemeMethods } from "@/hooks/useThemeMethods";
 
 const themeStore = useThemeConfig();
-const { layoutType, themeColor, presetColors, colorWeakMode, grayMode } = storeToRefs(themeStore);
+const { layoutType, themeColor, presetColors, colorWeakMode, grayMode, darkMode, asideDark } = storeToRefs(themeStore);
 
 const layoutList = reactive({
   layoutDefaults: {

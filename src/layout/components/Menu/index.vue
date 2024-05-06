@@ -2,6 +2,7 @@
   <a-menu
     :breakpoint="layoutType === 'layoutDefaults' ? undefined : 'xl'"
     :mode="'vertical'"
+    :theme="asideDark ? 'dark' : 'light'"
     :collapsed="collapsed"
     :auto-scroll-into-view="true"
     :auto-open-selected="true"
@@ -24,7 +25,7 @@ const router = useRouter();
 const routerStore = useRoutesListStore();
 const { routeTree, currentRoute } = storeToRefs(routerStore);
 const themeStore = useThemeConfig();
-const { collapsed, isAccordion, layoutType } = storeToRefs(themeStore);
+const { collapsed, isAccordion, layoutType, asideDark } = storeToRefs(themeStore);
 
 /**
  * @description 菜单点击事件

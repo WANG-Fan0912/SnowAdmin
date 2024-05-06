@@ -17,6 +17,7 @@ interface ThemeConfig {
   layoutType: string;
   grayMode: Boolean;
   colorWeakMode: Boolean;
+  asideDark: Boolean;
   themeColor: string;
   presetColors: Array<string>;
 }
@@ -47,6 +48,7 @@ export const useThemeConfig = defineStore("theme-config", {
     layoutType: "layoutDefaults", // 布局模式：layoutDefaults、layoutHead、layoutMixing
     colorWeakMode: false, // 色弱模式
     grayMode: false, // 灰色模式
+    asideDark: false, // 侧边栏深色
     themeColor: "#165DFF", // 主题色
     presetColors: [
       "#165DFF",

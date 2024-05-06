@@ -1,5 +1,5 @@
 <template>
-  <div class="aside">
+  <div :class="asideDark ? 'aside dark' : 'aside'">
     <div class="logo_head">
       <img :src="Logo" class="logo" />
       <span class="logo_title" v-if="!collapsed">dc admin</span>
@@ -17,12 +17,15 @@ import { storeToRefs } from "pinia";
 import { useThemeConfig } from "@/store/modules/theme-config";
 
 const themeStore = useThemeConfig();
-const { collapsed } = storeToRefs(themeStore);
+const { collapsed, asideDark } = storeToRefs(themeStore);
 </script>
 
 <style lang="scss" scoped>
 .aside {
   height: 100vh;
+}
+.dark {
+  background: #232324;
 }
 // 头部
 .logo_head {

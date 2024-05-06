@@ -1,7 +1,10 @@
 import { storeToRefs } from "pinia";
 import { useThemeConfig } from "@/store/modules/theme-config";
 import { generate, getRgbStr } from "@arco-design/color";
-/* 主题处理hooks */
+/**
+ * 主题处理hooks，内置多种主题处理场景
+ * @returns 主题方法
+ */
 export const useThemeMethods = () => {
   /**
    * @description: 初始化主题
@@ -24,10 +27,11 @@ export const useThemeMethods = () => {
    */
   const setDarkMode = () => {
     const themeStore = useThemeConfig();
-    const { darkMode } = storeToRefs(themeStore);
+    const { darkMode, asideDark } = storeToRefs(themeStore);
     if (darkMode.value) {
       // 设置为暗黑主题
       document.body.setAttribute("arco-theme", "dark");
+      asideDark.value = false; // 黑暗模式与侧边栏深色互斥
     } else {
       // 恢复亮色主题
       document.body.removeAttribute("arco-theme");
