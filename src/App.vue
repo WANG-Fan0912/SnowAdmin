@@ -6,12 +6,13 @@
 
 <script setup lang="ts">
 import { loadingPage } from "@/utils/loading-page";
-import { useRoutingMethod } from "@/hooks/useThemeMethods";
+import { useThemeMethods } from "@/hooks/useThemeMethods";
 
 // 初始化主题
 const onTheme = () => {
-  let { darkMode } = useRoutingMethod();
-  darkMode();
+  let { setDarkMode, setThemeColor } = useThemeMethods();
+  setDarkMode();
+  setThemeColor();
 };
 onTheme();
 

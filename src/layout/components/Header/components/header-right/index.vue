@@ -114,6 +114,7 @@ import { useRouter } from "vue-router";
 import { storeToRefs } from "pinia";
 import { useUserInfoStore } from "@/store/modules/user-info";
 import { useThemeConfig } from "@/store/modules/theme-config";
+import { useThemeMethods } from "@/hooks/useThemeMethods";
 const i18n = useI18n();
 const router = useRouter();
 const themeStore = useThemeConfig();
@@ -147,13 +148,8 @@ const onFullScreen = () => {
 // 黑暗模式
 const onNightMode = () => {
   darkMode.value = !darkMode.value;
-  if (darkMode.value) {
-    // 设置为暗黑主题
-    document.body.setAttribute("arco-theme", "dark");
-  } else {
-    // 恢复亮色主题
-    document.body.removeAttribute("arco-theme");
-  }
+  let { setDarkMode } = useThemeMethods();
+  setDarkMode();
 };
 
 // 语言
