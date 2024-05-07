@@ -1,5 +1,5 @@
 <template>
-  <Transition :name="transitionPage === 'fadeIn' ? 'fadeInOut' : 'cardInOut'" mode="out-in" appear>
+  <Transition :name="transitionPage" mode="out-in" appear>
     <!-- 向内传递插槽内容 -->
     <slot></slot>
   </Transition>
