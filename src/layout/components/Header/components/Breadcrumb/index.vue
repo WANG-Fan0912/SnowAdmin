@@ -2,7 +2,7 @@
   <div>
     <a-space direction="vertical">
       <a-breadcrumb>
-        <a-breadcrumb-item v-for="(item, index) in breadcrumb" :key="item.path">
+        <a-breadcrumb-item v-for="(item, index) in breadcrumb" :key="item.path" :class="transition">
           <span v-if="index === breadcrumb.length - 1" class="main_button">{{ $t(`language.${item?.meta?.title || ""}`) }}</span>
           <span v-else class="route_button" @click="onBreadcrumb(item as RouteLocationMatched)">{{
             $t(`language.${item?.meta?.title || ""}`)
@@ -15,6 +15,11 @@
 
 <script setup lang="ts">
 import { RouteLocationMatched } from "vue-router";
+import { storeToRefs } from "pinia";
+import { useThemeConfig } from "@/store/modules/theme-config";
+
+const themeStore = useThemeConfig();
+const { transitionPage } = storeToRefs(themeStore);
 const route = useRoute();
 const router = useRouter();
 
@@ -35,6 +40,11 @@ const breadcrumb = computed(() => {
       return item;
     }
   });
+});
+
+// 页面过渡
+const transition = computed(() => {
+  return transitionPage.value === "fadeInOut" ? "fadeInOut-enter-active" : "cardInOut-enter-active";
 });
 
 // 面包屑跳转
