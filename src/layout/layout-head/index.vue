@@ -2,7 +2,10 @@
   <div class="layout-head">
     <div class="layout-head-top">
       <a-layout-header class="header">
-        <Logo />
+        <div class="header-logo">
+          <Logo />
+        </div>
+
         <a-menu mode="horizontal" :selected-keys="[currentRoute.name]" @menu-item-click="onMenuItem">
           <template v-for="item in routeTree" :key="item.name">
             <a-sub-menu v-if="item.children && item.children.length > 0" :key="item.name">
@@ -69,6 +72,9 @@ const onMenuItem = (key: string) => {
   display: flex;
   align-items: stretch; // 如果（多个）元素的组合大小小于容器的大小，其中自动调整大小的元素将等量增大，以填满容器，同时这些元素仍然保持其宽高比例的约束。
   overflow: hidden;
+  .header-logo {
+    width: 150px;
+  }
   &-top {
     flex: 1; // 按比例分配大小
     display: flex;

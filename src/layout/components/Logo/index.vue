@@ -36,8 +36,12 @@ const isDark = computed(() => {
   }
 
   .logo_title {
+    max-width: 150px;
     font-weight: bold;
     font-size: $font-size-title-2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .dark {
     color: #fff;
