@@ -1,83 +1,105 @@
 <template>
-  <a-layout class="layout">
-    <a-layout>
+  <div class="layout-head">
+    <div class="layout-head-top">
       <a-layout-header class="header">
-        <div class="header_left">
-          <div class="logo_head">
-            <img :src="Logo" class="logo" />
-            <span class="logo_title">dc admin</span>
-          </div>
-          <HeadMenu />
-        </div>
+        <Logo />
+        <a-menu mode="horizontal" :selected-keys="[currentRoute.name]" @menu-item-click="onMenuItem">
+          <template v-for="item in routeTree" :key="item.name">
+            <a-sub-menu v-if="item.children && item.children.length > 0" :key="item.name">
+              <template #icon v-if="item.meta.svgIcon || item.meta.icon">
+                <MenuItemIcon :svg-icon="item.meta.svgIcon" :icon="item.meta.icon" />
+              </template>
+              <template #title>{{ $t(`language.${item.meta.title}`) }}</template>
+              <MenuItem :route-tree="item.children" />
+            </a-sub-menu>
+            <a-menu-item v-else :key="item?.name">
+              <template #icon v-if="item.meta.svgIcon || item.meta.icon">
+                <MenuItemIcon :svg-icon="item.meta.svgIcon" :icon="item.meta.icon" />
+              </template>
+              <span>{{ $t(`language.${item.meta.title}`) }}</span>
+            </a-menu-item>
+          </template>
+        </a-menu>
         <HeaderRight />
       </a-layout-header>
       <Main />
       <Footer v-if="isFooter" />
-    </a-layout>
-  </a-layout>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
-import Logo from "@/assets/img/logo.jpg";
-import HeadMenu from "@/layout/components/head-menu/index.vue";
+import Logo from "@/layout/components/Logo/index.vue";
 import HeaderRight from "@/layout/components/Header/components/header-right/index.vue";
 import Main from "@/layout/components/Main/index.vue";
 import Footer from "@/layout/components/Footer/index.vue";
+import MenuItem from "@/layout/components/Menu/menu-item.vue";
+import MenuItemIcon from "@/layout/components/Menu/menu-item-icon.vue";
+import { useRouter } from "vue-router";
 import { storeToRefs } from "pinia";
+import { useRoutesListStore } from "@/store/modules/route-list";
+import { useRoutingMethod } from "@/hooks/useRoutingMethod";
 import { useThemeConfig } from "@/store/modules/theme-config";
-const themeStore = useThemeConfig();
 defineOptions({ name: "LayoutHead" });
-let { isFooter } = storeToRefs(themeStore);
+const router = useRouter();
+const routerStore = useRoutesListStore();
+const themeStore = useThemeConfig();
+const { routeTree, currentRoute } = storeToRefs(routerStore);
+const { isFooter } = storeToRefs(themeStore);
+
+/**
+ * @description 菜单点击事件
+ * @param {String} key
+ */
+const onMenuItem = (key: string) => {
+  const { findLinearArray } = useRoutingMethod();
+  const find = findLinearArray(key);
+  // 路由存在则存入并跳转，不存在则跳404
+  if (find) {
+    router.push(find.path);
+  } else {
+    router.push("/404");
+  }
+};
 </script>
 
 <style lang="scss" scoped>
-.layout {
-  height: 100vh;
+.layout-head {
+  height: 100%;
+  display: flex;
+  align-items: stretch; // 如果（多个）元素的组合大小小于容器的大小，其中自动调整大小的元素将等量增大，以填满容器，同时这些元素仍然保持其宽高比例的约束。
+  overflow: hidden;
+  &-top {
+    flex: 1; // 按比例分配大小
+    display: flex;
+    flex-direction: column; // flex 容器的主轴和块轴相同。主轴起点与主轴终点和书写模式的前后点相同
+    overflow: hidden;
+  }
 }
+
 .header {
-  height: 60px;
   padding: 0 $padding;
+  height: 60px;
   box-sizing: border-box;
   border-bottom: $border-1 solid $color-border-2;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  // 头部
-  .logo_head {
-    min-width: 150px;
-    height: 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-sizing: border-box;
-    .logo {
-      width: 30px;
-    }
-    .logo_title {
-      font-weight: bold;
-      font-size: $font-size-title-2;
+  overflow: hidden;
+}
+
+:deep(.arco-menu-pop) {
+  white-space: nowrap;
+}
+// 横向菜单样式修改
+:deep(.arco-menu-horizontal) {
+  flex: 1;
+  overflow: hidden;
+  .arco-menu-inner {
+    padding-left: 0; // 横向排列，禁用左padding
+    .arco-menu-overflow-wrap {
+      white-space: nowrap; // 禁用换行，否则会导致菜单换行闪烁
     }
   }
-  .header_left {
-    box-sizing: border-box;
-    display: flex;
-    width: 100%;
-    height: 100%;
-  }
-}
-// 去掉横向菜单的padding
-:deep(.arco-menu-horizontal .arco-menu-inner) {
-  padding: unset;
-}
-// 去掉单级横向菜单的line-height,解决icon和标题的横向对齐问题
-:deep(.arco-menu-horizontal .arco-menu-item) {
-  line-height: unset;
-}
-// 去掉多级横向菜单的line-height,解决icon和标题的横向对齐问题
-:deep(.arco-menu-horizontal .arco-menu-pop-header) {
-  line-height: unset;
-}
-:deep(.arco-menu-selected-label) {
-  bottom: -16px;
 }
 </style>

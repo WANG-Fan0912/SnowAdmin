@@ -1,5 +1,5 @@
 <template>
-  <div class="logo_head">
+  <div :class="layoutType == 'layoutDefaults' ? 'logo_head' : 'logo_head no-border'">
     <img :src="Logo" class="logo" />
     <span :class="isDark ? 'logo_title dark' : 'logo_title'" v-if="!collapsed">dc admin</span>
   </div>
@@ -42,5 +42,8 @@ const isDark = computed(() => {
   .dark {
     color: #fff;
   }
+}
+.no-border {
+  border: unset;
 }
 </style>

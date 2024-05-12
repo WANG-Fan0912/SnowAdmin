@@ -63,7 +63,7 @@ export const useThemeConfig = defineStore("theme-config", {
       "#00B42A",
       "#14C9C9",
       "#3491FA",
-      "#165DFF",
+      "#c34d9c",
       "#722ED1",
       "#D91AD9",
       "#F5319D",
