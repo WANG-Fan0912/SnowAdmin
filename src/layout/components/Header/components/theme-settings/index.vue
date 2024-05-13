@@ -222,7 +222,7 @@ const handleCancel = () => {
     top: 15px;
     width: 20px;
     height: calc(100% - 15px);
-    background: #fff;
+    background: #232324;
   }
 }
 
