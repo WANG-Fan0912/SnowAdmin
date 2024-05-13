@@ -1,5 +1,5 @@
 <template>
-  <div :class="layoutType == 'layoutDefaults' ? 'logo_head' : 'logo_head no-border'">
+  <div :class="layoutType == 'layoutHead' ? 'logo_head no-border' : 'logo_head'">
     <img :src="Logo" class="logo" />
     <span :class="isDark ? 'logo_title dark' : 'logo_title'" v-if="!collapsed">dc admin</span>
   </div>
@@ -13,7 +13,7 @@ const themeStore = useThemeConfig();
 const { collapsed, asideDark, layoutType } = storeToRefs(themeStore);
 
 const isDark = computed(() => {
-  if (asideDark.value && layoutType.value === "layoutDefaults") {
+  if (asideDark.value && layoutType.value != "layoutHead") {
     return true;
   } else {
     return false;

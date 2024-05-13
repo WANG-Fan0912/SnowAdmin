@@ -142,7 +142,6 @@ const onMenuItem = (key: string) => {
   display: flex;
   align-items: stretch; // 如果（多个）元素的组合大小小于容器的大小，其中自动调整大小的元素将等量增大，以填满容器，同时这些元素仍然保持其宽高比例的约束。
   overflow: hidden;
-  border: 1px solid red;
   .header-logo {
     width: 150px;
   }
@@ -163,6 +162,17 @@ const onMenuItem = (key: string) => {
   justify-content: space-between;
   align-items: center;
   overflow: hidden;
+  .menu_fold {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    .menu_fold_icon {
+      color: $color-text-1;
+      border-radius: $radius-box;
+    }
+  }
 }
 
 :deep(.arco-menu-pop) {
