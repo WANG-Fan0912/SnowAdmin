@@ -84,18 +84,31 @@ const onMenuItem = (key: string) => {
   const find = findLinearArray(key);
   // 路由存在则存入并跳转，不存在则跳404
   if (find) {
-    // 将父级的chindren给左侧树
-    if (find.children && find.children.length > 0) {
-      routeList.value = find.children;
-    } else {
-      // 如果没有则直接将父级给左侧树，做一级兜底
-      routeList.value = [find];
-    }
+    setAsideMenu(find);
     router.push(find.path);
   } else {
     router.push("/404");
   }
 };
+
+// 给左侧树赋值
+const setAsideMenu = (find: Menu.MenuOptions) => {
+  // 将父级的chindren给左侧树
+  if (find.children && find.children.length > 0) {
+    routeList.value = find.children;
+  } else {
+    // 如果没有则直接将父级给左侧树，做一级兜底
+    routeList.value = [find];
+  }
+};
+
+// 首次进入，获取左侧菜单
+const getAsideMenu = (key: string) => {
+  const { findLinearArray } = useRoutingMethod();
+  const find = findLinearArray(key);
+  setAsideMenu(find);
+};
+getAsideMenu(aciveRoute.value as string);
 </script>
 
 <style lang="scss" scoped>
