@@ -2,7 +2,7 @@
   <div :class="asideDark ? 'aside dark' : 'aside'">
     <Logo />
     <a-layout-sider :collapsed="collapsed" breakpoint="xl" class="layout_side" :width="220">
-      <a-scrollbar style="height: 100%; overflow: auto" outer-class="scrollbar"><Menu /></a-scrollbar>
+      <a-scrollbar style="height: 100%; overflow: auto" outer-class="scrollbar"><Menu :route-tree="routeTree" /></a-scrollbar>
     </a-layout-sider>
   </div>
 </template>
@@ -12,9 +12,11 @@ import Logo from "@/layout/components/Logo/index.vue";
 import Menu from "@/layout/components/Menu/index.vue";
 import { storeToRefs } from "pinia";
 import { useThemeConfig } from "@/store/modules/theme-config";
-
+import { useRoutesListStore } from "@/store/modules/route-list";
 const themeStore = useThemeConfig();
 const { collapsed, asideDark } = storeToRefs(themeStore);
+const routerStore = useRoutesListStore();
+const { routeTree } = storeToRefs(routerStore);
 </script>
 
 <style lang="scss" scoped>

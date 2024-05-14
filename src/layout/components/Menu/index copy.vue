@@ -10,7 +10,7 @@
     :selected-keys="[currentRoute.name]"
     @menu-item-click="onMenuItem"
   >
-    <MenuItem :route-tree="props.routeTree" />
+    <MenuItem :route-tree="routeTree" />
   </a-menu>
 </template>
 
@@ -23,18 +23,9 @@ import { useRouter } from "vue-router";
 import { useRoutingMethod } from "@/hooks/useRoutingMethod";
 const router = useRouter();
 const routerStore = useRoutesListStore();
-const { currentRoute } = storeToRefs(routerStore);
+const { routeTree, currentRoute } = storeToRefs(routerStore);
 const themeStore = useThemeConfig();
 const { collapsed, isAccordion, layoutType, asideDark } = storeToRefs(themeStore);
-
-interface Props {
-  routeTree: Menu.MenuOptions[];
-}
-// props的数据类型
-// type类型参考：https://cn.vuejs.org/guide/typescript/composition-api.html#typing-component-props
-const props = withDefaults(defineProps<Props>(), {
-  routeTree: () => []
-});
 
 /**
  * @description 菜单点击事件

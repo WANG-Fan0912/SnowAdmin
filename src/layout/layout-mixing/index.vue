@@ -3,7 +3,7 @@
     <div :class="asideDark ? 'aside dark' : 'aside'">
       <Logo />
       <a-layout-sider :collapsed="collapsed" breakpoint="xl" class="layout_side" :width="220">
-        <a-scrollbar style="height: 100%; overflow: auto" outer-class="scrollbar"><Menu /></a-scrollbar>
+        <a-scrollbar style="height: 100%; overflow: auto" outer-class="scrollbar"><Menu :route-tree="routeList" /></a-scrollbar>
       </a-layout-sider>
     </div>
     <a-layout>
@@ -19,22 +19,13 @@
               </a-button>
             </div>
 
-            <a-menu mode="horizontal" :selected-keys="[currentRoute.name]" @menu-item-click="onMenuItem">
-              <template v-for="item in routeTree" :key="item.name">
-                <a-sub-menu v-if="item.children && item.children.length > 0" :key="item.name">
-                  <template #icon v-if="item.meta.svgIcon || item.meta.icon">
-                    <MenuItemIcon :svg-icon="item.meta.svgIcon" :icon="item.meta.icon" />
-                  </template>
-                  <template #title>{{ $t(`language.${item.meta.title}`) }}</template>
-                  <MenuItem :route-tree="item.children" />
-                </a-sub-menu>
-                <a-menu-item v-else :key="item?.name">
-                  <template #icon v-if="item.meta.svgIcon || item.meta.icon">
-                    <MenuItemIcon :svg-icon="item.meta.svgIcon" :icon="item.meta.icon" />
-                  </template>
-                  <span>{{ $t(`language.${item.meta.title}`) }}</span>
-                </a-menu-item>
-              </template>
+            <a-menu mode="horizontal" :selected-keys="[aciveRoute]" @menu-item-click="onMenuItem">
+              <a-menu-item v-for="item in routeTree" :key="item.name">
+                <template #icon v-if="item.meta.svgIcon || item.meta.icon">
+                  <MenuItemIcon :svg-icon="item.meta.svgIcon" :icon="item.meta.icon" />
+                </template>
+                <span>{{ $t(`language.${item.meta.title}`) }}</span>
+              </a-menu-item>
             </a-menu>
             <HeaderRight />
           </a-layout-header>
@@ -52,7 +43,6 @@ import Main from "@/layout/components/Main/index.vue";
 import Footer from "@/layout/components/Footer/index.vue";
 import Menu from "@/layout/components/Menu/index.vue";
 import HeaderRight from "@/layout/components/Header/components/header-right/index.vue";
-import MenuItem from "@/layout/components/Menu/menu-item.vue";
 import MenuItemIcon from "@/layout/components/Menu/menu-item-icon.vue";
 import { useRouter } from "vue-router";
 import { useRoutesListStore } from "@/store/modules/route-list";
@@ -60,27 +50,47 @@ import { useRoutingMethod } from "@/hooks/useRoutingMethod";
 import { storeToRefs } from "pinia";
 import { useThemeConfig } from "@/store/modules/theme-config";
 defineOptions({ name: "LayoutMixing" });
-
-const themeStore = useThemeConfig();
-const { isFooter, collapsed, asideDark } = storeToRefs(themeStore);
-
+const route = useRoute();
 const router = useRouter();
 const routerStore = useRoutesListStore();
-const { routeTree, currentRoute } = storeToRefs(routerStore);
+const themeStore = useThemeConfig();
+const { isFooter, collapsed, asideDark } = storeToRefs(themeStore);
+const { routeTree } = storeToRefs(routerStore);
 
 // 折叠
 const onCollapsed = () => {
   themeStore.setCollapsed(!collapsed.value);
 };
-/**
- * @description 菜单点击事件
- * @param {String} key
- */
+
+console.log("路由信息", route);
+
+// 由于刷新后，路由信息丢失，所以需要重新获取
+// 混合布局的横向菜单为顶层路由下的一级菜单
+// 这里通过当前路由信息直接获取
+const aciveRoute = computed(() => {
+  if (route.matched.length >= 2) {
+    return route.matched[1].name;
+  } else {
+    return route.matched[0].name;
+  }
+});
+
+// 横向菜单点击事件
+// 将一级菜单下的children给左侧菜单
+// 如果没有children则直接自身菜单给左侧菜单
+const routeList = ref<any>([]);
 const onMenuItem = (key: string) => {
   const { findLinearArray } = useRoutingMethod();
   const find = findLinearArray(key);
   // 路由存在则存入并跳转，不存在则跳404
   if (find) {
+    // 将父级的chindren给左侧树
+    if (find.children && find.children.length > 0) {
+      routeList.value = find.children;
+    } else {
+      // 如果没有则直接将父级给左侧树，做一级兜底
+      routeList.value = [find];
+    }
     router.push(find.path);
   } else {
     router.push("/404");

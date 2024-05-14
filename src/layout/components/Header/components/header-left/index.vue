@@ -17,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-import Breadcrumb from "@/layout/components/Header/components/Breadcrumb/index.vue";
+import Breadcrumb from "@/layout/components/Header/components/breadcrumb/index.vue";
 import { storeToRefs } from "pinia";
 import { useThemeConfig } from "@/store/modules/theme-config";
 const themeStore = useThemeConfig();
