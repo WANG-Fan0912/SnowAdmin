@@ -68,11 +68,8 @@ console.log("路由信息", route);
 // 混合布局的横向菜单为顶层路由下的一级菜单
 // 这里通过当前路由信息直接获取
 const aciveRoute = computed(() => {
-  if (route.matched.length >= 2) {
-    return route.matched[1].name;
-  } else {
-    return route.matched[0].name;
-  }
+  getAsideMenu(route.matched[1].name as string);
+  return route.matched[1].name;
 });
 
 // 横向菜单点击事件
@@ -108,7 +105,7 @@ const getAsideMenu = (key: string) => {
   const find = findLinearArray(key);
   setAsideMenu(find);
 };
-getAsideMenu(aciveRoute.value as string);
+// getAsideMenu(aciveRoute.value as string);
 </script>
 
 <style lang="scss" scoped>

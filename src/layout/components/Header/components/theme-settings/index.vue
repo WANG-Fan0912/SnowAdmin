@@ -174,7 +174,7 @@ const handleCancel = () => {
     content: "";
     position: absolute;
     left: 0;
-    width: 20px;
+    width: 10px;
     height: 100%;
     background: #232324;
   }
@@ -184,9 +184,9 @@ const handleCancel = () => {
     position: absolute;
     right: 0;
     top: 0;
-    width: 50px;
-    height: 15px;
-    background: #fff;
+    width: 60px;
+    height: 10px;
+    background: #c2c4c8;
   }
 }
 
@@ -198,7 +198,7 @@ const handleCancel = () => {
     position: absolute;
     top: 0;
     width: 100%;
-    height: 15px;
+    height: 10px;
     background: #232324;
   }
 }
@@ -211,7 +211,7 @@ const handleCancel = () => {
     position: absolute;
     top: 0;
     width: 100%;
-    height: 15px;
+    height: 10px;
     background: #232324;
   }
 
@@ -219,9 +219,9 @@ const handleCancel = () => {
     content: "";
     position: absolute;
     left: 0;
-    top: 15px;
-    width: 20px;
-    height: calc(100% - 15px);
+    top: 10px;
+    width: 10px;
+    height: calc(100% - 10px);
     background: #232324;
   }
 }
