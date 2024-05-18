@@ -15,6 +15,8 @@ import ArcoVueIcon from "@arco-design/web-vue/es/icon";
 import "virtual:svg-icons-register";
 // 引入i18n
 import i18n from "@/lang/index";
+// 引入字体
+import "@/assets/fonts/fonts.scss";
 const app = createApp(App);
 app.use(ArcoVue, {
   componentPrefix: "arco"

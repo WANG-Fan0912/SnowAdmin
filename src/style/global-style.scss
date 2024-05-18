@@ -7,3 +7,24 @@
 .margin-right-text {
   margin-right: $margin-text;
 }
+
+.flex-row-between-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-middling {
+  width: 200px;
+}
+
+.row-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.row-start-center {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
