@@ -46,6 +46,31 @@
         </div>
       </div>
     </div>
+    <!-- 财务指标 -->
+    <div class="finance-box">
+      <div class="box-title">
+        <div>财务指标</div>
+        <div>
+          <span><icon-edit /></span>
+          <span class="margin-left-text">自定义</span>
+        </div>
+      </div>
+      <a-divider :margin="16" />
+      <div class="finance-card">
+        <a-card class="finance-a-card" hoverable v-for="item in financeData" :key="item.id">
+          <div class="finance-nav">
+            <div class="tag-dot" :style="{ border: `3px solid ${item.color}` }"></div>
+            <span class="finance-nav-title">{{ item.title }}</span>
+          </div>
+          <div class="finance-content">{{ item.value }}</div>
+        </a-card>
+      </div>
+    </div>
+    <!-- 数据图 -->
+    <div class="data-box">
+      <div class="sell-histogram"></div>
+      <div></div>
+    </div>
   </div>
 </template>
 
@@ -116,6 +141,39 @@ const targetData = reactive({
     }
   ]
 });
+
+const financeData = ref([
+  {
+    id: 1,
+    title: "利润总额",
+    value: "100,000",
+    color: "#ff8625"
+  },
+  {
+    id: 2,
+    title: "现金",
+    value: "750,420",
+    color: "#165DFF"
+  },
+  {
+    id: 3,
+    title: "银行存款",
+    value: "100,000",
+    color: "#39cbab"
+  },
+  {
+    id: 4,
+    title: "存贷",
+    value: "100,000",
+    color: "#6c73ff"
+  },
+  {
+    id: 5,
+    title: "应收账款",
+    value: "100,000",
+    color: "#2fd0ff"
+  }
+]);
 </script>
 
 <style lang="scss" scoped>
@@ -140,7 +198,6 @@ const targetData = reactive({
   }
 }
 .target-box {
-  border: 1px solid cyan;
   margin-top: calc($padding * 2);
   .target-grade {
     width: 180px;
@@ -192,6 +249,52 @@ const targetData = reactive({
   .target-title {
     margin-top: $margin-text;
     color: $color-text-3;
+  }
+}
+.finance-box {
+  margin-top: calc($padding * 2);
+  .finance-card {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: $padding;
+    grid-row-gap: 0px;
+    .finance-a-card {
+      .finance-nav {
+        display: flex;
+        align-items: center;
+        .tag-dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          margin-right: $margin-text;
+          box-sizing: border-box;
+        }
+        .finance-nav-title {
+          font-size: $font-size-body-1;
+        }
+      }
+      .finance-content {
+        margin-top: $margin;
+        margin-left: calc(8px + $margin-text);
+        font-family: "AliFangYuanTi";
+        font-weight: bold;
+        color: $color-text-1;
+      }
+    }
+  }
+}
+.data-box {
+  margin-top: calc($padding * 2);
+  border: 1px solid cyan;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  .sell-histogram {
+    height: 280px;
+    border: 1px solid red;
   }
 }
 </style>

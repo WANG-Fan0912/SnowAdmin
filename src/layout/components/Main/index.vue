@@ -51,11 +51,11 @@ watch(watermarkConfig, newv => {
 
 .scrollbar {
   height: calc(100% - 40px); // 去掉tabs的高度
-  background: $color-border-1; // 背景颜色
+  background: $color-fill-1; // 背景颜色
 }
 .scrollbar-no-tabs {
   height: 100%;
-  background: $color-border-1; // 背景颜色
+  background: $color-fill-1; // 背景颜色
 }
 
 .main {
