@@ -62,7 +62,18 @@
             <div class="tag-dot" :style="{ border: `3px solid ${item.color}` }"></div>
             <span class="finance-nav-title">{{ item.title }}</span>
           </div>
-          <div class="finance-content">{{ item.value }}</div>
+          <a-statistic
+            :value-style="{
+              fontSize: '13px',
+              marginLeft: '16px',
+              marginTop: '12px'
+            }"
+            :value="item.value"
+            :value-from="0"
+            :start="true"
+            animation
+            show-group-separator
+          />
         </a-card>
       </div>
     </div>
@@ -89,6 +100,7 @@
 <script setup lang="ts">
 import SellHistogram from "@/views/home/components/sell-histogram.vue";
 import MonthlyAnalysis from "@/views/home/components/monthly-analysis.vue";
+
 const shortcut = ref([
   {
     id: 1,
@@ -160,31 +172,31 @@ const financeData = ref([
   {
     id: 1,
     title: "利润总额",
-    value: "100,000",
+    value: 100000,
     color: "#ff8625"
   },
   {
     id: 2,
     title: "现金",
-    value: "750,420",
+    value: 750420,
     color: "#165DFF"
   },
   {
     id: 3,
     title: "银行存款",
-    value: "100,000",
+    value: 100000,
     color: "#39cbab"
   },
   {
     id: 4,
     title: "存贷",
-    value: "100,000",
+    value: 100000,
     color: "#6c73ff"
   },
   {
     id: 5,
     title: "应收账款",
-    value: "100,000",
+    value: 100000,
     color: "#2fd0ff"
   }
 ]);
@@ -285,13 +297,6 @@ const financeData = ref([
         .finance-nav-title {
           font-size: $font-size-body-1;
         }
-      }
-      .finance-content {
-        margin-top: $margin;
-        margin-left: calc(8px + $margin-text);
-        font-family: "AliFangYuanTi";
-        font-weight: bold;
-        color: $color-text-1;
       }
     }
   }
