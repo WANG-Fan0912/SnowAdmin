@@ -68,13 +68,19 @@
     </div>
     <!-- 数据图 -->
     <div class="data-box">
-      <div class="sell-histogram"></div>
-      <div></div>
+      <div class="sell-histogram">
+        <SellHistogram />
+      </div>
+      <div class="monthly-analysis">
+        <MonthlyAnalysis />
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import SellHistogram from "@/views/home/components/sell-histogram.vue";
+import MonthlyAnalysis from "@/views/home/components/monthly-analysis.vue";
 const shortcut = ref([
   {
     id: 1,
@@ -178,7 +184,6 @@ const financeData = ref([
 
 <style lang="scss" scoped>
 .home {
-  height: 700px;
   border-radius: $radius-box;
   padding: $padding;
   background: $color-bg-2;
@@ -286,15 +291,16 @@ const financeData = ref([
 }
 .data-box {
   margin-top: calc($padding * 2);
-  border: 1px solid cyan;
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  grid-template-rows: 1fr;
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
+  display: flex;
+  justify-content: space-between;
   .sell-histogram {
-    height: 280px;
-    border: 1px solid red;
+    width: calc(100% - 600px - $padding);
+    height: 400px;
+  }
+  .monthly-analysis {
+    margin-left: $padding;
+    width: 600px;
+    height: 400px;
   }
 }
 </style>

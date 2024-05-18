@@ -42,7 +42,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
         meta: {
           title: "home", // 国际化
           hide: false, // 是否隐藏此路由
-          keepAlive: true, // 缓存组件状态
+          keepAlive: false, // 缓存组件状态
           affix: true, // 固定在tagesView栏上
           link: "", // 是否外链
           iframe: false, // 是否内嵌窗口
@@ -57,7 +57,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
         meta: {
           title: "home", // 国际化
           hide: false, // 是否隐藏此路由
-          keepAlive: true, // 缓存组件状态
+          keepAlive: false, // 缓存组件状态
           affix: true, // 固定在tagesView栏上
           link: "", // 是否外链
           iframe: false, // 是否内嵌窗口

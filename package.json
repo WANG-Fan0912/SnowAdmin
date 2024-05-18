@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@arco-design/color": "^0.4.0",
+    "@visactor/vchart": "^1.11.0",
     "dc-admin": "link:",
     "nprogress": "^0.2.0",
     "pinia": "^2.1.7",
