@@ -11,6 +11,9 @@ dependencies:
   '@visactor/vchart':
     specifier: ^1.11.0
     version: 1.11.0
+  '@visactor/vchart-arco-theme':
+    specifier: ^1.11.0
+    version: 1.11.0(@visactor/vchart@1.11.0)
   dc-admin:
     specifier: 'link:'
     version: 'link:'
@@ -1691,6 +1694,23 @@ packages:
   /@ungap/structured-clone@1.2.0:
     resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
     dev: true
+
+  /@visactor/vchart-arco-theme@1.11.0(@visactor/vchart@1.11.0):
+    resolution: {integrity: sha512-yjIXzM4Gd9dSyEmiH4MhwXutHT9I/AMsuzIqTIfwCyVpEEnbZNejjxZutGIidNdEt1qtApQECVZ970TCBJHz7w==}
+    peerDependencies:
+      '@visactor/vchart': '>=1.10.4'
+    dependencies:
+      '@visactor/vchart': 1.11.0
+      '@visactor/vchart-theme-utils': 1.11.0(@visactor/vchart@1.11.0)
+    dev: false
+
+  /@visactor/vchart-theme-utils@1.11.0(@visactor/vchart@1.11.0):
+    resolution: {integrity: sha512-GMQeT+X0hI6EQpd2GTdMYBwZbsR4B/NvAURYWzWTFW4KYdefEKHQMZNlq81aagJZTF3M09CZTkg9/uWRuBSqgQ==}
+    peerDependencies:
+      '@visactor/vchart': '>=1.10.4'
+    dependencies:
+      '@visactor/vchart': 1.11.0
+    dev: false
 
   /@visactor/vchart@1.11.0:
     resolution: {integrity: sha512-omEwPwLzi9PioVmiP/9L8IJoJnqRs/LsGPEkFhQYCBdSSuyh+OApWXo/a7jL/t7PsRSZVIeogmXh6YUY72XuLw==}

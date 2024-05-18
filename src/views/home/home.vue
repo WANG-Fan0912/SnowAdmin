@@ -193,7 +193,7 @@ const financeData = ref([
 <style lang="scss" scoped>
 .home {
   padding: $padding;
-  background: $color-bg-2;
+  background: $color-bg-1;
 }
 .box-title {
   display: flex;
@@ -312,11 +312,13 @@ const financeData = ref([
   .sell-histogram {
     width: calc(100% - 600px - $padding);
     height: 400px;
+    padding-bottom: $padding;
   }
   .monthly-analysis {
     margin-left: $padding;
     width: 600px;
     height: 400px;
+    padding-bottom: $padding;
   }
 }
 </style>

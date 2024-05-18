@@ -17,6 +17,9 @@ import "virtual:svg-icons-register";
 import i18n from "@/lang/index";
 // 引入字体
 import "@/assets/fonts/fonts.scss";
+// vchart-arco-theme 主题关联-黑暗模式
+import { initVChartArcoTheme } from "@visactor/vchart-arco-theme";
+initVChartArcoTheme();
 const app = createApp(App);
 app.use(ArcoVue, {
   componentPrefix: "arco"
