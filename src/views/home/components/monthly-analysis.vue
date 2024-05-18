@@ -47,11 +47,6 @@ const init = () => {
         }
       }
     },
-    title: {
-      visible: true,
-      text: "现金分析",
-      subtext: "单位：万元"
-    },
     legends: {
       visible: true,
       orient: "left"

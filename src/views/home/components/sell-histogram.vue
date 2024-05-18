@@ -34,12 +34,6 @@ const init = () => {
     xField: "month",
     yField: "sales",
     barWidth: 10,
-    title: {
-      visible: true,
-      textType: "text",
-      text: "销售额趋势",
-      subtext: "单位：万元"
-    },
     barGapInGroup: 0
   };
   let dom = sellHistogram.value;

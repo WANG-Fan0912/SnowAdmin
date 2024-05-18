@@ -69,9 +69,17 @@
     <!-- 数据图 -->
     <div class="data-box">
       <div class="sell-histogram">
+        <div>
+          <span class="data-title">销售额趋势</span>
+          <span class="data-subtext">单位：元</span>
+        </div>
         <SellHistogram />
       </div>
       <div class="monthly-analysis">
+        <div>
+          <span class="data-title">现金分析</span>
+          <span class="data-subtext">单位：元</span>
+        </div>
         <MonthlyAnalysis />
       </div>
     </div>
@@ -184,7 +192,6 @@ const financeData = ref([
 
 <style lang="scss" scoped>
 .home {
-  border-radius: $radius-box;
   padding: $padding;
   background: $color-bg-2;
 }
@@ -293,6 +300,15 @@ const financeData = ref([
   margin-top: calc($padding * 2);
   display: flex;
   justify-content: space-between;
+  .data-title {
+    font-size: $font-size-body-3;
+    color: $color-text-1;
+  }
+  .data-subtext {
+    font-size: $font-size-body-2;
+    color: $color-text-2;
+    margin-left: $margin-text;
+  }
   .sell-histogram {
     width: calc(100% - 600px - $padding);
     height: 400px;
