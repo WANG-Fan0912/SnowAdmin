@@ -36,10 +36,7 @@ const init = () => {
     barWidth: 10,
     barGapInGroup: 0
   };
-  let dom = sellHistogram.value;
-  console.log("dom", dom);
-
-  const vchart = new VChart(spec as any, { dom: dom });
+  const vchart = new VChart(spec as any, { dom: sellHistogram.value });
   vchart.renderSync();
 };
 </script>

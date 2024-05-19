@@ -65,10 +65,7 @@ const init = () => {
       }
     }
   };
-  let dom = monthlyAnalysis.value;
-  console.log("dom", dom);
-
-  const vchart = new VChart(spec as any, { dom: dom });
+  const vchart = new VChart(spec as any, { dom: monthlyAnalysis.value });
   vchart.renderSync();
 };
 </script>
