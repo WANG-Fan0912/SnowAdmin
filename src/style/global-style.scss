@@ -1,4 +1,9 @@
 /* global style scss */
+.dc-page {
+  padding: $padding;
+  background: $color-bg-1;
+}
+
 // 左间距-行内文字
 .margin-left-text {
   margin-left: $margin-text;
@@ -8,23 +13,26 @@
   margin-right: $margin-text;
 }
 
-.flex-row-between-center {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
+// 中等卡片大小
 .card-middling {
   width: 200px;
 }
 
+// 一行完全居中
 .row-center {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+// 垂直居中，从左到右
 .row-start-center {
   display: flex;
   justify-content: start;
+  align-items: center;
+}
+// 垂直居中，左右占满
+.flex-row-between-center {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 }
