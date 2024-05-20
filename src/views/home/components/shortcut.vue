@@ -8,14 +8,33 @@
       </div>
     </div>
     <a-divider :margin="16" />
-    <div class="flex-row-between-center">
+    <!-- <div class="flex-row-between-center">
       <div v-for="(item, index) in shortcut" :key="item.id" class="card-middling row-center" :class="'animated-fade-up-' + index">
         <div>
           <SvgIcon :name="item.svg" :size="40" />
           <span class="shortcut-card-label">{{ item.name }}</span>
         </div>
       </div>
-    </div>
+    </div> -->
+    <a-row class="grid-demo">
+      <a-col
+        :xs="24"
+        :sm="12"
+        :md="12"
+        :lg="8"
+        :xl="4"
+        :xxl="4"
+        v-for="(item, index) in shortcut"
+        :key="item.id"
+        class="card-middling row-center"
+        :class="'animated-fade-up-' + index"
+      >
+        <div>
+          <SvgIcon :name="item.svg" :size="40" />
+          <span class="shortcut-card-label">{{ item.name }}</span>
+        </div>
+      </a-col>
+    </a-row>
   </div>
 </template>
 

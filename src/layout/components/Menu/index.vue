@@ -1,6 +1,6 @@
 <template>
   <a-menu
-    :breakpoint="layoutType === 'layoutDefaults' ? undefined : 'xl'"
+    :breakpoint="layoutType != 'layoutHead' ? 'xl' : undefined"
     :mode="'vertical'"
     :theme="asideDark ? 'dark' : 'light'"
     :collapsed="collapsed"
