@@ -9,6 +9,9 @@
     </div>
     <a-divider :margin="16" />
     <div class="finance-card">
+      <!-- <a-row>
+        <a-col :xs="24" :sm="12" :lg="8" :xl="4"></a-col>
+      </a-row> -->
       <a-card
         hoverable
         v-for="(item, index) in financeData"

@@ -4,15 +4,24 @@
       <div>第三板指标</div>
     </div>
     <a-divider :margin="16" />
-    <div class="row-start-center">
-      <div class="target-grade" :class="'animated-fade-up-0'">
+    <a-row>
+      <a-col :xs="24" :sm="12" :lg="8" :xl="4" class="target-grade" :class="'animated-fade-up-0'">
         <div class="target-grade-innerbox">
           <div class="grade-value">{{ targetData.all.value }}</div>
           <div class="target-title">{{ targetData.all.title }}</div>
         </div>
-      </div>
-      <div v-for="(item, index) in targetData.list" :key="index" class="target-other" :class="'animated-fade-up-' + index">
-        <div>
+      </a-col>
+      <a-col
+        :xs="24"
+        :sm="12"
+        :lg="8"
+        :xl="4"
+        v-for="(item, index) in targetData.list"
+        :key="index"
+        class="target-other"
+        :class="'animated-fade-up-' + index"
+      >
+        <div class="target-other-innerbox">
           <div>
             <span class="other-value">{{ item.value }}</span>
             <span>
@@ -22,8 +31,8 @@
           </div>
           <div class="target-title">{{ item.title }}</div>
         </div>
-      </div>
-    </div>
+      </a-col>
+    </a-row>
   </div>
 </template>
 
@@ -99,6 +108,9 @@ const targetData = reactive({
     display: flex;
     align-items: center;
     justify-content: center;
+    .target-other-innerbox {
+      width: 100px;
+    }
     .other-value {
       font-family: "AliFangYuanTi";
       font-weight: bold;

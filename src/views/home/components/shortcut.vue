@@ -14,7 +14,6 @@
         :sm="12"
         :lg="8"
         :xl="4"
-        :gutter="[24, 12]"
         v-for="(item, index) in shortcut"
         :key="item.id"
         class="card-middling row-center card-box"
