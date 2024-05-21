@@ -65,7 +65,7 @@ const targetData = reactive({
 
 <style lang="scss" scoped>
 .target-box {
-  margin-top: calc($padding * 2);
+  margin-top: $padding;
   .target-grade {
     width: 180px;
     height: 60px;

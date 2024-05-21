@@ -8,31 +8,20 @@
       </div>
     </div>
     <a-divider :margin="16" />
-    <!-- <div class="flex-row-between-center">
-      <div v-for="(item, index) in shortcut" :key="item.id" class="card-middling row-center" :class="'animated-fade-up-' + index">
-        <div>
-          <SvgIcon :name="item.svg" :size="40" />
-          <span class="shortcut-card-label">{{ item.name }}</span>
-        </div>
-      </div>
-    </div> -->
-    <a-row class="grid-demo">
+    <a-row>
       <a-col
         :xs="24"
         :sm="12"
-        :md="12"
         :lg="8"
         :xl="4"
-        :xxl="4"
+        :gutter="[24, 12]"
         v-for="(item, index) in shortcut"
         :key="item.id"
-        class="card-middling row-center"
+        class="card-middling row-center card-box"
         :class="'animated-fade-up-' + index"
       >
-        <div>
-          <SvgIcon :name="item.svg" :size="40" />
-          <span class="shortcut-card-label">{{ item.name }}</span>
-        </div>
+        <SvgIcon :name="item.svg" :size="40" />
+        <div class="shortcut-card-label">{{ item.name }}</div>
       </a-col>
     </a-row>
   </div>
@@ -75,10 +64,14 @@ const shortcut = ref([
 
 <style lang="scss" scoped>
 .shortcut-box {
-  .shortcut-card-label {
-    font-size: $font-size-body-3;
-    margin-left: 20px;
-    color: $color-text-2;
+  .card-box {
+    margin-bottom: $padding;
+    .shortcut-card-label {
+      width: 100px;
+      font-size: $font-size-body-3;
+      margin-left: 20px;
+      color: $color-text-2;
+    }
   }
 }
 .box-title {
