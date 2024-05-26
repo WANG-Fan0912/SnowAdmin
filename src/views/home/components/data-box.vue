@@ -27,6 +27,7 @@ import MonthlyAnalysis from "@/views/home/components/monthly-analysis.vue";
   margin-top: calc($padding * 2);
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   .data-title {
     font-size: $font-size-body-3;
     color: $color-text-1;
@@ -36,16 +37,17 @@ import MonthlyAnalysis from "@/views/home/components/monthly-analysis.vue";
     color: $color-text-2;
     margin-left: $margin-text;
   }
-  .sell-histogram {
-    width: calc(100% - 600px - $padding);
-    height: 400px;
-    padding-bottom: $padding;
-  }
-  .monthly-analysis {
-    margin-left: $padding;
-    width: 600px;
-    height: 400px;
-    padding-bottom: $padding;
-  }
+  // .sell-histogram {
+  //   // width: calc(100% - 600px - $padding);
+  //   width: 100%;
+  //   height: 400px;
+  //   padding-bottom: $padding;
+  // }
+  // .monthly-analysis {
+  //   margin-left: $padding;
+  //   width: 100%;
+  //   height: 400px;
+  //   padding-bottom: $padding;
+  // }
 }
 </style>
