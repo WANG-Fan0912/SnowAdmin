@@ -3,7 +3,7 @@
     <a-layout-content :class="isFooter ? 'content' : 'content-no-footer'">
       <Tabs v-if="isTabs" />
       <a-scrollbar style="height: 100%; overflow: auto" :outer-class="isTabs ? 'scrollbar' : 'scrollbar-no-tabs'">
-        <div class="main">
+        <div>
           <router-view v-slot="{ Component, route }">
             <MainTransition>
               <keep-alive :include="cacheRoutes">
@@ -56,10 +56,6 @@ watch(watermarkConfig, newv => {
 .scrollbar-no-tabs {
   height: 100%;
   background: $color-fill-1; // 背景颜色
-}
-
-.main {
-  padding: $padding;
 }
 
 // 修改左侧滚动条宽度

@@ -5,21 +5,21 @@
         <span class="data-title">销售额趋势</span>
         <span class="data-subtext">单位：元</span>
       </div>
-      <SellHistogram />
+      <HistogramChart />
     </div>
     <div class="monthly-analysis">
       <div>
         <span class="data-title">现金分析</span>
         <span class="data-subtext">单位：元</span>
       </div>
-      <MonthlyAnalysis />
+      <AnalysisChart />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import SellHistogram from "@/views/home/components/sell-histogram.vue";
-import MonthlyAnalysis from "@/views/home/components/monthly-analysis.vue";
+import HistogramChart from "@/views/home/components/histogram-chart.vue";
+import AnalysisChart from "@/views/home/components/analysis-chart.vue";
 </script>
 
 <style lang="scss" scoped>
@@ -37,17 +37,5 @@ import MonthlyAnalysis from "@/views/home/components/monthly-analysis.vue";
     color: $color-text-2;
     margin-left: $margin-text;
   }
-  // .sell-histogram {
-  //   // width: calc(100% - 600px - $padding);
-  //   width: 100%;
-  //   height: 400px;
-  //   padding-bottom: $padding;
-  // }
-  // .monthly-analysis {
-  //   margin-left: $padding;
-  //   width: 100%;
-  //   height: 400px;
-  //   padding-bottom: $padding;
-  // }
 }
 </style>

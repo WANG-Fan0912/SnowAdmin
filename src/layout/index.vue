@@ -25,18 +25,6 @@ onMounted(() => {
   // 页面渲染完毕，结束loading
   loadingPage.done(200);
 });
-
-// 页面加载前
-onBeforeMount(() => {
-  onLayoutResize();
-  window.addEventListener("resize", onLayoutResize);
-});
-
-// 监听页面大小
-const onLayoutResize = () => {
-  let clientWidth = document.body.clientWidth;
-  console.log("窗口大小", clientWidth);
-};
 </script>
 
 <style lang="scss" scoped></style>
