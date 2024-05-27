@@ -2,6 +2,8 @@ export default {
   language: {
     ["login"]: "login",
     ["home"]: "home",
+    ["basic-table"]: "basic table",
+    ["common-table"]: "common table",
     ["common-components"]: "common components",
     ["form-component"]: "form components",
     ["dynamic-form"]: "dynamic form",

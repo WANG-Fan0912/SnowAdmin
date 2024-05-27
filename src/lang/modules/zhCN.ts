@@ -2,6 +2,8 @@ export default {
   language: {
     ["login"]: "登录",
     ["home"]: "首页",
+    ["basic-table"]: "表格 Table",
+    ["common-table"]: "普通表格",
     ["common-components"]: "常用组件",
     ["form-component"]: "表单组件",
     ["dynamic-form"]: "动态表单",

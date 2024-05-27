@@ -66,6 +66,38 @@ export const dynamicRoutes: RouteRecordRaw[] = [
         }
       },
       {
+        path: "/basic-table",
+        name: "basic-table",
+        redirect: "/basic-table/common-table",
+        meta: {
+          title: "basic-table",
+          link: "",
+          hide: false,
+          keepAlive: true,
+          affix: true,
+          iframe: false,
+          roles: ["admin"],
+          svgIcon: "set"
+        },
+        children: [
+          {
+            path: "/basic-table/common-table",
+            name: "common-table",
+            component: () => import("@/views/basic-table/common-table/common-table.vue"),
+            meta: {
+              title: "common-table",
+              link: "",
+              hide: false,
+              keepAlive: true,
+              affix: false,
+              iframe: false,
+              roles: ["admin"],
+              icon: "icon-menu"
+            }
+          }
+        ]
+      },
+      {
         path: "/common-components",
         name: "common-components",
         redirect: "/common-components/form-component",
