@@ -2,14 +2,22 @@
   <div class="dc-page">
     <a-table
       row-key="key"
+      size="small"
+      :bordered="{
+        cell: true
+      }"
       :columns="columns"
       :data="data"
       :row-selection="rowSelection"
       v-model:selectedKeys="selectedKeys"
       :pagination="pagination"
     >
-      <template #optional="{ record }">
-        <a-button>{{ record.name }}</a-button>
+      <template #optional>
+        <a-space>
+          <a-button type="primary">编辑</a-button>
+          <a-button>删除</a-button>
+          <a-button type="primary" status="danger">修改</a-button>
+        </a-space>
       </template>
     </a-table>
   </div>
@@ -48,7 +56,8 @@ const columns = [
   },
   {
     title: "用户状态",
-    dataIndex: "status"
+    dataIndex: "status",
+    align: "center"
   },
   {
     title: "创建时间",
@@ -56,7 +65,8 @@ const columns = [
   },
   {
     title: "操作",
-    slotName: "optional"
+    slotName: "optional",
+    align: "center"
   }
 ];
 const data = reactive([
