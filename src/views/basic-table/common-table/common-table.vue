@@ -1,5 +1,41 @@
 <template>
   <div class="dc-page">
+    <a-row>
+      <a-col :span="24">
+        <a-form :model="formData.form" :layout="formData.layout">
+          <a-form-item field="name" label="姓名">
+            <a-input v-model="formData.form.name" placeholder="请输入姓名" />
+          </a-form-item>
+          <a-form-item field="phone" label="手机号">
+            <a-input v-model="formData.form.phone" placeholder="请输入手机号" />
+          </a-form-item>
+          <a-form-item field="email" label="邮箱">
+            <a-input v-model="formData.form.email" placeholder="请输入邮箱" />
+          </a-form-item>
+          <a-form-item field="address" label="地址">
+            <a-input v-model="formData.form.address" placeholder="请输入地址" />
+          </a-form-item>
+          <a-form-item field="status" label="用户状态">
+            <a-select
+              :style="{ width: '160px' }"
+              :trigger-props="{ autoFitPopupMinWidth: true }"
+              v-model="formData.form.status"
+              placeholder="请选择用户状态"
+              allow-clear
+            >
+              <a-option value="0">搜索</a-option>
+              <a-option value="1">启用</a-option>
+            </a-select>
+          </a-form-item>
+          <a-form-item>
+            <a-space>
+              <a-button size="small" type="primary">查询</a-button>
+              <a-button size="small">重置</a-button>
+            </a-space>
+          </a-form-item>
+        </a-form>
+      </a-col>
+    </a-row>
     <a-table
       row-key="key"
       size="small"
@@ -12,11 +48,17 @@
       v-model:selectedKeys="selectedKeys"
       :pagination="pagination"
     >
+      <template #status="{ record }">
+        <a-space>
+          <a-tag color="blue" v-if="record.status == 1">启用</a-tag>
+          <a-tag color="red" v-else>停用</a-tag>
+        </a-space>
+      </template>
       <template #optional>
         <a-space>
-          <a-button type="primary">编辑</a-button>
-          <a-button>删除</a-button>
-          <a-button type="primary" status="danger">修改</a-button>
+          <a-button size="small" type="primary">编辑</a-button>
+          <a-button size="small">删除</a-button>
+          <a-button size="small" type="primary" status="danger">修改</a-button>
         </a-space>
       </template>
     </a-table>
@@ -24,8 +66,17 @@
 </template>
 
 <script setup lang="ts">
+const formData = reactive({
+  form: {
+    name: "",
+    phone: "",
+    email: "",
+    address: "",
+    status: null
+  },
+  layout: "inline"
+});
 const selectedKeys = ref([]);
-
 const rowSelection = reactive({
   type: "checkbox",
   showCheckedAll: true,
@@ -57,7 +108,8 @@ const columns = [
   {
     title: "用户状态",
     dataIndex: "status",
-    align: "center"
+    align: "center",
+    slotName: "status"
   },
   {
     title: "创建时间",
