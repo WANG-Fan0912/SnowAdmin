@@ -5,6 +5,16 @@
   background: $color-bg-1;
 }
 
+// 通用全外边距
+.margin {
+  margin: $margin;
+}
+
+// 下边距
+.margin-bottom {
+  margin-bottom: $margin;
+}
+
 // 左间距-行内文字
 .margin-left-text {
   margin-left: $margin-text;

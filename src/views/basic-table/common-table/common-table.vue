@@ -1,41 +1,81 @@
 <template>
   <div class="dc-page">
-    <a-row>
-      <a-col :span="24">
-        <a-form :model="formData.form" :layout="formData.layout">
+    <a-form :model="formData.form">
+      <a-row :gutter="16">
+        <a-col :span="6">
           <a-form-item field="name" label="姓名">
             <a-input v-model="formData.form.name" placeholder="请输入姓名" />
           </a-form-item>
+        </a-col>
+        <a-col :span="6">
           <a-form-item field="phone" label="手机号">
             <a-input v-model="formData.form.phone" placeholder="请输入手机号" />
           </a-form-item>
+        </a-col>
+        <a-col :span="6">
           <a-form-item field="email" label="邮箱">
             <a-input v-model="formData.form.email" placeholder="请输入邮箱" />
           </a-form-item>
-          <a-form-item field="address" label="地址">
-            <a-input v-model="formData.form.address" placeholder="请输入地址" />
-          </a-form-item>
-          <a-form-item field="status" label="用户状态">
-            <a-select
-              :style="{ width: '160px' }"
-              :trigger-props="{ autoFitPopupMinWidth: true }"
-              v-model="formData.form.status"
-              placeholder="请选择用户状态"
-              allow-clear
-            >
-              <a-option value="0">搜索</a-option>
-              <a-option value="1">启用</a-option>
-            </a-select>
-          </a-form-item>
+        </a-col>
+        <a-col :span="6">
           <a-form-item>
             <a-space>
               <a-button size="small" type="primary">查询</a-button>
               <a-button size="small">重置</a-button>
+              <a-button type="text" @click="formData.search = !formData.search">
+                <template #icon>
+                  <icon-up v-if="formData.search" />
+                  <icon-down v-else />
+                </template>
+                <template #default>{{ formData.search ? "收起" : "展开" }}</template>
+              </a-button>
             </a-space>
           </a-form-item>
-        </a-form>
-      </a-col>
-    </a-row>
+        </a-col>
+      </a-row>
+      <a-row :gutter="16" v-if="formData.search">
+        <a-col :span="6">
+          <a-form-item field="address" label="地址">
+            <a-input v-model="formData.form.address" placeholder="请输入地址" />
+          </a-form-item>
+        </a-col>
+        <a-col :span="6">
+          <a-form-item field="status" label="用户状态">
+            <a-select v-model="formData.form.status" placeholder="请选择用户状态" allow-clear>
+              <a-option value="1">停用</a-option>
+              <a-option value="2">启用</a-option>
+            </a-select>
+          </a-form-item>
+        </a-col>
+      </a-row>
+    </a-form>
+    <!-- <a-form :model="formData.form" :layout="formData.layout">
+      <a-form-item field="name" label="姓名">
+        <a-input v-model="formData.form.name" placeholder="请输入姓名" />
+      </a-form-item>
+      <a-form-item field="phone" label="手机号">
+        <a-input v-model="formData.form.phone" placeholder="请输入手机号" />
+      </a-form-item>
+      <a-form-item field="email" label="邮箱">
+        <a-input v-model="formData.form.email" placeholder="请输入邮箱" />
+      </a-form-item>
+      <a-form-item>
+        <a-space>
+          <a-button size="small" type="primary">查询</a-button>
+          <a-button size="small">重置</a-button>
+        </a-space>
+      </a-form-item>
+
+      <a-form-item field="address" label="地址">
+        <a-input v-model="formData.form.address" placeholder="请输入地址" />
+      </a-form-item>
+      <a-form-item field="status" label="用户状态">
+        <a-select v-model="formData.form.status" placeholder="请选择用户状态" allow-clear>
+          <a-option value="1">停用</a-option>
+          <a-option value="2">启用</a-option>
+        </a-select>
+      </a-form-item>
+    </a-form> -->
     <a-table
       row-key="key"
       size="small"
@@ -74,6 +114,7 @@ const formData = reactive({
     address: "",
     status: null
   },
+  search: false,
   layout: "inline"
 });
 const selectedKeys = ref([]);
