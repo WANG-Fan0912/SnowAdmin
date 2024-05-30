@@ -1,27 +1,37 @@
 <template>
   <div class="dc-page">
-    <a-form :model="formData.form">
+    <a-form :model="formData.form" :label-col-props="{ span: 6 }" :wrapper-col-props="{ span: 18 }">
       <a-row :gutter="16">
         <a-col :span="6">
           <a-form-item field="name" label="姓名">
-            <a-input v-model="formData.form.name" placeholder="请输入姓名" />
+            <a-input v-model="formData.form.name" placeholder="请输入姓名" allow-clear />
           </a-form-item>
         </a-col>
         <a-col :span="6">
           <a-form-item field="phone" label="手机号">
-            <a-input v-model="formData.form.phone" placeholder="请输入手机号" />
+            <a-input v-model="formData.form.phone" placeholder="请输入手机号" allow-clear />
           </a-form-item>
         </a-col>
         <a-col :span="6">
           <a-form-item field="email" label="邮箱">
-            <a-input v-model="formData.form.email" placeholder="请输入邮箱" />
+            <a-input v-model="formData.form.email" placeholder="请输入邮箱" allow-clear />
           </a-form-item>
         </a-col>
         <a-col :span="6">
           <a-form-item>
             <a-space>
-              <a-button size="small" type="primary">查询</a-button>
-              <a-button size="small">重置</a-button>
+              <a-button type="primary">
+                <template #icon>
+                  <icon-search />
+                </template>
+                <template #default>查询</template>
+              </a-button>
+              <a-button>
+                <template #icon>
+                  <icon-refresh />
+                </template>
+                <template #default>重置</template>
+              </a-button>
               <a-button type="text" @click="formData.search = !formData.search">
                 <template #icon>
                   <icon-up v-if="formData.search" />
@@ -36,7 +46,7 @@
       <a-row :gutter="16" v-if="formData.search">
         <a-col :span="6">
           <a-form-item field="address" label="地址">
-            <a-input v-model="formData.form.address" placeholder="请输入地址" />
+            <a-input v-model="formData.form.address" placeholder="请输入地址" allow-clear />
           </a-form-item>
         </a-col>
         <a-col :span="6">
@@ -49,33 +59,6 @@
         </a-col>
       </a-row>
     </a-form>
-    <!-- <a-form :model="formData.form" :layout="formData.layout">
-      <a-form-item field="name" label="姓名">
-        <a-input v-model="formData.form.name" placeholder="请输入姓名" />
-      </a-form-item>
-      <a-form-item field="phone" label="手机号">
-        <a-input v-model="formData.form.phone" placeholder="请输入手机号" />
-      </a-form-item>
-      <a-form-item field="email" label="邮箱">
-        <a-input v-model="formData.form.email" placeholder="请输入邮箱" />
-      </a-form-item>
-      <a-form-item>
-        <a-space>
-          <a-button size="small" type="primary">查询</a-button>
-          <a-button size="small">重置</a-button>
-        </a-space>
-      </a-form-item>
-
-      <a-form-item field="address" label="地址">
-        <a-input v-model="formData.form.address" placeholder="请输入地址" />
-      </a-form-item>
-      <a-form-item field="status" label="用户状态">
-        <a-select v-model="formData.form.status" placeholder="请选择用户状态" allow-clear>
-          <a-option value="1">停用</a-option>
-          <a-option value="2">启用</a-option>
-        </a-select>
-      </a-form-item>
-    </a-form> -->
     <a-table
       row-key="key"
       size="small"
@@ -87,18 +70,33 @@
       :row-selection="rowSelection"
       v-model:selectedKeys="selectedKeys"
       :pagination="pagination"
+      @page-change="pageChange"
+      @page-size-change="pageSizeChange"
     >
+      <template #avatar="{ record }">
+        <a-avatar
+          auto-fix-font-size
+          :size="30"
+          :style="{
+            backgroundColor: '#14a9f8'
+          }"
+        >
+          {{ record.avatar }}
+        </a-avatar>
+      </template>
       <template #status="{ record }">
         <a-space>
-          <a-tag color="blue" v-if="record.status == 1">启用</a-tag>
-          <a-tag color="red" v-else>停用</a-tag>
+          <a-tag size="small" color="green" v-if="record.status == 1">启用</a-tag>
+          <a-tag size="small" color="red" v-else>停用</a-tag>
         </a-space>
       </template>
       <template #optional>
         <a-space>
-          <a-button size="small" type="primary">编辑</a-button>
-          <a-button size="small">删除</a-button>
-          <a-button size="small" type="primary" status="danger">修改</a-button>
+          <a-button size="mini" type="primary">编辑</a-button>
+          <a-popconfirm content="确定删除这条数据吗?" type="warning">
+            <a-button size="mini">删除</a-button>
+          </a-popconfirm>
+          <a-button size="mini" type="primary" status="danger">修改</a-button>
         </a-space>
       </template>
     </a-table>
@@ -123,8 +121,13 @@ const rowSelection = reactive({
   showCheckedAll: true,
   onlyCurrent: false
 });
-const pagination = { pageSize: 10 };
-
+const pagination = ref({ showPageSize: true, showTotal: true, current: 1, pageSize: 10, total: 10 });
+const pageChange = (page: number) => {
+  pagination.value.current = page;
+};
+const pageSizeChange = (pageSize: number) => {
+  pagination.value.pageSize = pageSize;
+};
 const columns = [
   {
     title: "姓名",
@@ -132,7 +135,9 @@ const columns = [
   },
   {
     title: "头像",
-    dataIndex: "avatar"
+    dataIndex: "avatar",
+    slotName: "avatar",
+    align: "center"
   },
   {
     title: "手机号",
@@ -165,8 +170,8 @@ const columns = [
 const data = reactive([
   {
     key: "1",
-    name: "张三",
-    avatar: "https://example.com/avatar1.jpg",
+    name: "陈思源",
+    avatar: "陈",
     phone: "13812345678",
     email: "zhangsan@example.com",
     address: "北京市朝阳区",
@@ -175,8 +180,8 @@ const data = reactive([
   },
   {
     key: "2",
-    name: "李四",
-    avatar: "https://example.com/avatar2.jpg",
+    name: "李婉娴",
+    avatar: "李",
     phone: "13987654321",
     email: "lisi@example.com",
     address: "上海市浦东新区",
@@ -185,8 +190,8 @@ const data = reactive([
   },
   {
     key: "3",
-    name: "王五",
-    avatar: "https://example.com/avatar3.jpg",
+    name: "王雨菲",
+    avatar: "王",
     phone: "13666666666",
     email: "wangwu@example.com",
     address: "广州市天河区",
@@ -195,8 +200,8 @@ const data = reactive([
   },
   {
     key: "4",
-    name: "赵六",
-    avatar: "https://example.com/avatar4.jpg",
+    name: "张晨曦",
+    avatar: "张",
     phone: "13788888888",
     email: "zhaoliu@example.com",
     address: "深圳市福田区",
@@ -205,8 +210,8 @@ const data = reactive([
   },
   {
     key: "5",
-    name: "钱七",
-    avatar: "https://example.com/avatar5.jpg",
+    name: "赵梦琪",
+    avatar: "赵",
     phone: "13599999999",
     email: "qianqi@example.com",
     address: "成都市锦江区",
@@ -215,8 +220,8 @@ const data = reactive([
   },
   {
     key: "6",
-    name: "孙八",
-    avatar: "https://example.com/avatar6.jpg",
+    name: "刘昊然",
+    avatar: "刘",
     phone: "13377777777",
     email: "sunba@example.com",
     address: "杭州市西湖区",
@@ -225,8 +230,8 @@ const data = reactive([
   },
   {
     key: "7",
-    name: "周九",
-    avatar: "https://example.com/avatar7.jpg",
+    name: "孙梦洁",
+    avatar: "孙",
     phone: "13266666666",
     email: "zhoujiu@example.com",
     address: "南京市鼓楼区",
@@ -235,8 +240,8 @@ const data = reactive([
   },
   {
     key: "8",
-    name: "吴十",
-    avatar: "https://example.com/avatar8.jpg",
+    name: "黄俊杰",
+    avatar: "黄",
     phone: "13155555555",
     email: "wushi@example.com",
     address: "重庆市渝中区",
@@ -245,8 +250,8 @@ const data = reactive([
   },
   {
     key: "9",
-    name: "郑十一",
-    avatar: "https://example.com/avatar9.jpg",
+    name: "周雨萱",
+    avatar: "周",
     phone: "13044444444",
     email: "zhengshiyi@example.com",
     address: "武汉市江汉区",
@@ -255,8 +260,8 @@ const data = reactive([
   },
   {
     key: "10",
-    name: "孔十二",
-    avatar: "https://example.com/avatar10.jpg",
+    name: "韩雪儿",
+    avatar: "韩",
     phone: "13933333333",
     email: "kongshier@example.com",
     address: "西安市雁塔区",
