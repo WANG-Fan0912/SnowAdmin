@@ -4,6 +4,7 @@ export default {
     ["home"]: "home",
     ["basic-table"]: "basic table",
     ["common-table"]: "common table",
+    ["custom-table"]: "custom table",
     ["common-components"]: "common components",
     ["form-component"]: "form components",
     ["dynamic-form"]: "dynamic form",

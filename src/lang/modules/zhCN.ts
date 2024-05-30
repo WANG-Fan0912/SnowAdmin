@@ -4,6 +4,7 @@ export default {
     ["home"]: "首页",
     ["basic-table"]: "表格 Table",
     ["common-table"]: "普通表格",
+    ["custom-table"]: "自定义表格",
     ["common-components"]: "常用组件",
     ["form-component"]: "表单组件",
     ["dynamic-form"]: "动态表单",

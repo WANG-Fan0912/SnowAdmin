@@ -112,8 +112,7 @@ const formData = reactive({
     address: "",
     status: null
   },
-  search: false,
-  layout: "inline"
+  search: false
 });
 const selectedKeys = ref([]);
 const rowSelection = reactive({

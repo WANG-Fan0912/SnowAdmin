@@ -94,6 +94,21 @@ export const dynamicRoutes: RouteRecordRaw[] = [
               roles: ["admin"],
               icon: "icon-menu"
             }
+          },
+          {
+            path: "/basic-table/custom-table",
+            name: "custom-table",
+            component: () => import("@/views/basic-table/custom-table/custom-table.vue"),
+            meta: {
+              title: "custom-table",
+              link: "",
+              hide: false,
+              keepAlive: true,
+              affix: false,
+              iframe: false,
+              roles: ["admin"],
+              icon: "icon-menu"
+            }
           }
         ]
       },
