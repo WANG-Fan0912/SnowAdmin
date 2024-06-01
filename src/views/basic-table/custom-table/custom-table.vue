@@ -92,14 +92,34 @@
           <a-tooltip content="刷新">
             <div class="action-icon"><icon-refresh size="18" /></div>
           </a-tooltip>
-          <a-dropdown>
+          <a-dropdown @select="onDensity">
             <a-tooltip content="密度">
               <div class="action-icon"><icon-line-height size="18" /></div>
             </a-tooltip>
+            <template #content>
+              <a-doption v-for="item in densityType" :value="item.value" :key="item.value" :disabled="item.value === density">{{
+                item.label
+              }}</a-doption>
+            </template>
           </a-dropdown>
           <a-tooltip content="列设置">
-            <a-popover trigger="click" position="bl">
+            <a-popover trigger="click" position="br" @popup-visible-change="popupVisibleChange">
               <div class="action-icon"><icon-settings size="18" /></div>
+              <template #content>
+                <div id="tableSetting">
+                  <div v-for="(item, index) in columns" :key="item.dataIndex" class="setting">
+                    <div class="setting-box-icon">
+                      <icon-drag-arrow />
+                    </div>
+                    <div>
+                      <a-checkbox v-model="item.checked" @change="onCheckbox($event, item, index)"> </a-checkbox>
+                    </div>
+                    <div class="title">
+                      {{ item.title }}
+                    </div>
+                  </div>
+                </div>
+              </template>
             </a-popover>
           </a-tooltip>
         </a-space>
@@ -107,11 +127,12 @@
     </a-row>
     <a-table
       row-key="key"
-      size="small"
+      column-resizable
+      :size="density"
       :bordered="{
         cell: true
       }"
-      :columns="columns"
+      :columns="columnsShow"
       :data="data"
       :row-selection="rowSelection"
       v-model:selectedKeys="selectedKeys"
@@ -135,6 +156,8 @@
 </template>
 
 <script setup lang="ts">
+import { deepClone } from "@/utils";
+// import Sortable from "sortablejs";
 const formData = reactive({
   form: {
     serial: "",
@@ -160,43 +183,56 @@ const pageChange = (page: number) => {
 const pageSizeChange = (pageSize: number) => {
   pagination.value.pageSize = pageSize;
 };
-const columns = [
+const columnsShow = ref([]);
+const columns = ref([
   {
     title: "集合编号",
-    dataIndex: "serial"
+    dataIndex: "serial",
+    checked: true
   },
   {
     title: "集合名称",
-    dataIndex: "name"
+    dataIndex: "name",
+    checked: true
   },
   {
     title: "内容载体",
-    dataIndex: "content"
+    dataIndex: "content",
+    checked: true
   },
   {
     title: "筛选方式",
-    dataIndex: "searchType"
+    dataIndex: "searchType",
+    checked: true
   },
   {
     title: "内容量",
-    dataIndex: "contentSize"
+    dataIndex: "contentSize",
+    checked: true
   },
   {
     title: "创建时间",
-    dataIndex: "createTime"
+    dataIndex: "createTime",
+    checked: true
   },
   {
     title: "状态",
     dataIndex: "status",
     slotName: "status",
-    align: "center"
+    align: "center",
+    checked: true
   },
   {
     title: "操作",
     slotName: "optional",
-    align: "center"
+    align: "center",
+    checked: true
   }
-];
+]);
+const deepColumns = () => {
+  columnsShow.value = deepClone(columns.value);
+};
+deepColumns();
 const data = reactive([
   {
     key: "1",
@@ -299,6 +335,69 @@ const data = reactive([
     createTime: "2024-05-18 13:55:00"
   }
 ]);
+
+const densityType = ref([
+  {
+    value: "mini",
+    label: "迷你"
+  },
+  {
+    value: "small",
+    label: "偏小"
+  },
+  {
+    value: "medium",
+    label: "中等"
+  },
+  {
+    value: "large",
+    label: "偏大"
+  }
+]);
+// 密度
+const density = ref("small");
+const onDensity = (e: string) => {
+  density.value = e;
+};
+
+// 排序
+const onCheckbox = (checked: any, row: any, index: any) => {
+  if (!checked) {
+    columnsShow.value = columnsShow.value.filter((item: any) => item.dataIndex != row.dataIndex);
+  } else {
+    columnsShow.value.splice(index, 0, row);
+  }
+};
+// 气泡窗打开
+const popupVisibleChange = (visible: boolean) => {
+  console.log("文字气泡窗打开？", visible);
+  // if (visible) {
+  //   nextTick(() => {
+  //     const el = document.getElementById("tableSetting") as HTMLElement;
+  //     new Sortable(el, {
+  //       onEnd(e: any) {
+  //         const { oldIndex, newIndex } = e;
+  //         console.log("移动", oldIndex, newIndex);
+  //         // exchangeArray(cloneColumns.value, oldIndex, newIndex);
+  //         // exchangeArray(showColumns.value, oldIndex, newIndex);
+  //       }
+  //     });
+  //   });
+  // }
+};
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.setting {
+  width: 200px;
+  display: flex;
+  align-items: center;
+  .setting-box-icon {
+    margin-right: 4px;
+    cursor: move;
+  }
+  .title {
+    margin-left: $margin-text;
+  }
+}
+</style>
