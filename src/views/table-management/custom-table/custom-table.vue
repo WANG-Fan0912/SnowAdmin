@@ -140,12 +140,11 @@
       @page-change="pageChange"
       @page-size-change="pageSizeChange"
     >
-
-    <template #content="{ record }">
+      <template #content="{ record }">
         <a-space>
           <SvgIcon :name="'word'" :size="18" v-if="record.content == '图文'" />
-          <SvgIcon :name="'video'" :size="18" v-if="record.content == '视频'"/>
-          <SvgIcon :name="'mp3'" :size="18" v-if="record.content == '音频'"/>
+          <SvgIcon :name="'video'" :size="18" v-if="record.content == '视频'" />
+          <SvgIcon :name="'mp3'" :size="18" v-if="record.content == '音频'" />
           <span>{{ record.content }}</span>
         </a-space>
       </template>
@@ -208,7 +207,7 @@ const columns = ref([
     title: "内容载体",
     dataIndex: "content",
     checked: true,
-    slotName: "content",
+    slotName: "content"
   },
   {
     title: "筛选方式",
@@ -390,7 +389,6 @@ const popupVisibleChange = (visible: boolean) => {
         onEnd(e: any) {
           // 移动结束后，获得新旧下标，这里不会实际更改原始值
           const { oldIndex, newIndex } = e;
-          console.log("移动",columns.value, columnsShow.value);
           // 根据新旧下标更改原始值，更改弹窗columns和列表columns
           exchangeArray(columns.value, oldIndex, newIndex);
           exchangeArray(columnsShow.value, oldIndex, newIndex);

@@ -1,9 +1,0 @@
-<template>
-  <div>
-    <div>表单数据</div>
-  </div>
-</template>
-
-<script setup lang="ts"></script>
-
-<style lang="scss" scoped></style>

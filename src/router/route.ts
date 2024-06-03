@@ -66,11 +66,11 @@ export const dynamicRoutes: RouteRecordRaw[] = [
         }
       },
       {
-        path: "/basic-table",
-        name: "basic-table",
-        redirect: "/basic-table/common-table",
+        path: "/table-management",
+        name: "table-management",
+        redirect: "/table-management/common-table",
         meta: {
-          title: "basic-table",
+          title: "table-management",
           link: "",
           hide: false,
           keepAlive: true,
@@ -81,9 +81,9 @@ export const dynamicRoutes: RouteRecordRaw[] = [
         },
         children: [
           {
-            path: "/basic-table/common-table",
+            path: "/table-management/common-table",
             name: "common-table",
-            component: () => import("@/views/basic-table/common-table/common-table.vue"),
+            component: () => import("@/views/table-management/common-table/common-table.vue"),
             meta: {
               title: "common-table",
               link: "",
@@ -96,9 +96,9 @@ export const dynamicRoutes: RouteRecordRaw[] = [
             }
           },
           {
-            path: "/basic-table/custom-table",
+            path: "/table-management/custom-table",
             name: "custom-table",
-            component: () => import("@/views/basic-table/custom-table/custom-table.vue"),
+            component: () => import("@/views/table-management/custom-table/custom-table.vue"),
             meta: {
               title: "custom-table",
               link: "",
@@ -113,11 +113,11 @@ export const dynamicRoutes: RouteRecordRaw[] = [
         ]
       },
       {
-        path: "/common-components",
-        name: "common-components",
-        redirect: "/common-components/form-component",
+        path: "/form-management",
+        name: "form-management",
+        redirect: "/form-management/common-form",
         meta: {
-          title: "common-components",
+          title: "form-management",
           link: "",
           hide: false,
           keepAlive: true,
@@ -128,11 +128,11 @@ export const dynamicRoutes: RouteRecordRaw[] = [
         },
         children: [
           {
-            path: "/common-components/form-component",
-            name: "form-component",
-            component: () => import("@/views/common-components/form-component/form-component.vue"),
+            path: "/form-management/common-form",
+            name: "common-form",
+            component: () => import("@/views/form-management/common-form/common-form.vue"),
             meta: {
-              title: "form-component",
+              title: "common-form",
               link: "",
               hide: false,
               keepAlive: true,
@@ -143,9 +143,9 @@ export const dynamicRoutes: RouteRecordRaw[] = [
             }
           },
           {
-            path: "/common-components/dynamic-form",
+            path: "/form-management/dynamic-form",
             name: "dynamic-form",
-            component: () => import("@/views/common-components/dynamic-form/dynamic-form.vue"),
+            component: () => import("@/views/form-management/dynamic-form/dynamic-form.vue"),
             meta: {
               title: "dynamic-form",
               link: "",
