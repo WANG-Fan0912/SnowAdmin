@@ -140,6 +140,15 @@
       @page-change="pageChange"
       @page-size-change="pageSizeChange"
     >
+
+    <template #content="{ record }">
+        <a-space>
+          <SvgIcon :name="'word'" :size="18" v-if="record.content == '图文'" />
+          <SvgIcon :name="'video'" :size="18" v-if="record.content == '视频'"/>
+          <SvgIcon :name="'mp3'" :size="18" v-if="record.content == '音频'"/>
+          <span>{{ record.content }}</span>
+        </a-space>
+      </template>
       <template #status="{ record }">
         <a-space>
           <a-badge status="success" text="已上线" v-if="record.status == 1" />
@@ -198,7 +207,8 @@ const columns = ref([
   {
     title: "内容载体",
     dataIndex: "content",
-    checked: true
+    checked: true,
+    slotName: "content",
   },
   {
     title: "筛选方式",
@@ -239,7 +249,7 @@ const data = reactive([
   {
     key: "1",
     serial: "57",
-    name: "陈思源",
+    name: "WEIJEIWGSDG",
     content: "图文",
     searchType: "阅读量",
     contentSize: 3700,
@@ -249,7 +259,7 @@ const data = reactive([
   {
     key: "2",
     serial: "58",
-    name: "李婉娴",
+    name: "DHDWEH",
     content: "图文",
     searchType: "阅读量",
     contentSize: 3700,
@@ -259,7 +269,7 @@ const data = reactive([
   {
     key: "3",
     serial: "59",
-    name: "王雨菲",
+    name: "SHEHWAE",
     content: "视频",
     searchType: "播放量",
     contentSize: 2500,
@@ -269,7 +279,7 @@ const data = reactive([
   {
     key: "4",
     serial: "60",
-    name: "张晨曦",
+    name: "WEHJUK",
     content: "视频",
     searchType: "播放量",
     contentSize: 2500,
@@ -279,7 +289,7 @@ const data = reactive([
   {
     key: "5",
     serial: "61",
-    name: "赵梦琪",
+    name: "EYTUJDGSD",
     content: "音频",
     searchType: "播放量",
     contentSize: 2500,
@@ -289,7 +299,7 @@ const data = reactive([
   {
     key: "6",
     serial: "62",
-    name: "刘昊然",
+    name: "RTIFSDF",
     content: "图文",
     searchType: "阅读量",
     contentSize: 3700,
@@ -299,7 +309,7 @@ const data = reactive([
   {
     key: "7",
     serial: "63",
-    name: "孙梦洁",
+    name: "OIKSHHFD",
     content: "图文",
     searchType: "阅读量",
     contentSize: 3700,
@@ -309,7 +319,7 @@ const data = reactive([
   {
     key: "8",
     serial: "64",
-    name: "黄俊杰",
+    name: "QEUHRKO",
     content: "视频",
     searchType: "播放量",
     contentSize: 2500,
@@ -319,7 +329,7 @@ const data = reactive([
   {
     key: "9",
     serial: "65",
-    name: "周雨萱",
+    name: "JSGSDRI",
     content: "视频",
     searchType: "播放量",
     contentSize: 2300,
@@ -329,7 +339,7 @@ const data = reactive([
   {
     key: "10",
     serial: "66",
-    name: "韩雪儿",
+    name: "AOUSTHREGG",
     content: "音频",
     searchType: "播放量",
     contentSize: 2300,
