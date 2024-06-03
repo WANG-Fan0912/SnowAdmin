@@ -157,7 +157,7 @@
 
 <script setup lang="ts">
 import { deepClone } from "@/utils";
-// import Sortable from "sortablejs";
+import Sortable from "sortablejs";
 const formData = reactive({
   form: {
     serial: "",
@@ -229,6 +229,8 @@ const columns = ref([
     checked: true
   }
 ]);
+// 将columns深拷贝一份，两份分别用于弹窗展示和列表展示
+// 原因：弹窗展示时可以勾选是否渲染，如果弹窗和列表共用一个数据，会导致数据勾选取消后无法复原
 const deepColumns = () => {
   columnsShow.value = deepClone(columns.value);
 };
@@ -370,20 +372,34 @@ const onCheckbox = (checked: any, row: any, index: any) => {
 };
 // 气泡窗打开
 const popupVisibleChange = (visible: boolean) => {
-  console.log("文字气泡窗打开？", visible);
-  // if (visible) {
-  //   nextTick(() => {
-  //     const el = document.getElementById("tableSetting") as HTMLElement;
-  //     new Sortable(el, {
-  //       onEnd(e: any) {
-  //         const { oldIndex, newIndex } = e;
-  //         console.log("移动", oldIndex, newIndex);
-  //         // exchangeArray(cloneColumns.value, oldIndex, newIndex);
-  //         // exchangeArray(showColumns.value, oldIndex, newIndex);
-  //       }
-  //     });
-  //   });
-  // }
+  if (visible) {
+    nextTick(() => {
+      // 获取dom
+      const el = document.getElementById("tableSetting") as HTMLElement;
+      new Sortable(el, {
+        onEnd(e: any) {
+          // 移动结束后，获得新旧下标，这里不会实际更改原始值
+          const { oldIndex, newIndex } = e;
+          console.log("移动",columns.value, columnsShow.value);
+          // 根据新旧下标更改原始值，更改弹窗columns和列表columns
+          exchangeArray(columns.value, oldIndex, newIndex);
+          exchangeArray(columnsShow.value, oldIndex, newIndex);
+        }
+      });
+    });
+  }
+};
+
+// 位置替换
+const exchangeArray = (columns: Array<any>, oldIndex: number, newIndex: number) => {
+  // 保存要交换的元素
+  let temp = columns[newIndex];
+
+  // 将newIndex处的元素移动到oldIndex处
+  columns[newIndex] = columns[oldIndex];
+
+  // 将保存的元素移动到newIndex处
+  columns[oldIndex] = temp;
 };
 </script>
 
