@@ -1,28 +1,20 @@
 <template>
-  <div class="main">
-    <code-mirror basic :lang="lang" v-model="codeVal" style="height: 400px" :theme="theme" :extensions="extensions" />
-  </div>
+  <code-mirror basic :lang="lang" v-model="codeVal" :theme="theme" :extensions="extensions" />
 </template>
 
 <script setup lang="ts">
 import CodeMirror from "vue-codemirror6";
-import { oneDark } from '@codemirror/theme-one-dark'
+import { oneDark } from "@codemirror/theme-one-dark";
 import { json } from "@codemirror/lang-json";
 
 defineOptions({ name: "CodemirrorCode" });
 const props = defineProps({
   initJson: {
     type: Object,
-    default: () => {}
+    default: {}
   }
 });
 
-// const initJson = {
-//   name: `maybaby`,
-//   year: 25,
-//   weight: 45,
-//   height: 165
-// };
 // 初始化
 let codeVal = ref("");
 // 转成json字符串并格式化
@@ -54,13 +46,4 @@ const theme = {
 };
 </script>
 
-<style lang="scss" scoped>
-.main {
-  width: 100%;
-  height: 100%;
-}
-/* required! */
-.cm-editor {
-  height: 100%;
-}
-</style>
+<style lang="scss" scoped></style>

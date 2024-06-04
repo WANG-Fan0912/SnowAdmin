@@ -8,3 +8,6 @@ declare module "*.vue" {
 declare module "vue-i18n";
 declare module "@arco-design/color";
 declare module "sortablejs";
+declare module "vue-codemirror6";
+declare module "@codemirror/theme-one-dark";
+declare module "@codemirror/lang-json";
