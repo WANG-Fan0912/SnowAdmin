@@ -77,7 +77,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
           affix: true,
           iframe: false,
           roles: ["admin"],
-          svgIcon: "set"
+          svgIcon: "table"
         },
         children: [
           {
@@ -124,7 +124,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
           affix: true,
           iframe: false,
           roles: ["admin"],
-          svgIcon: "set"
+          svgIcon: "form"
         },
         children: [
           {
