@@ -1,11 +1,12 @@
 <template>
   <div class="main">
-    <code-mirror basic :lang="lang" v-model="codeVal" style="height: 400px" :theme="theme" />
+    <code-mirror basic :lang="lang" v-model="codeVal" style="height: 400px" :theme="theme" :extensions="extensions" />
   </div>
 </template>
 
 <script setup lang="ts">
 import CodeMirror from "vue-codemirror6";
+import { oneDark } from '@codemirror/theme-one-dark'
 import { json } from "@codemirror/lang-json";
 
 defineOptions({ name: "CodemirrorCode" });
@@ -28,6 +29,8 @@ let codeVal = ref("");
 codeVal.value = JSON.stringify(props.initJson, null, "\t");
 // json
 const lang = json();
+// 扩展
+const extensions = [oneDark];
 // 主题样式设置
 const theme = {
   "&": {
