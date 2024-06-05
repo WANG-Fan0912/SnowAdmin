@@ -1,10 +1,9 @@
 <template>
   <code-mirror
-    basic
     v-model="codeValue"
     :extensions="extensions"
-    :tab-size="config.tabSize"
     :basic="config.basic"
+    :tab-size="config.tabSize"
     :dark="config.dark"
     :readonly="config.readonly"
   />
@@ -26,21 +25,25 @@ interface Props {
 // withDefaults为defineProps标注类型
 // https://cn.vuejs.org/guide/typescript/composition-api.html#typing-component-props
 const props = withDefaults(defineProps<Props>(), {
-  type: "javascript",
-  codeJson: ""
+  type: "javascript", // 默认类型
+  codeJson: "" // 默认值
 });
 
+// 通过计算属性实现数据实时更新
+// 将序列化的字符串美观输出，\t 换行
 const codeValue = computed(() => JSON.stringify(props.codeJson, null, "\t"));
 
-const defaultConfig = {
+// 基础配置
+const config = ref({
   tabSize: 2,
   basic: true,
   dark: true,
   readonly: true
-};
-const config = defaultConfig;
+});
 
 // 扩展
+// 基础扩展：黑暗模式
+// 根据默认值来判断添加什么扩展
 const extensions = computed(() => {
   const arr = [oneDark];
   if (props.type === "javascript") {
@@ -59,6 +62,12 @@ const extensions = computed(() => {
 <style lang="scss" scoped>
 // 修改code中的字体样式
 :deep(.ͼ1 .cm-scroller) {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, Courier New, monospace;
+  font-family:
+    source-code-pro,
+    Menlo,
+    Monaco,
+    Consolas,
+    Courier New,
+    monospace;
 }
 </style>
