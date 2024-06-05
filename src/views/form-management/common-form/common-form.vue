@@ -90,7 +90,7 @@
         </a-form>
       </a-col>
       <a-col :span="12">
-        <CodemirrorCode :initJson="form" />
+        <CodeView :code-json="form" />
       </a-col>
     </a-row>
   </div>

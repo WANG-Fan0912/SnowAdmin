@@ -23,7 +23,9 @@
   },
   "dependencies": {
     "@arco-design/color": "^0.4.0",
+    "@codemirror/lang-javascript": "^6.2.2",
     "@codemirror/lang-json": "^6.0.1",
+    "@codemirror/lang-vue": "^0.1.3",
     "@codemirror/theme-one-dark": "^6.1.2",
     "@visactor/vchart": "^1.11.0",
     "@visactor/vchart-arco-theme": "^1.11.0",

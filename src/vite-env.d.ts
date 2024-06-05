@@ -11,3 +11,5 @@ declare module "sortablejs";
 declare module "vue-codemirror6";
 declare module "@codemirror/theme-one-dark";
 declare module "@codemirror/lang-json";
+declare module "@codemirror/lang-javascript";
+declare module "@codemirror/lang-vue";
