@@ -84,13 +84,13 @@
           <a-form-item>
             <a-space>
               <a-button html-type="submit">提交</a-button>
-              <a-button @click="$refs.formRef.resetFields()">重置</a-button>
+              <a-button @click="onReset">重置</a-button>
             </a-space>
           </a-form-item>
         </a-form>
       </a-col>
       <a-col :span="12">
-        <CodeView :code-json="form" />
+        <CodeView :code-json="codeJson" />
       </a-col>
     </a-row>
   </div>
@@ -100,7 +100,8 @@
 const handleSubmit = ({ values, errors }: any) => {
   console.log("values:", values, "\nerrors:", errors);
 };
-
+// 将序列化的字符串美观输出，\t 换行
+const codeJson = computed(() => JSON.stringify(form, null, "\t"));
 const form = reactive({
   size: "medium",
   name: "",
@@ -189,6 +190,11 @@ const treeData = [
     ]
   }
 ];
+
+const formRef = ref();
+const onReset = () => {
+  formRef.value.resetFields();
+};
 </script>
 
 <style lang="scss" scoped></style>

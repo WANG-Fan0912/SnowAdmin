@@ -18,6 +18,7 @@ import { vue } from "@codemirror/lang-vue";
 
 defineOptions({ name: "CodeView" });
 
+// Props接口类型
 interface Props {
   type?: "javascript" | "vue" | "json";
   codeJson: string;
@@ -25,13 +26,13 @@ interface Props {
 // withDefaults为defineProps标注类型
 // https://cn.vuejs.org/guide/typescript/composition-api.html#typing-component-props
 const props = withDefaults(defineProps<Props>(), {
-  type: "javascript", // 默认类型
+  type: "javascript", // 默认值
   codeJson: "" // 默认值
 });
 
 // 通过计算属性实现数据实时更新
 // 将序列化的字符串美观输出，\t 换行
-const codeValue = computed(() => JSON.stringify(props.codeJson, null, "\t"));
+const codeValue = computed(() => props.codeJson);
 
 // 基础配置
 const config = ref({
