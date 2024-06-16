@@ -1,5 +1,6 @@
 @import "./index.scss";
 
+// 处理首页数据图大小
 // 页面宽度 大于 0px 小于 992px;
 @media screen and (min-width: $xs) and (max-width: $lg) {
   .sell-histogram {

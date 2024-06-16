@@ -1,5 +1,5 @@
 <template>
-  <div>关于项目</div>
+  <div class="dc-page">关于项目</div>
 </template>
 
 <script setup lang="ts"></script>

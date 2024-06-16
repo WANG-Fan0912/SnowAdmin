@@ -1,7 +1,5 @@
 <template>
-  <div class="dc-page">
-    <div>三级-菜单-07</div>
-  </div>
+  <div class="dc-page">用户设置</div>
 </template>
 
 <script setup lang="ts"></script>
