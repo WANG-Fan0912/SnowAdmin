@@ -47,6 +47,7 @@ export default {
     ["logout"]: "退出登录",
     ["notice"]: "通知",
     ["message"]: "消息",
-    ["backlog"]: "待办"
+    ["backlog"]: "待办",
+    ["switch-language-to-preview"]: "请切换语言来预览国际化效果"
   }
 };

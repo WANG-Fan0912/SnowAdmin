@@ -47,6 +47,7 @@ export default {
     ["logout"]: "logout",
     ["notice"]: "Notice",
     ["message"]: "Message",
-    ["backlog"]: "Backlog"
+    ["backlog"]: "Backlog",
+    ["switch-language-to-preview"]: "Please switch the language to preview the internationalization effect"
   }
 };

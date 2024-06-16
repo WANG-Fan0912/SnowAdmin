@@ -1,6 +1,6 @@
 <template>
   <div class="dc-page">
-    <p>请切换语言来预览国际化效果</p>
+    <p>{{ $t(`language.switch-language-to-preview`) }}</p>
     <br />
     <div>
       <a-date-picker style="width: 200px" />
