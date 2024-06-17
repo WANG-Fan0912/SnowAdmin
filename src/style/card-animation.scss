@@ -9,6 +9,8 @@
   }
 }
 
+// 卡片过渡动画
+// 根据遍历的卡片数量应用动画，卡片数量支持20个
 @for $i from 0 through 20 {
   .animated-fade-up-#{$i} {
     opacity: 0; // 初始透明度

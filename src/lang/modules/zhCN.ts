@@ -20,6 +20,9 @@ export default {
     ["third-menu-7"]: "三级菜单-7",
     ["third-menu-8"]: "三级菜单-8",
     ["third-menu-9"]: "三级菜单-9",
+    ["personal-center"]: "用户中心",
+    ["userinfo"]: "用户信息",
+    ["user-settings"]: "用户设置",
     ["about-project"]: "关于项目",
     ["not-power"]: "没有权限",
     ["not-found"]: "未找到页面",
@@ -44,6 +47,7 @@ export default {
     ["logout"]: "退出登录",
     ["notice"]: "通知",
     ["message"]: "消息",
-    ["backlog"]: "待办"
+    ["backlog"]: "待办",
+    ["switch-language-to-preview"]: "请切换语言来预览国际化效果"
   }
 };

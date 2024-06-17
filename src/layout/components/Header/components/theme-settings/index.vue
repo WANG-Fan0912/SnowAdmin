@@ -136,6 +136,7 @@ const handleCancel = () => {
   align-items: center;
   justify-content: center;
   margin-bottom: $margin;
+  column-gap: $margin;
 }
 
 .layout-defaults,
@@ -143,7 +144,6 @@ const handleCancel = () => {
 .layout-mixing {
   width: 70px;
   height: 50px;
-  margin-right: $margin;
   background: $color-fill-1;
   border-radius: $radius-box;
   overflow: hidden;

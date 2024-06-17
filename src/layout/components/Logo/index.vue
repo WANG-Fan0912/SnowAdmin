@@ -1,7 +1,7 @@
 <template>
   <div :class="layoutType == 'layoutHead' ? 'logo_head no-border' : 'logo_head'">
     <img :src="Logo" class="logo" />
-    <span :class="isDark ? 'logo_title dark' : 'logo_title'" v-if="!collapsed">dc admin</span>
+    <span :class="isDark ? 'logo_title dark' : 'logo_title'" v-if="isTitle">dc admin</span>
   </div>
 </template>
 
@@ -12,8 +12,18 @@ import { useThemeConfig } from "@/store/modules/theme-config";
 const themeStore = useThemeConfig();
 const { collapsed, asideDark, layoutType } = storeToRefs(themeStore);
 
+// 黑暗模式的文字渲染
 const isDark = computed(() => {
   if (asideDark.value && layoutType.value != "layoutHead") {
+    return true;
+  } else {
+    return false;
+  }
+});
+
+// 是否展示标题
+const isTitle = computed(() => {
+  if (!collapsed.value || layoutType.value == "layoutHead") {
     return true;
   } else {
     return false;

@@ -240,6 +240,54 @@ export const dynamicRoutes: RouteRecordRaw[] = [
         ]
       },
       {
+        path: "/personal-center",
+        name: "personal-center",
+        meta: {
+          title: "personal-center",
+          link: "",
+          hide: false,
+          keepAlive: true,
+          affix: false,
+          iframe: false,
+          roles: ["admin"],
+          svgIcon: "user"
+        },
+        children: [
+          {
+            path: "/personal-center/userinfo",
+            name: "userinfo",
+            component: () => import("@/views/personal-center/userinfo/userinfo.vue"),
+            meta: {
+              title: "userinfo",
+              link: "",
+              hide: false,
+              keepAlive: true,
+              affix: false,
+              iframe: false,
+              roles: ["admin"],
+              icon: "icon-menu"
+            },
+            children: []
+          },
+          {
+            path: "/personal-center/user-settings",
+            name: "user-settings",
+            component: () => import("@/views/personal-center/user-settings/user-settings.vue"),
+            meta: {
+              title: "user-settings",
+              link: "",
+              hide: false,
+              keepAlive: true,
+              affix: false,
+              iframe: false,
+              roles: ["admin"],
+              icon: "icon-menu"
+            },
+            children: []
+          }
+        ]
+      },
+      {
         path: "/internationalization",
         name: "internationalization",
         component: () => import("@/views/internationalization/internationalization.vue"),

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="dc-page">
     <div>三级-菜单-09</div>
   </div>
 </template>
