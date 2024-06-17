@@ -7,7 +7,7 @@ export default {
     ["custom-table"]: "自定义列表",
     ["form-management"]: "表单管理",
     ["common-form"]: "普通表单",
-    ["dynamic-form"]: "动态表单",
+    ["step-form"]: "分步表单",
     ["multilevel-menu"]: "多级菜单",
     ["second-menu-1"]: "二级菜单-1",
     ["second-menu-2"]: "二级菜单-2",

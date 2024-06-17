@@ -7,7 +7,7 @@ export default {
     ["custom-table"]: "custom table",
     ["form-management"]: "form management",
     ["common-form"]: "common form",
-    ["dynamic-form"]: "dynamic form",
+    ["step-form"]: "step form",
     ["multilevel-menu"]: "multilevel menu",
     ["second-menu-1"]: "second-menu-1",
     ["second-menu-2"]: "second-menu-2",

@@ -143,11 +143,11 @@ export const dynamicRoutes: RouteRecordRaw[] = [
             }
           },
           {
-            path: "/form-management/dynamic-form",
-            name: "dynamic-form",
-            component: () => import("@/views/form-management/dynamic-form/dynamic-form.vue"),
+            path: "/form-management/step-form",
+            name: "step-form",
+            component: () => import("@/views/form-management/step-form/step-form.vue"),
             meta: {
-              title: "dynamic-form",
+              title: "step-form",
               link: "",
               hide: false,
               keepAlive: true,
