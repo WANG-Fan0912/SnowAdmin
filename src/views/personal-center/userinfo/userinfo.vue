@@ -1,5 +1,5 @@
 <template>
-  <div class="dc-page">个人中心</div>
+  <div class="dc-page">用户信息</div>
 </template>
 
 <script setup lang="ts"></script>
