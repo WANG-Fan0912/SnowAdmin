@@ -18,6 +18,7 @@ import { vue } from "@codemirror/lang-vue";
 
 defineOptions({ name: "CodeView" });
 
+
 // Props接口类型
 interface Props {
   type?: "javascript" | "vue" | "json";
