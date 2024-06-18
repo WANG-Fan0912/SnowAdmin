@@ -5,6 +5,15 @@
   background: $color-bg-1;
 }
 
+.dc-page-clear {
+  margin: $padding;
+  padding: $padding;
+}
+
+.border-red {
+  box-shadow: $shadow-border-1;
+}
+
 // 通用全外边距
 .margin {
   margin: $margin;

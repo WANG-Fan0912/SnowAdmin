@@ -18,29 +18,27 @@
           </a-form-item>
         </a-col>
         <a-col :span="6">
-          <a-form-item>
-            <a-space>
-              <a-button type="primary">
-                <template #icon>
-                  <icon-search />
-                </template>
-                <template #default>查询</template>
-              </a-button>
-              <a-button @click="$refs.formRef.resetFields()">
-                <template #icon>
-                  <icon-refresh />
-                </template>
-                <template #default>重置</template>
-              </a-button>
-              <a-button type="text" @click="formData.search = !formData.search">
-                <template #icon>
-                  <icon-up v-if="formData.search" />
-                  <icon-down v-else />
-                </template>
-                <template #default>{{ formData.search ? "收起" : "展开" }}</template>
-              </a-button>
-            </a-space>
-          </a-form-item>
+          <a-space>
+            <a-button type="primary">
+              <template #icon>
+                <icon-search />
+              </template>
+              <template #default>查询</template>
+            </a-button>
+            <a-button @click="$refs.formRef.resetFields()">
+              <template #icon>
+                <icon-refresh />
+              </template>
+              <template #default>重置</template>
+            </a-button>
+            <a-button type="text" @click="formData.search = !formData.search">
+              <template #icon>
+                <icon-up v-if="formData.search" />
+                <icon-down v-else />
+              </template>
+              <template #default>{{ formData.search ? "收起" : "展开" }}</template>
+            </a-button>
+          </a-space>
         </a-col>
       </a-row>
       <a-row :gutter="16" v-if="formData.search">
