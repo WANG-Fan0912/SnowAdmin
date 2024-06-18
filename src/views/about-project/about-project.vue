@@ -32,8 +32,8 @@ const projectInfo = [
     value: "2024-06-18"
   },
   {
-    label: "Gitt",
-    value: "Gitt"
+    label: "Gitee",
+    value: "Gitee"
   },
   {
     label: "Github",
