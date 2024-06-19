@@ -81,7 +81,6 @@ const list = reactive({
     { label: "🌈人生多彩，除了工作还有很大的世界供我们探索，Let's go!" }
   ]
 });
-console.log(list);
 
 const onLink = (item: any) => {
   if (!item.link) return;
