@@ -9,7 +9,7 @@
         <div class="my-local"><icon-location />浙江杭州</div>
       </div>
     </div>
-    <a-grid :cols="{ xs: 1, sm: 2, md: 3, lg: 4, xl: 5, xxl: 5 }" :col-gap="16" :row-gap="16">
+    <a-grid :cols="{ xs: 1, sm: 1, md: 2, lg: 2, xl: 4 }" :col-gap="16" :row-gap="16">
       <a-grid-item>
         <div class="title-1">👋关于我</div>
         <div class="type-row" v-for="item in list.aboutMe" :key="item.label">
@@ -71,6 +71,9 @@ const onLink = (item: any) => {
 </script>
 
 <style lang="scss" scoped>
+.border {
+  border: 1px solid red;
+}
 .my-avatar {
   display: flex;
   align-items: center;
