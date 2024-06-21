@@ -11,11 +11,15 @@
           </a-avatar>
         </div>
       </a-col>
-      <a-col :span="12">
+      <a-col :span="22">
         <a-space direction="vertical" size="large">
-          <a-descriptions :data="data" title="用户资料" :align="{ label: 'right' }" />
+          <a-descriptions :data="data" :column="3" title="用户资料" :align="{ label: 'right' }" />
         </a-space>
       </a-col>
+    </a-row>
+    <a-divider />
+    <a-row>
+      <a-col> </a-col>
     </a-row>
   </div>
 </template>
@@ -26,12 +30,28 @@ import { getCurrentInstance } from "vue";
 const { proxy } = getCurrentInstance();
 const data = ref([
   {
+    label: "用户ID：",
+    value: "1000001"
+  },
+  {
     label: "用户名：",
     value: "admin"
   },
   {
-    label: "昵称：",
+    label: "用户昵称：",
     value: "兔子先森"
+  },
+  {
+    label: "角色：",
+    value: "系统管理员"
+  },
+  {
+    label: "权限：",
+    value: "全部"
+  },
+  {
+    label: "实名认证：",
+    value: "已认证"
   },
   {
     label: "邮箱：",
@@ -42,13 +62,13 @@ const data = ref([
     value: "15888888888"
   },
   {
-    label: "地址：",
-    value: "浙江杭州"
+    label: "注册时间：",
+    value: "2024-06-20"
   }
 ]);
 
 const toast = () => {
-  proxy.$message.info("This is an info message");
+  proxy.$message.info("修改头像");
 };
 </script>
 
