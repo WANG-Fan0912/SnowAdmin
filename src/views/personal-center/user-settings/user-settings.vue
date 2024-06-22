@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <a-card>
+    <a-card :bordered="false">
       <a-row align="center">
         <a-col :span="2">
           <div>
@@ -19,7 +19,7 @@
         </a-col>
       </a-row>
     </a-card>
-    <a-card class="margin-top">
+    <a-card class="margin-top" :bordered="false">
       <a-row align="center">
         <a-col :span="24">
           <a-tabs :type="type" :size="size">
