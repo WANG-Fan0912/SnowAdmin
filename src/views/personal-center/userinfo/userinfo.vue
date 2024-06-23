@@ -37,7 +37,7 @@
         <a-image width="100" :src="officialAccount" />
       </a-grid-item>
       <a-grid-item>
-        <a-image default-scale width="100%" height="220" :src="otherImage" />
+        <a-image default-scale height="220" :src="otherImage" />
       </a-grid-item>
       <a-grid-item>
         <div class="title-size-2">✨Hello 朋友们✨</div>
