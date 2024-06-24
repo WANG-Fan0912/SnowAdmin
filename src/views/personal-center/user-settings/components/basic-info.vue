@@ -2,81 +2,40 @@
   <a-row align="center" :gutter="[0, 16]">
     <a-col :span="24">
       <a-card title="基本信息">
-        <template #extra>
-          <a-link>修改基本信息</a-link>
-        </template>
-        <a-form :model="form" :style="{ width: '600px' }">
-          <a-form-item field="name" label="用户ID">
-            <a-input v-model="form.name" placeholder="请输入用户昵称" disabled />
+        <a-form :model="form" :rules="rules" :style="{ width: '600px' }" @submit="onSubmit">
+          <a-form-item field="userId" label="用户ID">
+            <a-input v-model="form.userId" disabled />
           </a-form-item>
-          <a-form-item field="name" label="用户昵称">
-            <a-input v-model="form.name" placeholder="请输入用户昵称" />
+          <a-form-item field="username" label="用户名">
+            <a-input v-model="form.username" placeholder="请输入用户名" allow-clear />
           </a-form-item>
-          <a-form-item field="name" label="角色">
-            <a-input v-model="form.name" placeholder="请选择角色" />
+          <a-form-item field="nickname" label="用户昵称">
+            <a-input v-model="form.nickname" placeholder="请输入用户昵称" allow-clear />
           </a-form-item>
-          <a-form-item field="name" label="权限">
-            <a-input v-model="form.name" placeholder="请选择权限" />
+          <a-form-item field="role" label="角色">
+            <a-select :style="{ width: '320px' }" v-model="form.role" placeholder="请选择角色" allow-clear>
+              <a-option>系统管理员</a-option>
+              <a-option>普通角色</a-option>
+            </a-select>
           </a-form-item>
-          <a-form-item field="name" label="注册时间">
-            <a-input v-model="form.name" placeholder="请输入注册时间" />
+          <a-form-item field="address" label="所在区域">
+            <a-cascader
+              v-model="form.address"
+              :options="options"
+              expand-trigger="hover"
+              :style="{ width: '320px' }"
+              placeholder="请选择所在区域"
+              allow-clear
+            />
+          </a-form-item>
+          <a-form-item field="introduce" label="简介">
+            <a-textarea placeholder="请输入简介" v-model="form.introduce" allow-clear />
           </a-form-item>
           <a-form-item>
-            <a-button>提交</a-button>
+            <a-space>
+              <a-button type="primary" html-type="submit">提交</a-button>
+            </a-space>
           </a-form-item>
-        </a-form>
-      </a-card>
-    </a-col>
-    <a-col :span="24">
-      <a-card title="个性信息">
-        <template #extra>
-          <a-link>修改个性信息</a-link>
-        </template>
-        <a-form :model="privateForm" layout="horizontal" :label-col-props="{ span: 8 }" :wrapper-col-props="{ span: 16 }">
-          <a-row :gutter="16">
-            <a-col :span="8">
-              <a-form-item field="name" label="我用语雀">
-                <a-input v-model="privateForm.name" placeholder="请输入姓名" allow-clear />
-              </a-form-item>
-              <a-form-item field="name" label="个性性格">
-                <a-input v-model="privateForm.name" placeholder="请输入姓名" allow-clear />
-              </a-form-item>
-              <a-form-item field="name" label="职业工作">
-                <a-input v-model="privateForm.name" placeholder="请输入姓名" allow-clear />
-              </a-form-item>
-              <a-form-item field="name" label="现居城市">
-                <a-input v-model="privateForm.name" placeholder="请输入姓名" allow-clear />
-              </a-form-item>
-              <a-form-item field="name" label="兴趣爱好">
-                <a-input v-model="privateForm.name" placeholder="请输入姓名" allow-clear />
-              </a-form-item>
-            </a-col>
-            <a-col :span="8">
-              <a-form-item field="phone" label="邮箱">
-                <a-input v-model="privateForm.name" placeholder="请输入手机号" allow-clear />
-              </a-form-item>
-              <a-form-item field="phone" label="微信">
-                <a-input v-model="privateForm.name" placeholder="请输入手机号" allow-clear />
-              </a-form-item>
-              <a-form-item field="phone" label="思否">
-                <a-input v-model="privateForm.name" placeholder="请输入手机号" allow-clear />
-              </a-form-item>
-              <a-form-item field="phone" label="掘金">
-                <a-input v-model="privateForm.name" placeholder="请输入手机号" allow-clear />
-              </a-form-item>
-              <a-form-item field="phone" label="gitee">
-                <a-input v-model="privateForm.name" placeholder="请输入手机号" allow-clear />
-              </a-form-item>
-            </a-col>
-            <a-col :span="8">
-              <a-form-item field="name" label="公众号">
-                <a-input v-model="privateForm.name" placeholder="请输入姓名" allow-clear />
-              </a-form-item>
-              <a-form-item field="name" label="公众号二维码">
-                <a-input v-model="privateForm.name" placeholder="请输入姓名" allow-clear />
-              </a-form-item>
-            </a-col>
-          </a-row>
         </a-form>
       </a-card>
     </a-col>
@@ -84,12 +43,71 @@
 </template>
 
 <script setup lang="ts">
+import useGlobalProperties from "@/hooks/useGlobalProperties";
+const proxy = useGlobalProperties();
 const form = ref({
-  name: ""
+  userId: "1000001",
+  username: "admin",
+  nickname: "兔子先森",
+  role: "系统管理员",
+  address: "guanggu",
+  introduce: ""
 });
-const privateForm = ref({
-  name: ""
-});
+const rules = {
+  userId: [
+    {
+      required: true,
+      message: "用户ID不能为空"
+    }
+  ],
+  username: [
+    {
+      required: true,
+      message: "用户名不能为空"
+    }
+  ]
+};
+
+const options = ref([
+  {
+    value: "hubei",
+    label: "湖北",
+    children: [
+      {
+        value: "wuhan",
+        label: "武汉",
+        children: [
+          {
+            value: "guanggu",
+            label: "光谷"
+          }
+        ]
+      },
+      {
+        value: "xiaogan",
+        label: "孝感"
+      },
+      {
+        value: "jingzhou",
+        label: "荆州"
+      }
+    ]
+  },
+  {
+    value: "hunan",
+    label: "湖南",
+    children: [
+      {
+        value: "changsha",
+        label: "长沙"
+      }
+    ]
+  }
+]);
+const onSubmit = ({ errors }: ArcoDesign.ArcoSubmit) => {
+  if (errors) return;
+  proxy.$message.success("修改基本信息");
+};
 </script>
 
 <style lang="scss" scoped>

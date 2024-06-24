@@ -161,12 +161,8 @@ const rules = ref({
   ]
 });
 const formRef = ref();
-interface ISubmit {
-  values: Record<string, any>;
-  errors: Record<string, any> | undefined;
-}
-const handleSubmit = ({ values, errors }: ISubmit) => {
-  console.log("values:", values, "\nerrors:", errors);
+
+const handleSubmit = ({ errors }: ArcoDesign.ArcoSubmit) => {
   if (errors) return;
   if (currentStep.value == 3) return;
   if (currentStep.value == 2) {
