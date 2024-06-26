@@ -45,8 +45,8 @@ import myImage from "@/assets/img/my-image.jpg";
 import BasicInfo from "@/views/personal-center/user-settings/components/basic-info.vue";
 import SecuritySettings from "@/views/personal-center/user-settings/components/security-settings.vue";
 import Accreditation from "@/views/personal-center/user-settings/components/accreditation.vue";
-import { getCurrentInstance } from "vue";
-const { proxy } = getCurrentInstance();
+import useGlobalProperties from "@/hooks/useGlobalProperties";
+const proxy = useGlobalProperties();
 
 const type = ref("rounded");
 const size = ref("medium");

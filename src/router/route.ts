@@ -242,6 +242,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
       {
         path: "/personal-center",
         name: "personal-center",
+        redirect: "/personal-center/userinfo",
         meta: {
           title: "personal-center",
           link: "",
