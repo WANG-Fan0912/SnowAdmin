@@ -24,6 +24,8 @@ export default {
     ["userinfo"]: "用户信息",
     ["user-settings"]: "用户设置",
     ["about-project"]: "关于项目",
+    ["external-links"]: "外部链接",
+    ["link-gitee"]: "链接 gitee",
     ["not-power"]: "没有权限",
     ["not-found"]: "未找到页面",
     ["zh-CN"]: "中文",

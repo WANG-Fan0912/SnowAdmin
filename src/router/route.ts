@@ -6,10 +6,10 @@ import { testMultilevelMenu } from "@/mock/testRoute";
  * 路由meta对象参数，我们通常将属性放到meta对象中
  * meta: {
  * title:       菜单栏以及 tabsView 栏、菜单搜索名称（国际化）
- * link:        是否是超链接菜单，开启外链条件：1、 link：链接地址不为空  2、iframe: false
  * hide:        是否隐藏此路由
  * keepAlive:   是否缓存组件状态
  * affix:       是否固定在 tabsView 栏上
+ * link:        是否是超链接菜单，开启外链条件：1、 link：链接地址不为空  2、iframe: false
  * iframe:      是否内嵌窗口，开启条件：1、iframe：true  2、link：链接地址不为空
  * roles:       当前路由权限表示，取角色管理。路由控制显示、隐藏。 超级管理员：admin；普通角色：common
  * icon:        菜单、tabsView 图标等
@@ -71,10 +71,10 @@ export const dynamicRoutes: RouteRecordRaw[] = [
         redirect: "/table-management/common-table",
         meta: {
           title: "table-management",
-          link: "",
           hide: false,
           keepAlive: true,
           affix: true,
+          link: "",
           iframe: false,
           roles: ["admin"],
           svgIcon: "table"
@@ -86,10 +86,10 @@ export const dynamicRoutes: RouteRecordRaw[] = [
             component: () => import("@/views/table-management/common-table/common-table.vue"),
             meta: {
               title: "common-table",
-              link: "",
               hide: false,
               keepAlive: true,
               affix: false,
+              link: "",
               iframe: false,
               roles: ["admin"],
               icon: "icon-menu"
@@ -101,10 +101,10 @@ export const dynamicRoutes: RouteRecordRaw[] = [
             component: () => import("@/views/table-management/custom-table/custom-table.vue"),
             meta: {
               title: "custom-table",
-              link: "",
               hide: false,
               keepAlive: true,
               affix: false,
+              link: "",
               iframe: false,
               roles: ["admin"],
               icon: "icon-menu"
@@ -118,10 +118,10 @@ export const dynamicRoutes: RouteRecordRaw[] = [
         redirect: "/form-management/common-form",
         meta: {
           title: "form-management",
-          link: "",
           hide: false,
           keepAlive: true,
           affix: true,
+          link: "",
           iframe: false,
           roles: ["admin"],
           svgIcon: "form"
@@ -133,10 +133,10 @@ export const dynamicRoutes: RouteRecordRaw[] = [
             component: () => import("@/views/form-management/common-form/common-form.vue"),
             meta: {
               title: "common-form",
-              link: "",
               hide: false,
               keepAlive: true,
               affix: false,
+              link: "",
               iframe: false,
               roles: ["admin"],
               icon: "icon-menu"
@@ -148,10 +148,10 @@ export const dynamicRoutes: RouteRecordRaw[] = [
             component: () => import("@/views/form-management/step-form/step-form.vue"),
             meta: {
               title: "step-form",
-              link: "",
               hide: false,
               keepAlive: true,
               affix: false,
+              link: "",
               iframe: false,
               roles: ["admin"],
               icon: "icon-menu"
@@ -165,10 +165,10 @@ export const dynamicRoutes: RouteRecordRaw[] = [
         redirect: "/multilevel-menu/second-menu-1",
         meta: {
           title: "multilevel-menu",
-          link: "",
           hide: false,
           keepAlive: true,
           affix: true,
+          link: "",
           iframe: false,
           roles: ["admin"],
           svgIcon: "switch"
@@ -180,10 +180,10 @@ export const dynamicRoutes: RouteRecordRaw[] = [
             component: () => import("@/views/multilevel-menu/second-menu/second-menu-1.vue"),
             meta: {
               title: "second-menu-1",
-              link: "",
               hide: false,
               keepAlive: true,
               affix: false,
+              link: "",
               iframe: false,
               roles: ["admin"],
               icon: "icon-menu"
@@ -195,10 +195,10 @@ export const dynamicRoutes: RouteRecordRaw[] = [
             redirect: "/multilevel-menu/third-menu-1",
             meta: {
               title: "second-menu-2",
-              link: "",
               hide: false,
               keepAlive: true,
               affix: false,
+              link: "",
               iframe: false,
               roles: ["admin"],
               icon: "icon-menu"
@@ -210,10 +210,10 @@ export const dynamicRoutes: RouteRecordRaw[] = [
                 component: () => import("@/views/multilevel-menu/third-menu/third-menu-1.vue"),
                 meta: {
                   title: "third-menu-1",
-                  link: "",
                   hide: false,
                   keepAlive: true,
                   affix: false,
+                  link: "",
                   iframe: false,
                   roles: ["admin"],
                   icon: "icon-menu"
@@ -225,10 +225,10 @@ export const dynamicRoutes: RouteRecordRaw[] = [
                 component: () => import("@/views/multilevel-menu/third-menu/third-menu-2.vue"),
                 meta: {
                   title: "third-menu-2",
-                  link: "",
                   hide: false,
                   keepAlive: true,
                   affix: false,
+                  link: "",
                   iframe: false,
                   roles: ["admin"],
                   icon: "icon-menu"
@@ -245,10 +245,10 @@ export const dynamicRoutes: RouteRecordRaw[] = [
         redirect: "/personal-center/userinfo",
         meta: {
           title: "personal-center",
-          link: "",
           hide: false,
           keepAlive: true,
           affix: false,
+          link: "",
           iframe: false,
           roles: ["admin"],
           svgIcon: "user"
@@ -260,10 +260,10 @@ export const dynamicRoutes: RouteRecordRaw[] = [
             component: () => import("@/views/personal-center/userinfo/userinfo.vue"),
             meta: {
               title: "userinfo",
-              link: "",
               hide: false,
               keepAlive: true,
               affix: false,
+              link: "",
               iframe: false,
               roles: ["admin"],
               icon: "icon-menu"
@@ -276,11 +276,44 @@ export const dynamicRoutes: RouteRecordRaw[] = [
             component: () => import("@/views/personal-center/user-settings/user-settings.vue"),
             meta: {
               title: "user-settings",
-              link: "",
               hide: false,
               keepAlive: true,
               affix: false,
+              link: "",
               iframe: false,
+              roles: ["admin"],
+              icon: "icon-menu"
+            },
+            children: []
+          }
+        ]
+      },
+      {
+        path: "/external-links",
+        name: "external-links",
+        redirect: "/external-links/link-gitee",
+        meta: {
+          title: "external-links",
+          hide: false,
+          keepAlive: true,
+          affix: false,
+          link: "",
+          iframe: false,
+          roles: ["admin"],
+          svgIcon: "link"
+        },
+        children: [
+          {
+            path: "/external-links/link-gitee",
+            name: "link-gitee",
+            component: () => import("@/views/external-links/link-gitee/link-gitee.vue"),
+            meta: {
+              title: "link-gitee",
+              hide: false,
+              keepAlive: true,
+              affix: false,
+              link: "https://gitee.com/wang_fan_w", // 链接
+              iframe: false, // 区分是否内链 true内链 false外链
               roles: ["admin"],
               icon: "icon-menu"
             },

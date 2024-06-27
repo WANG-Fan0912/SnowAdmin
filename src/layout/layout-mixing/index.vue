@@ -81,7 +81,11 @@ const onMenuItem = (key: string) => {
   const find = findLinearArray(key);
   // 路由存在则存入并跳转，不存在则跳404
   if (find) {
+    // 给左侧树赋值
     setAsideMenu(find);
+    // 这里直接跳转父级path，因为父级路由做了重定向
+    // 如果有子路由则重定向到自己的第一个菜单
+    // 如果没有子路由则说明当前父级是一个菜单，直接跳转
     router.push(find.path);
   } else {
     router.push("/404");
@@ -105,7 +109,6 @@ const getAsideMenu = (key: string) => {
   const find = findLinearArray(key);
   setAsideMenu(find);
 };
-// getAsideMenu(aciveRoute.value as string);
 </script>
 
 <style lang="scss" scoped>

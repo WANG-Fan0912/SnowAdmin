@@ -21,7 +21,6 @@
 
 <script setup lang="ts">
 import packageJson from "../../../package.json";
-
 const projectInfo = [
   {
     label: "版本号",

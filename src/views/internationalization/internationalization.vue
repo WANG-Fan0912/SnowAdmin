@@ -3,20 +3,15 @@
     <p>{{ $t(`language.switch-language-to-preview`) }}</p>
     <br />
     <div>
-      <a-date-picker style="width: 200px" />
+      <a-date-picker style="width: 200px" v-model="form.time" />
     </div>
     <br />
     <div>
-      <a-time-picker type="time-range" style="width: 252px" />
+      <a-time-picker type="time-range" style="width: 252px" v-model="form.timeRange" />
     </div>
     <br />
     <div>
-      <a-range-picker
-        style="width: 360px"
-        show-time
-        :time-picker-props="{ defaultValue: ['00:00:00', '09:09:06'] }"
-        format="YYYY-MM-DD HH:mm"
-      />
+      <a-range-picker style="width: 360px" show-time format="YYYY-MM-DD HH:mm" v-model="form.date" />
     </div>
     <br />
     <div>
@@ -25,6 +20,12 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const form = reactive({
+  time: null,
+  timeRange: [],
+  date: []
+});
+</script>
 
 <style lang="scss" scoped></style>

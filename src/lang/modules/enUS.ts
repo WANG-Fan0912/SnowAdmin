@@ -23,6 +23,8 @@ export default {
     ["personal-center"]: "personal center",
     ["userinfo"]: "userinfo",
     ["user-settings"]: "user settings",
+    ["external-links"]: "external links",
+    ["link-gitee"]: "link gitee",
     ["about-project"]: "about project",
     ["not-power"]: "No permission",
     ["not-found"]: "Page not found",
