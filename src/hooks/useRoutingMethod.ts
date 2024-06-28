@@ -27,8 +27,21 @@ export const useRoutingMethod = () => {
     const { tabsList } = storeToRefs(routerStore);
     return tabsList.value.find((item: Menu.MenuOptions) => item.name == key);
   };
+
+  /**
+   * 处理外链跳转，打开一个新窗口并根据url跳转
+   * @param {any} route 路由
+   */
+  const openExternalLinks = (route: any) => {
+    // 处理外链跳转
+    if (route.meta.link && !route.meta.iframe) {
+      window.open(route.meta.link as string, "_blank");
+    }
+  };
+
   return {
     findLinearArray,
-    findTagsList
+    findTagsList,
+    openExternalLinks
   };
 };

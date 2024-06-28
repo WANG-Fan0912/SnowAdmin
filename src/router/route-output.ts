@@ -104,9 +104,10 @@ export const currentlyRoute = (name: string) => {
   // 存入当前路由-高亮
   store.setCurrentRoute(find);
 
-  // 如果是外链路由则不做后续任何缓存操作: 有外链 && 内嵌false
+  // 如果是外链路由则不做后续任何缓存操作，条件: 有外链 && 非内嵌
   if (find.meta.link && !find.meta.iframe) return;
-  // 存入tabs栏数据：开启tabs
+
+  // 存入tabs栏数据，条件：开启tabs
   if (isTabs.value) store.setTabs(find);
   // 不缓存路由 || 不渲染tabs ，符合任意条件则不缓存路由
   if (!find.meta.keepAlive || !isTabs.value) return;

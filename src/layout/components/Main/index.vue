@@ -1,6 +1,6 @@
 <template>
   <a-watermark :content="watermark" v-bind="watermarkConfig">
-    <a-layout-content :class="isFooter ? 'content' : 'content-no-footer'">
+    <a-layout-content :class="isFooter ? 'layout-main-content' : 'layout-main-content-no-footer'">
       <Tabs v-if="isTabs" />
       <a-scrollbar style="height: 100%; overflow: auto" :outer-class="isTabs ? 'scrollbar' : 'scrollbar-no-tabs'">
         <div>
@@ -42,10 +42,10 @@ watch(watermarkConfig, newv => {
 </script>
 
 <style lang="scss" scoped>
-.content {
+.layout-main-content {
   height: calc(100vh - 60px - 30px); // 动态切类名-去掉header、footer
 }
-.content-no-footer {
+.layout-main-content-no-footer {
   height: calc(100vh - 60px); // 动态切类名-去掉footer
 }
 

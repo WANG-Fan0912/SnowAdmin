@@ -25,6 +25,7 @@ export default {
     ["user-settings"]: "user settings",
     ["external-links"]: "external links",
     ["link-gitee"]: "link gitee",
+    ["link-juejin"]: "link juejin",
     ["about-project"]: "about project",
     ["not-power"]: "No permission",
     ["not-found"]: "Page not found",

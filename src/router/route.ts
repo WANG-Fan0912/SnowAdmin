@@ -318,6 +318,22 @@ export const dynamicRoutes: RouteRecordRaw[] = [
               icon: "icon-menu"
             },
             children: []
+          },
+          {
+            path: "/external-links/link-juejin",
+            name: "link-juejin",
+            component: () => import("@/views/external-links/link-juejin/link-juejin.vue"),
+            meta: {
+              title: "link-juejin",
+              hide: false,
+              keepAlive: true,
+              affix: false,
+              link: "https://juejin.cn/user/1728883023940600", // 链接
+              iframe: false, // 区分是否内链 true内链 false外链
+              roles: ["admin"],
+              icon: "icon-menu"
+            },
+            children: []
           }
         ]
       },
