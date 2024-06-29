@@ -58,7 +58,7 @@ const rules = {
 
 const onSubmit = ({ errors }: ArcoDesign.ArcoSubmit) => {
   if (errors) return;
-  proxy.$message.success("修改基本信息");
+  proxy.$message.success("修改安全设置");
 };
 </script>
 

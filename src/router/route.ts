@@ -291,7 +291,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
       {
         path: "/external-links",
         name: "external-links",
-        redirect: "/external-links/link-gitee",
+        redirect: "/external-links/inline-page",
         meta: {
           title: "external-links",
           hide: false,
@@ -304,36 +304,150 @@ export const dynamicRoutes: RouteRecordRaw[] = [
         },
         children: [
           {
-            path: "/external-links/link-gitee",
-            name: "link-gitee",
-            component: () => import("@/views/external-links/link-gitee/link-gitee.vue"),
+            path: "/external-links/inline-page",
+            name: "inline-page",
+            redirect: "/external-links/inline-page/vue-official-website",
             meta: {
-              title: "link-gitee",
+              title: "inline-page",
               hide: false,
               keepAlive: true,
               affix: false,
-              link: "https://gitee.com/wang_fan_w", // 链接
-              iframe: false, // 区分是否内链 true内链 false外链
+              link: "",
+              iframe: false,
               roles: ["admin"],
               icon: "icon-menu"
             },
-            children: []
+            children: [
+              {
+                path: "/external-links/inline-page/uigradients",
+                name: "uigradients",
+                component: () => import("@/views/external-links/inline-page/inline-page.vue"),
+                meta: {
+                  title: "uigradients",
+                  hide: false,
+                  keepAlive: true,
+                  affix: false,
+                  link: "https://uigradients.com/#HoneyDew", // 链接
+                  iframe: true, // 区分是否内链 true内链 false外链
+                  roles: ["admin"],
+                  icon: "icon-menu"
+                },
+                children: []
+              },
+              {
+                path: "/external-links/inline-page/color-taking-tool",
+                name: "color-taking-tool",
+                component: () => import("@/views/external-links/inline-page/inline-page.vue"),
+                meta: {
+                  title: "color-taking-tool",
+                  hide: false,
+                  keepAlive: true,
+                  affix: false,
+                  link: "https://photokit.com/colors/eyedropper/?lang=zh", // 链接
+                  iframe: true, // 区分是否内链 true内链 false外链
+                  roles: ["admin"],
+                  icon: "icon-menu"
+                },
+                children: []
+              },
+              {
+                path: "/external-links/inline-page/grid-generator",
+                name: "grid-generator",
+                component: () => import("@/views/external-links/inline-page/inline-page.vue"),
+                meta: {
+                  title: "grid-generator",
+                  hide: false,
+                  keepAlive: true,
+                  affix: false,
+                  link: "https://cssgrid-generator.netlify.app/", // 链接
+                  iframe: true, // 区分是否内链 true内链 false外链
+                  roles: ["admin"],
+                  icon: "icon-menu"
+                },
+                children: []
+              },
+              {
+                path: "/external-links/inline-page/vue-official-website",
+                name: "vue-official-website",
+                component: () => import("@/views/external-links/inline-page/inline-page.vue"),
+                meta: {
+                  title: "vue-official-website",
+                  hide: false,
+                  keepAlive: true,
+                  affix: false,
+                  link: "https://cn.vuejs.org/", // 链接
+                  iframe: true, // 区分是否内链 true内链 false外链
+                  roles: ["admin"],
+                  icon: "icon-menu"
+                },
+                children: []
+              },
+              {
+                path: "/external-links/inline-page/vite-official-website",
+                name: "vite-official-website",
+                component: () => import("@/views/external-links/inline-page/inline-page.vue"),
+                meta: {
+                  title: "vite-official-website",
+                  hide: false,
+                  keepAlive: true,
+                  affix: false,
+                  link: "https://www.vitejs.net/", // 链接
+                  iframe: true, // 区分是否内链 true内链 false外链
+                  roles: ["admin"],
+                  icon: "icon-menu"
+                },
+                children: []
+              }
+            ]
           },
           {
-            path: "/external-links/link-juejin",
-            name: "link-juejin",
-            component: () => import("@/views/external-links/link-juejin/link-juejin.vue"),
+            path: "/external-links/external-page",
+            name: "external-page",
+            redirect: "/external-links/external-page/link-gitee",
             meta: {
-              title: "link-juejin",
+              title: "external-page",
               hide: false,
               keepAlive: true,
               affix: false,
-              link: "https://juejin.cn/user/1728883023940600", // 链接
-              iframe: false, // 区分是否内链 true内链 false外链
+              link: "",
+              iframe: false,
               roles: ["admin"],
               icon: "icon-menu"
             },
-            children: []
+            children: [
+              {
+                path: "/external-links/external-page/link-gitee",
+                name: "link-gitee",
+                component: () => import("@/views/external-links/external-page/external-page.vue"),
+                meta: {
+                  title: "link-gitee",
+                  hide: false,
+                  keepAlive: true,
+                  affix: false,
+                  link: "https://gitee.com/wang_fan_w", // 链接
+                  iframe: false, // 区分是否内链 true内链 false外链
+                  roles: ["admin"],
+                  icon: "icon-menu"
+                },
+                children: []
+              },
+              {
+                path: "/external-links/external-page/link-juejin",
+                name: "link-juejin",
+                component: () => import("@/views/external-links/external-page/external-page.vue"),
+                meta: {
+                  title: "link-juejin",
+                  hide: false,
+                  keepAlive: true,
+                  affix: false,
+                  link: "https://juejin.cn/user/1728883023940600", // 链接
+                  iframe: false, // 区分是否内链 true内链 false外链
+                  roles: ["admin"],
+                  icon: "icon-menu"
+                },
+                children: []
+              }
+            ]
           }
         ]
       },

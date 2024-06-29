@@ -5,9 +5,7 @@
       height: viewportHeight
     }"
   >
-    <div class="fill-page-inner">
-      <slot></slot>
-    </div>
+    <slot></slot>
   </div>
 </template>
 
@@ -26,6 +24,9 @@ const viewportHeight = computed(() => {
   } else if (!isTabs.value && isFooter.value) {
     // 无tabs，有footer
     return `calc(100vh - 60px - 30px)`;
+  } else if (isTabs.value && !isFooter.value) {
+    // 有tabs，无footer
+    return `calc(100vh - 60px - 40px)`;
   } else {
     // 无tabs、无footer，直接减去顶部head
     return `calc(100vh - 60px)`;
@@ -35,14 +36,7 @@ const viewportHeight = computed(() => {
 
 <style lang="scss" scoped>
 .fill-page-size {
-  padding: $padding;
   box-sizing: border-box;
-}
-.fill-page-inner {
-  height: 100%;
-  box-sizing: border-box;
-  padding: $padding;
-  background: $color-bg-1;
-  overflow: hidden;
+  // box-shadow: $shadow-border-1;
 }
 </style>
