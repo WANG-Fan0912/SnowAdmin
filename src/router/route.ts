@@ -306,7 +306,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
           {
             path: "/external-links/inline-page",
             name: "inline-page",
-            redirect: "/external-links/inline-page/vue-official-website",
+            redirect: "/external-links/inline-page/uigradients",
             meta: {
               title: "inline-page",
               hide: false,

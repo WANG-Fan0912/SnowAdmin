@@ -20,7 +20,7 @@ export default {
     ["third-menu-7"]: "三级菜单-7",
     ["third-menu-8"]: "三级菜单-8",
     ["third-menu-9"]: "三级菜单-9",
-    ["personal-center"]: "用户中心",
+    ["personal-center"]: "个人中心",
     ["userinfo"]: "用户信息",
     ["user-settings"]: "用户设置",
     ["about-project"]: "关于项目",
