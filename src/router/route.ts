@@ -66,6 +66,39 @@ export const dynamicRoutes: RouteRecordRaw[] = [
         }
       },
       {
+        path: "/file-management",
+        name: "file-management",
+        redirect: "/file-management/document-library",
+        meta: {
+          title: "file-management",
+          hide: false,
+          keepAlive: true,
+          affix: false,
+          link: "",
+          iframe: false,
+          roles: ["admin"],
+          svgIcon: "folder"
+        },
+        children: [
+          {
+            path: "/file-management/document-library",
+            name: "document-library",
+            component: () => import("@/views/file-management/document-library/document-library.vue"),
+            meta: {
+              title: "document-library",
+              hide: false,
+              keepAlive: true,
+              affix: false,
+              link: "",
+              iframe: false,
+              roles: ["admin"],
+              icon: "icon-menu"
+            }
+          }
+        ]
+      },
+
+      {
         path: "/table-management",
         name: "table-management",
         redirect: "/table-management/common-table",
@@ -73,7 +106,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
           title: "table-management",
           hide: false,
           keepAlive: true,
-          affix: true,
+          affix: false,
           link: "",
           iframe: false,
           roles: ["admin"],
@@ -120,7 +153,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
           title: "form-management",
           hide: false,
           keepAlive: true,
-          affix: true,
+          affix: false,
           link: "",
           iframe: false,
           roles: ["admin"],
@@ -167,7 +200,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
           title: "multilevel-menu",
           hide: false,
           keepAlive: true,
-          affix: true,
+          affix: false,
           link: "",
           iframe: false,
           roles: ["admin"],

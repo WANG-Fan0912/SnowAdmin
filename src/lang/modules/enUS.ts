@@ -2,6 +2,8 @@ export default {
   language: {
     ["login"]: "login",
     ["home"]: "home",
+    ["file-management"]: "file management",
+    ["document-library"]: "document library",
     ["table-management"]: "table management",
     ["common-table"]: "common table",
     ["custom-table"]: "custom table",

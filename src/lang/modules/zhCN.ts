@@ -2,6 +2,8 @@ export default {
   language: {
     ["login"]: "登录",
     ["home"]: "首页",
+    ["file-management"]: "文件管理",
+    ["document-library"]: "文件库",
     ["table-management"]: "列表管理",
     ["common-table"]: "普通列表",
     ["custom-table"]: "自定义列表",
