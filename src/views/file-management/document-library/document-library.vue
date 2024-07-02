@@ -4,7 +4,9 @@
       <div class="container-main">
         <div class="left-box">
           <a-scrollbar style="height: 100%; overflow: auto" outer-class="scrollbar">
-            <div style="height: 4000px; width: 100%; background-color: var(--color-primary-light-4)">Content</div>
+            <div class="left-tree-box">
+              <a-tree :data="treeData" :show-line="true"> </a-tree>
+            </div>
           </a-scrollbar>
         </div>
         <div class="right-box"></div>
@@ -13,7 +15,62 @@
   </FillPage>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const treeData = ref([
+  {
+    title: "Trunk 1",
+    key: "0-0",
+    children: [
+      {
+        title: "Trunk 1-0",
+        key: "0-0-0",
+        children: [
+          { title: "leaf", key: "0-0-0-0" },
+          {
+            title: "leaf",
+            key: "0-0-0-1",
+            children: [{ title: "leaf", key: "0-0-0-1-0" }]
+          },
+          { title: "leaf", key: "0-0-0-2" }
+        ]
+      },
+      {
+        title: "Trunk 1-1",
+        key: "0-0-1"
+      },
+      {
+        title: "Trunk 1-2",
+        key: "0-0-2",
+        children: [
+          { title: "leaf", key: "0-0-2-0" },
+          {
+            title: "leaf",
+            key: "0-0-2-1"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    title: "Trunk 2",
+    key: "0-1"
+  },
+  {
+    title: "Trunk 3",
+    key: "0-2",
+    children: [
+      {
+        title: "Trunk 3-0",
+        key: "0-2-0",
+        children: [
+          { title: "leaf", key: "0-2-0-0" },
+          { title: "leaf", key: "0-2-0-1" }
+        ]
+      }
+    ]
+  }
+]);
+</script>
 
 <style lang="scss" scoped>
 .container {
@@ -21,26 +78,27 @@
   padding: $padding;
   box-sizing: border-box;
   overflow: hidden;
-  box-shadow: $shadow-border-1;
 }
 .container-main {
   height: 100%;
   display: flex;
-  border: 1px solid gold;
   overflow: hidden;
   .left-box {
     width: 300px;
     height: 100%;
-    border: 1px solid red;
+    background: $color-bg-1;
     .scrollbar {
       height: 100%;
+    }
+    .left-tree-box {
+      padding: $padding;
     }
   }
   .right-box {
     margin-left: $padding;
     width: calc(100% - 220px - $padding);
     height: 100%;
-    border: 1px solid cyan;
+    background: $color-bg-1;
   }
 }
 </style>

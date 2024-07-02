@@ -77,7 +77,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
           link: "",
           iframe: false,
           roles: ["admin"],
-          svgIcon: "folder"
+          svgIcon: "folder-menu"
         },
         children: [
           {
