@@ -5,7 +5,13 @@
         <div class="left-box">
           <a-scrollbar style="height: 100%; overflow: auto" outer-class="scrollbar">
             <div class="left-tree-box">
-              <a-tree :data="treeData" :show-line="true"> </a-tree>
+              <a-tree :data="treeData" :show-line="true">
+                <template #icon="node">
+                  <SvgIcon name="folder-close" :size="16" v-if="!node.isLeaf && !node.expanded"></SvgIcon>
+                  <SvgIcon name="folder-open" :size="16" v-if="!node.isLeaf && node.expanded"></SvgIcon>
+                  <SvgIcon name="txt" :size="16" v-if="node.isLeaf"></SvgIcon>
+                </template>
+              </a-tree>
             </div>
           </a-scrollbar>
         </div>

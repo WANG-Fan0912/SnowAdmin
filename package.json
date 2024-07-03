@@ -71,5 +71,9 @@
     "vite": "^5.2.0",
     "vite-plugin-svg-icons": "^2.0.1",
     "vue-tsc": "^2.0.6"
+  },
+  "engines": {
+    "node": ">= 18.0.0",
+    "pnpm": ">=8.6.0"
   }
 }
