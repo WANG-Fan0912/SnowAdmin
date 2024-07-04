@@ -16,7 +16,7 @@ class fileTreeData {
             {
               title: "财务部",
               key: "0-0-0-1",
-              children: [{ title: "行政费用预算分析-第一季度", key: "0-0-0-0-1" }]
+              children: [{ title: "行政费用预算分析", key: "0-0-0-0-1" }]
             },
             {
               title: "法务部",

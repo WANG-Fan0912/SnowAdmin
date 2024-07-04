@@ -81,4 +81,9 @@ const sourceTree = ref(fileTreeData.tree);
     }
   }
 }
+
+// 修改底部横向滚动条高度
+:deep(.arco-scrollbar-thumb-direction-horizontal .arco-scrollbar-thumb-bar) {
+  height: 4px;
+}
 </style>
