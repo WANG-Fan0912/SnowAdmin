@@ -1,15 +1,17 @@
 <template>
   <a-watermark :content="watermark" v-bind="watermarkConfig">
-    <a-layout-content class="layout-main-content">
+    <a-layout-content :class="isFooter ? 'layout-main-content' : 'layout-main-content-no-footer'">
       <Tabs v-if="isTabs" />
       <a-scrollbar style="height: 100%; overflow: auto" :outer-class="isTabs ? 'scrollbar' : 'scrollbar-no-tabs'">
-        <router-view v-slot="{ Component, route }">
-          <MainTransition>
-            <keep-alive :include="cacheRoutes">
-              <component :is="Component" :key="route.name" v-if="refreshPage" />
-            </keep-alive>
-          </MainTransition>
-        </router-view>
+        <div>
+          <router-view v-slot="{ Component, route }">
+            <MainTransition>
+              <keep-alive :include="cacheRoutes">
+                <component :is="Component" :key="route.name" v-if="refreshPage" />
+              </keep-alive>
+            </MainTransition>
+          </router-view>
+        </div>
       </a-scrollbar>
     </a-layout-content>
   </a-watermark>
@@ -21,7 +23,7 @@ import { storeToRefs } from "pinia";
 import { useThemeConfig } from "@/store/modules/theme-config";
 import { useRoutesListStore } from "@/store/modules/route-list";
 const themeStore = useThemeConfig();
-let { refreshPage, isTabs, watermark, watermarkStyle, watermarkRotate, watermarkGap } = storeToRefs(themeStore);
+let { refreshPage, isTabs, isFooter, watermark, watermarkStyle, watermarkRotate, watermarkGap } = storeToRefs(themeStore);
 const routerStore = useRoutesListStore();
 const { cacheRoutes } = storeToRefs(routerStore);
 
@@ -41,7 +43,10 @@ watch(watermarkConfig, newv => {
 
 <style lang="scss" scoped>
 .layout-main-content {
-  height: 100%;
+  height: calc(100vh - 60px - 30px); // 动态切类名-去掉header、footer
+}
+.layout-main-content-no-footer {
+  height: calc(100vh - 60px); // 动态切类名-去掉footer
 }
 
 .scrollbar {

@@ -1,10 +1,5 @@
 <template>
-  <div
-    class="fill-page-size"
-    :style="{
-      height: viewportHeight
-    }"
-  >
+  <div class="fill-page-size">
     <slot></slot>
   </div>
 </template>
@@ -36,7 +31,8 @@ const viewportHeight = computed(() => {
 
 <style lang="scss" scoped>
 .fill-page-size {
+  height: 100%;
   box-sizing: border-box;
-  // box-shadow: $shadow-border-1;
+  box-shadow: $shadow-border-1;
 }
 </style>

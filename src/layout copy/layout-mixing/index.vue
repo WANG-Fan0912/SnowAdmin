@@ -6,29 +6,33 @@
         <a-scrollbar style="height: 100%; overflow: auto" outer-class="scrollbar"><Menu :route-tree="routeList" /></a-scrollbar>
       </a-layout-sider>
     </div>
-    <a-layout class="layout-right">
-      <a-layout-header class="header">
-        <div class="menu_fold">
-          <a-button size="mini" type="text" class="menu_fold_icon" @click="onCollapsed">
-            <template #icon>
-              <icon-menu-fold :size="18" v-if="!collapsed" />
-              <icon-menu-unfold :size="18" v-if="collapsed" />
-            </template>
-          </a-button>
-        </div>
+    <a-layout>
+      <div class="layout-head">
+        <div class="layout-head-top">
+          <a-layout-header class="header">
+            <div class="menu_fold">
+              <a-button size="mini" type="text" class="menu_fold_icon" @click="onCollapsed">
+                <template #icon>
+                  <icon-menu-fold :size="18" v-if="!collapsed" />
+                  <icon-menu-unfold :size="18" v-if="collapsed" />
+                </template>
+              </a-button>
+            </div>
 
-        <a-menu mode="horizontal" :selected-keys="[aciveRoute]" @menu-item-click="onMenuItem">
-          <a-menu-item v-for="item in routeTree" :key="item.name">
-            <template #icon v-if="item.meta.svgIcon || item.meta.icon">
-              <MenuItemIcon :svg-icon="item.meta.svgIcon" :icon="item.meta.icon" />
-            </template>
-            <span>{{ $t(`language.${item.meta.title}`) }}</span>
-          </a-menu-item>
-        </a-menu>
-        <HeaderRight />
-      </a-layout-header>
-      <Main />
-      <Footer v-if="isFooter" />
+            <a-menu mode="horizontal" :selected-keys="[aciveRoute]" @menu-item-click="onMenuItem">
+              <a-menu-item v-for="item in routeTree" :key="item.name">
+                <template #icon v-if="item.meta.svgIcon || item.meta.icon">
+                  <MenuItemIcon :svg-icon="item.meta.svgIcon" :icon="item.meta.icon" />
+                </template>
+                <span>{{ $t(`language.${item.meta.title}`) }}</span>
+              </a-menu-item>
+            </a-menu>
+            <HeaderRight />
+          </a-layout-header>
+          <Main />
+          <Footer v-if="isFooter" />
+        </div>
+      </div>
     </a-layout>
   </a-layout>
 </template>
@@ -156,29 +160,40 @@ const getAsideMenu = (key: string) => {
   background: unset;
 }
 
-.layout-right {
+.layout-head {
   height: 100%;
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  .header {
-    padding: 0 $padding;
-    height: 60px;
-    box-sizing: border-box;
-    border-bottom: $border-1 solid $color-border-2;
+  display: flex;
+  align-items: stretch; // 如果（多个）元素的组合大小小于容器的大小，其中自动调整大小的元素将等量增大，以填满容器，同时这些元素仍然保持其宽高比例的约束。
+  overflow: hidden;
+  .header-logo {
+    width: 150px;
+  }
+  &-top {
+    flex: 1; // 按比例分配大小
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column; // flex 容器的主轴和块轴相同。主轴起点与主轴终点和书写模式的前后点相同
     overflow: hidden;
-    .menu_fold {
-      width: 32px;
-      height: 32px;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      .menu_fold_icon {
-        color: $color-text-1;
-        border-radius: $radius-box;
-      }
+  }
+}
+
+.header {
+  padding: 0 $padding;
+  height: 60px;
+  box-sizing: border-box;
+  border-bottom: $border-1 solid $color-border-2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  .menu_fold {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    .menu_fold_icon {
+      color: $color-text-1;
+      border-radius: $radius-box;
     }
   }
 }

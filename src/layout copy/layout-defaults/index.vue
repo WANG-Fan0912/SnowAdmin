@@ -1,7 +1,7 @@
 <template>
   <a-layout class="layout">
     <Aside />
-    <a-layout class="layout-right">
+    <a-layout>
       <Header />
       <Main />
       <Footer v-if="isFooter" />
@@ -26,9 +26,5 @@ let { isFooter } = storeToRefs(themeStore);
 <style lang="scss" scoped>
 .layout {
   height: 100vh;
-}
-.layout-right {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
 }
 </style>

@@ -68,11 +68,18 @@ const onMenuItem = (key: string) => {
 
 <style lang="scss" scoped>
 .layout-head {
-  height: 100vh;
+  height: 100%;
+  display: flex;
+  align-items: stretch; // 如果（多个）元素的组合大小小于容器的大小，其中自动调整大小的元素将等量增大，以填满容器，同时这些元素仍然保持其宽高比例的约束。
+  overflow: hidden;
+  .header-logo {
+    width: 150px;
+  }
   &-top {
-    height: 100%;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
+    flex: 1; // 按比例分配大小
+    display: flex;
+    flex-direction: column; // flex 容器的主轴和块轴相同。主轴起点与主轴终点和书写模式的前后点相同
+    overflow: hidden;
   }
 }
 
@@ -85,9 +92,6 @@ const onMenuItem = (key: string) => {
   justify-content: space-between;
   align-items: center;
   overflow: hidden;
-  .header-logo {
-    width: 150px;
-  }
 }
 
 :deep(.arco-menu-pop) {
