@@ -3,11 +3,7 @@
     <div class="container">
       <div class="container-main">
         <div class="left-box">
-          <a-scrollbar style="height: 100%; overflow: auto" outer-class="scrollbar">
-            <div class="left-tree-box">
-              <FileTree />
-            </div>
-          </a-scrollbar>
+          <FileTree />
         </div>
         <div class="right-box"></div>
       </div>
@@ -34,12 +30,6 @@ import FileTree from "@/views/file-management/document-library/components/file-t
     width: 300px;
     height: 100%;
     background: $color-bg-1;
-    .scrollbar {
-      height: 100%;
-    }
-    .left-tree-box {
-      padding: $padding;
-    }
   }
   .right-box {
     margin-left: $padding;

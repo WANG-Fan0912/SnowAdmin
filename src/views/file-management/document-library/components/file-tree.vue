@@ -1,17 +1,24 @@
 <template>
-  <div>
+  <div class="container-page">
     <a-input class="search-tree" v-model="searchKey" placeholder="请输入搜索关键词">
       <template #prefix>
         <icon-search />
       </template>
     </a-input>
-    <a-tree :data="treeData" :show-line="true">
-      <template #icon="node">
-        <SvgIcon name="folder-close" :size="16" v-if="!node.isLeaf && !node.expanded"></SvgIcon>
-        <SvgIcon name="folder-open" :size="16" v-if="!node.isLeaf && node.expanded"></SvgIcon>
-        <SvgIcon name="txt" :size="16" v-if="node.isLeaf"></SvgIcon>
-      </template>
-    </a-tree>
+    <div class="tree-box">
+      <a-scrollbar style="height: 100%; overflow: auto" outer-class="scrollbar">
+        <a-tree :data="treeData" :show-line="true">
+          <template #title="node">
+            <span class="tree-title">{{ node.title }}</span>
+          </template>
+          <template #icon="node">
+            <SvgIcon name="folder-close" :size="16" v-if="!node.isLeaf && !node.expanded"></SvgIcon>
+            <SvgIcon name="folder-open" :size="16" v-if="!node.isLeaf && node.expanded"></SvgIcon>
+            <SvgIcon name="txt" :size="16" v-if="node.isLeaf"></SvgIcon>
+          </template>
+        </a-tree>
+      </a-scrollbar>
+    </div>
   </div>
 </template>
 
@@ -56,7 +63,22 @@ const sourceTree = ref(fileTreeData.tree);
 </script>
 
 <style lang="scss" scoped>
-.search-tree {
-  margin-bottom: $margin;
+.container-page {
+  box-sizing: border-box;
+  padding: $padding;
+  height: 100%;
+  .search-tree {
+    height: 32px;
+    margin-bottom: $margin;
+  }
+  .tree-box {
+    height: calc(100% - 32px - $margin);
+    .scrollbar {
+      height: 100%;
+      .tree-title {
+        white-space: nowrap;
+      }
+    }
+  }
 }
 </style>
