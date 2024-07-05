@@ -90,11 +90,11 @@
       </template>
       <template #optional>
         <a-space>
-          <a-button size="mini" type="primary">编辑</a-button>
+          <a-button size="mini" type="primary">详情</a-button>
+          <a-button size="mini">修改</a-button>
           <a-popconfirm content="确定删除这条数据吗?" type="warning">
-            <a-button size="mini">删除</a-button>
+            <a-button size="mini" type="primary" status="danger">删除</a-button>
           </a-popconfirm>
-          <a-button size="mini" type="primary" status="danger">修改</a-button>
         </a-space>
       </template>
     </a-table>

@@ -3,13 +3,15 @@
     <a-layout-content class="layout-main-content">
       <Tabs v-if="isTabs" />
       <a-scrollbar style="height: 100%; overflow: auto" :outer-class="isTabs ? 'scrollbar' : 'scrollbar-no-tabs'">
-        <router-view v-slot="{ Component, route }">
-          <MainTransition>
-            <keep-alive :include="cacheRoutes">
-              <component :is="Component" :key="route.name" v-if="refreshPage" />
-            </keep-alive>
-          </MainTransition>
-        </router-view>
+        <div>
+          <router-view v-slot="{ Component, route }">
+            <MainTransition>
+              <keep-alive :include="cacheRoutes">
+                <component :is="Component" :key="route.name" v-if="refreshPage" />
+              </keep-alive>
+            </MainTransition>
+          </router-view>
+        </div>
       </a-scrollbar>
     </a-layout-content>
   </a-watermark>

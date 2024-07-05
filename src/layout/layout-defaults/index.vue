@@ -27,6 +27,7 @@ let { isFooter } = storeToRefs(themeStore);
 .layout {
   height: 100vh;
 }
+
 .layout-right {
   display: grid;
   grid-template-rows: auto 1fr auto;
