@@ -2,30 +2,18 @@
   <div class="container">
     <div class="login">
       <div class="banner_box">
-        <a-carousel
-          :style="{
-            width: '100%',
-            height: '100%'
-          }"
-          :auto-play="true"
-          show-arrow="never"
-          animation-name="fade"
-          indicator-type="dot"
-          indicator-position="bottom"
-        >
-          <a-carousel-item v-for="(image, index) in images" :key="index">
-            <img
-              :src="image"
-              :style="{
-                width: '100%',
-                height: '100%'
-              }"
-            />
-          </a-carousel-item>
-        </a-carousel>
+        <div class="banner_title">
+          <SvgIcon name="snow" size="25" />
+          DC-Admin
+        </div>
+        <div class="banner_img">
+          <SvgIcon name="数据时代" size="100%" />
+        </div>
       </div>
       <div class="login_box">
-        <div class="login_title">DC Admin</div>
+        <div class="login_title">Welcome Back</div>
+        <div class="login_title_desc">国际化，路由配置，状态管理应有尽有</div>
+        <div class="login_title_desc">丰富的的页面模板，覆盖大多数典型业务场景</div>
         <div class="login_form_box">
           <a-form :rules="rules" :model="form" layout="vertical" @submit="onSubmit">
             <a-form-item field="username" :hide-asterisk="true">
@@ -60,7 +48,7 @@
           </a-form>
         </div>
         <div class="register">注册账号</div>
-        <div class="desc">DC-Admin by 兔子先森</div>
+        <div class="author">by 兔子先森</div>
       </div>
     </div>
   </div>
@@ -71,12 +59,6 @@ import { Message } from "@arco-design/web-vue";
 import { useRouter } from "vue-router";
 import { useUserInfoStore } from "@/store/modules/user-info";
 const router = useRouter();
-
-const images = [
-  "https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/cd7a1aaea8e1c5e3d26fe2591e561798.png~tplv-uwbnlip3yd-webp.webp",
-  "https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/6480dbc69be1b5de95010289787d64f1.png~tplv-uwbnlip3yd-webp.webp"
-];
-
 const form = ref({
   username: "admin",
   password: "123456",
@@ -158,33 +140,44 @@ const onSubmit = ({ errors }: any) => {
   position: relative;
   overflow: hidden;
   .login {
-    width: calc(100% - 160px);
+    width: 1000px;
     height: 500px;
-    position: absolute;
     left: 50%;
     top: 50%;
+    position: absolute;
     transform: translate(-50%, -50%);
     display: flex;
     align-items: center;
-    column-gap: 80px;
+    box-shadow: 0 0 8px 1px $color-fill-2;
     .banner_box {
-      width: calc(100% - 530px);
+      width: 650px;
       height: 100%;
-      border: 1px solid red;
+      box-sizing: border-box;
+      padding: $padding;
+      display: flex;
+      flex-direction: column;
+      .banner_title {
+        display: flex;
+        align-items: center;
+        column-gap: $margin-text;
+        font-size: $font-size-title-1;
+        color: $color-primary;
+        font-weight: bold;
+      }
+      .banner_img {
+        flex: 1;
+      }
     }
     .login_box {
-      position: relative;
-      box-sizing: border-box;
-      width: 450px;
+      width: 350px;
       height: 100%;
-      padding: 40px 60px 40px 60px;
-      box-shadow: 0 0 8px 1px $color-fill-2;
-      background: #fff;
+      box-sizing: border-box;
+      padding: 40px 30px 30px 30px;
+      position: relative;
       .login_title {
         font-size: $font-size-title-2;
         color: $color-text-1;
         margin-bottom: $margin-text;
-        text-align: center;
       }
       .login_title_desc {
         font-size: $font-size-body-1;
@@ -215,7 +208,7 @@ const onSubmit = ({ errors }: any) => {
         font-size: $font-size-body-1;
         cursor: pointer;
       }
-      .desc {
+      .author {
         color: $color-text-4;
         font-size: $font-size-body-1;
         position: absolute;

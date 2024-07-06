@@ -18,7 +18,7 @@
     </a-tabs>
     <div class="tabs_setting">
       <a-dropdown trigger="hover" :popup-max-height="false">
-        <div class="setting"><icon-loop :size="18" /></div>
+        <div class="setting"><icon-apps :size="18" /></div>
         <template #content>
           <a-doption @click="refresh">
             <template #icon><icon-refresh /></template>
