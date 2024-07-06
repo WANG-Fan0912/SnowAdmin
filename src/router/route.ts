@@ -398,45 +398,13 @@ export const dynamicRoutes: RouteRecordRaw[] = [
                   icon: "icon-menu"
                 },
                 children: []
-              },
-              {
-                path: "/external-links/inline-page/vue-official-website",
-                name: "vue-official-website",
-                component: () => import("@/views/external-links/inline-page/inline-page.vue"),
-                meta: {
-                  title: "vue-official-website",
-                  hide: false,
-                  keepAlive: true,
-                  affix: false,
-                  link: "https://cn.vuejs.org/", // 链接
-                  iframe: true, // 区分是否内链 true内链 false外链
-                  roles: ["admin"],
-                  icon: "icon-menu"
-                },
-                children: []
-              },
-              {
-                path: "/external-links/inline-page/vite-official-website",
-                name: "vite-official-website",
-                component: () => import("@/views/external-links/inline-page/inline-page.vue"),
-                meta: {
-                  title: "vite-official-website",
-                  hide: false,
-                  keepAlive: true,
-                  affix: false,
-                  link: "https://www.vitejs.net/", // 链接
-                  iframe: true, // 区分是否内链 true内链 false外链
-                  roles: ["admin"],
-                  icon: "icon-menu"
-                },
-                children: []
               }
             ]
           },
           {
             path: "/external-links/external-page",
             name: "external-page",
-            redirect: "/external-links/external-page/link-gitee",
+            redirect: "/external-links/external-page/link-vue",
             meta: {
               title: "external-page",
               hide: false,
@@ -448,6 +416,38 @@ export const dynamicRoutes: RouteRecordRaw[] = [
               icon: "icon-menu"
             },
             children: [
+              {
+                path: "/external-links/external-page/link-vue",
+                name: "link-vue",
+                component: () => import("@/views/external-links/external-page/external-page.vue"),
+                meta: {
+                  title: "link-vue",
+                  hide: false,
+                  keepAlive: true,
+                  affix: false,
+                  link: "https://cn.vuejs.org/", // 链接
+                  iframe: false, // 区分是否内链 true内链 false外链
+                  roles: ["admin"],
+                  icon: "icon-menu"
+                },
+                children: []
+              },
+              {
+                path: "/external-links/external-page/link-vite",
+                name: "link-vite",
+                component: () => import("@/views/external-links/external-page/external-page.vue"),
+                meta: {
+                  title: "link-vite",
+                  hide: false,
+                  keepAlive: true,
+                  affix: false,
+                  link: "https://www.vitejs.net/", // 链接
+                  iframe: false, // 区分是否内链 true内链 false外链
+                  roles: ["admin"],
+                  icon: "icon-menu"
+                },
+                children: []
+              },
               {
                 path: "/external-links/external-page/link-gitee",
                 name: "link-gitee",
