@@ -88,8 +88,8 @@
         <a-table-column title="状态" data-index="status" align="center">
           <template #cell="{ record }">
             <a-space>
-              <a-tag size="small" color="green" v-if="record.status == 1">启用</a-tag>
-              <a-tag size="small" color="red" v-else>停用</a-tag>
+              <a-tag size="small" color="green" v-if="record.status == 1">在线</a-tag>
+              <a-tag size="small" color="red" v-else>离线</a-tag>
             </a-space>
           </template>
         </a-table-column>
@@ -105,40 +105,6 @@
           </template>
         </a-table-column>
       </template>
-      <!-- <template #cell="{ record }">
-        <a-space>
-          <span>{{ JSON.stringify(record) }}</span>
-        </a-space>
-      </template>
-      <template #source="{ record }">
-        <a-space>
-          <SvgIcon :name="record.sourceSvg" />
-          <span>{{ record.source }}</span>
-        </a-space>
-      </template>
-      <template #flow="{ record }">
-        <a-statistic :value="record.flow" show-group-separator :value-style="{ fontSize: '15px' }"> </a-statistic>
-      </template>
-      <template #percent="{ record }">
-        <a-progress v-if="record.percent >= 60" :percent="record.percent / 100" />
-        <a-progress v-else-if="record.percent < 60 && record.percent >= 50" status="warning" :percent="record.percent / 100" />
-        <a-progress v-else status="danger" :percent="record.percent / 100" />
-      </template>
-      <template #status="{ record }">
-        <a-space>
-          <a-tag size="small" color="green" v-if="record.status == 1">启用</a-tag>
-          <a-tag size="small" color="red" v-else>停用</a-tag>
-        </a-space>
-      </template>
-      <template #optional>
-        <a-space>
-          <a-button size="mini" type="primary">详情</a-button>
-          <a-button size="mini">修改</a-button>
-          <a-popconfirm content="确定删除这条数据吗?" type="warning">
-            <a-button size="mini" type="primary" status="danger">删除</a-button>
-          </a-popconfirm>
-        </a-space>
-      </template> -->
     </a-table>
   </div>
 </template>
