@@ -5,14 +5,13 @@
         <div class="left-box">
           <div class="box-title">文件库</div>
           <a-divider margin="0" />
-          <FileTree class="file-tree-style" />
+          <FileTree class="file-tree-style" @on-node="onNode" />
         </div>
         <div class="right-box">
           <div class="box-title">
             <a-breadcrumb>
-              <a-breadcrumb-item>总公司</a-breadcrumb-item>
-              <a-breadcrumb-item>行政部</a-breadcrumb-item>
-              <a-breadcrumb-item>人力资源部</a-breadcrumb-item>
+              <a-breadcrumb-item v-for="(item, index) in breadcrumb" :key="index">{{ item.title }}</a-breadcrumb-item>
+              <a-breadcrumb-item v-if="breadcrumb.length == 0">全部</a-breadcrumb-item>
             </a-breadcrumb>
           </div>
           <a-divider margin="0" />
@@ -26,6 +25,11 @@
 <script setup lang="ts">
 import FileTree from "@/views/file-management/document-library/components/file-tree.vue";
 import FileTable from "@/views/file-management/document-library/components/file-table.vue";
+
+const breadcrumb = ref<any>([]);
+const onNode = (list: any) => {
+  breadcrumb.value = list;
+};
 </script>
 
 <style lang="scss" scoped>

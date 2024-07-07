@@ -7,7 +7,7 @@
     </a-input>
     <div class="tree-box">
       <a-scrollbar style="height: 100%; overflow: auto" outer-class="scrollbar">
-        <a-tree :data="treeData" :show-line="true">
+        <a-tree :data="treeData" :show-line="true" @select="onNode">
           <template #title="node">
             <span class="tree-title">{{ node.title }}</span>
           </template>
@@ -24,8 +24,17 @@
 
 <script setup lang="ts">
 import { fileTreeData } from "@/views/file-management/document-library/components/file-tree-data.js";
-const searchKey = ref("");
+import { findParentsTailRecursive } from "@/utils";
 
+const emit = defineEmits(["onNode"]);
+
+const onNode = (selectedKeys: Array<string>) => {
+  let list = findParentsTailRecursive(treeData.value, selectedKeys[0]);
+  console.log("节点", list);
+  emit("onNode", list);
+};
+
+const searchKey = ref("");
 const treeData = computed(() => {
   if (!searchKey.value) return sourceTree.value;
   return searchData(searchKey.value);
