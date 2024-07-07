@@ -22,13 +22,16 @@ const { routeTree } = storeToRefs(routerStore);
 <style lang="scss" scoped>
 .aside {
   height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 .dark {
   background: #232324;
 }
 
 .layout_side {
-  height: calc(100% - 60px);
+  flex: 1;
+  overflow: hidden;
   .scrollbar {
     height: 100%;
   }

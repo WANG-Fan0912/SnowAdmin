@@ -67,21 +67,21 @@
         </div>
         <template #content>
           <!-- 个人中心 -->
-          <a-doption>
+          <a-doption @click="onPerson">
             <template #default>
               <SvgIcon :name="'user'" :size="18" />
               <span class="margin-left-text">{{ $t(`language.personal-information`) }}</span>
             </template>
           </a-doption>
           <!-- 修改密码 -->
-          <a-doption>
+          <a-doption @click="onUpdate">
             <template #default>
               <SvgIcon :name="'lock-pwd'" :size="18" />
               <span class="margin-left-text">{{ $t(`language.change-password`) }}</span>
             </template>
           </a-doption>
           <!-- 项目地址 -->
-          <a-doption>
+          <a-doption @click="onProject">
             <template #default>
               <SvgIcon :name="'gitee'" :size="18" />
               <span class="margin-left-text">{{ $t(`language.project-address`) }}</span>
@@ -160,6 +160,25 @@ const onLange = (e: string) => {
     themeStore.setLanguage("en-US");
   }
   i18n.locale.value = language.value;
+};
+
+// 个人中心
+const onPerson = () => {
+  router.push({
+    path: "/personal-center/userinfo"
+  });
+};
+
+// 修改密码
+const onUpdate = () => {
+  router.push({
+    path: "/personal-center/user-settings"
+  });
+};
+
+// 项目地址
+const onProject = () => {
+  window.open("https://gitee.com/wang_fan_w/dc-admin", "_blank");
 };
 
 // 退出登录
