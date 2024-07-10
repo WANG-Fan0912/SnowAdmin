@@ -240,7 +240,6 @@ const list = ref<any>([]);
 const getList = () => {
   try {
     loading.value = true;
-    console.log("搜索", originalList.value);
     setTimeout(() => {
       list.value = shuffleArray(originalList.value);
       loading.value = false;
@@ -266,6 +265,10 @@ const shuffleArray = (arr: any) => {
   }
   return arr;
 };
+
+defineExpose({
+  getList
+});
 </script>
 
 <style lang="scss" scoped>
