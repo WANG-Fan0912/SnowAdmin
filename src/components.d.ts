@@ -7,7 +7,6 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    CodemirrorCode: typeof import('./components/codemirror-code/index.vue')['default']
     CodeView: typeof import('./components/code-view/index.vue')['default']
     ExternalLinkPage: typeof import('./components/external-link-page/index.vue')['default']
     FillPage: typeof import('./components/fill-page/index.vue')['default']
