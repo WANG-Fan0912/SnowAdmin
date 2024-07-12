@@ -25,7 +25,7 @@
               </template>
               <template #default>查询</template>
             </a-button>
-            <a-button @click="$refs.formRef.resetFields()">
+            <a-button @click="onReset">
               <template #icon>
                 <icon-refresh />
               </template>
@@ -181,7 +181,10 @@ const rowSelection = reactive({
   showCheckedAll: true,
   onlyCurrent: false
 });
-
+const formRef = ref();
+const onReset = () => {
+  formRef.value.resetFields();
+};
 const pagination = ref({ showPageSize: true, showTotal: true, current: 1, pageSize: 10, total: 10 });
 const pageChange = (page: number) => {
   pagination.value.current = page;
@@ -189,7 +192,7 @@ const pageChange = (page: number) => {
 const pageSizeChange = (pageSize: number) => {
   pagination.value.pageSize = pageSize;
 };
-const columnsShow = ref([]);
+const columnsShow = ref<any>([]);
 const columns = ref([
   {
     title: "集合编号",

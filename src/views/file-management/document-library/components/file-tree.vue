@@ -30,7 +30,6 @@ const emit = defineEmits(["onNode"]);
 
 const onNode = (selectedKeys: Array<string>) => {
   let list = findParentsTailRecursive(treeData.value, selectedKeys[0]);
-  console.log("节点", list);
   emit("onNode", list);
 };
 

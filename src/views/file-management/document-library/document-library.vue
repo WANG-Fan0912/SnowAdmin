@@ -15,7 +15,7 @@
             </a-breadcrumb>
           </div>
           <a-divider margin="0" />
-          <FileTable class="file-table-style" />
+          <FileTable ref="FileTableRef" class="file-table-style" />
         </div>
       </div>
     </div>
@@ -26,9 +26,11 @@
 import FileTree from "@/views/file-management/document-library/components/file-tree.vue";
 import FileTable from "@/views/file-management/document-library/components/file-table.vue";
 
+const FileTableRef = ref();
 const breadcrumb = ref<any>([]);
 const onNode = (list: any) => {
   breadcrumb.value = list;
+  FileTableRef.value && FileTableRef.value.getList();
 };
 </script>
 
