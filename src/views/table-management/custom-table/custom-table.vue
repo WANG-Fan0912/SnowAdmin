@@ -369,7 +369,7 @@ const onDensity = (e: string) => {
   density.value = e;
 };
 
-// 排序
+// 修改列的显示隐藏
 const onCheckbox = (checked: any, row: any, index: any) => {
   if (!checked) {
     columnsShow.value = columnsShow.value.filter((item: any) => item.dataIndex != row.dataIndex);
