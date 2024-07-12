@@ -273,6 +273,55 @@ export const dynamicRoutes: RouteRecordRaw[] = [
         ]
       },
       {
+        path: "/custom-instruction",
+        name: "custom-instruction",
+        redirect: "/custom-instruction/anti-shake",
+        meta: {
+          title: "custom-instruction",
+          hide: false,
+          keepAlive: true,
+          affix: false,
+          link: "",
+          iframe: false,
+          roles: ["admin"],
+          svgIcon: "directives"
+        },
+        children: [
+          {
+            path: "/custom-instruction/anti-shake",
+            name: "anti-shake",
+            component: () => import("@/views/custom-instruction/anti-shake/anti-shake.vue"),
+            meta: {
+              title: "anti-shake",
+              hide: false,
+              keepAlive: true,
+              affix: false,
+              link: "",
+              iframe: false,
+              roles: ["admin"],
+              icon: "icon-menu"
+            },
+            children: []
+          },
+          {
+            path: "/custom-instruction/throttle",
+            name: "throttle",
+            component: () => import("@/views/custom-instruction/throttle/throttle.vue"),
+            meta: {
+              title: "throttle",
+              hide: false,
+              keepAlive: true,
+              affix: false,
+              link: "",
+              iframe: false,
+              roles: ["admin"],
+              icon: "icon-menu"
+            },
+            children: []
+          }
+        ]
+      },
+      {
         path: "/personal-center",
         name: "personal-center",
         redirect: "/personal-center/userinfo",
