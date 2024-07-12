@@ -111,8 +111,6 @@
 </template>
 
 <script setup lang="ts">
-import { log } from "console";
-
 const form = ref({
   name: ""
 });
