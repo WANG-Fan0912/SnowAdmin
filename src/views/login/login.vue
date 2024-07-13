@@ -12,7 +12,6 @@
     </div>
   </div>
 </template>
-
 <script setup lang="ts">
 import LoginBanner from "@/views/login/components/login-banner.vue";
 import LoginForm from "@/views/login/components/login-form.vue";

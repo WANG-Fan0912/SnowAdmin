@@ -23,10 +23,12 @@ import "@/assets/fonts/fonts.scss";
 import directives from "@/directives/index";
 
 initVChartArcoTheme();
+
 const app = createApp(App);
 
 // app.use(plugin, options)
 // 其中 plugin 表示要传递的插件对象， options 参数是可选的，表示选项配置
+// https://cn.vuejs.org/api/application.html#app-use
 
 app.use(ArcoVue, {
   componentPrefix: "arco"
