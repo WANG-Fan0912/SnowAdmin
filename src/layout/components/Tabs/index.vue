@@ -17,35 +17,36 @@
       />
     </a-tabs>
     <div class="tabs_setting">
-      <a-dropdown trigger="hover" :popup-max-height="false">
-        <div class="setting"><icon-apps :size="18" /></div>
-        <template #content>
-          <a-doption @click="refresh">
-            <template #icon><icon-refresh /></template>
-            <template #default>{{ $t(`language.refresh`) }}</template>
-          </a-doption>
-          <a-doption @click="closeCurrent">
-            <template #icon><icon-close /></template>
-            <template #default>{{ $t(`language.close-current`) }}</template>
-          </a-doption>
-          <a-doption @click="closeSides('left')">
-            <template #icon><icon-left /></template>
-            <template #default>{{ $t(`language.close-left-side`) }}</template>
-          </a-doption>
-          <a-doption @click="closeSides('right')">
-            <template #icon><icon-right /></template>
-            <template #default>{{ $t(`language.close-right-side`) }}</template>
-          </a-doption>
-          <a-doption @click="closeOther('other')">
-            <template #icon><icon-close-circle /></template>
-            <template #default>{{ $t(`language.close-other`) }}</template>
-          </a-doption>
-          <a-doption @click="closeOther('all')">
-            <template #icon><icon-folder-delete /></template>
-            <template #default>{{ $t(`language.close-all`) }}</template>
-          </a-doption>
-        </template>
-      </a-dropdown>
+      <a-space>
+        <a-tooltip :content="$t(`language.refresh`)" position="bottom" mini>
+          <span ref="refreshRef" :class="rotateOpen && 'refresh'"><icon-refresh :size="18" @click="refresh" /></span>
+        </a-tooltip>
+        <a-dropdown trigger="hover" :popup-max-height="false">
+          <div class="setting"><icon-apps :size="18" /></div>
+          <template #content>
+            <a-doption @click="closeCurrent">
+              <template #icon><icon-close /></template>
+              <template #default>{{ $t(`language.close-current`) }}</template>
+            </a-doption>
+            <a-doption @click="closeSides('left')">
+              <template #icon><icon-left /></template>
+              <template #default>{{ $t(`language.close-left-side`) }}</template>
+            </a-doption>
+            <a-doption @click="closeSides('right')">
+              <template #icon><icon-right /></template>
+              <template #default>{{ $t(`language.close-right-side`) }}</template>
+            </a-doption>
+            <a-doption @click="closeOther('other')">
+              <template #icon><icon-close-circle /></template>
+              <template #default>{{ $t(`language.close-other`) }}</template>
+            </a-doption>
+            <a-doption @click="closeOther('all')">
+              <template #icon><icon-folder-delete /></template>
+              <template #default>{{ $t(`language.close-all`) }}</template>
+            </a-doption>
+          </template>
+        </a-dropdown>
+      </a-space>
     </div>
   </div>
 </template>
@@ -78,7 +79,12 @@ const onDelete = (key: string) => {
 };
 
 // 刷新当前页
+const rotateOpen = ref(false);
 const refresh = () => {
+  rotateOpen.value = true;
+  setTimeout(() => {
+    rotateOpen.value = false;
+  }, 500);
   const themeStore = useThemeConfig();
   themeStore.setRefreshPage(false);
   currentRoute.value.meta.keepAlive && routerStore.removeRouteName(currentRoute.value.name);
@@ -153,6 +159,10 @@ const closeOther = (type: string) => {
     .setting {
       margin-right: $margin;
       color: $color-text-2;
+    }
+    .refresh {
+      transition: transform 0.5s;
+      transform: rotate(360deg);
     }
   }
 }
