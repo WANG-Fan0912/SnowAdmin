@@ -14,3 +14,4 @@ declare module "@codemirror/lang-json";
 declare module "@codemirror/lang-javascript";
 declare module "@codemirror/lang-vue";
 declare module "nprogress";
+declare module "@wangeditor/editor-for-vue";

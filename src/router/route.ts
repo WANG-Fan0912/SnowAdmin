@@ -350,22 +350,6 @@ export const dynamicRoutes: RouteRecordRaw[] = [
               icon: "icon-menu"
             },
             children: []
-          },
-          {
-            path: "/common-component/markdown",
-            name: "markdown",
-            component: () => import("@/views/common-component/markdown/markdown.vue"),
-            meta: {
-              title: "markdown",
-              hide: false,
-              keepAlive: true,
-              affix: false,
-              link: "",
-              iframe: false,
-              roles: ["admin"],
-              icon: "icon-menu"
-            },
-            children: []
           }
         ]
       },
@@ -691,7 +675,7 @@ export const staticRoutes = [
  */
 export const notFoundAndNoPower = [
   {
-    path: "/401",
+    path: "/401", // 无权限，跳转401
     name: "no-power",
     component: () => import("@/views/error/401.vue"),
     meta: {
