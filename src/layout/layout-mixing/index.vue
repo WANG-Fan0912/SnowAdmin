@@ -177,7 +177,7 @@ const getAsideMenu = (key: string) => {
       align-items: center;
       .menu_fold_icon {
         color: $color-text-1;
-        border-radius: $radius-box;
+        border-radius: $radius-box-1;
       }
     }
   }

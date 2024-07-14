@@ -225,7 +225,7 @@ const originalList = ref([
   {
     key: "10",
     source: "豆瓣",
-    sourceSvg: "豆瓣网",
+    sourceSvg: "豆瓣",
     sourceType: "搜索",
     flow: "2465",
     percent: "40",

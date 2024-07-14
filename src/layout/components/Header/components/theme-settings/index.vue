@@ -145,7 +145,7 @@ const handleCancel = () => {
   width: 70px;
   height: 50px;
   background: $color-fill-1;
-  border-radius: $radius-box;
+  border-radius: $radius-box-1;
   overflow: hidden;
   box-shadow: $shadow-special;
 

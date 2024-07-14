@@ -210,7 +210,7 @@ const logOut = () => {
   > .icon_btn {
     width: $icon-box;
     height: $icon-box;
-    border-radius: $radius-box;
+    border-radius: $radius-box-1;
     box-sizing: border-box;
     margin-left: $margin;
     display: flex;
