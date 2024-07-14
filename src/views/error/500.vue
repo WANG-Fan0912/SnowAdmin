@@ -12,6 +12,7 @@
 </template>
 
 <script setup lang="ts">
+import { loadingPage } from "@/utils/loading-page";
 import { Message } from "@arco-design/web-vue";
 import { useRouter } from "vue-router";
 const router = useRouter();
@@ -23,6 +24,10 @@ const onBack = () => {
     router.go(-1);
   }
 };
+
+onMounted(() => {
+  loadingPage.done(200);
+});
 </script>
 
 <style lang="scss" scoped>
