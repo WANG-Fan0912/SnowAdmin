@@ -7,7 +7,8 @@ import { storeToRefs } from "pinia";
 import { useUserInfoStore } from "@/store/modules/user-info";
 import { useRoutesListStore } from "@/store/modules/route-list";
 import { useRoutingMethod } from "@/hooks/useRoutingMethod";
-
+// import { useRoute } from "vue-router";
+// const route = useRoute();
 /**
  * 创建vue的路由示例
  * @method createRouter(options: RouterOptions): Router
@@ -41,7 +42,12 @@ router.beforeEach(async (to, from, next) => {
   const store = useUserInfoStore(pinia);
   const { token } = storeToRefs(store);
   console.log("去", to, "来自", from);
-  if (to.path === "/login" && !token.value) {
+  // next()内部加了path等于跳转指定路由会再次触发router.beforeEach，内部无参数等于放行，不会触发router.beforeEach
+  // 浏览器离线，条件：网络离线、跳转路径非 /500
+  // 这里拦截的是在无网络情况下的正常跳转，跳转500
+  if (!navigator.onLine && to.path !== "/500") {
+    next("/500"); // 跳转500
+  } else if (to.path === "/login" && !token.value) {
     // 1、去登录页，无token，放行
     next();
   } else if (!token.value) {
@@ -53,6 +59,10 @@ router.beforeEach(async (to, from, next) => {
     // 项目内的跳转，处理跳转路由高亮
     currentlyRoute(to.name as string);
   } else {
+    // 无网络，跳转500，放行
+    if (!navigator.onLine && to.path == "/500") {
+      return next();
+    }
     // 4、去非登录页，有token，校验是否动态添加过路由，添加过则放行，未添加则执行路由初始化
     const routeStore = useRoutesListStore(pinia);
     const { routeTree } = storeToRefs(routeStore);

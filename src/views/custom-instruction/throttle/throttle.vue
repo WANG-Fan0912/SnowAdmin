@@ -12,7 +12,7 @@
 <script setup lang="ts">
 import { Message } from "@arco-design/web-vue";
 const onClick = () => {
-  Message.info("节流执行了");
+  Message.success("节流执行了");
 };
 </script>
 

@@ -676,10 +676,19 @@ export const staticRoutes = [
 export const notFoundAndNoPower = [
   {
     path: "/401", // 无权限，跳转401
-    name: "no-power",
+    name: "no-access",
     component: () => import("@/views/error/401.vue"),
     meta: {
-      title: "not-power",
+      title: "no-access",
+      hide: true
+    }
+  },
+  {
+    path: "/500", // 无网络-浏览器离线
+    name: "no-network",
+    component: () => import("@/views/error/500.vue"),
+    meta: {
+      title: "no-network",
       hide: true
     }
   },

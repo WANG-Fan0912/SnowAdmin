@@ -8,7 +8,7 @@
 <script setup lang="ts">
 import { Message } from "@arco-design/web-vue";
 const onClick = () => {
-  Message.info("0.5s后执行了");
+  Message.success("0.5s后执行了");
 };
 </script>
 
