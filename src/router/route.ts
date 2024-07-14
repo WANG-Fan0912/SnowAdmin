@@ -273,6 +273,103 @@ export const dynamicRoutes: RouteRecordRaw[] = [
         ]
       },
       {
+        path: "/common-component",
+        name: "common-component",
+        redirect: "/common-component/player",
+        meta: {
+          title: "common-component",
+          hide: false,
+          keepAlive: true,
+          affix: false,
+          link: "",
+          iframe: false,
+          roles: ["admin"],
+          svgIcon: "classify"
+        },
+        children: [
+          {
+            path: "/common-component/player",
+            name: "player",
+            component: () => import("@/views/common-component/player/player.vue"),
+            meta: {
+              title: "player",
+              hide: false,
+              keepAlive: true,
+              affix: false,
+              link: "",
+              iframe: false,
+              roles: ["admin"],
+              icon: "icon-menu"
+            },
+            children: []
+          },
+          {
+            path: "/common-component/print",
+            name: "print",
+            component: () => import("@/views/common-component/print/print.vue"),
+            meta: {
+              title: "print",
+              hide: false,
+              keepAlive: true,
+              affix: false,
+              link: "",
+              iframe: false,
+              roles: ["admin"],
+              icon: "icon-menu"
+            },
+            children: []
+          },
+          {
+            path: "/common-component/draggable",
+            name: "draggable",
+            component: () => import("@/views/common-component/draggable/draggable.vue"),
+            meta: {
+              title: "draggable",
+              hide: false,
+              keepAlive: true,
+              affix: false,
+              link: "",
+              iframe: false,
+              roles: ["admin"],
+              icon: "icon-menu"
+            },
+            children: []
+          },
+          {
+            path: "/common-component/editor",
+            name: "editor",
+            component: () => import("@/views/common-component/editor/editor.vue"),
+            meta: {
+              title: "editor",
+              hide: false,
+              keepAlive: true,
+              affix: false,
+              link: "",
+              iframe: false,
+              roles: ["admin"],
+              icon: "icon-menu"
+            },
+            children: []
+          },
+          {
+            path: "/common-component/markdown",
+            name: "markdown",
+            component: () => import("@/views/common-component/markdown/markdown.vue"),
+            meta: {
+              title: "markdown",
+              hide: false,
+              keepAlive: true,
+              affix: false,
+              link: "",
+              iframe: false,
+              roles: ["admin"],
+              icon: "icon-menu"
+            },
+            children: []
+          }
+        ]
+      },
+      {
         path: "/custom-instruction",
         name: "custom-instruction",
         redirect: "/custom-instruction/anti-shake",
