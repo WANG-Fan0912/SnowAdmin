@@ -452,6 +452,119 @@ export const dynamicRoutes: RouteRecordRaw[] = [
         ]
       },
       {
+        path: "/system-management",
+        name: "system-management",
+        redirect: "/system-management/account management",
+        meta: {
+          title: "system-management",
+          hide: false,
+          keepAlive: true,
+          affix: false,
+          link: "",
+          iframe: false,
+          roles: ["admin"],
+          svgIcon: "set"
+        },
+        children: [
+          {
+            path: "/system-management/account-management",
+            name: "account-management",
+            component: () => import("@/views/system-management/account-management/account-management.vue"),
+            meta: {
+              title: "account-management",
+              hide: false,
+              keepAlive: true,
+              affix: false,
+              link: "",
+              iframe: false,
+              roles: ["admin"],
+              icon: "icon-menu"
+            },
+            children: []
+          },
+          {
+            path: "/system-management/role-management",
+            name: "role-management",
+            component: () => import("@/views/system-management/role-management/role-management.vue"),
+            meta: {
+              title: "role-management",
+              hide: false,
+              keepAlive: true,
+              affix: false,
+              link: "",
+              iframe: false,
+              roles: ["admin"],
+              icon: "icon-menu"
+            },
+            children: []
+          },
+          {
+            path: "/system-management/menu-management",
+            name: "menu-management",
+            component: () => import("@/views/system-management/menu-management/menu-management.vue"),
+            meta: {
+              title: "menu-management",
+              hide: false,
+              keepAlive: true,
+              affix: false,
+              link: "",
+              iframe: false,
+              roles: ["admin"],
+              icon: "icon-menu"
+            },
+            children: []
+          },
+          {
+            path: "/system-management/division-management",
+            name: "division-management",
+            component: () => import("@/views/system-management/division-management/division-management.vue"),
+            meta: {
+              title: "division-management",
+              hide: false,
+              keepAlive: true,
+              affix: false,
+              link: "",
+              iframe: false,
+              roles: ["admin"],
+              icon: "icon-menu"
+            },
+            children: []
+          },
+          {
+            path: "/system-management/dictionary-management",
+            name: "dictionary-management",
+            component: () => import("@/views/system-management/dictionary-management/dictionary-management.vue"),
+            meta: {
+              title: "dictionary-management",
+              hide: false,
+              keepAlive: true,
+              affix: false,
+              link: "",
+              iframe: false,
+              roles: ["admin"],
+              icon: "icon-menu"
+            },
+            children: []
+          },
+          {
+            path: "/system-management/system-log",
+            name: "system-log",
+            component: () => import("@/views/system-management/system-log/system-log.vue"),
+            meta: {
+              title: "system-log",
+              hide: false,
+              keepAlive: true,
+              affix: false,
+              link: "",
+              iframe: false,
+              roles: ["admin"],
+              icon: "icon-menu"
+            },
+            children: []
+          }
+        ]
+      },
+      {
         path: "/external-links",
         name: "external-links",
         redirect: "/external-links/inline-page",
