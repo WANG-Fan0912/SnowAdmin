@@ -41,53 +41,15 @@
       </a-col>
     </a-row>
 
-    <a-table
-      row-key="key"
-      size="small"
-      :bordered="{
-        cell: true
-      }"
-      :loading="loading"
-      :data="list"
-    >
-      <template #columns>
-        <a-table-column title="菜单名称" :width="180">
-          <template #cell="{ record }">
-            {{ $t(`language.${record.meta.title}`) }}
-          </template>
-        </a-table-column>
-        <a-table-column title="图标" align="center" :width="100">
-          <template #cell="{ record }">
-            <MenuItemIcon :svg-icon="record.meta.svgIcon" :icon="record.meta.icon" />
-          </template>
-        </a-table-column>
-        <a-table-column title="排序" align="center" :width="100">
-          <template #cell="{ record }">
-            {{ record.meta.sort }}
-          </template>
-        </a-table-column>
-        <a-table-column title="权限标识" />
-        <a-table-column title="组件路径" />
-        <a-table-column title="状态" :width="100">
-          <template #cell="{ record }">
-            <a-space>
-              <a-tag size="small" color="red" v-if="record.hide">禁用</a-tag>
-              <a-tag size="small" color="green" v-else>启用</a-tag>
-            </a-space>
-          </template>
-        </a-table-column>
-        <a-table-column title="创建时间" />
-        <a-table-column title="操作" :width="200">
-          <template #cell="cell">
-            <a-space>
-              <a-button size="mini" type="primary">修改</a-button>
-              <a-button size="mini">新增</a-button>
-              <a-popconfirm content="确定删除这条数据吗?" type="warning">
-                <a-button size="mini" type="primary" status="danger" @click="onDelete(cell)">删除</a-button>
-              </a-popconfirm>
-            </a-space>
-          </template>
-        </a-table-column>
+    <a-table :columns="columns" :data="list" :expandable="expandable">
+      <template #operation>
+        <a-space>
+          <a-button size="mini" type="primary">详情</a-button>
+          <a-button size="mini">修改</a-button>
+          <a-popconfirm content="确定删除这条数据吗?" type="warning">
+            <a-button size="mini" type="primary" status="danger">删除</a-button>
+          </a-popconfirm>
+        </a-space>
       </template>
     </a-table>
   </div>
@@ -95,17 +57,109 @@
 
 <script setup lang="ts">
 import { dynamicRoutes } from "@/router/route.ts";
-import MenuItemIcon from "@/layout/components/Menu/menu-item-icon.vue";
-
-const form = ref({
-  name: ""
+// import MenuItemIcon from "@/layout/components/Menu/menu-item-icon.vue";
+const expandable = reactive({
+  title: "展开",
+  width: 80,
+  expandedRowRender: record => {
+    if (record.key === "3") {
+      return `My Name is ${record.name}`;
+    }
+  }
 });
 
-// const onExpand = (rowKey: string | number) => {
-//   console.log("列展开", rowKey);
-// };
+const columns = [
+  {
+    title: "菜单名称",
+    dataIndex: "title"
+  },
+  {
+    title: "图标",
+    dataIndex: "icon"
+  },
+  {
+    title: "排序",
+    dataIndex: "sort"
+  },
+  {
+    title: "权限标识",
+    dataIndex: "power"
+  },
+  {
+    title: "路由",
+    dataIndex: "path"
+  },
+  {
+    title: "组件路径",
+    dataIndex: "componentPath"
+  },
+  {
+    title: "组件名称",
+    dataIndex: "name"
+  },
+  {
+    title: "显示状态",
+    dataIndex: "hide"
+  },
+  {
+    title: "是否缓存",
+    dataIndex: "keepAlive"
+  },
+  {
+    title: "是否外链",
+    dataIndex: "link"
+  },
+  {
+    title: "是否内嵌",
+    dataIndex: "iframe"
+  },
+  {
+    title: "操作",
+    dataIndex: "operation",
+    slotName: "operation"
+  }
+];
 
-const loading = ref(false);
+const data = reactive([
+  {
+    key: "1",
+    name: "Jane Doe",
+    salary: 23000,
+    address: "32 Park Road, London",
+    email: "jane.doe@example.com",
+    expand: "Expand Data"
+  },
+  {
+    key: "2",
+    name: "Alisa Ross",
+    salary: 25000,
+    address: "35 Park Road, London",
+    email: "alisa.ross@example.com"
+  },
+  {
+    key: "3",
+    name: "Kevin Sandra",
+    salary: 22000,
+    address: "31 Park Road, London",
+    email: "kevin.sandra@example.com"
+  },
+  {
+    key: "4",
+    name: "Ed Hellen",
+    salary: 17000,
+    address: "42 Park Road, London",
+    email: "ed.hellen@example.com"
+  },
+  {
+    key: "5",
+    name: "William Smith",
+    salary: 27000,
+    address: "62 Park Road, London",
+    email: "william.smith@example.com"
+  }
+]);
+
+// const loading = ref(false);
 const list = computed(() => {
   if (dynamicRoutes.length > 0) {
     return dynamicRoutes[0].children;
@@ -114,9 +168,13 @@ const list = computed(() => {
   }
 });
 
-const onDelete = (cell: any) => {
-  console.log("删除", cell);
-};
+const form = ref({
+  name: ""
+});
+
+// const onDelete = (cell: any) => {
+//   console.log("删除", cell);
+// };
 </script>
 
 <style lang="scss" scoped>
