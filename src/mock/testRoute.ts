@@ -14,7 +14,8 @@ export const testMultilevelMenu = [
       affix: false,
       iframe: false,
       roles: ["admin"],
-      icon: "icon-menu"
+      icon: "icon-menu",
+      sort: 3
     }
   },
   {
@@ -29,7 +30,8 @@ export const testMultilevelMenu = [
       affix: false,
       iframe: false,
       roles: ["admin"],
-      icon: "icon-menu"
+      icon: "icon-menu",
+      sort: 4
     }
   },
   {
@@ -44,7 +46,8 @@ export const testMultilevelMenu = [
       affix: false,
       iframe: false,
       roles: ["admin"],
-      icon: "icon-menu"
+      icon: "icon-menu",
+      sort: 5
     }
   },
   {
@@ -59,7 +62,8 @@ export const testMultilevelMenu = [
       affix: false,
       iframe: false,
       roles: ["admin"],
-      icon: "icon-menu"
+      icon: "icon-menu",
+      sort: 6
     }
   },
   {
@@ -74,7 +78,8 @@ export const testMultilevelMenu = [
       affix: false,
       iframe: false,
       roles: ["admin"],
-      icon: "icon-menu"
+      icon: "icon-menu",
+      sort: 7
     }
   },
   {
@@ -89,7 +94,8 @@ export const testMultilevelMenu = [
       affix: false,
       iframe: false,
       roles: ["admin"],
-      icon: "icon-menu"
+      icon: "icon-menu",
+      sort: 8
     }
   },
   {
@@ -104,7 +110,8 @@ export const testMultilevelMenu = [
       affix: false,
       iframe: false,
       roles: ["admin"],
-      icon: "icon-menu"
+      icon: "icon-menu",
+      sort: 9
     }
   }
 ];

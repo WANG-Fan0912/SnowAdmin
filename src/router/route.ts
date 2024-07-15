@@ -47,22 +47,8 @@ export const dynamicRoutes: RouteRecordRaw[] = [
           link: "", // 是否外链
           iframe: false, // 是否内嵌窗口
           roles: ["admin", "common"], // 路由权限
-          svgIcon: "home" // 菜单图标
-        }
-      },
-      {
-        path: "/home2",
-        name: "home2",
-        component: () => import("@/views/home/home.vue"),
-        meta: {
-          title: "home", // 国际化
-          hide: false, // 是否隐藏此路由
-          keepAlive: false, // 缓存组件状态
-          affix: true, // 固定在tagesView栏上
-          link: "", // 是否外链
-          iframe: false, // 是否内嵌窗口
-          roles: ["common"], // 路由权限
-          svgIcon: "home" // 菜单图标
+          svgIcon: "home", // 菜单图标
+          sort: 1
         }
       },
       {
@@ -77,7 +63,8 @@ export const dynamicRoutes: RouteRecordRaw[] = [
           link: "",
           iframe: false,
           roles: ["admin"],
-          svgIcon: "folder-menu"
+          svgIcon: "folder-menu",
+          sort: 2
         },
         children: [
           {
@@ -92,7 +79,8 @@ export const dynamicRoutes: RouteRecordRaw[] = [
               link: "",
               iframe: false,
               roles: ["admin"],
-              icon: "icon-menu"
+              icon: "icon-menu",
+              sort: 1
             }
           }
         ]
@@ -110,7 +98,8 @@ export const dynamicRoutes: RouteRecordRaw[] = [
           link: "",
           iframe: false,
           roles: ["admin"],
-          svgIcon: "table"
+          svgIcon: "table",
+          sort: 3
         },
         children: [
           {
@@ -125,7 +114,8 @@ export const dynamicRoutes: RouteRecordRaw[] = [
               link: "",
               iframe: false,
               roles: ["admin"],
-              icon: "icon-menu"
+              icon: "icon-menu",
+              sort: 1
             }
           },
           {
@@ -140,7 +130,8 @@ export const dynamicRoutes: RouteRecordRaw[] = [
               link: "",
               iframe: false,
               roles: ["admin"],
-              icon: "icon-menu"
+              icon: "icon-menu",
+              sort: 2
             }
           }
         ]
@@ -157,7 +148,8 @@ export const dynamicRoutes: RouteRecordRaw[] = [
           link: "",
           iframe: false,
           roles: ["admin"],
-          svgIcon: "form"
+          svgIcon: "form",
+          sort: 4
         },
         children: [
           {
@@ -172,7 +164,8 @@ export const dynamicRoutes: RouteRecordRaw[] = [
               link: "",
               iframe: false,
               roles: ["admin"],
-              icon: "icon-menu"
+              icon: "icon-menu",
+              sort: 1
             }
           },
           {
@@ -187,7 +180,8 @@ export const dynamicRoutes: RouteRecordRaw[] = [
               link: "",
               iframe: false,
               roles: ["admin"],
-              icon: "icon-menu"
+              icon: "icon-menu",
+              sort: 2
             }
           }
         ]
@@ -204,7 +198,8 @@ export const dynamicRoutes: RouteRecordRaw[] = [
           link: "",
           iframe: false,
           roles: ["admin"],
-          svgIcon: "switch"
+          svgIcon: "switch",
+          sort: 5
         },
         children: [
           {
@@ -219,7 +214,8 @@ export const dynamicRoutes: RouteRecordRaw[] = [
               link: "",
               iframe: false,
               roles: ["admin"],
-              icon: "icon-menu"
+              icon: "icon-menu",
+              sort: 1
             }
           },
           {
@@ -234,7 +230,8 @@ export const dynamicRoutes: RouteRecordRaw[] = [
               link: "",
               iframe: false,
               roles: ["admin"],
-              icon: "icon-menu"
+              icon: "icon-menu",
+              sort: 2
             },
             children: [
               {
@@ -249,7 +246,8 @@ export const dynamicRoutes: RouteRecordRaw[] = [
                   link: "",
                   iframe: false,
                   roles: ["admin"],
-                  icon: "icon-menu"
+                  icon: "icon-menu",
+                  sort: 1
                 }
               },
               {
@@ -264,7 +262,8 @@ export const dynamicRoutes: RouteRecordRaw[] = [
                   link: "",
                   iframe: false,
                   roles: ["admin"],
-                  icon: "icon-menu"
+                  icon: "icon-menu",
+                  sort: 2
                 }
               },
               ...testMultilevelMenu
@@ -284,7 +283,8 @@ export const dynamicRoutes: RouteRecordRaw[] = [
           link: "",
           iframe: false,
           roles: ["admin"],
-          svgIcon: "classify"
+          svgIcon: "classify",
+          sort: 6
         },
         children: [
           {
@@ -299,7 +299,8 @@ export const dynamicRoutes: RouteRecordRaw[] = [
               link: "",
               iframe: false,
               roles: ["admin"],
-              icon: "icon-menu"
+              icon: "icon-menu",
+              sort: 1
             },
             children: []
           },
@@ -315,7 +316,8 @@ export const dynamicRoutes: RouteRecordRaw[] = [
               link: "",
               iframe: false,
               roles: ["admin"],
-              icon: "icon-menu"
+              icon: "icon-menu",
+              sort: 2
             },
             children: []
           },
@@ -331,7 +333,8 @@ export const dynamicRoutes: RouteRecordRaw[] = [
               link: "",
               iframe: false,
               roles: ["admin"],
-              icon: "icon-menu"
+              icon: "icon-menu",
+              sort: 3
             },
             children: []
           },
@@ -347,7 +350,8 @@ export const dynamicRoutes: RouteRecordRaw[] = [
               link: "",
               iframe: false,
               roles: ["admin"],
-              icon: "icon-menu"
+              icon: "icon-menu",
+              sort: 4
             },
             children: []
           }
@@ -365,7 +369,8 @@ export const dynamicRoutes: RouteRecordRaw[] = [
           link: "",
           iframe: false,
           roles: ["admin"],
-          svgIcon: "directives"
+          svgIcon: "directives",
+          sort: 7
         },
         children: [
           {
@@ -380,7 +385,8 @@ export const dynamicRoutes: RouteRecordRaw[] = [
               link: "",
               iframe: false,
               roles: ["admin"],
-              icon: "icon-menu"
+              icon: "icon-menu",
+              sort: 1
             },
             children: []
           },
@@ -396,7 +402,8 @@ export const dynamicRoutes: RouteRecordRaw[] = [
               link: "",
               iframe: false,
               roles: ["admin"],
-              icon: "icon-menu"
+              icon: "icon-menu",
+              sort: 2
             },
             children: []
           }
@@ -414,7 +421,8 @@ export const dynamicRoutes: RouteRecordRaw[] = [
           link: "",
           iframe: false,
           roles: ["admin"],
-          svgIcon: "user"
+          svgIcon: "user",
+          sort: 8
         },
         children: [
           {
@@ -429,7 +437,8 @@ export const dynamicRoutes: RouteRecordRaw[] = [
               link: "",
               iframe: false,
               roles: ["admin"],
-              icon: "icon-menu"
+              icon: "icon-menu",
+              sort: 1
             },
             children: []
           },
@@ -445,7 +454,8 @@ export const dynamicRoutes: RouteRecordRaw[] = [
               link: "",
               iframe: false,
               roles: ["admin"],
-              icon: "icon-menu"
+              icon: "icon-menu",
+              sort: 2
             },
             children: []
           }
@@ -463,7 +473,8 @@ export const dynamicRoutes: RouteRecordRaw[] = [
           link: "",
           iframe: false,
           roles: ["admin"],
-          svgIcon: "set"
+          svgIcon: "set",
+          sort: 9
         },
         children: [
           {
@@ -478,7 +489,8 @@ export const dynamicRoutes: RouteRecordRaw[] = [
               link: "",
               iframe: false,
               roles: ["admin"],
-              icon: "icon-menu"
+              icon: "icon-menu",
+              sort: 1
             },
             children: []
           },
@@ -494,7 +506,8 @@ export const dynamicRoutes: RouteRecordRaw[] = [
               link: "",
               iframe: false,
               roles: ["admin"],
-              icon: "icon-menu"
+              icon: "icon-menu",
+              sort: 2
             },
             children: []
           },
@@ -510,7 +523,8 @@ export const dynamicRoutes: RouteRecordRaw[] = [
               link: "",
               iframe: false,
               roles: ["admin"],
-              icon: "icon-menu"
+              icon: "icon-menu",
+              sort: 3
             },
             children: []
           },
@@ -526,7 +540,8 @@ export const dynamicRoutes: RouteRecordRaw[] = [
               link: "",
               iframe: false,
               roles: ["admin"],
-              icon: "icon-menu"
+              icon: "icon-menu",
+              sort: 4
             },
             children: []
           },
@@ -542,7 +557,8 @@ export const dynamicRoutes: RouteRecordRaw[] = [
               link: "",
               iframe: false,
               roles: ["admin"],
-              icon: "icon-menu"
+              icon: "icon-menu",
+              sort: 5
             },
             children: []
           },
@@ -558,7 +574,8 @@ export const dynamicRoutes: RouteRecordRaw[] = [
               link: "",
               iframe: false,
               roles: ["admin"],
-              icon: "icon-menu"
+              icon: "icon-menu",
+              sort: 6
             },
             children: []
           }
@@ -576,7 +593,8 @@ export const dynamicRoutes: RouteRecordRaw[] = [
           link: "",
           iframe: false,
           roles: ["admin"],
-          svgIcon: "link"
+          svgIcon: "link",
+          sort: 10
         },
         children: [
           {
@@ -591,7 +609,8 @@ export const dynamicRoutes: RouteRecordRaw[] = [
               link: "",
               iframe: false,
               roles: ["admin"],
-              icon: "icon-menu"
+              icon: "icon-menu",
+              sort: 1
             },
             children: [
               {
@@ -606,7 +625,8 @@ export const dynamicRoutes: RouteRecordRaw[] = [
                   link: "https://uigradients.com/#HoneyDew", // 链接
                   iframe: true, // 区分是否内链 true内链 false外链
                   roles: ["admin"],
-                  icon: "icon-menu"
+                  icon: "icon-menu",
+                  sort: 1
                 },
                 children: []
               },
@@ -622,7 +642,8 @@ export const dynamicRoutes: RouteRecordRaw[] = [
                   link: "https://photokit.com/colors/eyedropper/?lang=zh", // 链接
                   iframe: true, // 区分是否内链 true内链 false外链
                   roles: ["admin"],
-                  icon: "icon-menu"
+                  icon: "icon-menu",
+                  sort: 2
                 },
                 children: []
               },
@@ -638,7 +659,8 @@ export const dynamicRoutes: RouteRecordRaw[] = [
                   link: "https://cssgrid-generator.netlify.app/", // 链接
                   iframe: true, // 区分是否内链 true内链 false外链
                   roles: ["admin"],
-                  icon: "icon-menu"
+                  icon: "icon-menu",
+                  sort: 3
                 },
                 children: []
               }
@@ -656,7 +678,8 @@ export const dynamicRoutes: RouteRecordRaw[] = [
               link: "",
               iframe: false,
               roles: ["admin"],
-              icon: "icon-menu"
+              icon: "icon-menu",
+              sort: 2
             },
             children: [
               {
@@ -671,7 +694,8 @@ export const dynamicRoutes: RouteRecordRaw[] = [
                   link: "https://cn.vuejs.org/", // 链接
                   iframe: false, // 区分是否内链 true内链 false外链
                   roles: ["admin"],
-                  icon: "icon-menu"
+                  icon: "icon-menu",
+                  sort: 1
                 },
                 children: []
               },
@@ -687,7 +711,8 @@ export const dynamicRoutes: RouteRecordRaw[] = [
                   link: "https://www.vitejs.net/", // 链接
                   iframe: false, // 区分是否内链 true内链 false外链
                   roles: ["admin"],
-                  icon: "icon-menu"
+                  icon: "icon-menu",
+                  sort: 2
                 },
                 children: []
               },
@@ -703,7 +728,8 @@ export const dynamicRoutes: RouteRecordRaw[] = [
                   link: "https://gitee.com/wang_fan_w", // 链接
                   iframe: false, // 区分是否内链 true内链 false外链
                   roles: ["admin"],
-                  icon: "icon-menu"
+                  icon: "icon-menu",
+                  sort: 3
                 },
                 children: []
               },
@@ -719,7 +745,8 @@ export const dynamicRoutes: RouteRecordRaw[] = [
                   link: "https://juejin.cn/user/1728883023940600", // 链接
                   iframe: false, // 区分是否内链 true内链 false外链
                   roles: ["admin"],
-                  icon: "icon-menu"
+                  icon: "icon-menu",
+                  sort: 4
                 },
                 children: []
               }
@@ -739,7 +766,8 @@ export const dynamicRoutes: RouteRecordRaw[] = [
           link: "",
           iframe: false,
           roles: ["admin", "common"],
-          svgIcon: "earth"
+          svgIcon: "earth",
+          sort: 11
         }
       },
       {
@@ -754,7 +782,8 @@ export const dynamicRoutes: RouteRecordRaw[] = [
           link: "",
           iframe: false,
           roles: ["admin", "common"],
-          svgIcon: "about"
+          svgIcon: "about",
+          sort: 12
         }
       }
     ]
