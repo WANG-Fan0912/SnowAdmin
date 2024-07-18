@@ -8,6 +8,7 @@ import Components from "unplugin-vue-components/vite";
 import { ArcoResolver } from "unplugin-vue-components/resolvers";
 import { vitePluginForArco } from "@arco-plugins/vite-vue";
 import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
+import { createHtmlPlugin } from "vite-plugin-html";
 const themePath = normalizePath(path.normalize("./src/style/global-theme.scss"));
 
 // https://vitejs.dev/config/
@@ -28,6 +29,13 @@ export default defineConfig(({ mode }) => {
       vue(),
       vitePluginForArco({
         style: "css"
+      }),
+      createHtmlPlugin({
+        inject: {
+          data: {
+            title: env.VITE_GLOB_APP_TITLE
+          }
+        }
       }),
       createSvgIconsPlugin({
         // 配置src下存放svg的路径，这里表示在src/assets/svgs文件夹下

@@ -86,7 +86,7 @@ const onMenuItem = (key: string) => {
   align-items: center;
   overflow: hidden;
   .header-logo {
-    width: 150px;
+    max-width: 180px;
   }
 }
 

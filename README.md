@@ -1,8 +1,8 @@
-# DC-Admin
+# SnowAdmin
 
 ### 介绍 📖
 
-DC-Admin 一款基于 Vue3、TypeScript、Vite5、Pinia、Arco-Design 开源的后台管理框架，符合直觉的使用模式，使用目前最新技术栈开发。项目提供了一些常用组件，在一定程度上提高您的开发效率。另外本项目还封装了一些常用组件、Hooks、动态路由等功能。
+SnowAdmin 一款基于 Vue3、TypeScript、Vite5、Pinia、Arco-Design 开源的后台管理框架，符合直觉的使用模式，使用目前最新技术栈开发。项目提供了一些常用组件，在一定程度上提高您的开发效率。另外本项目还封装了一些常用组件、Hooks、动态路由等功能。
 
 ### 在线预览 👀
 
@@ -89,7 +89,7 @@ pnpm lint:prettier
 ### 文件资源目录 📚
 
 ```text
-DC-Admin
+SnowAdmin
 ├─ .husky                 # husky 配置文件
 ├─ .vscode                # VSCode 推荐配置
 ├─ build                  # Vite 配置项
