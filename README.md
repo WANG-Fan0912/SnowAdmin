@@ -92,7 +92,6 @@ pnpm lint:prettier
 SnowAdmin
 ├─ .husky                 # husky 配置文件
 ├─ .vscode                # VSCode 推荐配置
-├─ build                  # Vite 配置项
 ├─ public                 # 静态资源文件（该文件夹不会被打包）
 ├─ src
 │  ├─ api                 # API 接口管理
