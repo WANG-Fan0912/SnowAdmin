@@ -178,7 +178,7 @@ const onUpdate = () => {
 
 // 项目地址
 const onProject = () => {
-  window.open("https://gitee.com/wang_fan_w/dc-admin", "_blank");
+  window.open("https://gitee.com/wang_fan_w/SnowAdmin", "_blank");
 };
 
 // 退出登录

@@ -10,7 +10,7 @@ SnowAdmin 一款基于 Vue3、TypeScript、Vite5、Pinia、Arco-Design 开源的
 
 ### 代码仓库 ⭐
 
-- Gitee：https://gitee.com/wang_fan_w/dc-admin
+- Gitee：https://gitee.com/wang_fan_w/SnowAdmin
 
 ### 项目文档 📚
 
@@ -36,7 +36,7 @@ SnowAdmin 一款基于 Vue3、TypeScript、Vite5、Pinia、Arco-Design 开源的
 
 ```text
 # Gitee
-git clone https://gitee.com/wang_fan_w/dc-admin.git
+git clone https://gitee.com/wang_fan_w/SnowAdmin.git
 ```
 
 - **Install：**

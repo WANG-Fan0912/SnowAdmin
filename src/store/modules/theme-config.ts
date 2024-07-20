@@ -39,7 +39,7 @@ export const useThemeConfig = defineStore("theme-config", {
     isBreadcrumb: true, // 面包屑渲染
     isTabs: true, // 标签栏渲染
     isFooter: true, // 页脚渲染
-    watermark: "dc admin", // 水印
+    watermark: "SnowAdmin", // 水印
     watermarkStyle: {
       fontSize: 12,
       color: "rgba(0, 0, 0, 0.15)"
