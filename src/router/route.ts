@@ -725,7 +725,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
                   hide: false,
                   keepAlive: true,
                   affix: false,
-                  link: "https://gitee.com/wang_fan_w", // 链接
+                  link: "https://gitee.com/wang_fan_w/SnowAdmin", // 链接
                   iframe: false, // 区分是否内链 true内链 false外链
                   roles: ["admin"],
                   icon: "icon-menu",
