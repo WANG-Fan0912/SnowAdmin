@@ -30,6 +30,24 @@ SnowAdmin 一款基于 Vue3、TypeScript、Vite5、Pinia、Arco-Design 开源的
 - 使用 Prettier 统一格式化代码，集成 ESLint、Stylelint 代码校验规范
 - 使用 husky、lint-staged、commitlint等插件，规范提交信息
 
+### 预览
+
+![](https://img.picui.cn/free/2024/07/20/669b6894206d2.png)
+
+![](https://img.picui.cn/free/2024/07/20/669b688a12619.png)
+
+![](https://img.picui.cn/free/2024/07/20/669b6890d23b4.png)
+
+![](https://img.picui.cn/free/2024/07/20/669b6893934bf.png)
+
+![](https://img.picui.cn/free/2024/07/20/669b68936cf84.png)
+
+![](https://img.picui.cn/free/2024/07/20/669b69dc2214f.png)
+
+![](https://img.picui.cn/free/2024/07/20/669b688aba4f4.png)
+
+![](https://img.picui.cn/free/2024/07/20/669b688b1deed.png)
+
 ### 安装使用步骤 📔
 
 - **Clone：**
