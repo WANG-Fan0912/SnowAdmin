@@ -2,7 +2,7 @@
   <div class="dc-page-clear">
     <a-card title="简介">
       <div>
-        <p>dc-admin 一款基于 Vue、TypeScript、Vite5、Pinia、arco-design开源的后台管理框架，使用目前最新技术栈开发。</p>
+        <p>SnowAdmin 一款基于 Vue、TypeScript、Vite5、Pinia、arco-design开源的后台管理框架，使用目前最新技术栈开发。</p>
         <p>融合了全新的UI框架，高度可自定义的主题功能使得用户可以根据自身需求轻松定制界面。</p>
         <p>代码全注释，可提供参考和学习。</p>
       </div>

@@ -29,7 +29,7 @@
               <a-form-item field="address" label="推广地址">
                 <a-input v-model="form.address" placeholder="请输入推广地址" />
                 <template #extra>
-                  <div>从哪些渠道了解到该项目，例如gitee：https://gitee.com/wang_fan_w/dc-admin</div>
+                  <div>从哪些渠道了解到该项目，例如gitee：https://gitee.com/wang_fan_w/SnowAdmin</div>
                 </template>
               </a-form-item>
             </div>
@@ -97,7 +97,7 @@ const form = ref({
   name: "",
   type: null,
   date: [],
-  address: "https://gitee.com/wang_fan_w/dc-admin",
+  address: "https://gitee.com/wang_fan_w/SnowAdmin",
   source: "",
   medium: "",
   keyword: [],

@@ -2,7 +2,7 @@
   <div class="banner_box">
     <div class="banner_title">
       <SvgIcon name="snow" size="25" />
-      DC-Admin
+      {{ title }}
     </div>
     <div class="banner_img">
       <SvgIcon name="数据时代" size="100%" />
@@ -10,7 +10,10 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+// 全局title
+const title = import.meta.env.VITE_GLOB_APP_TITLE;
+</script>
 
 <style lang="scss" scoped>
 .banner_box {

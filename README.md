@@ -10,7 +10,7 @@ SnowAdmin 一款基于 Vue3、TypeScript、Vite5、Pinia、Arco-Design 开源的
 
 ### 代码仓库 ⭐
 
-- Gitee：https://gitee.com/wang_fan_w/dc-admin
+- Gitee：https://gitee.com/wang_fan_w/SnowAdmin
 
 ### 项目文档 📚
 
@@ -30,13 +30,31 @@ SnowAdmin 一款基于 Vue3、TypeScript、Vite5、Pinia、Arco-Design 开源的
 - 使用 Prettier 统一格式化代码，集成 ESLint、Stylelint 代码校验规范
 - 使用 husky、lint-staged、commitlint等插件，规范提交信息
 
+### 项目预览📷
+
+![登录页](https://img.picui.cn/free/2024/07/20/669b6fecd308b.png)
+
+![默认布局-首页](https://img.picui.cn/free/2024/07/20/669b688a12619.png)
+
+![横向布局文件库](https://img.picui.cn/free/2024/07/20/669b6890d23b4.png)
+
+![混合布局-自定义列表](https://img.picui.cn/free/2024/07/20/669b6893934bf.png)
+
+![混合布局-用户信息](https://img.picui.cn/free/2024/07/20/669b68936cf84.png)
+
+![首页-黑暗模式](https://img.picui.cn/free/2024/07/20/669b69dc2214f.png)
+
+![文件库-黑暗模式](https://img.picui.cn/free/2024/07/20/669b688aba4f4.png)
+
+![用户信息-黑暗模式](https://img.picui.cn/free/2024/07/20/669b688b1deed.png)
+
 ### 安装使用步骤 📔
 
 - **Clone：**
 
 ```text
 # Gitee
-git clone https://gitee.com/wang_fan_w/dc-admin.git
+git clone https://gitee.com/wang_fan_w/SnowAdmin.git
 ```
 
 - **Install：**
@@ -73,18 +91,6 @@ pnpm lint:eslint
 # prettier 格式化代码
 pnpm lint:prettier
 ```
-
-### 项目截图 📷
-
-- 登录页：
-
-- 首页：
-
-- 表格页：
-
-- 用户中心：
-
-- 系统配置页：
 
 ### 文件资源目录 📚
 
