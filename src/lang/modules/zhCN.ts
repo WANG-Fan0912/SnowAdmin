@@ -31,6 +31,7 @@ export default {
     ["custom-instruction"]: "自定义指令",
     ["anti-shake"]: "防抖",
     ["throttle"]: "节流",
+    ["test-instruction"]: "测试指令",
     ["personal-center"]: "个人中心",
     ["userinfo"]: "用户信息",
     ["user-settings"]: "用户设置",

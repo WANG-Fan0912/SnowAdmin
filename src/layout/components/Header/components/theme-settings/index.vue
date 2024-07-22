@@ -18,13 +18,13 @@
       <div class="box-gap">
         <a-divider orientation="center">主题设置</a-divider>
         <div class="flex-center">
-          <a-color-picker
+          <!-- <a-color-picker
             v-model="themeColor"
             hide-trigger
             show-preset
             :preset-colors="presetColors"
             @change="themeColorChange"
-          />
+          /> -->
         </div>
       </div>
       <div class="box-gap">
@@ -57,8 +57,9 @@ import { useThemeConfig } from "@/store/modules/theme-config";
 import { useThemeMethods } from "@/hooks/useThemeMethods";
 
 const themeStore = useThemeConfig();
-const { layoutType, themeColor, presetColors, colorWeakMode, grayMode, darkMode, asideDark, transitionPage } =
-  storeToRefs(themeStore);
+// themeColor,
+// presetColors,
+const { layoutType, colorWeakMode, grayMode, darkMode, asideDark, transitionPage } = storeToRefs(themeStore);
 
 const layoutList = reactive({
   layoutDefaults: {
@@ -83,11 +84,11 @@ const transitions = ref([
   { value: "cardInOut", label: "卡片" }
 ]);
 // 主题色设置
-const themeColorChange = (value: string) => {
-  themeColor.value = value;
-  const { setThemeColor } = useThemeMethods();
-  setThemeColor();
-};
+// const themeColorChange = (value: string) => {
+//   themeColor.value = value;
+//   const { setThemeColor } = useThemeMethods();
+//   setThemeColor();
+// };
 
 // 色弱模式
 const onColorWeak = () => {

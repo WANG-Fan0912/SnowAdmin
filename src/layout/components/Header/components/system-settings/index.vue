@@ -29,7 +29,7 @@
         <div class="title">水印设置</div>
         <div class="flex-row">
           <div>水印颜色</div>
-          <a-color-picker v-model="watermarkStyle.color" format="rgb" :history-colors="['#00000026']" />
+          <!-- <a-color-picker v-model="watermarkStyle.color" format="rgb" :history-colors="['#00000026']" /> -->
         </div>
         <div class="flex-row">
           <div>水印文案</div>

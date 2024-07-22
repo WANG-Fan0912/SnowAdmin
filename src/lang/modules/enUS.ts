@@ -31,6 +31,7 @@ export default {
     ["custom-instruction"]: "custom instruction",
     ["anti-shake"]: "anti shake",
     ["throttle"]: "throttle",
+    ["test-instruction"]: "test instruction",
     ["personal-center"]: "personal center",
     ["userinfo"]: "userinfo",
     ["user-settings"]: "user settings",

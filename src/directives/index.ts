@@ -1,6 +1,7 @@
 import { App } from "vue";
 import antiShake from "@/directives/modules/anti-shake";
 import throttle from "@/directives/modules/throttle";
+import custom from "@/directives/modules/custom";
 
 // 定义安装函数
 // install 函数是一个对象中的方法，其作用是将一系列指令对象安装到 Vue 应用实例中，它自带两个参数：app 和 options
@@ -11,6 +12,7 @@ const directives = {
     // 将一系列自定义指令对象安装到 Vue 应用实例中
     app.directive("antiShake", antiShake);
     app.directive("throttle", throttle);
+    app.directive("custom", custom);
   }
 };
 

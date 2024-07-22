@@ -406,6 +406,23 @@ export const dynamicRoutes: RouteRecordRaw[] = [
               sort: 2
             },
             children: []
+          },
+          {
+            path: "/custom-instruction/test-instruction",
+            name: "test-instruction",
+            component: () => import("@/views/custom-instruction/test-instruction/test-instruction.vue"),
+            meta: {
+              title: "test-instruction",
+              hide: false,
+              keepAlive: true,
+              affix: false,
+              link: "",
+              iframe: false,
+              roles: ["admin"],
+              icon: "icon-menu",
+              sort: 3
+            },
+            children: []
           }
         ]
       },
