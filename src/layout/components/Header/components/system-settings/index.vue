@@ -30,11 +30,12 @@
         <div class="flex-row">
           <div>水印颜色</div>
           <pick-colors
-            v-model:value="watermarkStyle.color"
+            :theme="darkMode ? 'dark' : 'light'"
             show-alpha
             format="rgb"
+            v-model:value="watermarkStyle.color"
+            :colors="['rgba(0, 0, 0, 0.15)']"
             :z-index="2000"
-            :theme="darkMode ? 'dark' : 'light'"
           />
         </div>
         <div class="flex-row">
