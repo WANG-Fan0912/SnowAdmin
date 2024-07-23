@@ -29,7 +29,13 @@
         <div class="title">水印设置</div>
         <div class="flex-row">
           <div>水印颜色</div>
-          <!-- <a-color-picker v-model="watermarkStyle.color" format="rgb" :history-colors="['#00000026']" /> -->
+          <pick-colors
+            v-model:value="watermarkStyle.color"
+            show-alpha
+            format="rgb"
+            :z-index="2000"
+            :theme="darkMode ? 'dark' : 'light'"
+          />
         </div>
         <div class="flex-row">
           <div>水印文案</div>
@@ -53,14 +59,25 @@
 </template>
 
 <script setup lang="ts">
+import PickColors from "vue-pick-colors";
 import { storeToRefs } from "pinia";
 import { useRoutesListStore } from "@/store/modules/route-list";
 import { useThemeConfig } from "@/store/modules/theme-config";
 import { currentlyRoute } from "@/router/route-output";
 const themeStore = useThemeConfig();
 const routerStore = useRoutesListStore();
-const { collapsed, isAccordion, isBreadcrumb, isTabs, isFooter, watermark, watermarkStyle, watermarkRotate, watermarkGap } =
-  storeToRefs(themeStore);
+const {
+  collapsed,
+  isAccordion,
+  isBreadcrumb,
+  isTabs,
+  isFooter,
+  watermark,
+  watermarkStyle,
+  watermarkRotate,
+  watermarkGap,
+  darkMode
+} = storeToRefs(themeStore);
 const { tabsList, cacheRoutes } = storeToRefs(routerStore);
 const route = useRoute();
 const props = defineProps({
@@ -75,7 +92,7 @@ const onWatermarkGap = (e: number) => {
   watermarkGap.value = watermarkGap.value.map(() => e);
 };
 
-/* 
+/*
   是否关闭tabs栏
   如果关闭，那么所有tabs全部取消、所有页面缓存全部取消
   如果开启，那么添加当前路由到tabs

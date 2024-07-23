@@ -62,9 +62,15 @@ importers:
       vue-codemirror6:
         specifier: ^1.3.0
         version: 1.3.0(@lezer/common@1.2.1)(vue@3.4.21(typescript@5.4.3))
+      vue-color-kit:
+        specifier: ^1.0.6
+        version: 1.0.6(vue@3.4.21(typescript@5.4.3))
       vue-i18n:
         specifier: 10.0.0-alpha.3
         version: 10.0.0-alpha.3(vue@3.4.21(typescript@5.4.3))
+      vue-pick-colors:
+        specifier: ^1.7.6
+        version: 1.7.6(@popperjs/core@2.11.8)(vue@3.4.21(typescript@5.4.3))
       vue-router:
         specifier: ^4.3.0
         version: 4.3.0(vue@3.4.21(typescript@5.4.3))
@@ -149,7 +155,7 @@ importers:
         version: 5.4.3
       unplugin-auto-import:
         specifier: ^0.17.5
-        version: 0.17.5(rollup@4.13.0)
+        version: 0.17.5(@vueuse/core@10.11.0(vue@3.4.21(typescript@5.4.3)))(rollup@4.13.0)
       unplugin-vue-components:
         specifier: ^0.26.0
         version: 0.26.0(@babel/parser@7.24.1)(rollup@4.13.0)(vue@3.4.21(typescript@5.4.3))
@@ -831,6 +837,9 @@ packages:
     resolution: {integrity: sha512-cq8o4cWH0ibXh9VGi5P20Tu9XF/0fFXl9EUinr9QfTM7a7p0oTA4iJRCQWppXR1Pg8dSM0UCItCkPwsk9qWWYA==}
     engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
 
+  '@popperjs/core@2.11.8':
+    resolution: {integrity: sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==}
+
   '@resvg/resvg-js-android-arm-eabi@2.4.1':
     resolution: {integrity: sha512-AA6f7hS0FAPpvQMhBCf6f1oD1LdlqNXKCxAAPpKh6tR11kqV0YIB9zOlIYgITM14mq2YooLFl6XIbbvmY+jwUw==}
     engines: {node: '>= 10'}
@@ -1049,6 +1058,9 @@ packages:
   '@types/svgo@2.6.4':
     resolution: {integrity: sha512-l4cmyPEckf8moNYHdJ+4wkHvFxjyW6ulm9l4YGaOxeyBWPhBOT0gvni1InpFPdzx1dKf/2s62qGITwxNWnPQng==}
 
+  '@types/web-bluetooth@0.0.20':
+    resolution: {integrity: sha512-g9gZnnXVq7gM7v3tJCWV/qw7w+KeOlSHAhgF9RytFyifW6AF61hdT2ucrYhPq9hLs5JIryeupHV3qGk95dH9ow==}
+
   '@typescript-eslint/eslint-plugin@7.3.1':
     resolution: {integrity: sha512-STEDMVQGww5lhCuNXVSQfbfuNII5E08QWkvAw5Qwf+bj2WT+JkG1uc+5/vXA3AOYMDHVOSpL+9rcbEUiHIm2dw==}
     engines: {node: ^18.18.0 || >=20.0.0}
@@ -1252,6 +1264,15 @@ packages:
 
   '@vue/shared@3.4.21':
     resolution: {integrity: sha512-PuJe7vDIi6VYSinuEbUIQgMIRZGgM8e4R+G+/dQTk0X1NEdvgvvgv7m+rfmDH1gZzyA1OjjoWskvHlfRNfQf3g==}
+
+  '@vueuse/core@10.11.0':
+    resolution: {integrity: sha512-x3sD4Mkm7PJ+pcq3HX8PLPBadXCAlSDR/waK87dz0gQE+qJnaaFhc/dZVfJz+IUYzTMVGum2QlR7ImiJQN4s6g==}
+
+  '@vueuse/metadata@10.11.0':
+    resolution: {integrity: sha512-kQX7l6l8dVWNqlqyN3ePW3KmjCQO3ZMgXuBMddIu83CmucrsBfXlH+JoviYyRBws/yLTQO8g3Pbw+bdIoVm4oQ==}
+
+  '@vueuse/shared@10.11.0':
+    resolution: {integrity: sha512-fyNoIXEq3PfX1L3NkNhtVQUSRtqYwJtJg+Bp9rIzculIZWHTkKSysujrOk2J+NrRulLTQH9+3gGSfYLWSEWU1A==}
 
   '@wangeditor/basic-modules@1.1.7':
     resolution: {integrity: sha512-cY9CPkLJaqF05STqfpZKWG4LpxTMeGSIIF1fHvfm/mz+JXatCagjdkbxdikOuKYlxDdeqvOeBmsUBItufDLXZg==}
@@ -3704,6 +3725,11 @@ packages:
     peerDependencies:
       vue: ^2.7.14 || ^3.4
 
+  vue-color-kit@1.0.6:
+    resolution: {integrity: sha512-56oSUp8hGIZ3E4ayZLqTDAb2C7VzaWAC1EVUsZEvPCD2wiiiFd2L2BiEGN1ingfz538sYWKNXxMZQGslqbMiBg==}
+    peerDependencies:
+      vue: ^3.0.5
+
   vue-demi@0.14.7:
     resolution: {integrity: sha512-EOG8KXDQNwkJILkx/gPcoL/7vH+hORoBaKgGe+6W7VFMvCYJfmF2dGbvgDroVnI8LU7/kTu8mbjRZGBU1z9NTA==}
     engines: {node: '>=12'}
@@ -3737,6 +3763,12 @@ packages:
     engines: {node: '>= 16'}
     peerDependencies:
       vue: ^3.0.0
+
+  vue-pick-colors@1.7.6:
+    resolution: {integrity: sha512-+PgTwdmHZS0sDV3/7BHaNSMrCSWwvmHj+Yh6G7/XGGPUQX/9tbgBrfNoZ5rS3plnW8lU9a+xkbhCnphXwvpg3A==}
+    peerDependencies:
+      '@popperjs/core': ^2.11.2
+      vue: ^3.2.26
 
   vue-router@4.3.0:
     resolution: {integrity: sha512-dqUcs8tUeG+ssgWhcPbjHvazML16Oga5w34uCUmsk7i0BcnskoLGwjpa15fqMr2Fa5JgVBrdL2MEgqz6XZ/6IQ==}
@@ -4568,6 +4600,8 @@ snapshots:
 
   '@pkgr/core@0.1.1': {}
 
+  '@popperjs/core@2.11.8': {}
+
   '@resvg/resvg-js-android-arm-eabi@2.4.1':
     optional: true
 
@@ -4730,6 +4764,9 @@ snapshots:
   '@types/svgo@2.6.4':
     dependencies:
       '@types/node': 20.11.30
+
+  '@types/web-bluetooth@0.0.20':
+    optional: true
 
   '@typescript-eslint/eslint-plugin@7.3.1(@typescript-eslint/parser@7.3.1(eslint@8.57.0)(typescript@5.4.3))(eslint@8.57.0)(typescript@5.4.3)':
     dependencies:
@@ -5094,6 +5131,28 @@ snapshots:
       vue: 3.4.21(typescript@5.4.3)
 
   '@vue/shared@3.4.21': {}
+
+  '@vueuse/core@10.11.0(vue@3.4.21(typescript@5.4.3))':
+    dependencies:
+      '@types/web-bluetooth': 0.0.20
+      '@vueuse/metadata': 10.11.0
+      '@vueuse/shared': 10.11.0(vue@3.4.21(typescript@5.4.3))
+      vue-demi: 0.14.8(vue@3.4.21(typescript@5.4.3))
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - vue
+    optional: true
+
+  '@vueuse/metadata@10.11.0':
+    optional: true
+
+  '@vueuse/shared@10.11.0(vue@3.4.21(typescript@5.4.3))':
+    dependencies:
+      vue-demi: 0.14.8(vue@3.4.21(typescript@5.4.3))
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - vue
+    optional: true
 
   '@wangeditor/basic-modules@1.1.7(@wangeditor/core@1.1.19(@uppy/core@2.3.4)(@uppy/xhr-upload@2.1.3(@uppy/core@2.3.4))(dom7@3.0.0)(is-hotkey@0.2.0)(lodash.camelcase@4.3.0)(lodash.clonedeep@4.5.0)(lodash.debounce@4.0.8)(lodash.foreach@4.5.0)(lodash.isequal@4.5.0)(lodash.throttle@4.1.1)(lodash.toarray@4.4.0)(nanoid@3.3.7)(slate@0.72.8)(snabbdom@3.6.2))(dom7@3.0.0)(lodash.throttle@4.1.1)(nanoid@3.3.7)(slate@0.72.8)(snabbdom@3.6.2)':
     dependencies:
@@ -7580,7 +7639,7 @@ snapshots:
 
   universalify@2.0.1: {}
 
-  unplugin-auto-import@0.17.5(rollup@4.13.0):
+  unplugin-auto-import@0.17.5(@vueuse/core@10.11.0(vue@3.4.21(typescript@5.4.3)))(rollup@4.13.0):
     dependencies:
       '@antfu/utils': 0.7.7
       '@rollup/pluginutils': 5.1.0(rollup@4.13.0)
@@ -7590,6 +7649,8 @@ snapshots:
       minimatch: 9.0.3
       unimport: 3.7.1(rollup@4.13.0)
       unplugin: 1.10.0
+    optionalDependencies:
+      '@vueuse/core': 10.11.0(vue@3.4.21(typescript@5.4.3))
     transitivePeerDependencies:
       - rollup
 
@@ -7692,6 +7753,10 @@ snapshots:
       - '@lezer/common'
       - '@vue/composition-api'
 
+  vue-color-kit@1.0.6(vue@3.4.21(typescript@5.4.3)):
+    dependencies:
+      vue: 3.4.21(typescript@5.4.3)
+
   vue-demi@0.14.7(vue@3.4.21(typescript@5.4.3)):
     dependencies:
       vue: 3.4.21(typescript@5.4.3)
@@ -7718,6 +7783,11 @@ snapshots:
       '@intlify/core-base': 10.0.0-alpha.3
       '@intlify/shared': 10.0.0-alpha.3
       '@vue/devtools-api': 6.6.1
+      vue: 3.4.21(typescript@5.4.3)
+
+  vue-pick-colors@1.7.6(@popperjs/core@2.11.8)(vue@3.4.21(typescript@5.4.3)):
+    dependencies:
+      '@popperjs/core': 2.11.8
       vue: 3.4.21(typescript@5.4.3)
 
   vue-router@4.3.0(vue@3.4.21(typescript@5.4.3)):

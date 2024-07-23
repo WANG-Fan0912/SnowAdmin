@@ -18,13 +18,13 @@
       <div class="box-gap">
         <a-divider orientation="center">主题设置</a-divider>
         <div class="flex-center">
-          <!-- <a-color-picker
-            v-model="themeColor"
-            hide-trigger
-            show-preset
-            :preset-colors="presetColors"
-            @change="themeColorChange"
-          /> -->
+          <ColorPicker
+            :theme="darkMode ? 'dark' : 'light'"
+            sucker-hide
+            :colors-default="presetColors"
+            :color="themeColor"
+            @change-color="themeColorChange"
+          />
         </div>
       </div>
       <div class="box-gap">
@@ -55,11 +55,12 @@
 import { storeToRefs } from "pinia";
 import { useThemeConfig } from "@/store/modules/theme-config";
 import { useThemeMethods } from "@/hooks/useThemeMethods";
+import { ColorPicker } from "vue-color-kit";
+import "vue-color-kit/dist/vue-color-kit.css";
 
 const themeStore = useThemeConfig();
-// themeColor,
-// presetColors,
-const { layoutType, colorWeakMode, grayMode, darkMode, asideDark, transitionPage } = storeToRefs(themeStore);
+const { layoutType, colorWeakMode, grayMode, darkMode, asideDark, transitionPage, themeColor, presetColors } =
+  storeToRefs(themeStore);
 
 const layoutList = reactive({
   layoutDefaults: {
@@ -83,13 +84,27 @@ const transitions = ref([
   { value: "fadeInOut", label: "轻过渡" },
   { value: "cardInOut", label: "卡片" }
 ]);
-// 主题色设置
-// const themeColorChange = (value: string) => {
-//   themeColor.value = value;
-//   const { setThemeColor } = useThemeMethods();
-//   setThemeColor();
-// };
 
+interface IThemeColor {
+  hex: string;
+  hsv: {
+    h: number;
+    s: number;
+    v: number;
+  };
+  rgba: {
+    r: number;
+    g: number;
+    b: number;
+    a: number;
+  };
+}
+// 主题色设置
+const themeColorChange = (value: IThemeColor) => {
+  themeColor.value = value.hex;
+  const { setThemeColor } = useThemeMethods();
+  setThemeColor();
+};
 // 色弱模式
 const onColorWeak = () => {
   const { setColorWeak } = useThemeMethods();
