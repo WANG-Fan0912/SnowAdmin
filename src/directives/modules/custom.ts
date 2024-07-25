@@ -1,7 +1,7 @@
 import { Directive } from "vue";
 
 const custom: Directive = {
-  mounted(el, binding, vnode) {
+  mounted(el, binding) {
     el.__onClick__ = () => {
       let { goodsId, event } = binding.value;
       event(goodsId);
