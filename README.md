@@ -16,7 +16,7 @@ SnowAdmin 一款基于 Vue3、TypeScript、Vite5、Pinia、Arco-Design 开源的
 
 - 项目更新日志：建设中
 
-- 项目文档地址：建设中
+- 项目文档地址：http://101.126.93.137:81/
 
 ### 项目功能 🔨
 
