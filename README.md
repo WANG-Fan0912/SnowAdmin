@@ -4,9 +4,10 @@
 
 SnowAdmin 是一个清新优雅、高颜值且功能强大的后台管理模板，基于最新的前端技术栈，包括 Vue3, Vite5, TypeScript, Pinia。它内置了丰富的主题配置和组件，代码规范严谨，实现了自动化的文件路由系统。SnowAdmin 为您提供了一站式的后台管理解决方案，无需额外配置，开箱即用。同样是一个快速学习前沿技术的最佳实践。
 
-### 版本
+### 版本 📦
 
 SnowAdmin
+
 - [项目预览地址](http://101.126.93.137/#/login)
 - [项目文档地址](http://101.126.93.137:81/)
 - [Gitee 仓库](https://gitee.com/wang_fan_w/SnowAdmin)
@@ -24,7 +25,7 @@ SnowAdmin
 - 使用 husky、lint-staged、commitlint等插件，规范提交信息
 - 丰富的页面组件：内置多样页面和组件，包括 401、404、500 页面，以及布局组件、标签组件、主题配置组件等。
 
-### 环境准备
+### 环境准备 🏝️
 
 确保你的环境满足以下要求：
 
@@ -34,11 +35,11 @@ SnowAdmin
 
 ### 安装使用步骤 📔
 
-### 从 GitHub 获取代码
+### 从 GitHub 获取代码 🔗
 
 建设中
 
-### 从 Gitee 获取代码
+### 从 Gitee 获取代码 🔗
 
 ```bash
 # 克隆代码
@@ -47,8 +48,7 @@ git clone https://gitee.com/wang_fan_w/SnowAdmin.git
 
 > 注意: 最新版本的代码以 gitee 为准。
 
-
-### 安装依赖
+### 安装依赖 📌
 
 安装项目依赖
 
@@ -56,13 +56,13 @@ git clone https://gitee.com/wang_fan_w/SnowAdmin.git
 pnpm install
 ```
 
-### 插件配置
+### 插件配置 🛠️
 
-### 安装 Vue - Official，禁用 Vetur
+安装 Vue - Official，禁用 Vetur
 
 - [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) - Vue 服务插件
 
-### npm scripts
+### 项目启动 🚀
 
 ```json
 {
@@ -75,7 +75,7 @@ pnpm install
   // 测试环境构建
   "build:test": "vue-tsc && vite build --mode test",
   // 预览环境启动
-  "preview": "vite preview",
+  "preview": "vite preview"
 }
 ```
 
@@ -135,8 +135,7 @@ SnowAdmin
 
 建设中 -->
 
-
-### 鸣谢列表
+### 鸣谢列表 🧩
 
 - [vue：https://v3.cn.vuejs.org/](https://v3.cn.vuejs.org/)
 - [axios：https://github.com/axios/axios](https://github.com/axios/axios)
@@ -152,7 +151,7 @@ SnowAdmin
 - [prettier：https://github.com/prettier/prettier](https://github.com/prettier/prettier)
 - [arco-design：https://arco.design/](https://arco.design/)
 
-### 特别鸣谢
+### 特别鸣谢 🎉
 
 - [vue-next-admin：http://vuenextadmin.ccfast.cc/](http://vuenextadmin.ccfast.cc/)
 - [Gi-admin：https://lin-97.github.io/gi-demo/](https://lin-97.github.io/gi-demo/#/home)
@@ -160,11 +159,11 @@ SnowAdmin
 
 感谢以上框架为本项目提供了帮助，项目中的很多设计思想值得参考和学习，再次感谢。
 
-### 支持作者
+### 支持作者 🌟
 
 如果觉得框架不错，或者已经在使用了，希望你可以去 [Github](https://github.com/Rabbit-ice?tab=projects) 或者 [Gitee](https://gitee.com/wang_fan_w/SnowAdmin) 帮我点个 ⭐ Star，这将是对我极大的鼓励与支持。
 
-### 免责条款
+### 免责条款 📫
 
 您充分了解并同意，您必须为自己使用本服务及注册帐号下的一切行为负责，包括您所发表的任何内容以及由此产生的任何后果。您应对本服务中的内容自行加以判断，并自行承担因使用内容而引起的所有风险。
 
@@ -174,6 +173,6 @@ SnowAdmin
 
 本声明未涉及的问题参见国家有关法律法规，当本声明与国家法律法规冲突时，以国家法律法规为准。
 
-### 学习 & 商用
+### 学习 & 商用 🌈
 
 `SnowAdmin` 是免费和开源的，可免费用于学习、商业使用 。
