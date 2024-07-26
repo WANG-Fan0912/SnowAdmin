@@ -48,9 +48,8 @@ SnowAdmin
 git clone https://gitee.com/wang_fan_w/SnowAdmin.git
 ```
 
-::: warning 注意
-最新版本的代码以 gitee 为准。
-:::
+> 注意: 最新版本的代码以 gitee 为准。
+
 
 ### 安装依赖
 
@@ -180,4 +179,4 @@ SnowAdmin
 
 ## 学习 & 商用
 
-`SnowAdmin` 是免费和开源的，可免费用于 学习、商业使用 。
+`SnowAdmin` 是免费和开源的，可免费用于学习、商业使用 。
