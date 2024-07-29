@@ -52,6 +52,7 @@ export default {
     ["link-vite"]: "vite",
     ["link-gitee"]: "gitee",
     ["link-juejin"]: "juejin",
+    ["link-SnowAdmin-Docs"]: "Snow-Docs",
     ["about-project"]: "about project",
     ["not-power"]: "No permission",
     ["not-found"]: "Page not found",

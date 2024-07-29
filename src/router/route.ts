@@ -700,6 +700,23 @@ export const dynamicRoutes: RouteRecordRaw[] = [
             },
             children: [
               {
+                path: "/external-links/external-page/link-SnowAdmin-Docs",
+                name: "link-SnowAdmin-Docs",
+                component: () => import("@/views/external-links/external-page/external-page.vue"),
+                meta: {
+                  title: "link-SnowAdmin-Docs",
+                  hide: false,
+                  keepAlive: true,
+                  affix: false,
+                  link: "http://101.126.93.137:81/", // 链接
+                  iframe: false, // 区分是否内链 true内链 false外链
+                  roles: ["admin"],
+                  icon: "icon-menu",
+                  sort: 5
+                },
+                children: []
+              },
+              {
                 path: "/external-links/external-page/link-vue",
                 name: "link-vue",
                 component: () => import("@/views/external-links/external-page/external-page.vue"),
