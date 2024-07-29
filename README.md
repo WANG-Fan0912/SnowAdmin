@@ -2,94 +2,81 @@
 
 ### 介绍 📖
 
-SnowAdmin 一款基于 Vue3、TypeScript、Vite5、Pinia、Arco-Design 开源的后台管理框架，符合直觉的使用模式，使用目前最新技术栈开发。项目提供了一些常用组件，在一定程度上提高您的开发效率。另外本项目还封装了一些常用组件、Hooks、动态路由等功能。
+SnowAdmin 是一个清新优雅、高颜值且功能强大的后台管理模板，基于最新的前端技术栈，包括 Vue3, Vite5, TypeScript, Pinia。它内置了丰富的主题配置和组件，代码规范严谨，实现了自动化的文件路由系统。SnowAdmin 为您提供了一站式的后台管理解决方案，无需额外配置，开箱即用。同样是一个快速学习前沿技术的最佳实践。
 
-### 在线预览 👀
+### 版本 📦
 
-- 链接：建设中
+SnowAdmin
 
-### 代码仓库 ⭐
-
-- Gitee：https://gitee.com/wang_fan_w/SnowAdmin
-
-### 项目文档 📚
-
-- 项目更新日志：建设中
-
-- 项目文档地址：建设中
+- [项目预览地址](http://101.126.93.137/#/login)
+- [项目文档地址](http://101.126.93.137:81/)
+- [Gitee 仓库](https://gitee.com/wang_fan_w/SnowAdmin)
+- [Github 仓库](https://github.com/Rabbit-ice/SnowAdmin)
 
 ### 项目功能 🔨
 
-- 使用 Vue3 + TypeScript 开发，单文件组件**＜script setup＞**
-- 采用 Vite5 作为项目开发
+- 清晰的项目架构：结构清晰，优雅易懂，代码全注释。
+- 前沿技术应用：采用 Vue3, Vite5, TypeScript等最新流行的技术栈。
 - 使用 Pinia 替代 Vuex，轻量、简单、易用，集成 Pinia 持久化插件
-- 使用 TypeScript 对 Axios 整个二次封装（请求拦截、取消、常用请求封装…）
 - 支持 Arco-Design 组件大小切换、多主题布局、暗黑模式、i18n 国际化
 - 使用 VueRouter 配置动态路由权限拦截、路由懒加载，支持页面按钮权限控制
 - 使用 KeepAlive 对页面进行缓存，支持多级嵌套路由缓存
 - 使用 Prettier 统一格式化代码，集成 ESLint、Stylelint 代码校验规范
 - 使用 husky、lint-staged、commitlint等插件，规范提交信息
+- 丰富的页面组件：内置多样页面和组件，包括 401、404、500 页面，以及布局组件、标签组件、主题配置组件等。
 
-### 项目预览📷
+### 环境准备 🏝️
 
-![登录页](https://img.picui.cn/free/2024/07/20/669b6fecd308b.png)
+确保你的环境满足以下要求：
 
-![默认布局-首页](https://img.picui.cn/free/2024/07/20/669b688a12619.png)
-
-![横向布局文件库](https://img.picui.cn/free/2024/07/20/669b6890d23b4.png)
-
-![混合布局-自定义列表](https://img.picui.cn/free/2024/07/20/669b6893934bf.png)
-
-![混合布局-用户信息](https://img.picui.cn/free/2024/07/20/669b68936cf84.png)
-
-![首页-黑暗模式](https://img.picui.cn/free/2024/07/20/669b69dc2214f.png)
-
-![文件库-黑暗模式](https://img.picui.cn/free/2024/07/20/669b688aba4f4.png)
-
-![用户信息-黑暗模式](https://img.picui.cn/free/2024/07/20/669b688b1deed.png)
+- **git**: 你需要 git 来克隆和管理项目版本。
+- **NodeJS**: >=18.12.0，推荐 20.12.0 或更高。
+- **pnpm**: >= 8.7.0，推荐最新版本。
 
 ### 安装使用步骤 📔
 
-- **Clone：**
+### 从 GitHub 获取代码 🔗
 
-```text
-# Gitee
+建设中
+
+### 从 Gitee 获取代码 🔗
+
+```bash
+# 克隆代码
 git clone https://gitee.com/wang_fan_w/SnowAdmin.git
 ```
 
-- **Install：**
+> 注意: 最新版本的代码以 gitee 为准。
 
-```text
+### 安装依赖 📌
+
+安装项目依赖
+
+```bash
 pnpm install
 ```
 
-- **Run：**
+### 插件配置 🛠️
 
-```text
-pnpm dev
-```
+安装 Vue - Official，禁用 Vetur
 
-- **Build：**
+- [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) - Vue 服务插件
 
-```text
-# 开发环境
-pnpm run dev
+### 项目启动 🚀
 
-# 测试环境
-pnpm run preview
-
-# 生产环境
-pnpm run build
-```
-
-- **Lint：**
-
-```text
-# eslint 检测代码
-pnpm lint:eslint
-
-# prettier 格式化代码
-pnpm lint:prettier
+```json
+{
+  // 开发环境启动
+  "dev": "vite",
+  // 开发环境构建
+  "build:dev": "vue-tsc && vite build --mode development",
+  // 生产环境构建
+  "build:prod": "vue-tsc && vite build --mode production",
+  // 测试环境构建
+  "build:test": "vue-tsc && vite build --mode test",
+  // 预览环境启动
+  "preview": "vite preview"
+}
 ```
 
 ### 文件资源目录 📚
@@ -144,6 +131,48 @@ SnowAdmin
 | :---------------------------------------------: | :-----------------------------------------------: | :--------------------------------------------------: | :-------------------------------------------------: | :-------------------------------------------------: |
 |                   not support                   |                  last 2 versions                  |                   last 2 versions                    |                   last 2 versions                   |                   last 2 versions                   |
 
-### 项目后台接口 🧩
+<!-- ### 项目后台接口 🧩
 
-建设中
+建设中 -->
+
+### 鸣谢列表 🧩
+
+- [vue：https://v3.cn.vuejs.org/](https://v3.cn.vuejs.org/)
+- [axios：https://github.com/axios/axios](https://github.com/axios/axios)
+- [nprogress：https://github.com/rstacruz/nprogress](https://github.com/rstacruz/nprogress)
+- [sortablejs：https://github.com/SortableJS/Sortabl](https://github.com/SortableJS/Sortable)
+- [sass：https://github.com/sass/sass](https://github.com/sass/sass)
+- [typescript：https://github.com/microsoft/TypeScript](https://github.com/microsoft/TypeScript)
+- [vite：https://github.com/vitejs/vite](https://github.com/vitejs/vite)
+- [wangeditor：https://github.com/wangeditor-team/wangEditor](https://github.com/wangeditor-team/wangEditor)
+- [qrcodejs：https://github.com/davidshimjs/qrcodejs](https://github.com/davidshimjs/qrcodejs)
+- [print-js：https://github.com/crabbly/Print.js](https://github.com/crabbly/Print.js)
+- [eslint：https://github.com/eslint/eslint](https://github.com/eslint/eslint)
+- [prettier：https://github.com/prettier/prettier](https://github.com/prettier/prettier)
+- [arco-design：https://arco.design/](https://arco.design/)
+
+### 特别鸣谢 🎉
+
+- [vue-next-admin：http://vuenextadmin.ccfast.cc/](http://vuenextadmin.ccfast.cc/)
+- [Gi-admin：https://lin-97.github.io/gi-demo/](https://lin-97.github.io/gi-demo/#/home)
+- [Geeker-Admin：https://admin.spicyboy.cn/](https://admin.spicyboy.cn/#/home/index)
+
+感谢以上框架为本项目提供了帮助，项目中的很多设计思想值得参考和学习，再次感谢。
+
+### 支持作者 🌟
+
+如果觉得框架不错，或者已经在使用了，希望你可以去 [Github](https://github.com/Rabbit-ice?tab=projects) 或者 [Gitee](https://gitee.com/wang_fan_w/SnowAdmin) 帮我点个 ⭐ Star，这将是对我极大的鼓励与支持。
+
+### 免责条款 📫
+
+您充分了解并同意，您必须为自己使用本服务及注册帐号下的一切行为负责，包括您所发表的任何内容以及由此产生的任何后果。您应对本服务中的内容自行加以判断，并自行承担因使用内容而引起的所有风险。
+
+`SnowAdmin` 对网站上所显示的信息或资料的准确性、内容、完整性、合法性、可靠性、可操作性或可用性不承担任何责任。
+
+`SnowAdmin` 二次开发使用者因为违法而触犯中华人民共和国法律的，一切后果自己负责，`SnowAdmin` 作者不承担任何责任。
+
+本声明未涉及的问题参见国家有关法律法规，当本声明与国家法律法规冲突时，以国家法律法规为准。
+
+### 学习 & 商用 🌈
+
+`SnowAdmin` 是免费和开源的，可免费用于学习、商业使用 。
