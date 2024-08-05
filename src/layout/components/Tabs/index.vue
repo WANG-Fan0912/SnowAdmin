@@ -19,10 +19,12 @@
     <div class="tabs_setting">
       <a-space>
         <a-tooltip :content="$t(`language.refresh`)" position="bottom" mini>
-          <span ref="refreshRef" :class="rotateOpen && 'refresh'"><icon-refresh :size="18" @click="refresh" /></span>
+          <span ref="refreshRef" id="system-tabs-refresh" :class="rotateOpen && 'refresh'">
+            <icon-refresh :size="18" @click="refresh" />
+          </span>
         </a-tooltip>
         <a-dropdown trigger="hover" :popup-max-height="false">
-          <div class="setting"><icon-apps :size="18" /></div>
+          <div class="setting" id="system-tabs-setting"><icon-apps :size="18" /></div>
           <template #content>
             <a-doption @click="closeCurrent">
               <template #icon><icon-close /></template>

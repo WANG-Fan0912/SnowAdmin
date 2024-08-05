@@ -2,7 +2,7 @@
   <div>
     <div class="header_crumb">
       <div class="menu_fold">
-        <a-button size="mini" type="text" class="menu_fold_icon" @click="onCollapsed">
+        <a-button size="mini" type="text" class="menu_fold_icon" id="system-collapsed" @click="onCollapsed">
           <template #icon>
             <icon-menu-fold :size="18" v-if="!collapsed" />
             <icon-menu-unfold :size="18" v-if="collapsed" />
@@ -10,7 +10,7 @@
         </a-button>
       </div>
       <div class="breadcrumb" v-if="isBreadcrumb">
-        <Breadcrumb />
+        <Breadcrumb id="system-breadcrumb" />
       </div>
     </div>
   </div>
