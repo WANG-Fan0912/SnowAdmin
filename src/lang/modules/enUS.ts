@@ -27,6 +27,7 @@ export default {
     ["print"]: "print",
     ["draggable"]: "draggable",
     ["editor"]: "editor",
+    ["newbie"]: "newbie",
     ["usre-center"]: "usre center",
     ["markdown"]: "Markdown",
     ["custom-instruction"]: "custom instruction",

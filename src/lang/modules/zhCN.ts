@@ -27,6 +27,7 @@ export default {
     ["print"]: "打印",
     ["draggable"]: "拖拽",
     ["editor"]: "富文本",
+    ["newbie"]: "新手指引",
     ["usre-center"]: "用户中心",
     ["markdown"]: "Markdown",
     ["custom-instruction"]: "自定义指令",

@@ -356,6 +356,23 @@ export const dynamicRoutes: RouteRecordRaw[] = [
             children: []
           },
           {
+            path: "/common-component/newbie",
+            name: "newbie",
+            component: () => import("@/views/common-component/newbie/newbie.vue"),
+            meta: {
+              title: "newbie",
+              hide: false,
+              keepAlive: true,
+              affix: false,
+              link: "",
+              iframe: false,
+              roles: ["admin"],
+              icon: "icon-menu",
+              sort: 5
+            },
+            children: []
+          },
+          {
             path: "/common-component/usre-center",
             name: "usre-center",
             component: () => import("@/views/common-component/usre-center/usre-center.vue"),
@@ -368,7 +385,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
               iframe: false,
               roles: ["admin"],
               icon: "icon-menu",
-              sort: 5
+              sort: 6
             },
             children: []
           }
