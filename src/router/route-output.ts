@@ -58,14 +58,19 @@ export function linearArray(tree: any) {
 
 /**
  * 过滤路由树，返回有权限的树
+ * 1、先过滤停用的菜单，该菜单是不可访问的，直接去掉
+ * 2、根据角色权限过滤原始路由树
  * @param {array} tree 根据角色权限过滤原始路由树
  * @returns 返回有权限的树
  */
 export const filterByRole = (tree: any) => {
   return tree.filter((item: any) => {
-    if (item.meta && item.meta.roles) {
+    // 过滤角色权限
+    if (item?.meta?.roles) {
       if (!roleBase(item.meta.roles)) return false;
     }
+    // 过滤是否禁用
+    if (item?.meta?.disable) return false;
     if (item.children) item.children = filterByRole(item.children);
     return true;
   });

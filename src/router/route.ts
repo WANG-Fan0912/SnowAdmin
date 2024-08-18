@@ -6,7 +6,8 @@ import { testMultilevelMenu } from "@/mock/testRoute";
  * 路由meta对象参数，我们通常将属性放到meta对象中
  * meta: {
  * title:       菜单栏以及 tabsView 栏、菜单搜索名称（国际化）
- * hide:        是否隐藏此路由
+ * hide:        是否隐藏此路由，不会显示在菜单树，可以访问
+ * disable:     是否停用，不会显示在菜单树，且不可访问
  * keepAlive:   是否缓存组件状态
  * affix:       是否固定在 tabsView 栏上
  * link:        是否是超链接菜单，开启外链条件：1、 link：链接地址不为空  2、iframe: false
@@ -42,6 +43,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
         meta: {
           title: "home", // 国际化
           hide: false, // 是否隐藏此路由
+          disable: false, // 是否停用此路由
           keepAlive: false, // 缓存组件状态
           affix: true, // 固定在tagesView栏上
           link: "", // 是否外链
@@ -58,6 +60,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
         meta: {
           title: "file-management",
           hide: false,
+          disable: false,
           keepAlive: true,
           affix: false,
           link: "",
@@ -74,6 +77,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
             meta: {
               title: "document-library",
               hide: false,
+              disable: false,
               keepAlive: true,
               affix: false,
               link: "",
@@ -93,6 +97,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
         meta: {
           title: "table-management",
           hide: false,
+          disable: false,
           keepAlive: true,
           affix: false,
           link: "",
@@ -109,6 +114,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
             meta: {
               title: "common-table",
               hide: false,
+              disable: false,
               keepAlive: true,
               affix: false,
               link: "",
@@ -125,6 +131,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
             meta: {
               title: "custom-table",
               hide: false,
+              disable: false,
               keepAlive: true,
               affix: false,
               link: "",
@@ -143,6 +150,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
         meta: {
           title: "form-management",
           hide: false,
+          disable: false,
           keepAlive: true,
           affix: false,
           link: "",
@@ -159,6 +167,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
             meta: {
               title: "common-form",
               hide: false,
+              disable: false,
               keepAlive: true,
               affix: false,
               link: "",
@@ -175,6 +184,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
             meta: {
               title: "step-form",
               hide: false,
+              disable: false,
               keepAlive: true,
               affix: false,
               link: "",
@@ -193,6 +203,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
         meta: {
           title: "multilevel-menu",
           hide: false,
+          disable: false,
           keepAlive: true,
           affix: false,
           link: "",
@@ -209,6 +220,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
             meta: {
               title: "second-menu-1",
               hide: false,
+              disable: false,
               keepAlive: true,
               affix: false,
               link: "",
@@ -225,6 +237,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
             meta: {
               title: "second-menu-2",
               hide: false,
+              disable: false,
               keepAlive: true,
               affix: false,
               link: "",
@@ -241,6 +254,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
                 meta: {
                   title: "third-menu-1",
                   hide: false,
+                  disable: false,
                   keepAlive: true,
                   affix: false,
                   link: "",
@@ -257,6 +271,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
                 meta: {
                   title: "third-menu-2",
                   hide: false,
+                  disable: false,
                   keepAlive: true,
                   affix: false,
                   link: "",
@@ -278,6 +293,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
         meta: {
           title: "common-component",
           hide: false,
+          disable: false,
           keepAlive: true,
           affix: false,
           link: "",
@@ -294,6 +310,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
             meta: {
               title: "player",
               hide: false,
+              disable: false,
               keepAlive: true,
               affix: false,
               link: "",
@@ -311,6 +328,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
             meta: {
               title: "print",
               hide: false,
+              disable: false,
               keepAlive: true,
               affix: false,
               link: "",
@@ -328,6 +346,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
             meta: {
               title: "draggable",
               hide: false,
+              disable: false,
               keepAlive: true,
               affix: false,
               link: "",
@@ -345,6 +364,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
             meta: {
               title: "editor",
               hide: false,
+              disable: false,
               keepAlive: true,
               affix: false,
               link: "",
@@ -362,6 +382,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
             meta: {
               title: "newbie",
               hide: false,
+              disable: false,
               keepAlive: true,
               affix: false,
               link: "",
@@ -379,6 +400,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
             meta: {
               title: "usre-center",
               hide: false,
+              disable: false,
               keepAlive: true,
               affix: false,
               link: "",
@@ -398,6 +420,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
         meta: {
           title: "custom-instruction",
           hide: false,
+          disable: false,
           keepAlive: true,
           affix: false,
           link: "",
@@ -414,6 +437,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
             meta: {
               title: "anti-shake",
               hide: false,
+              disable: false,
               keepAlive: true,
               affix: false,
               link: "",
@@ -431,6 +455,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
             meta: {
               title: "throttle",
               hide: false,
+              disable: false,
               keepAlive: true,
               affix: false,
               link: "",
@@ -448,6 +473,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
             meta: {
               title: "test-instruction",
               hide: false,
+              disable: false,
               keepAlive: true,
               affix: false,
               link: "",
@@ -467,6 +493,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
         meta: {
           title: "personal-center",
           hide: false,
+          disable: false,
           keepAlive: true,
           affix: false,
           link: "",
@@ -483,6 +510,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
             meta: {
               title: "userinfo",
               hide: false,
+              disable: false,
               keepAlive: true,
               affix: false,
               link: "",
@@ -500,6 +528,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
             meta: {
               title: "user-settings",
               hide: false,
+              disable: false,
               keepAlive: true,
               affix: false,
               link: "",
@@ -519,6 +548,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
         meta: {
           title: "system-management",
           hide: false,
+          disable: false,
           keepAlive: true,
           affix: false,
           link: "",
@@ -535,6 +565,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
             meta: {
               title: "account-management",
               hide: false,
+              disable: false,
               keepAlive: true,
               affix: false,
               link: "",
@@ -552,6 +583,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
             meta: {
               title: "role-management",
               hide: false,
+              disable: false,
               keepAlive: true,
               affix: false,
               link: "",
@@ -569,6 +601,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
             meta: {
               title: "menu-management",
               hide: false,
+              disable: false,
               keepAlive: true,
               affix: false,
               link: "",
@@ -586,6 +619,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
             meta: {
               title: "division-management",
               hide: false,
+              disable: false,
               keepAlive: true,
               affix: false,
               link: "",
@@ -603,6 +637,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
             meta: {
               title: "dictionary-management",
               hide: false,
+              disable: false,
               keepAlive: true,
               affix: false,
               link: "",
@@ -620,6 +655,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
             meta: {
               title: "system-log",
               hide: false,
+              disable: false,
               keepAlive: true,
               affix: false,
               link: "",
@@ -639,6 +675,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
         meta: {
           title: "external-links",
           hide: false,
+          disable: false,
           keepAlive: true,
           affix: false,
           link: "",
@@ -655,6 +692,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
             meta: {
               title: "inline-page",
               hide: false,
+              disable: false,
               keepAlive: true,
               affix: false,
               link: "",
@@ -672,6 +710,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
                   title: "uigradients",
                   hide: false,
                   keepAlive: true,
+                  disable: false,
                   affix: false,
                   link: "https://uigradients.com/#HoneyDew", // 链接
                   iframe: true, // 区分是否内链 true内链 false外链
@@ -688,6 +727,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
                 meta: {
                   title: "color-taking-tool",
                   hide: false,
+                  disable: false,
                   keepAlive: true,
                   affix: false,
                   link: "https://photokit.com/colors/eyedropper/?lang=zh", // 链接
@@ -705,6 +745,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
                 meta: {
                   title: "grid-generator",
                   hide: false,
+                  disable: false,
                   keepAlive: true,
                   affix: false,
                   link: "https://cssgrid-generator.netlify.app/", // 链接
@@ -724,6 +765,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
             meta: {
               title: "external-page",
               hide: false,
+              disable: false,
               keepAlive: true,
               affix: false,
               link: "",
@@ -740,6 +782,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
                 meta: {
                   title: "link-SnowAdmin-Docs",
                   hide: false,
+                  disable: false,
                   keepAlive: true,
                   affix: false,
                   link: "http://101.126.93.137:81/", // 链接
@@ -757,6 +800,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
                 meta: {
                   title: "link-vue",
                   hide: false,
+                  disable: false,
                   keepAlive: true,
                   affix: false,
                   link: "https://cn.vuejs.org/", // 链接
@@ -774,6 +818,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
                 meta: {
                   title: "link-vite",
                   hide: false,
+                  disable: false,
                   keepAlive: true,
                   affix: false,
                   link: "https://www.vitejs.net/", // 链接
@@ -791,6 +836,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
                 meta: {
                   title: "link-gitee",
                   hide: false,
+                  disable: false,
                   keepAlive: true,
                   affix: false,
                   link: "https://gitee.com/wang_fan_w/SnowAdmin", // 链接
@@ -808,6 +854,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
                 meta: {
                   title: "link-juejin",
                   hide: false,
+                  disable: false,
                   keepAlive: true,
                   affix: false,
                   link: "https://juejin.cn/user/1728883023940600", // 链接
@@ -823,12 +870,85 @@ export const dynamicRoutes: RouteRecordRaw[] = [
         ]
       },
       {
+        path: "/disable-menu",
+        name: "disable-menu",
+        redirect: "/disable-menu/disable-menu-1",
+        meta: {
+          title: "disable-menu",
+          hide: false,
+          disable: true,
+          keepAlive: true,
+          affix: false,
+          link: "",
+          iframe: false,
+          roles: ["admin"],
+          svgIcon: "switch",
+          sort: 5
+        },
+        children: [
+          {
+            path: "/disable-menu/disable-menu-1",
+            name: "disable-menu-1",
+            component: () => import("@/views/disable-menu/disable-menu-1/disable-menu-1.vue"),
+            meta: {
+              title: "disable-menu-1",
+              hide: false,
+              disable: true,
+              keepAlive: true,
+              affix: false,
+              link: "",
+              iframe: false,
+              roles: ["admin"],
+              icon: "icon-menu",
+              sort: 1
+            }
+          }
+        ]
+      },
+      {
+        path: "/hide-menu",
+        name: "hide-menu",
+        redirect: "/hide-menu/hide-menu-1",
+        meta: {
+          title: "hide-menu",
+          hide: true,
+          disable: false,
+          keepAlive: true,
+          affix: false,
+          link: "",
+          iframe: false,
+          roles: ["admin"],
+          svgIcon: "switch",
+          sort: 5
+        },
+        children: [
+          {
+            path: "/hide-menu/hide-menu-1",
+            name: "hide-menu-1",
+            component: () => import("@/views/hide-menu/hide-menu-1/hide-menu-1.vue"),
+            meta: {
+              title: "hide-menu-1",
+              hide: true,
+              disable: false,
+              keepAlive: true,
+              affix: false,
+              link: "",
+              iframe: false,
+              roles: ["admin"],
+              icon: "icon-menu",
+              sort: 1
+            }
+          }
+        ]
+      },
+      {
         path: "/internationalization",
         name: "internationalization",
         component: () => import("@/views/internationalization/internationalization.vue"),
         meta: {
           title: "internationalization",
           hide: false,
+          disable: false,
           keepAlive: true,
           affix: false,
           link: "",
@@ -845,6 +965,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
         meta: {
           title: "about-project",
           hide: false,
+          disable: false,
           keepAlive: true,
           affix: false,
           link: "",
@@ -880,7 +1001,10 @@ export const staticRoutes = [
 ];
 
 /**
- * 定义404、401界面
+ * 定义401、404、500界面
+ * 401无权限
+ * 404页面不存在
+ * 500网络断开
  * @link 参考：https://router.vuejs.org/zh/guide/essentials/history-mode.html#netlify
  */
 export const notFoundAndNoPower = [

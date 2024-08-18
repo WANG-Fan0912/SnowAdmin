@@ -66,6 +66,8 @@ export default {
     ["close-right-side"]: "close right side",
     ["close-other"]: "close other",
     ["close-all"]: "close all",
+    ["disable-menu"]: "disable-menu",
+    ["disable-menu-1"]: "disable-menu-1",
     ["internationalization"]: "internationalization",
     ["switch-to-night-mode"]: "switch to night mode",
     ["switch-to-daytime-mode"]: "switch to daytime mode",
