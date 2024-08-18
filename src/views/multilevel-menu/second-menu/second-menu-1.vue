@@ -1,5 +1,5 @@
 <template>
-  <div class="dc-page">
+  <div class="snow-page">
     <div>二级-菜单 页面缓存</div>
     <a-input :style="{ width: '320px' }" placeholder="请输入内容测试页面缓存" allow-clear v-model="form" />
   </div>

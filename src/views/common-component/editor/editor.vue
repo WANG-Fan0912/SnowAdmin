@@ -1,5 +1,5 @@
 <template>
-  <div class="dc-page">
+  <div class="snow-page">
     <a-space direction="vertical">
       <div>
         <div style="border: 1px solid #ccc">

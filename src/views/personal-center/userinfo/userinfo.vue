@@ -1,5 +1,5 @@
 <template>
-  <div class="dc-page">
+  <div class="snow-page">
     <div class="my-avatar">
       <a-avatar :size="100">
         <img alt="avatar" :src="myImage" />

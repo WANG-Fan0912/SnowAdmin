@@ -1,5 +1,5 @@
 <template>
-  <div class="dc-page">
+  <div class="snow-page">
     <p>{{ $t(`language.switch-language-to-preview`) }}</p>
     <br />
     <div>

@@ -1,5 +1,5 @@
 <template>
-  <div class="dc-page">
+  <div class="snow-page">
     <a-space direction="vertical">
       <div class="draggable-container">
         <div class="title">Favorites</div>
@@ -64,7 +64,7 @@ const onEnd = () => {
 </script>
 
 <style lang="scss" scoped>
-.dc-page {
+.snow-page {
   display: flex;
   column-gap: $padding;
 }

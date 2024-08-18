@@ -1,5 +1,5 @@
 <template>
-  <div class="dc-page-clear">
+  <div class="snow-page-clear">
     <a-card title="简介">
       <div>
         <p>SnowAdmin 一款基于 Vue、TypeScript、Vite5、Pinia、arco-design开源的后台管理框架，使用目前最新技术栈开发。</p>

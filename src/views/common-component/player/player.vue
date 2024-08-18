@@ -1,5 +1,5 @@
 <template>
-  <div class="dc-page">
+  <div class="snow-page">
     <a-space direction="vertical">
       <div class="player-box">
         <div id="mse"></div>

@@ -1,6 +1,6 @@
 <template>
   <a-spin :loading="loading" style="display: block">
-    <div class="dc-page container">
+    <div class="snow-page container">
       <a-row>
         <a-col :span="12" :offset="6">
           <a-steps :current="currentStep" line-less>

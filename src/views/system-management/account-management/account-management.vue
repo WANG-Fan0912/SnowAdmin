@@ -1,5 +1,5 @@
 <template>
-  <div class="dc-page">账号管理-敬请期待</div>
+  <div class="snow-page">账号管理-敬请期待</div>
 </template>
 
 <script setup lang="ts"></script>

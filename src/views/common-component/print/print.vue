@@ -1,5 +1,5 @@
 <template>
-  <div class="dc-page">
+  <div class="snow-page">
     <a-space direction="vertical">
       <a-typography id="myTypography" :style="{ marginTop: '-40px' }">
         <a-typography-title :heading="2">ArcoDesign</a-typography-title>

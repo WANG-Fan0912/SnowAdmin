@@ -1,5 +1,5 @@
 <template>
-  <div class="dc-page">
+  <div class="snow-page">
     <!-- 常用功能 -->
     <Shortcut />
     <!-- 第三板指标 -->

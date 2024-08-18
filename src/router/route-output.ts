@@ -1,5 +1,6 @@
 import pinia from "@/store/index";
 import router from "@/router/index.ts";
+import { RouteRecordRaw } from "vue-router";
 import { dynamicRoutes } from "@/router/route";
 import { storeToRefs } from "pinia";
 import { useUserInfoStore } from "@/store/modules/user-info";
@@ -20,12 +21,13 @@ export async function initSetRouter() {
   loadingPage.start();
   const store = useRoutesListStore(pinia);
   // 根据角色权限过滤树
-  let filteredTree = filterByRole(dynamicRoutes[0].children);
+  const originTree: RouteRecordRaw[] = deepClone(dynamicRoutes);
+  let filteredTree = filterByRole(originTree[0].children);
   await store.setRouteTree(filteredTree);
   // 根据树生成一维路由数组
   const flattenedArray = linearArray(filteredTree);
   // 设置完整的路由，二维路由，顶层路由 + 二级的一维路由
-  const twoStoryTree = dynamicRoutes.map(item => {
+  const twoStoryTree = originTree.map(item => {
     if (flattenedArray.length > 0) item.redirect = flattenedArray[0].path;
     item.children = flattenedArray;
     return item;
