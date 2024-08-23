@@ -11,7 +11,7 @@ SnowAdmin
 - [项目预览地址](http://101.126.93.137/#/login)
 - [项目文档地址](http://101.126.93.137:81/)
 - [Gitee 仓库](https://gitee.com/wang_fan_w/SnowAdmin)
-- [Github 仓库](https://github.com/Rabbit-ice/SnowAdmin)
+- [Github 仓库](https://github.com/WANG-Fan0912/SnowAdmin)
 
 ### 项目功能 🔨
 
@@ -37,7 +37,10 @@ SnowAdmin
 
 ### 从 GitHub 获取代码 🔗
 
-建设中
+```bash
+# 克隆代码
+git clone https://github.com/WANG-Fan0912/SnowAdmin.git
+```
 
 ### 从 Gitee 获取代码 🔗
 
@@ -46,7 +49,6 @@ SnowAdmin
 git clone https://gitee.com/wang_fan_w/SnowAdmin.git
 ```
 
-> 注意: 最新版本的代码以 gitee 为准。
 
 ### 安装依赖 📌
 
