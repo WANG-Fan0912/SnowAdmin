@@ -4,14 +4,48 @@
 
 SnowAdmin 是一个清新优雅、高颜值且功能强大的后台管理模板，基于最新的前端技术栈，包括 Vue3, Vite5, TypeScript, Pinia。它内置了丰富的主题配置和组件，代码规范严谨，实现了自动化的文件路由系统。SnowAdmin 为您提供了一站式的后台管理解决方案，无需额外配置，开箱即用。同样是一个快速学习前沿技术的最佳实践。
 
+
+
 ### 版本 📦
 
-SnowAdmin
+**预览及文档** 
 
-- [项目预览地址](http://101.126.93.137/#/login)
-- [项目文档地址](http://101.126.93.137:81/)
-- [Gitee 仓库](https://gitee.com/wang_fan_w/SnowAdmin)
-- [Github 仓库](https://github.com/WANG-Fan0912/SnowAdmin)
+项目预览地址：[SnowAdmin](http://101.126.93.137/#/login)
+
+项目文档地址：[SnowAdmin-开发指南](http://101.126.93.137:81/)
+
+**代码仓库**
+
+| 平台   | 仓库地址                                                 |
+| ------ | -------------------------------------------------------- |
+| GitHub | [Github 仓库](https://github.com/WANG-Fan0912/SnowAdmin) |
+| Gitee  | [Gitee 仓库](https://gitee.com/wang_fan_w/SnowAdmin)     |
+
+
+
+### 先行预览
+
+![](https://gitee.com/wang_fan_w/snow-image/raw/main/introduce/%E7%99%BB%E5%BD%95%E9%A1%B5.jpg)
+
+![](https://gitee.com/wang_fan_w/snow-image/raw/main/introduce/%E9%A6%96%E9%A1%B5.jpg)
+
+![](https://gitee.com/wang_fan_w/snow-image/raw/main/introduce/%E6%96%87%E4%BB%B6%E5%BA%93.jpg)
+
+![](https://gitee.com/wang_fan_w/snow-image/raw/main/introduce/%E5%9B%BD%E9%99%85%E5%8C%96.jpg)
+
+![](https://gitee.com/wang_fan_w/snow-image/raw/main/introduce/%E6%A8%AA%E5%90%91%E5%B8%83%E5%B1%80.jpg)
+
+![](https://gitee.com/wang_fan_w/snow-image/raw/main/introduce/%E6%B7%B7%E5%90%88%E5%B8%83%E5%B1%80.jpg)
+
+![](https://gitee.com/wang_fan_w/snow-image/raw/main/introduce/%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE.jpg)
+
+![](https://gitee.com/wang_fan_w/snow-image/raw/main/introduce/%E9%BB%91%E6%9A%97%E6%A8%A1%E5%BC%8F.jpg)
+
+![](https://gitee.com/wang_fan_w/snow-image/raw/main/introduce/%E9%BB%91%E6%9A%97%E6%A8%A1%E5%BC%8F-2.jpg)
+
+![](https://gitee.com/wang_fan_w/snow-image/raw/main/introduce/%E9%BB%91%E6%9A%97%E6%A8%A1%E5%BC%8F-3.jpg)
+
+
 
 ### 项目功能 🔨
 
@@ -25,6 +59,8 @@ SnowAdmin
 - 使用 husky、lint-staged、commitlint等插件，规范提交信息
 - 丰富的页面组件：内置多样页面和组件，包括 401、404、500 页面，以及布局组件、标签组件、主题配置组件等。
 
+
+
 ### 环境准备 🏝️
 
 确保你的环境满足以下要求：
@@ -32,6 +68,8 @@ SnowAdmin
 - **git**: 你需要 git 来克隆和管理项目版本。
 - **NodeJS**: >=18.12.0，推荐 20.12.0 或更高。
 - **pnpm**: >= 8.7.0，推荐最新版本。
+
+
 
 ### 安装使用步骤 📔
 
@@ -42,12 +80,15 @@ SnowAdmin
 git clone https://github.com/WANG-Fan0912/SnowAdmin.git
 ```
 
+
+
 ### 从 Gitee 获取代码 🔗
 
 ```bash
 # 克隆代码
 git clone https://gitee.com/wang_fan_w/SnowAdmin.git
 ```
+
 
 
 ### 安装依赖 📌
@@ -58,11 +99,15 @@ git clone https://gitee.com/wang_fan_w/SnowAdmin.git
 pnpm install
 ```
 
+
+
 ### 插件配置 🛠️
 
 安装 Vue - Official，禁用 Vetur
 
 - [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) - Vue 服务插件
+
+
 
 ### 项目启动 🚀
 
@@ -80,6 +125,8 @@ pnpm install
   "preview": "vite preview"
 }
 ```
+
+
 
 ### 文件资源目录 📚
 
@@ -124,6 +171,8 @@ SnowAdmin
 └─ vite.config.ts         # vite 全局配置文件
 ```
 
+
+
 ### 浏览器支持 🌎
 
 - 本地开发推荐使用 Chrome 最新版浏览器 [Download](https://www.google.com/intl/zh-CN/chrome/)。
@@ -133,9 +182,13 @@ SnowAdmin
 | :---------------------------------------------: | :-----------------------------------------------: | :--------------------------------------------------: | :-------------------------------------------------: | :-------------------------------------------------: |
 |                   not support                   |                  last 2 versions                  |                   last 2 versions                    |                   last 2 versions                   |                   last 2 versions                   |
 
+
+
 <!-- ### 项目后台接口 🧩
 
 建设中 -->
+
+
 
 ### 鸣谢列表 🧩
 
@@ -151,7 +204,8 @@ SnowAdmin
 - [print-js：https://github.com/crabbly/Print.js](https://github.com/crabbly/Print.js)
 - [eslint：https://github.com/eslint/eslint](https://github.com/eslint/eslint)
 - [prettier：https://github.com/prettier/prettier](https://github.com/prettier/prettier)
-- [arco-design：https://arco.design/](https://arco.design/)
+- [arco-design：https://arco.design/
+- [](https://arco.design/)
 
 ### 特别鸣谢 🎉
 
@@ -161,9 +215,13 @@ SnowAdmin
 
 感谢以上框架为本项目提供了帮助，项目中的很多设计思想值得参考和学习，再次感谢。
 
+
+
 ### 支持作者 🌟
 
-如果觉得框架不错，或者已经在使用了，希望你可以去 [Github](https://github.com/Rabbit-ice?tab=projects) 或者 [Gitee](https://gitee.com/wang_fan_w/SnowAdmin) 帮我点个 ⭐ Star，这将是对我极大的鼓励与支持。
+如果觉得框架不错，或者已经在使用了，希望你可以去 [Github](https://github.com/WANG-Fan0912/SnowAdmin) 或者 [Gitee](https://gitee.com/wang_fan_w/SnowAdmin) 帮我点个 ⭐ Star，这将是对我极大的鼓励与支持。
+
+
 
 ### 免责条款 📫
 
@@ -175,6 +233,16 @@ SnowAdmin
 
 本声明未涉及的问题参见国家有关法律法规，当本声明与国家法律法规冲突时，以国家法律法规为准。
 
+
+
 ### 学习 & 商用 🌈
 
 `SnowAdmin` 是免费和开源的，可免费用于学习、商业使用 。
+
+
+
+### 捐赠
+
+|                             微信                             |                            支付宝                            |
+| :----------------------------------------------------------: | :----------------------------------------------------------: |
+| ![微信](https://gitee.com/wang_fan_w/snow-image/raw/main/introduce/Wechat.jpg) | ![支付宝](https://gitee.com/wang_fan_w/snow-image/raw/main/introduce/alipay.jpg) |
