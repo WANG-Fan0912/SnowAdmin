@@ -64,6 +64,10 @@ const onTab = (key: number) => {
     }
   }
 }
+.margin-left-text {
+  margin-left: $margin-text;
+}
+
 // 解决tabs宽度异常的bug
 :deep(.arco-tabs-content .arco-tabs-content-list) {
   display: unset;

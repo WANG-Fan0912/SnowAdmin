@@ -257,4 +257,8 @@ const logOut = () => {
     transform: rotate(180deg) !important;
   }
 }
+
+.margin-left-text {
+  margin-left: $margin-text;
+}
 </style>

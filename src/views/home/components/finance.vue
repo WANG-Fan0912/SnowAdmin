@@ -99,4 +99,8 @@ const financeData = ref([
   font-size: $font-size-body-3;
   color: $color-text-1;
 }
+
+.margin-left-text {
+  margin-left: $margin-text;
+}
 </style>

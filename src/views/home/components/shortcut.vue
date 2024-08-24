@@ -72,6 +72,19 @@ const shortcut = ref([
       color: $color-text-2;
     }
   }
+
+  .card-middling {
+    width: 200px;
+  }
+
+  .row-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.margin-left-text {
+  margin-left: $margin-text;
 }
 .box-title {
   display: flex;
