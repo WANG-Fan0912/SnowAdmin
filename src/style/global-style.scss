@@ -1,4 +1,6 @@
 /* global style scss */
+
+// 有背景色的页面
 .snow-page {
   // margin 和 padding 边距一致，是为了保持视觉上的内外统一
   margin: $padding;
@@ -6,53 +8,7 @@
   background: $color-bg-1;
 }
 
+// 没有背景色的页面
 .snow-page-clear {
   margin: $padding;
-}
-
-.border-red {
-  box-shadow: $shadow-border-1;
-}
-
-// 通用全外边距
-.margin {
-  margin: $margin;
-}
-
-// 下边距
-.margin-bottom {
-  margin-bottom: $margin;
-}
-
-// 左间距-行内文字
-.margin-left-text {
-  margin-left: $margin-text;
-}
-// 右间距-行内文字
-.margin-right-text {
-  margin-right: $margin-text;
-}
-
-// 中等卡片大小
-.card-middling {
-  width: 200px;
-}
-
-// 一行完全居中
-.row-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-// 垂直居中，从左到右
-.row-start-center {
-  display: flex;
-  justify-content: start;
-  align-items: center;
-}
-// 垂直居中，左右占满
-.flex-row-between-center {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }

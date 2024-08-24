@@ -121,7 +121,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
               iframe: false,
               roles: ["admin"],
               icon: "icon-menu",
-              sort: 2
+              sort: 1
             }
           },
           {
@@ -138,7 +138,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
               iframe: false,
               roles: ["admin"],
               icon: "icon-menu",
-              sort: 1
+              sort: 2
             }
           }
         ]
