@@ -90,7 +90,6 @@ export const dynamicRoutes: RouteRecordRaw[] = [
           }
         ]
       },
-
       {
         path: "/table-management",
         name: "table-management",
@@ -122,7 +121,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
               iframe: false,
               roles: ["admin"],
               icon: "icon-menu",
-              sort: 1
+              sort: 2
             }
           },
           {
@@ -139,7 +138,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
               iframe: false,
               roles: ["admin"],
               icon: "icon-menu",
-              sort: 2
+              sort: 1
             }
           }
         ]

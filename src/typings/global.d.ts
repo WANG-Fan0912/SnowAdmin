@@ -12,6 +12,7 @@ declare namespace Menu {
   interface MetaType {
     title: string;
     hide: boolean;
+    disable: boolean;
     keepAlive: boolean;
     affix: boolean;
     link?: string;
@@ -19,6 +20,7 @@ declare namespace Menu {
     roles: Array<string>;
     icon?: string;
     svgIcon?: string;
+    sort?: number;
   }
 }
 /* tabs菜单 */

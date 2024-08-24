@@ -20,21 +20,20 @@ export async function initSetRouter() {
   // 初始化路由，渲染loading
   loadingPage.start();
   const store = useRoutesListStore(pinia);
-  // 根据角色权限过滤树
+  // 根据角色权限过滤树并将其排序
   const originTree: RouteRecordRaw[] = deepClone(dynamicRoutes);
-  let filteredTree = filterByRole(originTree[0].children);
+  let filteredTree = treeSort(filterByRole(originTree[0].children));
   await store.setRouteTree(filteredTree);
   // 根据树生成一维路由数组
   const flattenedArray = linearArray(filteredTree);
-  // 设置完整的路由，二维路由，顶层路由 + 二级的一维路由
-  const twoStoryTree = originTree.map(item => {
+  // 设置完整的路由，二维路由：顶层路由 + 二级的一维路由
+  const addBeforeTree = originTree.map(item => {
     if (flattenedArray.length > 0) item.redirect = flattenedArray[0].path;
     item.children = flattenedArray;
     return item;
   });
-
   // 动态添加路由
-  twoStoryTree.forEach((route: any) => router.addRoute(route));
+  addBeforeTree.forEach((route: RouteRecordRaw) => router.addRoute(route));
   // 设置一维路由
   setRouting(flattenedArray);
 }
@@ -76,6 +75,37 @@ export const filterByRole = (tree: any) => {
     if (item.children) item.children = filterByRole(item.children);
     return true;
   });
+};
+
+/**
+ * 路由树递归排序
+ * 1、先给当前层排序
+ * 2、若当前层有children则递归排序
+ * @param {array} tree 根据角色权限过滤后的路由树
+ * @returns 返回排序之后的树
+ */
+export const treeSort = (tree: Menu.MenuOptions[]) => {
+  if (!tree || tree.length == 0) return [];
+  tree.sort((a: Menu.MenuOptions, b: Menu.MenuOptions) => {
+    // a和b都是undefined则相等
+    if (a.meta.sort != 0 && !a.meta.sort && b.meta.sort != 0 && !b.meta.sort) {
+      return 0;
+    }
+    // a是undefined则a被排在b之后
+    if (a.meta.sort != 0 && !a.meta.sort) return 1;
+    // b是undefined则b被排在a之后
+    if (b.meta.sort != 0 && !b.meta.sort) return -1;
+    return a.meta.sort - b.meta.sort;
+  });
+
+  // 深层递归
+  let sortAfter = tree.map((item: any) => {
+    if (item?.children?.length > 0) {
+      item.children = treeSort(item.children);
+    }
+    return item;
+  });
+  return sortAfter;
 };
 
 /**
