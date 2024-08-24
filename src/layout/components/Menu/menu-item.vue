@@ -19,6 +19,7 @@
 <script setup lang="ts">
 import MenuItem from "@/layout/components/Menu/menu-item.vue";
 import MenuItemIcon from "@/layout/components/Menu/menu-item-icon.vue";
+import { useMneuMethod } from "@/hooks/useMneuMethod";
 defineOptions({ name: "MenuItem", inheritAttrs: false });
 
 interface Props {
@@ -30,16 +31,7 @@ const props = withDefaults(defineProps<Props>(), {
   routeTree: () => []
 });
 
-// 父级菜单
-const menuShow = (item: Menu.MenuOptions) => {
-  if (item.children && item.children?.length > 0 && !item.meta.hide) return true;
-  return false;
-};
-// 单级菜单
-const aMenuShow = (item: Menu.MenuOptions) => {
-  if (!item.meta.hide) return true;
-  return false;
-};
+const { menuShow, aMenuShow } = useMneuMethod();
 </script>
 
 <style lang="scss" scoped></style>

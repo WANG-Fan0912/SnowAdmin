@@ -5,24 +5,32 @@
         <div class="header-logo">
           <Logo />
         </div>
+        <div class="layout-head-menu">
+          <a-menu
+            v-if="drawing"
+            mode="horizontal"
+            :selected-keys="[currentRoute.name]"
+            @menu-item-click="onMenuItem"
+            :popup-max-height="600"
+          >
+            <template v-for="item in routeTree" :key="item.name">
+              <a-sub-menu v-if="menuShow(item)" :key="item.name" :popup-max-height="600">
+                <template #icon v-if="item.meta.svgIcon || item.meta.icon">
+                  <MenuItemIcon :svg-icon="item.meta.svgIcon" :icon="item.meta.icon" />
+                </template>
+                <template #title>{{ $t(`language.${item.meta.title}`) }}</template>
+                <MenuItem :route-tree="item.children" />
+              </a-sub-menu>
+              <a-menu-item v-else-if="aMenuShow(item)" :key="item?.name">
+                <template #icon v-if="item.meta.svgIcon || item.meta.icon">
+                  <MenuItemIcon :svg-icon="item.meta.svgIcon" :icon="item.meta.icon" />
+                </template>
+                <span>{{ $t(`language.${item.meta.title}`) }}</span>
+              </a-menu-item>
+            </template>
+          </a-menu>
+        </div>
 
-        <a-menu mode="horizontal" :selected-keys="[currentRoute.name]" @menu-item-click="onMenuItem">
-          <template v-for="item in routeTree" :key="item.name">
-            <a-sub-menu v-if="item.children && item.children.length > 0" :key="item.name">
-              <template #icon v-if="item.meta.svgIcon || item.meta.icon">
-                <MenuItemIcon :svg-icon="item.meta.svgIcon" :icon="item.meta.icon" />
-              </template>
-              <template #title>{{ $t(`language.${item.meta.title}`) }}</template>
-              <MenuItem :route-tree="item.children" />
-            </a-sub-menu>
-            <a-menu-item v-else :key="item?.name">
-              <template #icon v-if="item.meta.svgIcon || item.meta.icon">
-                <MenuItemIcon :svg-icon="item.meta.svgIcon" :icon="item.meta.icon" />
-              </template>
-              <span>{{ $t(`language.${item.meta.title}`) }}</span>
-            </a-menu-item>
-          </template>
-        </a-menu>
         <HeaderRight />
       </a-layout-header>
       <Main />
@@ -43,12 +51,21 @@ import { storeToRefs } from "pinia";
 import { useRoutesListStore } from "@/store/modules/route-list";
 import { useRoutingMethod } from "@/hooks/useRoutingMethod";
 import { useThemeConfig } from "@/store/modules/theme-config";
+import { useMneuMethod } from "@/hooks/useMneuMethod";
 defineOptions({ name: "LayoutHead" });
 const router = useRouter();
 const routerStore = useRoutesListStore();
 const themeStore = useThemeConfig();
 const { routeTree, currentRoute } = storeToRefs(routerStore);
-const { isFooter } = storeToRefs(themeStore);
+const { isFooter, language } = storeToRefs(themeStore);
+
+const { menuShow, aMenuShow } = useMneuMethod();
+
+const drawing = ref<boolean>(true);
+watch(language, () => {
+  drawing.value = false;
+  nextTick(() => (drawing.value = true));
+});
 
 /**
  * @description 菜单点击事件
@@ -79,14 +96,19 @@ const onMenuItem = (key: string) => {
 .header {
   padding: 0 $padding;
   height: 60px;
+  width: 100%;
   box-sizing: border-box;
   border-bottom: $border-1 solid $color-border-2;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   overflow: hidden;
   .header-logo {
     max-width: 180px;
+  }
+  .layout-head-menu {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
   }
 }
 

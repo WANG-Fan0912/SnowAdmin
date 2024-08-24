@@ -16,15 +16,24 @@
             </template>
           </a-button>
         </div>
-
-        <a-menu mode="horizontal" :selected-keys="[aciveRoute]" @menu-item-click="onMenuItem">
-          <a-menu-item v-for="item in routeTree" :key="item.name">
-            <template #icon v-if="item.meta.svgIcon || item.meta.icon">
-              <MenuItemIcon :svg-icon="item.meta.svgIcon" :icon="item.meta.icon" />
+        <div class="layout-head-menu">
+          <a-menu
+            v-if="drawing"
+            mode="horizontal"
+            :selected-keys="[aciveRoute]"
+            @menu-item-click="onMenuItem"
+            :popup-max-height="600"
+          >
+            <template v-for="item in routeTree" :key="item.name">
+              <a-menu-item v-if="aMenuShow(item)" :key="item.name" :popup-max-height="600">
+                <template #icon v-if="item.meta.svgIcon || item.meta.icon">
+                  <MenuItemIcon :svg-icon="item.meta.svgIcon" :icon="item.meta.icon" />
+                </template>
+                <span>{{ $t(`language.${item.meta.title}`) }}</span>
+              </a-menu-item>
             </template>
-            <span>{{ $t(`language.${item.meta.title}`) }}</span>
-          </a-menu-item>
-        </a-menu>
+          </a-menu>
+        </div>
         <HeaderRight />
       </a-layout-header>
       <Main />
@@ -45,20 +54,26 @@ import { useRoutesListStore } from "@/store/modules/route-list";
 import { useRoutingMethod } from "@/hooks/useRoutingMethod";
 import { storeToRefs } from "pinia";
 import { useThemeConfig } from "@/store/modules/theme-config";
+import { useMneuMethod } from "@/hooks/useMneuMethod";
 defineOptions({ name: "LayoutMixing" });
 const route = useRoute();
 const router = useRouter();
 const routerStore = useRoutesListStore();
 const themeStore = useThemeConfig();
-const { isFooter, collapsed, asideDark } = storeToRefs(themeStore);
+const { isFooter, collapsed, asideDark, language } = storeToRefs(themeStore);
 const { routeTree } = storeToRefs(routerStore);
+const { aMenuShow } = useMneuMethod();
+
+const drawing = ref<boolean>(true);
+watch(language, () => {
+  drawing.value = false;
+  nextTick(() => (drawing.value = true));
+});
 
 // 折叠
 const onCollapsed = () => {
   themeStore.setCollapsed(!collapsed.value);
 };
-
-console.log("路由信息", route);
 
 // 由于刷新后，路由信息丢失，所以需要重新获取
 // 混合布局的横向菜单为顶层路由下的一级菜单
@@ -180,6 +195,11 @@ const getAsideMenu = (key: string) => {
         border-radius: $radius-box-1;
       }
     }
+  }
+  .layout-head-menu {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
   }
 }
 

@@ -533,7 +533,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
       {
         path: "/system-management",
         name: "system-management",
-        redirect: "/system-management/account management",
+        redirect: "/system-management/account-management",
         meta: {
           title: "system-management",
           hide: false,

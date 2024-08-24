@@ -90,10 +90,10 @@ const refresh = () => {
   const themeStore = useThemeConfig();
   themeStore.setRefreshPage(false);
   currentRoute.value.meta.keepAlive && routerStore.removeRouteName(currentRoute.value.name);
-  setTimeout(() => {
+  nextTick(() => {
     themeStore.setRefreshPage(true);
     currentRoute.value.meta.keepAlive && routerStore.setRouteNames(currentRoute.value.name);
-  }, 0);
+  });
 };
 
 // 关闭当前
