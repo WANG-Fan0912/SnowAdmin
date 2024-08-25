@@ -52,7 +52,7 @@ export default {
     ["external-page"]: "external link page",
     ["link-vue"]: "vue",
     ["link-vite"]: "vite",
-    ["link-gitee"]: "gitee",
+    ["link-github"]: "github",
     ["link-juejin"]: "juejin",
     ["link-SnowAdmin-Docs"]: "Snow-Docs",
     ["about-project"]: "about project",

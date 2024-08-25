@@ -83,7 +83,7 @@
           <!-- 项目地址 -->
           <a-doption @click="onProject">
             <template #default>
-              <SvgIcon :name="'gitee'" :size="18" />
+              <SvgIcon :name="'github'" :size="18" />
               <span class="margin-left-text">{{ $t(`language.project-address`) }}</span>
             </template>
           </a-doption>
@@ -104,7 +104,7 @@
 </template>
 
 <script setup lang="ts">
-import Notice from "@/layout/components/Header/components/notice/index.vue";
+import Notice from "@/layout/components/Header/components/Notice/index.vue";
 import SystemSettings from "@/layout/components/Header/components/system-settings/index.vue";
 import ThemeSettings from "@/layout/components/Header/components/theme-settings/index.vue";
 import myImage from "@/assets/img/my-image.jpg";
@@ -178,7 +178,7 @@ const onUpdate = () => {
 
 // 项目地址
 const onProject = () => {
-  window.open("https://gitee.com/wang_fan_w/SnowAdmin", "_blank");
+  window.open("https://github.com/WANG-Fan0912/SnowAdmin", "_blank");
 };
 
 // 退出登录

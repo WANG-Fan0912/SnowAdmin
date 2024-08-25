@@ -807,16 +807,16 @@ export const dynamicRoutes: RouteRecordRaw[] = [
                 }
               },
               {
-                path: "/external-links/external-page/link-gitee",
-                name: "link-gitee",
+                path: "/external-links/external-page/link-github",
+                name: "link-github",
                 component: () => import("@/views/external-links/external-page/external-page.vue"),
                 meta: {
-                  title: "link-gitee",
+                  title: "link-github",
                   hide: false,
                   disable: false,
                   keepAlive: true,
                   affix: false,
-                  link: "https://gitee.com/wang_fan_w/SnowAdmin", // 链接
+                  link: "https://github.com/WANG-Fan0912/SnowAdmin", // 链接
                   iframe: false, // 区分是否内链 true内链 false外链
                   roles: ["admin"],
                   icon: "icon-menu",

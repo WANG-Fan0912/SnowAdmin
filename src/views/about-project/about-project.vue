@@ -8,7 +8,15 @@
       </div>
     </a-card>
     <a-card class="margin-top" title="项目信息">
-      <a-descriptions :data="projectInfo" bordered :column="2" />
+      <a-descriptions :column="2" bordered>
+      <a-descriptions-item v-for="item of projectInfo" :key="item.label" :label="item.label">
+        <a-link :href="item.value" v-if="item.link">{{ item.label }}</a-link>
+        
+        <!-- <a-tag  :default-checked="true">Lark</a-tag> -->
+        <span v-else>{{ item.value }}</span>
+      </a-descriptions-item>
+    </a-descriptions>
+      <!-- <a-descriptions :data="projectInfo" bordered :column="2" /> -->
     </a-card>
     <a-card class="margin-top" title="生产环境依赖">
       <a-descriptions :data="dependencies" bordered :column="2" />
@@ -21,30 +29,36 @@
 
 <script setup lang="ts">
 import packageJson from "../../../package.json";
-const projectInfo = [
+const projectInfo: any = [
   {
     label: "版本号",
+    link: false,
     value: packageJson.version
   },
   {
     label: "发布时间",
+    link: false,
     value: "2024-06-18"
   },
   {
-    label: "Gitee",
-    value: "Gitee"
+    label: "GitHub",
+    link: true,
+    value: "https://github.com/WANG-Fan0912/SnowAdmin"
   },
   {
-    label: "Github",
-    value: "Github"
+    label: "Gitee",
+    link: true,
+    value: "https://gitee.com/wang_fan_w/SnowAdmin"
   },
   {
     label: "文档地址",
-    value: "完善中"
+    link: true,
+    value: "http://101.126.93.137:81/"
   },
   {
     label: "预览地址",
-    value: "完善中"
+    link: true,
+    value: "http://101.126.93.137/#/login"
   }
 ];
 

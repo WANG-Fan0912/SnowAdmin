@@ -53,7 +53,7 @@ export default {
     ["external-page"]: "外链页面",
     ["link-vue"]: "外链 vue官网",
     ["link-vite"]: "外链 vite官网",
-    ["link-gitee"]: "外链 gitee",
+    ["link-github"]: "外链 github",
     ["link-SnowAdmin-Docs"]: "外链 项目文档",
     ["link-juejin"]: "外链 掘金",
     ["not-power"]: "没有权限",
