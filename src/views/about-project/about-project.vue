@@ -11,12 +11,9 @@
       <a-descriptions :column="2" bordered>
       <a-descriptions-item v-for="item of projectInfo" :key="item.label" :label="item.label">
         <a-link :href="item.value" v-if="item.link">{{ item.label }}</a-link>
-        
-        <!-- <a-tag  :default-checked="true">Lark</a-tag> -->
         <span v-else>{{ item.value }}</span>
       </a-descriptions-item>
     </a-descriptions>
-      <!-- <a-descriptions :data="projectInfo" bordered :column="2" /> -->
     </a-card>
     <a-card class="margin-top" title="生产环境依赖">
       <a-descriptions :data="dependencies" bordered :column="2" />

@@ -2,13 +2,17 @@
   <a-watermark :content="watermark" v-bind="watermarkConfig">
     <a-layout-content class="layout-main-content">
       <Tabs v-if="isTabs" />
-      <router-view v-slot="{ Component, route }">
-        <MainTransition>
-          <keep-alive :include="cacheRoutes">
-            <component :is="Component" :key="route.name" v-if="refreshPage" />
-          </keep-alive>
-        </MainTransition>
-      </router-view>
+      <a-scrollbar style="height: 100%; overflow: auto" :outer-class="isTabs ? 'scrollbar' : 'scrollbar-no-tabs'">
+        <div>
+          <router-view v-slot="{ Component, route }">
+            <MainTransition>
+              <keep-alive :include="cacheRoutes">
+                <component :is="Component" :key="route.name" v-if="refreshPage" />
+              </keep-alive>
+            </MainTransition>
+          </router-view>
+        </div>
+      </a-scrollbar>
     </a-layout-content>
   </a-watermark>
 </template>
@@ -40,7 +44,20 @@ watch(watermarkConfig, newv => {
 <style lang="scss" scoped>
 .layout-main-content {
   height: 100%;
-  display: flex;
-  flex-direction: column;
+}
+
+.scrollbar {
+  height: calc(100% - 40px); // 去掉tabs的高度
+  background: $color-fill-1; // 背景颜色
+}
+.scrollbar-no-tabs {
+  height: 100%;
+  background: $color-fill-1; // 背景颜色
+}
+
+// 修改左侧滚动条宽度
+:deep(.arco-scrollbar-thumb-direction-vertical .arco-scrollbar-thumb-bar) {
+  width: 4px;
+  margin-left: 8px;
 }
 </style>

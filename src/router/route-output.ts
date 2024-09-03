@@ -99,13 +99,12 @@ export const treeSort = (tree: Menu.MenuOptions[]) => {
   });
 
   // 深层递归
-  let sortAfter = tree.map((item: any) => {
+  return tree.map((item: any) => {
     if (item?.children?.length > 0) {
       item.children = treeSort(item.children);
     }
     return item;
   });
-  return sortAfter;
 };
 
 /**
