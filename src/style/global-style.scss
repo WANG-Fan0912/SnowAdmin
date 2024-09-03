@@ -2,13 +2,11 @@
 
 // 有背景色的页面
 .snow-page {
-  // margin 和 padding 边距一致，是为了保持视觉上的内外统一
-  // margin: $padding;
-  box-sizing: border-box;
   flex: 1;
   padding: $padding;
+  box-sizing: border-box;
   overflow-y: auto;
-  background: $color-bg-1;
+  background: $color-fill-1;
 }
 
 // 没有背景色的页面

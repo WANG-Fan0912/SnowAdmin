@@ -8,21 +8,21 @@
 ::-webkit-scrollbar-thumb {
   width: 6px;
   border-radius: 6px;
-  background-color: $color-border-2;
+  background-color: $color-border-3;
 }
 // 设置滚动条hover样式，宽、圆角、背景颜色
 ::-webkit-scrollbar-thumb:hover {
   width: 6px;
-  background-color: $color-border-3;
+  background-color: $color-border-4;
 }
 
 // 设置IE/Edge浏览器滚动条的样式，与webkit内核浏览器样式相同
 ::-ms-scrollbar-thumb {
   width: 6px;
   border-radius: 6px;
-  background-color: $color-border-2;
+  background-color: $color-border-3;
 }
 ::-ms-scrollbar-thumb:hover {
   width: 6px;
-  background-color: $color-border-3;
+  background-color: $color-border-4;
 }

@@ -1,13 +1,15 @@
 <template>
   <div class="snow-page">
-    <!-- 常用功能 -->
-    <Shortcut />
-    <!-- 第三板指标 -->
-    <TargetBox />
-    <!-- 财务指标 -->
-    <Finance />
-    <!-- 数据图 -->
-    <DataBox />
+    <div class="home-page">
+      <!-- 常用功能 -->
+      <Shortcut />
+      <!-- 第三板指标 -->
+      <TargetBox />
+      <!-- 财务指标 -->
+      <Finance />
+      <!-- 数据图 -->
+      <DataBox />
+    </div>
   </div>
 </template>
 
@@ -23,4 +25,9 @@ onMounted(() => {
 });
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.home-page {
+  padding: $padding;
+  background: $color-bg-1;
+}
+</style>

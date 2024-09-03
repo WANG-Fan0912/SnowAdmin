@@ -1,25 +1,23 @@
 <template>
-  <FillPage>
+  <div class="snow-page">
     <div class="container">
-      <div class="container-main">
-        <div class="left-box">
-          <div class="box-title">文件库</div>
-          <a-divider margin="0" />
-          <FileTree class="file-tree-style" @on-node="onNode" />
+      <div class="left-box">
+        <div class="box-title">文件库</div>
+        <a-divider margin="0" />
+        <FileTree class="file-tree-style" @on-node="onNode" />
+      </div>
+      <div class="right-box">
+        <div class="box-title">
+          <a-breadcrumb>
+            <a-breadcrumb-item v-for="(item, index) in breadcrumb" :key="index">{{ item.title }}</a-breadcrumb-item>
+            <a-breadcrumb-item v-if="breadcrumb.length == 0">全部</a-breadcrumb-item>
+          </a-breadcrumb>
         </div>
-        <div class="right-box">
-          <div class="box-title">
-            <a-breadcrumb>
-              <a-breadcrumb-item v-for="(item, index) in breadcrumb" :key="index">{{ item.title }}</a-breadcrumb-item>
-              <a-breadcrumb-item v-if="breadcrumb.length == 0">全部</a-breadcrumb-item>
-            </a-breadcrumb>
-          </div>
-          <a-divider margin="0" />
-          <FileTable ref="FileTableRef" class="file-table-style" />
-        </div>
+        <a-divider margin="0" />
+        <FileTable ref="FileTableRef" class="file-table-style" />
       </div>
     </div>
-  </FillPage>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -36,12 +34,6 @@ const onNode = (list: any) => {
 
 <style lang="scss" scoped>
 .container {
-  height: 100%;
-  padding: $padding;
-  box-sizing: border-box;
-  overflow: hidden;
-}
-.container-main {
   height: 100%;
   display: flex;
   overflow: hidden;
