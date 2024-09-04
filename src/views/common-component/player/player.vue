@@ -1,11 +1,13 @@
 <template>
   <div class="snow-page">
-    <a-space direction="vertical">
-      <div class="player-box">
-        <div id="mse"></div>
-      </div>
-      <div>采用开源视频播放器：<a-link href="https://h5player.bytedance.com/" target="_blank">西瓜播放器</a-link></div>
-    </a-space>
+    <div class="snow-inner-page">
+      <a-space direction="vertical">
+        <div class="player-box">
+          <div id="mse"></div>
+        </div>
+        <div>采用开源视频播放器：<a-link href="https://h5player.bytedance.com/" target="_blank">西瓜播放器</a-link></div>
+      </a-space>
+    </div>
   </div>
 </template>
 

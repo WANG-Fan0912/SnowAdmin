@@ -1,19 +1,23 @@
 <template>
   <div class="snow-page">
-    <a-space direction="vertical" :size="10">
-      <a-typography-text id="newbie-title-1"> SnowAdmin </a-typography-text>
-      <a-typography-text id="newbie-title-2"> 清晰的项目架构：结构清晰，优雅易懂。 </a-typography-text>
-      <a-typography-text id="newbie-title-3"> 严格的代码规范：严格遵循开发设计规范，保证代码的规范性。 </a-typography-text>
-      <a-typography-text id="newbie-title-4"> 内置国际化方案：轻松实现多语言支持。</a-typography-text>
-      <a-typography-text id="newbie-title-5"> 清新丰富的主题配置：内置多样的主题配置。</a-typography-text>
-    </a-space>
-    <div class="margin-top">
-      <a-space>
-        <a-button type="primary" @click="openNewbie">打开指引</a-button>
-        <a-button type="primary" @click="openSystemNewbie">系统指引</a-button>
+    <div class="snow-inner-page">
+      <a-space direction="vertical" :size="10">
+        <a-typography-text id="newbie-title-1"> SnowAdmin </a-typography-text>
+        <a-typography-text id="newbie-title-2"> 清晰的项目架构：结构清晰，优雅易懂。 </a-typography-text>
+        <a-typography-text id="newbie-title-3"> 严格的代码规范：严格遵循开发设计规范，保证代码的规范性。 </a-typography-text>
+        <a-typography-text id="newbie-title-4"> 内置国际化方案：轻松实现多语言支持。</a-typography-text>
+        <a-typography-text id="newbie-title-5"> 清新丰富的主题配置：内置多样的主题配置。</a-typography-text>
       </a-space>
+      <div class="margin-top">
+        <a-space>
+          <a-button type="primary" @click="openNewbie">打开指引</a-button>
+          <a-button type="primary" @click="openSystemNewbie">系统指引</a-button>
+        </a-space>
+      </div>
+      <div class="margin-top">
+        新手指引，基于<a-link href="https://driver.employleague.cn/" target="_blank">driver.js</a-link>
+      </div>
     </div>
-    <div class="margin-top">新手指引，基于<a-link href="https://driver.employleague.cn/" target="_blank">driver.js</a-link></div>
   </div>
 </template>
 

@@ -1,34 +1,36 @@
 <template>
   <div class="snow-page">
-    <a-space direction="vertical">
-      <div class="draggable-container">
-        <div class="title">Favorites</div>
-        <draggable
-          :list="list"
-          class="draggable-box"
-          chosen-class="chosenClass"
-          animation="300"
-          item-key="value"
-          @start="onStart"
-          @end="onEnd"
-        >
-          <template #item="{ element }">
-            <div class="draggable-list" :class="!animated && 'animated-fade-up-' + element.value">
-              <div class="draggable-inner">
-                <SvgIcon :name="element.svg" :size="30" class="svg-box" />
-                <div>{{ element.label }}</div>
+    <div class="snow-inner-page draggable-page">
+      <a-space direction="vertical">
+        <div class="draggable-container">
+          <div class="title">Favorites</div>
+          <draggable
+            :list="list"
+            class="draggable-box"
+            chosen-class="chosenClass"
+            animation="300"
+            item-key="value"
+            @start="onStart"
+            @end="onEnd"
+          >
+            <template #item="{ element }">
+              <div class="draggable-list" :class="!animated && 'animated-fade-up-' + element.value">
+                <div class="draggable-inner">
+                  <SvgIcon :name="element.svg" :size="30" class="svg-box" />
+                  <div>{{ element.label }}</div>
+                </div>
               </div>
-            </div>
-          </template>
-        </draggable>
-      </div>
-      <div>
-        采用开源拖拽库：<a-link href="https://github.com/SortableJS/vue.draggable.next" target="_blank">vue.draggable</a-link>
-      </div>
-    </a-space>
-    <a-scrollbar style="height: 396px; overflow: auto" outer-class="scrollbar">
-      <CodeView :code-json="codeJson" style="width: 500px" />
-    </a-scrollbar>
+            </template>
+          </draggable>
+        </div>
+        <div>
+          采用开源拖拽库：<a-link href="https://github.com/SortableJS/vue.draggable.next" target="_blank">vue.draggable</a-link>
+        </div>
+      </a-space>
+      <a-scrollbar style="height: 396px; overflow: auto" outer-class="scrollbar">
+        <CodeView :code-json="codeJson" style="width: 500px" />
+      </a-scrollbar>
+    </div>
   </div>
 </template>
 
@@ -64,7 +66,7 @@ const onEnd = () => {
 </script>
 
 <style lang="scss" scoped>
-.snow-page {
+.draggable-page {
   display: flex;
   column-gap: $padding;
 }

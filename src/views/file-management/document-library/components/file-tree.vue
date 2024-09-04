@@ -6,6 +6,7 @@
       </template>
     </a-input>
     <div class="tree-box">
+      <!-- TODO: 滚动条边距和宽度需要调整 -->
       <a-scrollbar style="height: 100%; overflow: auto" outer-class="scrollbar">
         <a-tree :data="treeData" :show-line="true" @select="onNode">
           <template #title="node">

@@ -1,5 +1,5 @@
 <template>
-  <div class="snow-page-clear">
+  <div class="snow-page">
     <a-card title="简介">
       <div>
         <p>SnowAdmin 一款基于 Vue、TypeScript、Vite5、Pinia、arco-design开源的后台管理框架，使用目前最新技术栈开发。</p>
@@ -9,11 +9,11 @@
     </a-card>
     <a-card class="margin-top" title="项目信息">
       <a-descriptions :column="2" bordered>
-      <a-descriptions-item v-for="item of projectInfo" :key="item.label" :label="item.label">
-        <a-link :href="item.value" v-if="item.link">{{ item.label }}</a-link>
-        <span v-else>{{ item.value }}</span>
-      </a-descriptions-item>
-    </a-descriptions>
+        <a-descriptions-item v-for="item of projectInfo" :key="item.label" :label="item.label">
+          <a-link :href="item.value" v-if="item.link">{{ item.label }}</a-link>
+          <span v-else>{{ item.value }}</span>
+        </a-descriptions-item>
+      </a-descriptions>
     </a-card>
     <a-card class="margin-top" title="生产环境依赖">
       <a-descriptions :data="dependencies" bordered :column="2" />

@@ -1,22 +1,24 @@
 <template>
   <div class="snow-page">
-    <a-space direction="vertical">
-      <div>
-        <div style="border: 1px solid #ccc">
-          <Toolbar style="border-bottom: 1px solid #ccc" :editor="editorRef" :default-config="toolbarConfig" :mode="mode" />
-          <Editor
-            style="height: 500px; overflow-y: hidden"
-            v-model="valueHtml"
-            :default-config="editorConfig"
-            :mode="mode"
-            @on-created="handleCreated"
-          />
+    <div class="snow-inner-page">
+      <a-space direction="vertical">
+        <div>
+          <div style="border: 1px solid #ccc">
+            <Toolbar style="border-bottom: 1px solid #ccc" :editor="editorRef" :default-config="toolbarConfig" :mode="mode" />
+            <Editor
+              style="height: 500px; overflow-y: hidden"
+              v-model="valueHtml"
+              :default-config="editorConfig"
+              :mode="mode"
+              @on-created="handleCreated"
+            />
+          </div>
         </div>
-      </div>
-      <div>
-        采用开源富文本编辑器：<a-link href="https://github.com/wangeditor-team/wangEditor" target="_blank">wangEditor</a-link>
-      </div>
-    </a-space>
+        <div>
+          采用开源富文本编辑器：<a-link href="https://github.com/wangeditor-team/wangEditor" target="_blank">wangEditor</a-link>
+        </div>
+      </a-space>
+    </div>
   </div>
 </template>
 

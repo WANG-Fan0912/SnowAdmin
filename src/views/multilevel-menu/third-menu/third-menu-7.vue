@@ -1,6 +1,8 @@
 <template>
   <div class="snow-page">
-    <div>三级-菜单-07</div>
+    <div class="snow-inner-page">
+      <div>三级-菜单-07</div>
+    </div>
   </div>
 </template>
 

@@ -1,17 +1,19 @@
 <template>
-  <div class="snow-page" style="padding: 100px">
-    <div class="my-avatar">
-      <a-avatar :size="100">
-        <img alt="avatar" :src="myImage" />
-      </a-avatar>
-      <div class="my-name">
-        <div class="my-title">王马Verge</div>
-        <div class="my-local">素材投稿：2547096351@qq.com</div>
+  <div class="snow-page">
+    <div class="snow-inner-page" style="padding: 100px">
+      <div class="my-avatar">
+        <a-avatar :size="100">
+          <img alt="avatar" :src="myImage" />
+        </a-avatar>
+        <div class="my-name">
+          <div class="my-title">王马Verge</div>
+          <div class="my-local">素材投稿：2547096351@qq.com</div>
+        </div>
       </div>
-    </div>
-    <div class="btn-box">
-      <a-button type="outline" style="width: 100px">转发</a-button>
-      <a-button type="primary" style="width: 100px" color="#00aeec">关注</a-button>
+      <div class="btn-box">
+        <a-button type="outline" style="width: 100px">转发</a-button>
+        <a-button type="primary" style="width: 100px" color="#00aeec">关注</a-button>
+      </div>
     </div>
   </div>
 </template>

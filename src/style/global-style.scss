@@ -1,6 +1,6 @@
 /* global style scss */
 
-// 有背景色的页面
+// 整体main窗口容器
 .snow-page {
   flex: 1;
   padding: $padding;
@@ -9,7 +9,8 @@
   background: $color-fill-1;
 }
 
-// 没有背景色的页面
-.snow-page-clear {
-  margin: $padding;
+// 内部main窗口容器
+.snow-inner-page {
+  padding: $padding;
+  background: $color-bg-1;
 }
