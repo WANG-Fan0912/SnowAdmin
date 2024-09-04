@@ -1,8 +1,10 @@
 <template>
   <div class="snow-page">
-    测试指令
-    <!-- <button v-custom="{ goodsId, event: getFun }" :rowData="goodsId">文字变色</button> -->
-    <!-- <button @click="jump">文字变色</button> -->
+    <div class="snow-inner-page">
+      测试指令
+      <!-- <button v-custom="{ goodsId, event: getFun }" :rowData="goodsId">文字变色</button> -->
+      <!-- <button @click="jump">文字变色</button> -->
+    </div>
   </div>
 </template>
 

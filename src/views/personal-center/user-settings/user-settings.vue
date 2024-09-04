@@ -1,42 +1,44 @@
 <template>
-  <div class="container">
-    <a-card :bordered="false">
-      <a-row align="center">
-        <a-col :span="2">
-          <div>
-            <a-avatar :size="100" @click="toast" trigger-type="mask">
-              <img alt="avatar" :src="myImage" />
-              <template #trigger-icon>
-                <IconEdit />
-              </template>
-            </a-avatar>
-          </div>
-        </a-col>
-        <a-col :span="22">
-          <a-space direction="vertical" size="large">
-            <a-descriptions :data="data" :column="3" title="用户资料" :align="{ label: 'right' }" />
-          </a-space>
-        </a-col>
-      </a-row>
-    </a-card>
-    <a-card class="margin-top" :bordered="false">
-      <a-row align="center">
-        <a-col :span="24">
-          <a-tabs :type="type" :size="size">
-            <a-tab-pane key="1" title="基本信息">
-              <BasicInfo />
-            </a-tab-pane>
-            <a-tab-pane key="2" title="安全设置">
-              <SecuritySettings />
-            </a-tab-pane>
-            <a-tab-pane key="3" title="实名认证">
-              <Accreditation />
-            </a-tab-pane>
-          </a-tabs>
-        </a-col>
-        <a-col :span="24"> </a-col>
-      </a-row>
-    </a-card>
+  <div class="snow-page">
+    <div class="container">
+      <a-card :bordered="false">
+        <a-row align="center">
+          <a-col :span="2">
+            <div>
+              <a-avatar :size="100" @click="toast" trigger-type="mask">
+                <img alt="avatar" :src="myImage" />
+                <template #trigger-icon>
+                  <IconEdit />
+                </template>
+              </a-avatar>
+            </div>
+          </a-col>
+          <a-col :span="22">
+            <a-space direction="vertical" size="large">
+              <a-descriptions :data="data" :column="3" title="用户资料" :align="{ label: 'right' }" />
+            </a-space>
+          </a-col>
+        </a-row>
+      </a-card>
+      <a-card class="margin-top" :bordered="false">
+        <a-row align="center">
+          <a-col :span="24">
+            <a-tabs :type="type" :size="size">
+              <a-tab-pane key="1" title="基本信息">
+                <BasicInfo />
+              </a-tab-pane>
+              <a-tab-pane key="2" title="安全设置">
+                <SecuritySettings />
+              </a-tab-pane>
+              <a-tab-pane key="3" title="实名认证">
+                <Accreditation />
+              </a-tab-pane>
+            </a-tabs>
+          </a-col>
+          <a-col :span="24"> </a-col>
+        </a-row>
+      </a-card>
+    </div>
   </div>
 </template>
 
@@ -96,9 +98,6 @@ const toast = () => {
 </script>
 
 <style lang="scss" scoped>
-.container {
-  padding: $padding;
-}
 .margin-top {
   margin-top: $padding;
 }

@@ -1,10 +1,12 @@
 <template>
-  <FillPage>
-    <div v-if="!isLoading" class="loading-page">
-      <div class="dc-loader"></div>
+  <div class="snow-page-pure">
+    <div class="link-page-box">
+      <div v-if="!isLoading" class="loading-page">
+        <div class="dc-loader"></div>
+      </div>
+      <iframe v-show="isLoading" :src="link" class="iframe-size" id="internalLinkPage"> </iframe>
     </div>
-    <iframe v-show="isLoading" :src="link" class="iframe-size" id="internalLinkPage"> </iframe>
-  </FillPage>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -27,11 +29,13 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-.iframe-size {
+.link-page-box {
   width: 100%;
   height: 100%;
-  border: 0;
-  box-sizing: border-box;
-  position: absolute; // 设置绝对定位，解决边框滚动条显示问题
+  display: flex;
+  .iframe-size {
+    flex: 1;
+    border: 0;
+  }
 }
 </style>

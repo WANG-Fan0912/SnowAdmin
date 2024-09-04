@@ -1,5 +1,5 @@
 <template>
-  <FillPage>
+  <div class="snow-page">
     <div class="external-link-page">
       <div class="external-link-inner-page">
         <div>
@@ -9,7 +9,7 @@
         </div>
       </div>
     </div>
-  </FillPage>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -24,7 +24,6 @@ const openPage = () => {
 .external-link-page {
   height: 100%;
   box-sizing: border-box;
-  padding: $padding;
 
   .external-link-inner-page {
     height: 100%;

@@ -14,3 +14,11 @@
   padding: $padding;
   background: $color-bg-1;
 }
+
+// 没有边距的main窗口容器
+.snow-page-pure {
+  flex: 1;
+  box-sizing: border-box;
+  overflow-y: auto;
+  background: $color-fill-1;
+}

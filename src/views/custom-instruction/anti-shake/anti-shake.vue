@@ -1,7 +1,9 @@
 <template>
   <div class="snow-page">
-    <div class="title">自定义防抖指令，连续点击按钮，0.5s后执行一次</div>
-    <div class="button-box"><a-button type="primary" style="width: 100px" v-antiShake="onClick">防抖</a-button></div>
+    <div class="snow-inner-page">
+      <div class="title">自定义防抖指令，连续点击按钮，0.5s后执行一次</div>
+      <div class="button-box"><a-button type="primary" style="width: 100px" v-antiShake="onClick">防抖</a-button></div>
+    </div>
   </div>
 </template>
 
