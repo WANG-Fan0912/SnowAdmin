@@ -90,8 +90,4 @@ const sourceTree = ref(fileTreeData.tree);
     }
   }
 }
-
-:deep(.arco-scrollbar-thumb-bar) {
-  width: 4px;
-}
 </style>
