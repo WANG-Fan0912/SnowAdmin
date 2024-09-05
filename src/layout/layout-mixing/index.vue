@@ -49,7 +49,6 @@ import Footer from "@/layout/components/Footer/index.vue";
 import Menu from "@/layout/components/Menu/index.vue";
 import HeaderRight from "@/layout/components/Header/components/header-right/index.vue";
 import MenuItemIcon from "@/layout/components/Menu/menu-item-icon.vue";
-import { useRouter } from "vue-router";
 import { useRoutesListStore } from "@/store/modules/route-list";
 import { useRoutingMethod } from "@/hooks/useRoutingMethod";
 import { storeToRefs } from "pinia";

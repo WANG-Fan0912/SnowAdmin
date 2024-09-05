@@ -18,11 +18,6 @@ import Shortcut from "@/views/home/components/shortcut.vue";
 import TargetBox from "@/views/home/components/target-box.vue";
 import Finance from "@/views/home/components/finance.vue";
 import DataBox from "@/views/home/components/data-box.vue";
-
-const route = useRoute();
-onMounted(() => {
-  console.log("初始化", route);
-});
 </script>
 
 <style lang="scss" scoped>
