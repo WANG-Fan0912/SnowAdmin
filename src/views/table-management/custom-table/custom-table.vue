@@ -89,7 +89,7 @@
               下载
             </a-button>
             <a-tooltip content="刷新">
-              <div class="action-icon"><icon-refresh size="18" /></div>
+              <div class="action-icon" @click="onRefresh"><icon-refresh size="18" /></div>
             </a-tooltip>
             <a-dropdown @select="onDensity">
               <a-tooltip content="密度">
@@ -127,6 +127,7 @@
       <a-table
         row-key="key"
         column-resizable
+        :loading="loading"
         :size="density"
         :bordered="{
           cell: true
@@ -368,6 +369,16 @@ const densityType = ref([
     label: "偏大"
   }
 ]);
+
+// 刷新
+const loading = ref<boolean>(false);
+const onRefresh = () => {
+  loading.value = true;
+  setTimeout(() => {
+    loading.value = false;
+  }, 500);
+};
+
 // 密度
 const density = ref("small");
 const onDensity = (e: string) => {
