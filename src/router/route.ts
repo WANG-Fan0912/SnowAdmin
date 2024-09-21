@@ -389,12 +389,12 @@ export const dynamicRoutes: RouteRecordRaw[] = [
             }
           },
           {
-            path: "/common-component/usre-center",
-            name: "usre-center",
-            component: () => import("@/views/common-component/usre-center/usre-center.vue"),
+            path: "/common-component/user-center",
+            name: "user-center",
+            component: () => import("@/views/common-component/user-center/user-center.vue"),
             meta: {
-              title: "usre-center",
-              hide: false,
+              title: "user-center",
+              hide: true,
               disable: false,
               keepAlive: true,
               affix: false,

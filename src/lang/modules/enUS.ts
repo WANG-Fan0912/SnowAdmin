@@ -28,7 +28,7 @@ export default {
     ["draggable"]: "draggable",
     ["editor"]: "editor",
     ["newbie"]: "newbie",
-    ["usre-center"]: "usre center",
+    ["user-center"]: "user center",
     ["markdown"]: "Markdown",
     ["custom-instruction"]: "custom instruction",
     ["anti-shake"]: "anti shake",

@@ -83,7 +83,7 @@
           <!-- 项目地址 -->
           <a-doption @click="onProject">
             <template #default>
-              <SvgIcon :name="'github'" :size="18" />
+              <SvgIcon :name="'gitee'" :size="18" />
               <span class="margin-left-text">{{ $t(`language.project-address`) }}</span>
             </template>
           </a-doption>
@@ -178,7 +178,7 @@ const onUpdate = () => {
 
 // 项目地址
 const onProject = () => {
-  window.open("https://github.com/WANG-Fan0912/SnowAdmin", "_blank");
+  window.open("https://gitee.com/wang_fan_w/SnowAdmin", "_blank");
 };
 
 // 退出登录

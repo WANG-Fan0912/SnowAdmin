@@ -28,7 +28,7 @@ export default {
     ["draggable"]: "拖拽",
     ["editor"]: "富文本",
     ["newbie"]: "新手指引",
-    ["usre-center"]: "用户中心",
+    ["user-center"]: "用户中心",
     ["markdown"]: "Markdown",
     ["custom-instruction"]: "自定义指令",
     ["anti-shake"]: "防抖",
