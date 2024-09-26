@@ -53,7 +53,7 @@ import { useRoutesListStore } from "@/store/modules/route-list";
 import { useRoutingMethod } from "@/hooks/useRoutingMethod";
 import { storeToRefs } from "pinia";
 import { useThemeConfig } from "@/store/modules/theme-config";
-import { useMneuMethod } from "@/hooks/useMneuMethod";
+import { useMenuMethod } from "@/hooks/useMenuMethod";
 defineOptions({ name: "LayoutMixing" });
 const route = useRoute();
 const router = useRouter();
@@ -61,7 +61,7 @@ const routerStore = useRoutesListStore();
 const themeStore = useThemeConfig();
 const { isFooter, collapsed, asideDark, language } = storeToRefs(themeStore);
 const { routeTree } = storeToRefs(routerStore);
-const { aMenuShow } = useMneuMethod();
+const { aMenuShow } = useMenuMethod();
 
 const drawing = ref<boolean>(true);
 watch(language, () => {
