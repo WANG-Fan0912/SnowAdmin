@@ -41,6 +41,7 @@
 import { Message } from "@arco-design/web-vue";
 import { useRouter } from "vue-router";
 import { useUserInfoStore } from "@/store/modules/user-info";
+
 const router = useRouter();
 const form = ref({
   username: "admin",
@@ -102,16 +103,19 @@ const verify = ref({
 });
 const verifyCodeChange = (code: string) => (verify.value.verifyCode = code);
 
-const onSubmit = ({ errors }: any) => {
+const onSubmit = async ({ errors }: any) => {
   if (errors) return;
-  // 存储用户信息
+  // 你的登录请求
+  // ......
+
+  // 登录成功-存储用户信息
   let stores = useUserInfoStore();
   let account = {
-    username: form.value.username,
-    roles: ["admin"]
+    username: form.value.username, // 用户名
+    roles: ["admin"] // 角色权限
   };
-  stores.setAccount(account);
-  stores.setToken("DC-Admin");
+  stores.setAccount(account); // 存储用户信息
+  stores.setToken("Your-Token");
   Message.success("登录成功");
   router.replace("/home");
 };
