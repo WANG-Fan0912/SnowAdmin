@@ -19,7 +19,7 @@
 <script setup lang="ts">
 import MenuItem from "@/layout/components/Menu/menu-item.vue";
 import MenuItemIcon from "@/layout/components/Menu/menu-item-icon.vue";
-import { useMneuMethod } from "@/hooks/useMneuMethod";
+import { useMenuMethod } from "@/hooks/useMenuMethod";
 defineOptions({ name: "MenuItem", inheritAttrs: false });
 
 interface Props {
@@ -31,7 +31,7 @@ const props = withDefaults(defineProps<Props>(), {
   routeTree: () => []
 });
 
-const { menuShow, aMenuShow } = useMneuMethod();
+const { menuShow, aMenuShow } = useMenuMethod();
 </script>
 
 <style lang="scss" scoped></style>

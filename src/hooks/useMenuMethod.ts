@@ -2,7 +2,7 @@
  * 菜单处理hooks，内置多种菜单处理场景
  * @returns 菜单处理方法
  */
-export const useMneuMethod = () => {
+export const useMenuMethod = () => {
   /**
    * 多级菜单的显示隐藏
    * @param {Menu.MenuOptions} item 菜单的item
