@@ -28,6 +28,7 @@ export default {
     ["draggable"]: "拖拽",
     ["editor"]: "富文本",
     ["newbie"]: "新手指引",
+    ["icon-component"]: "icon组件",
     ["user-center"]: "用户中心",
     ["markdown"]: "Markdown",
     ["custom-instruction"]: "自定义指令",

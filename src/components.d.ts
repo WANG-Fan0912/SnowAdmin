@@ -15,6 +15,8 @@ declare module 'vue' {
     MainTransition: typeof import('./components/main-transition/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SelectIcon: typeof import('./components/select-icon/index.vue')['default']
+    SvgAndIcon: typeof import('./components/svg-and-icon/index.vue')['default']
     SvgIcon: typeof import('./components/svg-icon/index.vue')['default']
     VerifyCode: typeof import('./components/verify-code/index.vue')['default']
   }

@@ -389,6 +389,23 @@ export const dynamicRoutes: RouteRecordRaw[] = [
             }
           },
           {
+            path: "/common-component/icon-component",
+            name: "icon-component",
+            component: () => import("@/views/common-component/icon-component/icon-component.vue"),
+            meta: {
+              title: "icon-component",
+              hide: false,
+              disable: false,
+              keepAlive: true,
+              affix: false,
+              link: "",
+              iframe: false,
+              roles: ["admin"],
+              icon: "icon-menu",
+              sort: 6
+            }
+          },
+          {
             path: "/common-component/user-center",
             name: "user-center",
             component: () => import("@/views/common-component/user-center/user-center.vue"),
@@ -402,7 +419,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
               iframe: false,
               roles: ["admin"],
               icon: "icon-menu",
-              sort: 6
+              sort: 7
             }
           }
         ]
