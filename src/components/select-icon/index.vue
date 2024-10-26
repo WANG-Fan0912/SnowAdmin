@@ -42,23 +42,22 @@ const iconList = computed(() => {
   if (!ArcoIcons) return [];
   let icons: string[] = [];
   for (let key in ArcoIcons) {
-    if (key != "default") {
-      icons.push(key);
-    }
+    if (key != "default") icons.push(key);
   }
+  // 若按照关键字搜索，则返回搜索结果
   if (searchName.value) {
     return icons.filter(item => item.toLowerCase().includes(searchName.value.toLowerCase()));
   }
+  // 若关键字为空则返回全部列表
   return icons;
 });
 
-const onIcon = (item: string) => {
+const onIcon = (iconName: string) => {
   visible.value = false;
-  emit("select", item);
+  emit("select", iconName);
 };
 
 const visible = ref(false);
-
 const open = () => {
   searchName.value = "";
   visible.value = true;

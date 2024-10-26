@@ -30,7 +30,6 @@ const onFocus = () => {
   SelectIconRef.value.open();
 };
 const onClear = () => {
-  console.log("请？");
   iconName.value = "";
 };
 
