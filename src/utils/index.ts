@@ -103,3 +103,61 @@ export function webDefaultLanguage() {
     return "enUS";
   }
 }
+
+/**
+ * 时间戳转 年月日时分秒
+ * 若timestamp不传则取当前时间
+ * 若type不传则取 年月日时分秒
+ * @param { number } timestamp 时间戳
+ * @return 返回年月日时分秒字符串
+ */
+export const getTimestamp = (timestamp: string | number | null, type: string) => {
+  let date = null;
+  if (timestamp) {
+    date = new Date(timestamp);
+  } else {
+    date = new Date();
+  }
+  let Year = String(date.getFullYear());
+  let Moth = String(date.getMonth() + 1).padStart(2, "0");
+  let Day = String(date.getDate()).padStart(2, "0");
+  let Hour = String(date.getHours()).padStart(2, "0");
+  let Minute = String(date.getMinutes()).padStart(2, "0");
+  let Seconds = String(date.getSeconds()).padStart(2, "0");
+  if (type === "yyyy") {
+    return `${Year}`;
+  }
+  if (type === "yyyy-MM") {
+    return `${Year}-${Moth}`;
+  }
+  if (type === "yyyy-MM-dd") {
+    return `${Year}-${Moth}-${Day}`;
+  }
+  return `${Year}-${Moth}-${Day} ${Hour}:${Minute}:${Seconds}`;
+};
+
+/**
+ * 给formData循环添加参数，过滤null、undefined、空字符串、NaN
+ * 示例：let data = appendFormData(your-object);
+ * @param { object } obj 参数对象
+ * @return 返回formData对象
+ */
+export const appendFormData = (obj: any) => {
+  let formData = new FormData();
+  function deepAppendFormData(formData: any, data: any, parentKey = "") {
+    if (Array.isArray(data) || (typeof data === "object" && data !== null)) {
+      // 如果数据是数组或对象，序列化为 JSON 字符串
+      formData.append(parentKey, JSON.stringify(data));
+    } else if (data !== null && data !== undefined && !Number.isNaN(data) && data !== "") {
+      // 如果数据是基本类型，直接添加
+      formData.append(parentKey, data);
+    }
+  }
+  for (let key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      deepAppendFormData(formData, obj[key], key);
+    }
+  }
+  deepAppendFormData(formData, obj);
+  return formData;
+};

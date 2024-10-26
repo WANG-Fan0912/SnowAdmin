@@ -50,7 +50,7 @@ import { storeToRefs } from "pinia";
 import { useRoutesListStore } from "@/store/modules/route-list";
 import { useRoutingMethod } from "@/hooks/useRoutingMethod";
 import { useThemeConfig } from "@/store/modules/theme-config";
-import { useMneuMethod } from "@/hooks/useMneuMethod";
+import { useMenuMethod } from "@/hooks/useMenuMethod";
 defineOptions({ name: "LayoutHead" });
 const router = useRouter();
 const routerStore = useRoutesListStore();
@@ -58,7 +58,7 @@ const themeStore = useThemeConfig();
 const { routeTree, currentRoute } = storeToRefs(routerStore);
 const { isFooter, language } = storeToRefs(themeStore);
 
-const { menuShow, aMenuShow } = useMneuMethod();
+const { menuShow, aMenuShow } = useMenuMethod();
 
 const drawing = ref<boolean>(true);
 watch(language, () => {
