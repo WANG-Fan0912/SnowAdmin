@@ -1,7 +1,7 @@
 # SnowAdmin
 
-<div align="center">
-	<p align="center">
+<div>
+	<p>
     <a href="https://gitee.com/wang_fan_w/SnowAdmin" target="_blank">
 		  <img src="https://img.shields.io/badge/License-MIT-%2343aefc" alt="License">
 		</a>
