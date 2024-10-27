@@ -28,7 +28,7 @@ export default {
     ["draggable"]: "draggable",
     ["editor"]: "editor",
     ["newbie"]: "newbie",
-    ["icon-component"]: "icon component",
+    ["icon-selector"]: "icon selector",
     ["user-center"]: "user center",
     ["markdown"]: "Markdown",
     ["custom-instruction"]: "custom instruction",

@@ -389,11 +389,11 @@ export const dynamicRoutes: RouteRecordRaw[] = [
             }
           },
           {
-            path: "/common-component/icon-component",
-            name: "icon-component",
-            component: () => import("@/views/common-component/icon-component/icon-component.vue"),
+            path: "/common-component/icon-selector",
+            name: "icon-selector",
+            component: () => import("@/views/common-component/icon-selector/icon-selector.vue"),
             meta: {
-              title: "icon-component",
+              title: "icon-selector",
               hide: false,
               disable: false,
               keepAlive: true,

@@ -57,7 +57,7 @@ const onIcon = (iconName: string) => {
   emit("select", iconName);
 };
 
-const visible = ref(false);
+const visible = ref<boolean>(false);
 const open = () => {
   searchName.value = "";
   visible.value = true;

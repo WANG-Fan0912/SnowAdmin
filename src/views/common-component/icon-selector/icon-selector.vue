@@ -2,16 +2,12 @@
   <div class="snow-page">
     <div class="snow-inner-page">
       <div class="title">图标选择器</div>
-      <a-input
-        :style="{ width: '400px' }"
-        placeholder="请选择图标"
-        allow-clear
-        v-model="iconName"
-        @focus="onFocus"
-        @clear="onClear"
-      >
+      <a-input ref="inputRef" :style="{ width: '400px' }" placeholder="请选择图标" v-model="iconName" @focus="onFocus">
         <template #suffix v-if="iconName">
           <component :is="iconName"></component>
+        </template>
+        <template #append>
+          <span class="icon-reset" @click="reset">重置</span>
         </template>
       </a-input>
       <a-divider />
@@ -26,10 +22,12 @@
 <script setup lang="ts">
 const iconName = ref<string>("");
 const SelectIconRef = ref();
+
 const onFocus = () => {
   SelectIconRef.value.open();
 };
-const onClear = () => {
+
+const reset = () => {
   iconName.value = "";
 };
 
@@ -46,5 +44,8 @@ const select = (icon: string) => {
 }
 .target-title {
   margin-bottom: $margin;
+}
+.icon-reset {
+  cursor: pointer;
 }
 </style>
