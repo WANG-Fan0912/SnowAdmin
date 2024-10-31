@@ -41,6 +41,7 @@
 import { Message } from "@arco-design/web-vue";
 import { useRouter } from "vue-router";
 import { useUserInfoStore } from "@/store/modules/user-info";
+import { loginAPI, getUserInfoAPI } from "@/api/modules/user/index";
 
 const router = useRouter();
 const form = ref({
@@ -54,30 +55,12 @@ const rules = ref({
     {
       required: true,
       message: "请输入账号"
-    },
-    {
-      validator: (value: string, cb: any) => {
-        if (value !== verify.value.username) {
-          cb("请输入正确的账号");
-        } else {
-          cb();
-        }
-      }
     }
   ],
   password: [
     {
       required: true,
       message: "请输入密码"
-    },
-    {
-      validator: (value: string, cb: any) => {
-        if (value !== verify.value.password) {
-          cb("请输入正确的密码");
-        } else {
-          cb();
-        }
-      }
     }
   ],
   verifyCode: [
@@ -87,7 +70,7 @@ const rules = ref({
     },
     {
       validator: (value: string, cb: any) => {
-        if (value !== verify.value.verifyCode) {
+        if (value !== verifyCode.value) {
           cb("请输入正确的验证码");
         } else {
           cb();
@@ -96,26 +79,16 @@ const rules = ref({
     }
   ]
 });
-const verify = ref({
-  username: "admin",
-  password: "123456",
-  verifyCode: ""
-});
-const verifyCodeChange = (code: string) => (verify.value.verifyCode = code);
+const verifyCode = ref("");
+const verifyCodeChange = (code: string) => (verifyCode.value = code);
 
 const onSubmit = async ({ errors }: any) => {
   if (errors) return;
-  // 你的登录请求
-  // ......
-
-  // 登录成功-存储用户信息
+  let res = await loginAPI(form.value);
   let stores = useUserInfoStore();
-  let account = {
-    username: form.value.username, // 用户名
-    roles: ["admin"] // 角色权限
-  };
-  stores.setAccount(account); // 存储用户信息
-  stores.setToken("Your-Token");
+  stores.setToken(res.data.token);
+  let account = await getUserInfoAPI();
+  stores.setAccount(account.data); // 存储用户信息
   Message.success("登录成功");
   router.replace("/home");
 };

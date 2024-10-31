@@ -2,26 +2,22 @@ import axios from "axios";
 import router from "@/router";
 import { Message } from "@arco-design/web-vue";
 
-const MockFlag = import.meta.env.VITE_APP_OPEN_MOCK === "true";
-console.log("在这里axios", import.meta.env.VITE_APP_OPEN_MOCK, MockFlag);
+// 是否开启本地mock
+const MOCK_FLAG = import.meta.env.VITE_APP_OPEN_MOCK === "true";
+
 // 创建axios实例
 const service = axios.create({
-  baseURL: MockFlag ? "" : "/api"
+  baseURL: MOCK_FLAG ? "" : "/api"
 });
 // 请求拦截器
 service.interceptors.request.use(
   function (config: any) {
     // 发送请求之前做什么
     // 获取token鉴权
-    let userInfo: any = {};
-    if (localStorage.getItem("user-info")) {
-      userInfo = JSON.parse(localStorage.getItem("user-info") as string);
-    }
-    if (userInfo.token) {
+    if (localStorage.getItem("AdminToken")) {
       // 有token，在请求头中携带token
-      config.headers.Authorization = userInfo.token;
+      config.headers.Authorization = localStorage.getItem("AdminToken");
     }
-    console.log("请求拦截", config);
     return config;
   },
   function (error: any) {
@@ -33,7 +29,6 @@ service.interceptors.request.use(
 // 响应拦截器
 service.interceptors.response.use(
   function (response: any) {
-    console.log("响应了", response);
     if (response.status != 200) {
       Message.error("服务器异常，请联系管理员");
       return Promise.reject(response.data);
@@ -47,7 +42,7 @@ service.interceptors.response.use(
       Message.error("请求连接超时");
       return Promise.reject(res);
     } else if (res.code != 200) {
-      Message.error(res.msg);
+      Message.error(res.message);
       return Promise.reject(res);
     } else {
       // 返回数据
@@ -55,7 +50,7 @@ service.interceptors.response.use(
     }
   },
   function (error: any) {
-    localStorage.removeItem("user-info");
+    localStorage.removeItem("AdminToken");
     router.push("/login");
     return Promise.reject(error);
   }

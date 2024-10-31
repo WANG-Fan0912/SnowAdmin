@@ -1,7 +1,7 @@
 <template>
   <div class="banner_box">
     <div class="banner_title">
-      <SvgIcon name="snow" size="25" @click="onMock" />
+      <SvgIcon name="snow" size="25" />
       {{ title }}
     </div>
     <div class="banner_img">
@@ -10,15 +10,8 @@
   </div>
 </template>
 <script setup lang="ts">
-import { mockTestAPI } from "@/api/modules/test/index";
 // 全局title
 const title = import.meta.env.VITE_GLOB_APP_TITLE;
-
-const onMock = async () => {
-  console.log("模拟数据");
-  let res = await mockTestAPI();
-  console.log("数据在这", res);
-};
 </script>
 
 <style lang="scss" scoped>

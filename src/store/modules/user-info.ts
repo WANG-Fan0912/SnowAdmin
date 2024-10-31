@@ -12,18 +12,18 @@ export const useUserInfoStore = defineStore("user-info", {
       username: "",
       roles: []
     }, // 账号信息
-    token: "" // token
+    AdminToken: "" // token
   }),
   actions: {
     async setAccount(data: Array<string>) {
       this.account = data;
     },
     async setToken(data: string) {
-      this.token = data;
+      this.AdminToken = data;
     },
     async logOut() {
       this.account = {};
-      this.token = "";
+      this.AdminToken = "";
     }
   },
   persist: persistedstateConfig("user-info")

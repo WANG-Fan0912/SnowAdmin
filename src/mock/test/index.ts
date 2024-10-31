@@ -5,7 +5,7 @@ export default [
   {
     url: "/mock/test/success",
     method: "get",
-    timeout: 500,
+    timeout: 300,
     response: () => {
       return resultSuccess("mock数据成功了");
     }
@@ -13,7 +13,7 @@ export default [
   {
     url: "/mock/test/fail",
     method: "get",
-    timeout: 500,
+    timeout: 300,
     response: () => {
       return resultError(null, "请求数据出错了", 500);
     }
