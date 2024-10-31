@@ -1,5 +1,5 @@
 import { RouteRecordRaw } from "vue-router";
-import { testMultilevelMenu } from "@/mock/testRoute";
+import { testMultilevelMenu } from "@/utils/testRoute";
 /**
  * 路由path路径与文件夹名称相同，找文件可以浏览器地址快速查找，方便定位文件
  *

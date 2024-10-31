@@ -1,9 +1,12 @@
 import axios from "axios";
 import router from "@/router";
 import { Message } from "@arco-design/web-vue";
+
+const MockFlag = import.meta.env.VITE_APP_OPEN_MOCK === "true";
+console.log("在这里axios", import.meta.env.VITE_APP_OPEN_MOCK, MockFlag);
 // 创建axios实例
 const service = axios.create({
-  baseURL: "/api"
+  baseURL: MockFlag ? "" : "/api"
 });
 // 请求拦截器
 service.interceptors.request.use(
@@ -18,6 +21,7 @@ service.interceptors.request.use(
       // 有token，在请求头中携带token
       config.headers.Authorization = userInfo.token;
     }
+    console.log("请求拦截", config);
     return config;
   },
   function (error: any) {
@@ -29,6 +33,7 @@ service.interceptors.request.use(
 // 响应拦截器
 service.interceptors.response.use(
   function (response: any) {
+    console.log("响应了", response);
     if (response.status != 200) {
       Message.error("服务器异常，请联系管理员");
       return Promise.reject(response.data);
