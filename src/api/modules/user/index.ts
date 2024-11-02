@@ -9,12 +9,10 @@ export const loginAPI = (data: any) => {
   });
 };
 
-
 // 获取用户信息
 export const getUserInfoAPI = () => {
-    return axios({
-      url: "/mock/user/info",
-      method: "get"
-    });
-  };
-  
+  return axios({
+    url: "/mock/user/info",
+    method: "get"
+  });
+};

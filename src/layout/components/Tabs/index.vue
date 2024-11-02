@@ -56,11 +56,11 @@
 <script setup lang="ts">
 import { useRouter } from "vue-router";
 import { storeToRefs } from "pinia";
-import { useRoutesListStore } from "@/store/modules/route-list";
+import { useRoutesConfigStore } from "@/store/modules/route-config";
 import { useRoutingMethod } from "@/hooks/useRoutingMethod";
 import { useThemeConfig } from "@/store/modules/theme-config";
 const router = useRouter();
-const routerStore = useRoutesListStore();
+const routerStore = useRoutesConfigStore();
 const { tabsList, currentRoute } = storeToRefs(routerStore);
 
 // 点击标签页，如果标签页存在，则跳转

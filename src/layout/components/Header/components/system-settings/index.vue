@@ -62,11 +62,11 @@
 <script setup lang="ts">
 import PickColors from "vue-pick-colors";
 import { storeToRefs } from "pinia";
-import { useRoutesListStore } from "@/store/modules/route-list";
+import { useRoutesConfigStore } from "@/store/modules/route-config";
 import { useThemeConfig } from "@/store/modules/theme-config";
 import { currentlyRoute } from "@/router/route-output";
 const themeStore = useThemeConfig();
-const routerStore = useRoutesListStore();
+const routerStore = useRoutesConfigStore();
 const {
   collapsed,
   isAccordion,

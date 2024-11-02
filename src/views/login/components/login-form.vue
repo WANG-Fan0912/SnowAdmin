@@ -42,7 +42,6 @@ import { Message } from "@arco-design/web-vue";
 import { useRouter } from "vue-router";
 import { useUserInfoStore } from "@/store/modules/user-info";
 import { loginAPI, getUserInfoAPI } from "@/api/modules/user/index";
-
 const router = useRouter();
 const form = ref({
   username: "admin",
@@ -86,7 +85,7 @@ const onSubmit = async ({ errors }: any) => {
   if (errors) return;
   let res = await loginAPI(form.value);
   let stores = useUserInfoStore();
-  stores.setToken(res.data.token);
+  await stores.setToken(res.data.token);
   let account = await getUserInfoAPI();
   stores.setAccount(account.data); // 存储用户信息
   Message.success("登录成功");

@@ -12,10 +12,10 @@ import Logo from "@/layout/components/Logo/index.vue";
 import Menu from "@/layout/components/Menu/index.vue";
 import { storeToRefs } from "pinia";
 import { useThemeConfig } from "@/store/modules/theme-config";
-import { useRoutesListStore } from "@/store/modules/route-list";
+import { useRoutesConfigStore } from "@/store/modules/route-config";
 const themeStore = useThemeConfig();
 const { collapsed, asideDark } = storeToRefs(themeStore);
-const routerStore = useRoutesListStore();
+const routerStore = useRoutesConfigStore();
 const { routeTree } = storeToRefs(routerStore);
 </script>
 

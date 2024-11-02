@@ -10,8 +10,10 @@ export default [
     response: ({ body }) => {
       let { username, password } = body;
       if (username === "admin" && password === "123456") {
-        // 请求成功返回token
-        return resultSuccess({ token: "Your-Token" });
+        return resultSuccess({ token: "Admin-Token" });
+      }
+      if(username === "common" && password === "123456"){
+        return resultSuccess({ token: "Common-Token" });
       }
       return resultError(null, "账号或者密码错误", 500);
     }

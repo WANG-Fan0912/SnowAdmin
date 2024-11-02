@@ -4,7 +4,6 @@ import { Message } from "@arco-design/web-vue";
 
 // 是否开启本地mock
 const MOCK_FLAG = import.meta.env.VITE_APP_OPEN_MOCK === "true";
-
 // 创建axios实例
 const service = axios.create({
   baseURL: MOCK_FLAG ? "" : "/api"
@@ -14,9 +13,13 @@ service.interceptors.request.use(
   function (config: any) {
     // 发送请求之前做什么
     // 获取token鉴权
-    if (localStorage.getItem("AdminToken")) {
+    let userInfo: any = {};
+    if (localStorage.getItem("user-info")) {
+      userInfo = JSON.parse(localStorage.getItem("user-info") as string);
+    }
+    if (userInfo?.AdminToken) {
       // 有token，在请求头中携带token
-      config.headers.Authorization = localStorage.getItem("AdminToken");
+      config.headers.Authorization = userInfo.AdminToken;
     }
     return config;
   },

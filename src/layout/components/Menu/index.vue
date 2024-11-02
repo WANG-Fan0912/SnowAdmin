@@ -18,10 +18,10 @@
 import MenuItem from "@/layout/components/Menu/menu-item.vue";
 import { storeToRefs } from "pinia";
 import { useThemeConfig } from "@/store/modules/theme-config";
-import { useRoutesListStore } from "@/store/modules/route-list";
+import { useRoutesConfigStore } from "@/store/modules/route-config";
 import { useRoutingMethod } from "@/hooks/useRoutingMethod";
 const router = useRouter();
-const routerStore = useRoutesListStore();
+const routerStore = useRoutesConfigStore();
 const { currentRoute } = storeToRefs(routerStore);
 const themeStore = useThemeConfig();
 const { collapsed, isAccordion, layoutType, asideDark } = storeToRefs(themeStore);
