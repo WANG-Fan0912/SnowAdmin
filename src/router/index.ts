@@ -40,16 +40,16 @@ const router = createRouter({
 router.beforeEach(async (to, from, next) => {
   NProgress.start(); // 开启进度条
   const store = useUserInfoStore(pinia);
-  const { AdminToken } = storeToRefs(store);
+  const { token } = storeToRefs(store);
   console.log("去", to, "来自", from);
   // next()内部加了path等于跳转指定路由会再次触发router.beforeEach，内部无参数等于放行，不会触发router.beforeEach
-  if (to.path === "/login" && !AdminToken.value) {
+  if (to.path === "/login" && !token.value) {
     // 1、去登录页，无token，放行
     next();
-  } else if (!AdminToken.value) {
+  } else if (!token.value) {
     // 2、没有token，直接重定向到登录页
     next("/login");
-  } else if (to.path === "/login" && AdminToken.value) {
+  } else if (to.path === "/login" && token.value) {
     // 3、去登录页，有token，直接重定向到home页
     next("/home");
     // 项目内的跳转，处理跳转路由高亮

@@ -17,9 +17,9 @@ service.interceptors.request.use(
     if (localStorage.getItem("user-info")) {
       userInfo = JSON.parse(localStorage.getItem("user-info") as string);
     }
-    if (userInfo?.AdminToken) {
+    if (userInfo?.token) {
       // 有token，在请求头中携带token
-      config.headers.Authorization = userInfo.AdminToken;
+      config.headers.Authorization = userInfo.token;
     }
     return config;
   },
@@ -53,7 +53,7 @@ service.interceptors.response.use(
     }
   },
   function (error: any) {
-    localStorage.removeItem("AdminToken");
+    localStorage.removeItem("token");
     router.push("/login");
     return Promise.reject(error);
   }

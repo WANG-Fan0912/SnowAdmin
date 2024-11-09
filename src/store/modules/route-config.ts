@@ -76,6 +76,12 @@ export const useRoutesConfigStore = defineStore("route-config", {
       this.cacheRoutes = this.cacheRoutes.filter((item: string) => !list.includes(item));
     },
     /**
+     * 重置routeTree路由树
+     */
+    async resetRoute() {
+      this.routeTree = [];
+    },
+    /**
      * 路由初始化
      * 1、将模块设置为真实模块
      * 2、存储路由树，用于生成菜单
