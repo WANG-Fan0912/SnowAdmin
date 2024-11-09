@@ -7,7 +7,7 @@ export default [
     method: "get",
     timeout: 500,
     response: () => {
-      return resultSuccess("mock数据成功了");
+      return resultSuccess("SnowAdmin开源免费，Welcome!");
     }
   },
   {
@@ -15,7 +15,7 @@ export default [
     method: "get",
     timeout: 500,
     response: () => {
-      return resultError(null, "请求数据出错了", 500);
+      return resultError(null, "模拟mock数据出错", 500);
     }
   }
 ] as MockMethod[];

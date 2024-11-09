@@ -16,3 +16,4 @@ declare module "@codemirror/lang-vue";
 declare module "nprogress";
 declare module "@wangeditor/editor-for-vue";
 declare module "@/directives/modules/custom";
+declare module "mockjs";

@@ -14,10 +14,12 @@ import { mockTestAPI } from "@/api/modules/test/index";
 // 全局title
 const title = import.meta.env.VITE_GLOB_APP_TITLE;
 
+// mock模拟数据
 const onMock = async () => {
-  console.log("模拟数据");
+  const MockFlag = import.meta.env.VITE_APP_OPEN_MOCK;
+  if (MockFlag === "false") return;
   let res = await mockTestAPI();
-  console.log("数据在这", res);
+  console.log("mock数据成功", res);
 };
 </script>
 

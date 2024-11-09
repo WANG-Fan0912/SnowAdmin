@@ -1,9 +1,8 @@
 import axios from "@/api";
 
-export const mockTestAPI = (params: any) => {
+export const mockTestAPI = () => {
   return axios({
     url: "/mock/test/success",
-    method: "get",
-    params
+    method: "get"
   });
 };
