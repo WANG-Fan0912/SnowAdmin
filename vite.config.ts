@@ -9,7 +9,7 @@ import { ArcoResolver } from "unplugin-vue-components/resolvers";
 import { vitePluginForArco } from "@arco-plugins/vite-vue";
 import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
 import { createHtmlPlugin } from "vite-plugin-html";
-import { viteMockServe } from 'vite-plugin-mock'
+import { viteMockServe } from "vite-plugin-mock";
 const themePath = normalizePath(path.normalize("./src/style/global-theme.scss"));
 
 // https://vitejs.dev/config/
@@ -78,7 +78,7 @@ export default defineConfig(({ mode }) => {
         dts: "src/components.d.ts"
       }),
       viteMockServe({
-        mockPath: './src/mock/', // 目录位置
+        mockPath: "./src/mock/", // 目录位置
         logger: true, //  是否在控制台显示请求日志
         supportTs: true, // 是否读取ts文件模块
         localEnabled: env.VITE_APP_OPEN_MOCK === "true", // 设置是否启用本地mock文件
@@ -87,7 +87,7 @@ export default defineConfig(({ mode }) => {
         injectCode: `
           import { setupProdMockServer } from '../src/mock/index';
           setupProdMockServer();
-        `,
+        `
       })
     ],
     resolve: {

@@ -6,9 +6,12 @@
       </template>
     </a-input>
     <div class="tree-box">
+      <div v-if="loading">
+        <a-empty />
+      </div>
       <!-- TODO: 滚动条边距和宽度需要调整 -->
       <a-scrollbar style="height: 100%; overflow: auto" outer-class="scrollbar">
-        <a-tree :data="treeData" :show-line="true" @select="onNode">
+        <a-tree ref="aTreeRef" :data="treeData" :default-expand-all="true" :show-line="true" @select="onNode">
           <template #title="node">
             <span class="tree-title">{{ node.title }}</span>
           </template>
@@ -24,8 +27,8 @@
 </template>
 
 <script setup lang="ts">
-import { fileTreeData } from "@/views/file-management/document-library/components/file-tree-data.js";
 import { findParentsTailRecursive } from "@/utils";
+import { getDocumentLibraryTreeAPI } from "@/api/modules/file/index";
 
 const emit = defineEmits(["onNode"]);
 
@@ -34,7 +37,7 @@ const onNode = (selectedKeys: Array<string>) => {
   emit("onNode", list);
 };
 
-const searchKey = ref("");
+const searchKey = ref<string>("");
 const treeData = computed(() => {
   if (!searchKey.value) return sourceTree.value;
   return searchData(searchKey.value);
@@ -42,9 +45,9 @@ const treeData = computed(() => {
 
 // 搜索树
 const searchData = (keyword: string) => {
-  const loop = (tree: any) => {
-    const result: any = []; // 存储搜索结果
-    tree.forEach((item: any) => {
+  const loop = (tree: SourceTree[]) => {
+    const result: SourceTree[] = []; // 存储搜索结果
+    tree.forEach((item: SourceTree) => {
       // 匹配节点
       if (item.title.toLowerCase().indexOf(keyword.toLowerCase()) > -1) {
         result.push({ ...item });
@@ -68,7 +71,28 @@ const searchData = (keyword: string) => {
   return loop(sourceTree.value);
 };
 
-const sourceTree = ref(fileTreeData.tree);
+interface SourceTree {
+  title: string;
+  key: string;
+  children?: SourceTree[];
+}
+const aTreeRef = ref();
+const loading = ref<boolean>(false);
+const sourceTree = ref<SourceTree[]>([]);
+const getDocumentLibraryTree = async () => {
+  try {
+    loading.value = true;
+    let { data } = await getDocumentLibraryTreeAPI();
+    loading.value = false;
+    sourceTree.value = data;
+    nextTick(() => {
+      aTreeRef.value.expandAll(true);
+    });
+  } finally {
+    loading.value = false;
+  }
+};
+getDocumentLibraryTree();
 </script>
 
 <style lang="scss" scoped>

@@ -89,7 +89,7 @@
               下载
             </a-button>
             <a-tooltip content="刷新">
-              <div class="action-icon" @click="onRefresh"><icon-refresh size="18" /></div>
+              <div class="action-icon" @click="getCustomTableList"><icon-refresh size="18" /></div>
             </a-tooltip>
             <a-dropdown @select="onDensity">
               <a-tooltip content="密度">
@@ -165,9 +165,11 @@
 </template>
 
 <script setup lang="ts">
+import { getCustomTableListAPI } from "@/api/modules/table/index";
+import { List, FormData, RowSelection, Pagination, Columns, DensityType } from "./config";
 import { deepClone } from "@/utils";
 import Sortable from "sortablejs";
-const formData = reactive({
+const formData = reactive<FormData>({
   form: {
     serial: "",
     name: "",
@@ -178,8 +180,8 @@ const formData = reactive({
   },
   search: false
 });
-const selectedKeys = ref([]);
-const rowSelection = reactive({
+const selectedKeys = ref<string[]>([]);
+const rowSelection = reactive<RowSelection>({
   type: "checkbox",
   showCheckedAll: true,
   onlyCurrent: false
@@ -188,15 +190,15 @@ const formRef = ref();
 const onReset = () => {
   formRef.value.resetFields();
 };
-const pagination = ref({ showPageSize: true, showTotal: true, current: 1, pageSize: 10, total: 10 });
+const pagination = ref<Pagination>({ showPageSize: true, showTotal: true, current: 1, pageSize: 10, total: 10 });
 const pageChange = (page: number) => {
   pagination.value.current = page;
 };
 const pageSizeChange = (pageSize: number) => {
   pagination.value.pageSize = pageSize;
 };
-const columnsShow = ref<any>([]);
-const columns = ref([
+const columnsShow = ref<Columns[]>([]);
+const columns = ref<Columns[]>([
   {
     title: "集合编号",
     dataIndex: "serial",
@@ -248,110 +250,20 @@ const deepColumns = () => {
   columnsShow.value = deepClone(columns.value);
 };
 deepColumns();
-const data = reactive([
-  {
-    key: "1",
-    serial: "57",
-    name: "WEIJEIWGSDG",
-    content: "图文",
-    searchType: "阅读量",
-    contentSize: 3700,
-    status: 1,
-    createTime: "2024-05-27 09:00:00"
-  },
-  {
-    key: "2",
-    serial: "58",
-    name: "DHDWEH",
-    content: "图文",
-    searchType: "阅读量",
-    contentSize: 3700,
-    status: 0,
-    createTime: "2024-05-26 15:30:00"
-  },
-  {
-    key: "3",
-    serial: "59",
-    name: "SHEHWAE",
-    content: "视频",
-    searchType: "播放量",
-    contentSize: 2500,
-    status: 1,
-    createTime: "2024-05-25 12:45:00"
-  },
-  {
-    key: "4",
-    serial: "60",
-    name: "WEHJUK",
-    content: "视频",
-    searchType: "播放量",
-    contentSize: 2500,
-    status: 0,
-    createTime: "2024-05-24 11:20:00"
-  },
-  {
-    key: "5",
-    serial: "61",
-    name: "EYTUJDGSD",
-    content: "音频",
-    searchType: "播放量",
-    contentSize: 2500,
-    status: 1,
-    createTime: "2024-05-23 14:10:00"
-  },
-  {
-    key: "6",
-    serial: "62",
-    name: "RTIFSDF",
-    content: "图文",
-    searchType: "阅读量",
-    contentSize: 3700,
-    status: 0,
-    createTime: "2024-05-22 10:05:00"
-  },
-  {
-    key: "7",
-    serial: "63",
-    name: "OIKSHHFD",
-    content: "图文",
-    searchType: "阅读量",
-    contentSize: 3700,
-    status: 1,
-    createTime: "2024-05-21 08:45:00"
-  },
-  {
-    key: "8",
-    serial: "64",
-    name: "QEUHRKO",
-    content: "视频",
-    searchType: "播放量",
-    contentSize: 2500,
-    status: 0,
-    createTime: "2024-05-20 16:30:00"
-  },
-  {
-    key: "9",
-    serial: "65",
-    name: "JSGSDRI",
-    content: "视频",
-    searchType: "播放量",
-    contentSize: 2300,
-    status: 1,
-    createTime: "2024-05-19 09:20:00"
-  },
-  {
-    key: "10",
-    serial: "66",
-    name: "AOUSTHREGG",
-    content: "音频",
-    searchType: "播放量",
-    contentSize: 2300,
-    status: 0,
-    createTime: "2024-05-18 13:55:00"
+const loading = ref<boolean>(false);
+const data = reactive<List[]>([]);
+const getCustomTableList = async () => {
+  try {
+    loading.value = true;
+    let res = await getCustomTableListAPI();
+    Object.assign(data, res.data.list);
+    pagination.value.total = res.data.total;
+  } finally {
+    loading.value = false;
   }
-]);
-
-const densityType = ref([
+};
+getCustomTableList();
+const densityType = ref<DensityType[]>([
   {
     value: "mini",
     label: "迷你"
@@ -370,17 +282,8 @@ const densityType = ref([
   }
 ]);
 
-// 刷新
-const loading = ref<boolean>(false);
-const onRefresh = () => {
-  loading.value = true;
-  setTimeout(() => {
-    loading.value = false;
-  }, 500);
-};
-
 // 密度
-const density = ref("small");
+const density = ref<string>("small");
 const onDensity = (e: string) => {
   density.value = e;
 };

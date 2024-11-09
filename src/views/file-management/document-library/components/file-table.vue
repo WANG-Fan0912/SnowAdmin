@@ -111,16 +111,17 @@
 </template>
 
 <script setup lang="ts">
-const form = ref({
-  name: ""
-});
-const selectedKeys = ref([]);
-const rowSelection = reactive({
+import { getDocumentLibraryTableAPI } from "@/api/modules/file/index";
+import { SelectedKeys, Form, Pagination, List } from "./config";
+
+const form = ref<Form>({ name: "" });
+const selectedKeys = ref<string[]>([]);
+const rowSelection = reactive<SelectedKeys>({
   type: "checkbox",
   showCheckedAll: true,
   onlyCurrent: false
 });
-const pagination = ref({ showPageSize: true, showTotal: true, current: 1, pageSize: 10, total: 10 });
+const pagination = ref<Pagination>({ showPageSize: true, showTotal: true, current: 1, pageSize: 10, total: 0 });
 const pageChange = (page: number) => {
   pagination.value.current = page;
 };
@@ -131,124 +132,22 @@ const onDelete = (cell: any) => {
   console.log("删除", cell);
 };
 
-const originalList = ref([
-  {
-    key: "1",
-    source: "bilibili",
-    sourceSvg: "bilibili",
-    sourceType: "分享",
-    flow: "5015",
-    percent: "75",
-    status: 1,
-    createTime: "2024-05-27 09:00:00"
-  },
-  {
-    key: "2",
-    source: "微信",
-    sourceSvg: "wechat",
-    sourceType: "分享",
-    flow: "3217",
-    percent: "60",
-    status: 0,
-    createTime: "2024-05-26 15:30:00"
-  },
-  {
-    key: "3",
-    source: "QQ音乐",
-    sourceSvg: "QQ音乐",
-    sourceType: "搜索",
-    flow: "1343",
-    percent: "55",
-    status: 1,
-    createTime: "2024-05-25 12:45:00"
-  },
-  {
-    key: "4",
-    source: "百度",
-    sourceSvg: "百度",
-    sourceType: "搜索",
-    flow: "1235",
-    percent: "20",
-    status: 0,
-    createTime: "2024-05-24 11:20:00"
-  },
-  {
-    key: "5",
-    source: "优酷",
-    sourceSvg: "优酷",
-    sourceType: "首页推荐",
-    flow: "3456",
-    percent: "20",
-    status: 1,
-    createTime: "2024-05-23 14:10:00"
-  },
-  {
-    key: "6",
-    source: "网易云音乐",
-    sourceSvg: "网易云音乐",
-    sourceType: "每日一推",
-    flow: "5873",
-    percent: "30",
-    status: 0,
-    createTime: "2024-05-22 10:05:00"
-  },
-  {
-    key: "7",
-    source: "抖音",
-    sourceSvg: "抖音",
-    sourceType: "自然",
-    flow: "5465",
-    percent: "86",
-    status: 1,
-    createTime: "2024-05-21 08:45:00"
-  },
-  {
-    key: "8",
-    source: "西瓜视频",
-    sourceSvg: "西瓜视频",
-    sourceType: "搜索",
-    flow: "4642",
-    percent: "45",
-    status: 0,
-    createTime: "2024-05-20 16:30:00"
-  },
-  {
-    key: "9",
-    source: "微博",
-    sourceSvg: "微博",
-    sourceType: "搜索",
-    flow: "2375",
-    percent: "60",
-    status: 1,
-    createTime: "2024-05-19 09:20:00"
-  },
-  {
-    key: "10",
-    source: "豆瓣",
-    sourceSvg: "豆瓣",
-    sourceType: "搜索",
-    flow: "2465",
-    percent: "40",
-    status: 0,
-    createTime: "2024-05-18 13:55:00"
-  }
-]);
-const loading = ref(false);
-const list = ref<any>([]);
-const getList = () => {
+const loading = ref<boolean>(false);
+const list = ref<List[]>([]);
+const getList = async () => {
   try {
     loading.value = true;
-    setTimeout(() => {
-      list.value = shuffleArray(originalList.value);
-      loading.value = false;
-    }, 500);
+    let { data } = await getDocumentLibraryTableAPI();
+    pagination.value.total = data.total;
+    list.value = shuffleArray(data.list);
+    loading.value = false;
   } catch {
     loading.value = false;
   }
 };
 getList();
 
-const shuffleArray = (arr: any) => {
+const shuffleArray = (arr: List[]) => {
   // 循环遍历数组，从最后一个元素开始向前,
   // 递减生成，确保数组的每个值都被照顾到
   for (let i = arr.length - 1; i > 0; i--) {

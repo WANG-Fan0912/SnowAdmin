@@ -64,6 +64,7 @@
         :bordered="{
           cell: true
         }"
+        :loading="loading"
         :columns="columns"
         :data="data"
         :row-selection="rowSelection"
@@ -104,7 +105,9 @@
 </template>
 
 <script setup lang="ts">
-const formData = reactive({
+import { getCommonTableListAPI } from "@/api/modules/table/index";
+import { List, FormData, RowSelection, Pagination } from "./config";
+const formData = reactive<FormData>({
   form: {
     name: "",
     phone: "",
@@ -114,13 +117,13 @@ const formData = reactive({
   },
   search: false
 });
-const selectedKeys = ref([]);
-const rowSelection = reactive({
+const selectedKeys = ref<string[]>([]);
+const rowSelection = reactive<RowSelection>({
   type: "checkbox",
   showCheckedAll: true,
   onlyCurrent: false
 });
-const pagination = ref({ showPageSize: true, showTotal: true, current: 1, pageSize: 10, total: 10 });
+const pagination = ref<Pagination>({ showPageSize: true, showTotal: true, current: 1, pageSize: 10, total: 10 });
 const pageChange = (page: number) => {
   pagination.value.current = page;
 };
@@ -166,108 +169,19 @@ const columns = [
     align: "center"
   }
 ];
-const data = reactive([
-  {
-    key: "1",
-    name: "陈思源",
-    avatar: "陈",
-    phone: "13812345678",
-    email: "zhangsan@example.com",
-    address: "北京市朝阳区",
-    status: 1,
-    createTime: "2024-05-27 09:00:00"
-  },
-  {
-    key: "2",
-    name: "李婉娴",
-    avatar: "李",
-    phone: "13987654321",
-    email: "lisi@example.com",
-    address: "上海市浦东新区",
-    status: 0,
-    createTime: "2024-05-26 15:30:00"
-  },
-  {
-    key: "3",
-    name: "王雨菲",
-    avatar: "王",
-    phone: "13666666666",
-    email: "wangwu@example.com",
-    address: "广州市天河区",
-    status: 1,
-    createTime: "2024-05-25 12:45:00"
-  },
-  {
-    key: "4",
-    name: "张晨曦",
-    avatar: "张",
-    phone: "13788888888",
-    email: "zhaoliu@example.com",
-    address: "深圳市福田区",
-    status: 0,
-    createTime: "2024-05-24 11:20:00"
-  },
-  {
-    key: "5",
-    name: "赵梦琪",
-    avatar: "赵",
-    phone: "13599999999",
-    email: "qianqi@example.com",
-    address: "成都市锦江区",
-    status: 1,
-    createTime: "2024-05-23 14:10:00"
-  },
-  {
-    key: "6",
-    name: "刘昊然",
-    avatar: "刘",
-    phone: "13377777777",
-    email: "sunba@example.com",
-    address: "杭州市西湖区",
-    status: 0,
-    createTime: "2024-05-22 10:05:00"
-  },
-  {
-    key: "7",
-    name: "孙梦洁",
-    avatar: "孙",
-    phone: "13266666666",
-    email: "zhoujiu@example.com",
-    address: "南京市鼓楼区",
-    status: 1,
-    createTime: "2024-05-21 08:45:00"
-  },
-  {
-    key: "8",
-    name: "黄俊杰",
-    avatar: "黄",
-    phone: "13155555555",
-    email: "wushi@example.com",
-    address: "重庆市渝中区",
-    status: 0,
-    createTime: "2024-05-20 16:30:00"
-  },
-  {
-    key: "9",
-    name: "周雨萱",
-    avatar: "周",
-    phone: "13044444444",
-    email: "zhengshiyi@example.com",
-    address: "武汉市江汉区",
-    status: 1,
-    createTime: "2024-05-19 09:20:00"
-  },
-  {
-    key: "10",
-    name: "韩雪儿",
-    avatar: "韩",
-    phone: "13933333333",
-    email: "kongshier@example.com",
-    address: "西安市雁塔区",
-    status: 0,
-    createTime: "2024-05-18 13:55:00"
+const loading = ref<boolean>(false);
+const data = reactive<List[]>([]);
+const getCommonTableList = async () => {
+  try {
+    loading.value = true;
+    let res = await getCommonTableListAPI();
+    Object.assign(data, res.data.list);
+    pagination.value.total = res.data.total;
+  } finally {
+    loading.value = false;
   }
-]);
+};
+getCommonTableList();
 </script>
 
 <style lang="scss" scoped></style>
