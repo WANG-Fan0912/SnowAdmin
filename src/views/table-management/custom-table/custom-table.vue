@@ -20,7 +20,7 @@
           </a-col>
           <a-col :span="6">
             <a-space>
-              <a-button type="primary">
+              <a-button type="primary" @click="getCustomTableList">
                 <template #icon>
                   <icon-search />
                 </template>
@@ -189,6 +189,7 @@ const rowSelection = reactive<RowSelection>({
 const formRef = ref();
 const onReset = () => {
   formRef.value.resetFields();
+  getCustomTableList();
 };
 const pagination = ref<Pagination>({ showPageSize: true, showTotal: true, current: 1, pageSize: 10, total: 10 });
 const pageChange = (page: number) => {

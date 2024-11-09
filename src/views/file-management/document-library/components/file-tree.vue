@@ -6,22 +6,21 @@
       </template>
     </a-input>
     <div class="tree-box">
-      <div v-if="loading">
-        <a-empty />
-      </div>
-      <!-- TODO: 滚动条边距和宽度需要调整 -->
-      <a-scrollbar style="height: 100%; overflow: auto" outer-class="scrollbar">
-        <a-tree ref="aTreeRef" :data="treeData" :default-expand-all="true" :show-line="true" @select="onNode">
-          <template #title="node">
-            <span class="tree-title">{{ node.title }}</span>
-          </template>
-          <template #icon="node">
-            <SvgIcon name="folder-close" :size="16" v-if="!node.isLeaf && !node.expanded"></SvgIcon>
-            <SvgIcon name="folder-open" :size="16" v-if="!node.isLeaf && node.expanded"></SvgIcon>
-            <SvgIcon name="txt" :size="16" v-if="node.isLeaf"></SvgIcon>
-          </template>
-        </a-tree>
-      </a-scrollbar>
+      <a-spin class="tree-loading" :loading="loading" tip="加载中...">
+        <!-- TODO: 滚动条边距和宽度需要调整 -->
+        <a-scrollbar style="height: 100%; overflow: auto" outer-class="scrollbar">
+          <a-tree ref="aTreeRef" :data="treeData" :default-expand-all="true" :show-line="true" @select="onNode">
+            <template #title="node">
+              <span class="tree-title">{{ node.title }}</span>
+            </template>
+            <template #icon="node">
+              <SvgIcon name="folder-close" :size="16" v-if="!node.isLeaf && !node.expanded"></SvgIcon>
+              <SvgIcon name="folder-open" :size="16" v-if="!node.isLeaf && node.expanded"></SvgIcon>
+              <SvgIcon name="txt" :size="16" v-if="node.isLeaf"></SvgIcon>
+            </template>
+          </a-tree>
+        </a-scrollbar>
+      </a-spin>
     </div>
   </div>
 </template>
@@ -106,6 +105,10 @@ getDocumentLibraryTree();
   }
   .tree-box {
     height: calc(100% - 32px - $margin);
+    .tree-loading {
+      width: 100%;
+      height: 100%;
+    }
     .scrollbar {
       height: 100%;
       .tree-title {

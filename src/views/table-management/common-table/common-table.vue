@@ -1,7 +1,7 @@
 <template>
   <div class="snow-page">
     <div class="snow-inner-page">
-      <a-form :model="formData.form" :label-col-props="{ span: 6 }" :wrapper-col-props="{ span: 18 }">
+      <a-form ref="formRef" :model="formData.form" :label-col-props="{ span: 6 }" :wrapper-col-props="{ span: 18 }">
         <a-row :gutter="16">
           <a-col :span="6">
             <a-form-item field="name" label="姓名">
@@ -20,13 +20,13 @@
           </a-col>
           <a-col :span="6">
             <a-space>
-              <a-button type="primary">
+              <a-button type="primary" @click="getCommonTableList">
                 <template #icon>
                   <icon-search />
                 </template>
                 <template #default>查询</template>
               </a-button>
-              <a-button>
+              <a-button @click="onReset">
                 <template #icon>
                   <icon-refresh />
                 </template>
@@ -169,6 +169,11 @@ const columns = [
     align: "center"
   }
 ];
+const formRef = ref();
+const onReset = () => {
+  formRef.value.resetFields();
+  getCommonTableList();
+};
 const loading = ref<boolean>(false);
 const data = reactive<List[]>([]);
 const getCommonTableList = async () => {
