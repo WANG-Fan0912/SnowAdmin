@@ -11,7 +11,7 @@ const props = defineProps({
   identifyCodes: {
     //验证码从该字段中抽取生成
     type: String,
-    default: "1234567890abcdefghijklmnopqrstuvwxyz"
+    default: "1234567890"
   },
   fontSizeMin: {
     // 字体最小值
@@ -93,8 +93,8 @@ const drawPic = () => {
 const drawText = (ctx: any, txt: any, i: any) => {
   ctx.fillStyle = randomColor(50, 160); //随机生成字体颜色
   ctx.font = randomNum(props.fontSizeMin, props.fontSizeMax) + "px SimHei"; //随机生成字体大小
-  let x = (i + 1) * (props.contentWidth / (identifyCode.value.length + 1));
-  let y = randomNum(props.fontSizeMax, props.contentHeight - 5);
+  let x = (i + 1) * (props.contentWidth / (identifyCode.value.length + 1)); // x轴
+  let y = randomNum(props.fontSizeMax, props.contentHeight); // y轴
   let deg = randomNum(-30, 30);
   // 修改坐标原点和旋转角度
   ctx.translate(x, y);
