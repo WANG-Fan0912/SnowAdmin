@@ -13,7 +13,8 @@
     "lint:prettier": "prettier --write \"src/**/*.{js,ts,json,tsx,css,less,scss,vue,html,md}\"",
     "fix": "eslint src --fix",
     "prepare": "husky install",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "preinstall": "npx only-allow pnpm"
   },
   "lint-staged": {
     "src/**/*.{ts,vue}": [
