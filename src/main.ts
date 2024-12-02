@@ -22,6 +22,7 @@ import "@/assets/fonts/fonts.scss";
 // 引入自定义指令
 import directives from "@/directives/index";
 
+// vchart黑暗模式
 // https://arco.design/react/docs/vchart
 initVChartArcoTheme();
 
