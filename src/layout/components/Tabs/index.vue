@@ -9,16 +9,11 @@
       @tab-click="onTabs"
       @delete="onDelete"
     >
-      <a-tab-pane
-        v-for="item of tabsList"
-        :key="item.name"
-        :title="$t(`language.${item.meta.title}`)"
-        :closable="!item.meta.affix"
-      />
+      <a-tab-pane v-for="item of tabsList" :key="item.name" :title="$t(`menu.${item.meta.title}`)" :closable="!item.meta.affix" />
     </a-tabs>
     <div class="tabs_setting">
       <a-space>
-        <a-tooltip :content="$t(`language.refresh`)" position="bottom" mini>
+        <a-tooltip :content="$t(`system.refresh`)" position="bottom" mini>
           <span ref="refreshRef" id="system-tabs-refresh" :class="rotateOpen && 'refresh'">
             <icon-refresh :size="18" @click="refresh" />
           </span>
@@ -28,23 +23,23 @@
           <template #content>
             <a-doption @click="closeCurrent">
               <template #icon><icon-close /></template>
-              <template #default>{{ $t(`language.close-current`) }}</template>
+              <template #default>{{ $t(`system.close-current`) }}</template>
             </a-doption>
             <a-doption @click="closeSides('left')">
               <template #icon><icon-left /></template>
-              <template #default>{{ $t(`language.close-left-side`) }}</template>
+              <template #default>{{ $t(`system.close-left-side`) }}</template>
             </a-doption>
             <a-doption @click="closeSides('right')">
               <template #icon><icon-right /></template>
-              <template #default>{{ $t(`language.close-right-side`) }}</template>
+              <template #default>{{ $t(`system.close-right-side`) }}</template>
             </a-doption>
             <a-doption @click="closeOther('other')">
               <template #icon><icon-close-circle /></template>
-              <template #default>{{ $t(`language.close-other`) }}</template>
+              <template #default>{{ $t(`system.close-other`) }}</template>
             </a-doption>
             <a-doption @click="closeOther('all')">
               <template #icon><icon-folder-delete /></template>
-              <template #default>{{ $t(`language.close-all`) }}</template>
+              <template #default>{{ $t(`system.close-all`) }}</template>
             </a-doption>
           </template>
         </a-dropdown>

@@ -46,7 +46,7 @@
         <template #columns>
           <a-table-column title="菜单名称">
             <template #cell="{ record }">
-              {{ $t(`language.${record.meta.title}`) }}
+              {{ $t(`menu.${record.meta.title}`) }}
             </template>
           </a-table-column>
           <a-table-column title="图标" align="center">
@@ -92,7 +92,7 @@
 
 <script setup lang="ts">
 import MenuItemIcon from "@/layout/components/Menu/menu-item-icon.vue";
-import { dynamicRoutes } from "@/router/route";
+import dynamicRoutes from "@/mock/_data/system_menu";
 
 const tableData = computed(() => {
   return dynamicRoutes[0].children;

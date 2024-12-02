@@ -44,9 +44,9 @@
 
 <script setup lang="ts">
 import myImage from "@/assets/img/my-image.jpg";
-import BasicInfo from "@/views/personal-center/user-settings/components/basic-info.vue";
-import SecuritySettings from "@/views/personal-center/user-settings/components/security-settings.vue";
-import Accreditation from "@/views/personal-center/user-settings/components/accreditation.vue";
+import BasicInfo from "@/views/personal/user-settings/components/basic-info.vue";
+import SecuritySettings from "@/views/personal/user-settings/components/security-settings.vue";
+import Accreditation from "@/views/personal/user-settings/components/accreditation.vue";
 import useGlobalProperties from "@/hooks/useGlobalProperties";
 const proxy = useGlobalProperties();
 

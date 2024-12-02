@@ -29,7 +29,7 @@
                 <template #icon v-if="item.meta.svgIcon || item.meta.icon">
                   <MenuItemIcon :svg-icon="item.meta.svgIcon" :icon="item.meta.icon" />
                 </template>
-                <span>{{ $t(`language.${item.meta.title}`) }}</span>
+                <span>{{ $t(`menu.${item.meta.title}`) }}</span>
               </a-menu-item>
             </template>
           </a-menu>

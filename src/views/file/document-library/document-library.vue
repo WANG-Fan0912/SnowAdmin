@@ -21,8 +21,8 @@
 </template>
 
 <script setup lang="ts">
-import FileTree from "@/views/file-management/document-library/components/file-tree.vue";
-import FileTable from "@/views/file-management/document-library/components/file-table.vue";
+import FileTree from "@/views/file/document-library/components/file-tree.vue";
+import FileTable from "@/views/file/document-library/components/file-table.vue";
 
 const FileTableRef = ref();
 const breadcrumb = ref<any>([]);

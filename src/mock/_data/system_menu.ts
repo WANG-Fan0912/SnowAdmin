@@ -60,11 +60,11 @@ export default [
         }
       },
       {
-        path: "/file-management",
-        name: "file-management",
-        redirect: "/file-management/document-library",
+        path: "/file",
+        name: "file",
+        redirect: "/file/document-library",
         meta: {
-          title: "file-management",
+          title: "file",
           hide: false,
           disable: false,
           keepAlive: true,
@@ -77,9 +77,9 @@ export default [
         },
         children: [
           {
-            path: "/file-management/document-library",
+            path: "/file/document-library",
             name: "document-library",
-            component: "file-management/document-library/document-library",
+            component: "file/document-library/document-library",
             meta: {
               title: "document-library",
               hide: false,
@@ -96,11 +96,11 @@ export default [
         ]
       },
       {
-        path: "/table-management",
-        name: "table-management",
-        redirect: "/table-management/common-table",
+        path: "/table",
+        name: "table",
+        redirect: "/table/common-table",
         meta: {
-          title: "table-management",
+          title: "table",
           hide: false,
           disable: false,
           keepAlive: true,
@@ -113,9 +113,9 @@ export default [
         },
         children: [
           {
-            path: "/table-management/common-table",
+            path: "/table/common-table",
             name: "common-table",
-            component: "table-management/common-table/common-table",
+            component: "table/common-table/common-table",
             meta: {
               title: "common-table",
               hide: false,
@@ -130,9 +130,9 @@ export default [
             }
           },
           {
-            path: "/table-management/custom-table",
+            path: "/table/custom-table",
             name: "custom-table",
-            component: "table-management/custom-table/custom-table",
+            component: "table/custom-table/custom-table",
             meta: {
               title: "custom-table",
               hide: false,
@@ -149,11 +149,11 @@ export default [
         ]
       },
       {
-        path: "/form-management",
-        name: "form-management",
-        redirect: "/form-management/common-form",
+        path: "/form",
+        name: "form",
+        redirect: "/form/common-form",
         meta: {
-          title: "form-management",
+          title: "form",
           hide: false,
           disable: false,
           keepAlive: true,
@@ -166,9 +166,9 @@ export default [
         },
         children: [
           {
-            path: "/form-management/common-form",
+            path: "/form/common-form",
             name: "common-form",
-            component: "form-management/common-form/common-form",
+            component: "form/common-form/common-form",
             meta: {
               title: "common-form",
               hide: false,
@@ -183,9 +183,9 @@ export default [
             }
           },
           {
-            path: "/form-management/step-form",
+            path: "/form/step-form",
             name: "step-form",
-            component: "form-management/step-form/step-form",
+            component: "form/step-form/step-form",
             meta: {
               title: "step-form",
               hide: false,
@@ -202,11 +202,11 @@ export default [
         ]
       },
       {
-        path: "/multilevel-menu",
-        name: "multilevel-menu",
-        redirect: "/multilevel-menu/second-menu-1",
+        path: "/multilevel",
+        name: "multilevel",
+        redirect: "/multilevel/second-1",
         meta: {
-          title: "multilevel-menu",
+          title: "multilevel",
           hide: false,
           disable: false,
           keepAlive: true,
@@ -219,11 +219,11 @@ export default [
         },
         children: [
           {
-            path: "/multilevel-menu/second-menu-1",
-            name: "second-menu-1",
-            component: "multilevel-menu/second-menu/second-menu-1",
+            path: "/multilevel/second-1",
+            name: "second-1",
+            component: "multilevel/second/second-1",
             meta: {
-              title: "second-menu-1",
+              title: "second-1",
               hide: false,
               disable: false,
               keepAlive: true,
@@ -236,11 +236,11 @@ export default [
             }
           },
           {
-            path: "/multilevel-menu/second-menu-2",
-            name: "second-menu-2",
-            redirect: "/multilevel-menu/third-menu-1",
+            path: "/multilevel/second-2",
+            name: "second-2",
+            redirect: "/multilevel/third-1",
             meta: {
-              title: "second-menu-2",
+              title: "second-2",
               hide: false,
               disable: false,
               keepAlive: true,
@@ -253,11 +253,11 @@ export default [
             },
             children: [
               {
-                path: "/multilevel-menu/third-menu-2",
-                name: "third-menu-2",
-                component: "multilevel-menu/third-menu/third-menu-2",
+                path: "/multilevel/third-2",
+                name: "third-2",
+                component: "multilevel/third/third-2",
                 meta: {
-                  title: "third-menu-2",
+                  title: "third-2",
                   hide: false,
                   disable: false,
                   keepAlive: true,
@@ -270,11 +270,11 @@ export default [
                 }
               },
               {
-                path: "/multilevel-menu/third-menu-1",
-                name: "third-menu-1",
-                component: "multilevel-menu/third-menu/third-menu-1",
+                path: "/multilevel/third-1",
+                name: "third-1",
+                component: "multilevel/third/third-1",
                 meta: {
-                  title: "third-menu-1",
+                  title: "third-1",
                   hide: false,
                   disable: false,
                   keepAlive: true,
@@ -287,11 +287,11 @@ export default [
                 }
               },
               {
-                path: "/multilevel-menu/third-menu-3",
-                name: "third-menu-3",
-                component: "multilevel-menu/third-menu/third-menu-3",
+                path: "/multilevel/third-3",
+                name: "third-3",
+                component: "multilevel/third/third-3",
                 meta: {
-                  title: "third-menu-3",
+                  title: "third-3",
                   link: "",
                   hide: false,
                   keepAlive: true,
@@ -303,11 +303,11 @@ export default [
                 }
               },
               {
-                path: "/multilevel-menu/third-menu-4",
-                name: "third-menu-4",
-                component: "multilevel-menu/third-menu/third-menu-4",
+                path: "/multilevel/third-4",
+                name: "third-4",
+                component: "multilevel/third/third-4",
                 meta: {
-                  title: "third-menu-4",
+                  title: "third-4",
                   link: "",
                   hide: false,
                   keepAlive: true,
@@ -319,11 +319,11 @@ export default [
                 }
               },
               {
-                path: "/multilevel-menu/third-menu-5",
-                name: "third-menu-5",
-                component: "multilevel-menu/third-menu/third-menu-5",
+                path: "/multilevel/third-5",
+                name: "third-5",
+                component: "multilevel/third/third-5",
                 meta: {
-                  title: "third-menu-5",
+                  title: "third-5",
                   link: "",
                   hide: false,
                   keepAlive: true,
@@ -335,11 +335,11 @@ export default [
                 }
               },
               {
-                path: "/multilevel-menu/third-menu-6",
-                name: "third-menu-6",
-                component: "multilevel-menu/third-menu/third-menu-6",
+                path: "/multilevel/third-6",
+                name: "third-6",
+                component: "multilevel/third/third-6",
                 meta: {
-                  title: "third-menu-6",
+                  title: "third-6",
                   link: "",
                   hide: false,
                   keepAlive: true,
@@ -351,11 +351,11 @@ export default [
                 }
               },
               {
-                path: "/multilevel-menu/third-menu-7",
-                name: "third-menu-7",
-                component: "multilevel-menu/third-menu/third-menu-7",
+                path: "/multilevel/third-7",
+                name: "third-7",
+                component: "multilevel/third/third-7",
                 meta: {
-                  title: "third-menu-7",
+                  title: "third-7",
                   link: "",
                   hide: false,
                   keepAlive: true,
@@ -367,11 +367,11 @@ export default [
                 }
               },
               {
-                path: "/multilevel-menu/third-menu-8",
-                name: "third-menu-8",
-                component: "multilevel-menu/third-menu/third-menu-8",
+                path: "/multilevel/third-8",
+                name: "third-8",
+                component: "multilevel/third/third-8",
                 meta: {
-                  title: "third-menu-8",
+                  title: "third-8",
                   link: "",
                   hide: false,
                   keepAlive: true,
@@ -383,11 +383,11 @@ export default [
                 }
               },
               {
-                path: "/multilevel-menu/third-menu-9",
-                name: "third-menu-9",
-                component: "multilevel-menu/third-menu/third-menu-9",
+                path: "/multilevel/third-9",
+                name: "third-9",
+                component: "multilevel/third/third-9",
                 meta: {
-                  title: "third-menu-9",
+                  title: "third-9",
                   link: "",
                   hide: false,
                   keepAlive: true,
@@ -403,11 +403,11 @@ export default [
         ]
       },
       {
-        path: "/common-component",
-        name: "common-component",
-        redirect: "/common-component/player",
+        path: "/component",
+        name: "component",
+        redirect: "/component/player",
         meta: {
-          title: "common-component",
+          title: "component",
           hide: false,
           disable: false,
           keepAlive: true,
@@ -420,9 +420,9 @@ export default [
         },
         children: [
           {
-            path: "/common-component/player",
+            path: "/component/player",
             name: "player",
-            component: "common-component/player/player",
+            component: "component/player/player",
             meta: {
               title: "player",
               hide: false,
@@ -437,9 +437,9 @@ export default [
             }
           },
           {
-            path: "/common-component/print",
+            path: "/component/print",
             name: "print",
-            component: "common-component/print/print",
+            component: "component/print/print",
             meta: {
               title: "print",
               hide: false,
@@ -454,9 +454,9 @@ export default [
             }
           },
           {
-            path: "/common-component/draggable",
+            path: "/component/draggable",
             name: "draggable",
-            component: "common-component/draggable/draggable",
+            component: "component/draggable/draggable",
             meta: {
               title: "draggable",
               hide: false,
@@ -471,9 +471,9 @@ export default [
             }
           },
           {
-            path: "/common-component/editor",
+            path: "/component/editor",
             name: "editor",
-            component: "common-component/editor/editor",
+            component: "component/editor/editor",
             meta: {
               title: "editor",
               hide: false,
@@ -488,9 +488,9 @@ export default [
             }
           },
           {
-            path: "/common-component/newbie",
+            path: "/component/newbie",
             name: "newbie",
-            component: "common-component/newbie/newbie",
+            component: "component/newbie/newbie",
             meta: {
               title: "newbie",
               hide: false,
@@ -505,9 +505,9 @@ export default [
             }
           },
           {
-            path: "/common-component/icon-selector",
+            path: "/component/icon-selector",
             name: "icon-selector",
-            component: "common-component/icon-selector/icon-selector",
+            component: "component/icon-selector/icon-selector",
             meta: {
               title: "icon-selector",
               hide: false,
@@ -522,9 +522,9 @@ export default [
             }
           },
           {
-            path: "/common-component/user-center",
+            path: "/component/user-center",
             name: "user-center",
-            component: "common-component/user-center/user-center",
+            component: "component/user-center/user-center",
             meta: {
               title: "user-center",
               hide: true,
@@ -541,11 +541,11 @@ export default [
         ]
       },
       {
-        path: "/custom-instruction",
-        name: "custom-instruction",
-        redirect: "/custom-instruction/anti-shake",
+        path: "/directive",
+        name: "directive",
+        redirect: "/directive/anti-shake",
         meta: {
-          title: "custom-instruction",
+          title: "directive",
           hide: false,
           disable: false,
           keepAlive: true,
@@ -558,9 +558,9 @@ export default [
         },
         children: [
           {
-            path: "/custom-instruction/anti-shake",
+            path: "/directive/anti-shake",
             name: "anti-shake",
-            component: "custom-instruction/anti-shake/anti-shake",
+            component: "directive/anti-shake/anti-shake",
             meta: {
               title: "anti-shake",
               hide: false,
@@ -575,9 +575,9 @@ export default [
             }
           },
           {
-            path: "/custom-instruction/throttle",
+            path: "/directive/throttle",
             name: "throttle",
-            component: "custom-instruction/throttle/throttle",
+            component: "directive/throttle/throttle",
             meta: {
               title: "throttle",
               hide: false,
@@ -592,11 +592,11 @@ export default [
             }
           },
           {
-            path: "/custom-instruction/test-instruction",
-            name: "test-instruction",
-            component: "custom-instruction/test-instruction/test-instruction",
+            path: "/directive/test-directive",
+            name: "test-directive",
+            component: "directive/test-directive/test-directive",
             meta: {
-              title: "test-instruction",
+              title: "test-directive",
               hide: false,
               disable: false,
               keepAlive: true,
@@ -611,11 +611,11 @@ export default [
         ]
       },
       {
-        path: "/personal-center",
-        name: "personal-center",
-        redirect: "/personal-center/userinfo",
+        path: "/personal",
+        name: "personal",
+        redirect: "/personal/userinfo",
         meta: {
-          title: "personal-center",
+          title: "personal",
           hide: false,
           disable: false,
           keepAlive: true,
@@ -628,9 +628,9 @@ export default [
         },
         children: [
           {
-            path: "/personal-center/userinfo",
+            path: "/personal/userinfo",
             name: "userinfo",
-            component: "personal-center/userinfo/userinfo",
+            component: "personal/userinfo/userinfo",
             meta: {
               title: "userinfo",
               hide: false,
@@ -645,9 +645,9 @@ export default [
             }
           },
           {
-            path: "/personal-center/user-settings",
+            path: "/personal/user-settings",
             name: "user-settings",
-            component: "personal-center/user-settings/user-settings",
+            component: "personal/user-settings/user-settings",
             meta: {
               title: "user-settings",
               hide: false,
@@ -664,11 +664,11 @@ export default [
         ]
       },
       {
-        path: "/system-management",
-        name: "system-management",
-        redirect: "/system-management/account-management",
+        path: "/system",
+        name: "system",
+        redirect: "/system/account",
         meta: {
-          title: "system-management",
+          title: "system",
           hide: false,
           disable: false,
           keepAlive: true,
@@ -681,11 +681,11 @@ export default [
         },
         children: [
           {
-            path: "/system-management/account-management",
-            name: "account-management",
-            component: "system-management/account-management/account-management",
+            path: "/system/account",
+            name: "account",
+            component: "system/account/account",
             meta: {
-              title: "account-management",
+              title: "account",
               hide: false,
               disable: false,
               keepAlive: true,
@@ -698,11 +698,11 @@ export default [
             }
           },
           {
-            path: "/system-management/role-management",
-            name: "role-management",
-            component: "system-management/role-management/role-management",
+            path: "/system/role",
+            name: "role",
+            component: "system/role/role",
             meta: {
-              title: "role-management",
+              title: "role",
               hide: false,
               disable: false,
               keepAlive: true,
@@ -715,11 +715,11 @@ export default [
             }
           },
           {
-            path: "/system-management/menu-management",
-            name: "menu-management",
-            component: "system-management/menu-management/menu-management",
+            path: "/system/menu",
+            name: "menu",
+            component: "system/menu/menu",
             meta: {
-              title: "menu-management",
+              title: "menu",
               hide: false,
               disable: false,
               keepAlive: true,
@@ -732,11 +732,11 @@ export default [
             }
           },
           {
-            path: "/system-management/division-management",
-            name: "division-management",
-            component: "system-management/division-management/division-management",
+            path: "/system/division",
+            name: "division",
+            component: "system/division/division",
             meta: {
-              title: "division-management",
+              title: "division",
               hide: false,
               disable: false,
               keepAlive: true,
@@ -749,11 +749,11 @@ export default [
             }
           },
           {
-            path: "/system-management/dictionary-management",
-            name: "dictionary-management",
-            component: "system-management/dictionary-management/dictionary-management",
+            path: "/system/dictionary",
+            name: "dictionary",
+            component: "system/dictionary/dictionary",
             meta: {
-              title: "dictionary-management",
+              title: "dictionary",
               hide: false,
               disable: false,
               keepAlive: true,
@@ -766,11 +766,11 @@ export default [
             }
           },
           {
-            path: "/system-management/system-log",
-            name: "system-log",
-            component: "system-management/system-log/system-log",
+            path: "/system/log",
+            name: "log",
+            component: "system/log/log",
             meta: {
-              title: "system-log",
+              title: "log",
               hide: false,
               disable: false,
               keepAlive: true,
@@ -785,11 +785,11 @@ export default [
         ]
       },
       {
-        path: "/external-links",
-        name: "external-links",
-        redirect: "/external-links/inline-page",
+        path: "/link",
+        name: "link",
+        redirect: "/link/internal",
         meta: {
-          title: "external-links",
+          title: "link",
           hide: false,
           disable: false,
           keepAlive: true,
@@ -802,11 +802,11 @@ export default [
         },
         children: [
           {
-            path: "/external-links/inline-page",
-            name: "inline-page",
-            redirect: "/external-links/inline-page/uigradients",
+            path: "/link/internal",
+            name: "internal",
+            redirect: "/link/internal/uigradients",
             meta: {
-              title: "inline-page",
+              title: "internal",
               hide: false,
               disable: false,
               keepAlive: true,
@@ -819,9 +819,9 @@ export default [
             },
             children: [
               {
-                path: "/external-links/inline-page/uigradients",
+                path: "/link/internal/uigradients",
                 name: "uigradients",
-                component: "external-links/inline-page/inline-page",
+                component: "link/internal/internal",
                 meta: {
                   title: "uigradients",
                   hide: false,
@@ -836,9 +836,9 @@ export default [
                 }
               },
               {
-                path: "/external-links/inline-page/color-taking-tool",
+                path: "/link/internal/color-taking-tool",
                 name: "color-taking-tool",
-                component: "external-links/inline-page/inline-page",
+                component: "link/internal/internal",
                 meta: {
                   title: "color-taking-tool",
                   hide: false,
@@ -853,9 +853,9 @@ export default [
                 }
               },
               {
-                path: "/external-links/inline-page/grid-generator",
+                path: "/link/internal/grid-generator",
                 name: "grid-generator",
-                component: "external-links/inline-page/inline-page",
+                component: "link/internal/internal",
                 meta: {
                   title: "grid-generator",
                   hide: false,
@@ -872,11 +872,11 @@ export default [
             ]
           },
           {
-            path: "/external-links/external-page",
-            name: "external-page",
-            redirect: "/external-links/external-page/link-vue",
+            path: "/link/external",
+            name: "external",
+            redirect: "/link/external/link-vue",
             meta: {
-              title: "external-page",
+              title: "external",
               hide: false,
               disable: false,
               keepAlive: true,
@@ -889,11 +889,11 @@ export default [
             },
             children: [
               {
-                path: "/external-links/external-page/link-SnowAdmin-Docs",
-                name: "link-SnowAdmin-Docs",
-                component: "external-links/external-page/external-page",
+                path: "/link/external/SnowAdmin-Docs",
+                name: "SnowAdmin-Docs",
+                component: "link/external/external",
                 meta: {
-                  title: "link-SnowAdmin-Docs",
+                  title: "SnowAdmin-Docs",
                   hide: false,
                   disable: false,
                   keepAlive: true,
@@ -906,11 +906,11 @@ export default [
                 }
               },
               {
-                path: "/external-links/external-page/link-vue",
-                name: "link-vue",
-                component: "external-links/external-page/external-page",
+                path: "/link/external/vue",
+                name: "vue",
+                component: "link/external/external",
                 meta: {
-                  title: "link-vue",
+                  title: "vue",
                   hide: false,
                   disable: false,
                   keepAlive: true,
@@ -923,11 +923,11 @@ export default [
                 }
               },
               {
-                path: "/external-links/external-page/link-vite",
-                name: "link-vite",
-                component: "external-links/external-page/external-page",
+                path: "/link/external/vite",
+                name: "vite",
+                component: "link/external/external",
                 meta: {
-                  title: "link-vite",
+                  title: "vite",
                   hide: false,
                   disable: false,
                   keepAlive: true,
@@ -940,13 +940,13 @@ export default [
                 }
               },
               {
-                path: "/external-links/external-page/link-github",
-                name: "link-github",
-                component: "external-links/external-page/external-page",
+                path: "/link/external/github",
+                name: "github",
+                component: "link/external/external",
                 meta: {
-                  title: "link-github",
+                  title: "github",
                   hide: false,
-                  disable: false,
+                  disable: true,
                   keepAlive: true,
                   affix: false,
                   link: "https://github.com/WANG-Fan0912/SnowAdmin", // 链接
@@ -957,11 +957,11 @@ export default [
                 }
               },
               {
-                path: "/external-links/external-page/link-juejin",
-                name: "link-juejin",
-                component: "external-links/external-page/external-page",
+                path: "/link/external/juejin",
+                name: "juejin",
+                component: "link/external/external",
                 meta: {
-                  title: "link-juejin",
+                  title: "juejin",
                   hide: false,
                   disable: false,
                   keepAlive: true,
@@ -980,7 +980,7 @@ export default [
       {
         path: "/disable-menu",
         name: "disable-menu",
-        redirect: "/disable-menu/disable-menu-1",
+        component: "disable-menu/disable-menu",
         meta: {
           title: "disable-menu",
           hide: false,
@@ -992,31 +992,12 @@ export default [
           roles: ["admin"],
           svgIcon: "switch",
           sort: 11
-        },
-        children: [
-          {
-            path: "/disable-menu/disable-menu-1",
-            name: "disable-menu-1",
-            component: "disable-menu/disable-menu-1/disable-menu-1",
-            meta: {
-              title: "disable-menu-1",
-              hide: false,
-              disable: true,
-              keepAlive: true,
-              affix: false,
-              link: "",
-              iframe: false,
-              roles: ["admin"],
-              icon: "icon-menu",
-              sort: 1
-            }
-          }
-        ]
+        }
       },
       {
         path: "/hide-menu",
         name: "hide-menu",
-        redirect: "/hide-menu/hide-menu-1",
+        component: "hide-menu/hide-menu",
         meta: {
           title: "hide-menu",
           hide: true,
@@ -1028,33 +1009,14 @@ export default [
           roles: ["admin"],
           svgIcon: "switch",
           sort: 12
-        },
-        children: [
-          {
-            path: "/hide-menu/hide-menu-1",
-            name: "hide-menu-1",
-            component: "hide-menu/hide-menu-1/hide-menu-1",
-            meta: {
-              title: "hide-menu-1",
-              hide: true,
-              disable: false,
-              keepAlive: true,
-              affix: false,
-              link: "",
-              iframe: false,
-              roles: ["admin"],
-              icon: "icon-menu",
-              sort: 1
-            }
-          }
-        ]
+        }
       },
       {
-        path: "/internationalization",
-        name: "internationalization",
-        component: "internationalization/internationalization",
+        path: "/i18n",
+        name: "i18n",
+        component: "i18n/i18n",
         meta: {
-          title: "internationalization",
+          title: "i18n",
           hide: false,
           disable: false,
           keepAlive: true,
@@ -1067,11 +1029,11 @@ export default [
         }
       },
       {
-        path: "/about-project",
-        name: "about-project",
-        component: "about-project/about-project",
+        path: "/about",
+        name: "about",
+        component: "about/about",
         meta: {
-          title: "about-project",
+          title: "about",
           hide: false,
           disable: false,
           keepAlive: true,

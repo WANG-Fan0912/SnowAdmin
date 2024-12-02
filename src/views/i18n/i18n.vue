@@ -1,7 +1,7 @@
 <template>
   <div class="snow-page">
     <div class="snow-inner-page">
-      <p>{{ $t(`language.switch-language-to-preview`) }}</p>
+      <p>{{ $t(`system.switch-language-to-preview`) }}</p>
       <br />
       <div>
         <a-date-picker style="width: 200px" v-model="form.time" />
