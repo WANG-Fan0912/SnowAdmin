@@ -53,6 +53,7 @@ export default defineConfig(({ mode }) => {
       AutoImport({
         // 自动导入 Vue 相关函数，如：ref, reactive, toRef 等
         imports: ["vue", "vue-router"],
+        // arco组件的按需加载
         resolvers: [ArcoResolver()],
         // 解决eslint报错问题
         eslintrc: {
@@ -66,6 +67,7 @@ export default defineConfig(({ mode }) => {
       }),
       Components({
         resolvers: [
+          // arco组件的按需加载
           ArcoResolver({
             sideEffect: true
           })
@@ -123,8 +125,8 @@ export default defineConfig(({ mode }) => {
           comments: false // 删除注释
         }
       },
-      assetsInlineLimit: 4 * 1024, // 打包内联阈值4kb
-      chunkSizeWarningLimit: 2000, // 规定触发警告的 chunk 大小, 消除打包大小超过500kb警告
+      assetsInlineLimit: 50 * 1024, // 打包内联阈值100kb
+      chunkSizeWarningLimit: 50000, // 规定触发警告的 chunk 大小, 这里设置阈值为50kb, 消除打包大小超过500kb警告
       // 静态资源打包到dist下的不同目录,将文件类型css、js、jpg等文件分开存储
       rollupOptions: {
         output: {
