@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import router from "@/router/index.ts";
+import router from "@/router/index";
 import { RouteRecordRaw } from "vue-router";
 import { getMenuListAPI } from "@/api/modules/system/index";
 import { moduleReplacement, linearArray } from "@/router/route-output";
@@ -103,7 +103,6 @@ export const useRoutesConfigStore = defineStore("route-config", {
       tree[0].redirect = tree[0].children[0].path;
       // 6、动态添加路由
       tree.forEach((route: RouteRecordRaw) => router.addRoute(route));
-      console.log("最终路由", tree);
       // 7、缓存一维路由
       this.routeList = tree[0].children;
     }
