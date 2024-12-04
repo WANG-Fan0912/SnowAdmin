@@ -3,6 +3,21 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
+  "description": "snow-admin open source management system",
+  "author": {
+    "name": "WANGFan",
+    "email": "2547096351@qq.com",
+    "url": "https://gitee.com/wang_fan_w"
+  },
+  "license": "MIT",
+  "homepage": "https://gitee.com/wang_fan_w/SnowAdmin",
+  "repository": {
+    "type": "git",
+    "url": "https://gitee.com/wang_fan_w/SnowAdmin.git"
+  },
+  "bugs": {
+    "url": "https://gitee.com/wang_fan_w/SnowAdmin/issues"
+  },
   "scripts": {
     "dev": "vite",
     "build:dev": "vue-tsc && vite build --mode development",

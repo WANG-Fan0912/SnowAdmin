@@ -1,7 +1,6 @@
 import vue from "@vitejs/plugin-vue";
 import path from "path";
 import { PluginOption } from "vite";
-import eslintPlugin from "vite-plugin-eslint";
 import { vitePluginForArco } from "@arco-plugins/vite-vue";
 import { createHtmlPlugin } from "vite-plugin-html";
 import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
@@ -9,6 +8,9 @@ import AutoImport from "unplugin-auto-import/vite";
 import { ArcoResolver } from "unplugin-vue-components/resolvers";
 import Components from "unplugin-vue-components/vite";
 import { viteMockServe } from "vite-plugin-mock";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
+import eslintPlugin from "vite-plugin-eslint";
 /**
  * 创建 vite 插件
  * @param viteEnv
