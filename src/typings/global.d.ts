@@ -34,3 +34,13 @@ declare namespace TabsMenu {
     title: string;
   }
 }
+
+/* viteEnv */
+interface ViteEnv {
+  VITE_GLOB_APP_TITLE: string;
+  VITE_IMG_BASE_URL: string;
+  VITE_APP_OPEN_MOCK: boolean | string;
+  VITE_USER_NODE_ENV: "development" | "production" | "test";
+  VITE_PUBLIC_PATH: string;
+  VITE_APP_BASE_URL: string;
+}

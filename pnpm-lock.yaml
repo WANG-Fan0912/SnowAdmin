@@ -119,7 +119,7 @@ importers:
         version: 9.1.0(eslint@8.57.0)
       eslint-plugin-prettier:
         specifier: ^5.1.3
-        version: 5.1.3(eslint-config-prettier@9.1.0(eslint@8.57.0))(eslint@8.57.0)(prettier@3.2.5)
+        version: 5.1.3(@types/eslint@8.56.12)(eslint-config-prettier@9.1.0(eslint@8.57.0))(eslint@8.57.0)(prettier@3.2.5)
       eslint-plugin-vue:
         specifier: ^9.23.0
         version: 9.23.0(eslint@8.57.0)
@@ -168,6 +168,9 @@ importers:
       vite:
         specifier: ^5.2.0
         version: 5.2.2(@types/node@20.11.30)(sass@1.72.0)(terser@5.29.2)
+      vite-plugin-eslint:
+        specifier: ^1.8.1
+        version: 1.8.1(eslint@8.57.0)(vite@5.2.2(@types/node@20.11.30)(sass@1.72.0)(terser@5.29.2))
       vite-plugin-html:
         specifier: ^3.2.2
         version: 3.2.2(vite@5.2.2(@types/node@20.11.30)(sass@1.72.0)(terser@5.29.2))
@@ -1057,6 +1060,9 @@ packages:
 
   '@types/conventional-commits-parser@5.0.0':
     resolution: {integrity: sha512-loB369iXNmAZglwWATL+WRe+CRMmmBPtpolYzIebFaX4YA3x+BEfLqhUAV9WanycKI3TG1IMr5bMJDajDKLlUQ==}
+
+  '@types/eslint@8.56.12':
+    resolution: {integrity: sha512-03ruubjWyOHlmljCVoxSuNDdmfZDzsrrz0P2LeJsOXr+ZwFQ+0yQIwNCwt/GYhV7Z31fgtXJTAEs+FYlEL851g==}
 
   '@types/estree@0.0.39':
     resolution: {integrity: sha512-EYNwp3bU+98cpU4lAWYYL7Zz+2gryWH1qbdDTidVd6hkiR6weksdbMadyXKXNPEkQFhXM+hVO9ZygomHXp+AIw==}
@@ -3357,6 +3363,11 @@ packages:
     resolution: {integrity: sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==}
     hasBin: true
 
+  rollup@2.79.2:
+    resolution: {integrity: sha512-fS6iqSPZDs3dr/y7Od6y5nha8dW1YnbgtsyotCVvoFGKbERG++CVRFv1meyGDE1SNItQA8BrnCw7ScdAhRJ3XQ==}
+    engines: {node: '>=10.0.0'}
+    hasBin: true
+
   rollup@4.13.0:
     resolution: {integrity: sha512-3YegKemjoQnYKmsBlOHfMLVPPA5xLkQ8MHLLSw/fBrFaVkEayL51DilPpNNLq1exr98F2B1TzrV0FUlN3gWRPg==}
     engines: {node: '>=18.0.0', npm: '>=8.0.0'}
@@ -3780,6 +3791,12 @@ packages:
   vary@1.1.2:
     resolution: {integrity: sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==}
     engines: {node: '>= 0.8'}
+
+  vite-plugin-eslint@1.8.1:
+    resolution: {integrity: sha512-PqdMf3Y2fLO9FsNPmMX+//2BF5SF8nEWspZdgl4kSt7UvHDRHVVfHvxsD7ULYzZrJDGRxR81Nq7TOFgwMnUang==}
+    peerDependencies:
+      eslint: '>=7'
+      vite: '>=2'
 
   vite-plugin-html@3.2.2:
     resolution: {integrity: sha512-vb9C9kcdzcIo/Oc3CLZVS03dL5pDlOFuhGlZYDCJ840BhWl/0nGeZWf3Qy7NlOayscY4Cm/QRgULCQkEZige5Q==}
@@ -4870,6 +4887,11 @@ snapshots:
   '@types/conventional-commits-parser@5.0.0':
     dependencies:
       '@types/node': 20.11.30
+
+  '@types/eslint@8.56.12':
+    dependencies:
+      '@types/estree': 1.0.5
+      '@types/json-schema': 7.0.15
 
   '@types/estree@0.0.39': {}
 
@@ -6053,13 +6075,14 @@ snapshots:
     dependencies:
       eslint: 8.57.0
 
-  eslint-plugin-prettier@5.1.3(eslint-config-prettier@9.1.0(eslint@8.57.0))(eslint@8.57.0)(prettier@3.2.5):
+  eslint-plugin-prettier@5.1.3(@types/eslint@8.56.12)(eslint-config-prettier@9.1.0(eslint@8.57.0))(eslint@8.57.0)(prettier@3.2.5):
     dependencies:
       eslint: 8.57.0
       prettier: 3.2.5
       prettier-linter-helpers: 1.0.0
       synckit: 0.8.8
     optionalDependencies:
+      '@types/eslint': 8.56.12
       eslint-config-prettier: 9.1.0(eslint@8.57.0)
 
   eslint-plugin-vue@9.23.0(eslint@8.57.0):
@@ -7440,6 +7463,10 @@ snapshots:
     dependencies:
       glob: 7.2.3
 
+  rollup@2.79.2:
+    optionalDependencies:
+      fsevents: 2.3.3
+
   rollup@4.13.0:
     dependencies:
       '@types/estree': 1.0.5
@@ -7895,6 +7922,14 @@ snapshots:
   utils-merge@1.0.1: {}
 
   vary@1.1.2: {}
+
+  vite-plugin-eslint@1.8.1(eslint@8.57.0)(vite@5.2.2(@types/node@20.11.30)(sass@1.72.0)(terser@5.29.2)):
+    dependencies:
+      '@rollup/pluginutils': 4.2.1
+      '@types/eslint': 8.56.12
+      eslint: 8.57.0
+      rollup: 2.79.2
+      vite: 5.2.2(@types/node@20.11.30)(sass@1.72.0)(terser@5.29.2)
 
   vite-plugin-html@3.2.2(vite@5.2.2(@types/node@20.11.30)(sass@1.72.0)(terser@5.29.2)):
     dependencies:

@@ -35,9 +35,11 @@
     "src/**/*.tsx",
     "src/**/*.vue",
     "src/auto-import.d.ts", // 与vite.config.ts-AutoImport-dts路径一致
+    "build/**/*.ts",
+    "build/**/*.d.ts",
     "vite.config.ts"
   ], // 指定被编译文件所在的目录
   // exclude表示要排除的、不编译的文件，它也可以指定一个列表，规则和include一样，可以是文件或文件夹，可以是相对路径或绝对路径，可以使用通配符
-  "exclude": ["node_modules", "dist", "**/*.js"], // 指定不需要被编译的目录
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "exclude": ["node_modules", "dist", "**/*.js"] // 指定不需要被编译的目录
+  // "references": [{ "path": "./tsconfig.node.json" }]
 }
