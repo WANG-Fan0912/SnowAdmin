@@ -72,35 +72,33 @@ const onEnd = () => {
 }
 .draggable-container {
   padding: $padding;
-  box-shadow: inset 0 0 0 1px $color-border-2;
-  border-radius: $radius-box-5;
   background: $color-bg-1;
+  border-radius: $radius-box-5;
+  box-shadow: inset 0 0 0 1px $color-border-2;
   .title {
-    font-weight: bold;
     margin-bottom: $padding;
+    font-weight: bold;
   }
   .draggable-box {
-    width: 448px;
     display: flex;
     flex-wrap: wrap;
-    row-gap: $padding;
-    column-gap: $padding;
-
+    gap: $padding $padding;
+    width: 448px;
     .draggable-list {
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       width: 100px;
       height: 100px;
-      box-sizing: border-box;
+      background: $color-fill-1;
       border: 1px solid $color-border-2;
       border-radius: $radius-box-5;
-      background: $color-fill-1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       .draggable-inner {
         display: flex;
         flex-direction: column;
-        justify-content: center;
         align-items: center;
+        justify-content: center;
         cursor: pointer;
         .svg-box {
           margin-bottom: $margin;

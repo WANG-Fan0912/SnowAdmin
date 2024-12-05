@@ -86,34 +86,33 @@ const onMenuItem = (key: string) => {
 .layout-head {
   height: 100vh;
   &-top {
-    height: 100%;
     display: grid;
     grid-template-rows: auto 1fr auto;
+    height: 100%;
   }
 }
-
 .header {
-  padding: 0 $padding;
-  height: 60px;
-  width: 100%;
   box-sizing: border-box;
-  border-bottom: $border-1 solid $color-border-2;
   display: flex;
   align-items: center;
+  width: 100%;
+  height: 60px;
+  padding: 0 $padding;
   overflow: hidden;
+  border-bottom: $border-1 solid $color-border-2;
   .header-logo {
     max-width: 180px;
   }
   .layout-head-menu {
-    flex: 1;
     display: flex;
+    flex: 1;
     overflow: hidden;
   }
 }
-
 :deep(.arco-menu-pop) {
   white-space: nowrap;
 }
+
 // 横向菜单样式修改
 :deep(.arco-menu-horizontal) {
   flex: 1;

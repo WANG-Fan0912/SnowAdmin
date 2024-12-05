@@ -114,15 +114,15 @@ const handleCancel = () => {
 
 <style lang="scss" scoped>
 .title {
-  color: $color-text-1;
+  margin-bottom: $margin;
   font-size: $font-size-title-1;
   font-weight: bold;
-  margin-bottom: $margin;
+  color: $color-text-1;
 }
 .flex-row {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   margin-bottom: $margin;
 }
 </style>

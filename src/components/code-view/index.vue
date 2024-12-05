@@ -63,12 +63,6 @@ const extensions = computed(() => {
 <style lang="scss" scoped>
 // 修改code中的字体样式
 :deep(.ͼ1 .cm-scroller) {
-  font-family:
-    source-code-pro,
-    Menlo,
-    Monaco,
-    Consolas,
-    Courier New,
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 </style>

@@ -16,14 +16,14 @@ const onClick = () => {
 
 <style lang="scss" scoped>
 .title {
-  text-align: center;
-  color: $color-text-1;
   font-size: $font-size-title-1;
+  color: $color-text-1;
+  text-align: center;
 }
 .button-box {
-  height: 100px;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  height: 100px;
 }
 </style>

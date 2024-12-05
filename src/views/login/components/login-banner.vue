@@ -16,21 +16,21 @@ const title = import.meta.env.VITE_GLOB_APP_TITLE;
 
 <style lang="scss" scoped>
 .banner_box {
-  width: 650px;
-  height: 100%;
+  position: relative;
   box-sizing: border-box;
-  padding: 30px;
   display: flex;
   flex-direction: column;
-  position: relative;
+  width: 650px;
+  height: 100%;
+  padding: 30px;
   .banner_title {
     position: absolute;
     display: flex;
-    align-items: center;
     column-gap: $margin-text;
+    align-items: center;
     font-size: $font-size-title-1;
-    color: $color-primary;
     font-weight: bold;
+    color: $color-primary;
   }
   .banner_img {
     flex: 1;

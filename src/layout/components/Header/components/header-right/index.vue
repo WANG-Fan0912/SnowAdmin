@@ -210,51 +210,49 @@ const logOut = () => {
 <style lang="scss" scoped>
 .header_setting {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   > .icon_btn {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
     width: $icon-box;
     height: $icon-box;
-    border-radius: $radius-box-1;
-    box-sizing: border-box;
     margin-left: $margin;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
     color: $color-text-1;
+    border-radius: $radius-box-1;
   }
-
   .my_setting {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     height: 32px;
     margin-left: $margin;
     overflow: hidden;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     .my_image {
-      border-radius: 50%;
       margin-right: 8px;
+      border-radius: 50%;
     }
     .icon_down {
-      transform: rotate(0deg);
       margin: 0 0 0 5px;
       transition: transform 0.2s;
+      transform: rotate(0deg);
     }
   }
 }
-
 .notice {
   position: relative;
   &::before {
-    content: "";
+    position: absolute;
+    top: -4px;
+    right: -2px;
     width: 6px;
     height: 6px;
-    border: 2px solid #fff;
-    border-radius: 50%;
-    position: absolute;
-    right: -2px;
-    top: -4px;
+    content: "";
     background: $color-danger;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
   }
 }
 :deep(.arco-dropdown-open) {
@@ -262,7 +260,6 @@ const logOut = () => {
     transform: rotate(180deg) !important;
   }
 }
-
 .margin-left-text {
   margin-left: $margin-text;
 }

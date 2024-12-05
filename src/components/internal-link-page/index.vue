@@ -30,9 +30,9 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .link-page-box {
+  display: flex;
   width: 100%;
   height: 100%;
-  display: flex;
   .iframe-size {
     flex: 1;
     border: 0;

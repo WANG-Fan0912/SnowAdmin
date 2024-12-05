@@ -105,20 +105,19 @@ const onLink = (item: any) => {
       height: 30px;
     }
     .my-local {
-      font-size: $font-size-body-3;
-      height: 30px;
       display: flex;
       align-items: end;
+      height: 30px;
+      font-size: $font-size-body-3;
     }
   }
 }
-
 .type-row {
+  display: flex;
+  column-gap: $margin;
+  align-items: center;
   height: 25px;
   margin-top: $margin;
-  display: flex;
-  align-items: center;
-  column-gap: $margin;
   .column-title-size-1 {
     min-width: 90px;
   }
@@ -129,7 +128,6 @@ const onLink = (item: any) => {
     white-space: nowrap;
   }
 }
-
 .title-size-1 {
   font-size: $font-size-title-1;
   font-weight: bold;
@@ -138,9 +136,8 @@ const onLink = (item: any) => {
   font-size: $font-size-title-2;
   font-weight: bold;
 }
-
 .link-hover {
-  cursor: pointer;
   color: $color-primary;
+  cursor: pointer;
 }
 </style>

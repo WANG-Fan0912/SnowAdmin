@@ -25,25 +25,25 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .page-404 {
-  height: 100vh;
   box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
   padding: $padding;
   overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   .prompt {
-    width: 250px;
     row-gap: $padding;
+    width: 250px;
   }
   .title {
     font-size: 80px;
     color: $color-text-1;
   }
   .text {
+    margin-bottom: $padding;
     font-size: $font-size-body-3;
     color: $color-text-2;
-    margin-bottom: $padding;
   }
 }
 </style>

@@ -3,8 +3,8 @@
     <div class="snow-inner-page">
       <a-space direction="vertical">
         <div>
-          <div style="border: 1px solid #ccc">
-            <Toolbar style="border-bottom: 1px solid #ccc" :editor="editorRef" :default-config="toolbarConfig" :mode="mode" />
+          <div style="border: 1px solid #cccccc">
+            <Toolbar style="border-bottom: 1px solid #cccccc" :editor="editorRef" :default-config="toolbarConfig" :mode="mode" />
             <Editor
               style="height: 500px; overflow-y: hidden"
               v-model="valueHtml"

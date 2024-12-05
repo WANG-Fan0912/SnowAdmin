@@ -39,9 +39,9 @@ watch(watermarkConfig, newv => {
 
 <style lang="scss" scoped>
 .layout-main-content {
-  height: 100%;
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 // 修改左侧滚动条宽度-主要针对main窗口内的滚动条

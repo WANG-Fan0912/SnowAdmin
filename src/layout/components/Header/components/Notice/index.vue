@@ -41,9 +41,9 @@ const onTab = (key: number) => {
 
 <style lang="scss" scoped>
 .notice {
-  margin-bottom: $margin;
   display: flex;
   align-items: center;
+  margin-bottom: $margin;
   .notice_img {
     width: 36px;
     height: 36px;

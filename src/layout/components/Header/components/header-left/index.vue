@@ -31,15 +31,15 @@ const onCollapsed = () => {
 
 <style lang="scss" scoped>
 .header_crumb {
-  width: 100%;
   display: flex;
   align-items: center;
+  width: 100%;
   .menu_fold {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
     width: 32px;
     height: 32px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
     .menu_fold_icon {
       color: $color-text-1;
       border-radius: $radius-box-1;

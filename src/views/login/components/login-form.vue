@@ -97,16 +97,16 @@ const onSubmit = async ({ errors }: any) => {
 .login_form_box {
   margin-top: 28px;
   .verifyCode {
-    width: 100%;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    width: 100%;
   }
   .remember {
-    width: 100%;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    width: 100%;
     .forgot-password {
       color: $color-primary;
       cursor: pointer;
@@ -114,9 +114,9 @@ const onSubmit = async ({ errors }: any) => {
   }
 }
 .register {
-  text-align: center;
-  color: $color-text-3;
   font-size: $font-size-body-1;
+  color: $color-text-3;
+  text-align: center;
   cursor: pointer;
 }
 </style>

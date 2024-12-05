@@ -67,20 +67,18 @@ const shortcut = ref([
     margin-bottom: $padding;
     .shortcut-card-label {
       width: 100px;
-      font-size: $font-size-body-3;
       margin-left: 20px;
+      font-size: $font-size-body-3;
       color: $color-text-2;
     }
   }
-
   .card-middling {
     width: 200px;
   }
-
   .row-center {
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
   }
 }
 .margin-left-text {
@@ -88,8 +86,8 @@ const shortcut = ref([
 }
 .box-title {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   font-size: $font-size-body-3;
   color: $color-text-1;
 }

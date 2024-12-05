@@ -173,11 +173,9 @@ defineExpose({
   box-sizing: border-box;
   padding: $padding;
 }
-
 .bottom-gap {
   margin-bottom: $padding;
 }
-
 :deep(.arco-form-item) {
   margin-bottom: 0;
 }

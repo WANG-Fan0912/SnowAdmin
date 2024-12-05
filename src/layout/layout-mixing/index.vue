@@ -125,40 +125,42 @@ const getAsideMenu = (key: string) => {
 .layout {
   height: 100vh;
 }
-
 .dark {
   background: #232324;
 }
-
 .layout_side {
   height: calc(100% - 60px);
   .scrollbar {
     height: 100%;
   }
 }
+
 // 修改左侧滚动条宽度
 :deep(.arco-scrollbar-thumb-direction-vertical .arco-scrollbar-thumb-bar) {
   width: 4px;
   margin-left: 8px;
 }
+
 // 去掉右侧阴影并替换为边线
 :deep(.arco-layout-sider-light) {
-  box-shadow: unset;
   border-right: $border-1 solid $color-border-2;
+  box-shadow: unset;
 }
 
 // 解决折叠菜单的icon不居中问题
 :deep(.arco-menu-vertical.arco-menu-collapsed) {
   // 消除icon的自带padding值，并且让元素居中
   .arco-menu-has-icon {
-    padding: 0;
     justify-content: center;
+    padding: 0;
   }
+
   // 消除icon的自带margin-right值，并且设置icon的padding值以保留icon空隙
   .arco-menu-icon {
-    margin-right: 0;
     padding: 10px 0;
+    margin-right: 0;
   }
+
   // 消除title占位
   .arco-menu-title {
     display: none;
@@ -169,26 +171,25 @@ const getAsideMenu = (key: string) => {
 .arco-layout-sider {
   background: unset;
 }
-
 .layout-right {
-  height: 100%;
   display: grid;
   grid-template-rows: auto 1fr auto;
+  height: 100%;
   .header {
-    padding: 0 $padding;
-    height: 60px;
     box-sizing: border-box;
-    border-bottom: $border-1 solid $color-border-2;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    padding: 0 $padding;
     overflow: hidden;
+    border-bottom: $border-1 solid $color-border-2;
     .menu_fold {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
       width: 32px;
       height: 32px;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
       .menu_fold_icon {
         color: $color-text-1;
         border-radius: $radius-box-1;
@@ -196,15 +197,15 @@ const getAsideMenu = (key: string) => {
     }
   }
   .layout-head-menu {
-    flex: 1;
     display: flex;
+    flex: 1;
     overflow: hidden;
   }
 }
-
 :deep(.arco-menu-pop) {
   white-space: nowrap;
 }
+
 // 横向菜单样式修改
 :deep(.arco-menu-horizontal) {
   flex: 1;

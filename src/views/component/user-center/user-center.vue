@@ -30,19 +30,18 @@ import myImage from "@/assets/img/my-image.jpg";
   height: 100%;
   margin-left: 10px;
   .my-title {
-    font-weight: bold;
-    font-size: 20px;
     margin-top: 15px;
+    font-size: 20px;
+    font-weight: bold;
   }
   .my-local {
     margin-top: 25px;
   }
 }
-
 .btn-box {
-  width: 220px;
   display: flex;
   justify-content: space-between;
-  margin: 20px 0 0 0;
+  width: 220px;
+  margin: 20px 0 0;
 }
 </style>

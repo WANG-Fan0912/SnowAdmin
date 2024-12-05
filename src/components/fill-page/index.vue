@@ -32,6 +32,7 @@ const viewportHeight = computed(() => {
 <style lang="scss" scoped>
 .fill-page-size {
   box-sizing: border-box;
+
   // box-shadow: $shadow-border-1;
 }
 </style>

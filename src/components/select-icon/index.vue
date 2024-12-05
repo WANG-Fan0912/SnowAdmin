@@ -73,17 +73,17 @@ defineExpose({
   max-height: 70vh;
   overflow: auto;
   .icon-grid {
-    overflow: hidden;
     display: grid;
     grid-template-columns: repeat(auto-fill, 150px); /* 自适应填充列，每列宽为 150px */
     justify-content: space-evenly; /* 水平均匀分配列之间的空隙 */
+    overflow: hidden;
     .grid-item {
-      height: 100px;
       display: flex;
       flex-direction: column;
       row-gap: $margin;
       align-items: center;
       justify-content: center;
+      height: 100px;
       transition: transform 0.2s ease-in-out; /* 添加过渡效果 */
       &:hover {
         transform: scale(1.3); /* 鼠标移入时放大到 1.3 倍 */
@@ -91,12 +91,11 @@ defineExpose({
     }
   }
 }
-
 .empty-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 300px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 </style>

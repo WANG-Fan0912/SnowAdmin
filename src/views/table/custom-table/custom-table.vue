@@ -331,9 +331,9 @@ const exchangeArray = (columns: Array<any>, oldIndex: number, newIndex: number) 
 
 <style lang="scss" scoped>
 .setting {
-  width: 200px;
   display: flex;
   align-items: center;
+  width: 200px;
   .setting-box-icon {
     margin-right: 4px;
     cursor: move;

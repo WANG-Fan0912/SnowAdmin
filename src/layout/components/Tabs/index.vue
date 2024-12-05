@@ -145,12 +145,12 @@ const closeOther = (type: string) => {
 
 <style lang="scss" scoped>
 .tabs {
-  height: 40px;
   box-sizing: border-box;
-  border-bottom: $border-1 solid $color-border-2;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  height: 40px;
+  border-bottom: $border-1 solid $color-border-2;
   .tabs_setting {
     margin: 0 0 0 $margin;
     .setting {
@@ -167,7 +167,7 @@ const closeOther = (type: string) => {
   // 移入展示关闭icon
   .arco-tabs-tab-closable {
     svg {
-      width: 0px;
+      width: 0;
       transition: all 0.2s;
     }
     &:hover {
@@ -176,11 +176,13 @@ const closeOther = (type: string) => {
       }
     }
   }
+
   // 消除tab移入的背景色
   &:hover .arco-tabs-tab-title::before {
     background: unset;
   }
 }
+
 // 消除tabs底部边线
 :deep(.arco-tabs-nav) {
   &::before {

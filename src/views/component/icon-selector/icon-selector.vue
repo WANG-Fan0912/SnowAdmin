@@ -38,9 +38,9 @@ const select = (icon: string) => {
 
 <style lang="scss" scoped>
 .title {
-  color: $color-text-1;
-  font-size: $font-size-title-1;
   margin-bottom: $margin;
+  font-size: $font-size-title-1;
+  color: $color-text-1;
 }
 .target-title {
   margin-bottom: $margin;

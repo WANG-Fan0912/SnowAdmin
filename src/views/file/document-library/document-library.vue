@@ -34,34 +34,32 @@ const onNode = (list: any) => {
 
 <style lang="scss" scoped>
 .container {
-  height: 100%;
   display: flex;
+  height: 100%;
   overflow: hidden;
   .left-box {
     width: 300px;
     height: 100%;
     background: $color-bg-1;
-
     .file-tree-style {
       height: calc(100% - 40px);
     }
   }
   .right-box {
-    margin-left: $padding;
     width: calc(100% - 220px - $padding);
     height: 100%;
+    margin-left: $padding;
     background: $color-bg-1;
     .file-table-style {
       height: calc(100% - 40px);
     }
   }
 }
-
 .box-title {
   height: 40px;
-  line-height: 40px;
-  font-size: $font-size-title-1;
-  text-align: left;
   padding: 0 $margin;
+  font-size: $font-size-title-1;
+  line-height: 40px;
+  text-align: left;
 }
 </style>

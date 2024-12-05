@@ -97,8 +97,8 @@ getDocumentLibraryTree();
 <style lang="scss" scoped>
 .container-page {
   box-sizing: border-box;
-  padding: $padding;
   height: 100%;
+  padding: $padding;
   .search-tree {
     height: 32px;
     margin-bottom: $margin;

@@ -54,9 +54,9 @@ const svgClass = computed<string>(() => {
 
 <style lang="scss" scope>
 .svg-icon {
+  flex-shrink: 0;
   width: auto;
   height: auto;
   vertical-align: middle;
-  flex-shrink: 0;
 }
 </style>

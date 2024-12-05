@@ -78,7 +78,7 @@
         </a-row>
         <a-row v-if="currentStep == 3">
           <a-col :span="16" :offset="4">
-            <a-typography style="background: var(--color-fill-2); padding: 24px">
+            <a-typography style="padding: 24px; background: var(--color-fill-2)">
               <a-typography-paragraph>提示</a-typography-paragraph>
               <ul>
                 <li>您可以在github或者gitee上完整预览该项目</li>

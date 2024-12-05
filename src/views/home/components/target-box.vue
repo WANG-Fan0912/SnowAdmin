@@ -76,26 +76,26 @@ const targetData = reactive({
 .target-box {
   margin-top: $padding;
   .target-grade {
-    width: 180px;
-    height: 60px;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
+    width: 180px;
+    height: 60px;
     &::before {
       position: absolute;
-      right: 0;
       top: 50%;
-      transform: translateY(-50%);
-      content: "";
-      height: 30px;
+      right: 0;
       width: 1px;
+      height: 30px;
+      content: "";
       background: $color-border-2;
+      transform: translateY(-50%);
     }
     .target-grade-innerbox {
       text-align: center;
       .grade-value {
-        font-family: "AliFangYuanTi";
+        font-family: AliFangYuanTi;
         font-size: $font-size-title-2;
         font-weight: bold;
         color: $color-danger;
@@ -103,26 +103,26 @@ const targetData = reactive({
     }
   }
   .target-other {
-    width: 180px;
-    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 180px;
+    height: 60px;
     .target-other-innerbox {
       width: 100px;
     }
     .other-value {
-      font-family: "AliFangYuanTi";
-      font-weight: bold;
       margin-right: $margin-text;
+      font-family: AliFangYuanTi;
+      font-weight: bold;
     }
     .target-up {
-      transform: rotate(-90deg);
       color: $color-danger;
+      transform: rotate(-90deg);
     }
     .target-down {
-      transform: rotate(90deg);
       color: $color-success;
+      transform: rotate(90deg);
     }
   }
   .target-title {
@@ -130,11 +130,10 @@ const targetData = reactive({
     color: $color-text-3;
   }
 }
-
 .box-title {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   font-size: $font-size-body-3;
   color: $color-text-1;
 }
