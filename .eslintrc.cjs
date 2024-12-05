@@ -19,7 +19,7 @@ module.exports = {
     "./.eslintrc-auto-import.json", // 与vite.config.ts-AutoImport-dts路径一致
     "plugin:vue/vue3-recommended",
     "plugin:@typescript-eslint/recommended",
-    "prettier",
+    "prettier", // 1.加入 prettier 配置
     "plugin:prettier/recommended" // prettier配置要写在eslint配置后面
   ],
   // ESLint插件系统
@@ -39,6 +39,7 @@ module.exports = {
   rules: {
     // 3. 注意要加上这一句，开启 prettier 自动修复的功能
     "prettier/prettier": "error",
+
     // 配置：
     // eslint (http://eslint.cn/docs/rules)
     "no-var": "error", // 要求使用 let 或 const 而不是 var
