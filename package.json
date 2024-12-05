@@ -31,6 +31,14 @@
     "prepare": "husky install",
     "preinstall": "npx only-allow pnpm"
   },
+  "lint-staged": {
+    "src/**/*.{ts,vue}": [
+      "eslint"
+    ],
+    "test/**/*.{ts,tsx,js,vue}": [
+      "eslint"
+    ]
+  },
   "dependencies": {
     "@arco-design/color": "^0.4.0",
     "@codemirror/lang-javascript": "^6.2.2",
