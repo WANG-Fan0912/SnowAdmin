@@ -8,7 +8,7 @@
 import { loadingPage } from "@/utils/loading-page";
 import { useThemeMethods } from "@/hooks/useThemeMethods";
 
-let a = "12345678";
+let a = "123456789";
 
 // 初始化主题
 const onTheme = () => {
