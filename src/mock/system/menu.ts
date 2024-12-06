@@ -1,6 +1,6 @@
 import type { MockMethod } from "vite-plugin-mock";
 import { RouteRecordRaw } from "vue-router";
-import { deepClone, filterByRole, treeSort, resultSuccess, resultError } from "../_utils";
+import { deepClone, filterByRole, treeSort, resultSuccess } from "../_utils";
 import systemMenu from "../_data/system_menu";
 
 /**
