@@ -25,15 +25,17 @@ module.exports = {
         "revert",
         "wip",
         "release",
-        "deps"
-        // feat：新功能（feature）
-        // fix：修补bug
-        // style： 格式（不影响代码运行的变动）
-        // perf: 性能相关
-        // refactor：重构（即不是新增功能，也不是修改bug的代码变动）
-        // test：测试
+        "deps",
+        "merge",
+        "sync"
+        // feat：交新功能
+        // fix：bug修复
+        // style： 调整代码格式，未修改代码逻辑
+        // perf: 性能优化
+        // refactor：代码重构，既没修复bug也没有添加新功能
+        // test：增加测试
         // chore: 其他修改（不在上述类型中的修改）
-        // docs：文档（documentation）
+        // docs：修改文档或注释
         // workflow: 工作流
         // build: 项目打包构建相关的配置修改
         // ci: 持续集成相关
@@ -41,6 +43,9 @@ module.exports = {
         // wip: work in progress 工作中 还没完成
         // release: 发版
         // deps: 依赖相关的修改
+        // merge	代码合并
+        // sync	同步主线或分支的Bug
+        // scope	说明 commit 影响的范围，比如数据层、控制层、视图层等等
       ]
     ]
   }
