@@ -22,29 +22,28 @@ const openPage = () => {
 
 <style lang="scss" scoped>
 .external-link-page {
-  height: 100%;
   box-sizing: border-box;
-
+  height: 100%;
   .external-link-inner-page {
-    height: 100%;
-    background: $color-bg-1;
-    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 100%;
+    overflow: hidden;
+    background: $color-bg-1;
     .star-emoji {
-      text-align: center;
       font-size: 100px;
+      text-align: center;
     }
     .docs-text {
-      text-align: center;
-      color: $color-text-3;
       margin: $margin 0;
+      color: $color-text-3;
+      text-align: center;
     }
     .to-page {
-      text-align: center;
       display: flex;
       justify-content: center;
+      text-align: center;
     }
   }
 }

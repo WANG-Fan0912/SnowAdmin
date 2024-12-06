@@ -1,7 +1,7 @@
 <template>
   <a-tabs :default-active-key="current" :active-key="current" @tab-click="onTab">
     <a-tab-pane v-for="item in noticeData" :key="item.id">
-      <template #title>{{ `${$t(`language.${item.title}`)}(${item.data.length})` }}</template>
+      <template #title>{{ `${$t(`system.${item.title}`)}(${item.data.length})` }}</template>
       <div class="notice" v-for="content in item.data" :key="content.id">
         <a-image width="36" height="36" fit="cover" :src="myImage" class="notice_img" />
         <div class="content margin-left-text">
@@ -41,9 +41,9 @@ const onTab = (key: number) => {
 
 <style lang="scss" scoped>
 .notice {
-  margin-bottom: $margin;
   display: flex;
   align-items: center;
+  margin-bottom: $margin;
   .notice_img {
     width: 36px;
     height: 36px;

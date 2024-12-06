@@ -19,40 +19,39 @@ import LoginForm from "@/views/login/components/login-form.vue";
 
 <style lang="scss" scoped>
 .container {
-  height: 100vh;
   position: relative;
+  height: 100vh;
   overflow: hidden;
   .login {
-    width: 1000px;
-    height: 500px;
-    left: 50%;
-    top: 50%;
     position: absolute;
-    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
     display: flex;
     align-items: center;
+    width: 1000px;
+    height: 500px;
     box-shadow: 0 0 8px 1px $color-fill-2;
-
+    transform: translate(-50%, -50%);
     .login_box {
+      position: relative;
+      box-sizing: border-box;
       width: 350px;
       height: 100%;
-      box-sizing: border-box;
-      padding: 40px 30px 30px 30px;
-      position: relative;
+      padding: 40px 30px 30px;
       .login_title {
+        margin-bottom: $margin-text;
         font-size: $font-size-title-2;
         color: $color-text-1;
-        margin-bottom: $margin-text;
       }
       .login_title_desc {
         font-size: $font-size-body-1;
         color: $color-text-3;
       }
       .author {
-        color: $color-text-4;
-        font-size: $font-size-body-1;
         position: absolute;
         bottom: 30px;
+        font-size: $font-size-body-1;
+        color: $color-text-4;
       }
     }
   }

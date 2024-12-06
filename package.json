@@ -3,6 +3,21 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
+  "description": "snow-admin open source management system",
+  "author": {
+    "name": "WANGFan",
+    "email": "2547096351@qq.com",
+    "url": "https://gitee.com/wang_fan_w"
+  },
+  "license": "MIT",
+  "homepage": "https://gitee.com/wang_fan_w/SnowAdmin",
+  "repository": {
+    "type": "git",
+    "url": "https://gitee.com/wang_fan_w/SnowAdmin.git"
+  },
+  "bugs": {
+    "url": "https://gitee.com/wang_fan_w/SnowAdmin/issues"
+  },
   "scripts": {
     "dev": "vite",
     "build:dev": "vue-tsc && vite build --mode development",
@@ -11,17 +26,10 @@
     "preview": "vite preview",
     "lint:eslint": "eslint --fix --ext .js,.ts,.vue ./src",
     "lint:prettier": "prettier --write \"src/**/*.{js,ts,json,tsx,css,less,scss,vue,html,md}\"",
+    "lint:lint-staged": "lint-staged",
     "fix": "eslint src --fix",
     "prepare": "husky install",
-    "lint-staged": "lint-staged"
-  },
-  "lint-staged": {
-    "src/**/*.{ts,vue}": [
-      "eslint"
-    ],
-    "test/**/*.{ts,tsx,js,vue}": [
-      "eslint"
-    ]
+    "preinstall": "npx only-allow pnpm"
   },
   "dependencies": {
     "@arco-design/color": "^0.4.0",
@@ -74,11 +82,19 @@
     "prettier": "^3.2.5",
     "sass": "^1.72.0",
     "scss": "^0.2.4",
+    "stylelint": "^16.11.0",
+    "stylelint-config-html": "^1.1.0",
+    "stylelint-config-recess-order": "^5.1.1",
+    "stylelint-config-recommended-scss": "^14.1.0",
+    "stylelint-config-recommended-vue": "^1.5.0",
+    "stylelint-config-standard": "^36.0.1",
+    "stylelint-config-standard-scss": "^14.0.0",
     "terser": "^5.29.2",
     "typescript": "^5.2.2",
     "unplugin-auto-import": "^0.17.5",
     "unplugin-vue-components": "^0.26.0",
     "vite": "^5.2.0",
+    "vite-plugin-eslint": "^1.8.1",
     "vite-plugin-html": "^3.2.2",
     "vite-plugin-mock": "^2.9.6",
     "vite-plugin-svg-icons": "^2.0.1",

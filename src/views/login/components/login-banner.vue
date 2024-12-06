@@ -1,7 +1,7 @@
 <template>
   <div class="banner_box">
     <div class="banner_title">
-      <SvgIcon name="snow" size="25" @click="onMock" />
+      <SvgIcon name="snow" size="25" />
       {{ title }}
     </div>
     <div class="banner_img">
@@ -10,36 +10,27 @@
   </div>
 </template>
 <script setup lang="ts">
-import { mockTestAPI } from "@/api/modules/test/index";
 // 全局title
 const title = import.meta.env.VITE_GLOB_APP_TITLE;
-
-// mock模拟数据
-const onMock = async () => {
-  const MockFlag = import.meta.env.VITE_APP_OPEN_MOCK;
-  if (MockFlag === "false") return;
-  let res = await mockTestAPI();
-  console.log("mock数据成功", res);
-};
 </script>
 
 <style lang="scss" scoped>
 .banner_box {
-  width: 650px;
-  height: 100%;
+  position: relative;
   box-sizing: border-box;
-  padding: 30px;
   display: flex;
   flex-direction: column;
-  position: relative;
+  width: 650px;
+  height: 100%;
+  padding: 30px;
   .banner_title {
     position: absolute;
     display: flex;
-    align-items: center;
     column-gap: $margin-text;
+    align-items: center;
     font-size: $font-size-title-1;
-    color: $color-primary;
     font-weight: bold;
+    color: $color-primary;
   }
   .banner_img {
     flex: 1;

@@ -3,9 +3,9 @@
     <a-space direction="vertical">
       <a-breadcrumb>
         <a-breadcrumb-item v-for="(item, index) in breadcrumb" :key="item.path" :class="transition">
-          <span v-if="index === breadcrumb.length - 1" class="main_button">{{ $t(`language.${item?.meta?.title || ""}`) }}</span>
+          <span v-if="index === breadcrumb.length - 1" class="main_button">{{ $t(`menu.${item?.meta?.title || ""}`) }}</span>
           <span v-else class="route_button" @click="onBreadcrumb(item as RouteLocationMatched)">{{
-            $t(`language.${item?.meta?.title || ""}`)
+            $t(`menu.${item?.meta?.title || ""}`)
           }}</span>
         </a-breadcrumb-item>
       </a-breadcrumb>

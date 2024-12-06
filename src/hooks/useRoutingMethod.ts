@@ -1,6 +1,6 @@
 import pinia from "@/store/index";
 import { storeToRefs } from "pinia";
-import { useRoutesListStore } from "@/store/modules/route-list";
+import { useRoutesConfigStore } from "@/store/modules/route-config";
 /**
  * 路由处理hooks，内置多种路由处理场景
  * @returns 路由方法
@@ -12,7 +12,7 @@ export const useRoutingMethod = () => {
    * @returns 查找到的路由，undefined则表示未找到
    */
   const findLinearArray = (key: string) => {
-    const routerStore = useRoutesListStore(pinia);
+    const routerStore = useRoutesConfigStore(pinia);
     const { routeList } = storeToRefs(routerStore);
     return routeList.value.find((item: Menu.MenuOptions) => item.name == key);
   };
@@ -23,7 +23,7 @@ export const useRoutingMethod = () => {
    * @returns 查找到的路由，undefined则表示未找到
    */
   const findTagsList = (key: string) => {
-    const routerStore = useRoutesListStore(pinia);
+    const routerStore = useRoutesConfigStore(pinia);
     const { tabsList } = storeToRefs(routerStore);
     return tabsList.value.find((item: Menu.MenuOptions) => item.name == key);
   };

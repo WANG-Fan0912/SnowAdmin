@@ -11,12 +11,12 @@ import HeaderRight from "@/layout/components/Header/components/header-right/inde
 
 <style lang="scss" scoped>
 .header {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   height: 60px;
   padding: 0 $padding;
-  box-sizing: border-box;
   border-bottom: $border-1 solid $color-border-2;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 </style>

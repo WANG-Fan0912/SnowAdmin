@@ -12,16 +12,16 @@ const onFooter = () => {
 
 <style lang="scss" scoped>
 .footer {
-  height: 30px;
   box-sizing: border-box;
-  border-top: $border-1 solid $color-border-2;
   display: flex;
   align-items: center;
+  height: 30px;
+  border-top: $border-1 solid $color-border-2;
 }
 .footer_title {
-  text-align: center;
   margin: 0 auto;
   color: $color-text-4;
+  text-align: center;
   cursor: pointer;
 }
 </style>

@@ -139,109 +139,94 @@ const handleCancel = () => {
 .box-gap {
   margin-top: 30px;
 }
-
 .flex-row {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   margin-bottom: $margin;
 }
-
 .flex-center {
   display: flex;
+  column-gap: $margin;
   align-items: center;
   justify-content: center;
   margin-bottom: $margin;
-  column-gap: $margin;
 }
-
 .layout-defaults,
 .layout-head,
 .layout-mixing {
   width: 70px;
   height: 50px;
+  overflow: hidden;
   background: $color-fill-1;
   border-radius: $radius-box-1;
-  overflow: hidden;
   box-shadow: $shadow-special;
-
   .layout-icon {
     display: none;
   }
 }
-
 .current-layout {
   position: relative;
-
   .layout-icon {
-    display: block;
     position: absolute;
     right: 2px;
     bottom: 2px;
+    display: block;
     font-size: $font-size-body-3;
     color: $color-primary;
   }
 }
-
 .layout-defaults {
   position: relative;
-
   &::before {
-    content: "";
     position: absolute;
     left: 0;
     width: 10px;
     height: 100%;
+    content: "";
     background: #232324;
   }
-
   &::after {
-    content: "";
     position: absolute;
-    right: 0;
     top: 0;
+    right: 0;
     width: 60px;
     height: 10px;
+    content: "";
     background: #c2c4c8;
   }
 }
-
 .layout-head {
   position: relative;
-
   &::before {
-    content: "";
     position: absolute;
     top: 0;
     width: 100%;
     height: 10px;
+    content: "";
     background: #232324;
   }
 }
-
 .layout-mixing {
   position: relative;
-
   &::before {
-    content: "";
     position: absolute;
     top: 0;
     width: 100%;
     height: 10px;
+    content: "";
     background: #232324;
   }
-
   &::after {
-    content: "";
     position: absolute;
-    left: 0;
     top: 10px;
+    left: 0;
     width: 10px;
     height: calc(100% - 10px);
+    content: "";
     background: #232324;
   }
 }
-
 :deep(.arco-divider-text) {
   background: $color-bg-3;
 }

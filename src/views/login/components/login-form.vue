@@ -19,7 +19,7 @@
         <a-form-item field="verifyCode" :hide-asterisk="true">
           <div class="verifyCode">
             <a-input style="width: 160px" v-model="form.verifyCode" allow-clear placeholder="请输入验证码" />
-            <VerifyCode :content-height="30" :content-width="100" @verify-code-change="verifyCodeChange" />
+            <VerifyCode :content-height="30" :font-size-max="30" :content-width="110" @verify-code-change="verifyCodeChange" />
           </div>
         </a-form-item>
         <a-form-item field="remember">
@@ -41,7 +41,7 @@
 import { Message } from "@arco-design/web-vue";
 import { useRouter } from "vue-router";
 import { useUserInfoStore } from "@/store/modules/user-info";
-
+import { loginAPI, getUserInfoAPI } from "@/api/modules/user/index";
 const router = useRouter();
 const form = ref({
   username: "admin",
@@ -54,30 +54,12 @@ const rules = ref({
     {
       required: true,
       message: "请输入账号"
-    },
-    {
-      validator: (value: string, cb: any) => {
-        if (value !== verify.value.username) {
-          cb("请输入正确的账号");
-        } else {
-          cb();
-        }
-      }
     }
   ],
   password: [
     {
       required: true,
       message: "请输入密码"
-    },
-    {
-      validator: (value: string, cb: any) => {
-        if (value !== verify.value.password) {
-          cb("请输入正确的密码");
-        } else {
-          cb();
-        }
-      }
     }
   ],
   verifyCode: [
@@ -87,7 +69,7 @@ const rules = ref({
     },
     {
       validator: (value: string, cb: any) => {
-        if (value !== verify.value.verifyCode) {
+        if (value !== verifyCode.value) {
           cb("请输入正确的验证码");
         } else {
           cb();
@@ -96,26 +78,16 @@ const rules = ref({
     }
   ]
 });
-const verify = ref({
-  username: "admin",
-  password: "123456",
-  verifyCode: ""
-});
-const verifyCodeChange = (code: string) => (verify.value.verifyCode = code);
+const verifyCode = ref("");
+const verifyCodeChange = (code: string) => (verifyCode.value = code);
 
 const onSubmit = async ({ errors }: any) => {
   if (errors) return;
-  // 你的登录请求
-  // ......
-
-  // 登录成功-存储用户信息
+  let res = await loginAPI(form.value);
   let stores = useUserInfoStore();
-  let account = {
-    username: form.value.username, // 用户名
-    roles: ["admin"] // 角色权限
-  };
-  stores.setAccount(account); // 存储用户信息
-  stores.setToken("Your-Token");
+  await stores.setToken(res.data.token);
+  let account = await getUserInfoAPI();
+  stores.setAccount(account.data); // 存储用户信息
   Message.success("登录成功");
   router.replace("/home");
 };
@@ -125,16 +97,16 @@ const onSubmit = async ({ errors }: any) => {
 .login_form_box {
   margin-top: 28px;
   .verifyCode {
-    width: 100%;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    width: 100%;
   }
   .remember {
-    width: 100%;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    width: 100%;
     .forgot-password {
       color: $color-primary;
       cursor: pointer;
@@ -142,9 +114,9 @@ const onSubmit = async ({ errors }: any) => {
   }
 }
 .register {
-  text-align: center;
-  color: $color-text-3;
   font-size: $font-size-body-1;
+  color: $color-text-3;
+  text-align: center;
   cursor: pointer;
 }
 </style>

@@ -80,11 +80,11 @@ const financeData = ref([
       display: flex;
       align-items: center;
       .tag-dot {
+        box-sizing: border-box;
         width: 8px;
         height: 8px;
-        border-radius: 50%;
         margin-right: $margin-text;
-        box-sizing: border-box;
+        border-radius: 50%;
       }
       .finance-nav-title {
         font-size: $font-size-body-1;
@@ -94,12 +94,11 @@ const financeData = ref([
 }
 .box-title {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   font-size: $font-size-body-3;
   color: $color-text-1;
 }
-
 .margin-left-text {
   margin-left: $margin-text;
 }

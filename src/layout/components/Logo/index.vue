@@ -38,40 +38,38 @@ const isTitle = computed(() => {
 <style lang="scss" scoped>
 // 头部
 .logo_head {
-  height: 60px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
   box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 60px;
   border-right: $border-1 solid $color-border-2;
-
   .logo_box {
-    width: 100%;
-    overflow: hidden;
     display: flex;
-    align-items: center;
-    padding: 0 $padding;
     column-gap: $padding;
+    align-items: center;
+    width: 100%;
+    padding: 0 $padding;
+    overflow: hidden;
   }
 
   // 折叠或者是横向布局-去掉padding，logo居中
   .padding-unset {
-    padding: unset;
     justify-content: space-around;
+    padding: unset;
   }
-
   .logo_title {
-    max-width: 140px;
     box-sizing: border-box;
-    text-align: left;
-    font-weight: bold;
-    font-size: $font-size-title-2;
-    white-space: nowrap;
+    max-width: 140px;
     overflow: hidden;
+    font-size: $font-size-title-2;
+    font-weight: bold;
+    text-align: left;
     text-overflow: ellipsis;
+    white-space: nowrap;
   }
   .dark {
-    color: #fff;
+    color: #ffffff;
   }
 }
 .no-border {

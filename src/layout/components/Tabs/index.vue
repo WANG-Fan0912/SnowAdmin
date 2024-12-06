@@ -9,16 +9,11 @@
       @tab-click="onTabs"
       @delete="onDelete"
     >
-      <a-tab-pane
-        v-for="item of tabsList"
-        :key="item.name"
-        :title="$t(`language.${item.meta.title}`)"
-        :closable="!item.meta.affix"
-      />
+      <a-tab-pane v-for="item of tabsList" :key="item.name" :title="$t(`menu.${item.meta.title}`)" :closable="!item.meta.affix" />
     </a-tabs>
     <div class="tabs_setting">
       <a-space>
-        <a-tooltip :content="$t(`language.refresh`)" position="bottom" mini>
+        <a-tooltip :content="$t(`system.refresh`)" position="bottom" mini>
           <span ref="refreshRef" id="system-tabs-refresh" :class="rotateOpen && 'refresh'">
             <icon-refresh :size="18" @click="refresh" />
           </span>
@@ -28,23 +23,23 @@
           <template #content>
             <a-doption @click="closeCurrent">
               <template #icon><icon-close /></template>
-              <template #default>{{ $t(`language.close-current`) }}</template>
+              <template #default>{{ $t(`system.close-current`) }}</template>
             </a-doption>
             <a-doption @click="closeSides('left')">
               <template #icon><icon-left /></template>
-              <template #default>{{ $t(`language.close-left-side`) }}</template>
+              <template #default>{{ $t(`system.close-left-side`) }}</template>
             </a-doption>
             <a-doption @click="closeSides('right')">
               <template #icon><icon-right /></template>
-              <template #default>{{ $t(`language.close-right-side`) }}</template>
+              <template #default>{{ $t(`system.close-right-side`) }}</template>
             </a-doption>
             <a-doption @click="closeOther('other')">
               <template #icon><icon-close-circle /></template>
-              <template #default>{{ $t(`language.close-other`) }}</template>
+              <template #default>{{ $t(`system.close-other`) }}</template>
             </a-doption>
             <a-doption @click="closeOther('all')">
               <template #icon><icon-folder-delete /></template>
-              <template #default>{{ $t(`language.close-all`) }}</template>
+              <template #default>{{ $t(`system.close-all`) }}</template>
             </a-doption>
           </template>
         </a-dropdown>
@@ -56,11 +51,11 @@
 <script setup lang="ts">
 import { useRouter } from "vue-router";
 import { storeToRefs } from "pinia";
-import { useRoutesListStore } from "@/store/modules/route-list";
+import { useRoutesConfigStore } from "@/store/modules/route-config";
 import { useRoutingMethod } from "@/hooks/useRoutingMethod";
 import { useThemeConfig } from "@/store/modules/theme-config";
 const router = useRouter();
-const routerStore = useRoutesListStore();
+const routerStore = useRoutesConfigStore();
 const { tabsList, currentRoute } = storeToRefs(routerStore);
 
 // 点击标签页，如果标签页存在，则跳转
@@ -150,12 +145,12 @@ const closeOther = (type: string) => {
 
 <style lang="scss" scoped>
 .tabs {
-  height: 40px;
   box-sizing: border-box;
-  border-bottom: $border-1 solid $color-border-2;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  height: 40px;
+  border-bottom: $border-1 solid $color-border-2;
   .tabs_setting {
     margin: 0 0 0 $margin;
     .setting {
@@ -172,7 +167,7 @@ const closeOther = (type: string) => {
   // 移入展示关闭icon
   .arco-tabs-tab-closable {
     svg {
-      width: 0px;
+      width: 0;
       transition: all 0.2s;
     }
     &:hover {
@@ -181,11 +176,13 @@ const closeOther = (type: string) => {
       }
     }
   }
+
   // 消除tab移入的背景色
   &:hover .arco-tabs-tab-title::before {
     background: unset;
   }
 }
+
 // 消除tabs底部边线
 :deep(.arco-tabs-nav) {
   &::before {

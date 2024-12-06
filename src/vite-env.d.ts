@@ -17,3 +17,5 @@ declare module "nprogress";
 declare module "@wangeditor/editor-for-vue";
 declare module "@/directives/modules/custom";
 declare module "mockjs";
+declare module "@/store/modules/route-config";
+declare module "@arco-design/*";

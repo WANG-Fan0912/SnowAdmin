@@ -2,11 +2,12 @@ import NProgress from "@/config/nprogress";
 import pinia from "@/store/index";
 import { createRouter, createWebHashHistory } from "vue-router";
 import { staticRoutes, notFoundAndNoPower } from "@/router/route.ts";
-import { initSetRouter, currentlyRoute } from "@/router/route-output";
+import { currentlyRoute } from "@/router/route-output";
 import { storeToRefs } from "pinia";
 import { useUserInfoStore } from "@/store/modules/user-info";
-import { useRoutesListStore } from "@/store/modules/route-list";
+import { useRoutesConfigStore } from "@/store/modules/route-config";
 import { useRoutingMethod } from "@/hooks/useRoutingMethod";
+import { loadingPage } from "@/utils/loading-page";
 
 /**
  * 创建vue的路由示例
@@ -55,7 +56,7 @@ router.beforeEach(async (to, from, next) => {
     currentlyRoute(to.name as string);
   } else {
     // 4、去非登录页，有token，校验是否动态添加过路由，添加过则放行，未添加则执行路由初始化
-    const routeStore = useRoutesListStore(pinia);
+    const routeStore = useRoutesConfigStore(pinia);
     const { routeTree } = storeToRefs(routeStore);
 
     // 获取外链路由的处理函数
@@ -66,7 +67,8 @@ router.beforeEach(async (to, from, next) => {
     // 如果缓存的路由是0，则说明未动态添加路由，先添加再跳转
     // 解决刷新页面404的问题
     if (routeTree.value.length == 0) {
-      await initSetRouter();
+      loadingPage.start();
+      await routeStore.initSetRouter();
       // 处理外链跳转
       openExternalLinks(to);
       // 处理完重新跳转

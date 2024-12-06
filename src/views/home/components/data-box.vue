@@ -24,18 +24,18 @@ import AnalysisChart from "@/views/home/components/analysis-chart.vue";
 
 <style lang="scss" scoped>
 .data-box {
-  margin-top: calc($padding * 2);
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: calc($padding * 2);
   .data-title {
     font-size: $font-size-body-3;
     color: $color-text-1;
   }
   .data-subtext {
+    margin-left: $margin-text;
     font-size: $font-size-body-2;
     color: $color-text-2;
-    margin-left: $margin-text;
   }
 }
 </style>

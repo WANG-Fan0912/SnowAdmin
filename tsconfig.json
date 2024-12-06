@@ -1,37 +1,44 @@
 {
+  // 编译选项
   "compilerOptions": {
-    "target": "ES2020",
-    "useDefineForClassFields": true,
-    "module": "ESNext",
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "skipLibCheck": true,
+    /* ES */
+    "target": "ESNext", // 指定ECMAScript目标版本
+    "module": "ESNext", // 设置程序的模块系统
+    "lib": ["ESNext", "DOM"], //TS需要引用的库，即声明文件，es5 默认引用dom、es5、scripthost,如需要使用es的高级版本特性，通常都需要配置，如es8的数组新特性需要引入"ES2019.Array",
+    "skipLibCheck": true, //忽略所有的声明文件（ *.d.ts）的类型检查
 
     /* Bundler mode */
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "preserve",
+    "moduleResolution": "bundler", //模块解析策略。默认使用node的模块解析策略
+    "allowImportingTsExtensions": true, // 允许导入包含 TypeScript 文档扩展名。
+    "resolveJsonModule": true, //允许导入扩展名为".json"的模块
+    "isolatedModules": true, //将每个文件作为单独的模块（与"ts.transpileModule"类似）。
+    "noEmit": true, // 不输出文件,即编译后不会生成任何js文件
+    "jsx": "preserve", //preserve模式,在preserve模式下生成代码中会保留JSX以供后续的转换操作使用
 
-    /* Linting */
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-    "baseUrl": "./",
+    /* Standard */
+    "strict": true, //启用所有严格类型检查选项
+    "noUnusedLocals": true, // 若有未使用的局部变量则抛错
+    "noUnusedParameters": true, // 检若有未使用的函数参数则抛错
+    "noFallthroughCasesInSwitch": true, // 防止switch语句贯穿(即如果没有break语句后面不会执行)
+
+    /* path */
+    "baseUrl": "./", // 解析非相对模块的基地址，默认是当前目录
     "paths": {
+      // 模块名到基于 baseUrl的路径映射的列表
       "@/*": ["src/*"]
     }
   },
+  // include也可以指定要编译的路径列表，这里的路径可以是文件夹，也可以是文件，可以使用相对和绝对路径，而且可以使用通配符，比如"./src"即表示要编译src文件夹下的所有文件以及子文件夹的文件
   "include": [
     "src/**/*",
     "src/**/*.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
-    "vite.config.ts",
-    "src/auto-import.d.ts" // 与vite.config.ts中的dts路径一致
+    "src/auto-import.d.ts", // 与vite.config.ts-AutoImport-dts路径一致
+    "build/**/*.ts",
+    "build/**/*.d.ts",
+    "vite.config.ts"
   ], // 指定被编译文件所在的目录
-  "exclude": ["node_modules", "dist", "**/*.js"], // 指定不需要被编译的目录
-  "references": [{ "path": "./tsconfig.node.json" }]
+  // exclude表示要排除的、不编译的文件，它也可以指定一个列表，规则和include一样，可以是文件或文件夹，可以是相对路径或绝对路径，可以使用通配符
+  "exclude": ["node_modules", "dist", "**/*.js"] // 指定不需要被编译的目录
 }

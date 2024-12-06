@@ -17,10 +17,10 @@
 import Tabs from "@/layout/components/Tabs/index.vue";
 import { storeToRefs } from "pinia";
 import { useThemeConfig } from "@/store/modules/theme-config";
-import { useRoutesListStore } from "@/store/modules/route-list";
+import { useRoutesConfigStore } from "@/store/modules/route-config";
 const themeStore = useThemeConfig();
 let { refreshPage, isTabs, watermark, watermarkStyle, watermarkRotate, watermarkGap } = storeToRefs(themeStore);
-const routerStore = useRoutesListStore();
+const routerStore = useRoutesConfigStore();
 const { cacheRoutes } = storeToRefs(routerStore);
 
 // 水印配置
@@ -39,9 +39,9 @@ watch(watermarkConfig, newv => {
 
 <style lang="scss" scoped>
 .layout-main-content {
-  height: 100%;
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 // 修改左侧滚动条宽度-主要针对main窗口内的滚动条
