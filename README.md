@@ -131,6 +131,7 @@ pnpm install
 SnowAdmin
 ├─ .husky                 # husky 配置文件
 ├─ .vscode                # VSCode 推荐配置
+├─ build                  # vite项目配置目录
 ├─ public                 # 静态资源文件（该文件夹不会被打包）
 ├─ src
 │  ├─ api                 # API 接口管理
@@ -141,6 +142,7 @@ SnowAdmin
 │  ├─ hooks               # 常用 Hooks 封装
 │  ├─ lang                # 语言国际化 i18n
 │  ├─ layout              # 框架布局模块
+│  ├─ mock                # 本地数据mock
 │  ├─ router              # 路由管理
 │  ├─ store               # pinia store
 │  ├─ style               # 全局样式文件
@@ -150,6 +152,7 @@ SnowAdmin
 │  ├─ App.vue             # 项目主组件
 │  ├─ main.ts             # 项目入口文件
 │  └─ vite-env.d.ts       # 指定 ts 识别 vue
+├─ .editorconfig          # 代码编辑器配置文件
 ├─ .env                   # vite 常用配置
 ├─ .env.development       # 开发环境配置
 ├─ .env.production        # 生产环境配置
@@ -159,10 +162,15 @@ SnowAdmin
 ├─ .gitignore             # 忽略 git 提交
 ├─ .prettierignore        # 忽略 Prettier 格式化
 ├─ .prettierrc.cjs        # Prettier 格式化配置
+├─ .stylelintignore       # 忽略 Stylelint 校验
+├─ .stylelintrc.cjs       # Stylelint 格式化配置
 ├─ commitlint.config.cjs  # git 提交规范配置
 ├─ index.html             # 入口 html
+├─ LICENSE                # 开源协议
+├─ lint-staged.config.cjs # lint-staged 配置文件
 ├─ package-lock.json      # 依赖包包版本锁
 ├─ package.json           # 依赖包管理
+├─ pnpm-lock.yaml         # 依赖包包版本锁
 ├─ README.md              # README 介绍
 ├─ tsconfig.json          # typescript 全局配置
 └─ vite.config.ts         # vite 全局配置文件
