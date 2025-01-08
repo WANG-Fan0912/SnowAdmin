@@ -1,6 +1,6 @@
 <template>
   <div class="snow-page">
-    <div class="snow-inner-page">
+    <div class="snow-inner">
       <div class="my-page">
         <div class="title">自定义节流指令，连续点击按钮，每间隔1s执行一次</div>
         <div class="button-box">

@@ -537,6 +537,23 @@ export default [
               icon: "icon-menu",
               sort: 7
             }
+          },
+          {
+            path: "/component/fingerprintjs2",
+            name: "fingerprintjs2",
+            component: "component/fingerprintjs2/fingerprintjs2",
+            meta: {
+              title: "fingerprintjs2",
+              hide: false,
+              disable: false,
+              keepAlive: true,
+              affix: false,
+              link: "",
+              iframe: false,
+              roles: ["admin"],
+              icon: "icon-menu",
+              sort: 8
+            }
           }
         ]
       },

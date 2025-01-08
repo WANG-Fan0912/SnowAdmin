@@ -1,6 +1,6 @@
 <template>
   <div class="snow-page">
-    <div class="snow-inner-page">
+    <div class="snow-inner">
       <a-row :gutter="16">
         <a-col :span="12">
           <a-form ref="formRef" :size="form.size" :model="form" :style="{ width: '600px' }" @submit="handleSubmit">

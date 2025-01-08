@@ -1,6 +1,6 @@
 <template>
   <div class="snow-page">
-    <div class="snow-inner-page draggable-page">
+    <div class="snow-inner draggable-page">
       <a-space direction="vertical">
         <div class="draggable-container">
           <div class="title">Favorites</div>

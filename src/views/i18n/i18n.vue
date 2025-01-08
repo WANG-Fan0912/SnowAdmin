@@ -1,6 +1,6 @@
 <template>
   <div class="snow-page">
-    <div class="snow-inner-page">
+    <div class="snow-inner">
       <p>{{ $t(`system.switch-language-to-preview`) }}</p>
       <br />
       <div>

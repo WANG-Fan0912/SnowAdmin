@@ -1,7 +1,7 @@
 <template>
   <div class="snow-page">
     <a-spin :loading="loading" style="display: block">
-      <div class="snow-inner-page container">
+      <div class="snow-inner container">
         <a-row>
           <a-col :span="12" :offset="6">
             <a-steps :current="currentStep" line-less>

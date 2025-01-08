@@ -1,6 +1,6 @@
 <template>
   <div class="snow-page">
-    <div class="snow-inner-page">
+    <div class="snow-inner">
       <div class="title">图标选择器</div>
       <a-input ref="inputRef" :style="{ width: '400px' }" placeholder="请选择图标" v-model="iconName" @focus="onFocus">
         <template #suffix v-if="iconName">

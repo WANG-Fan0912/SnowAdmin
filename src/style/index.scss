@@ -1,28 +1,24 @@
-@import "@/style/global-theme.scss";
-@import "@/style/global-transition.scss";
-@import "@/style/global-style.scss";
-@import "@/style/global-scrollbar.scss";
-@import "@/style/loading-page.scss";
-@import "@/style/card-animation.scss";
-@import "@/style/media/media.scss";
-
+@import "@/style/global-theme";
+@import "@/style/global-transition";
+@import "@/style/global-style";
+@import "@/style/global-scrollbar";
+@import "@/style/loading-page";
+@import "@/style/card-animation";
+@import "@/style/media/media";
 * {
-  margin: 0;
   padding: 0;
+  margin: 0;
 }
-
 html,
 body,
 #app {
-  margin: 0;
   padding: 0;
+  margin: 0;
   overflow: hidden;
 }
-
 html {
   font-size: 14px;
 }
-
 #app {
   overflow: hidden;
 }
@@ -30,8 +26,8 @@ html {
 // 设置全局颜色-关联黑暗模式
 // 全局取一级容器背景色$color-bg-2，main窗口取边框色浅色$color-border-1
 body {
-  background: $color-bg-2; // body背景颜色
   color: $color-text-1; // 整体文字的颜色
+  background: $color-bg-2; // body背景颜色
 }
 
 // 设置nprogress进度条样式

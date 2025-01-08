@@ -4,19 +4,9 @@
 /* 轻过渡 */
 // 进入
 .fadeInOut-enter-active {
-  -webkit-animation: slide-enter-right 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   animation: slide-enter-right 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
-@-webkit-keyframes slide-enter-right {
-  0% {
-    opacity: 0;
-    transform: translateX(-20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
+
 @keyframes slide-enter-right {
   0% {
     opacity: 0;
@@ -27,12 +17,24 @@
     transform: translateX(0);
   }
 }
+
+@keyframes slide-enter-right {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 // 离开
 .fadeInOut-leave-active {
-  -webkit-animation: slide-leave-right 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   animation: slide-leave-right 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
-@-webkit-keyframes slide-leave-right {
+
+@keyframes slide-leave-right {
   0% {
     opacity: 1;
     transform: translateX(0);
@@ -42,6 +44,7 @@
     transform: translateX(20px);
   }
 }
+
 @keyframes slide-leave-right {
   0% {
     opacity: 1;
@@ -56,75 +59,62 @@
 /* 卡片 */
 // 进入
 .cardInOut-enter-active {
-  -webkit-animation: swing-in-top-fwd 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
   animation: swing-in-top-fwd 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
 }
-@-webkit-keyframes swing-in-top-fwd {
-  0% {
-    -webkit-transform: rotateX(-100deg);
-    transform: rotateX(-100deg);
-    -webkit-transform-origin: top;
-    transform-origin: top;
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: rotateX(0deg);
-    transform: rotateX(0deg);
-    -webkit-transform-origin: top;
-    transform-origin: top;
-    opacity: 1;
-  }
-}
+
 @keyframes swing-in-top-fwd {
   0% {
-    -webkit-transform: rotateX(-100deg);
-    transform: rotateX(-100deg);
-    -webkit-transform-origin: top;
-    transform-origin: top;
     opacity: 0;
+    transform: rotateX(-100deg);
+    transform-origin: top;
   }
   100% {
-    -webkit-transform: rotateX(0deg);
-    transform: rotateX(0deg);
-    -webkit-transform-origin: top;
-    transform-origin: top;
     opacity: 1;
+    transform: rotateX(0deg);
+    transform-origin: top;
   }
 }
+
+@keyframes swing-in-top-fwd {
+  0% {
+    opacity: 0;
+    transform: rotateX(-100deg);
+    transform-origin: top;
+  }
+  100% {
+    opacity: 1;
+    transform: rotateX(0deg);
+    transform-origin: top;
+  }
+}
+
 // 离开
 .cardInOut-leave-active {
-  -webkit-animation: swing-out-top-bck 0.25s cubic-bezier(0.6, -0.28, 0.735, 0.045) both;
   animation: swing-out-top-bck 0.25s cubic-bezier(0.6, -0.28, 0.735, 0.045) both;
 }
-@-webkit-keyframes swing-out-top-bck {
-  0% {
-    -webkit-transform: rotateX(0deg);
-    transform: rotateX(0deg);
-    -webkit-transform-origin: top;
-    transform-origin: top;
-    opacity: 1;
-  }
-  100% {
-    -webkit-transform: rotateX(-100deg);
-    transform: rotateX(-100deg);
-    -webkit-transform-origin: top;
-    transform-origin: top;
-    opacity: 0;
-  }
-}
+
 @keyframes swing-out-top-bck {
   0% {
-    -webkit-transform: rotateX(0deg);
-    transform: rotateX(0deg);
-    -webkit-transform-origin: top;
-    transform-origin: top;
     opacity: 1;
+    transform: rotateX(0deg);
+    transform-origin: top;
   }
   100% {
-    -webkit-transform: rotateX(-100deg);
-    transform: rotateX(-100deg);
-    -webkit-transform-origin: top;
-    transform-origin: top;
     opacity: 0;
+    transform: rotateX(-100deg);
+    transform-origin: top;
+  }
+}
+
+@keyframes swing-out-top-bck {
+  0% {
+    opacity: 1;
+    transform: rotateX(0deg);
+    transform-origin: top;
+  }
+  100% {
+    opacity: 0;
+    transform: rotateX(-100deg);
+    transform-origin: top;
   }
 }

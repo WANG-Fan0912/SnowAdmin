@@ -1,11 +1,11 @@
 @keyframes fade-up {
   0% {
-    transform: translateY(60px);
     opacity: 0;
+    transform: translateY(60px);
   }
   100% {
-    transform: translateY(0);
     opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -17,6 +17,7 @@
     animation-name: fade-up; // 应用动画
     animation-duration: 0.5s; // 动画持续时间
     animation-fill-mode: forwards; // 保持结束后的动画状态
+    /* stylelint-disable-next-line scss/operator-no-unspaced */
     animation-delay: calc($i/10) + s; // 设置延迟-每次延迟0.1s
   }
 }

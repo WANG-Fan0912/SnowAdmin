@@ -1,6 +1,6 @@
 <template>
   <div class="snow-page">
-    <div class="snow-inner-page" style="padding: 100px">
+    <div class="snow-inner" style="padding: 100px">
       <div class="my-avatar">
         <a-avatar :size="100">
           <img alt="avatar" :src="myImage" />

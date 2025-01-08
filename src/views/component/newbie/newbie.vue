@@ -1,6 +1,6 @@
 <template>
   <div class="snow-page">
-    <div class="snow-inner-page">
+    <div class="snow-inner">
       <a-space direction="vertical" :size="10">
         <a-typography-text id="newbie-title-1"> SnowAdmin </a-typography-text>
         <a-typography-text id="newbie-title-2"> 清晰的项目架构：结构清晰，优雅易懂。 </a-typography-text>

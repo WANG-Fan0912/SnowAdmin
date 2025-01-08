@@ -59,10 +59,10 @@ $color-bg-5: var(--color-bg-5); // 下拉弹出框、Tooltip 背景颜色
 $color-bg-white: var(--color-bg-white); // 白色背景
 
 // 阴影
-$shadow-special: 0 0 1px rgba(0, 0, 0, 0.3); // 特殊阴影
-$shadow1-center: 0 -2px 5px rgba(0, 0, 0, 0.1); // 阴影样式1
-$shadow2-center: 0 0 10px rgba(0, 0, 0, 0.1); // 阴影样式2
-$shadow3-center: 0 0 20px rgba(0, 0, 0, 0.1); // 阴影样式3
+$shadow-special: 0 0 1px rgb(0 0 0 / 30%); // 特殊阴影
+$shadow1-center: 0 -2px 5px rgb(0 0 0 / 10%); // 阴影样式1
+$shadow2-center: 0 0 10px rgb(0 0 0 / 10%); // 阴影样式2
+$shadow3-center: 0 0 20px rgb(0 0 0 / 10%); // 阴影样式3
 
 // 常规大小为字体对应的首选项
 // 字体大小

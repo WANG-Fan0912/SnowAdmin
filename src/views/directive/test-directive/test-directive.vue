@@ -1,6 +1,6 @@
 <template>
   <div class="snow-page">
-    <div class="snow-inner-page">
+    <div class="snow-inner">
       测试指令
       <!-- <button v-custom="{ goodsId, event: getFun }" :rowData="goodsId">文字变色</button> -->
       <!-- <button @click="jump">文字变色</button> -->

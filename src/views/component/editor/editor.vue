@@ -1,6 +1,6 @@
 <template>
   <div class="snow-page">
-    <div class="snow-inner-page">
+    <div class="snow-inner">
       <a-space direction="vertical">
         <div>
           <div style="border: 1px solid #cccccc">

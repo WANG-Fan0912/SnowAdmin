@@ -2,23 +2,23 @@
 
 // 整体main窗口容器
 .snow-page {
+  box-sizing: border-box;
   flex: 1;
   padding: $padding;
-  box-sizing: border-box;
   overflow-y: auto;
   background: $color-fill-1;
 }
 
 // 内部main窗口容器
-.snow-inner-page {
+.snow-inner {
   padding: $padding;
   background: $color-bg-1;
 }
 
 // 没有边距的main窗口容器
 .snow-page-pure {
-  flex: 1;
   box-sizing: border-box;
+  flex: 1;
   overflow-y: auto;
   background: $color-fill-1;
 }

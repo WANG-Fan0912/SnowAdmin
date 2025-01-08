@@ -56,6 +56,7 @@ export default {
     ["newbie"]: "newbie",
     ["icon-selector"]: "icon-selector",
     ["user-center"]: "user-center",
+    ["fingerprintjs2"]: "fingerprintjs2",
     ["markdown"]: "Markdown",
     ["directive"]: "directive",
     ["anti-shake"]: "anti-shake",

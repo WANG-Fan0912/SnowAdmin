@@ -56,6 +56,7 @@ export default {
     ["newbie"]: "新手指引",
     ["icon-selector"]: "图标选择器",
     ["user-center"]: "用户中心",
+    ["fingerprintjs2"]: "浏览器指纹",
     ["markdown"]: "Markdown",
     ["directive"]: "自定义指令",
     ["anti-shake"]: "防抖",
