@@ -37,11 +37,11 @@ const router = createRouter({
  * 全局routeTree不能持久化缓存
  * 页面刷新会导致addRoute动态添加的路由失效，需要重新初始化路由
  */
-router.beforeEach(async (to, from, next) => {
+router.beforeEach(async (to, _, next) => {
   NProgress.start(); // 开启进度条
   const store = useUserInfoStore(pinia);
   const { token } = storeToRefs(store);
-  console.log("去", to, "来自", from);
+  // console.log("去", to, "来自", from);
   // next()内部加了path等于跳转指定路由会再次触发router.beforeEach，内部无参数等于放行，不会触发router.beforeEach
   if (to.path === "/login" && !token.value) {
     // 1、去登录页，无token，放行
