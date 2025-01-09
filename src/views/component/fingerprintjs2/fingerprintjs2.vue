@@ -15,15 +15,19 @@
 <script setup lang="ts">
 import Fingerprint2 from "fingerprintjs2";
 
-const browserInfo = ref<Array[Object]>([]);
+interface IComponents {
+  key: string;
+  value: any;
+}
+const browserInfo = ref<any>([]);
 const getBrowserInfo = () => {
   // 浏览器指纹
-  Fingerprint2.get(components => {
+  Fingerprint2.get((components: any) => {
     // 参数只有回调函数时，默认浏览器指纹依据所有配置信息进行生成
-    const values = components.map(component => component.value); // 配置的值的数组
+    const values = components.map((component: any) => component.value); // 配置的值的数组
     const murmur = Fingerprint2.x64hash128(values.join(""), 31).toUpperCase(); // 生成浏览器指纹
     let arr = [];
-    components.forEach(el => {
+    components.forEach((el: IComponents) => {
       switch (el.key) {
         case "userAgent":
           arr.push({ label: "用户代理(User-Agent)", value: el.value });
@@ -76,16 +80,16 @@ const getBrowserInfo = () => {
   });
 };
 
-const mobileFinger = ref<Array[Object]>([]);
+const mobileFinger = ref<any>([]);
 const getMobileFinger = () => {
-  Fingerprint2.get(components => {
+  Fingerprint2.get((components: any) => {
     // 由于Fingerprint2是通过浏览器设备信息生成的浏览器指纹，
     // 大多数用户不会修改手机配置，同型号产品可能会出现指纹相同，这里需要加上唯一标识
     components.push({
       key: "ip",
       value: "192.168.1.1" //通过接口获取的到ip
     });
-    const values = components.map(component => component.value); // 配置的值的数组
+    const values = components.map((component: any) => component.value); // 配置的值的数组
     const murmur = Fingerprint2.x64hash128(values.join(""), 31).toUpperCase(); // 生成浏览器指纹
     mobileFinger.value.push({ label: "移动设备指纹(需要唯一标识)", value: murmur });
   });

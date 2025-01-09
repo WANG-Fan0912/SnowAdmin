@@ -554,6 +554,23 @@ export default [
               icon: "icon-menu",
               sort: 8
             }
+          },
+          {
+            path: "/component/barcode",
+            name: "barcode",
+            component: "component/barcode/barcode",
+            meta: {
+              title: "barcode",
+              hide: false,
+              disable: false,
+              keepAlive: true,
+              affix: false,
+              link: "",
+              iframe: false,
+              roles: ["admin"],
+              icon: "icon-menu",
+              sort: 9
+            }
           }
         ]
       },

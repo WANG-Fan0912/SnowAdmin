@@ -19,3 +19,4 @@ declare module "@/directives/modules/custom";
 declare module "mockjs";
 declare module "@/store/modules/route-config";
 declare module "@arco-design/*";
+declare module "fingerprintjs2";

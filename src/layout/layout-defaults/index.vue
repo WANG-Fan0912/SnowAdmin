@@ -1,5 +1,5 @@
 <template>
-  <a-layout class="layout">
+  <a-layout class="layout" :has-sider="true">
     <Aside />
     <a-layout class="layout-right">
       <Header />
@@ -26,6 +26,7 @@ let { isFooter } = storeToRefs(themeStore);
 <style lang="scss" scoped>
 .layout {
   height: 100vh;
+  border: 1px solid red;
 }
 .layout-right {
   display: grid;

@@ -72,6 +72,7 @@ const onDelete = (key: string) => {
   routerStore.removeTabsList(key);
   routerStore.removeRouteName(key);
   if (tabsList.value.length == 0) return;
+  if (currentRoute.value.name != key) return;
   router.push(tabsList.value.at(-1).path);
 };
 

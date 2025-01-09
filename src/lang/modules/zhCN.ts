@@ -57,6 +57,7 @@ export default {
     ["icon-selector"]: "图标选择器",
     ["user-center"]: "用户中心",
     ["fingerprintjs2"]: "浏览器指纹",
+    ["barcode"]: "条形码",
     ["markdown"]: "Markdown",
     ["directive"]: "自定义指令",
     ["anti-shake"]: "防抖",

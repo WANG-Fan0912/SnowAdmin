@@ -1,5 +1,5 @@
 <template>
-  <a-layout class="layout">
+  <a-layout class="layout" :has-sider="true">
     <div :class="asideDark ? 'aside dark' : 'aside'">
       <Logo />
       <a-layout-sider :collapsed="collapsed" breakpoint="xl" class="layout_side" :width="220">
