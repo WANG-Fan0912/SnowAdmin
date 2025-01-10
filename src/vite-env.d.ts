@@ -4,7 +4,6 @@ declare module "*.vue" {
   const component: ReturnType<typeof defineComponent>;
   export default component;
 }
-
 declare module "vue-i18n";
 declare module "@arco-design/color";
 declare module "sortablejs";
@@ -18,5 +17,4 @@ declare module "@wangeditor/editor-for-vue";
 declare module "@/directives/modules/custom";
 declare module "mockjs";
 declare module "@/store/modules/route-config";
-declare module "@arco-design/*";
 declare module "fingerprintjs2";

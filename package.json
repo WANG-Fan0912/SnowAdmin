@@ -61,7 +61,7 @@
     "xgplayer": "^3.0.18"
   },
   "devDependencies": {
-    "@arco-design/web-vue": "^2.55.0",
+    "@arco-design/web-vue": "^2.56.3",
     "@arco-plugins/vite-vue": "^1.4.5",
     "@commitlint/cli": "^19.2.1",
     "@commitlint/config-conventional": "^19.1.0",

@@ -24,7 +24,7 @@
 
 <script setup lang="ts">
 const form = reactive({
-  time: null,
+  time: "",
   timeRange: [],
   date: []
 });
