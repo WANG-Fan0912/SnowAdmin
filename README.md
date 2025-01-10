@@ -2,17 +2,17 @@
 
 <div>
 	<p>
-    <a href="https://gitee.com/wang_fan_w/SnowAdmin" target="_blank">
+                <a href="https://gitee.com/wang_fan_w/SnowAdmin" target="_blank">
 		  <img src="https://img.shields.io/badge/License-MIT-%2343aefc" alt="License">
 		</a>
 		<a href="https://gitee.com/wang_fan_w/SnowAdmin" target="_blank">
-			<img src="https://img.shields.io/badge/vue_.js-vue3_.x-%2300b42a" alt="Vue">
+		  <img src="https://img.shields.io/badge/vue_.js-vue3_.x-%2300b42a" alt="Vue">
 		</a>
-    <a href="https://gitee.com/wang_fan_w/SnowAdmin" target="_blank">
+                <a href="https://gitee.com/wang_fan_w/SnowAdmin" target="_blank">
 		  <img src="https://img.shields.io/badge/Vite-5x-%2300b42a" alt="Vite">
 		</a>
-    <a href="https://gitee.com/wang_fan_w/SnowAdmin" target="_blank">
-		  <img src="https://img.shields.io/badge/Arco_Design-2.55.0-%2300b42a" alt="Arco-Design">
+                <a href="https://gitee.com/wang_fan_w/SnowAdmin" target="_blank">
+		  <img src="https://img.shields.io/badge/Arco_Design-2.56.3-%2310b236" alt="Arco-Design">
 		</a>
 	</p>
 </div>
