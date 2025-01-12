@@ -112,7 +112,6 @@ import { useI18n } from "vue-i18n";
 import { Modal } from "@arco-design/web-vue";
 import { useRouter } from "vue-router";
 import { storeToRefs } from "pinia";
-import { useRoutesConfigStore } from "@/store/modules/route-config";
 import { useUserInfoStore } from "@/store/modules/user-info";
 import { useThemeConfig } from "@/store/modules/theme-config";
 import { useThemeMethods } from "@/hooks/useThemeMethods";
@@ -194,9 +193,6 @@ const logOut = () => {
         // 用户退出
         const store = useUserInfoStore();
         await store.logOut();
-        // 重置路由树
-        const route = useRoutesConfigStore();
-        await route.resetRoute();
         router.replace("/login");
         return true;
       } catch {

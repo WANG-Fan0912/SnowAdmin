@@ -13,7 +13,7 @@ interface ThemeConfig {
   watermark: string;
   watermarkStyle: any;
   watermarkRotate: number;
-  watermarkGap: Array<number>;
+  watermarkGap: [number, number];
   layoutType: string;
   grayMode: Boolean;
   colorWeakMode: Boolean;

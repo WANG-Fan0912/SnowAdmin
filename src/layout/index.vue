@@ -9,7 +9,6 @@
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
 import { useThemeConfig } from "@/store/modules/theme-config";
-import { loadingPage } from "@/utils/loading-page";
 
 const themeStore = useThemeConfig();
 const { layoutType } = storeToRefs(themeStore);
@@ -20,11 +19,6 @@ const layouts: any = {
   layoutHead: defineAsyncComponent(() => import("@/layout/layout-head/index.vue")),
   layoutMixing: defineAsyncComponent(() => import("@/layout/layout-mixing/index.vue"))
 };
-
-onMounted(() => {
-  // 页面渲染完毕，结束loading
-  loadingPage.done(200);
-});
 </script>
 
 <style lang="scss" scoped></style>

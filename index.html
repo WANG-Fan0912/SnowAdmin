@@ -4,10 +4,15 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/src/assets/logo/snow.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/loading.css" type="text/css" />
     <title><%= title %></title>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <div class="init-page">
+        <div class="snow-loader"></div>
+      </div>
+    </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
