@@ -54,11 +54,11 @@ importers:
         specifier: ^0.2.0
         version: 0.2.0
       pinia:
-        specifier: ^2.1.7
-        version: 2.1.7(typescript@5.4.3)(vue@3.4.21(typescript@5.4.3))
+        specifier: ^2.3.0
+        version: 2.3.0(typescript@5.4.3)(vue@3.4.21(typescript@5.4.3))
       pinia-plugin-persistedstate:
         specifier: ^3.2.1
-        version: 3.2.1(pinia@2.1.7(typescript@5.4.3)(vue@3.4.21(typescript@5.4.3)))
+        version: 3.2.1(pinia@2.3.0(typescript@5.4.3)(vue@3.4.21(typescript@5.4.3)))
       print-js:
         specifier: ^1.6.0
         version: 1.6.0
@@ -1328,6 +1328,9 @@ packages:
 
   '@vue/devtools-api@6.6.1':
     resolution: {integrity: sha512-LgPscpE3Vs0x96PzSSB4IGVSZXZBZHpfxs+ZA1d+VEPwHdOXowy/Y2CsvCAIFrf+ssVU1pD1jidj505EpUnfbA==}
+
+  '@vue/devtools-api@6.6.4':
+    resolution: {integrity: sha512-sGhTPMuXqZ1rVOk32RylztWkfXTRhuS7vgAKv0zjqk8gbsHkJ7xfFf+jbySxt7tWObEJwyKaHMikV/WGDiQm8g==}
 
   '@vue/language-core@2.0.7':
     resolution: {integrity: sha512-Vh1yZX3XmYjn9yYLkjU8DN6L0ceBtEcapqiyclHne8guG84IaTzqtvizZB1Yfxm3h6m7EIvjerLO5fvOZO6IIQ==}
@@ -3168,15 +3171,12 @@ packages:
     peerDependencies:
       pinia: ^2.0.0
 
-  pinia@2.1.7:
-    resolution: {integrity: sha512-+C2AHFtcFqjPih0zpYuvof37SFxMQ7OEG2zV9jRI12i9BOy3YQVAHwdKtyyc8pDcDyIc33WCIsZaCFWU7WWxGQ==}
+  pinia@2.3.0:
+    resolution: {integrity: sha512-ohZj3jla0LL0OH5PlLTDMzqKiVw2XARmC1XYLdLWIPBMdhDW/123ZWr4zVAhtJm+aoSkFa13pYXskAvAscIkhQ==}
     peerDependencies:
-      '@vue/composition-api': ^1.4.0
       typescript: '>=4.4.4'
-      vue: ^2.6.14 || ^3.3.0
+      vue: ^2.7.0 || ^3.5.11
     peerDependenciesMeta:
-      '@vue/composition-api':
-        optional: true
       typescript:
         optional: true
 
@@ -4125,17 +4125,6 @@ packages:
 
   vue-demi@0.14.10:
     resolution: {integrity: sha512-nMZBOwuzabUO0nLgIcc6rycZEebF6eeUfaiQx9+WSk8e29IbLvPU9feI6tqW4kTo3hvoYAJkMh8n8D0fuISphg==}
-    engines: {node: '>=12'}
-    hasBin: true
-    peerDependencies:
-      '@vue/composition-api': ^1.0.0-rc.1
-      vue: ^3.0.0-0 || ^2.6.0
-    peerDependenciesMeta:
-      '@vue/composition-api':
-        optional: true
-
-  vue-demi@0.14.7:
-    resolution: {integrity: sha512-EOG8KXDQNwkJILkx/gPcoL/7vH+hORoBaKgGe+6W7VFMvCYJfmF2dGbvgDroVnI8LU7/kTu8mbjRZGBU1z9NTA==}
     engines: {node: '>=12'}
     hasBin: true
     peerDependencies:
@@ -5544,6 +5533,8 @@ snapshots:
       '@vue/shared': 3.4.21
 
   '@vue/devtools-api@6.6.1': {}
+
+  '@vue/devtools-api@6.6.4': {}
 
   '@vue/language-core@2.0.7(typescript@5.4.3)':
     dependencies:
@@ -7438,17 +7429,19 @@ snapshots:
 
   pidtree@0.6.0: {}
 
-  pinia-plugin-persistedstate@3.2.1(pinia@2.1.7(typescript@5.4.3)(vue@3.4.21(typescript@5.4.3))):
+  pinia-plugin-persistedstate@3.2.1(pinia@2.3.0(typescript@5.4.3)(vue@3.4.21(typescript@5.4.3))):
     dependencies:
-      pinia: 2.1.7(typescript@5.4.3)(vue@3.4.21(typescript@5.4.3))
+      pinia: 2.3.0(typescript@5.4.3)(vue@3.4.21(typescript@5.4.3))
 
-  pinia@2.1.7(typescript@5.4.3)(vue@3.4.21(typescript@5.4.3)):
+  pinia@2.3.0(typescript@5.4.3)(vue@3.4.21(typescript@5.4.3)):
     dependencies:
-      '@vue/devtools-api': 6.6.1
+      '@vue/devtools-api': 6.6.4
       vue: 3.4.21(typescript@5.4.3)
-      vue-demi: 0.14.7(vue@3.4.21(typescript@5.4.3))
+      vue-demi: 0.14.10(vue@3.4.21(typescript@5.4.3))
     optionalDependencies:
       typescript: 5.4.3
+    transitivePeerDependencies:
+      - '@vue/composition-api'
 
   pkg-types@1.0.3:
     dependencies:
@@ -8528,10 +8521,6 @@ snapshots:
       vue: 3.4.21(typescript@5.4.3)
 
   vue-demi@0.14.10(vue@3.4.21(typescript@5.4.3)):
-    dependencies:
-      vue: 3.4.21(typescript@5.4.3)
-
-  vue-demi@0.14.7(vue@3.4.21(typescript@5.4.3)):
     dependencies:
       vue: 3.4.21(typescript@5.4.3)
 

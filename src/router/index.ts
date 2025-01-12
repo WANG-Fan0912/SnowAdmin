@@ -36,11 +36,11 @@ const router = createRouter({
  * 全局routeTree不能持久化缓存
  * 页面刷新会导致addRoute动态添加的路由失效，需要重新初始化路由
  */
-router.beforeEach(async (to, from, next) => {
+router.beforeEach(async (to: any, _: any, next: any) => {
   NProgress.start(); // 开启进度条
   const store = useUserInfoStore(pinia);
   const { token } = storeToRefs(store);
-  console.log("去", to, "来自", from);
+  // console.log("去", to, "来自", from);
   // next()内部加了path等于跳转指定路由会再次触发router.beforeEach，内部无参数等于放行，不会触发router.beforeEach
   if (to.path === "/login" && !token.value) {
     // 1、去登录页，无token，放行
@@ -58,24 +58,16 @@ router.beforeEach(async (to, from, next) => {
     const routeStore = useRoutesConfigStore(pinia);
     const { routeTree } = storeToRefs(routeStore);
 
-    // 从登录页跳转过来，需要重置路由(登录后触发)
-    if (from.path === "/login") {
-      await routeStore.initSetRouter();
-    }
-
-    // 获取外链路由的处理函数
-    // 所有的路由正常放行，只不过额外判断是否是外链，如果是，则打开新窗口跳转外链
-    // 外链的页面依旧正常打开，只不过不会参与缓存与tabs显示，符合路由跳转的直觉
-    const { openExternalLinks } = useRoutingMethod();
-
     // 如果缓存的路由是0，则说明未动态添加路由，先添加再跳转(页面刷新时触发)
     // 解决刷新页面404的问题
     if (routeTree.value.length == 0) {
       await routeStore.initSetRouter();
-      // 处理外链跳转
-      openExternalLinks(to);
       next({ path: to.path, query: to.query });
     } else {
+      // 获取外链路由的处理函数
+      // 所有的路由正常放行，只不过额外判断是否是外链，如果是，则打开新窗口跳转外链
+      // 外链的页面依旧正常打开，只不过不会参与缓存与tabs显示，符合路由跳转的直觉
+      const { openExternalLinks } = useRoutingMethod();
       // 处理外链跳转
       openExternalLinks(to);
       // 动态路由添加过走这里，直接放行

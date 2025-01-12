@@ -1,5 +1,4 @@
 import type { MockMethod } from "vite-plugin-mock";
-import { RouteRecordRaw } from "vue-router";
 import { deepClone, filterByRole, treeSort, resultSuccess } from "../_utils";
 import systemMenu from "../_data/system_menu";
 
@@ -30,7 +29,7 @@ export default [
       let token = headers.authorization;
       // 这里模拟两个角色，admin、common
       let userRoles = token === "Admin-Token" ? ["admin"] : ["common"];
-      const originTree: RouteRecordRaw[] = deepClone(systemMenu);
+      const originTree: any = deepClone(systemMenu);
       originTree[0].children = treeSort(filterByRole(originTree[0].children, userRoles));
       return resultSuccess(originTree);
     }

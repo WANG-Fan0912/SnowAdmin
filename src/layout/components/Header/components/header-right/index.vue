@@ -153,8 +153,8 @@ const onNightMode = () => {
 };
 
 // 语言
-const onLange = (e: string) => {
-  if (e === "Chinese" || e === "中文") {
+const onLange = (value: string) => {
+  if (value === "Chinese" || value === "中文") {
     themeStore.setLanguage("zh-CN");
   } else {
     themeStore.setLanguage("en-US");

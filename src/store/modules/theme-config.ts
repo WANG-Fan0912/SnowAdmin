@@ -1,89 +1,110 @@
 import { defineStore } from "pinia";
 import persistedstateConfig from "@/store/config/index";
-
-interface ThemeConfig {
-  collapsed: Boolean;
-  refreshPage: Boolean;
-  language: string;
-  darkMode: Boolean;
-  isAccordion: Boolean;
-  isBreadcrumb: Boolean;
-  isTabs: Boolean;
-  isFooter: Boolean;
-  watermark: string;
-  watermarkStyle: any;
-  watermarkRotate: number;
-  watermarkGap: [number, number];
-  layoutType: string;
-  grayMode: Boolean;
-  colorWeakMode: Boolean;
-  asideDark: Boolean;
-  transitionPage: string;
-  themeColor: string;
-  presetColors: Array<string>;
-}
-
 /**
  * 全局配置
  * @methods setCollapsed 设置菜单折叠
  * @methods setRefreshPage 刷新页面
  * @methods setLanguage 设置语言
  */
-export const useThemeConfig = defineStore("theme-config", {
-  state: (): ThemeConfig => ({
-    collapsed: false, // 是否折叠菜单
-    refreshPage: true, // 刷新页面
-    language: "zh-CN", // 系统语言
-    darkMode: false, // 黑暗模式
-    isAccordion: true, // 菜单手风琴
-    isBreadcrumb: true, // 面包屑渲染
-    isTabs: true, // 标签栏渲染
-    isFooter: true, // 页脚渲染
-    watermark: "", // 水印
-    watermarkStyle: {
-      fontSize: 12,
-      color: "rgba(0, 0, 0, 0.15)"
-    }, // 水印风格
-    watermarkRotate: 330, // 水印角度
-    watermarkGap: [100, 100], // 水印间隙
-    layoutType: "layoutDefaults", // 布局模式：layoutDefaults、layoutHead、layoutMixing
-    colorWeakMode: false, // 色弱模式
-    grayMode: false, // 灰色模式
-    asideDark: false, // 侧边栏深色
-    transitionPage: "fadeInOut", // 页面过渡方式
-    themeColor: "#165DFF", // 主题色
-    presetColors: [
-      "#165DFF",
-      "#F53F3F",
-      "#F77234",
-      "#FF7D00",
-      "#F7BA1E",
-      "#FADC19",
-      "#9FDB1D",
-      "#00B42A",
-      "#3491FA",
-      "#c34d9c",
-      "#722ED1",
-      "#E6A23C",
-      "#F56C6C",
-      "#409EFF",
-      "#42b883",
-      "#b1d391"
-    ]
-  }),
-  actions: {
-    // 折叠菜单
-    setCollapsed(data: boolean) {
-      this.collapsed = data;
-    },
-    // 刷新页面
-    setRefreshPage(data: Boolean) {
-      this.refreshPage = data;
-    },
-    // 设置语言
-    setLanguage(data: string) {
-      this.language = data;
-    }
-  },
+const themeConfig = () => {
+  // 是否折叠菜单
+  const collapsed = ref<boolean>(false);
+  // 刷新页面
+  const refreshPage = ref<boolean>(true);
+  // 系统语言
+  const language = ref<string>("zh-CN");
+  // 黑暗模式
+  const darkMode = ref<boolean>(false);
+  // 菜单手风琴
+  const isAccordion = ref<boolean>(true);
+  // 面包屑渲染
+  const isBreadcrumb = ref<boolean>(true);
+  // 标签栏渲染
+  const isTabs = ref<boolean>(true);
+  // 页脚渲染
+  const isFooter = ref<boolean>(true);
+  // 水印
+  const watermark = ref<string>("");
+  // 水印风格
+  const watermarkStyle = ref<{ fontSize: number; color: string }>({
+    fontSize: 12,
+    color: "rgba(0, 0, 0, 0.15)"
+  });
+  // 水印角度
+  const watermarkRotate = ref<number>(330);
+  // 水印间隙
+  const watermarkGap = ref<[number, number]>([100, 100]);
+  // 布局模式：layoutDefaults、layoutHead、layoutMixing
+  const layoutType = ref<string>("layoutDefaults");
+  // 色弱模式
+  const colorWeakMode = ref<boolean>(false);
+  // 灰色模式
+  const grayMode = ref<boolean>(false);
+  // 侧边栏深色
+  const asideDark = ref<boolean>(false);
+  // 页面过渡方式
+  const transitionPage = ref<string>("fadeInOut");
+  // 主题色
+  const themeColor = ref<string>("#165DFF");
+  // 调色盘
+  const presetColors = ref<string[]>([
+    "#165DFF",
+    "#F53F3F",
+    "#F77234",
+    "#FF7D00",
+    "#F7BA1E",
+    "#FADC19",
+    "#9FDB1D",
+    "#00B42A",
+    "#3491FA",
+    "#c34d9c",
+    "#722ED1",
+    "#E6A23C",
+    "#F56C6C",
+    "#409EFF",
+    "#42b883",
+    "#b1d391"
+  ]);
+
+  // 折叠菜单
+  function setCollapsed(data: boolean) {
+    collapsed.value = data;
+  }
+  // 刷新页面
+  function setRefreshPage(data: boolean) {
+    refreshPage.value = data;
+  }
+  // 设置语言
+  function setLanguage(data: string) {
+    language.value = data;
+  }
+
+  return {
+    collapsed,
+    refreshPage,
+    language,
+    darkMode,
+    isAccordion,
+    isBreadcrumb,
+    isTabs,
+    isFooter,
+    watermark,
+    watermarkStyle,
+    watermarkRotate,
+    watermarkGap,
+    layoutType,
+    colorWeakMode,
+    grayMode,
+    asideDark,
+    transitionPage,
+    themeColor,
+    presetColors,
+    setCollapsed,
+    setRefreshPage,
+    setLanguage
+  };
+};
+
+export const useThemeConfig = defineStore("theme-config", themeConfig, {
   persist: persistedstateConfig("theme-config")
 });

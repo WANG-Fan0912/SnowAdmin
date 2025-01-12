@@ -1,5 +1,5 @@
 import vue from "@vitejs/plugin-vue";
-import path from "path";
+import { resolve } from "path";
 import { PluginOption } from "vite";
 import { vitePluginForArco } from "@arco-plugins/vite-vue";
 import { createHtmlPlugin } from "vite-plugin-html";
@@ -8,8 +8,6 @@ import AutoImport from "unplugin-auto-import/vite";
 import { ArcoResolver } from "unplugin-vue-components/resolvers";
 import Components from "unplugin-vue-components/vite";
 import { viteMockServe } from "vite-plugin-mock";
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
 import eslintPlugin from "vite-plugin-eslint";
 /**
  * 创建 vite 插件
@@ -34,7 +32,7 @@ export const createVitePlugins = (viteEnv: ViteEnv): (PluginOption | PluginOptio
     }),
     createSvgIconsPlugin({
       // 配置src下存放svg的路径，这里表示在src/assets/svgs文件夹下
-      iconDirs: [path.resolve(process.cwd(), "src/assets/svgs")],
+      iconDirs: [resolve(process.cwd(), "src/assets/svgs")],
       symbolId: "icon-[dir]-[name]"
     }),
     AutoImport({

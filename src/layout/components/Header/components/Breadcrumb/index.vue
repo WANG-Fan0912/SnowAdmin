@@ -4,9 +4,7 @@
       <a-breadcrumb>
         <a-breadcrumb-item v-for="(item, index) in breadcrumb" :key="item.path" :class="transition">
           <span v-if="index === breadcrumb.length - 1" class="main_button">{{ $t(`menu.${item?.meta?.title || ""}`) }}</span>
-          <span v-else class="route_button" @click="onBreadcrumb(item as RouteLocationMatched)">{{
-            $t(`menu.${item?.meta?.title || ""}`)
-          }}</span>
+          <span v-else class="route_button" @click="onBreadcrumb(item)">{{ $t(`menu.${item?.meta?.title || ""}`) }}</span>
         </a-breadcrumb-item>
       </a-breadcrumb>
     </a-space>
@@ -14,7 +12,6 @@
 </template>
 
 <script setup lang="ts">
-import { RouteLocationMatched } from "vue-router";
 import { storeToRefs } from "pinia";
 import { useThemeConfig } from "@/store/modules/theme-config";
 
@@ -33,7 +30,7 @@ const breadcrumb = computed(() => {
   if (route.path === route.matched[0].redirect) {
     return [route];
   }
-  return route.matched.map((item: RouteLocationMatched) => {
+  return route.matched.map((item: any) => {
     if (item.name == "/") {
       return item.children[0];
     } else {
@@ -48,7 +45,7 @@ const transition = computed(() => {
 });
 
 // 面包屑跳转
-const onBreadcrumb = (route: RouteLocationMatched) => {
+const onBreadcrumb = (route: any) => {
   let path = route.redirect ? route.redirect : route.path;
   router.replace((path as string) || "");
 };

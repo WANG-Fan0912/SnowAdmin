@@ -47,7 +47,7 @@
     "fingerprintjs2": "^2.1.4",
     "jsbarcode": "^3.11.6",
     "nprogress": "^0.2.0",
-    "pinia": "^2.1.7",
+    "pinia": "^2.3.0",
     "pinia-plugin-persistedstate": "^3.2.1",
     "print-js": "^1.6.0",
     "sortablejs": "^1.15.2",

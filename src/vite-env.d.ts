@@ -18,3 +18,7 @@ declare module "@/directives/modules/custom";
 declare module "mockjs";
 declare module "@/store/modules/route-config";
 declare module "fingerprintjs2";
+declare module "@arco-design/web-vue";
+declare module "vue-router";
+declare module "pinia";
+declare module "postcss-preset-env";

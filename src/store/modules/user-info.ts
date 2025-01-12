@@ -6,25 +6,29 @@ import persistedstateConfig from "@/store/config/index";
  * @methods setToken 设置token
  * @methods logOut 退出登录
  */
-export const useUserInfoStore = defineStore("user-info", {
-  state: (): any => ({
-    account: {
-      username: "",
-      roles: []
-    }, // 账号信息
-    token: "" // token
-  }),
-  actions: {
-    async setAccount(data: Array<string>) {
-      this.account = data;
-    },
-    async setToken(data: string) {
-      this.token = data;
-    },
-    async logOut() {
-      this.account = {};
-      this.token = "";
-    }
-  },
-  persist: persistedstateConfig("user-info")
+const userInfoStore = () => {
+  // 账号信息
+  const account = ref<any>({
+    username: "",
+    roles: []
+  });
+  // token
+  const token = ref<string>("");
+
+  async function setAccount(data: Array<string>) {
+    account.value = data;
+  }
+  async function setToken(data: string) {
+    token.value = data;
+  }
+  async function logOut() {
+    account.value = {};
+    token.value = "";
+  }
+
+  return { account, token, setAccount, setToken, logOut };
+};
+
+export const useUserInfoStore = defineStore("user-info", userInfoStore, {
+  persist: persistedstateConfig("user-info", ["account", "token"])
 });
