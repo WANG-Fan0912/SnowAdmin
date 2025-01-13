@@ -1,13 +1,22 @@
 <template>
   <div class="snow-page">
     <div class="snow-inner">
-      <div class="code-box">
-        <a-card v-for="item in codeList" :key="item.id" :title="item.docs" :style="{ width: '400px' }" hoverable>
-          <div class="card-content">
-            <draw-barcode :text="item.text" :options="item.options" />
+      <a-row :gutter="24">
+        <a-col :span="15">
+          <div class="code-box">
+            <a-card v-for="item in codeList" :key="item.id" :title="item.docs" :style="{ width: '400px' }" hoverable>
+              <div class="card-content">
+                <draw-barcode :tag="item.tag" :text="item.text" :options="item.options" />
+              </div>
+            </a-card>
           </div>
-        </a-card>
-      </div>
+        </a-col>
+        <a-col :span="9">
+          <a-scrollbar style="height: 625px; overflow: auto">
+            <CodeView :code-json="codeJson" style="width: 100%" />
+          </a-scrollbar>
+        </a-col>
+      </a-row>
     </div>
   </div>
 </template>
@@ -16,6 +25,7 @@
 const codeList = ref([
   {
     id: 1,
+    tag: "svg",
     text: "SnowAdmin",
     docs: "CODE128-默认条形码",
     options: {
@@ -25,6 +35,7 @@ const codeList = ref([
   },
   {
     id: 2,
+    tag: "svg",
     text: "SnowAdmin",
     docs: "自定义高度和颜色",
     options: {
@@ -36,6 +47,7 @@ const codeList = ref([
   },
   {
     id: 3,
+    tag: "svg",
     text: "SnowAdmin",
     docs: "设置字体和倾斜",
     options: {
@@ -47,6 +59,7 @@ const codeList = ref([
   },
   {
     id: 4,
+    tag: "svg",
     text: "SnowAdmin",
     docs: "CODE39-商品条形码",
     options: {
@@ -56,6 +69,7 @@ const codeList = ref([
   },
   {
     id: 5,
+    tag: "svg",
     text: "6971318501227",
     docs: "EAN13-商品条形码",
     options: {
@@ -65,6 +79,7 @@ const codeList = ref([
   },
   {
     id: 6,
+    tag: "svg",
     text: "123456789999",
     docs: "UPC-商品条形码",
     options: {
@@ -73,6 +88,8 @@ const codeList = ref([
     }
   }
 ]);
+
+const codeJson = computed(() => JSON.stringify(codeList.value, null, "\t"));
 </script>
 
 <style lang="scss" scoped>
