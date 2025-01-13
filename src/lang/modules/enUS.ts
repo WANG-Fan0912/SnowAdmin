@@ -58,6 +58,7 @@ export default {
     ["user-center"]: "user-center",
     ["fingerprintjs2"]: "fingerprintjs2",
     ["barcode"]: "barcode",
+    ["qrcode"]: "qrcode",
     ["markdown"]: "Markdown",
     ["directive"]: "directive",
     ["anti-shake"]: "anti-shake",

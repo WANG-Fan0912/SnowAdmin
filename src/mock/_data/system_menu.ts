@@ -571,6 +571,23 @@ export default [
               icon: "icon-menu",
               sort: 9
             }
+          },
+          {
+            path: "/component/qrcode",
+            name: "qrcode",
+            component: "component/qrcode/qrcode",
+            meta: {
+              title: "qrcode",
+              hide: false,
+              disable: false,
+              keepAlive: true,
+              affix: false,
+              link: "",
+              iframe: false,
+              roles: ["admin"],
+              icon: "icon-menu",
+              sort: 10
+            }
           }
         ]
       },
