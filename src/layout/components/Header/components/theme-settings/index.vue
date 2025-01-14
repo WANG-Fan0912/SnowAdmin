@@ -42,7 +42,7 @@
         </div>
         <div class="flex-row">
           <div>页面过渡</div>
-          <a-select v-model="transitionPage" :style="{ width: '100px' }" placeholder="请选择">
+          <a-select v-model="transitionPage" :style="{ width: '120px' }" placeholder="请选择">
             <a-option v-for="item in transitions" :key="item.value" :value="item.value" :label="item.label" />
           </a-select>
         </div>
@@ -82,7 +82,8 @@ const layoutList = reactive({
 
 const transitions = ref([
   { value: "fadeInOut", label: "轻过渡" },
-  { value: "cardInOut", label: "卡片" }
+  { value: "cardInOut", label: "卡片" },
+  { value: "fadeOut", label: "消退" }
 ]);
 
 interface IThemeColor {

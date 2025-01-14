@@ -41,7 +41,13 @@ const breadcrumb = computed(() => {
 
 // 页面过渡
 const transition = computed(() => {
-  return transitionPage.value === "fadeInOut" ? "fadeInOut-enter-active" : "cardInOut-enter-active";
+  if (transitionPage.value === "fadeInOut") {
+    return "fadeInOut-enter-active";
+  } else if (transitionPage.value === "cardInOut") {
+    return "cardInOut-enter-active";
+  } else {
+    return "fadeOut-enter-active";
+  }
 });
 
 // 面包屑跳转
