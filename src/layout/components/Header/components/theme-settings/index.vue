@@ -55,11 +55,12 @@
 import { storeToRefs } from "pinia";
 import { useThemeConfig } from "@/store/modules/theme-config";
 import { useThemeMethods } from "@/hooks/useThemeMethods";
+import { useDevicesSize } from "@/hooks/useDevicesSize";
 import { ColorPicker } from "vue-color-kit";
 import "vue-color-kit/dist/vue-color-kit.css";
 
 const themeStore = useThemeConfig();
-const { layoutType, colorWeakMode, grayMode, darkMode, asideDark, transitionPage, themeColor, presetColors } =
+const { layoutType, collapsed, colorWeakMode, grayMode, darkMode, asideDark, transitionPage, themeColor, presetColors } =
   storeToRefs(themeStore);
 
 const layoutList = reactive({
@@ -121,6 +122,8 @@ const onGray = () => {
 // 布局变化
 const layouetChange = (type: string) => {
   layoutType.value = type;
+  const { isPc } = useDevicesSize();
+  collapsed.value = isPc.value ? false : true;
 };
 
 const props = defineProps({

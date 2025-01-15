@@ -8,12 +8,12 @@
     </div>
     <a-layout class="layout-right">
       <a-layout-header class="header">
-        <div class="header-left" v-if="!isPc">
+        <div class="header-left">
           <ButtonCollapsed />
-          <Breadcrumb />
+          <Breadcrumb v-if="!isPc" />
         </div>
 
-        <div class="layout-head-menu" v-else>
+        <div class="layout-head-menu" v-if="isPc">
           <a-menu
             v-if="drawing"
             mode="horizontal"

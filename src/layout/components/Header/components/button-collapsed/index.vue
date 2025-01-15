@@ -19,10 +19,8 @@ import { useDevicesSize } from "@/hooks/useDevicesSize";
 const themeStore = useThemeConfig();
 const { collapsed } = storeToRefs(themeStore);
 const { isPc } = useDevicesSize();
-
-if (!isPc.value) {
-  collapsed.value = true; // 进入移动端模式先折叠菜单
-}
+// 刷新时，PC窗口展开菜单，移动端收起菜单
+collapsed.value = isPc.value ? false : true;
 
 // 折叠
 const onCollapsed = () => {
@@ -31,15 +29,7 @@ const onCollapsed = () => {
 
 // 监听屏幕尺寸变化，PC端自动展开菜单，移动端自动收起
 watch(isPc, (newV: Boolean) => {
-  if (newV) {
-    collapsed.value = false;
-  } else {
-    collapsed.value = true;
-  }
-});
-
-onUnmounted(() => {
-  collapsed.value = false; // 进入PC端打开折叠
+  collapsed.value = newV ? false : true;
 });
 </script>
 
