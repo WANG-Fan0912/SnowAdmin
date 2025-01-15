@@ -1,6 +1,6 @@
 <template>
-  <a-layout class="layout" :has-sider="true">
-    <div :class="asideDark ? 'aside dark' : 'aside'">
+  <a-layout class="layout">
+    <div :class="asideDark ? 'aside dark' : 'aside'" v-if="isPc">
       <Logo />
       <a-layout-sider :collapsed="collapsed" breakpoint="xl" class="layout_side" :width="220">
         <a-scrollbar style="height: 100%; overflow: auto" outer-class="scrollbar"><Menu :route-tree="routeList" /></a-scrollbar>
@@ -8,15 +8,12 @@
     </div>
     <a-layout class="layout-right">
       <a-layout-header class="header">
-        <div class="menu_fold">
-          <a-button size="mini" type="text" class="menu_fold_icon" @click="onCollapsed">
-            <template #icon>
-              <icon-menu-fold :size="18" v-if="!collapsed" />
-              <icon-menu-unfold :size="18" v-if="collapsed" />
-            </template>
-          </a-button>
+        <div class="header-left" v-if="!isPc">
+          <ButtonCollapsed />
+          <Breadcrumb />
         </div>
-        <div class="layout-head-menu">
+
+        <div class="layout-head-menu" v-else>
           <a-menu
             v-if="drawing"
             mode="horizontal"
@@ -49,11 +46,14 @@ import Footer from "@/layout/components/Footer/index.vue";
 import Menu from "@/layout/components/Menu/index.vue";
 import HeaderRight from "@/layout/components/Header/components/header-right/index.vue";
 import MenuItemIcon from "@/layout/components/Menu/menu-item-icon.vue";
+import ButtonCollapsed from "@/layout/components/Header/components/button-collapsed/index.vue";
+import Breadcrumb from "@/layout/components/Header/components/Breadcrumb/index.vue";
 import { useRoutesConfigStore } from "@/store/modules/route-config";
 import { useRoutingMethod } from "@/hooks/useRoutingMethod";
 import { storeToRefs } from "pinia";
 import { useThemeConfig } from "@/store/modules/theme-config";
 import { useMenuMethod } from "@/hooks/useMenuMethod";
+import { useDevicesSize } from "@/hooks/useDevicesSize";
 defineOptions({ name: "LayoutMixing" });
 const route = useRoute();
 const router = useRouter();
@@ -62,17 +62,13 @@ const themeStore = useThemeConfig();
 const { isFooter, collapsed, asideDark, language } = storeToRefs(themeStore);
 const { routeTree } = storeToRefs(routerStore);
 const { aMenuShow } = useMenuMethod();
+const { isPc } = useDevicesSize();
 
 const drawing = ref<boolean>(true);
 watch(language, () => {
   drawing.value = false;
   nextTick(() => (drawing.value = true));
 });
-
-// 折叠
-const onCollapsed = () => {
-  themeStore.setCollapsed(!collapsed.value);
-};
 
 // 由于刷新后，路由信息丢失，所以需要重新获取
 // 混合布局的横向菜单为顶层路由下的一级菜单
@@ -176,6 +172,7 @@ const getAsideMenu = (key: string) => {
   grid-template-rows: auto 1fr auto;
   height: 100%;
   .header {
+    position: relative;
     box-sizing: border-box;
     display: flex;
     align-items: center;
@@ -184,16 +181,9 @@ const getAsideMenu = (key: string) => {
     padding: 0 $padding;
     overflow: hidden;
     border-bottom: $border-1 solid $color-border-2;
-    .menu_fold {
+    .header-left {
       display: flex;
       align-items: center;
-      justify-content: space-around;
-      width: 32px;
-      height: 32px;
-      .menu_fold_icon {
-        color: $color-text-1;
-        border-radius: $radius-box-1;
-      }
     }
   }
   .layout-head-menu {

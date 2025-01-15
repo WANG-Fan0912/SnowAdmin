@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="system-breadcrumb" class="breadcrumb" v-if="!isMobile && isBreadcrumb">
     <a-space direction="vertical">
       <a-breadcrumb>
         <a-breadcrumb-item v-for="(item, index) in breadcrumb" :key="item.path" :class="transition">
@@ -14,9 +14,11 @@
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
 import { useThemeConfig } from "@/store/modules/theme-config";
+import { useDevicesSize } from "@/hooks/useDevicesSize";
 
 const themeStore = useThemeConfig();
-const { transitionPage } = storeToRefs(themeStore);
+const { isBreadcrumb, transitionPage } = storeToRefs(themeStore);
+const { isMobile } = useDevicesSize();
 const route = useRoute();
 const router = useRouter();
 
@@ -52,21 +54,27 @@ const transition = computed(() => {
 
 // 面包屑跳转
 const onBreadcrumb = (route: any) => {
-  let path = route.redirect ? route.redirect : route.path;
+  let path = route.redirect || route.path;
   router.replace((path as string) || "");
 };
 </script>
 
 <style lang="scss" scoped>
-.main_button {
-  color: $color-text-1;
-  cursor: pointer;
-}
-.route_button {
-  color: $color-text-2;
-  cursor: pointer;
-  &:hover {
-    color: $color-primary;
+.breadcrumb {
+  margin-left: $margin;
+  overflow: auto;
+  .main_button {
+    color: $color-text-1;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+  .route_button {
+    color: $color-text-2;
+    white-space: nowrap;
+    cursor: pointer;
+    &:hover {
+      color: $color-primary;
+    }
   }
 }
 </style>

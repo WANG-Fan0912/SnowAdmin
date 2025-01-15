@@ -1,6 +1,6 @@
 <template>
   <a-layout class="layout" :has-sider="true">
-    <Aside />
+    <Aside v-if="isPc" />
     <a-layout class="layout-right">
       <Header />
       <Main />
@@ -16,11 +16,14 @@ import Main from "@/layout/components/Main/index.vue";
 import Footer from "@/layout/components/Footer/index.vue";
 import { storeToRefs } from "pinia";
 import { useThemeConfig } from "@/store/modules/theme-config";
+import { useDevicesSize } from "@/hooks/useDevicesSize";
 
 defineOptions({ name: "LayoutDefaults" });
 
 const themeStore = useThemeConfig();
 let { isFooter } = storeToRefs(themeStore);
+
+const { isPc } = useDevicesSize();
 </script>
 
 <style lang="scss" scoped>

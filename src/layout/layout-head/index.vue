@@ -2,10 +2,10 @@
   <div class="layout-head">
     <div class="layout-head-top">
       <a-layout-header class="header">
-        <div class="header-logo">
+        <div class="header-logo" v-if="!isMobile">
           <Logo />
         </div>
-        <div class="layout-head-menu">
+        <div class="layout-head-menu" v-if="!isMobile">
           <a-menu
             v-if="drawing"
             mode="horizontal"
@@ -30,6 +30,7 @@
             </template>
           </a-menu>
         </div>
+        <ButtonCollapsed v-else />
 
         <HeaderRight />
       </a-layout-header>
@@ -46,18 +47,20 @@ import Main from "@/layout/components/Main/index.vue";
 import Footer from "@/layout/components/Footer/index.vue";
 import MenuItem from "@/layout/components/Menu/menu-item.vue";
 import MenuItemIcon from "@/layout/components/Menu/menu-item-icon.vue";
+import ButtonCollapsed from "@/layout/components/Header/components/button-collapsed/index.vue";
 import { storeToRefs } from "pinia";
 import { useRoutesConfigStore } from "@/store/modules/route-config";
 import { useRoutingMethod } from "@/hooks/useRoutingMethod";
 import { useThemeConfig } from "@/store/modules/theme-config";
 import { useMenuMethod } from "@/hooks/useMenuMethod";
+import { useDevicesSize } from "@/hooks/useDevicesSize";
 defineOptions({ name: "LayoutHead" });
 const router = useRouter();
 const routerStore = useRoutesConfigStore();
 const themeStore = useThemeConfig();
 const { routeTree, currentRoute } = storeToRefs(routerStore);
 const { isFooter, language } = storeToRefs(themeStore);
-
+const { isMobile } = useDevicesSize();
 const { menuShow, aMenuShow } = useMenuMethod();
 
 const drawing = ref<boolean>(true);
@@ -86,12 +89,14 @@ const onMenuItem = (key: string) => {
 .layout-head {
   height: 100vh;
   &-top {
+    position: relative;
     display: grid;
     grid-template-rows: auto 1fr auto;
     height: 100%;
   }
 }
 .header {
+  position: relative;
   box-sizing: border-box;
   display: flex;
   align-items: center;

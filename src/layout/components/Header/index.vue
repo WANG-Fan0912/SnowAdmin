@@ -11,10 +11,10 @@ import HeaderRight from "@/layout/components/Header/components/header-right/inde
 
 <style lang="scss" scoped>
 .header {
+  position: relative;
   box-sizing: border-box;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   height: 60px;
   padding: 0 $padding;
   border-bottom: $border-1 solid $color-border-2;
