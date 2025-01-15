@@ -83,7 +83,7 @@ const layoutList = reactive({
 const transitions = ref([
   { value: "fadeInOut", label: "轻过渡" },
   { value: "cardInOut", label: "卡片" },
-  { value: "fadeOut", label: "消退" }
+  { value: "fadeOut", label: "渐退" }
 ]);
 
 interface IThemeColor {

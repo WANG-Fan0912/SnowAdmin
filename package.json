@@ -39,6 +39,7 @@
     "@codemirror/theme-one-dark": "^6.1.2",
     "@visactor/vchart": "^1.11.0",
     "@visactor/vchart-arco-theme": "^1.11.0",
+    "@vueuse/core": "^12.4.0",
     "@wangeditor/editor": "^5.1.23",
     "@wangeditor/editor-for-vue": "^5.1.12",
     "axios": "^1.6.8",
