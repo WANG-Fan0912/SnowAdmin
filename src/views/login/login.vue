@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="login">
-      <LoginBanner />
+      <LoginBanner v-if="isPc" />
       <div class="login_box">
         <div class="login_title">Welcome Back</div>
         <div class="login_title_desc">国际化，路由配置，状态管理应有尽有</div>
@@ -15,6 +15,8 @@
 <script setup lang="ts">
 import LoginBanner from "@/views/login/components/login-banner.vue";
 import LoginForm from "@/views/login/components/login-form.vue";
+import { useDevicesSize } from "@/hooks/useDevicesSize";
+const { isPc } = useDevicesSize();
 </script>
 
 <style lang="scss" scoped>
@@ -28,7 +30,7 @@ import LoginForm from "@/views/login/components/login-form.vue";
     left: 50%;
     display: flex;
     align-items: center;
-    width: 1000px;
+    max-width: 1000px;
     height: 500px;
     box-shadow: 0 0 8px 1px $color-fill-2;
     transform: translate(-50%, -50%);

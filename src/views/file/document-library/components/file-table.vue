@@ -47,6 +47,7 @@
       :bordered="{
         cell: true
       }"
+      :scroll="{ x: '100%', y: '100%', minWidth: 1000 }"
       :loading="loading"
       :data="list"
       :row-selection="rowSelection"
@@ -94,7 +95,7 @@
             </a-space>
           </template>
         </a-table-column>
-        <a-table-column title="操作" :width="200">
+        <a-table-column title="操作" :width="200" fixed="right">
           <template #cell="cell">
             <a-space>
               <a-button size="mini" type="primary">详情</a-button>

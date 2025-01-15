@@ -2,23 +2,23 @@
   <div class="snow-page">
     <div class="snow-inner">
       <a-form ref="formRef" :model="formData.form" :label-col-props="{ span: 6 }" :wrapper-col-props="{ span: 18 }">
-        <a-row :gutter="16">
-          <a-col :span="6">
+        <a-row :gutter="16" justify="start">
+          <a-col :xs="24" :sm="24" :md="12" :lg="12" :xl="6" :xxl="6">
             <a-form-item field="name" label="姓名">
               <a-input v-model="formData.form.name" placeholder="请输入姓名" allow-clear />
             </a-form-item>
           </a-col>
-          <a-col :span="6">
+          <a-col :xs="24" :sm="24" :md="12" :lg="12" :xl="6" :xxl="6">
             <a-form-item field="phone" label="手机号">
               <a-input v-model="formData.form.phone" placeholder="请输入手机号" allow-clear />
             </a-form-item>
           </a-col>
-          <a-col :span="6">
+          <a-col :xs="24" :sm="24" :md="12" :lg="12" :xl="6" :xxl="6">
             <a-form-item field="email" label="邮箱">
               <a-input v-model="formData.form.email" placeholder="请输入邮箱" allow-clear />
             </a-form-item>
           </a-col>
-          <a-col :span="6">
+          <a-col :xs="24" :sm="24" :md="12" :lg="12" :xl="6" :xxl="6">
             <a-space>
               <a-button type="primary" @click="getCommonTableList">
                 <template #icon>
@@ -42,13 +42,13 @@
             </a-space>
           </a-col>
         </a-row>
-        <a-row :gutter="16" v-if="formData.search">
-          <a-col :span="6">
+        <a-row :gutter="16" justify="start" v-if="formData.search">
+          <a-col :xs="24" :sm="24" :md="12" :lg="12" :xl="6" :xxl="6">
             <a-form-item field="address" label="地址">
               <a-input v-model="formData.form.address" placeholder="请输入地址" allow-clear />
             </a-form-item>
           </a-col>
-          <a-col :span="6">
+          <a-col :xs="24" :sm="24" :md="12" :lg="12" :xl="6" :xxl="6">
             <a-form-item field="status" label="用户状态">
               <a-select v-model="formData.form.status" placeholder="请选择用户状态" allow-clear>
                 <a-option value="1">停用</a-option>
@@ -64,6 +64,7 @@
         :bordered="{
           cell: true
         }"
+        :scroll="{ x: '100%', y: '100%', minWidth: 1000 }"
         :loading="loading"
         :columns="columns"
         :data="data"
@@ -166,7 +167,9 @@ const columns = [
   {
     title: "操作",
     slotName: "optional",
-    align: "center"
+    align: "center",
+    fixed: "right",
+    width: "200"
   }
 ];
 const formRef = ref();
