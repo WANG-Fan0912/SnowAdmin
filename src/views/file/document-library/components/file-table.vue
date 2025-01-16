@@ -1,7 +1,7 @@
 <template>
   <div class="container-page">
-    <a-row :gutter="16" class="bottom-gap">
-      <a-col :span="6">
+    <a-row :gutter="16" justify="space-between" class="bottom-gap">
+      <a-col :xs="24" :sm="24" :md="12" :lg="12" :xl="6" :xxl="6" style="margin-bottom: 16px">
         <a-space>
           <a-button type="primary">
             <template #icon>
@@ -24,20 +24,16 @@
         </a-space>
       </a-col>
 
-      <a-col :span="6" :offset="12">
-        <a-form :model="form" :style="{ width: '100%' }" auto-label-width>
-          <a-form-item field="name">
-            <a-space>
-              <a-input v-model="form.name" placeholder="请输入搜索关键词" />
-              <a-button type="primary" status="success" @click="getList">
-                <template #icon>
-                  <icon-search />
-                </template>
-                <template #default>搜索</template>
-              </a-button>
-            </a-space>
-          </a-form-item>
-        </a-form>
+      <a-col :xs="24" :sm="24" :md="12" :lg="12" :xl="8" :xxl="6">
+        <a-space>
+          <a-input v-model="form.name" placeholder="请输入搜索关键词" />
+          <a-button type="primary" status="success" @click="getList">
+            <template #icon>
+              <icon-search />
+            </template>
+            <template #default>搜索</template>
+          </a-button>
+        </a-space>
       </a-col>
     </a-row>
 

@@ -22,3 +22,19 @@
   overflow-y: auto;
   background: $color-fill-1;
 }
+
+// 铺满main窗口-有内边距
+.snow-fill {
+  height: 100%;
+  padding: $padding;
+  overflow: hidden;
+  background: $color-fill-1;
+}
+
+// 铺满main窗口-内部-有内边距
+.snow-fill-inner {
+  box-sizing: border-box;
+  height: 100%;
+  padding: $padding;
+  background: $color-bg-1;
+}

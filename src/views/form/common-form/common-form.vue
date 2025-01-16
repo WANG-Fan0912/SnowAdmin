@@ -2,8 +2,8 @@
   <div class="snow-page">
     <div class="snow-inner">
       <a-row :gutter="16">
-        <a-col :span="12">
-          <a-form ref="formRef" :size="form.size" :model="form" :style="{ width: '600px' }" @submit="handleSubmit">
+        <a-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12" :xxl="12">
+          <a-form ref="formRef" auto-label-width :size="form.size" :model="form" @submit="handleSubmit">
             <a-form-item field="size" label="表单大小">
               <a-radio-group v-model="form.size" type="button">
                 <a-radio value="mini">迷你</a-radio>
@@ -21,7 +21,7 @@
               ]"
               :validate-trigger="['change', 'input']"
             >
-              <a-input v-model="form.name" placeholder="请输入用户名称" allow-clear />
+              <a-input :style="{ width: '100%' }" v-model="form.name" placeholder="请输入用户名称" allow-clear />
             </a-form-item>
             <a-form-item
               field="age"
@@ -90,7 +90,7 @@
             </a-form-item>
           </a-form>
         </a-col>
-        <a-col :span="12">
+        <a-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12" :xxl="12">
           <CodeView :code-json="codeJson" />
         </a-col>
       </a-row>

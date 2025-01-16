@@ -2,8 +2,8 @@
   <div class="snow-page">
     <a-spin :loading="loading" style="display: block">
       <div class="snow-inner container">
-        <a-row>
-          <a-col :span="12" :offset="6">
+        <a-row justify="center">
+          <a-col :xs="22" :sm="18" :md="16" :lg="16" :xl="12" :xxl="12">
             <a-steps :current="currentStep" line-less>
               <a-step description="创建渠道活动">基本信息</a-step>
               <a-step description="完善活动渠道信息">活动渠道</a-step>
@@ -11,9 +11,9 @@
             </a-steps>
           </a-col>
         </a-row>
-        <a-row class="margin-top">
-          <a-col :span="8" :offset="8">
-            <a-form ref="formRef" :model="form" :rules="rules" @submit="handleSubmit">
+        <a-row justify="center" class="margin-top">
+          <a-col :xs="18" :sm="12" :md="12" :lg="12" :xl="8" :xxl="8">
+            <a-form ref="formRef" auto-label-width :model="form" :rules="rules" @submit="handleSubmit">
               <div v-if="currentStep == 1">
                 <a-form-item field="name" label="活动名称">
                   <a-input v-model="form.name" placeholder="请输入活动名称" />

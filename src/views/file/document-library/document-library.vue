@@ -1,12 +1,12 @@
 <template>
   <div class="snow-page">
     <div class="container">
-      <div class="left-box">
+      <div class="left-box" v-show="!isMobile">
         <div class="box-title">文件库</div>
         <a-divider margin="0" />
         <FileTree class="file-tree-style" @on-node="onNode" />
       </div>
-      <div class="right-box">
+      <div class="right-box" :class="isMobile && 'row-content'">
         <div class="box-title">
           <a-breadcrumb>
             <a-breadcrumb-item v-for="(item, index) in breadcrumb" :key="index">{{ item.title }}</a-breadcrumb-item>
@@ -23,7 +23,8 @@
 <script setup lang="ts">
 import FileTree from "@/views/file/document-library/components/file-tree.vue";
 import FileTable from "@/views/file/document-library/components/file-table.vue";
-
+import { useDevicesSize } from "@/hooks/useDevicesSize";
+const { isMobile } = useDevicesSize();
 const FileTableRef = ref();
 const breadcrumb = ref<any>([]);
 const onNode = (list: any) => {
@@ -53,6 +54,10 @@ const onNode = (list: any) => {
     .file-table-style {
       height: calc(100% - 40px);
     }
+  }
+  .row-content {
+    width: 100%;
+    margin-left: 0;
   }
 }
 .box-title {

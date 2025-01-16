@@ -1,8 +1,8 @@
 <template>
   <div class="snow-page">
     <div class="snow-inner">
-      <a-form ref="formRef" :model="formData.form" :label-col-props="{ span: 6 }" :wrapper-col-props="{ span: 18 }">
-        <a-row :gutter="16" justify="start">
+      <a-form ref="formRef" auto-label-width :model="formData.form">
+        <a-row :gutter="16">
           <a-col :xs="24" :sm="24" :md="12" :lg="12" :xl="6" :xxl="6">
             <a-form-item field="name" label="姓名">
               <a-input v-model="formData.form.name" placeholder="请输入姓名" allow-clear />
@@ -19,7 +19,7 @@
             </a-form-item>
           </a-col>
           <a-col :xs="24" :sm="24" :md="12" :lg="12" :xl="6" :xxl="6">
-            <a-space>
+            <a-space class="search-btn">
               <a-button type="primary" @click="getCommonTableList">
                 <template #icon>
                   <icon-search />
@@ -42,7 +42,7 @@
             </a-space>
           </a-col>
         </a-row>
-        <a-row :gutter="16" justify="start" v-if="formData.search">
+        <a-row :gutter="16" v-if="formData.search">
           <a-col :xs="24" :sm="24" :md="12" :lg="12" :xl="6" :xxl="6">
             <a-form-item field="address" label="地址">
               <a-input v-model="formData.form.address" placeholder="请输入地址" allow-clear />
@@ -192,4 +192,8 @@ const getCommonTableList = async () => {
 getCommonTableList();
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.search-btn {
+  margin-bottom: 20px;
+}
+</style>

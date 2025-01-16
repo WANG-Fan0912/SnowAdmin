@@ -1,25 +1,25 @@
 <template>
   <div class="snow-page">
     <div class="snow-inner">
-      <a-form ref="formRef" :model="formData.form" :label-col-props="{ span: 6 }" :wrapper-col-props="{ span: 18 }">
+      <a-form ref="formRef" :model="formData.form" auto-label-width>
         <a-row :gutter="16">
-          <a-col :span="6">
+          <a-col :xs="24" :sm="24" :md="12" :lg="12" :xl="6" :xxl="6">
             <a-form-item field="serial" label="集合编号">
               <a-input v-model="formData.form.serial" placeholder="请输入集合编号" allow-clear />
             </a-form-item>
           </a-col>
-          <a-col :span="6">
+          <a-col :xs="24" :sm="24" :md="12" :lg="12" :xl="6" :xxl="6">
             <a-form-item field="name" label="集合名称">
               <a-input v-model="formData.form.name" placeholder="请输入集合名称" allow-clear />
             </a-form-item>
           </a-col>
-          <a-col :span="6">
+          <a-col :xs="24" :sm="24" :md="12" :lg="12" :xl="6" :xxl="6">
             <a-form-item field="content" label="内容载体">
               <a-input v-model="formData.form.content" placeholder="请输入内容载体" allow-clear />
             </a-form-item>
           </a-col>
-          <a-col :span="6">
-            <a-space>
+          <a-col :xs="24" :sm="24" :md="12" :lg="12" :xl="6" :xxl="6">
+            <a-space class="search-btn">
               <a-button type="primary" @click="getCustomTableList">
                 <template #icon>
                   <icon-search />
@@ -43,12 +43,12 @@
           </a-col>
         </a-row>
         <a-row :gutter="16" v-if="formData.search">
-          <a-col :span="6">
+          <a-col :xs="24" :sm="24" :md="12" :lg="12" :xl="6" :xxl="6">
             <a-form-item field="contentSize" label="内容量">
               <a-input v-model="formData.form.contentSize" placeholder="请输入内容量" allow-clear />
             </a-form-item>
           </a-col>
-          <a-col :span="6">
+          <a-col :xs="24" :sm="24" :md="12" :lg="12" :xl="6" :xxl="6">
             <a-form-item field="status" label="集合状态">
               <a-select v-model="formData.form.status" placeholder="请选择集合状态" allow-clear>
                 <a-option value="1">已上线</a-option>
@@ -56,7 +56,7 @@
               </a-select>
             </a-form-item>
           </a-col>
-          <a-col :span="6">
+          <a-col :xs="24" :sm="24" :md="12" :lg="12" :xl="6" :xxl="6">
             <a-form-item field="createTime" label="创建时间">
               <a-range-picker v-model="formData.form.createTime" />
             </a-form-item>
@@ -132,6 +132,7 @@
         :bordered="{
           cell: true
         }"
+        :scroll="{ x: '100%', y: '100%', minWidth: 1000 }"
         :columns="columnsShow"
         :data="data"
         :row-selection="rowSelection"
@@ -330,6 +331,9 @@ const exchangeArray = (columns: Array<any>, oldIndex: number, newIndex: number) 
 </script>
 
 <style lang="scss" scoped>
+.search-btn {
+  margin-bottom: 20px;
+}
 .setting {
   display: flex;
   align-items: center;

@@ -1,35 +1,42 @@
 <template>
   <div class="snow-page">
     <div class="snow-inner draggable-page">
-      <a-space direction="vertical">
-        <div class="draggable-container">
-          <div class="title">Favorites</div>
-          <draggable
-            :list="list"
-            class="draggable-box"
-            chosen-class="chosenClass"
-            animation="300"
-            item-key="value"
-            @start="onStart"
-            @end="onEnd"
-          >
-            <template #item="{ element }">
-              <div class="draggable-list" :class="!animated && 'animated-fade-up-' + element.value">
-                <div class="draggable-inner">
-                  <svg-icon :name="element.svg" :size="30" class="svg-box" />
-                  <div>{{ element.label }}</div>
-                </div>
-              </div>
-            </template>
-          </draggable>
-        </div>
-        <div>
-          采用开源拖拽库：<a-link href="https://github.com/SortableJS/vue.draggable.next" target="_blank">vue.draggable</a-link>
-        </div>
-      </a-space>
-      <a-scrollbar style="height: 396px; overflow: auto" outer-class="scrollbar">
-        <code-view :code-json="codeJson" style="width: 500px" />
-      </a-scrollbar>
+      <a-row :gutter="16">
+        <a-col :xs="24" :sm="24" :md="24" :lg="14" :xl="12" :xxl="12">
+          <a-space direction="vertical">
+            <div class="draggable-container">
+              <div class="title">Favorites</div>
+              <draggable
+                :list="list"
+                class="draggable-box"
+                chosen-class="chosenClass"
+                animation="300"
+                item-key="value"
+                @start="onStart"
+                @end="onEnd"
+              >
+                <template #item="{ element }">
+                  <div class="draggable-list" :class="!animated && 'animated-fade-up-' + element.value">
+                    <div class="draggable-inner">
+                      <svg-icon :name="element.svg" :size="30" class="svg-box" />
+                      <div>{{ element.label }}</div>
+                    </div>
+                  </div>
+                </template>
+              </draggable>
+            </div>
+            <div>
+              采用开源拖拽库：
+              <a-link href="https://github.com/SortableJS/vue.draggable.next" target="_blank"> vue.draggable </a-link>
+            </div>
+          </a-space>
+        </a-col>
+        <a-col :xs="24" :sm="24" :md="24" :lg="10" :xl="12" :xxl="12">
+          <a-scrollbar style="height: 396px; overflow: auto" outer-class="scrollbar">
+            <code-view :code-json="codeJson" style="width: 500px" />
+          </a-scrollbar>
+        </a-col>
+      </a-row>
     </div>
   </div>
 </template>
