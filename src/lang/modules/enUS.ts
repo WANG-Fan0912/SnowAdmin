@@ -24,7 +24,8 @@ export default {
     ["notice"]: "Notice",
     ["message"]: "Message",
     ["backlog"]: "Backlog",
-    ["switch-language-to-preview"]: "Please switch the language to preview the internationalization effect"
+    ["switch-language-to-preview"]: "Please switch the language to preview the internationalization effect",
+    ["please-enter-something"]: "Please enter something"
   },
   menu: {
     ["home"]: "home",
@@ -59,6 +60,7 @@ export default {
     ["fingerprintjs2"]: "fingerprintjs2",
     ["barcode"]: "barcode",
     ["qrcode"]: "qrcode",
+    ["pinyin"]: "pinyin",
     ["markdown"]: "Markdown",
     ["directive"]: "directive",
     ["anti-shake"]: "anti-shake",

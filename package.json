@@ -50,6 +50,7 @@
     "nprogress": "^0.2.0",
     "pinia": "^2.3.0",
     "pinia-plugin-persistedstate": "^3.2.1",
+    "pinyin-pro": "^3.26.0",
     "print-js": "^1.6.0",
     "qrcode": "^1.5.4",
     "sortablejs": "^1.15.2",

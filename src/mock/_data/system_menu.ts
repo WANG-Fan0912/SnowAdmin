@@ -588,6 +588,23 @@ export default [
               icon: "icon-menu",
               sort: 10
             }
+          },
+          {
+            path: "/component/pinyin",
+            name: "pinyin",
+            component: "component/pinyin/pinyin",
+            meta: {
+              title: "pinyin",
+              hide: false,
+              disable: false,
+              keepAlive: true,
+              affix: false,
+              link: "",
+              iframe: false,
+              roles: ["admin"],
+              icon: "icon-menu",
+              sort: 11
+            }
           }
         ]
       },

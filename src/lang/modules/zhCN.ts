@@ -24,7 +24,8 @@ export default {
     ["notice"]: "通知",
     ["message"]: "消息",
     ["backlog"]: "待办",
-    ["switch-language-to-preview"]: "请切换语言来预览国际化效果"
+    ["switch-language-to-preview"]: "请切换语言来预览国际化效果",
+    ["please-enter-something"]: "请输入"
   },
   menu: {
     ["home"]: "首页",
@@ -59,6 +60,7 @@ export default {
     ["fingerprintjs2"]: "浏览器指纹",
     ["barcode"]: "条形码",
     ["qrcode"]: "二维码",
+    ["pinyin"]: "拼音",
     ["markdown"]: "Markdown",
     ["directive"]: "自定义指令",
     ["anti-shake"]: "防抖",

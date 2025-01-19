@@ -62,6 +62,9 @@ importers:
       pinia-plugin-persistedstate:
         specifier: ^3.2.1
         version: 3.2.1(pinia@2.3.0(typescript@5.4.3)(vue@3.4.21(typescript@5.4.3)))
+      pinyin-pro:
+        specifier: ^3.26.0
+        version: 3.26.0
       print-js:
         specifier: ^1.6.0
         version: 1.6.0
@@ -3271,6 +3274,9 @@ packages:
     peerDependenciesMeta:
       typescript:
         optional: true
+
+  pinyin-pro@3.26.0:
+    resolution: {integrity: sha512-HcBZZb0pvm0/JkPhZHWA5Hqp2cWHXrrW/WrV+OtaYYM+kf35ffvZppIUuGmyuQ7gDr1JDJKMkbEE+GN0wfMoGg==}
 
   pkg-types@1.0.3:
     resolution: {integrity: sha512-nN7pYi0AQqJnoLPC9eHFQ8AcyaixBUOwvqc5TDnIKCMEE6I0y8P7OKA7fPexsXGCGxQDl/cmrLAp26LhcwxZ4A==}
@@ -7673,6 +7679,8 @@ snapshots:
       typescript: 5.4.3
     transitivePeerDependencies:
       - '@vue/composition-api'
+
+  pinyin-pro@3.26.0: {}
 
   pkg-types@1.0.3:
     dependencies:

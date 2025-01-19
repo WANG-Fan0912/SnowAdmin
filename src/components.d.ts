@@ -9,11 +9,13 @@ declare module 'vue' {
   export interface GlobalComponents {
     BarcodeDraw: typeof import('./components/barcode-draw/index.vue')['default']
     CodeView: typeof import('./components/code-view/index.vue')['default']
+    copy: typeof import('./components/pinyin-pro/index copy.vue')['default']
     ExternalLinkPage: typeof import('./components/external-link-page/index.vue')['default']
     FillPage: typeof import('./components/fill-page/index.vue')['default']
     InternalLinkPage: typeof import('./components/internal-link-page/index.vue')['default']
     LangProvider: typeof import('./components/lang-provider/index.vue')['default']
     MainTransition: typeof import('./components/main-transition/index.vue')['default']
+    PinyinPro: typeof import('./components/pinyin-pro/index.vue')['default']
     QrcodeDraw: typeof import('./components/qrcode-draw/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
