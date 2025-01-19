@@ -60,7 +60,7 @@ export default {
     ["fingerprintjs2"]: "浏览器指纹",
     ["barcode"]: "条形码",
     ["qrcode"]: "二维码",
-    ["pinyin"]: "拼音",
+    ["pinyin"]: "拼音转换",
     ["markdown"]: "Markdown",
     ["directive"]: "自定义指令",
     ["anti-shake"]: "防抖",

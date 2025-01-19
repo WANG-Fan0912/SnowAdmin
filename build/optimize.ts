@@ -16,7 +16,8 @@ const include = [
   "@codemirror/theme-one-dark",
   "@codemirror/lang-json",
   "@codemirror/lang-javascript",
-  "@codemirror/lang-vue"
+  "@codemirror/lang-vue",
+  "pinyin-pro"
 ];
 
 /**
