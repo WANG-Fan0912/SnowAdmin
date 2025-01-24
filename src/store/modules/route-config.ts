@@ -86,9 +86,8 @@ export const routesConfigStore = () => {
    * 2、将模块设置为真实模块
    * 3、存储路由树，用于生成菜单
    * 4、根据树生成一维路由数组
-   * 5、动态添加路由，设置完整的路由，二维路由：顶层路由 + 二级的一维路由
-   * 6、动态添加路由
-   * 7、缓存一维路由
+   * 5、动态添加路由
+   * 6、缓存一维路由
    */
   async function initSetRouter() {
     // 1、获取过滤角色权限后的树，后端做排序处理
@@ -96,15 +95,13 @@ export const routesConfigStore = () => {
     // 2、将模块设置为真实模块
     let tree = await moduleReplacement(data);
     // 3、存储路由树，用于生成菜单
-    routeTree.value = tree[0].children;
+    routeTree.value = tree;
     // 4、根据树生成一维路由数组
-    tree[0].children = linearArray(tree[0].children);
-    // 5、设置完整的路由，二维路由：顶层路由 + 二级的一维路由
-    tree[0].redirect = tree[0].children[0].path;
-    // 6、动态添加路由
-    tree.forEach((route: any) => router.addRoute(route));
-    // 7、缓存一维路由
-    routeList.value = tree[0].children;
+    tree = linearArray(tree);
+    // 5、动态添加路由
+    tree.forEach((route: any) => router.addRoute("layout", route));
+    // 6、缓存一维路由
+    routeList.value = tree;
   }
 
   return {

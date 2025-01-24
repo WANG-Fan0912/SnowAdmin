@@ -95,7 +95,7 @@ import MenuItemIcon from "@/layout/components/Menu/menu-item-icon.vue";
 import dynamicRoutes from "@/mock/_data/system_menu";
 
 const tableData = computed(() => {
-  return dynamicRoutes[0].children;
+  return dynamicRoutes;
 });
 const formData = reactive({
   form: {

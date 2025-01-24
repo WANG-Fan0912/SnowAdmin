@@ -4,7 +4,6 @@ import { useRoutesConfigStore } from "@/store/modules/route-config";
 import { useThemeConfig } from "@/store/modules/theme-config";
 import { deepClone, arrayFlattened } from "@/utils/index";
 import { useRoutingMethod } from "@/hooks/useRoutingMethod";
-import Layout from "@/layout/index.vue";
 
 /**
  * 路由树转一维数组
@@ -67,19 +66,13 @@ export const moduleReplacement = (tree: any) => {
 /**
  * 模块匹配
  * 1、导入 views 目录及其子目录下的所有 .vue 文件。
- * 2、匹配顶层layout，替换真实模块，layout为应用的基础结构
- * 3、匹配views下的所有文件路径，将模块转换为按需引入的真实模块
- * 4、未匹配上，不做处理
+ * 2、匹配views下的所有文件路径，将模块转换为按需引入的真实模块
+ * 3、未匹配上，不做处理
  */
 // 匹配views里面所有的.vue文件
 const modules = import.meta.glob("@/views/**/*.vue");
 export const moduleMatch = (item: any) => {
-  // 若是layout，则直接给予顶层layout
-  if (item.component === "layout") {
-    // 布局组件是应用的基础结构，在应用启动时就需要被加载，因此不需要按需引入
-    return (item.component = Layout);
-  }
-  // 其它情况下，匹配每个views文件夹下的文件路径
+  // 匹配每个views文件夹下的文件路径
   for (const key in modules) {
     const dir = key.split("views/")[1].replace(".vue", "");
     // 若匹配上，则替换真实模块

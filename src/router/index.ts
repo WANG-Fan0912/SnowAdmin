@@ -17,10 +17,10 @@ const router = createRouter({
   history: createWebHashHistory(),
   /**
    * 设置静态路由，其它的路由通过addRoute动态添加
-   * 1、staticRoutes登录页
-   * 2、notFoundAndNoPower 添加默认 404、401界面，防止提示 No match found for location with path 'xxx'
-   * 2、后端控制路由中也需要添加 notFoundAndNoPower 404、401界面
-   * 静态添加 notFoundAndNoPower 404、401界面将全屏显示
+   * 1、staticRoutes登录页、layout页、默认页面('/')
+   * 2、notFoundAndNoPower 添加默认 401、500界面，防止提示 No match found for location with path 'xxx'
+   * 2、后端控制路由中也需要添加 notFoundAndNoPower 401、500界面
+   * 静态添加 notFoundAndNoPower 401、500界面将全屏显示
    * 如果要 notFoundAndNoPower 在layout容器展示，则需要移除静态添加并将其添加到缓存路由树
    */
   routes: [...staticRoutes, ...notFoundAndNoPower]
