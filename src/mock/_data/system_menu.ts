@@ -1198,6 +1198,25 @@ export default [
     }
   },
   {
+    id: "15",
+    parentId: "0",
+    path: "/gaodemap",
+    name: "gaodemap",
+    component: "link/internal/internal",
+    meta: {
+      title: "amap",
+      hide: false,
+      keepAlive: true,
+      disable: false,
+      affix: false,
+      link: "http://101.126.93.137:85/", // 链接
+      iframe: true, // 区分是否内链 true内链 false外链
+      roles: ["admin"],
+      svgIcon: "amap",
+      sort: 12
+    }
+  },
+  {
     id: "13",
     parentId: "0",
     path: "/i18n",

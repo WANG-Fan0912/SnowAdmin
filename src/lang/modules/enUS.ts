@@ -90,6 +90,7 @@ export default {
     ["juejin"]: "juejin",
     ["disable-menu"]: "disable-menu",
     ["hide-menu"]: "hide-menu",
-    ["i18n"]: "i18n"
+    ["i18n"]: "i18n",
+    ["amap"]: "amap"
   }
 };

@@ -90,6 +90,7 @@ export default {
     ["juejin"]: "掘金",
     ["disable-menu"]: "停用菜单",
     ["hide-menu"]: "隐藏菜单",
-    ["i18n"]: "国际化"
+    ["i18n"]: "国际化",
+    ["amap"]: "高德地图"
   }
 };
