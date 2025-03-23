@@ -48,7 +48,7 @@ export default defineConfig(({ mode }) => {
         }
       }
     },
-    // https://cn.vitejs.dev/config/dep-optimization-options.html#dep-optimization-options
+    // 依赖预加载 https://cn.vitejs.dev/config/dep-optimization-options.html#dep-optimization-options
     optimizeDeps: {
       include
     },
