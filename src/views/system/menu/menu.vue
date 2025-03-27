@@ -1,48 +1,29 @@
 <template>
   <div class="snow-page">
     <div class="snow-inner">
-      <a-form :model="formData.form" :label-col-props="{ span: 6 }" :wrapper-col-props="{ span: 18 }" ref="formRef">
-        <a-row :gutter="16">
-          <a-col :span="6">
-            <a-form-item field="name" label="菜单名称">
-              <a-input v-model="formData.form.name" placeholder="请输入菜单名称" allow-clear />
-            </a-form-item>
-          </a-col>
-          <a-col :span="6">
-            <a-form-item field="hide" label="显示状态">
-              <a-select v-model="formData.form.hide" placeholder="请选择显示状态" allow-clear>
-                <a-option value="1">停用</a-option>
-                <a-option value="2">启用</a-option>
-              </a-select>
-            </a-form-item>
-          </a-col>
-          <a-col :span="6">
-            <a-form-item field="disable" label="启用状态">
-              <a-select v-model="formData.form.disable" placeholder="请选择启用状态" allow-clear>
-                <a-option value="1">停用</a-option>
-                <a-option value="2">启用</a-option>
-              </a-select>
-            </a-form-item>
-          </a-col>
-          <a-col :span="6">
-            <a-space>
-              <a-button type="primary">
-                <template #icon>
-                  <icon-search />
-                </template>
-                <template #default>查询</template>
-              </a-button>
-              <a-button @click="onReset">
-                <template #icon>
-                  <icon-refresh />
-                </template>
-                <template #default>重置</template>
-              </a-button>
-            </a-space>
-          </a-col>
-        </a-row>
-      </a-form>
-      <a-table :data="tableData" row-key="name" show-empty-tree>
+      <a-space wrap>
+        <a-input v-model="formData.form.name" placeholder="请输入菜单名称" allow-clear />
+        <a-select v-model="formData.form.hide" placeholder="请选择显示状态" allow-clear>
+          <a-option value="1">停用</a-option>
+          <a-option value="2">启用</a-option>
+        </a-select>
+        <a-select v-model="formData.form.disable" placeholder="请选择启用状态" allow-clear>
+          <a-option value="1">停用</a-option>
+          <a-option value="2">启用</a-option>
+        </a-select>
+        <a-button type="primary">
+          <template #icon><icon-search /></template>
+          <span>查询</span>
+        </a-button>
+
+        <a-button @click="onReset">
+          <template #icon>
+            <icon-refresh />
+          </template>
+          <template #default>重置</template>
+        </a-button>
+      </a-space>
+      <a-table :data="tableData" row-key="name" :bordered="{ cell: true }" show-empty-tree>
         <template #columns>
           <a-table-column title="菜单名称">
             <template #cell="{ record }">
@@ -78,9 +59,18 @@
           <a-table-column title="操作" align="center">
             <template #cell="{ record }">
               <a-space>
-                <a-button size="mini" type="primary" @click="onEdit(record)">修改</a-button>
-                <a-button size="mini" type="primary" status="success">新增</a-button>
-                <a-button size="mini" type="primary" status="danger">删除</a-button>
+                <a-button size="mini" type="primary" @click="onEdit(record)">
+                  <template #icon><icon-edit /></template>
+                  <span>修改</span>
+                </a-button>
+                <a-button size="mini" type="primary" status="success">
+                  <template #icon><icon-plus /></template>
+                  <span>新增</span>
+                </a-button>
+                <a-button size="mini" type="primary" status="danger">
+                  <template #icon><icon-delete /></template>
+                  <span>删除</span>
+                </a-button>
               </a-space>
             </template>
           </a-table-column>
