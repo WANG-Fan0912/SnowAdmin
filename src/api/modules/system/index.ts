@@ -15,3 +15,11 @@ export const getDictAPI = () => {
     method: "get"
   });
 };
+
+// 获取部门数据
+export const getDivisionAPI = () => {
+  return axios({
+    url: "/mock/system/getDivision",
+    method: "get"
+  });
+};

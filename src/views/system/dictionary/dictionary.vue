@@ -83,7 +83,7 @@
     <a-modal v-model:visible="open" @close="afterClose" @ok="handleOk" @cancel="afterClose">
       <template #title> {{ title }} </template>
       <div>
-        <a-form ref="formRef" :rules="rules" :model="addFrom">
+        <a-form ref="formRef" auto-label-width :rules="rules" :model="addFrom">
           <a-form-item field="name" label="字典名称" validate-trigger="blur">
             <a-input v-model="addFrom.name" placeholder="请输入字典名称" allow-clear />
           </a-form-item>
@@ -167,7 +167,7 @@
     <a-modal v-model:visible="detailCaseOpen" @close="afterCloseDetail" @ok="handleOkDetail" @cancel="afterCloseDetail">
       <template #title> {{ detailTitle }} </template>
       <div>
-        <a-form ref="detailFormRef" :rules="detaulRules" :model="deatilForm">
+        <a-form ref="detailFormRef" auto-label-width :rules="detaulRules" :model="deatilForm">
           <a-form-item field="name" label="字典名称" validate-trigger="blur">
             <a-input v-model="deatilForm.name" placeholder="请输入字典名称" allow-clear />
           </a-form-item>
@@ -188,6 +188,7 @@
 
 <script setup lang="ts">
 import { getDictAPI } from "@/api/modules/system/index";
+import { deepClone } from "@/utils";
 const openState = ref(dictFilter("status"));
 const form = ref({
   name: "",
@@ -243,6 +244,7 @@ const handleOk = async () => {
   if (state) return (open.value = true); // 校验不通过
   arcoMessage("success", "模拟提交成功");
 };
+// 关闭对话框动画结束后触发
 const afterClose = () => {
   formRef.value.resetFields();
   addFrom.value = {
@@ -254,7 +256,7 @@ const afterClose = () => {
 };
 const onUpdate = (record: any) => {
   title.value = "修改字典";
-  addFrom.value = JSON.parse(JSON.stringify(record));
+  addFrom.value = deepClone(record);
   open.value = true;
 };
 const onDelete = () => {
@@ -329,9 +331,10 @@ const handleOkDetail = async () => {
 };
 const onDetailUpdate = (record: any) => {
   detailTitle.value = "修改字典数据";
-  deatilForm.value = JSON.parse(JSON.stringify(record));
+  deatilForm.value = deepClone(record);
   detailCaseOpen.value = true;
 };
+// 关闭对话框动画结束后触发
 const afterCloseDetail = () => {
   detailFormRef.value.resetFields();
   deatilForm.value = {
