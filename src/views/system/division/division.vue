@@ -3,7 +3,7 @@
     <div class="snow-inner">
       <a-space wrap>
         <a-input v-model="form.name" placeholder="请输入部门名称" allow-clear />
-        <a-select placeholder="部门状态" v-model="form.open" style="width: 120px" allow-clear>
+        <a-select placeholder="部门状态" v-model="form.status" style="width: 120px" allow-clear>
           <a-option v-for="item in openState" :key="item.value" :value="item.value">{{ item.name }}</a-option>
         </a-select>
         <a-button type="primary" @click="search">
