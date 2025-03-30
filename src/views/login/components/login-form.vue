@@ -38,11 +38,11 @@
 </template>
 
 <script setup lang="ts">
-import { Message } from "@arco-design/web-vue";
 import { useRouter } from "vue-router";
 import { useUserInfoStore } from "@/store/modules/user-info";
 import { loginAPI, getUserInfoAPI } from "@/api/modules/user/index";
 import { useRoutesConfigStore } from "@/store/modules/route-config";
+import { useSystemStore } from "@/store/modules/system";
 const routeStore = useRoutesConfigStore();
 const router = useRouter();
 const form = ref({
@@ -85,12 +85,16 @@ const verifyCodeChange = (code: string) => (verifyCode.value = code);
 
 const onSubmit = async ({ errors }: any) => {
   if (errors) return;
+  // 登录
   let res = await loginAPI(form.value);
   let stores = useUserInfoStore();
   await stores.setToken(res.data.token);
   let account = await getUserInfoAPI();
   stores.setAccount(account.data); // 存储用户信息
-  Message.success("登录成功");
+  arcoMessage("success", "登录成功");
+  // 设置字典
+  let system = useSystemStore();
+  system.setDictData();
   // 加载路由信息
   await routeStore.initSetRouter();
   router.replace("/home");

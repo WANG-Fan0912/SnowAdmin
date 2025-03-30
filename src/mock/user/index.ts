@@ -19,7 +19,7 @@ export default [
     }
   },
   {
-    url: "/mock/user/info",
+    url: "/mock/user/getUserInfo",
     method: "get",
     timeout: 300,
     response: ({ headers }: any) => {

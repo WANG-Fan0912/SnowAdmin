@@ -21,7 +21,7 @@ import systemMenu from "../_data/system_menu";
 // post请求body,get请求query
 export default [
   {
-    url: "/mock/menu/list",
+    url: "/mock/menu/getMenuList",
     method: "get",
     timeout: 300,
     response: ({ headers }: any) => {

@@ -5,7 +5,7 @@
         <a-input v-model="form.name" placeholder="请输入字典名称" allow-clear />
         <a-input v-model="form.code" placeholder="请输入字典值" allow-clear />
         <a-select placeholder="启用状态" v-model="form.open" style="width: 120px" allow-clear>
-          <a-option v-for="item in openState" :key="item.value" :value="item.value">{{ item.label }}</a-option>
+          <a-option v-for="item in openState" :key="item.value" :value="item.value">{{ item.name }}</a-option>
         </a-select>
         <a-button type="primary" @click="search">
           <template #icon><icon-search /></template>
@@ -23,7 +23,7 @@
             <template #icon><icon-plus /></template>
             <span>新增</span>
           </a-button>
-          <a-button type="primary" status="danger" @click="onDelete">
+          <a-button type="primary" status="danger">
             <template #icon><icon-delete /></template>
             <span>删除</span>
           </a-button>
@@ -63,11 +63,11 @@
                   <template #icon><icon-file /></template>
                   <span>字典值</span>
                 </a-button>
-                <a-button type="primary" size="mini">
+                <a-button type="primary" size="mini" @click="onUpdate(record)">
                   <template #icon><icon-edit /></template>
                   <span>修改</span>
                 </a-button>
-                <a-popconfirm type="warning" content="确定删除该角色吗?">
+                <a-popconfirm type="warning" content="确定删除该角色吗?" @ok="onDelete">
                   <a-button type="primary" status="danger" size="mini">
                     <template #icon><icon-delete /></template>
                     <span>删除</span>
@@ -79,14 +79,116 @@
         </template>
       </a-table>
     </div>
+
+    <a-modal v-model:visible="open" @close="afterClose" @ok="handleOk" @cancel="afterClose">
+      <template #title> {{ title }} </template>
+      <div>
+        <a-form ref="formRef" :rules="rules" :model="addFrom">
+          <a-form-item field="name" label="字典名称" validate-trigger="blur">
+            <a-input v-model="addFrom.name" placeholder="请输入字典名称" allow-clear />
+          </a-form-item>
+          <a-form-item field="value" label="字典值" validate-trigger="blur">
+            <a-input v-model="addFrom.value" placeholder="请输入字典值" allow-clear />
+          </a-form-item>
+          <a-form-item field="description" label="描述" validate-trigger="blur">
+            <a-textarea v-model="addFrom.description" placeholder="请输入字典描述" allow-clear />
+          </a-form-item>
+          <a-form-item field="description" label="状态" validate-trigger="blur">
+            <a-switch type="round" :checked-value="1" :unchecked-value="0" v-model="addFrom.status">
+              <template #checked> 启用 </template>
+              <template #unchecked> 禁用 </template>
+            </a-switch>
+          </a-form-item>
+        </a-form>
+      </div>
+    </a-modal>
+
+    <a-modal width="50%" v-model:visible="detailOpen" @ok="detailOk" ok-text="关闭" :hide-cancel="true">
+      <template #title> 字典详情 </template>
+      <div>
+        <a-row>
+          <a-space wrap>
+            <a-button type="primary" @click="onAddDetail">
+              <template #icon><icon-plus /></template>
+              <span>新增</span>
+            </a-button>
+            <a-button type="primary" status="danger">
+              <template #icon><icon-delete /></template>
+              <span>删除</span>
+            </a-button>
+          </a-space>
+        </a-row>
+
+        <a-table
+          row-key="id"
+          :data="dictDetail.list"
+          :bordered="{ cell: true }"
+          :loading="loading"
+          :scroll="{ x: '100%', y: '100%' }"
+          :pagination="pagination"
+          :row-selection="{ type: 'checkbox', showCheckedAll: true }"
+          :selected-keys="selectedKeysDetail"
+          @select="selectDetail"
+          @select-all="selectAllDetail"
+        >
+          <template #columns>
+            <a-table-column title="序号" :width="64">
+              <template #cell="cell">{{ cell.rowIndex + 1 }}</template>
+            </a-table-column>
+            <a-table-column title="字典名" data-index="name"></a-table-column>
+            <a-table-column title="字典值" data-index="value"></a-table-column>
+            <a-table-column title="状态" :width="100" align="center">
+              <template #cell="{ record }">
+                <a-tag bordered size="small" color="arcoblue" v-if="record.status === 1">启用</a-tag>
+                <a-tag bordered size="small" color="red" v-else>禁用</a-tag>
+              </template>
+            </a-table-column>
+            <a-table-column title="操作" align="center" :fixed="'right'">
+              <template #cell="{ record }">
+                <a-space>
+                  <a-button type="primary" size="mini" @click="onDetailUpdate(record)">
+                    <template #icon><icon-edit /></template>
+                    <span>修改</span>
+                  </a-button>
+                  <a-popconfirm type="warning" content="确定删除该角色吗?">
+                    <a-button type="primary" status="danger" size="mini">
+                      <template #icon><icon-delete /></template>
+                      <span>删除</span>
+                    </a-button>
+                  </a-popconfirm>
+                </a-space>
+              </template>
+            </a-table-column>
+          </template>
+        </a-table>
+      </div>
+    </a-modal>
+
+    <a-modal v-model:visible="detailCaseOpen" @close="afterCloseDetail" @ok="handleOkDetail" @cancel="afterCloseDetail">
+      <template #title> {{ detailTitle }} </template>
+      <div>
+        <a-form ref="detailFormRef" :rules="detaulRules" :model="deatilForm">
+          <a-form-item field="name" label="字典名称" validate-trigger="blur">
+            <a-input v-model="deatilForm.name" placeholder="请输入字典名称" allow-clear />
+          </a-form-item>
+          <a-form-item field="value" label="字典值" validate-trigger="blur">
+            <a-input v-model="deatilForm.value" placeholder="请输入字典值" allow-clear />
+          </a-form-item>
+          <a-form-item field="description" label="状态" validate-trigger="blur">
+            <a-switch type="round" :checked-value="1" :unchecked-value="0" v-model="deatilForm.status">
+              <template #checked> 启用 </template>
+              <template #unchecked> 禁用 </template>
+            </a-switch>
+          </a-form-item>
+        </a-form>
+      </div>
+    </a-modal>
   </div>
 </template>
 
 <script setup lang="ts">
-const openState = ref([
-  { value: 1, label: "是" },
-  { value: 0, label: "否" }
-]);
+import { getDictAPI } from "@/api/modules/system/index";
+const openState = ref(dictFilter("status"));
 const form = ref({
   name: "",
   code: "",
@@ -96,13 +198,67 @@ const search = () => {
   console.log("搜索");
 };
 const reset = () => {
-  console.log("重置");
+  form.value = {
+    name: "",
+    code: "",
+    open: null
+  };
 };
+
+const open = ref<Boolean>(false);
+const title = ref<string>("");
+const rules = {
+  name: [
+    {
+      required: true,
+      message: "请输入字典名称"
+    }
+  ],
+  value: [
+    {
+      required: true,
+      message: "请输入字典值"
+    }
+  ],
+  status: [
+    {
+      required: true,
+      message: "请选择状态"
+    }
+  ]
+};
+const addFrom = ref({
+  name: "",
+  value: "",
+  description: "",
+  status: 1
+});
+const formRef = ref();
 const onAdd = () => {
-  console.log("新增");
+  open.value = true;
+  title.value = "新增字典";
+};
+const handleOk = async () => {
+  let state = await formRef.value.validate();
+  if (state) return (open.value = true); // 校验不通过
+  arcoMessage("success", "模拟提交成功");
+};
+const afterClose = () => {
+  formRef.value.resetFields();
+  addFrom.value = {
+    name: "",
+    value: "",
+    description: "",
+    status: 1
+  };
+};
+const onUpdate = (record: any) => {
+  title.value = "修改字典";
+  addFrom.value = JSON.parse(JSON.stringify(record));
+  open.value = true;
 };
 const onDelete = () => {
-  console.log("删除");
+  arcoMessage("success", "模拟删除成功");
 };
 const loading = ref(false);
 const pagination = ref({
@@ -110,58 +266,89 @@ const pagination = ref({
   showPageSize: true
 });
 const selectedKeys = ref([]);
-const dictList = ref([
-  {
-    id: "01",
-    name: "性别",
-    value: "gender",
-    status: 1,
-    description: "这是一个性别字典",
-    createTime: "2024-07-01 10:00:00",
-    list: [
-      { id: "012", name: "女", value: 0, status: 1 },
-      { id: "011", name: "男", value: 1, status: 1 },
-      { id: "013", name: "未知", value: 2, status: 1 }
-    ]
-  },
-  {
-    id: "02",
-    name: "状态",
-    value: "status",
-    status: 1,
-    description: "想要统一状态字段可以用这个",
-    createTime: "2024-07-01 10:00:00",
-    list: [
-      { id: "021", name: "禁用", value: 0, status: 1 },
-      { id: "022", name: "启用", value: 1, status: 1 }
-    ]
-  },
-  {
-    id: "03",
-    name: "岗位",
-    value: "post",
-    status: 1,
-    description: "岗位字段",
-    createTime: "2024-07-01 10:00:00",
-    list: [
-      { id: "031", name: "总经理", value: 1, status: 1 },
-      { id: "032", name: "总监", value: 2, status: 1 },
-      { id: "033", name: "人事主管", value: 3, status: 1 },
-      { id: "034", name: "开发部主管", value: 4, status: 1 },
-      { id: "035", name: "普通职员", value: 5, status: 1 },
-      { id: "036", name: "其它", value: 999, status: 1 }
-    ]
-  }
-]);
 const select = (list: []) => {
   selectedKeys.value = list;
 };
 const selectAll = (state: boolean) => {
-  selectedKeys.value = state ? (dictList.value.map(el => el.id) as []) : [];
+  selectedKeys.value = state ? (dictList.value.map((el: any) => el.id) as []) : [];
 };
-const onDictData = (e: any) => {
-  console.log("字典数据", e);
+const dictList = ref();
+const getDict = async () => {
+  let res = await getDictAPI();
+  dictList.value = res.data || [];
 };
+
+// 字典详情
+const detailOpen = ref(false);
+const dictDetail = ref({
+  list: []
+});
+const onDictData = (record: any) => {
+  dictDetail.value = record;
+  detailOpen.value = true;
+};
+const detailOk = () => {
+  detailOpen.value = false;
+};
+const deatilForm = ref({
+  name: "",
+  value: "",
+  status: 1
+});
+const detaulRules = ref({
+  name: [
+    {
+      required: true,
+      message: "请输入字典名称"
+    }
+  ],
+  value: [
+    {
+      required: true,
+      message: "请输入字典值"
+    }
+  ],
+  status: [
+    {
+      required: true,
+      message: "请选择状态"
+    }
+  ]
+});
+const detailFormRef = ref();
+const detailTitle = ref("");
+const detailCaseOpen = ref(false);
+const onAddDetail = () => {
+  detailTitle.value = "新增字典数据";
+  detailCaseOpen.value = true;
+};
+const handleOkDetail = async () => {
+  let state = await detailFormRef.value.validate();
+  if (state) return (detailCaseOpen.value = true); // 校验不通过
+  arcoMessage("success", "模拟提交成功");
+};
+const onDetailUpdate = (record: any) => {
+  detailTitle.value = "修改字典数据";
+  deatilForm.value = JSON.parse(JSON.stringify(record));
+  detailCaseOpen.value = true;
+};
+const afterCloseDetail = () => {
+  detailFormRef.value.resetFields();
+  deatilForm.value = {
+    name: "",
+    value: "",
+    status: 1
+  };
+};
+const selectedKeysDetail = ref([]);
+const selectDetail = (list: []) => {
+  selectedKeysDetail.value = list;
+};
+const selectAllDetail = (state: boolean) => {
+  selectedKeysDetail.value = state ? (dictDetail.value.list.map((el: any) => el.id) as []) : [];
+};
+
+getDict();
 </script>
 
 <style lang="scss" scoped></style>

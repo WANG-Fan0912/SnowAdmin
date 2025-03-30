@@ -38,6 +38,8 @@ export const createVitePlugins = (viteEnv: ViteEnv): (PluginOption | PluginOptio
     AutoImport({
       // 自动导入 Vue 相关函数，如：ref, reactive, toRef 等
       imports: ["vue", "vue-router"],
+      // 自动导入的目录-自定义全局函数
+      dirs: ["src/globals"],
       // arco组件的按需加载
       resolvers: [ArcoResolver()],
       // 解决eslint报错问题
