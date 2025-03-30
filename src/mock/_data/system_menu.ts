@@ -931,7 +931,7 @@ export default [
         component: "system/log/log",
         meta: {
           title: "log",
-          hide: false,
+          hide: true,
           disable: false,
           keepAlive: true,
           affix: false,

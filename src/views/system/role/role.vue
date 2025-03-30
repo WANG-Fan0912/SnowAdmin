@@ -105,6 +105,7 @@
 </template>
 
 <script setup lang="ts">
+import { roleData } from "@/views/system/data/index";
 const openState = ref([
   { value: 1, label: "是" },
   { value: 0, label: "否" }
@@ -132,47 +133,7 @@ const pagination = ref({
   showPageSize: true
 });
 const selectedKeys = ref([]);
-const dictList = ref([
-  {
-    id: 1,
-    name: "超级管理员",
-    key: "admin",
-    sort: 1,
-    status: 1,
-    admin: true,
-    description: "默认角色，超级管理员，上帝角色",
-    createBy: null,
-    createTime: "2024-03-27 11:21:01",
-    updateBy: null,
-    updateTime: null
-  },
-  {
-    id: 2,
-    name: "系统管理员",
-    key: "manager",
-    sort: 2,
-    status: 1,
-    admin: false,
-    description: "主要负责管理系统",
-    createBy: null,
-    createTime: "2024-03-27 11:21:01",
-    updateBy: null,
-    updateTime: null
-  },
-  {
-    id: 3,
-    name: "操作员",
-    key: "common",
-    sort: 3,
-    status: 1,
-    admin: false,
-    description: "负责一些基础信息的查询",
-    createBy: null,
-    createTime: "2024-03-27 11:21:01",
-    updateBy: null,
-    updateTime: null
-  }
-]);
+const dictList = ref(roleData);
 const select = (list: []) => {
   selectedKeys.value = list;
 };
