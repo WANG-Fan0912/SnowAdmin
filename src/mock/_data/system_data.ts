@@ -134,25 +134,12 @@ export const roleData = [
   },
   {
     id: 2,
-    name: "系统管理员",
-    key: "manager",
+    name: "普通员工",
+    key: "common",
     sort: 2,
     status: 1,
     admin: false,
-    description: "主要负责管理系统",
-    createBy: null,
-    createTime: "2024-03-27 11:21:01",
-    updateBy: null,
-    updateTime: null
-  },
-  {
-    id: 3,
-    name: "操作员",
-    key: "common",
-    sort: 3,
-    status: 1,
-    admin: false,
-    description: "负责一些基础信息的查询",
+    description: "负责一些基础功能",
     createBy: null,
     createTime: "2024-03-27 11:21:01",
     updateBy: null,
@@ -165,7 +152,7 @@ export const dictData = [
   {
     id: "01",
     name: "性别",
-    value: "gender",
+    code: "gender",
     status: 1,
     description: "这是一个性别字典",
     createTime: "2024-07-01 10:00:00",
@@ -178,7 +165,7 @@ export const dictData = [
   {
     id: "02",
     name: "状态",
-    value: "status",
+    code: "status",
     status: 1,
     description: "想要统一状态字段可以用这个",
     createTime: "2024-07-01 10:00:00",
@@ -190,7 +177,7 @@ export const dictData = [
   {
     id: "03",
     name: "岗位",
-    value: "post",
+    code: "post",
     status: 1,
     description: "岗位字段",
     createTime: "2024-07-01 10:00:00",
@@ -202,5 +189,55 @@ export const dictData = [
       { id: "035", name: "普通职员", value: 5, status: 1 },
       { id: "036", name: "其它", value: 999, status: 1 }
     ]
+  }
+];
+
+// 账户数据
+export const accountData = [
+  {
+    id: 1,
+    deptId: "100",
+    deptName: "研发部门",
+    userName: "admin",
+    nickName: "超级管理员",
+    userType: null,
+    email: "2547096351@qq.com",
+    phone: "15888888888",
+    sex: 1,
+    avatar: "",
+    status: 1,
+    description: "系统初始用户",
+    roles: ["admin"],
+    permissions: ["*:*:*"],
+    loginIp: "0:0:0:0:0:0:0:1",
+    loginDate: "2025-03-31 10:30:59",
+    createBy: "admin",
+    createTime: "2024-03-19 11:21:01",
+    updateBy: null,
+    updateTime: null,
+    admin: true
+  },
+  {
+    id: 2,
+    deptId: "100010101",
+    deptName: "研发部门",
+    userName: "common",
+    nickName: "普通用户",
+    userType: null,
+    email: "2547096351@qq.com",
+    phone: "15888888888",
+    sex: 0,
+    avatar: "",
+    status: 1,
+    description: "UI组用户",
+    roles: ["common"],
+    permissions: ["common:btn:add", "common:btn:edit", "common:btn:delete"],
+    loginIp: "0:0:0:0:0:0:0:1",
+    loginDate: "2025-03-31 10:30:59",
+    createBy: "admin",
+    createTime: "2024-03-19 11:21:01",
+    updateBy: null,
+    updateTime: null,
+    admin: false
   }
 ];

@@ -29,7 +29,14 @@
         </a-space>
       </a-row>
 
-      <a-table ref="tableRef" :data="tableData" default-expand-all-rows :bordered="{ cell: true }" row-key="id">
+      <a-table
+        ref="tableRef"
+        :data="tableData"
+        default-expand-all-rows
+        :bordered="{ cell: true }"
+        row-key="id"
+        :loading="loading"
+      >
         <template #columns>
           <a-table-column title="部门名称">
             <template #cell="{ record }">
@@ -192,6 +199,7 @@ const handleOk = async () => {
   if (state) return (open.value = true); // 校验不通过
   console.log("模拟提交", formType.value, addFrom.value);
   arcoMessage("success", "模拟提交成功");
+  getDivision();
 };
 // 关闭对话框动画结束后触发
 const afterClose = () => {
@@ -238,12 +246,16 @@ const reset = () => {
     name: "",
     status: ""
   };
+  getDivision();
 };
+const loading = ref(false);
 const tableRef = ref();
 const tableData = ref();
 const getDivision = async () => {
+  loading.value = true;
   let res = await getDivisionAPI();
   tableData.value = res.data;
+  loading.value = false;
   setTimeout(() => {
     tableRef.value.expandAll();
   }, 0);

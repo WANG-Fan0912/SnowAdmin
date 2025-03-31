@@ -1,6 +1,6 @@
 import type { MockMethod } from "vite-plugin-mock";
 import { resultSuccess } from "../_utils";
-import { dictData, divisionData } from "../_data/system_data";
+import { dictData, divisionData, roleData, accountData } from "../_data/system_data";
 
 // post请求body,get请求query
 export default [
@@ -18,6 +18,22 @@ export default [
     timeout: 300,
     response: () => {
       return resultSuccess(divisionData);
+    }
+  },
+  {
+    url: "/mock/system/getRole",
+    method: "get",
+    timeout: 300,
+    response: () => {
+      return resultSuccess(roleData);
+    }
+  },
+  {
+    url: "/mock/system/getAccount",
+    method: "get",
+    timeout: 300,
+    response: () => {
+      return resultSuccess(accountData);
     }
   }
 ] as MockMethod[];

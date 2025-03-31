@@ -23,3 +23,19 @@ export const getDivisionAPI = () => {
     method: "get"
   });
 };
+
+// 获取角色数据
+export const getRoleAPI = () => {
+  return axios({
+    url: "/mock/system/getRole",
+    method: "get"
+  });
+};
+
+// 获取账户数据
+export const getAccountAPI = () => {
+  return axios({
+    url: "/mock/system/getAccount",
+    method: "get"
+  });
+};

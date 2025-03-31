@@ -4,8 +4,8 @@
       <a-space wrap>
         <a-input v-model="form.name" placeholder="请输入角色名称" allow-clear />
         <a-input v-model="form.code" placeholder="请输入角色标识" allow-clear />
-        <a-select placeholder="角色状态" v-model="form.open" style="width: 120px" allow-clear>
-          <a-option v-for="item in openState" :key="item.value" :value="item.value">{{ item.label }}</a-option>
+        <a-select placeholder="角色状态" v-model="form.status" style="width: 120px" allow-clear>
+          <a-option v-for="item in openState" :key="item.value" :value="item.value">{{ item.name }}</a-option>
         </a-select>
         <a-range-picker show-time format="YYYY-MM-DD HH:mm" allow-clear />
         <a-button type="primary" @click="search">
@@ -33,7 +33,7 @@
 
       <a-table
         row-key="id"
-        :data="dictList"
+        :data="roleList"
         :bordered="{ cell: true }"
         :loading="loading"
         :scroll="{ x: '100%', y: '100%', minWidth: 1000 }"
@@ -105,15 +105,12 @@
 </template>
 
 <script setup lang="ts">
-import { roleData } from "@/views/system/data/index";
-const openState = ref([
-  { value: 1, label: "是" },
-  { value: 0, label: "否" }
-]);
+import { getRoleAPI } from "@/api/modules/system/index";
+const openState = ref(dictFilter("status"));
 const form = ref({
   name: "",
   code: "",
-  open: null
+  status: null
 });
 const search = () => {
   console.log("搜索");
@@ -132,20 +129,27 @@ const pagination = ref({
   pageSize: 10,
   showPageSize: true
 });
-const selectedKeys = ref([]);
-const dictList = ref(roleData);
-const select = (list: []) => {
-  selectedKeys.value = list;
-};
-const selectAll = (state: boolean) => {
-  selectedKeys.value = state ? (dictList.value.map(el => el.id) as []) : [];
-};
+
 const onPrivileges = (e: any) => {
   console.log("分配权限", e);
 };
 const onUsers = (e: any) => {
   console.log("分配账户", e);
 };
+const roleList = ref([]);
+const getRole = async () => {
+  let res = await getRoleAPI();
+  roleList.value = res.data;
+};
+const selectedKeys = ref([]);
+const select = (list: []) => {
+  selectedKeys.value = list;
+};
+const selectAll = (state: boolean) => {
+  selectedKeys.value = state ? (roleList.value.map((el: any) => el.id) as []) : [];
+};
+
+getRole();
 </script>
 
 <style lang="scss" scoped></style>

@@ -3,15 +3,15 @@ import { storeToRefs } from "pinia";
 import { Message } from "@arco-design/web-vue";
 /**
  * 字典解析
- * @param { string } key 字典key
+ * @param { string } code 字典编码code
  * @return 返回字典的list
  */
-export const dictFilter = (key: string) => {
+export const dictFilter = (code: string) => {
   try {
     const system = useSystemStore();
     let { dict } = storeToRefs(system);
     if (!dict.value) return [];
-    let curr = dict.value.find((item: any) => item.value === key);
+    let curr = dict.value.find((item: any) => item.code === code);
     if (curr?.list?.length > 0) {
       return curr.list;
     } else {

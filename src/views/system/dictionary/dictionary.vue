@@ -3,8 +3,8 @@
     <div class="snow-inner">
       <a-space wrap>
         <a-input v-model="form.name" placeholder="请输入字典名称" allow-clear />
-        <a-input v-model="form.code" placeholder="请输入字典值" allow-clear />
-        <a-select placeholder="启用状态" v-model="form.open" style="width: 120px" allow-clear>
+        <a-input v-model="form.code" placeholder="请输入字典编码" allow-clear />
+        <a-select placeholder="启用状态" v-model="form.status" style="width: 120px" allow-clear>
           <a-option v-for="item in openState" :key="item.value" :value="item.value">{{ item.name }}</a-option>
         </a-select>
         <a-button type="primary" @click="search">
@@ -47,7 +47,7 @@
             <template #cell="cell">{{ cell.rowIndex + 1 }}</template>
           </a-table-column>
           <a-table-column title="字典名称" data-index="name"></a-table-column>
-          <a-table-column title="字典值" data-index="value"></a-table-column>
+          <a-table-column title="字典编码" data-index="code"></a-table-column>
           <a-table-column title="状态" :width="100" align="center">
             <template #cell="{ record }">
               <a-tag bordered size="small" color="arcoblue" v-if="record.status === 1">启用</a-tag>
@@ -87,8 +87,8 @@
           <a-form-item field="name" label="字典名称" validate-trigger="blur">
             <a-input v-model="addFrom.name" placeholder="请输入字典名称" allow-clear />
           </a-form-item>
-          <a-form-item field="value" label="字典值" validate-trigger="blur">
-            <a-input v-model="addFrom.value" placeholder="请输入字典值" allow-clear />
+          <a-form-item field="code" label="字典编码" validate-trigger="blur">
+            <a-input v-model="addFrom.code" placeholder="请输入字典编码" allow-clear />
           </a-form-item>
           <a-form-item field="description" label="描述" validate-trigger="blur">
             <a-textarea v-model="addFrom.description" placeholder="请输入字典描述" allow-clear />
@@ -123,7 +123,7 @@
           row-key="id"
           :data="dictDetail.list"
           :bordered="{ cell: true }"
-          :loading="loading"
+          :loading="detailLoading"
           :scroll="{ x: '100%', y: '100%' }"
           :pagination="pagination"
           :row-selection="{ type: 'checkbox', showCheckedAll: true }"
@@ -193,17 +193,18 @@ const openState = ref(dictFilter("status"));
 const form = ref({
   name: "",
   code: "",
-  open: null
+  status: null
 });
 const search = () => {
-  console.log("搜索");
+  getDict();
 };
 const reset = () => {
   form.value = {
     name: "",
     code: "",
-    open: null
+    status: null
   };
+  getDict();
 };
 
 const open = ref<Boolean>(false);
@@ -215,10 +216,10 @@ const rules = {
       message: "请输入字典名称"
     }
   ],
-  value: [
+  code: [
     {
       required: true,
-      message: "请输入字典值"
+      message: "请输入字典编码"
     }
   ],
   status: [
@@ -230,7 +231,7 @@ const rules = {
 };
 const addFrom = ref({
   name: "",
-  value: "",
+  code: "",
   description: "",
   status: 1
 });
@@ -243,13 +244,14 @@ const handleOk = async () => {
   let state = await formRef.value.validate();
   if (state) return (open.value = true); // 校验不通过
   arcoMessage("success", "模拟提交成功");
+  getDict();
 };
 // 关闭对话框动画结束后触发
 const afterClose = () => {
   formRef.value.resetFields();
   addFrom.value = {
     name: "",
-    value: "",
+    code: "",
     description: "",
     status: 1
   };
@@ -276,18 +278,23 @@ const selectAll = (state: boolean) => {
 };
 const dictList = ref();
 const getDict = async () => {
+  loading.value = true;
   let res = await getDictAPI();
   dictList.value = res.data || [];
+  loading.value = false;
 };
 
 // 字典详情
+const detailLoading = ref(false);
 const detailOpen = ref(false);
 const dictDetail = ref({
   list: []
 });
 const onDictData = (record: any) => {
+  detailLoading.value = true;
   dictDetail.value = record;
   detailOpen.value = true;
+  detailLoading.value = false;
 };
 const detailOk = () => {
   detailOpen.value = false;
