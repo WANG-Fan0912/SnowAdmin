@@ -1198,7 +1198,66 @@ export default [
     }
   },
   {
-    id: "15",
+    id: "13",
+    parentId: "0",
+    path: "/permission",
+    name: "permission",
+    redirect: "/permission/test1",
+    meta: {
+      title: "permission",
+      hide: false,
+      disable: false,
+      keepAlive: true,
+      affix: false,
+      link: "",
+      iframe: false,
+      roles: ["admin"],
+      svgIcon: "permission",
+      sort: 13
+    },
+    children: [
+      {
+        id: "1301",
+        parentId: "13",
+        path: "/permission/test1",
+        name: "test1",
+        component: "permission/test1/test1",
+        meta: {
+          title: "test-1",
+          hide: false,
+          disable: false,
+          keepAlive: true,
+          affix: false,
+          link: "",
+          iframe: false,
+          roles: ["admin"],
+          icon: "icon-menu",
+          sort: 1
+        }
+      },
+      {
+        id: "1302",
+        parentId: "13",
+        path: "/permission/test2",
+        name: "test2",
+        component: "permission/test2/test2",
+        meta: {
+          title: "test-2",
+          hide: false,
+          disable: false,
+          keepAlive: true,
+          affix: false,
+          link: "",
+          iframe: false,
+          roles: ["common"],
+          icon: "icon-menu",
+          sort: 2
+        }
+      }
+    ]
+  },
+  {
+    id: "14",
     parentId: "0",
     path: "/gaodemap",
     name: "gaodemap",
@@ -1213,11 +1272,11 @@ export default [
       iframe: true, // 区分是否内链 true内链 false外链
       roles: ["admin"],
       svgIcon: "amap",
-      sort: 12
+      sort: 14
     }
   },
   {
-    id: "13",
+    id: "15",
     parentId: "0",
     path: "/i18n",
     name: "i18n",
@@ -1232,11 +1291,11 @@ export default [
       iframe: false,
       roles: ["admin", "common"],
       svgIcon: "earth",
-      sort: 13
+      sort: 15
     }
   },
   {
-    id: "14",
+    id: "16",
     parentId: "0",
     path: "/about",
     name: "about",
@@ -1251,7 +1310,7 @@ export default [
       iframe: false,
       roles: ["admin", "common"],
       svgIcon: "about",
-      sort: 14
+      sort: 16
     }
   }
 ];

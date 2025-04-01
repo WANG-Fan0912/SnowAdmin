@@ -91,6 +91,9 @@ export default {
     ["disable-menu"]: "disable-menu",
     ["hide-menu"]: "hide-menu",
     ["i18n"]: "i18n",
-    ["amap"]: "amap"
+    ["amap"]: "amap",
+    ["permission"]: "permission",
+    ["test-1"]: "test-1",
+    ["test-2"]: "test-2"
   }
 };
