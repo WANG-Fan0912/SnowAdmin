@@ -15,6 +15,7 @@
  *  |-- 子节点2: '0102'
  *  |    |-- 子节点2-1: '010201'
  *  |    |-- 子节点2-2: '010202'
+ * 当然，你们也可以自行设计id结构，只要保证id的唯一性即可，最后接口返回的是一个树形结构
  *
  *
  * 路由meta对象参数，我们通常将属性放到meta对象中
@@ -23,13 +24,14 @@
  *   hide:      是否隐藏此路由，不会显示在菜单树，可以访问
  *   disable:   是否停用，不会显示在菜单树，且不可访问
  *   keepAlive: 是否缓存组件状态
- *   affix:     是否固定在 tabsView 栏上
- *   link:      是否是超链接菜单，开启外链条件：1、 link：链接地址不为空  2、iframe: false
- *   iframe:    是否内嵌窗口，开启条件：1、iframe：true  2、link：链接地址不为空
+ *   affix:     是否固定在 tabsView 栏上 菜单配置
+ *   link:      是否是超链接菜单，开启外链条件：1、 link：链接地址不为空  2、iframe: false  菜单配置
+ *   iframe:    是否内嵌窗口，开启条件：1、iframe：true  2、link：链接地址不为空  菜单配置
  *   roles:     当前路由权限表示，取角色管理。路由控制显示、隐藏。 超级管理员：admin；普通角色：common
  *   icon:      菜单、tabsView 图标等
  *   svgIcon:   svg图标
  *   sort:      菜单顺序
+ *   type:      1目录 2菜单 3按钮
  * }
  */
 
@@ -56,7 +58,8 @@ export default [
       iframe: false, // 是否内嵌窗口
       roles: ["admin", "common"], // 路由权限
       svgIcon: "home", // 菜单图标
-      sort: 1
+      sort: 1,
+      type: 2 // type 1目录 2菜单 3按钮
     }
   },
   {
@@ -75,7 +78,8 @@ export default [
       iframe: false,
       roles: ["admin"],
       svgIcon: "folder-menu",
-      sort: 2
+      sort: 2,
+      type: 1
     },
     children: [
       {
@@ -94,7 +98,8 @@ export default [
           iframe: false,
           roles: ["admin"],
           icon: "icon-menu",
-          sort: 1
+          sort: 1,
+          type: 2
         }
       }
     ]
@@ -115,7 +120,8 @@ export default [
       iframe: false,
       roles: ["admin"],
       svgIcon: "table",
-      sort: 3
+      sort: 3,
+      type: 1
     },
     children: [
       {
@@ -134,7 +140,8 @@ export default [
           iframe: false,
           roles: ["admin"],
           icon: "icon-menu",
-          sort: 1
+          sort: 1,
+          type: 2
         }
       },
       {
@@ -153,7 +160,8 @@ export default [
           iframe: false,
           roles: ["admin"],
           icon: "icon-menu",
-          sort: 2
+          sort: 2,
+          type: 2
         }
       }
     ]
@@ -174,7 +182,8 @@ export default [
       iframe: false,
       roles: ["admin"],
       svgIcon: "form",
-      sort: 4
+      sort: 4,
+      type: 1
     },
     children: [
       {
@@ -193,7 +202,8 @@ export default [
           iframe: false,
           roles: ["admin"],
           icon: "icon-menu",
-          sort: 1
+          sort: 1,
+          type: 2
         }
       },
       {
@@ -212,7 +222,8 @@ export default [
           iframe: false,
           roles: ["admin"],
           icon: "icon-menu",
-          sort: 2
+          sort: 2,
+          type: 2
         }
       }
     ]
@@ -233,7 +244,8 @@ export default [
       iframe: false,
       roles: ["admin"],
       svgIcon: "switch",
-      sort: 5
+      sort: 5,
+      type: 1
     },
     children: [
       {
@@ -252,7 +264,8 @@ export default [
           iframe: false,
           roles: ["admin"],
           icon: "icon-menu",
-          sort: 1
+          sort: 1,
+          type: 2
         }
       },
       {
@@ -271,7 +284,8 @@ export default [
           iframe: false,
           roles: ["admin"],
           icon: "icon-menu",
-          sort: 2
+          sort: 2,
+          type: 1
         },
         children: [
           {
@@ -290,7 +304,8 @@ export default [
               iframe: false,
               roles: ["admin"],
               icon: "icon-menu",
-              sort: 2
+              sort: 2,
+              type: 2
             }
           },
           {
@@ -309,7 +324,8 @@ export default [
               iframe: false,
               roles: ["admin"],
               icon: "icon-menu",
-              sort: 1
+              sort: 1,
+              type: 2
             }
           },
           {
@@ -327,7 +343,8 @@ export default [
               iframe: false,
               roles: ["admin"],
               icon: "icon-menu",
-              sort: 3
+              sort: 3,
+              type: 2
             }
           },
           {
@@ -345,7 +362,8 @@ export default [
               iframe: false,
               roles: ["admin"],
               icon: "icon-menu",
-              sort: 4
+              sort: 4,
+              type: 2
             }
           },
           {
@@ -363,7 +381,8 @@ export default [
               iframe: false,
               roles: ["admin"],
               icon: "icon-menu",
-              sort: 5
+              sort: 5,
+              type: 2
             }
           },
           {
@@ -381,7 +400,8 @@ export default [
               iframe: false,
               roles: ["admin"],
               icon: "icon-menu",
-              sort: 6
+              sort: 6,
+              type: 2
             }
           },
           {
@@ -399,7 +419,8 @@ export default [
               iframe: false,
               roles: ["admin"],
               icon: "icon-menu",
-              sort: 7
+              sort: 7,
+              type: 2
             }
           },
           {
@@ -417,7 +438,8 @@ export default [
               iframe: false,
               roles: ["admin"],
               icon: "icon-menu",
-              sort: 8
+              sort: 8,
+              type: 2
             }
           },
           {
@@ -435,7 +457,8 @@ export default [
               iframe: false,
               roles: ["admin"],
               icon: "icon-menu",
-              sort: 9
+              sort: 9,
+              type: 2
             }
           }
         ]
@@ -458,7 +481,8 @@ export default [
       iframe: false,
       roles: ["admin"],
       svgIcon: "classify",
-      sort: 6
+      sort: 6,
+      type: 1
     },
     children: [
       {
@@ -477,7 +501,8 @@ export default [
           iframe: false,
           roles: ["admin"],
           icon: "icon-menu",
-          sort: 1
+          sort: 1,
+          type: 2
         }
       },
       {
@@ -496,7 +521,8 @@ export default [
           iframe: false,
           roles: ["admin"],
           icon: "icon-menu",
-          sort: 2
+          sort: 2,
+          type: 2
         }
       },
       {
@@ -515,7 +541,8 @@ export default [
           iframe: false,
           roles: ["admin"],
           icon: "icon-menu",
-          sort: 3
+          sort: 3,
+          type: 2
         }
       },
       {
@@ -534,7 +561,8 @@ export default [
           iframe: false,
           roles: ["admin"],
           icon: "icon-menu",
-          sort: 4
+          sort: 4,
+          type: 2
         }
       },
       {
@@ -553,7 +581,8 @@ export default [
           iframe: false,
           roles: ["admin"],
           icon: "icon-menu",
-          sort: 5
+          sort: 5,
+          type: 2
         }
       },
       {
@@ -572,7 +601,8 @@ export default [
           iframe: false,
           roles: ["admin"],
           icon: "icon-menu",
-          sort: 6
+          sort: 6,
+          type: 2
         }
       },
       {
@@ -591,7 +621,8 @@ export default [
           iframe: false,
           roles: ["admin"],
           icon: "icon-menu",
-          sort: 7
+          sort: 7,
+          type: 2
         }
       },
       {
@@ -610,7 +641,8 @@ export default [
           iframe: false,
           roles: ["admin"],
           icon: "icon-menu",
-          sort: 8
+          sort: 8,
+          type: 2
         }
       },
       {
@@ -629,7 +661,8 @@ export default [
           iframe: false,
           roles: ["admin"],
           icon: "icon-menu",
-          sort: 9
+          sort: 9,
+          type: 2
         }
       },
       {
@@ -648,7 +681,8 @@ export default [
           iframe: false,
           roles: ["admin"],
           icon: "icon-menu",
-          sort: 10
+          sort: 10,
+          type: 2
         }
       },
       {
@@ -667,7 +701,8 @@ export default [
           iframe: false,
           roles: ["admin"],
           icon: "icon-menu",
-          sort: 11
+          sort: 11,
+          type: 2
         }
       }
     ]
@@ -688,7 +723,8 @@ export default [
       iframe: false,
       roles: ["admin"],
       svgIcon: "directives",
-      sort: 7
+      sort: 7,
+      type: 1
     },
     children: [
       {
@@ -707,7 +743,8 @@ export default [
           iframe: false,
           roles: ["admin"],
           icon: "icon-menu",
-          sort: 1
+          sort: 1,
+          type: 2
         }
       },
       {
@@ -726,7 +763,8 @@ export default [
           iframe: false,
           roles: ["admin"],
           icon: "icon-menu",
-          sort: 2
+          sort: 2,
+          type: 2
         }
       },
       {
@@ -745,7 +783,8 @@ export default [
           iframe: false,
           roles: ["admin"],
           icon: "icon-menu",
-          sort: 3
+          sort: 3,
+          type: 2
         }
       }
     ]
@@ -766,7 +805,8 @@ export default [
       iframe: false,
       roles: ["admin"],
       svgIcon: "user",
-      sort: 8
+      sort: 8,
+      type: 1
     },
     children: [
       {
@@ -785,7 +825,8 @@ export default [
           iframe: false,
           roles: ["admin"],
           icon: "icon-menu",
-          sort: 1
+          sort: 1,
+          type: 2
         }
       },
       {
@@ -804,7 +845,8 @@ export default [
           iframe: false,
           roles: ["admin"],
           icon: "icon-menu",
-          sort: 2
+          sort: 2,
+          type: 2
         }
       }
     ]
@@ -825,7 +867,8 @@ export default [
       iframe: false,
       roles: ["admin"],
       svgIcon: "set",
-      sort: 9
+      sort: 9,
+      type: 1
     },
     children: [
       {
@@ -844,7 +887,8 @@ export default [
           iframe: false,
           roles: ["admin"],
           icon: "icon-menu",
-          sort: 1
+          sort: 1,
+          type: 2
         }
       },
       {
@@ -863,7 +907,8 @@ export default [
           iframe: false,
           roles: ["admin"],
           icon: "icon-menu",
-          sort: 2
+          sort: 2,
+          type: 2
         }
       },
       {
@@ -882,7 +927,8 @@ export default [
           iframe: false,
           roles: ["admin"],
           icon: "icon-menu",
-          sort: 3
+          sort: 3,
+          type: 2
         }
       },
       {
@@ -901,7 +947,8 @@ export default [
           iframe: false,
           roles: ["admin"],
           icon: "icon-menu",
-          sort: 4
+          sort: 4,
+          type: 2
         }
       },
       {
@@ -920,7 +967,8 @@ export default [
           iframe: false,
           roles: ["admin"],
           icon: "icon-menu",
-          sort: 5
+          sort: 5,
+          type: 2
         }
       },
       {
@@ -939,7 +987,8 @@ export default [
           iframe: false,
           roles: ["admin"],
           icon: "icon-menu",
-          sort: 6
+          sort: 6,
+          type: 2
         }
       }
     ]
@@ -960,7 +1009,8 @@ export default [
       iframe: false,
       roles: ["admin"],
       svgIcon: "link",
-      sort: 10
+      sort: 10,
+      type: 1
     },
     children: [
       {
@@ -979,7 +1029,8 @@ export default [
           iframe: false,
           roles: ["admin"],
           icon: "icon-menu",
-          sort: 1
+          sort: 1,
+          type: 1
         },
         children: [
           {
@@ -998,7 +1049,8 @@ export default [
               iframe: true, // 区分是否内链 true内链 false外链
               roles: ["admin"],
               icon: "icon-menu",
-              sort: 1
+              sort: 1,
+              type: 2
             }
           },
           {
@@ -1017,7 +1069,8 @@ export default [
               iframe: true, // 区分是否内链 true内链 false外链
               roles: ["admin"],
               icon: "icon-menu",
-              sort: 2
+              sort: 2,
+              type: 2
             }
           },
           {
@@ -1036,7 +1089,8 @@ export default [
               iframe: true, // 区分是否内链 true内链 false外链
               roles: ["admin"],
               icon: "icon-menu",
-              sort: 3
+              sort: 3,
+              type: 2
             }
           }
         ]
@@ -1057,7 +1111,8 @@ export default [
           iframe: false,
           roles: ["admin"],
           icon: "icon-menu",
-          sort: 2
+          sort: 2,
+          type: 1
         },
         children: [
           {
@@ -1076,7 +1131,8 @@ export default [
               iframe: false, // 区分是否内链 true内链 false外链
               roles: ["admin"],
               icon: "icon-menu",
-              sort: 5
+              sort: 5,
+              type: 2
             }
           },
           {
@@ -1095,7 +1151,8 @@ export default [
               iframe: false, // 区分是否内链 true内链 false外链
               roles: ["admin"],
               icon: "icon-menu",
-              sort: 1
+              sort: 1,
+              type: 2
             }
           },
           {
@@ -1114,7 +1171,8 @@ export default [
               iframe: false, // 区分是否内链 true内链 false外链
               roles: ["admin"],
               icon: "icon-menu",
-              sort: 2
+              sort: 2,
+              type: 2
             }
           },
           {
@@ -1133,7 +1191,8 @@ export default [
               iframe: false, // 区分是否内链 true内链 false外链
               roles: ["admin"],
               icon: "icon-menu",
-              sort: 3
+              sort: 3,
+              type: 2
             }
           },
           {
@@ -1152,7 +1211,8 @@ export default [
               iframe: false, // 区分是否内链 true内链 false外链
               roles: ["admin"],
               icon: "icon-menu",
-              sort: 4
+              sort: 4,
+              type: 2
             }
           }
         ]
@@ -1175,7 +1235,8 @@ export default [
       iframe: false,
       roles: ["admin"],
       svgIcon: "switch",
-      sort: 11
+      sort: 11,
+      type: 2
     }
   },
   {
@@ -1194,7 +1255,8 @@ export default [
       iframe: false,
       roles: ["admin"],
       svgIcon: "switch",
-      sort: 12
+      sort: 12,
+      type: 2
     }
   },
   {
@@ -1213,7 +1275,8 @@ export default [
       iframe: false,
       roles: ["admin"],
       svgIcon: "permission",
-      sort: 13
+      sort: 13,
+      type: 1
     },
     children: [
       {
@@ -1232,7 +1295,8 @@ export default [
           iframe: false,
           roles: ["admin"],
           icon: "icon-menu",
-          sort: 1
+          sort: 1,
+          type: 2
         }
       },
       {
@@ -1249,9 +1313,10 @@ export default [
           affix: false,
           link: "",
           iframe: false,
-          roles: ["common"],
+          roles: ["admin", "common"],
           icon: "icon-menu",
-          sort: 2
+          sort: 2,
+          type: 2
         }
       }
     ]
@@ -1272,7 +1337,8 @@ export default [
       iframe: true, // 区分是否内链 true内链 false外链
       roles: ["admin"],
       svgIcon: "amap",
-      sort: 14
+      sort: 14,
+      type: 2
     }
   },
   {
@@ -1291,7 +1357,8 @@ export default [
       iframe: false,
       roles: ["admin", "common"],
       svgIcon: "earth",
-      sort: 15
+      sort: 15,
+      type: 2
     }
   },
   {
@@ -1310,7 +1377,8 @@ export default [
       iframe: false,
       roles: ["admin", "common"],
       svgIcon: "about",
-      sort: 16
+      sort: 16,
+      type: 2
     }
   }
 ];
