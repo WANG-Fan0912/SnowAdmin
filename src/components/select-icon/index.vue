@@ -1,48 +1,95 @@
 <template>
-  <a-modal v-model:visible="visible" width="70vw" :top="'50px'" :align-center="false" :footer="false">
-    <template #title> 请选择图标 </template>
-    <a-input
-      :style="{
-        width: '100%',
-        marginBottom: '14px'
-      }"
-      placeholder="请输入关键词搜索"
-      allow-clear
-      v-model="searchName"
-    >
-      <template #prefix>
-        <icon-search />
+  <div>
+    <a-input ref="inputRef" :style="{ width: '100%' }" placeholder="请选择图标" v-model="iconName" @focus="onFocus">
+      <template #suffix v-if="iconName">
+        <SvgIcon v-if="type == 'svg'" :name="iconName" :size="size" />
+        <component v-else :is="iconName" :size="size"></component>
+      </template>
+      <template #append>
+        <span class="icon-reset" @click="reset">重置</span>
       </template>
     </a-input>
-    <div class="over-scroll">
-      <div class="icon-grid">
-        <div v-for="item in iconList" :key="item" class="grid-item" @click="onIcon(item)">
-          <component :is="item" :size="30"></component>
-          <span>{{ item }}</span>
+    <a-modal v-model:visible="visible" :unmount-on-close="true" width="70vw" :top="'50px'" :align-center="false" :footer="false">
+      <template #title> 请选择图标 </template>
+      <a-input
+        :style="{
+          width: '100%',
+          marginBottom: '14px'
+        }"
+        placeholder="请输入关键词搜索"
+        allow-clear
+        v-model="searchName"
+      >
+        <template #prefix>
+          <icon-search />
+        </template>
+      </a-input>
+      <div class="over-scroll">
+        <div class="icon-grid">
+          <div v-for="item in iconList" :key="item" class="grid-item" @click="onIcon(item)">
+            <SvgIcon v-if="type == 'svg'" :name="item" :size="25" />
+            <component v-else :is="item" :size="25"></component>
+            <span>{{ item }}</span>
+          </div>
+        </div>
+        <div v-if="iconList.length === 0" class="empty-row">
+          <a-empty>
+            <template #image>
+              <icon-exclamation-circle-fill />
+            </template>
+            <span>未查询到您要找的图标</span>
+          </a-empty>
         </div>
       </div>
-      <div v-if="iconList.length === 0" class="empty-row">
-        <a-empty>
-          <template #image>
-            <icon-exclamation-circle-fill />
-          </template>
-          <span>未查询到您要找的图标</span>
-        </a-empty>
-      </div>
-    </div>
-  </a-modal>
+    </a-modal>
+  </div>
 </template>
 
 <script setup lang="ts">
 import * as ArcoIcons from "@arco-design/web-vue/es/icon";
-const emit = defineEmits(["select"]);
+interface Props {
+  type?: string;
+  size?: number;
+}
+const props = withDefaults(defineProps<Props>(), {
+  type: "arco", // 图标库类型，arco 或 svg
+  size: 25 // 图标大小-默认25px
+});
 
+const { type, size } = toRefs(props);
+
+const emit = defineEmits(["update:modelValue"]);
+
+const visible = ref<boolean>(false);
+const iconName = ref<string>("");
+
+const reset = () => {
+  iconName.value = "";
+  emit("update:modelValue", "");
+};
+
+const onFocus = () => {
+  searchName.value = "";
+  visible.value = true;
+};
+
+// svg模块-assets/svgs文件夹下的所有svg图标
+const SvgIconModules = import.meta.glob("@assets/svgs/*.svg");
+// 搜索关键字
 const searchName = ref<string>("");
+// icon列表
 const iconList = computed(() => {
-  if (!ArcoIcons) return [];
   let icons: string[] = [];
-  for (let key in ArcoIcons) {
-    if (key != "default") icons.push(key);
+  if (type.value === "arco") {
+    if (!ArcoIcons) return [];
+    for (let key in ArcoIcons) {
+      if (key != "default") icons.push(key);
+    }
+  } else {
+    if (!SvgIconModules) return [];
+    for (let path in SvgIconModules) {
+      icons.push(path.replace("/src/assets/svgs/", "").split(".svg")[0]);
+    }
   }
   // 若按照关键字搜索，则返回搜索结果
   if (searchName.value) {
@@ -52,20 +99,12 @@ const iconList = computed(() => {
   return icons;
 });
 
-const onIcon = (iconName: string) => {
+// 选择图标
+const onIcon = (name: string) => {
   visible.value = false;
-  emit("select", iconName);
+  iconName.value = name;
+  emit("update:modelValue", name);
 };
-
-const visible = ref<boolean>(false);
-const open = () => {
-  searchName.value = "";
-  visible.value = true;
-};
-
-defineExpose({
-  open
-});
 </script>
 
 <style lang="scss" scoped>
@@ -97,5 +136,8 @@ defineExpose({
   justify-content: center;
   width: 100%;
   height: 300px;
+}
+.icon-reset {
+  cursor: pointer;
 }
 </style>
