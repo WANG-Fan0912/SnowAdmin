@@ -23,35 +23,54 @@ export const dictFilter = (code: string) => {
 };
 
 /**
+ *
  * Message提示框
- * @param type 提示类型
- * @param text 提示文字
+ * @param {string} type 提示框类型
+ * @param {string} content 提示框内容
+ * @param {boolean} closable 是否可关闭
+ * @param {string} position 提示框位置
+ * @param {any} icon 提示框图标
  */
-export const arcoMessage = (type: string, text: string) => {
+export const arcoMessage = (type: string, content: string, closable: boolean = false, position: string = "top", icon?: any) => {
+  interface ArcoMessage {
+    content: string;
+    closable?: boolean;
+    position?: string;
+    icon?: any;
+  }
+  let message: ArcoMessage = {
+    content,
+    closable,
+    position
+  };
+  // icon必须是一个组件，例如：import { IconFaceSmileFill } from '@arco-design/web-vue/es/icon';
+  if (icon) {
+    message.icon = () => h(icon);
+  }
   switch (type) {
     case "info":
-      Message.info(text);
+      Message.info(message);
       break;
     case "success":
-      Message.success(text);
+      Message.success(message);
       break;
     case "warning":
-      Message.warning(text);
+      Message.warning(message);
       break;
     case "error":
-      Message.error(text);
+      Message.error(message);
       break;
     case "loading":
-      Message.loading(text);
+      Message.loading(message);
       break;
     case "normal":
-      Message.normal(text);
+      Message.normal(message);
       break;
     case "clear":
-      Message.clear(text);
+      Message.clear(message);
       break;
     default:
-      Message.info(text);
+      Message.info(message);
       break;
   }
 };
