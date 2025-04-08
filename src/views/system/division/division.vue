@@ -142,7 +142,7 @@
             </a-col>
           </a-row>
           <a-form-item field="description" label="描述" validate-trigger="blur">
-            <a-textarea v-model="addFrom.description" placeholder="请输入字典描述" allow-clear />
+            <a-textarea v-model="addFrom.description" placeholder="请输入描述" allow-clear />
           </a-form-item>
         </a-form>
       </div>

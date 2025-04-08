@@ -22,7 +22,7 @@
             :popup-max-height="600"
           >
             <template v-for="item in routeTree" :key="item.name">
-              <a-menu-item v-if="aMenuShow(item)" :key="item.name" :popup-max-height="600">
+              <a-menu-item v-if="!item.meta.hide" :key="item.name" :popup-max-height="600">
                 <template #icon v-if="item.meta.svgIcon || item.meta.icon">
                   <MenuItemIcon :svg-icon="item.meta.svgIcon" :icon="item.meta.icon" />
                 </template>
@@ -52,7 +52,6 @@ import { useRoutesConfigStore } from "@/store/modules/route-config";
 import { useRoutingMethod } from "@/hooks/useRoutingMethod";
 import { storeToRefs } from "pinia";
 import { useThemeConfig } from "@/store/modules/theme-config";
-import { useMenuMethod } from "@/hooks/useMenuMethod";
 import { useDevicesSize } from "@/hooks/useDevicesSize";
 defineOptions({ name: "LayoutMixing" });
 const route = useRoute();
@@ -61,7 +60,6 @@ const routerStore = useRoutesConfigStore();
 const themeStore = useThemeConfig();
 const { isFooter, collapsed, asideDark, language } = storeToRefs(themeStore);
 const { routeTree } = storeToRefs(routerStore);
-const { aMenuShow } = useMenuMethod();
 const { isPc } = useDevicesSize();
 
 const drawing = ref<boolean>(true);
@@ -89,10 +87,18 @@ const onMenuItem = (key: string) => {
   if (find) {
     // 给左侧树赋值
     setAsideMenu(find);
-    // 这里直接跳转父级path，因为父级路由做了重定向
+    // 若有重定向，则跳转到重定向的路由
     // 如果有子路由则重定向到自己的第一个菜单
     // 如果没有子路由则说明当前父级是一个菜单，直接跳转
-    router.push(find.path);
+    let path = "";
+    if (find.redirect) {
+      path = find.redirect;
+    } else if (find.children && find.children.length > 0) {
+      path = find.children[0].path;
+    } else {
+      path = find.path;
+    }
+    router.push(path);
   } else {
     router.push("/404");
   }

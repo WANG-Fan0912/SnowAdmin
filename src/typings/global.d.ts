@@ -2,6 +2,8 @@
 /* 路由-Menu */
 declare namespace Menu {
   interface MenuOptions {
+    id: string;
+    parentId: string;
     path: string;
     name: string;
     redirect?: string;
@@ -21,6 +23,7 @@ declare namespace Menu {
     icon?: string;
     svgIcon?: string;
     sort?: number;
+    type?: number;
   }
 }
 /* tabs菜单 */

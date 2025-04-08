@@ -83,7 +83,7 @@
                     <template #icon><icon-edit /></template>
                     <span>修改</span>
                   </a-button>
-                  <a-popconfirm type="warning" content="确定删除该角色吗?">
+                  <a-popconfirm type="warning" content="确定删除该账号吗?">
                     <a-button type="primary" status="danger" size="mini" :disabled="record.admin">
                       <template #icon><icon-delete /></template>
                       <span>删除</span>
@@ -166,7 +166,7 @@
             </a-switch>
           </a-form-item>
           <a-form-item field="description" label="描述" validate-trigger="blur">
-            <a-textarea v-model="addFrom.description" placeholder="请输入字典描述" allow-clear />
+            <a-textarea v-model="addFrom.description" placeholder="请输入描述" allow-clear />
           </a-form-item>
         </a-form>
       </div>

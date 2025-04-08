@@ -52,8 +52,8 @@ export const treeSort = (tree: Menu.MenuOptions[]) => {
 
 /**
  * 过滤路由树，返回有权限的树
- * 1、先过滤停用的菜单，该菜单是不可访问的，直接去掉
- * 2、根据角色权限过滤原始路由树
+ * 1、根据角色权限过滤原始路由树
+ * 2、过滤禁用的菜单，该菜单是不可访问的，直接去掉
  * @param {array} tree 根据角色权限过滤原始路由树
  * @returns 返回有权限的树
  */
@@ -65,7 +65,6 @@ export const filterByRole = (tree: any, userRoles: Array<string>) => {
     }
     // 过滤是否禁用
     if (item?.meta?.disable) return false;
-    if (item.children) item.children = filterByRole(item.children, userRoles);
     return true;
   });
 };
@@ -122,3 +121,32 @@ export function deepClone(data: any) {
   }
   return cloned;
 }
+
+/**
+ * 将扁平路由组装成树形结构
+ * @param {array} nodes 扁平数组
+ * @returns 树形结构
+ */
+export const buildTreeOptimized = (nodes: Menu.MenuOptions[]) => {
+  const nodeMap = new Map(); // 哈希映射存储节点引用
+  const roots = []; // 存储顶层节点
+
+  // 单次遍历构建结构（兼容乱序数据）
+  for (const node of nodes) {
+    const { id, parentId } = node;
+    node.children = []; // 初始化子节点数组
+
+    // 将当前节点存入哈希表
+    nodeMap.set(id, node);
+
+    // 处理父子关系
+    if (parentId === "0") {
+      roots.push(node); // 顶层节点直接加入结果
+    } else {
+      const parent = nodeMap.get(parentId);
+      parent?.children.push(node); // 子节点挂载到父级
+    }
+  }
+
+  return roots;
+};

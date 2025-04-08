@@ -28,8 +28,10 @@
             <span>新增</span>
           </a-button>
           <a-button type="primary" status="success" @click="onExpand">
-            <template #icon><icon-swap /></template>
-            <span>折叠</span>
+            <template #icon>
+              <icon-swap />
+            </template>
+            <span>{{ expand ? "收起" : "展开" }}</span>
           </a-button>
         </a-space>
       </a-row>
@@ -118,7 +120,7 @@
                   <template #icon><icon-edit /></template>
                   <span>修改</span>
                 </a-button>
-                <a-button size="mini" type="primary" status="success">
+                <a-button size="mini" type="primary" status="success" v-if="record.meta.type != 3">
                   <template #icon><icon-plus /></template>
                   <span>新增</span>
                 </a-button>
@@ -138,26 +140,33 @@
       <div>
         <a-form ref="formRef" auto-label-width :rules="rules" :model="addFrom">
           <a-form-item field="type" label="菜单类型" validate-trigger="blur">
-            <a-radio-group type="button" v-model="addFrom.type">
+            <a-radio-group type="button" v-model="addFrom.type" @change="typeChange">
               <a-radio v-for="item in menuType" :key="item.value" :value="item.value">{{ item.name }}</a-radio>
             </a-radio-group>
           </a-form-item>
-          <a-form-item field="id" label="上级菜单" validate-trigger="blur">
+          <a-form-item field="parentId" label="上级菜单" validate-trigger="blur">
             <a-tree-select
-              v-model="addFrom.id"
+              v-model="addFrom.parentId"
               :data="menuTree"
               :field-names="{
                 key: 'id',
                 title: 'i18n',
                 children: 'children'
               }"
+              allow-clear
               placeholder="请选择上级菜单"
             ></a-tree-select>
+            <template #extra>
+              <div>未选择则默认第一级</div>
+            </template>
           </a-form-item>
-          <a-row :gutter="24">
+          <a-row :gutter="24" v-if="[1, 2].includes(addFrom.type)">
             <a-col :span="12">
               <a-form-item field="svgIcon" label="自定义图标" validate-trigger="blur">
                 <SelectIcon type="svg" v-model="addFrom.svgIcon" />
+                <template #extra>
+                  <div>自定义图标优先级高于菜单图标</div>
+                </template>
               </a-form-item>
             </a-col>
             <a-col :span="12">
@@ -166,42 +175,59 @@
               </a-form-item>
             </a-col>
           </a-row>
-          <a-row :gutter="24">
-            <a-col :span="12">
-              <a-form-item field="name" label="菜单名称" validate-trigger="blur">
-                <a-input v-model="addFrom.name" placeholder="请输入菜单名称" allow-clear />
-              </a-form-item>
-            </a-col>
-            <a-col :span="12">
-              <a-form-item field="title" label="国际化Key" validate-trigger="blur">
-                <a-input v-model="addFrom.title" placeholder="请输入国际化Key" allow-clear />
-              </a-form-item>
-            </a-col>
-          </a-row>
-          <a-form-item field="path" label="路由路径" validate-trigger="blur">
-            <a-input v-model="addFrom.path" placeholder="请输入路由路径" allow-clear />
+          <a-form-item field="name" label="菜单名称" validate-trigger="blur">
+            <a-input v-model="addFrom.name" placeholder="请输入菜单名称，如：home" allow-clear @change="nameChange" />
           </a-form-item>
-          <a-form-item field="redirect" label="重定向路径" validate-trigger="blur">
-            <a-input v-model="addFrom.redirect" placeholder="请输入重定向路径" allow-clear />
+          <a-form-item v-if="[1, 2].includes(addFrom.type)" field="path" label="路由路径" validate-trigger="blur">
+            <a-input v-model="addFrom.path" placeholder="请输入路由路径，如：/home" allow-clear disabled />
+          </a-form-item>
+          <a-form-item field="title" label="菜单标题" validate-trigger="blur">
+            <a-input v-model="addFrom.title" placeholder="请输入菜单标题" allow-clear />
+            <template #extra>
+              <div>
+                优先匹配国际化Key
+                <span v-if="addFrom.title">menu.{{ addFrom.title }}</span>
+                （无对应Key则直接取标题展示）
+              </div>
+            </template>
+          </a-form-item>
+          <a-form-item v-if="addFrom.type == 3" field="permission" label="权限标识" validate-trigger="blur">
+            <a-input v-model="addFrom.permission" placeholder="请输入权限标识，如：sys:btn:add" allow-clear />
+          </a-form-item>
+
+          <a-form-item v-if="[1, 2].includes(addFrom.type)" field="redirect" label="路由重定向" validate-trigger="blur">
+            <a-input v-model="addFrom.redirect" placeholder="请输入路由重定向" allow-clear />
+          </a-form-item>
+          <a-form-item
+            v-if="addFrom.type == 2"
+            field="component"
+            label="组件路径"
+            validate-trigger="blur"
+            :disabled="addFrom.isLink"
+          >
+            <a-input v-model="addFrom.component" placeholder="请输入组件路径" allow-clear>
+              <template #prepend>@/views/</template>
+              <template #append>.vue</template>
+            </a-input>
           </a-form-item>
           <a-row :gutter="24">
-            <a-col :span="8">
+            <a-col :span="8" v-if="[1, 2].includes(addFrom.type)">
               <a-form-item field="hide" label="显示状态" validate-trigger="blur">
-                <a-switch type="round" v-model="addFrom.hide">
+                <a-switch type="round" v-model="addFrom.hide" :checked-value="false" :unchecked-value="true">
                   <template #checked> 显示 </template>
                   <template #unchecked> 隐藏 </template>
                 </a-switch>
               </a-form-item>
             </a-col>
-            <a-col :span="8">
+            <a-col :span="8" v-if="[1, 2].includes(addFrom.type)">
               <a-form-item field="disable" label="启用状态" validate-trigger="blur">
-                <a-switch type="round" v-model="addFrom.disable">
+                <a-switch type="round" v-model="addFrom.disable" :checked-value="false" :unchecked-value="true">
                   <template #checked> 启用 </template>
                   <template #unchecked> 禁用 </template>
                 </a-switch>
               </a-form-item>
             </a-col>
-            <a-col :span="8">
+            <a-col :span="8" v-if="addFrom.type == 2">
               <a-form-item field="keepAlive" label="是否缓存" validate-trigger="blur">
                 <a-switch type="round" v-model="addFrom.keepAlive">
                   <template #checked> 是 </template>
@@ -210,7 +236,7 @@
               </a-form-item>
             </a-col>
           </a-row>
-          <a-row :gutter="24">
+          <a-row :gutter="24" v-if="addFrom.type == 2">
             <a-col :span="8">
               <a-form-item field="affix" label="固定Tabs" validate-trigger="blur">
                 <a-switch type="round" v-model="addFrom.affix">
@@ -221,22 +247,22 @@
             </a-col>
             <a-col :span="8">
               <a-form-item field="isLink" label="是否外链" validate-trigger="blur">
-                <a-switch type="round" v-model="addFrom.isLink">
+                <a-switch type="round" v-model="addFrom.isLink" @change="onIsLink">
                   <template #checked> 是 </template>
                   <template #unchecked> 否 </template>
                 </a-switch>
               </a-form-item>
             </a-col>
             <a-col :span="8">
-              <a-form-item field="iframe" label="内嵌外链窗口" validate-trigger="blur" :disabled="!addFrom.isLink">
-                <a-switch type="round" v-model="addFrom.iframe">
+              <a-form-item field="iframe" label="内嵌窗口" validate-trigger="blur" :disabled="!addFrom.isLink">
+                <a-switch type="round" v-model="addFrom.iframe" @change="onIframe">
                   <template #checked> 是 </template>
                   <template #unchecked> 否 </template>
                 </a-switch>
               </a-form-item>
             </a-col>
           </a-row>
-          <a-form-item field="link" label="外链路径" validate-trigger="blur" v-if="addFrom.isLink">
+          <a-form-item field="link" label="外链路径" validate-trigger="blur" v-if="addFrom.type == 2 && addFrom.isLink">
             <a-input v-model="addFrom.link" placeholder="请输入路由路径" allow-clear />
           </a-form-item>
           <a-form-item field="link" label="菜单排序" validate-trigger="blur">
@@ -280,44 +306,14 @@ const onEdit = (row: Menu.MenuOptions) => {
 };
 // 新增
 const open = ref(false);
-const rules = {
-  userName: [
-    {
-      required: true,
-      message: "请输入用户名称"
-    }
-  ],
-  nickName: [
-    {
-      required: true,
-      message: "请输入昵称"
-    }
-  ],
-  sex: [
-    {
-      required: true,
-      message: "请选择性别"
-    }
-  ],
-  deptId: [
-    {
-      required: true,
-      message: "请选择所属部门"
-    }
-  ],
-  roles: [
-    {
-      required: true,
-      message: "请选择角色"
-    }
-  ],
-  status: [
-    {
-      required: true,
-      message: "请选择状态"
-    }
-  ]
-};
+const rules = ref({
+  parentId: [{ required: false, message: "请选择上级菜单" }],
+  name: [{ required: true, message: "请输入菜单名称" }],
+  title: [{ required: true, message: "请输入菜单标题" }],
+  path: [{ required: true, message: "请输入路由路径" }],
+  permission: [{ required: true, message: "请输入权限标识" }]
+});
+
 const menuType = ref([
   { name: "目录", value: 1 },
   { name: "菜单", value: 2 },
@@ -325,13 +321,15 @@ const menuType = ref([
 ]);
 const addFrom = ref<any>({
   type: 1,
-  id: "",
+  parentId: "",
   svgIcon: "",
   icon: "",
   name: "",
   title: "",
+  permission: "",
   path: "",
   redirect: "",
+  component: "",
   hide: false,
   disable: false,
   keepAlive: true,
@@ -353,19 +351,22 @@ const handleOk = async () => {
   let state = await formRef.value.validate();
   if (state) return (open.value = true); // 校验不通过
   arcoMessage("success", "模拟提交成功");
+  console.log("提交", addFrom.value);
 };
 // 关闭对话框动画结束后触发
 const afterClose = () => {
   formRef.value.resetFields();
   addFrom.value = {
     type: 1,
-    id: "",
+    parentId: "",
     svgIcon: "",
     icon: "",
     name: "",
     title: "",
+    permission: "",
     path: "",
     redirect: "",
+    component: "",
     hide: false,
     disable: false,
     keepAlive: true,
@@ -377,17 +378,59 @@ const afterClose = () => {
   };
 };
 
+// 菜单类型
+const typeChange = (val: number) => {
+  rules.value.parentId[0].required = val == 3;
+  formRef.value.clearValidate();
+};
+
+// 菜单名称
+const nameChange = (str: string) => {
+  // 自定关联路由路径
+  addFrom.value.path = str ? "/" + str : "";
+};
+
+// 是否外链
+const onIsLink = (is: boolean) => {
+  // 非外链
+  if (!is) {
+    // 关联iframe和link
+    addFrom.value.iframe = false;
+    addFrom.value.link = "";
+    addFrom.value.component = "";
+  } else {
+    // 外链
+    addFrom.value.component = "link/external/external";
+  }
+};
+
+// 是否内嵌外链窗口
+const onIframe = (is: boolean) => {
+  // 非内嵌
+  if (!is) {
+    // 关联iframe和link
+    addFrom.value.component = "link/external/external";
+  } else {
+    // 内嵌
+    addFrom.value.component = "link/internal/internal";
+  }
+};
+
 const onSearch = () => getMenu();
 const loading = ref(false);
 const tableRef = ref();
 const tableTree = ref([]);
+const menuTree = ref<any>([]);
 const getMenu = async () => {
   try {
     loading.value = true;
     let { data } = await getMenuListAPI();
+    // 语言翻译
     translation(data);
-    menuTree.value = filterTree(data);
+    // 列表数据
     tableTree.value = data;
+    // 过滤type:3的节点，该节点是按钮权限，不显示在菜单中-用于下拉选择
+    menuTree.value = filterTree(data);
     console.log("数据", data, menuTree.value);
   } finally {
     loading.value = false;
@@ -410,9 +453,12 @@ const translation = (tree: any) => {
   });
 };
 
-// 过滤掉按钮菜单-type:3为按钮菜单-用于下拉选择
-const menuTree = ref([]);
-function filterTree(nodes: any) {
+/**
+ * 过滤type:3的节点，该节点是按钮权限，不显示在菜单中-用于下拉选择
+ * @param {object} nodes 路由树
+ * @returns 节点过滤后的路由树
+ */
+const filterTree = (nodes: Menu.MenuOptions[]) => {
   // 过滤当前层级的节点，排除 type 为 3 的节点
   return nodes
     .filter((node: any) => node.meta.type !== 3)
@@ -431,7 +477,7 @@ function filterTree(nodes: any) {
       }
       return newNode;
     });
-}
+};
 
 getMenu();
 </script>
