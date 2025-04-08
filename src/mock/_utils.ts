@@ -128,23 +128,49 @@ export function deepClone(data: any) {
  * @returns 树形结构
  */
 export const buildTreeOptimized = (nodes: Menu.MenuOptions[]) => {
-  const nodeMap = new Map(); // 哈希映射存储节点引用
+  const nodeMap = new Map(); // 哈希表存储所有节点
   const roots = []; // 存储顶层节点
+  const duplicates = new Set(); // 检测重复ID
 
-  // 单次遍历构建结构（兼容乱序数据）
+  // 第一次遍历: 注册所有节点 & 检测重复
   for (const node of nodes) {
-    const { id, parentId } = node;
-    node.children = []; // 初始化子节点数组
+    const id = node.id;
 
-    // 将当前节点存入哈希表
+    // 循环引用检测
+    if (node.id === node.parentId) {
+      throw new Error(`循环引用: ${node.id} -> ${node.parentId}`);
+    }
+
+    // 重复ID检测
+    if (nodeMap.has(id)) {
+      duplicates.add(id);
+      continue;
+    }
+
+    // 初始化子节点数组
+    node.children = [];
     nodeMap.set(id, node);
+  }
 
-    // 处理父子关系
+  // 输出重复警告
+  if (duplicates.size > 0) {
+    console.warn(`检测到重复ID: ${Array.from(duplicates).join(", ")}`);
+  }
+
+  // 第二次遍历: 构建树结构
+  for (const node of nodes) {
+    const { parentId } = node;
+
+    // 跳过已处理的重复节点
+    if (duplicates.has(node.id)) continue;
+
     if (parentId === "0") {
-      roots.push(node); // 顶层节点直接加入结果
-    } else {
+      roots.push(node); // 顶层节点
+    } else if (parentId) {
       const parent = nodeMap.get(parentId);
-      parent?.children.push(node); // 子节点挂载到父级
+      parent?.children.push(node); // 挂载子节点
+    } else {
+      console.warn(`孤儿节点 ${node.id}: parentId为空`);
     }
   }
 
