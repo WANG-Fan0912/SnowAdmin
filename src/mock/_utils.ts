@@ -57,7 +57,7 @@ export const treeSort = (tree: Menu.MenuOptions[]) => {
  * @param {array} tree 根据角色权限过滤原始路由树
  * @returns 返回有权限的树
  */
-export const filterByRole = (tree: any, userRoles: Array<string>) => {
+export const filterByDisable = (tree: any, userRoles: Array<string>) => {
   return tree.filter((item: any) => {
     // 过滤角色权限
     if (item?.meta?.roles) {
@@ -147,8 +147,8 @@ export const buildTreeOptimized = (nodes: Menu.MenuOptions[]) => {
       continue;
     }
 
-    // 初始化子节点数组
-    node.children = [];
+    // 初始化子节点为null
+    node.children = null;
     nodeMap.set(id, node);
   }
 
@@ -168,7 +168,13 @@ export const buildTreeOptimized = (nodes: Menu.MenuOptions[]) => {
       roots.push(node); // 顶层节点
     } else if (parentId) {
       const parent = nodeMap.get(parentId);
-      parent?.children.push(node); // 挂载子节点
+      if (parent) {
+        // 初始化父节点的children为数组（若为null）
+        if (parent.children === null) {
+          parent.children = [];
+        }
+        parent.children.push(node);
+      }
     } else {
       console.warn(`孤儿节点 ${node.id}: parentId为空`);
     }

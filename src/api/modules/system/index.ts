@@ -1,9 +1,9 @@
 import axios from "@/api";
 
 // 获取菜单数据
-export const getMenuListAPI = () => {
+export const getMenuAPI = () => {
   return axios({
-    url: "/mock/menu/getMenuList",
+    url: "/mock/menu/getMenu",
     method: "get"
   });
 };
@@ -36,6 +36,14 @@ export const getRoleAPI = () => {
 export const getAccountAPI = () => {
   return axios({
     url: "/mock/system/getAccount",
+    method: "get"
+  });
+};
+
+// 获取菜单管理列表
+export const getMenuListAPI = () => {
+  return axios({
+    url: "/mock/menu/getMenuList",
     method: "get"
   });
 };

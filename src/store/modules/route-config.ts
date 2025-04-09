@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import router from "@/router/index";
-import { getMenuListAPI } from "@/api/modules/system/index";
+import { getMenuAPI } from "@/api/modules/system/index";
 import { moduleReplacement, linearArray } from "@/router/route-output";
 
 /**
@@ -91,7 +91,7 @@ export const routesConfigStore = () => {
    */
   async function initSetRouter() {
     // 1、获取过滤角色权限后的树，后端做排序处理
-    let { data } = await getMenuListAPI();
+    let { data } = await getMenuAPI();
     // 2、将模块设置为真实模块
     let tree = await moduleReplacement(data);
     // 3、存储路由树，用于生成菜单

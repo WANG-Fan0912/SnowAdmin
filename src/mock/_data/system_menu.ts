@@ -16,7 +16,8 @@
  *  |    |-- 子节点2-1: '010201'
  *  |    |-- 子节点2-2: '010202'
  * 当然，你们也可以自行设计id结构，只要保证id的唯一性即可，最后接口返回的是一个树形结构
- * 注意：节点id不能与parentId相同，否则在遍历路由树的时候会出现无限循环，在设计id的时候需要避免节点增多而导致id相同的情况
+ * 注意：节点id不能与parentId相同，否则在遍历路由树的时候会报错
+ * 在这种层级编码设计模式下，​不可能自然产生节点ID与parentId相同的情况，但还是需要注意手动录入的情况
  *
  *
  * 路由meta对象参数，我们通常将属性放到meta对象中
@@ -41,7 +42,7 @@
  * layout为框架布局，顶层路由
  * layout.children下的路由为menu菜单，例如：首页、系统设置、权限管理等
  */
-export default [
+export const systemMenu = [
   // layout-二级路由(主要渲染页面)
   {
     id: "01",
@@ -62,7 +63,7 @@ export default [
       sort: 1,
       type: 2 // type 1目录 2菜单 3按钮
     },
-    children: []
+    children: null
   },
   {
     id: "02",
@@ -83,7 +84,7 @@ export default [
       sort: 2,
       type: 1
     },
-    children: []
+    children: null
   },
   {
     id: "0201",
@@ -104,7 +105,7 @@ export default [
       sort: 1,
       type: 2
     },
-    children: []
+    children: null
   },
   {
     id: "03",
@@ -125,7 +126,7 @@ export default [
       sort: 3,
       type: 1
     },
-    children: []
+    children: null
   },
   {
     id: "0301",
@@ -146,7 +147,7 @@ export default [
       sort: 1,
       type: 2
     },
-    children: []
+    children: null
   },
   {
     id: "0302",
@@ -167,7 +168,7 @@ export default [
       sort: 2,
       type: 2
     },
-    children: []
+    children: null
   },
   {
     id: "04",
@@ -188,7 +189,7 @@ export default [
       sort: 4,
       type: 1
     },
-    children: []
+    children: null
   },
   {
     id: "0401",
@@ -209,7 +210,7 @@ export default [
       sort: 1,
       type: 2
     },
-    children: []
+    children: null
   },
   {
     id: "0402",
@@ -230,7 +231,7 @@ export default [
       sort: 2,
       type: 2
     },
-    children: []
+    children: null
   },
   {
     id: "05",
@@ -251,7 +252,7 @@ export default [
       sort: 5,
       type: 1
     },
-    children: []
+    children: null
   },
   {
     id: "0501",
@@ -272,7 +273,7 @@ export default [
       sort: 1,
       type: 2
     },
-    children: []
+    children: null
   },
   {
     id: "0502",
@@ -293,7 +294,7 @@ export default [
       sort: 2,
       type: 1
     },
-    children: []
+    children: null
   },
   {
     id: "050201",
@@ -314,7 +315,7 @@ export default [
       sort: 2,
       type: 2
     },
-    children: []
+    children: null
   },
   {
     id: "050202",
@@ -335,7 +336,7 @@ export default [
       sort: 1,
       type: 2
     },
-    children: []
+    children: null
   },
   {
     id: "050203",
@@ -355,7 +356,7 @@ export default [
       sort: 3,
       type: 2
     },
-    children: []
+    children: null
   },
   {
     id: "050204",
@@ -375,7 +376,7 @@ export default [
       sort: 4,
       type: 2
     },
-    children: []
+    children: null
   },
   {
     id: "050205",
@@ -395,7 +396,7 @@ export default [
       sort: 5,
       type: 2
     },
-    children: []
+    children: null
   },
   {
     id: "050206",
@@ -415,7 +416,7 @@ export default [
       sort: 6,
       type: 2
     },
-    children: []
+    children: null
   },
   {
     id: "050207",
@@ -435,7 +436,7 @@ export default [
       sort: 7,
       type: 2
     },
-    children: []
+    children: null
   },
   {
     id: "050208",
@@ -455,7 +456,7 @@ export default [
       sort: 8,
       type: 2
     },
-    children: []
+    children: null
   },
   {
     id: "050209",
@@ -475,7 +476,7 @@ export default [
       sort: 9,
       type: 2
     },
-    children: []
+    children: null
   },
   {
     id: "06",
@@ -496,7 +497,7 @@ export default [
       sort: 6,
       type: 1
     },
-    children: []
+    children: null
   },
   {
     id: "0601",
@@ -517,7 +518,7 @@ export default [
       sort: 1,
       type: 2
     },
-    children: []
+    children: null
   },
   {
     id: "0602",
@@ -538,7 +539,7 @@ export default [
       sort: 2,
       type: 2
     },
-    children: []
+    children: null
   },
   {
     id: "0603",
@@ -559,7 +560,7 @@ export default [
       sort: 3,
       type: 2
     },
-    children: []
+    children: null
   },
   {
     id: "0604",
@@ -580,7 +581,7 @@ export default [
       sort: 4,
       type: 2
     },
-    children: []
+    children: null
   },
   {
     id: "0605",
@@ -601,7 +602,7 @@ export default [
       sort: 5,
       type: 2
     },
-    children: []
+    children: null
   },
   {
     id: "0606",
@@ -622,7 +623,7 @@ export default [
       sort: 6,
       type: 2
     },
-    children: []
+    children: null
   },
   {
     id: "0607",
@@ -643,7 +644,7 @@ export default [
       sort: 7,
       type: 2
     },
-    children: []
+    children: null
   },
   {
     id: "0608",
@@ -664,7 +665,7 @@ export default [
       sort: 8,
       type: 2
     },
-    children: []
+    children: null
   },
   {
     id: "0609",
@@ -685,7 +686,7 @@ export default [
       sort: 9,
       type: 2
     },
-    children: []
+    children: null
   },
   {
     id: "0610",
@@ -706,7 +707,7 @@ export default [
       sort: 10,
       type: 2
     },
-    children: []
+    children: null
   },
   {
     id: "0611",
@@ -727,7 +728,7 @@ export default [
       sort: 11,
       type: 2
     },
-    children: []
+    children: null
   },
   {
     id: "07",
@@ -748,7 +749,7 @@ export default [
       sort: 7,
       type: 1
     },
-    children: []
+    children: null
   },
   {
     id: "0701",
@@ -769,7 +770,7 @@ export default [
       sort: 1,
       type: 2
     },
-    children: []
+    children: null
   },
   {
     id: "0702",
@@ -790,7 +791,7 @@ export default [
       sort: 2,
       type: 2
     },
-    children: []
+    children: null
   },
   {
     id: "0703",
@@ -811,7 +812,7 @@ export default [
       sort: 3,
       type: 2
     },
-    children: []
+    children: null
   },
   {
     id: "08",
@@ -832,7 +833,7 @@ export default [
       sort: 8,
       type: 1
     },
-    children: []
+    children: null
   },
   {
     id: "0801",
@@ -853,7 +854,7 @@ export default [
       sort: 1,
       type: 2
     },
-    children: []
+    children: null
   },
   {
     id: "0802",
@@ -874,7 +875,7 @@ export default [
       sort: 2,
       type: 2
     },
-    children: []
+    children: null
   },
   {
     id: "09",
@@ -895,7 +896,7 @@ export default [
       sort: 9,
       type: 1
     },
-    children: []
+    children: null
   },
   {
     id: "0901",
@@ -916,7 +917,7 @@ export default [
       sort: 1,
       type: 2
     },
-    children: []
+    children: null
   },
   {
     id: "0902",
@@ -937,7 +938,7 @@ export default [
       sort: 2,
       type: 2
     },
-    children: []
+    children: null
   },
   {
     id: "0903",
@@ -958,7 +959,7 @@ export default [
       sort: 3,
       type: 2
     },
-    children: []
+    children: null
   },
   {
     id: "0904",
@@ -979,7 +980,7 @@ export default [
       sort: 4,
       type: 2
     },
-    children: []
+    children: null
   },
   {
     id: "0905",
@@ -1000,7 +1001,7 @@ export default [
       sort: 5,
       type: 2
     },
-    children: []
+    children: null
   },
   {
     id: "0906",
@@ -1021,7 +1022,7 @@ export default [
       sort: 6,
       type: 2
     },
-    children: []
+    children: null
   },
   {
     id: "10",
@@ -1042,7 +1043,7 @@ export default [
       sort: 10,
       type: 1
     },
-    children: []
+    children: null
   },
   {
     id: "1001",
@@ -1063,7 +1064,7 @@ export default [
       sort: 1,
       type: 1
     },
-    children: []
+    children: null
   },
   {
     id: "100101",
@@ -1084,7 +1085,7 @@ export default [
       sort: 1,
       type: 2
     },
-    children: []
+    children: null
   },
   {
     id: "100102",
@@ -1105,7 +1106,7 @@ export default [
       sort: 2,
       type: 2
     },
-    children: []
+    children: null
   },
   {
     id: "100103",
@@ -1126,7 +1127,7 @@ export default [
       sort: 3,
       type: 2
     },
-    children: []
+    children: null
   },
   {
     id: "1002",
@@ -1147,7 +1148,7 @@ export default [
       sort: 2,
       type: 1
     },
-    children: []
+    children: null
   },
   {
     id: "100201",
@@ -1168,7 +1169,7 @@ export default [
       sort: 5,
       type: 2
     },
-    children: []
+    children: null
   },
   {
     id: "100202",
@@ -1189,7 +1190,7 @@ export default [
       sort: 1,
       type: 2
     },
-    children: []
+    children: null
   },
   {
     id: "100203",
@@ -1210,7 +1211,7 @@ export default [
       sort: 2,
       type: 2
     },
-    children: []
+    children: null
   },
   {
     id: "100204",
@@ -1231,7 +1232,7 @@ export default [
       sort: 3,
       type: 2
     },
-    children: []
+    children: null
   },
   {
     id: "100205",
@@ -1252,7 +1253,7 @@ export default [
       sort: 4,
       type: 2
     },
-    children: []
+    children: null
   },
   {
     id: "11",
@@ -1273,7 +1274,7 @@ export default [
       sort: 11,
       type: 2
     },
-    children: []
+    children: null
   },
   {
     id: "12",
@@ -1294,7 +1295,7 @@ export default [
       sort: 12,
       type: 2
     },
-    children: []
+    children: null
   },
   {
     id: "13",
@@ -1315,7 +1316,7 @@ export default [
       sort: 13,
       type: 1
     },
-    children: []
+    children: null
   },
   {
     id: "1301",
@@ -1336,7 +1337,7 @@ export default [
       sort: 1,
       type: 2
     },
-    children: []
+    children: null
   },
   {
     id: "1302",
@@ -1357,7 +1358,7 @@ export default [
       sort: 2,
       type: 2
     },
-    children: []
+    children: null
   },
   {
     id: "14",
@@ -1378,7 +1379,7 @@ export default [
       sort: 14,
       type: 2
     },
-    children: []
+    children: null
   },
   {
     id: "15",
@@ -1399,7 +1400,7 @@ export default [
       sort: 15,
       type: 2
     },
-    children: []
+    children: null
   },
   {
     id: "16",
@@ -1420,6 +1421,88 @@ export default [
       sort: 16,
       type: 2
     },
-    children: []
+    children: null
+  }
+];
+
+// 权限数据
+export const permissionData = [
+  {
+    id: "130101",
+    parentId: "1301",
+    meta: {
+      title: "新增按钮",
+      hide: false,
+      disable: false,
+      roles: ["admin"],
+      permission: "sys:btn:add",
+      sort: 1,
+      type: 3
+    }
+  },
+  {
+    id: "130102",
+    parentId: "1301",
+    meta: {
+      title: "编辑按钮",
+      hide: false,
+      disable: false,
+      roles: ["admin"],
+      permission: "sys:btn:edit",
+      sort: 2,
+      type: 3
+    }
+  },
+  {
+    id: "130103",
+    parentId: "1301",
+    meta: {
+      title: "删除按钮",
+      hide: false,
+      disable: false,
+      roles: ["admin"],
+      permission: "sys:btn:delete",
+      sort: 3,
+      type: 3
+    }
+  },
+  {
+    id: "130201",
+    parentId: "1302",
+    meta: {
+      title: "新增按钮",
+      hide: false,
+      disable: false,
+      roles: ["admin", "common"],
+      permission: "common:btn:delete",
+      sort: 1,
+      type: 3
+    }
+  },
+  {
+    id: "130202",
+    parentId: "1302",
+    meta: {
+      title: "编辑按钮",
+      hide: false,
+      disable: false,
+      roles: ["admin", "common"],
+      permission: "common:btn:delete",
+      sort: 2,
+      type: 3
+    }
+  },
+  {
+    id: "130203",
+    parentId: "1302",
+    meta: {
+      title: "删除按钮",
+      hide: false,
+      disable: false,
+      roles: ["admin", "common"],
+      permission: "common:btn:delete",
+      sort: 3,
+      type: 3
+    }
   }
 ];

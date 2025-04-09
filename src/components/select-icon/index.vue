@@ -1,9 +1,9 @@
 <template>
   <div>
-    <a-input ref="inputRef" :style="{ width: '100%' }" placeholder="请选择图标" v-model="iconName" @focus="onFocus">
-      <template #suffix v-if="iconName">
-        <SvgIcon v-if="type == 'svg'" :name="iconName" :size="size" />
-        <component v-else :is="iconName" :size="size"></component>
+    <a-input ref="inputRef" :style="{ width: '100%' }" placeholder="请选择图标" v-model="modelValue" @focus="onFocus">
+      <template #suffix v-if="modelValue">
+        <SvgIcon v-if="type == 'svg'" :name="modelValue" :size="size" />
+        <component v-else :is="modelValue" :size="size"></component>
       </template>
       <template #append>
         <span class="icon-reset" @click="reset">重置</span>
@@ -48,23 +48,23 @@
 <script setup lang="ts">
 import * as ArcoIcons from "@arco-design/web-vue/es/icon";
 interface Props {
+  modelValue: string;
   type?: string;
   size?: number;
 }
 const props = withDefaults(defineProps<Props>(), {
+  modelValue: "", // 图标名称-默认空字符串
   type: "arco", // 图标库类型，arco 或 svg
   size: 25 // 图标大小-默认25px
 });
 
-const { type, size } = toRefs(props);
+const { modelValue, type, size } = toRefs(props);
 
 const emit = defineEmits(["update:modelValue"]);
 
 const visible = ref<boolean>(false);
-const iconName = ref<string>("");
 
 const reset = () => {
-  iconName.value = "";
   emit("update:modelValue", "");
 };
 
@@ -102,7 +102,6 @@ const iconList = computed(() => {
 // 选择图标
 const onIcon = (name: string) => {
   visible.value = false;
-  iconName.value = name;
   emit("update:modelValue", name);
 };
 </script>

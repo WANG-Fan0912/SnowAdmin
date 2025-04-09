@@ -1,6 +1,6 @@
 import type { MockMethod } from "vite-plugin-mock";
-import { deepClone, filterByRole, buildTreeOptimized, treeSort, resultSuccess } from "../_utils";
-import systemMenu from "../_data/system_menu";
+import { deepClone, filterByDisable, buildTreeOptimized, treeSort, resultSuccess } from "../_utils";
+import { systemMenu, permissionData } from "../_data/system_menu";
 
 /**
  * 初始化
@@ -22,20 +22,34 @@ import systemMenu from "../_data/system_menu";
 // post请求body,get请求query
 export default [
   {
-    url: "/mock/menu/getMenuList",
+    url: "/mock/menu/getMenu",
     method: "get",
     timeout: 300,
     response: ({ headers }: any) => {
       let token = headers.authorization;
-      // 这里模拟两个角色，admin、common
+      // 根据token或登录账号判断是什么角色，这里模拟两个角色，admin、common
       let userRoles = token === "Admin-Token" ? ["admin"] : ["common"];
-      const originTree: any = deepClone(systemMenu);
+      const originMenu: any = deepClone(systemMenu);
       // 1. 过滤扁平路由，根据角色返回有权限且非禁用的节点
-      const survivalTree = filterByRole(originTree, userRoles);
+      const survivalTree = filterByDisable(originMenu, userRoles);
       // 2. 将扁平路由转换为树结构
       // 2. 给路由树排序
       // 3. 返回路由树
       return resultSuccess(treeSort(buildTreeOptimized(survivalTree)));
+    }
+  },
+  {
+    url: "/mock/menu/getMenuList",
+    method: "get",
+    timeout: 300,
+    response: () => {
+      // 菜单管理这里需要查看到所有菜单，无需判断角色权限、禁用菜单
+      // 将扁平路由和权限菜单合并
+      const originMenu: any = [...deepClone(systemMenu), ...deepClone(permissionData)];
+      // 1. 将扁平路由转换为树结构
+      // 2. 给路由树排序
+      // 3. 返回路由树
+      return resultSuccess(treeSort(buildTreeOptimized(originMenu)));
     }
   }
 ] as MockMethod[];

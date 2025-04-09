@@ -9,7 +9,7 @@ declare namespace Menu {
     redirect?: string;
     component?: string | (() => Promise<unknown>);
     meta: MetaType;
-    children?: MenuOptions[];
+    children?: MenuOptions[] | null;
   }
   interface MetaType {
     title: string;

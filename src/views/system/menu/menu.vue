@@ -116,18 +116,20 @@
           <a-table-column title="操作" align="center" :width="250" :fixed="'right'">
             <template #cell="{ record }">
               <a-space>
-                <a-button size="mini" type="primary" @click="onEdit(record)">
+                <a-button size="mini" type="primary" @click="onUpdate(record)">
                   <template #icon><icon-edit /></template>
                   <span>修改</span>
                 </a-button>
-                <a-button size="mini" type="primary" status="success" v-if="record.meta.type != 3">
+                <a-button size="mini" type="primary" status="success" v-if="record.meta.type != 3" @click="onCurrentAdd(record)">
                   <template #icon><icon-plus /></template>
                   <span>新增</span>
                 </a-button>
-                <a-button size="mini" type="primary" status="danger">
-                  <template #icon><icon-delete /></template>
-                  <span>删除</span>
-                </a-button>
+                <a-popconfirm type="warning" content="确定删除该项吗?">
+                  <a-button size="mini" type="primary" status="danger">
+                    <template #icon><icon-delete /></template>
+                    <span>删除</span>
+                  </a-button>
+                </a-popconfirm>
               </a-space>
             </template>
           </a-table-column>
@@ -140,11 +142,11 @@
       <div>
         <a-form ref="formRef" auto-label-width :rules="rules" :model="addFrom">
           <a-form-item field="type" label="菜单类型" validate-trigger="blur">
-            <a-radio-group type="button" v-model="addFrom.type" @change="typeChange">
+            <a-radio-group type="button" :disabled="addFrom.id" v-model="addFrom.type" @change="typeChange">
               <a-radio v-for="item in menuType" :key="item.value" :value="item.value">{{ item.name }}</a-radio>
             </a-radio-group>
           </a-form-item>
-          <a-form-item field="parentId" label="上级菜单" validate-trigger="blur">
+          <a-form-item field="parentId" label="上级菜单" validate-trigger="blur" :disabled="addFrom.id">
             <a-tree-select
               v-model="addFrom.parentId"
               :data="menuTree"
@@ -175,7 +177,7 @@
               </a-form-item>
             </a-col>
           </a-row>
-          <a-form-item field="name" label="菜单名称" validate-trigger="blur">
+          <a-form-item v-if="[1, 2].includes(addFrom.type)" field="name" label="菜单名称" validate-trigger="blur">
             <a-input v-model="addFrom.name" placeholder="请输入菜单名称，如：home" allow-clear @change="nameChange" />
           </a-form-item>
           <a-form-item v-if="[1, 2].includes(addFrom.type)" field="path" label="路由路径" validate-trigger="blur">
@@ -288,7 +290,7 @@
 import MenuItemIcon from "@/layout/components/Menu/menu-item-icon.vue";
 import { getMenuListAPI } from "@/api/modules/system/index";
 import useGlobalProperties from "@/hooks/useGlobalProperties";
-
+import { deepClone } from "@/utils";
 const proxy = useGlobalProperties();
 const openState = ref(dictFilter("status"));
 const form = ref({
@@ -301,9 +303,6 @@ const onReset = () => {
   form.value = { name: "", hide: "", disable: "" };
 };
 
-const onEdit = (row: Menu.MenuOptions) => {
-  console.log("修改", row);
-};
 // 新增
 const open = ref(false);
 const rules = ref({
@@ -377,6 +376,31 @@ const afterClose = () => {
     sort: 1
   };
 };
+// 修改
+const onUpdate = (row: Menu.MenuOptions) => {
+  let data = deepClone(row);
+  delete data.children;
+  if (data.parentId == "0") data.parentId = "";
+  let form = {
+    ...data,
+    ...data.meta
+  };
+  if (form.meta) delete form.meta;
+  addFrom.value = form;
+  title.value = "修改菜单";
+  open.value = true;
+};
+// 列表新增
+const onCurrentAdd = (record: any) => {
+  let {
+    id,
+    meta: { type }
+  } = record;
+  addFrom.value.parentId = id;
+  addFrom.value.type = type == 2 ? 3 : type;
+  title.value = "新增菜单";
+  open.value = true;
+};
 
 // 菜单类型
 const typeChange = (val: number) => {
@@ -421,7 +445,7 @@ const loading = ref(false);
 const tableRef = ref();
 const tableTree = ref([]);
 const menuTree = ref<any>([]);
-const getMenu = async () => {
+const getMenuList = async () => {
   try {
     loading.value = true;
     let { data } = await getMenuListAPI();
@@ -431,7 +455,7 @@ const getMenu = async () => {
     tableTree.value = data;
     // 过滤type:3的节点，该节点是按钮权限，不显示在菜单中-用于下拉选择
     menuTree.value = filterTree(data);
-    console.log("数据", data, menuTree.value);
+    console.log("列表数据", tableTree.value);
   } finally {
     loading.value = false;
   }
@@ -479,7 +503,7 @@ const filterTree = (nodes: Menu.MenuOptions[]) => {
     });
 };
 
-getMenu();
+getMenuList();
 </script>
 
 <style lang="scss" scoped></style>
