@@ -47,3 +47,12 @@ export const getMenuListAPI = () => {
     method: "get"
   });
 };
+
+// 根据角色获取权限数据
+export const getUserPermissionAPI = (params: { role: string }) => {
+  return axios({
+    url: "/mock/menu/getUserPermission",
+    method: "get",
+    params
+  });
+};

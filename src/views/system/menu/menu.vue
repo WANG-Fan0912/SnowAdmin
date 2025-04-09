@@ -267,7 +267,7 @@
           <a-form-item field="link" label="外链路径" validate-trigger="blur" v-if="addFrom.type == 2 && addFrom.isLink">
             <a-input v-model="addFrom.link" placeholder="请输入路由路径" allow-clear />
           </a-form-item>
-          <a-form-item field="link" label="菜单排序" validate-trigger="blur">
+          <a-form-item field="sort" label="菜单排序" validate-trigger="blur">
             <a-input-number
               v-model="addFrom.sort"
               :step="1"

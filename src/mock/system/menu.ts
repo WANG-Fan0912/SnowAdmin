@@ -19,7 +19,12 @@ import { systemMenu, permissionData } from "../_data/system_menu";
  * 5、缓存一维路由
  */
 
-// post请求body,get请求query
+/**
+ *  post请求body,get请求query
+ *  /mock/menu/getMenu 获取菜单数据
+ *  /mock/menu/getMenuList 获取菜单列表数据-菜单管理
+ *  /mock/menu/getUserPermission 根据角色获取权限数据
+ */
 export default [
   {
     url: "/mock/menu/getMenu",
@@ -50,6 +55,19 @@ export default [
       // 2. 给路由树排序
       // 3. 返回路由树
       return resultSuccess(treeSort(buildTreeOptimized(originMenu)));
+    }
+  },
+  {
+    url: "/mock/menu/getUserPermission",
+    method: "get",
+    timeout: 300,
+    response: ({ query }: any) => {
+      let { role } = query;
+      // 将扁平路由和权限菜单合并
+      const originMenu: any = [...deepClone(systemMenu), ...deepClone(permissionData)];
+      // 根据角色过滤id
+      let idList = originMenu.filter((item: any) => item.meta.roles.includes(role)).map((item: any) => item.id);
+      return resultSuccess(idList);
     }
   }
 ] as MockMethod[];

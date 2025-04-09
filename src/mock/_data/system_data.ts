@@ -122,7 +122,7 @@ export const roleData = [
   {
     id: 1,
     name: "超级管理员",
-    key: "admin",
+    code: "admin",
     sort: 1,
     status: 1,
     admin: true,
@@ -135,7 +135,7 @@ export const roleData = [
   {
     id: 2,
     name: "普通员工",
-    key: "common",
+    code: "common",
     sort: 2,
     status: 1,
     admin: false,
