@@ -1311,7 +1311,7 @@ export const systemMenu = [
       affix: false,
       link: "",
       iframe: false,
-      roles: ["admin"],
+      roles: ["admin", "common"],
       svgIcon: "permission",
       sort: 13,
       type: 1
@@ -1353,7 +1353,7 @@ export const systemMenu = [
       affix: false,
       link: "",
       iframe: false,
-      roles: ["admin", "common"],
+      roles: ["common"],
       icon: "icon-menu",
       sort: 2,
       type: 2

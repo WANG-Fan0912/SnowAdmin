@@ -75,6 +75,9 @@ export const filterByDisable = (tree: any, userRoles: Array<string>) => {
  * @returns 是否有权限 true是 false否
  */
 export const roleBase = (roles: Array<string>, userRoles: Array<string>) => {
+  // 如果是admin则直接放行
+  if (userRoles.includes("admin")) return true;
+  // 否则判断权限
   return userRoles.some((item: string) => roles.includes(item));
 };
 

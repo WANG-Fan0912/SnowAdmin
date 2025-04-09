@@ -1,9 +1,9 @@
 import axios from "@/api";
 
 // 获取菜单数据
-export const getMenuAPI = () => {
+export const getRoutersAPI = () => {
   return axios({
-    url: "/mock/menu/getMenu",
+    url: "/mock/menu/getRouters",
     method: "get"
   });
 };

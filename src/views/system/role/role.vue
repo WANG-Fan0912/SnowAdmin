@@ -138,7 +138,7 @@
             </a-col>
             <a-col :span="8">
               <a-tooltip
-                content="权限树的父子节点独立，因为若节点关联，父节点会存在半选情况，半选节点的ID不会返回，会导致目录无法渲染"
+                content="权限树的父子节点独立，因为若节点关联，父节点会存在半选情况，半选节点的ID不会返回，会导致菜单无法渲染"
               >
                 <span>父子关联 <icon-question-circle-fill /></span>
               </a-tooltip>

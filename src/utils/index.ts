@@ -161,3 +161,16 @@ export const appendFormData = (obj: any) => {
   deepAppendFormData(formData, obj);
   return formData;
 };
+
+/**
+ * 判断是否为空对象
+ * @param {object} obj 对象
+ * @returns {boolean} 是否为空对象
+ */
+export const isEmptyObject = (obj: object) => {
+  // 校验是否为对象且不为 null
+  if (typeof obj !== "object" || obj === null) {
+    return false;
+  }
+  return Object.keys(obj).length === 0 && obj.constructor === Object;
+};

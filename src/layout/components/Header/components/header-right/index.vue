@@ -114,6 +114,7 @@ import { useUserInfoStore } from "@/store/modules/user-info";
 import { useThemeConfig } from "@/store/modules/theme-config";
 import { useThemeMethods } from "@/hooks/useThemeMethods";
 import { useDevicesSize } from "@/hooks/useDevicesSize";
+import { useRoutesConfigStore } from "@/store/modules/route-config";
 const i18n = useI18n();
 const router = useRouter();
 const { isMobile } = useDevicesSize();
@@ -194,6 +195,8 @@ const logOut = () => {
         const store = useUserInfoStore();
         await store.logOut();
         router.replace("/login");
+        // 清除路由数据
+        useRoutesConfigStore().resetRoute();
         return true;
       } catch {
         return false;
