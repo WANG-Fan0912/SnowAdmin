@@ -33,7 +33,7 @@ export default [
     timeout: 300,
     response: ({ headers }: any) => {
       let data: any = {
-        user: {}, // 用户信息
+        user: {}, // 账户信息
         roles: [], // 角色
         permissions: [] // 权限
       };

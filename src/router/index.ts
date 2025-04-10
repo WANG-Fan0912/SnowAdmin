@@ -31,7 +31,7 @@ const router = createRouter({
  * 1、去登录页，无token，放行
  * 2、没有token，直接重定向到登录页
  * 3、去登录页，有token，直接重定向到home页
- * 4、去非登录页，有token，若是从登录页而来则重载路由，若是刷新页面则重载路由，重载后重新跳转
+ * 4、去非登录页，有token，用户信息是否存在，有则放行，否则重新获取路由信息、初始化路由
  * 注意：
  * 全局routeTree不能持久化缓存
  * 页面刷新会导致addRoute动态添加的路由失效，需要重新初始化路由
@@ -54,7 +54,7 @@ router.beforeEach(async (to: any, _: any, next: any) => {
     // 项目内的跳转，处理跳转路由高亮
     currentlyRoute(to.name as string);
   } else {
-    // 4、去非登录页，有token，校验是否动态添加过路由，添加过则放行，未添加则执行路由初始化
+    // 4、去非登录页，有token，用户信息是否存在，有则放行，否则重新获取路由信息、初始化路由
     const routeStore = useRoutesConfigStore(pinia);
 
     // 判断账号信息是否获取，先获取账号信息和路由信息，添加路由后再跳转(页面刷新时触发)

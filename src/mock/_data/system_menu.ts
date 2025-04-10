@@ -22,17 +22,17 @@
  *
  * 路由meta对象参数，我们通常将属性放到meta对象中
  * meta: {
- *   title:     菜单栏以及 tabsView 栏、菜单搜索名称（国际化）
+ *   title:     国际化key
  *   hide:      是否隐藏此路由，不会显示在菜单树，可以访问
- *   disable:   是否停用，不会显示在菜单树，且不可访问
- *   keepAlive: 是否缓存组件状态
- *   affix:     是否固定在 tabsView 栏上 菜单配置
- *   link:      是否是超链接菜单，开启外链条件：1、 link：链接地址不为空  2、iframe: false  菜单配置
- *   iframe:    是否内嵌窗口，开启条件：1、iframe：true  2、link：链接地址不为空  菜单配置
- *   roles:     当前路由权限表示，取角色管理。路由控制显示、隐藏。 超级管理员：admin；普通角色：common
- *   icon:      菜单、tabsView 图标等
- *   svgIcon:   svg图标
- *   sort:      菜单顺序
+ *   disable:   是否停用此路由-不显示且不可访问
+ *   keepAlive: 是否缓存组件
+ *   affix:     固定在Tabs栏上-开启后Tabs栏无关闭按钮
+ *   link:      是否是超链接菜单，开启外链条件：1、 link：链接地址不为空  2、iframe: false
+ *   iframe:    是否内嵌外链窗口，开启条件：1、iframe：true  2、link：链接地址不为空
+ *   roles:     路由权限标识，取角色权限，超级管理员：admin；普通角色：common
+ *   svgIcon:   svg菜单图标，优先级高于icon，取src/assets/svgs内的svg文件
+ *   icon:      普通icon菜单图标，默认取arco.design图标
+ *   sort:      排序字段
  *   type:      1目录 2菜单 3按钮
  * }
  */
@@ -40,30 +40,31 @@
 /**
  * 路由的层级设置
  * layout为框架布局，顶层路由
- * layout.children下的路由为menu菜单，例如：首页、系统设置、权限管理等
+ * layout.children下的路由为systemMenu菜单，例如：首页、系统设置、权限管理等
  */
 export const systemMenu = [
   // layout-二级路由(主要渲染页面)
   {
-    id: "01",
-    parentId: "0",
-    path: "/home",
-    name: "home",
-    component: "home/home",
+    id: "01", // 路由id
+    parentId: "0", // 顶层路由 parentId: 0
+    path: "/home", // 路由path
+    name: "home", // 路由name
+    component: "home/home", // 路由跳转的文件路径，默认在src/views内，这里就是src/views/home/home.vue
     meta: {
-      title: "home", // 国际化
-      hide: false, // 是否隐藏此路由
-      disable: false, // 是否停用此路由
-      keepAlive: false, // 缓存组件状态
-      affix: true, // 固定在tagesView栏上
+      title: "home", // 国际化key
+      hide: false, // 是否隐藏此路由-不显示但可访问
+      disable: false, // 是否停用此路由-不显示且不可访问
+      keepAlive: false, // 是否缓存组件
+      affix: true, // 固定在Tabs栏上-开启后Tabs栏无关闭按钮
       link: "", // 是否外链
-      iframe: false, // 是否内嵌窗口
-      roles: ["admin", "common"], // 路由权限
-      svgIcon: "home", // 菜单图标
-      sort: 1,
+      iframe: false, // 是否内嵌外链窗口
+      roles: ["admin", "common"], // 路由角色权限
+      svgIcon: "home", // svg菜单图标，优先级高于icon，取src/assets/svgs内的svg文件
+      icon: "", // 普通icon菜单图标，默认取arco.design图标
+      sort: 1, // 排序字段
       type: 2 // type 1目录 2菜单 3按钮
     },
-    children: null
+    children: null // 存储子节点字段，默认为null
   },
   {
     id: "02",
