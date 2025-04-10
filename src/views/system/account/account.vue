@@ -62,8 +62,9 @@
             <a-table-column title="昵称" data-index="nickName"></a-table-column>
             <a-table-column title="性别" data-index="sex">
               <template #cell="{ record }">
-                <a-tag bordered size="small" color="arcoblue" v-if="record.status === 1">启用</a-tag>
-                <a-tag bordered size="small" color="red" v-else>禁用</a-tag>
+                <a-tag bordered size="small" color="arcoblue" v-if="record.sex == 1">男</a-tag>
+                <a-tag bordered size="small" color="red" v-else-if="record.sex == 0">女</a-tag>
+                <a-tag bordered size="small" v-else>未知</a-tag>
               </template>
             </a-table-column>
             <a-table-column title="部门" data-index="deptName"></a-table-column>
