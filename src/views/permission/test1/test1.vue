@@ -13,11 +13,33 @@
       <a-typography-title :heading="4"> 当前页面角色权限 </a-typography-title>
       <code-view :code-json="pageRule" style="width: 100%" />
       <br />
-      <a-space>
-        <a-button type="primary">新增</a-button>
-        <a-button type="primary" status="success">编辑</a-button>
-        <a-button type="primary" status="danger">删除</a-button>
-      </a-space>
+      <a-row :gutter="[24, 12]">
+        <a-col :span="24">
+          <code-view type="vue" :code-json="sysBtn" style="width: 100%" />
+        </a-col>
+        <a-col :span="24">
+          <a-space>
+            <span>权限按钮：</span>
+            <a-button v-hasPerm="['sys:btn:add']" type="primary">新增</a-button>
+            <a-button v-hasPerm="['sys:btn:edit']" type="primary" status="success">编辑</a-button>
+            <a-button v-hasPerm="['sys:btn:delete']" type="primary" status="danger">删除</a-button>
+          </a-space>
+        </a-col>
+      </a-row>
+      <br />
+      <a-row :gutter="[24, 12]">
+        <a-col :span="24">
+          <code-view type="vue" :code-json="commonBtn" style="width: 100%" />
+        </a-col>
+        <a-col :span="24">
+          <a-space>
+            <span>权限按钮：</span>
+            <a-button v-hasPerm="['common:btn:add']" type="primary">新增</a-button>
+            <a-button v-hasPerm="['common:btn:edit']" type="primary" status="success">编辑</a-button>
+            <a-button v-hasPerm="['common:btn:delete']" type="primary" status="danger">删除</a-button>
+          </a-space>
+        </a-col>
+      </a-row>
     </div>
   </div>
 </template>
@@ -30,7 +52,18 @@ let userInfoStore = useUserInfoStore();
 let { account } = storeToRefs(userInfoStore);
 const permissions = computed(() => JSON.stringify(account.value.permissions, null));
 const pageRule = computed(() => JSON.stringify(route.meta.roles, null));
-console.log("权限数据", account.value);
+
+let sysBtn = `<a-space>
+  <a-button v-hasPerm="['sys:btn:add']" type="primary">新增</a-button>
+  <a-button v-hasPerm="['sys:btn:edit']" type="primary" status="success">编辑</a-button>
+  <a-button v-hasPerm="['sys:btn:delete']" type="primary" status="danger">删除</a-button>
+</a-space>`;
+
+let commonBtn = `<a-space>
+  <a-button v-hasPerm="['common:btn:add']" type="primary">新增</a-button>
+  <a-button v-hasPerm="['common:btn:edit']" type="primary" status="success">编辑</a-button>
+  <a-button v-hasPerm="['common:btn:delete']" type="primary" status="danger">删除</a-button>
+</a-space>`;
 </script>
 
 <style lang="scss" scoped></style>

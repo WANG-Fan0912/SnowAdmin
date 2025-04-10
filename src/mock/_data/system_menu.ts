@@ -1474,7 +1474,7 @@ export const permissionData = [
       hide: false,
       disable: false,
       roles: ["admin", "common"],
-      permission: "common:btn:delete",
+      permission: "common:btn:add",
       sort: 1,
       type: 3
     }
@@ -1487,7 +1487,7 @@ export const permissionData = [
       hide: false,
       disable: false,
       roles: ["admin", "common"],
-      permission: "common:btn:delete",
+      permission: "common:btn:edit",
       sort: 2,
       type: 3
     }
