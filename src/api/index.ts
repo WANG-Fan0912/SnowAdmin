@@ -53,7 +53,7 @@ service.interceptors.response.use(
     }
   },
   function (error: any) {
-    localStorage.removeItem("token");
+    localStorage.removeItem("user-info");
     router.push("/login");
     return Promise.reject(error);
   }

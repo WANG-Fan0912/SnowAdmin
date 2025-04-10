@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import router from "@/router/index";
-import { getMenuListAPI } from "@/api/modules/system/index";
+import { getRoutersAPI } from "@/api/modules/system/index";
 import { moduleReplacement, linearArray } from "@/router/route-output";
 
 /**
@@ -11,6 +11,7 @@ import { moduleReplacement, linearArray } from "@/router/route-output";
  * @methods removeTabsList 删除tabs页的指定路由
  * @methods removeRouteName 删除缓存路由名，用于取消页面缓存，单个删除
  * @methods removeRouteNames 删除缓存路由名，用于取消页面缓存，批量删除
+ * @methods resetRoute 重置动态添加的路由
  * @methods initSetRouter 路由初始化
  */
 export const routesConfigStore = () => {
@@ -75,10 +76,15 @@ export const routesConfigStore = () => {
     cacheRoutes.value = cacheRoutes.value.filter((item: string) => !list.includes(item));
   }
   /**
-   * 重置routeTree路由树
+   * 重置动态添加的路由
    */
   async function resetRoute() {
-    routeTree.value = [];
+    // 清除标签页数据
+    tabsList.value = [];
+    // 清除动态添加的路由
+    routeList.value.forEach((item: any) => {
+      if (router.hasRoute(item.name)) router.removeRoute(item.name);
+    });
   }
   /**
    * 路由初始化
@@ -88,10 +94,11 @@ export const routesConfigStore = () => {
    * 4、根据树生成一维路由数组
    * 5、动态添加路由
    * 6、缓存一维路由
+   * 7、获取按钮权限数据
    */
   async function initSetRouter() {
     // 1、获取过滤角色权限后的树，后端做排序处理
-    let { data } = await getMenuListAPI();
+    let { data } = await getRoutersAPI();
     // 2、将模块设置为真实模块
     let tree = await moduleReplacement(data);
     // 3、存储路由树，用于生成菜单

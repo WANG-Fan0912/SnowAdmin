@@ -3,7 +3,7 @@
     <div class="login_form_box">
       <a-form :rules="rules" :model="form" layout="vertical" @submit="onSubmit">
         <a-form-item field="username" :hide-asterisk="true">
-          <a-input v-model="form.username" allow-clear placeholder="请输入账号">
+          <a-input v-model="form.username" allow-clear placeholder="请输入账号：admin/common">
             <template #prefix>
               <icon-user />
             </template>
@@ -38,11 +38,12 @@
 </template>
 
 <script setup lang="ts">
-import { Message } from "@arco-design/web-vue";
 import { useRouter } from "vue-router";
 import { useUserInfoStore } from "@/store/modules/user-info";
-import { loginAPI, getUserInfoAPI } from "@/api/modules/user/index";
+import { loginAPI } from "@/api/modules/user/index";
 import { useRoutesConfigStore } from "@/store/modules/route-config";
+import { useSystemStore } from "@/store/modules/system";
+let userStores = useUserInfoStore();
 const routeStore = useRoutesConfigStore();
 const router = useRouter();
 const form = ref({
@@ -83,17 +84,28 @@ const rules = ref({
 const verifyCode = ref("");
 const verifyCodeChange = (code: string) => (verifyCode.value = code);
 
+// 提交表单
 const onSubmit = async ({ errors }: any) => {
   if (errors) return;
+  onLogin();
+};
+
+// 登录
+const onLogin = async () => {
+  // 登录
   let res = await loginAPI(form.value);
-  let stores = useUserInfoStore();
-  await stores.setToken(res.data.token);
-  let account = await getUserInfoAPI();
-  stores.setAccount(account.data); // 存储用户信息
-  Message.success("登录成功");
+  // 存储token
+  await userStores.setToken(res.data.token);
+  // 加载用户信息
+  await userStores.setAccount();
   // 加载路由信息
   await routeStore.initSetRouter();
+
+  arcoMessage("success", "登录成功");
+  // 跳转首页
   router.replace("/home");
+  // 设置字典
+  useSystemStore().setDictData();
 };
 </script>
 

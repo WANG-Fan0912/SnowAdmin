@@ -91,6 +91,10 @@ export default {
     ["disable-menu"]: "disable-menu",
     ["hide-menu"]: "hide-menu",
     ["i18n"]: "i18n",
-    ["amap"]: "amap"
+    ["amap"]: "amap",
+    ["permission"]: "permission",
+    ["btn-perm"]: "btn perm",
+    ["admin-page"]: "admin page",
+    ["common-page"]: "common page"
   }
 };

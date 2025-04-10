@@ -15,7 +15,11 @@
 import { useRouter } from "vue-router";
 const router = useRouter();
 const onBack = () => {
-  router.go(-1);
+  if (window.history.state.back !== null) {
+    router.replace(window.history.state.back);
+  } else {
+    router.replace("/login");
+  }
 };
 </script>
 

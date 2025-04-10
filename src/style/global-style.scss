@@ -1,6 +1,7 @@
 /* global style scss */
 
-// 整体main窗口容器
+// ============非铺满main窗口============
+// 整体main窗口容器-有内边距
 .snow-page {
   box-sizing: border-box;
   flex: 1;
@@ -9,20 +10,13 @@
   background: $color-fill-1;
 }
 
-// 内部main窗口容器
+// 内部main窗口容器-有内边距
 .snow-inner {
   padding: $padding;
   background: $color-bg-1;
 }
 
-// 没有边距的main窗口容器
-.snow-page-pure {
-  box-sizing: border-box;
-  flex: 1;
-  overflow-y: auto;
-  background: $color-fill-1;
-}
-
+// ==============铺满main窗口==================
 // 铺满main窗口-有内边距
 .snow-fill {
   height: 100%;
@@ -30,11 +24,17 @@
   overflow: hidden;
   background: $color-fill-1;
 }
-
-// 铺满main窗口-内部-有内边距
 .snow-fill-inner {
   box-sizing: border-box;
   height: 100%;
   padding: $padding;
+  overflow: hidden;
   background: $color-bg-1;
+}
+
+// 铺满main窗口-无内边距
+.snow-fill-pure {
+  height: 100%;
+  overflow: hidden;
+  background: $color-fill-1;
 }

@@ -2,12 +2,14 @@
 /* 路由-Menu */
 declare namespace Menu {
   interface MenuOptions {
+    id: string;
+    parentId: string;
     path: string;
     name: string;
     redirect?: string;
     component?: string | (() => Promise<unknown>);
     meta: MetaType;
-    children?: MenuOptions[];
+    children?: MenuOptions[] | null | any;
   }
   interface MetaType {
     title: string;
@@ -21,6 +23,7 @@ declare namespace Menu {
     icon?: string;
     svgIcon?: string;
     sort?: number;
+    type?: number;
   }
 }
 /* tabs菜单 */

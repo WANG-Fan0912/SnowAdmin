@@ -1,3 +1,4 @@
 import menu from "./menu";
+import system from "./system";
 
-export default [...menu];
+export default [...menu, ...system];

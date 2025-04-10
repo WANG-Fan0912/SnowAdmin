@@ -12,7 +12,7 @@ export const loginAPI = (data: any) => {
 // 获取用户信息
 export const getUserInfoAPI = () => {
   return axios({
-    url: "/mock/user/info",
+    url: "/mock/user/getUserInfo",
     method: "get"
   });
 };

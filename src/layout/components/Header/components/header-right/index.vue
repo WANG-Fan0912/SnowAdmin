@@ -58,8 +58,8 @@
     <!-- 我的 -->
     <a-dropdown trigger="hover">
       <div class="my_setting" id="system-my-setting">
-        <a-image width="32" height="32" fit="cover" :src="myImage" class="my_image" />
-        <span>admin</span>
+        <a-image width="32" height="32" fit="cover" :src="account.user.avatar || myImage" class="my_image" />
+        <span class="user-nickname">{{ account.user.nickName }}</span>
         <div class="icon_down">
           <icon-down style="stroke-width: 3" />
         </div>
@@ -114,10 +114,13 @@ import { useUserInfoStore } from "@/store/modules/user-info";
 import { useThemeConfig } from "@/store/modules/theme-config";
 import { useThemeMethods } from "@/hooks/useThemeMethods";
 import { useDevicesSize } from "@/hooks/useDevicesSize";
+import { useRoutesConfigStore } from "@/store/modules/route-config";
 const i18n = useI18n();
 const router = useRouter();
 const { isMobile } = useDevicesSize();
+const userStore = useUserInfoStore();
 const themeStore = useThemeConfig();
+const { account } = storeToRefs(userStore);
 const { language, darkMode } = storeToRefs(themeStore);
 
 // 系统设置
@@ -191,9 +194,10 @@ const logOut = () => {
     onBeforeOk: async () => {
       try {
         // 用户退出
-        const store = useUserInfoStore();
-        await store.logOut();
+        await userStore.logOut();
         router.replace("/login");
+        // 清除路由数据
+        useRoutesConfigStore().resetRoute();
         return true;
       } catch {
         return false;
@@ -236,6 +240,9 @@ const logOut = () => {
     .my_image {
       margin-right: 8px;
       border-radius: 50%;
+    }
+    .user-nickname {
+      white-space: nowrap;
     }
     .icon_down {
       margin: 0 0 0 5px;

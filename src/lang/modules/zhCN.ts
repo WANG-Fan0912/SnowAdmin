@@ -91,6 +91,10 @@ export default {
     ["disable-menu"]: "停用菜单",
     ["hide-menu"]: "隐藏菜单",
     ["i18n"]: "国际化",
-    ["amap"]: "高德地图"
+    ["amap"]: "高德地图",
+    ["permission"]: "权限测试",
+    ["btn-perm"]: "按钮权限",
+    ["admin-page"]: "管理员页面",
+    ["common-page"]: "普通角色页面"
   }
 };
