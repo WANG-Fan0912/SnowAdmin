@@ -801,7 +801,7 @@ export const systemMenu = [
     component: "directive/test-directive/test-directive",
     meta: {
       title: "test-directive",
-      hide: false,
+      hide: true,
       disable: false,
       keepAlive: true,
       affix: false,

@@ -20,7 +20,11 @@ const onBack = () => {
   if (!navigator.onLine) {
     Message.error("网络未连接");
   } else {
-    router.go(-1);
+    if (window.history.state.back !== null) {
+      router.replace(window.history.state.back);
+    } else {
+      router.replace("/login");
+    }
   }
 };
 </script>

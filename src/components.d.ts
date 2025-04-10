@@ -19,7 +19,6 @@ declare module "vue" {
     RouterLink: (typeof import("vue-router"))["RouterLink"];
     RouterView: (typeof import("vue-router"))["RouterView"];
     SelectIcon: (typeof import("./components/select-icon/index.vue"))["default"];
-    SelectSvg: (typeof import("./components/select-svg/index.vue"))["default"];
     SvgAndIcon: (typeof import("./components/svg-and-icon/index.vue"))["default"];
     SvgIcon: (typeof import("./components/svg-icon/index.vue"))["default"];
     VerifyCode: (typeof import("./components/verify-code/index.vue"))["default"];

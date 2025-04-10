@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a-config-provider global :locale="locale">
+    <a-config-provider :global="true" :locale="locale">
       <slot></slot>
     </a-config-provider>
   </div>

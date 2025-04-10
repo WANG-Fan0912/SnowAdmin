@@ -11,7 +11,7 @@ import { moduleReplacement, linearArray } from "@/router/route-output";
  * @methods removeTabsList 删除tabs页的指定路由
  * @methods removeRouteName 删除缓存路由名，用于取消页面缓存，单个删除
  * @methods removeRouteNames 删除缓存路由名，用于取消页面缓存，批量删除
- * @methods resetRoute 重置routeTree路由树
+ * @methods resetRoute 重置动态添加的路由
  * @methods initSetRouter 路由初始化
  */
 export const routesConfigStore = () => {
@@ -76,12 +76,15 @@ export const routesConfigStore = () => {
     cacheRoutes.value = cacheRoutes.value.filter((item: string) => !list.includes(item));
   }
   /**
-   * 重置routeTree路由树
+   * 重置动态添加的路由
    */
   async function resetRoute() {
-    routeTree.value = []; // 有访问权限的路由树
-    tabsList.value = []; // 标签页数据
-    currentRoute.value = {}; // 当前路由
+    // 清除标签页数据
+    tabsList.value = [];
+    // 清除动态添加的路由
+    routeList.value.forEach((item: any) => {
+      if (router.hasRoute(item.name)) router.removeRoute(item.name);
+    });
   }
   /**
    * 路由初始化

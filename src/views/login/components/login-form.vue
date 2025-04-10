@@ -43,6 +43,7 @@ import { useUserInfoStore } from "@/store/modules/user-info";
 import { loginAPI } from "@/api/modules/user/index";
 import { useRoutesConfigStore } from "@/store/modules/route-config";
 import { useSystemStore } from "@/store/modules/system";
+let userStores = useUserInfoStore();
 const routeStore = useRoutesConfigStore();
 const router = useRouter();
 const form = ref({
@@ -93,11 +94,10 @@ const onSubmit = async ({ errors }: any) => {
 const onLogin = async () => {
   // 登录
   let res = await loginAPI(form.value);
-  let stores = useUserInfoStore();
   // 存储token
-  await stores.setToken(res.data.token);
+  await userStores.setToken(res.data.token);
   // 加载用户信息
-  await stores.setAccount();
+  await userStores.setAccount();
   // 加载路由信息
   await routeStore.initSetRouter();
 
