@@ -93,7 +93,8 @@ export default {
     ["i18n"]: "国际化",
     ["amap"]: "高德地图",
     ["permission"]: "权限测试",
-    ["test-1"]: "测试-1",
-    ["test-2"]: "测试-2"
+    ["btn-perm"]: "按钮权限",
+    ["admin-page"]: "管理员页面",
+    ["common-page"]: "普通角色页面"
   }
 };

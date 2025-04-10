@@ -67,7 +67,7 @@
                   <template #icon><icon-edit /></template>
                   <span>修改</span>
                 </a-button>
-                <a-popconfirm type="warning" content="确定删除该字典吗?" @ok="onDelete">
+                <a-popconfirm type="warning" content="确定删除该字典吗?">
                   <a-button type="primary" status="danger" size="mini">
                     <template #icon><icon-delete /></template>
                     <span>删除</span>
@@ -261,9 +261,7 @@ const onUpdate = (record: any) => {
   addFrom.value = deepClone(record);
   open.value = true;
 };
-const onDelete = () => {
-  arcoMessage("success", "模拟删除成功");
-};
+
 const loading = ref(false);
 const pagination = ref({
   pageSize: 10,

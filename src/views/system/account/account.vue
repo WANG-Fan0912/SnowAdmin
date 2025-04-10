@@ -35,7 +35,7 @@
               <template #icon><icon-plus /></template>
               <span>新增</span>
             </a-button>
-            <a-button type="primary" status="danger" @click="onDelete">
+            <a-button type="primary" status="danger">
               <template #icon><icon-delete /></template>
               <span>删除</span>
             </a-button>
@@ -152,8 +152,8 @@
             <a-select v-model="addFrom.roles" multiple placeholder="请选择角色">
               <a-option
                 v-for="item in roleList"
-                :key="item.roles"
-                :value="item.key"
+                :key="item.code"
+                :value="item.code"
                 :label="item.name"
                 :disabled="item.admin"
               ></a-option>
@@ -253,7 +253,7 @@ const formType = ref(0); // 0新增 1修改
 const title = ref("");
 const formRef = ref();
 const onAdd = () => {
-  title.value = "新增账户";
+  title.value = "新增账号";
   formType.value = 0;
   open.value = true;
 };
@@ -279,15 +279,12 @@ const afterClose = () => {
   };
 };
 const onUpdate = (row: any) => {
-  title.value = "修改账户";
+  title.value = "修改账号";
   formType.value = 1;
   addFrom.value = deepClone(row);
   open.value = true;
 };
 
-const onDelete = () => {
-  console.log("删除");
-};
 const loading = ref(false);
 const pagination = ref({
   pageSize: 10,

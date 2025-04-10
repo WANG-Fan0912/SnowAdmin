@@ -1302,7 +1302,7 @@ export const systemMenu = [
     parentId: "0",
     path: "/permission",
     name: "permission",
-    redirect: "/permission/test1",
+    redirect: "/permission/btn-perm",
     meta: {
       title: "permission",
       hide: false,
@@ -1321,18 +1321,18 @@ export const systemMenu = [
   {
     id: "1301",
     parentId: "13",
-    path: "/permission/test1",
-    name: "test1",
-    component: "permission/test1/test1",
+    path: "/permission/btn-perm",
+    name: "btn-perm",
+    component: "permission/btn-perm/btn-perm",
     meta: {
-      title: "test-1",
+      title: "btn-perm",
       hide: false,
       disable: false,
       keepAlive: true,
       affix: false,
       link: "",
       iframe: false,
-      roles: ["admin"],
+      roles: ["admin", "common"],
       icon: "icon-menu",
       sort: 1,
       type: 2
@@ -1342,11 +1342,32 @@ export const systemMenu = [
   {
     id: "1302",
     parentId: "13",
-    path: "/permission/test2",
-    name: "test2",
-    component: "permission/test2/test2",
+    path: "/permission/admin-page",
+    name: "admin-page",
+    component: "permission/admin-page/admin-page",
     meta: {
-      title: "test-2",
+      title: "admin-page",
+      hide: false,
+      disable: false,
+      keepAlive: true,
+      affix: false,
+      link: "",
+      iframe: false,
+      roles: ["admin"],
+      icon: "icon-menu",
+      sort: 2,
+      type: 2
+    },
+    children: null
+  },
+  {
+    id: "1303",
+    parentId: "13",
+    path: "/permission/common-page",
+    name: "common-page",
+    component: "permission/common-page/common-page",
+    meta: {
+      title: "common-page",
       hide: false,
       disable: false,
       keepAlive: true,
@@ -1355,7 +1376,7 @@ export const systemMenu = [
       iframe: false,
       roles: ["common"],
       icon: "icon-menu",
-      sort: 2,
+      sort: 3,
       type: 2
     },
     children: null
@@ -1468,9 +1489,9 @@ export const permissionData = [
   },
   {
     id: "130201",
-    parentId: "1302",
+    parentId: "1301",
     meta: {
-      title: "新增按钮",
+      title: "新增按钮-2",
       hide: false,
       disable: false,
       roles: ["admin", "common"],
@@ -1481,9 +1502,9 @@ export const permissionData = [
   },
   {
     id: "130202",
-    parentId: "1302",
+    parentId: "1301",
     meta: {
-      title: "编辑按钮",
+      title: "编辑按钮-2",
       hide: false,
       disable: false,
       roles: ["admin", "common"],
@@ -1494,9 +1515,9 @@ export const permissionData = [
   },
   {
     id: "130203",
-    parentId: "1302",
+    parentId: "1301",
     meta: {
-      title: "删除按钮",
+      title: "删除按钮-2",
       hide: false,
       disable: false,
       roles: ["admin", "common"],

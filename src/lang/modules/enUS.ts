@@ -93,7 +93,8 @@ export default {
     ["i18n"]: "i18n",
     ["amap"]: "amap",
     ["permission"]: "permission",
-    ["test-1"]: "test-1",
-    ["test-2"]: "test-2"
+    ["btn-perm"]: "btn perm",
+    ["admin-page"]: "admin page",
+    ["common-page"]: "common page"
   }
 };

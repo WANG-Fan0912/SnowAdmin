@@ -3,6 +3,7 @@ import antiShake from "@/directives/modules/global/anti-shake";
 import throttle from "@/directives/modules/global/throttle";
 import custom from "@/directives/modules/global/custom";
 import hasPerm from "@/directives/modules/permission/has-perm";
+import hasRole from "@/directives/modules/permission/has-role";
 
 // 定义安装函数
 // install 函数是一个对象中的方法，其作用是将一系列指令对象安装到 Vue 应用实例中，它自带两个参数：app 和 options
@@ -15,6 +16,7 @@ const directives = {
     app.directive("throttle", throttle);
     app.directive("custom", custom);
     app.directive("hasPerm", hasPerm);
+    app.directive("hasRole", hasRole);
   }
 };
 

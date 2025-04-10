@@ -301,6 +301,7 @@ const form = ref({
 
 const onReset = () => {
   form.value = { name: "", hide: "", disable: "" };
+  getMenuList();
 };
 
 // 新增
@@ -350,7 +351,7 @@ const handleOk = async () => {
   let state = await formRef.value.validate();
   if (state) return (open.value = true); // 校验不通过
   arcoMessage("success", "模拟提交成功");
-  console.log("提交", addFrom.value);
+  getMenuList();
 };
 // 关闭对话框动画结束后触发
 const afterClose = () => {
@@ -386,6 +387,7 @@ const onUpdate = (row: Menu.MenuOptions) => {
     ...data.meta
   };
   if (form.meta) delete form.meta;
+  typeChange(form.type);
   addFrom.value = form;
   title.value = "修改菜单";
   open.value = true;
@@ -440,7 +442,7 @@ const onIframe = (is: boolean) => {
   }
 };
 
-const onSearch = () => getMenu();
+const onSearch = () => getMenuList();
 const loading = ref(false);
 const tableRef = ref();
 const tableTree = ref([]);
@@ -455,7 +457,6 @@ const getMenuList = async () => {
     tableTree.value = data;
     // 过滤type:3的节点，该节点是按钮权限，不显示在菜单中-用于下拉选择
     menuTree.value = filterTree(data);
-    console.log("列表数据", tableTree.value);
   } finally {
     loading.value = false;
   }

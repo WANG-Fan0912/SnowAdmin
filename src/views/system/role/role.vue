@@ -213,6 +213,7 @@ const handleOk = async () => {
   let state = await formRef.value.validate();
   if (state) return (open.value = true); // 校验不通过
   arcoMessage("success", "模拟提交成功");
+  getRole();
 };
 // 关闭对话框动画结束后触发
 const afterClose = () => {
@@ -297,9 +298,10 @@ const onPrivileges = async (row: any) => {
 };
 
 const drawerOk = () => {
-  console.log("drawerOk", permissionKeys.value);
   drawerOpen.value = false;
   treeSwitchReset();
+  arcoMessage("success", "模拟提交成功");
+  getRole();
 };
 const drawerCancel = () => {
   drawerOpen.value = false;

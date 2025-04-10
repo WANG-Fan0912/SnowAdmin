@@ -22,7 +22,7 @@
             <template #icon><icon-plus /></template>
             <span>新增</span>
           </a-button>
-          <a-button type="primary" status="danger" @click="onDelete">
+          <a-button type="primary" status="danger">
             <template #icon><icon-delete /></template>
             <span>删除</span>
           </a-button>
@@ -65,7 +65,7 @@
                   <template #icon><icon-plus /></template>
                   <span>新增</span>
                 </a-button>
-                <a-popconfirm type="warning" content="确定删除该部门吗?" @ok="onDelete">
+                <a-popconfirm type="warning" content="确定删除该部门吗?">
                   <a-button size="mini" type="primary" status="danger" v-if="record.id != '100'">
                     <template #icon><icon-delete /></template>
                     <span>删除</span>
@@ -78,7 +78,7 @@
       </a-table>
     </div>
 
-    <a-modal v-model:visible="open" @close="afterClose" @ok="handleOk" @cancel="afterClose">
+    <a-modal width="40%" v-model:visible="open" @close="afterClose" @ok="handleOk" @cancel="afterClose">
       <template #title> {{ title }} </template>
       <div>
         <a-form ref="formRef" auto-label-width :rules="rules" :model="addFrom">
@@ -94,7 +94,7 @@
               placeholder="选择上级部门"
             ></a-tree-select>
           </a-form-item>
-          <a-row>
+          <a-row :gutter="24">
             <a-col :span="12">
               <a-form-item field="name" label="部门名称" validate-trigger="blur">
                 <a-input v-model="addFrom.name" placeholder="请输入部门名称" allow-clear />
@@ -109,7 +109,7 @@
               </a-form-item>
             </a-col>
           </a-row>
-          <a-row>
+          <a-row :gutter="24">
             <a-col :span="12">
               <a-form-item field="leader" label="负责人" validate-trigger="blur">
                 <a-input v-model="addFrom.leader" placeholder="请输入负责人" allow-clear />
@@ -121,7 +121,7 @@
               </a-form-item>
             </a-col>
           </a-row>
-          <a-row>
+          <a-row :gutter="24">
             <a-col :span="12">
               <a-form-item field="email" label="邮箱" validate-trigger="blur">
                 <a-input v-model="addFrom.email" placeholder="请输入邮箱" allow-clear />
@@ -227,10 +227,6 @@ const addDivision = (id: any) => {
   formType.value = 2;
   addFrom.value.parentId = id == 0 ? null : id;
   open.value = true;
-};
-// 删除部门
-const onDelete = () => {
-  console.log("删除");
 };
 
 const openState = ref(dictFilter("status"));
