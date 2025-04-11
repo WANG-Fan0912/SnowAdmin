@@ -60,19 +60,20 @@ SnowAdmin 是一个清新优雅、高颜值且功能强大的后台管理模板�
 
 ### 项目功能 🔨
 
-- 清晰的项目架构：结构清晰，优雅易懂，代码全注释。
-- 前沿技术应用：采用 Vue3, Vite5, TypeScript等最新流行的技术栈。
+- 清晰的项目架构：结构清晰，优雅易懂，代码全注释
+- 前沿技术应用：采用 Vue3, Vite5, TypeScript等最新流行的技术栈
+- 内置RBAC角色权限模型，实现路由、角色、按钮权限访问控制
 - 使用 Pinia 替代 Vuex，轻量、简单、易用，集成 Pinia 持久化插件
 - 支持 Arco-Design 组件大小切换、多主题布局、暗黑模式、i18n 国际化
 - 使用 VueRouter 配置动态路由权限拦截、路由懒加载，支持页面按钮权限控制
 - 使用 KeepAlive 对页面进行缓存，支持多级嵌套路由缓存
 - 使用 Prettier 统一格式化代码，集成 ESLint、Stylelint 代码校验规范
 - 使用 husky、lint-staged、commitlint等插件，规范提交信息
-- 丰富的页面组件：内置多样页面和组件，包括 401、404、500 页面，以及布局组件、标签组件、主题配置组件等。
+- 丰富的页面组件：内置多样页面和组件，包括 401、404、500 页面，以及布局组件、标签组件、主题配置组件等
 
 ### 环境准备 🏝️
 
-确保你的环境满足以下要求：
+确保你的环境满足以下要求（重要）：
 
 - **git**: 你需要 git 来克隆和管理项目版本。
 - **NodeJS**: >=18.12.0，推荐 20.12.0 或更高。
@@ -138,7 +139,8 @@ SnowAdmin
 │  ├─ assets              # 静态资源文件
 │  ├─ components          # 全局组件
 │  ├─ config              # 全局配置项
-│  ├─ directives          # 全局指令文件
+│  ├─ directives          # 全局自定义指令文件
+│  ├─ globals             # 全局函数
 │  ├─ hooks               # 常用 Hooks 封装
 │  ├─ lang                # 语言国际化 i18n
 │  ├─ layout              # 框架布局模块
@@ -153,7 +155,7 @@ SnowAdmin
 │  ├─ main.ts             # 项目入口文件
 │  └─ vite-env.d.ts       # 指定 ts 识别 vue
 ├─ .editorconfig          # 代码编辑器配置文件
-├─ .env                   # vite 常用配置
+├─ .env                   # 通用环境配置
 ├─ .env.development       # 开发环境配置
 ├─ .env.production        # 生产环境配置
 ├─ .env.test              # 测试环境配置
@@ -185,10 +187,6 @@ SnowAdmin
 | :---------------------------------------------: | :-----------------------------------------------: | :--------------------------------------------------: | :-------------------------------------------------: | :-------------------------------------------------: |
 |                   not support                   |                  last 2 versions                  |                   last 2 versions                    |                   last 2 versions                   |                   last 2 versions                   |
 
-<!-- ### 项目后台接口 🧩
-
-建设中 -->
-
 ### 鸣谢列表 🧩
 
 - [vue：https://v3.cn.vuejs.org/](https://v3.cn.vuejs.org/)
@@ -203,8 +201,11 @@ SnowAdmin
 - [print-js：https://github.com/crabbly/Print.js](https://github.com/crabbly/Print.js)
 - [eslint：https://github.com/eslint/eslint](https://github.com/eslint/eslint)
 - [prettier：https://github.com/prettier/prettier](https://github.com/prettier/prettier)
-- [arco-design：https://arco.design/
-- [](https://arco.design/)
+- [arco.design：https://arco.design/](https://arco.design/)
+- [pinyin-pro：https://github.com/zh-lx/pinyin-pro](https://github.com/zh-lx/pinyin-pro)
+- [qrcode：https://www.npmjs.com/package/qrcode](https://www.npmjs.com/package/qrcode)
+- [jsbarcode：https://github.com/lindell/JsBarcode/wiki/Options](https://github.com/lindell/JsBarcode/wiki/Options)
+- [fingerprintjs2：https://www.npmjs.com/package/fingerprintjs2](https://www.npmjs.com/package/fingerprintjs2)
 
 ### 特别鸣谢 🎉
 

@@ -22,7 +22,7 @@
  *
  * 路由meta对象参数，我们通常将属性放到meta对象中
  * meta: {
- *   title:     国际化key
+ *   title:     国际化key，无对应Key则直接展示
  *   hide:      是否隐藏此路由，不会显示在菜单树，可以访问
  *   disable:   是否停用此路由-不显示且不可访问
  *   keepAlive: 是否缓存组件
@@ -51,7 +51,7 @@ export const systemMenu = [
     name: "home", // 路由name
     component: "home/home", // 路由跳转的文件路径，默认在src/views内，这里就是src/views/home/home.vue
     meta: {
-      title: "home", // 国际化key
+      title: "home", // 国际化key，无对应Key则直接展示
       hide: false, // 是否隐藏此路由-不显示但可访问
       disable: false, // 是否停用此路由-不显示且不可访问
       keepAlive: false, // 是否缓存组件

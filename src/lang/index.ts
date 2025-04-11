@@ -29,11 +29,11 @@ const i18n = createI18n({
 
 /**
  * @param { string } str 国际化key
- * @returns 去掉第一个点之前的字符串，例如："menu.home" => "home"
+ * @returns 去掉第一个点之前的字符串，例如："menu.home" => "home"，否则返回原字符串
  */
 function removeBeforeFirstDot(str: string) {
   const dotIndex = str.indexOf(".");
-  return dotIndex >= 0 ? str.slice(dotIndex + 1) : "未定义";
+  return dotIndex >= 0 ? str.slice(dotIndex + 1) : str;
 }
 
 export default i18n;
