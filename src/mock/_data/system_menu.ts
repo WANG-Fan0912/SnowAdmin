@@ -1028,237 +1028,6 @@ export const systemMenu = [
   {
     id: "10",
     parentId: "0",
-    path: "/link",
-    name: "link",
-    redirect: "/link/internal",
-    meta: {
-      title: "link",
-      hide: false,
-      disable: false,
-      keepAlive: true,
-      affix: false,
-      link: "",
-      iframe: false,
-      roles: ["admin"],
-      svgIcon: "link",
-      sort: 10,
-      type: 1
-    },
-    children: null
-  },
-  {
-    id: "1001",
-    parentId: "10",
-    path: "/link/internal",
-    name: "internal",
-    redirect: "/link/internal/uigradients",
-    meta: {
-      title: "internal",
-      hide: false,
-      disable: false,
-      keepAlive: true,
-      affix: false,
-      link: "",
-      iframe: false,
-      roles: ["admin"],
-      icon: "icon-menu",
-      sort: 1,
-      type: 1
-    },
-    children: null
-  },
-  {
-    id: "100101",
-    parentId: "1001",
-    path: "/link/internal/uigradients",
-    name: "uigradients",
-    component: "link/internal/internal",
-    meta: {
-      title: "uigradients",
-      hide: false,
-      keepAlive: true,
-      disable: false,
-      affix: false,
-      link: "https://uigradients.com/#HoneyDew", // 链接
-      iframe: true, // 区分是否内链 true内链 false外链
-      roles: ["admin"],
-      icon: "icon-menu",
-      sort: 1,
-      type: 2
-    },
-    children: null
-  },
-  {
-    id: "100102",
-    parentId: "1001",
-    path: "/link/internal/color-taking-tool",
-    name: "color-taking-tool",
-    component: "link/internal/internal",
-    meta: {
-      title: "color-taking-tool",
-      hide: false,
-      disable: false,
-      keepAlive: true,
-      affix: false,
-      link: "https://photokit.com/colors/eyedropper/?lang=zh", // 链接
-      iframe: true, // 区分是否内链 true内链 false外链
-      roles: ["admin"],
-      icon: "icon-menu",
-      sort: 2,
-      type: 2
-    },
-    children: null
-  },
-  {
-    id: "100103",
-    parentId: "1001",
-    path: "/link/internal/grid-generator",
-    name: "grid-generator",
-    component: "link/internal/internal",
-    meta: {
-      title: "grid-generator",
-      hide: false,
-      disable: false,
-      keepAlive: true,
-      affix: false,
-      link: "https://cssgrid-generator.netlify.app/", // 链接
-      iframe: true, // 区分是否内链 true内链 false外链
-      roles: ["admin"],
-      icon: "icon-menu",
-      sort: 3,
-      type: 2
-    },
-    children: null
-  },
-  {
-    id: "1002",
-    parentId: "10",
-    path: "/link/external",
-    name: "external",
-    redirect: "/link/external/link-vue",
-    meta: {
-      title: "external",
-      hide: false,
-      disable: false,
-      keepAlive: true,
-      affix: false,
-      link: "",
-      iframe: false,
-      roles: ["admin"],
-      icon: "icon-menu",
-      sort: 2,
-      type: 1
-    },
-    children: null
-  },
-  {
-    id: "100201",
-    parentId: "1002",
-    path: "/link/external/SnowAdmin-Docs",
-    name: "SnowAdmin-Docs",
-    component: "link/external/external",
-    meta: {
-      title: "SnowAdmin-Docs",
-      hide: false,
-      disable: false,
-      keepAlive: true,
-      affix: false,
-      link: "http://101.126.93.137:81/", // 链接
-      iframe: false, // 区分是否内链 true内链 false外链
-      roles: ["admin"],
-      icon: "icon-menu",
-      sort: 5,
-      type: 2
-    },
-    children: null
-  },
-  {
-    id: "100202",
-    parentId: "1002",
-    path: "/link/external/vue",
-    name: "vue",
-    component: "link/external/external",
-    meta: {
-      title: "vue",
-      hide: false,
-      disable: false,
-      keepAlive: true,
-      affix: false,
-      link: "https://cn.vuejs.org/", // 链接
-      iframe: false, // 区分是否内链 true内链 false外链
-      roles: ["admin"],
-      icon: "icon-menu",
-      sort: 1,
-      type: 2
-    },
-    children: null
-  },
-  {
-    id: "100203",
-    parentId: "1002",
-    path: "/link/external/vite",
-    name: "vite",
-    component: "link/external/external",
-    meta: {
-      title: "vite",
-      hide: false,
-      disable: false,
-      keepAlive: true,
-      affix: false,
-      link: "https://www.vitejs.net/", // 链接
-      iframe: false, // 区分是否内链 true内链 false外链
-      roles: ["admin"],
-      icon: "icon-menu",
-      sort: 2,
-      type: 2
-    },
-    children: null
-  },
-  {
-    id: "100204",
-    parentId: "1002",
-    path: "/link/external/github",
-    name: "github",
-    component: "link/external/external",
-    meta: {
-      title: "github",
-      hide: false,
-      disable: true,
-      keepAlive: true,
-      affix: false,
-      link: "https://github.com/WANG-Fan0912/SnowAdmin", // 链接
-      iframe: false, // 区分是否内链 true内链 false外链
-      roles: ["admin"],
-      icon: "icon-menu",
-      sort: 3,
-      type: 2
-    },
-    children: null
-  },
-  {
-    id: "100205",
-    parentId: "1002",
-    path: "/link/external/juejin",
-    name: "juejin",
-    component: "link/external/external",
-    meta: {
-      title: "juejin",
-      hide: false,
-      disable: false,
-      keepAlive: true,
-      affix: false,
-      link: "https://juejin.cn/user/1728883023940600", // 链接
-      iframe: false, // 区分是否内链 true内链 false外链
-      roles: ["admin"],
-      icon: "icon-menu",
-      sort: 4,
-      type: 2
-    },
-    children: null
-  },
-  {
-    id: "11",
-    parentId: "0",
     path: "/disable-menu",
     name: "disable-menu",
     component: "disable-menu/disable-menu",
@@ -1272,13 +1041,13 @@ export const systemMenu = [
       iframe: false,
       roles: ["admin"],
       svgIcon: "switch",
-      sort: 11,
+      sort: 10,
       type: 2
     },
     children: null
   },
   {
-    id: "12",
+    id: "11",
     parentId: "0",
     path: "/hide-menu",
     name: "hide-menu",
@@ -1293,13 +1062,13 @@ export const systemMenu = [
       iframe: false,
       roles: ["admin"],
       svgIcon: "switch",
-      sort: 12,
+      sort: 11,
       type: 2
     },
     children: null
   },
   {
-    id: "13",
+    id: "12",
     parentId: "0",
     path: "/permission",
     name: "permission",
@@ -1314,14 +1083,14 @@ export const systemMenu = [
       iframe: false,
       roles: ["admin", "common"],
       svgIcon: "permission",
-      sort: 13,
+      sort: 12,
       type: 1
     },
     children: null
   },
   {
-    id: "1301",
-    parentId: "13",
+    id: "1201",
+    parentId: "12",
     path: "/permission/btn-perm",
     name: "btn-perm",
     component: "permission/btn-perm/btn-perm",
@@ -1341,8 +1110,8 @@ export const systemMenu = [
     children: null
   },
   {
-    id: "1302",
-    parentId: "13",
+    id: "1202",
+    parentId: "12",
     path: "/permission/admin-page",
     name: "admin-page",
     component: "permission/admin-page/admin-page",
@@ -1362,8 +1131,8 @@ export const systemMenu = [
     children: null
   },
   {
-    id: "1303",
-    parentId: "13",
+    id: "1203",
+    parentId: "12",
     path: "/permission/common-page",
     name: "common-page",
     component: "permission/common-page/common-page",
@@ -1383,7 +1152,301 @@ export const systemMenu = [
     children: null
   },
   {
+    id: "13",
+    parentId: "0",
+    path: "/link",
+    name: "link",
+    redirect: "/link/internal",
+    meta: {
+      title: "link",
+      hide: false,
+      disable: false,
+      keepAlive: true,
+      affix: false,
+      link: "",
+      iframe: false,
+      roles: ["admin"],
+      svgIcon: "link",
+      sort: 13,
+      type: 1
+    },
+    children: null
+  },
+  {
+    id: "1301",
+    parentId: "13",
+    path: "/link/internal",
+    name: "internal",
+    redirect: "/link/internal/uigradients",
+    meta: {
+      title: "internal",
+      hide: false,
+      disable: false,
+      keepAlive: true,
+      affix: false,
+      link: "",
+      iframe: false,
+      roles: ["admin"],
+      icon: "icon-menu",
+      sort: 1,
+      type: 1
+    },
+    children: null
+  },
+  {
+    id: "130101",
+    parentId: "1301",
+    path: "/link/internal/uigradients",
+    name: "uigradients",
+    component: "link/internal/internal",
+    meta: {
+      title: "uigradients",
+      hide: false,
+      keepAlive: true,
+      disable: false,
+      affix: false,
+      link: "https://uigradients.com/#HoneyDew", // 链接
+      iframe: true, // 区分是否内链 true内链 false外链
+      roles: ["admin"],
+      icon: "icon-menu",
+      sort: 1,
+      type: 2
+    },
+    children: null
+  },
+  {
+    id: "130102",
+    parentId: "1301",
+    path: "/link/internal/color-taking-tool",
+    name: "color-taking-tool",
+    component: "link/internal/internal",
+    meta: {
+      title: "color-taking-tool",
+      hide: false,
+      disable: false,
+      keepAlive: true,
+      affix: false,
+      link: "https://photokit.com/colors/eyedropper/?lang=zh", // 链接
+      iframe: true, // 区分是否内链 true内链 false外链
+      roles: ["admin"],
+      icon: "icon-menu",
+      sort: 2,
+      type: 2
+    },
+    children: null
+  },
+  {
+    id: "130103",
+    parentId: "1301",
+    path: "/link/internal/grid-generator",
+    name: "grid-generator",
+    component: "link/internal/internal",
+    meta: {
+      title: "grid-generator",
+      hide: false,
+      disable: false,
+      keepAlive: true,
+      affix: false,
+      link: "https://cssgrid-generator.netlify.app/", // 链接
+      iframe: true, // 区分是否内链 true内链 false外链
+      roles: ["admin"],
+      icon: "icon-menu",
+      sort: 3,
+      type: 2
+    },
+    children: null
+  },
+  {
+    id: "1302",
+    parentId: "13",
+    path: "/link/external",
+    name: "external",
+    redirect: "/link/external/link-vue",
+    meta: {
+      title: "external",
+      hide: false,
+      disable: false,
+      keepAlive: true,
+      affix: false,
+      link: "",
+      iframe: false,
+      roles: ["admin"],
+      icon: "icon-menu",
+      sort: 2,
+      type: 1
+    },
+    children: null
+  },
+  {
+    id: "130201",
+    parentId: "1302",
+    path: "/link/external/SnowAdmin-Docs",
+    name: "SnowAdmin-Docs",
+    component: "link/external/external",
+    meta: {
+      title: "SnowAdmin-Docs",
+      hide: false,
+      disable: false,
+      keepAlive: true,
+      affix: false,
+      link: "http://101.126.93.137:81/", // 链接
+      iframe: false, // 区分是否内链 true内链 false外链
+      roles: ["admin"],
+      icon: "icon-menu",
+      sort: 5,
+      type: 2
+    },
+    children: null
+  },
+  {
+    id: "130202",
+    parentId: "1302",
+    path: "/link/external/vue",
+    name: "vue",
+    component: "link/external/external",
+    meta: {
+      title: "vue",
+      hide: false,
+      disable: false,
+      keepAlive: true,
+      affix: false,
+      link: "https://cn.vuejs.org/", // 链接
+      iframe: false, // 区分是否内链 true内链 false外链
+      roles: ["admin"],
+      icon: "icon-menu",
+      sort: 1,
+      type: 2
+    },
+    children: null
+  },
+  {
+    id: "130203",
+    parentId: "1302",
+    path: "/link/external/vite",
+    name: "vite",
+    component: "link/external/external",
+    meta: {
+      title: "vite",
+      hide: false,
+      disable: false,
+      keepAlive: true,
+      affix: false,
+      link: "https://www.vitejs.net/", // 链接
+      iframe: false, // 区分是否内链 true内链 false外链
+      roles: ["admin"],
+      icon: "icon-menu",
+      sort: 2,
+      type: 2
+    },
+    children: null
+  },
+  {
+    id: "130204",
+    parentId: "1302",
+    path: "/link/external/github",
+    name: "github",
+    component: "link/external/external",
+    meta: {
+      title: "github",
+      hide: false,
+      disable: true,
+      keepAlive: true,
+      affix: false,
+      link: "https://github.com/WANG-Fan0912/SnowAdmin", // 链接
+      iframe: false, // 区分是否内链 true内链 false外链
+      roles: ["admin"],
+      icon: "icon-menu",
+      sort: 3,
+      type: 2
+    },
+    children: null
+  },
+  {
+    id: "130205",
+    parentId: "1302",
+    path: "/link/external/juejin",
+    name: "juejin",
+    component: "link/external/external",
+    meta: {
+      title: "juejin",
+      hide: false,
+      disable: false,
+      keepAlive: true,
+      affix: false,
+      link: "https://juejin.cn/user/1728883023940600", // 链接
+      iframe: false, // 区分是否内链 true内链 false外链
+      roles: ["admin"],
+      icon: "icon-menu",
+      sort: 4,
+      type: 2
+    },
+    children: null
+  },
+  {
     id: "14",
+    parentId: "0",
+    path: "/monitor",
+    name: "monitor",
+    redirect: "/monitor/onlineuser",
+    meta: {
+      title: "system-monitor",
+      hide: false,
+      disable: false,
+      keepAlive: true,
+      affix: false,
+      link: "",
+      iframe: false,
+      roles: ["admin"],
+      svgIcon: "financial-statement",
+      sort: 14,
+      type: 1
+    },
+    children: null
+  },
+  {
+    id: "1401",
+    parentId: "14",
+    path: "/monitor/onlineuser",
+    name: "onlineuser",
+    component: "monitor/onlineuser/index",
+    meta: {
+      title: "onlineuser",
+      hide: false,
+      keepAlive: true,
+      disable: false,
+      affix: false,
+      link: "",
+      iframe: false,
+      roles: ["admin"],
+      icon: "icon-menu",
+      sort: 1,
+      type: 2
+    },
+    children: null
+  },
+  {
+    id: "1402",
+    parentId: "14",
+    path: "/monitor/cron-job",
+    name: "cron-job",
+    component: "monitor/cron-job/index",
+    meta: {
+      title: "cron-job",
+      hide: false,
+      keepAlive: true,
+      disable: false,
+      affix: false,
+      link: "",
+      iframe: false,
+      roles: ["admin"],
+      icon: "icon-menu",
+      sort: 2,
+      type: 2
+    },
+    children: null
+  },
+  {
+    id: "15",
     parentId: "0",
     path: "/gaodemap",
     name: "gaodemap",
@@ -1398,13 +1461,13 @@ export const systemMenu = [
       iframe: true, // 区分是否内链 true内链 false外链
       roles: ["admin"],
       svgIcon: "amap",
-      sort: 14,
+      sort: 15,
       type: 2
     },
     children: null
   },
   {
-    id: "15",
+    id: "16",
     parentId: "0",
     path: "/i18n",
     name: "i18n",
@@ -1419,13 +1482,13 @@ export const systemMenu = [
       iframe: false,
       roles: ["admin", "common"],
       svgIcon: "earth",
-      sort: 15,
+      sort: 16,
       type: 2
     },
     children: null
   },
   {
-    id: "16",
+    id: "17",
     parentId: "0",
     path: "/about",
     name: "about",
@@ -1440,7 +1503,7 @@ export const systemMenu = [
       iframe: false,
       roles: ["admin", "common"],
       svgIcon: "about",
-      sort: 16,
+      sort: 17,
       type: 2
     },
     children: null
@@ -1450,8 +1513,8 @@ export const systemMenu = [
 // 权限数据
 export const permissionData = [
   {
-    id: "130101",
-    parentId: "1301",
+    id: "120101",
+    parentId: "1201",
     meta: {
       title: "新增按钮",
       hide: false,
@@ -1463,8 +1526,8 @@ export const permissionData = [
     }
   },
   {
-    id: "130102",
-    parentId: "1301",
+    id: "120102",
+    parentId: "1201",
     meta: {
       title: "编辑按钮",
       hide: false,
@@ -1476,8 +1539,8 @@ export const permissionData = [
     }
   },
   {
-    id: "130103",
-    parentId: "1301",
+    id: "120103",
+    parentId: "1201",
     meta: {
       title: "删除按钮",
       hide: false,
@@ -1489,8 +1552,8 @@ export const permissionData = [
     }
   },
   {
-    id: "130201",
-    parentId: "1301",
+    id: "120201",
+    parentId: "1201",
     meta: {
       title: "新增按钮-2",
       hide: false,
@@ -1502,8 +1565,8 @@ export const permissionData = [
     }
   },
   {
-    id: "130202",
-    parentId: "1301",
+    id: "120202",
+    parentId: "1201",
     meta: {
       title: "编辑按钮-2",
       hide: false,
@@ -1515,8 +1578,8 @@ export const permissionData = [
     }
   },
   {
-    id: "130203",
-    parentId: "1301",
+    id: "120203",
+    parentId: "1201",
     meta: {
       title: "删除按钮-2",
       hide: false,

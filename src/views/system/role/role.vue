@@ -7,7 +7,7 @@
         <a-select placeholder="角色状态" v-model="form.status" style="width: 120px" allow-clear>
           <a-option v-for="item in openState" :key="item.value" :value="item.value">{{ item.name }}</a-option>
         </a-select>
-        <a-range-picker show-time format="YYYY-MM-DD HH:mm" allow-clear />
+        <a-range-picker v-model="form.time" show-time format="YYYY-MM-DD HH:mm" allow-clear />
         <a-button type="primary" @click="search">
           <template #icon><icon-search /></template>
           <span>查询</span>
@@ -174,6 +174,7 @@ const openState = ref(dictFilter("status"));
 const form = ref({
   name: "",
   code: "",
+  time: [],
   status: null
 });
 const search = () => {
@@ -183,6 +184,7 @@ const reset = () => {
   form.value = {
     name: "",
     code: "",
+    time: [],
     status: null
   };
   getRole();
