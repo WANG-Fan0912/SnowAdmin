@@ -1082,7 +1082,7 @@ export const systemMenu = [
       link: "",
       iframe: false,
       roles: ["admin", "common"],
-      svgIcon: "permission",
+      svgIcon: "defend",
       sort: 12,
       type: 1
     },
