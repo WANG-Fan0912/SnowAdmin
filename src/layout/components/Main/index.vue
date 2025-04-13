@@ -23,6 +23,10 @@ let { refreshPage, isTabs, watermark, watermarkStyle, watermarkRotate, watermark
 const routerStore = useRoutesConfigStore();
 const { cacheRoutes } = storeToRefs(routerStore);
 
+// setInterval(() => {
+//   console.log("缓存在这里", cacheRoutes.value);
+// }, 2000);
+
 // 水印配置
 const watermarkConfig = computed(() => {
   return {

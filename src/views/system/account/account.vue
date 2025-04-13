@@ -60,7 +60,7 @@
             </a-table-column>
             <a-table-column title="用户名称" data-index="userName"></a-table-column>
             <a-table-column title="昵称" data-index="nickName"></a-table-column>
-            <a-table-column title="性别" data-index="sex">
+            <a-table-column title="性别" data-index="sex" align="center">
               <template #cell="{ record }">
                 <a-tag bordered size="small" color="arcoblue" v-if="record.sex == 1">男</a-tag>
                 <a-tag bordered size="small" color="red" v-else-if="record.sex == 0">女</a-tag>

@@ -6,6 +6,7 @@
         <a-select placeholder="任务状态" v-model="form.status" style="width: 120px" allow-clear>
           <a-option v-for="item in openState" :key="item.value" :value="item.value">{{ item.name }}</a-option>
         </a-select>
+        <a-range-picker v-model="form.createTime" show-time format="YYYY-MM-DD HH:mm" allow-clear />
         <a-button type="primary" @click="search">
           <template #icon><icon-search /></template>
           <span>查询</span>
@@ -45,7 +46,7 @@
               <span v-else>间隔时间: {{ record.every }} 秒</span>
             </template>
           </a-table-column>
-          <a-table-column title="状态" data-index="status" :width="80">
+          <a-table-column title="状态" align="center" data-index="status" :width="80">
             <template #cell="{ record }">
               <a-tag bordered size="small" color="arcoblue" v-if="record.status === 1">启用</a-tag>
               <a-tag bordered size="small" color="red" v-else>禁用</a-tag>
@@ -56,7 +57,7 @@
           <a-table-column title="操作" :width="250" align="center" :fixed="'right'">
             <template #cell="{ record }">
               <a-space>
-                <a-button type="primary" status="success" size="mini">
+                <a-button type="primary" status="success" size="mini" @click="onLogs(record)">
                   <template #icon><icon-file /></template>
                   <span>日志</span>
                 </a-button>
@@ -64,7 +65,7 @@
                   <template #icon><icon-edit /></template>
                   <span>修改</span>
                 </a-button>
-                <a-popconfirm type="warning" content="确定删除吗?" @ok="onLogout(record)">
+                <a-popconfirm type="warning" content="确定删除吗?">
                   <a-button type="primary" status="danger" size="mini">
                     <template #icon><icon-delete /></template>
                     <span>删除</span>
@@ -139,8 +140,9 @@
 </template>
 
 <script setup lang="ts">
-import { getCronJobAPI } from "@/api/modules/monitor/index";
+import { getCrontabAPI } from "@/api/modules/monitor/index";
 import { deepClone } from "@/utils";
+const router = useRouter();
 const openState = ref(dictFilter("status"));
 const misfirePolicyOption = ref([
   { name: "循环", value: 1 },
@@ -153,18 +155,20 @@ const taskTypeOption = ref([
 const form = ref({
   loginLocation: "",
   userName: "",
-  status: null
+  status: null,
+  createTime: []
 });
 const search = () => {
-  getCronJob();
+  getCrontab();
 };
 const reset = () => {
   form.value = {
     loginLocation: "",
     userName: "",
-    status: null
+    status: null,
+    createTime: []
   };
-  getCronJob();
+  getCrontab();
 };
 
 // 新增
@@ -199,9 +203,8 @@ const onAdd = () => {
 const handleOk = async () => {
   let state = await formRef.value.validate();
   if (state) return (open.value = true); // 校验不通过
-  console.log("模拟提交", addFrom.value);
   arcoMessage("success", "模拟提交成功");
-  getCronJob();
+  getCrontab();
 };
 // 关闭对话框动画结束后触发
 const afterClose = () => {
@@ -229,10 +232,14 @@ const onUpdate = (row: any) => {
   open.value = true;
 };
 
-const onLogout = (row: any) => {
-  console.log("退出", row);
-  arcoMessage("success", "模拟删除成功");
-  getCronJob();
+const onLogs = (row: any) => {
+  router.push({
+    path: "/monitor/crontab-logs",
+    query: {
+      id: row.id,
+      name: row.name
+    }
+  });
 };
 
 // 获取列表
@@ -242,17 +249,17 @@ const pagination = ref({
   showPageSize: true
 });
 const list = ref([]);
-const getCronJob = async () => {
+const getCrontab = async () => {
   try {
     loading.value = true;
-    let res = await getCronJobAPI();
+    let res = await getCrontabAPI();
     list.value = res.data;
   } finally {
     loading.value = false;
   }
 };
 
-getCronJob();
+getCrontab();
 </script>
 
 <style lang="scss" scoped>

@@ -32,7 +32,7 @@
           <a-table-column title="部门名称" data-index="deptName" ellipsis tooltip></a-table-column>
           <a-table-column title="IP地址" data-index="ipaddr" ellipsis tooltip></a-table-column>
           <a-table-column title="登录地址" data-index="loginLocation" ellipsis tooltip></a-table-column>
-          <a-table-column title="状态" data-index="status" :width="80">
+          <a-table-column title="状态" data-index="status" align="center" :width="80">
             <template #cell="{ record }">
               <a-space>
                 <a-badge status="success" text="在线" v-if="record.status == 1" />

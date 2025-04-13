@@ -360,126 +360,6 @@ export const systemMenu = [
     children: null
   },
   {
-    id: "050204",
-    parentId: "0502",
-    path: "/multilevel/third-4",
-    name: "third-4",
-    component: "multilevel/third/third-4",
-    meta: {
-      title: "third-4",
-      link: "",
-      hide: false,
-      keepAlive: true,
-      affix: false,
-      iframe: false,
-      roles: ["admin"],
-      icon: "icon-menu",
-      sort: 4,
-      type: 2
-    },
-    children: null
-  },
-  {
-    id: "050205",
-    parentId: "0502",
-    path: "/multilevel/third-5",
-    name: "third-5",
-    component: "multilevel/third/third-5",
-    meta: {
-      title: "third-5",
-      link: "",
-      hide: false,
-      keepAlive: true,
-      affix: false,
-      iframe: false,
-      roles: ["admin"],
-      icon: "icon-menu",
-      sort: 5,
-      type: 2
-    },
-    children: null
-  },
-  {
-    id: "050206",
-    parentId: "0502",
-    path: "/multilevel/third-6",
-    name: "third-6",
-    component: "multilevel/third/third-6",
-    meta: {
-      title: "third-6",
-      link: "",
-      hide: false,
-      keepAlive: true,
-      affix: false,
-      iframe: false,
-      roles: ["admin"],
-      icon: "icon-menu",
-      sort: 6,
-      type: 2
-    },
-    children: null
-  },
-  {
-    id: "050207",
-    parentId: "0502",
-    path: "/multilevel/third-7",
-    name: "third-7",
-    component: "multilevel/third/third-7",
-    meta: {
-      title: "third-7",
-      link: "",
-      hide: false,
-      keepAlive: true,
-      affix: false,
-      iframe: false,
-      roles: ["admin"],
-      icon: "icon-menu",
-      sort: 7,
-      type: 2
-    },
-    children: null
-  },
-  {
-    id: "050208",
-    parentId: "0502",
-    path: "/multilevel/third-8",
-    name: "third-8",
-    component: "multilevel/third/third-8",
-    meta: {
-      title: "third-8",
-      link: "",
-      hide: false,
-      keepAlive: true,
-      affix: false,
-      iframe: false,
-      roles: ["admin"],
-      icon: "icon-menu",
-      sort: 8,
-      type: 2
-    },
-    children: null
-  },
-  {
-    id: "050209",
-    parentId: "0502",
-    path: "/multilevel/third-9",
-    name: "third-9",
-    component: "multilevel/third/third-9",
-    meta: {
-      title: "third-9",
-      link: "",
-      hide: false,
-      keepAlive: true,
-      affix: false,
-      iframe: false,
-      roles: ["admin"],
-      icon: "icon-menu",
-      sort: 9,
-      type: 2
-    },
-    children: null
-  },
-  {
     id: "06",
     parentId: "0",
     path: "/component",
@@ -1427,11 +1307,11 @@ export const systemMenu = [
   {
     id: "1402",
     parentId: "14",
-    path: "/monitor/cron-job",
-    name: "cron-job",
-    component: "monitor/cron-job/index",
+    path: "/monitor/crontab",
+    name: "crontab",
+    component: "monitor/crontab/index",
     meta: {
-      title: "cron-job",
+      title: "crontab",
       hide: false,
       keepAlive: true,
       disable: false,
@@ -1441,6 +1321,27 @@ export const systemMenu = [
       roles: ["admin"],
       icon: "icon-menu",
       sort: 2,
+      type: 2
+    },
+    children: null
+  },
+  {
+    id: "1403",
+    parentId: "14",
+    path: "/monitor/crontab-logs",
+    name: "crontab-logs",
+    component: "monitor/crontab-logs/index",
+    meta: {
+      title: "crontab-logs",
+      hide: false,
+      keepAlive: true,
+      disable: false,
+      affix: false,
+      link: "",
+      iframe: false,
+      roles: ["admin"],
+      icon: "icon-menu",
+      sort: 3,
       type: 2
     },
     children: null

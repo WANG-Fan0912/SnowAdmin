@@ -167,7 +167,7 @@ export const dictData = [
     name: "状态",
     code: "status",
     status: 1,
-    description: "想要统一状态字段可以用这个",
+    description: "状态字段可以用这个",
     createTime: "2024-07-01 10:00:00",
     list: [
       { id: "021", name: "禁用", value: 0, status: 1 },
@@ -188,6 +188,18 @@ export const dictData = [
       { id: "034", name: "开发部主管", value: 4, status: 1 },
       { id: "035", name: "普通职员", value: 5, status: 1 },
       { id: "036", name: "其它", value: 999, status: 1 }
+    ]
+  },
+  {
+    id: "04",
+    name: "任务状态",
+    code: "taskStatus",
+    status: 1,
+    description: "任务状态字段可以用它",
+    createTime: "2024-07-01 10:00:00",
+    list: [
+      { id: "041", name: "失败", value: 0, status: 1 },
+      { id: "042", name: "成功", value: 1, status: 1 }
     ]
   }
 ];

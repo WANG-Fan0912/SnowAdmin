@@ -25,16 +25,15 @@ export const onlineuser = [
 ];
 
 // 定时任务
-export const cronJob = [
+export const crontab = [
   {
     id: 1,
-    jobId: "9e1f42c8-b127-449b-b0a4-d53c60b79e75", // 任务编号
     name: "cron任务，5秒执行一次", // 任务名称
     cron: "0/5 * * * * * ", // cron-执行规则
     every: null, // 间隔时间秒-执行规则
     service: "taskDemoService.test()", // 执行服务
-    startDate: "2024-06-30 11:28:35", // 开始时间
-    nextRunTime: "2025-04-13 11:20:50", // 下次执行时间
+    startDate: "2025-03-30 11:28:35", // 开始时间
+    nextRunTime: "2025-03-13 11:20:50", // 下次执行时间
     taskType: 0, // 任务类型 0 cron 1 指定时间(秒)
     misfirePolicy: 1, // 执行策略 1 循环 2 执行一次
     remark: "这是定时任务", // 备注
@@ -46,13 +45,12 @@ export const cronJob = [
   },
   {
     id: 2,
-    jobId: "9e1f42c8-b127-449b-b0a4-d53c60b79e76",
     name: "每秒执行一次",
     cron: null,
-    every: 1000,
+    every: 1,
     service: "taskDemoService.test(1,2)",
-    startDate: "2024-06-30 11:28:35",
-    nextRunTime: "2025-04-13 11:20:50",
+    startDate: "2025-03-30 11:28:35",
+    nextRunTime: "2025-03-13 11:20:50",
     taskType: 1,
     misfirePolicy: 1,
     remark: "这是定时任务",
@@ -61,5 +59,28 @@ export const cronJob = [
     createTime: "2024-06-30 11:28:35",
     updateBy: null,
     updateTime: null
+  }
+];
+
+// 任务日志
+export const crontabLogs = [
+  {
+    id: 1,
+    taskId: 1,
+    taskName: "cron任务，5秒执行一次",
+    status: 1,
+    remark: "",
+    createTime: "2025-03-30 11:28:35",
+    executionTime: "2025-03-30 11:28:35"
+  },
+  {
+    id: 2,
+    taskId: 2,
+    taskName: "每秒执行一次",
+    status: 0,
+    remark:
+      "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ', `_isUTC` = false, `_pf` = '[object Object]', `_locale` = '[object Object]', `_' at line 1",
+    createTime: "2025-03-30 11:28:35",
+    executionTime: "2025-03-30 11:28:35"
   }
 ];

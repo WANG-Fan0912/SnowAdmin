@@ -49,7 +49,7 @@
           </a-table-column>
           <a-table-column title="角色名称" data-index="name"></a-table-column>
           <a-table-column title="角色标识" data-index="code"></a-table-column>
-          <a-table-column title="排序" data-index="sort" :width="100"></a-table-column>
+          <a-table-column title="排序" data-index="sort" :width="100" align="center"></a-table-column>
           <a-table-column title="状态" :width="100" align="center">
             <template #cell="{ record }">
               <a-tag bordered size="small" color="arcoblue" v-if="record.status === 1">启用</a-tag>

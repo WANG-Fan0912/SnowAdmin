@@ -9,9 +9,18 @@ export const getOnlineuserAPI = () => {
 };
 
 // 获取定时任务
-export const getCronJobAPI = () => {
+export const getCrontabAPI = () => {
   return axios({
-    url: "/mock/monitor/getCronJob",
+    url: "/mock/monitor/getCrontab",
     method: "get"
+  });
+};
+
+// 获取定时任务日志
+export const getCrontabLogsAPI = (params: any) => {
+  return axios({
+    url: "/mock/monitor/getCrontabLogs",
+    method: "get",
+    params
   });
 };

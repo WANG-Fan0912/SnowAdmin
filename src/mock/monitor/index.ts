@@ -1,10 +1,10 @@
 import type { MockMethod } from "vite-plugin-mock";
 import { resultSuccess } from "../_utils";
-import { onlineuser, cronJob } from "../_data/monitor_data";
+import { onlineuser, crontab, crontabLogs } from "../_data/monitor_data";
 /**
  * post请求body,get请求query
  * /mock/monitor/getOnlineuser 获取在线用户
- * /mock/monitor/getCronJob 定时任务
+ * /mock/monitor/getCrontab 定时任务
  */
 export default [
   {
@@ -16,11 +16,21 @@ export default [
     }
   },
   {
-    url: "/mock/monitor/getCronJob",
+    url: "/mock/monitor/getCrontab",
     method: "get",
     timeout: 300,
     response: () => {
-      return resultSuccess(cronJob);
+      return resultSuccess(crontab);
+    }
+  },
+  {
+    url: "/mock/monitor/getCrontabLogs",
+    method: "get",
+    timeout: 300,
+    response: ({ query }: any) => {
+      console.log("请求参数", query);
+
+      return resultSuccess(crontabLogs);
     }
   }
 ] as MockMethod[];

@@ -43,7 +43,7 @@
               {{ record.name }}
             </template>
           </a-table-column>
-          <a-table-column title="排序" data-index="sort" :width="100"></a-table-column>
+          <a-table-column title="排序" data-index="sort" :width="100" align="center"></a-table-column>
           <a-table-column title="启用状态" align="center">
             <template #cell="{ record }">
               <a-space>
