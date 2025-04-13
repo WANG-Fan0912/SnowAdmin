@@ -23,3 +23,43 @@ export const onlineuser = [
     status: 1 // 0离线 1在线
   }
 ];
+
+// 定时任务
+export const cronJob = [
+  {
+    id: 1,
+    jobId: "9e1f42c8-b127-449b-b0a4-d53c60b79e75", // 任务编号
+    name: "cron任务，5秒执行一次", // 任务名称
+    cron: "0/5 * * * * * ", // cron-执行规则
+    every: null, // 间隔时间秒-执行规则
+    service: "taskDemoService.test()", // 执行服务
+    startDate: "2024-06-30 11:28:35", // 开始时间
+    nextRunTime: "2025-04-13 11:20:50", // 下次执行时间
+    taskType: 0, // 任务类型 0 cron 1 指定时间(秒)
+    misfirePolicy: 1, // 执行策略 1 循环 2 执行一次
+    remark: "这是定时任务", // 备注
+    status: 1, // 0离线 1在线
+    createBy: "admin",
+    createTime: "2024-06-30 11:28:35",
+    updateBy: null,
+    updateTime: null
+  },
+  {
+    id: 2,
+    jobId: "9e1f42c8-b127-449b-b0a4-d53c60b79e76",
+    name: "每秒执行一次",
+    cron: null,
+    every: 1000,
+    service: "taskDemoService.test(1,2)",
+    startDate: "2024-06-30 11:28:35",
+    nextRunTime: "2025-04-13 11:20:50",
+    taskType: 1,
+    misfirePolicy: 1,
+    remark: "这是定时任务",
+    status: 1,
+    createBy: "admin",
+    createTime: "2024-06-30 11:28:35",
+    updateBy: null,
+    updateTime: null
+  }
+];

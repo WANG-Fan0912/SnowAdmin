@@ -7,3 +7,11 @@ export const getOnlineuserAPI = () => {
     method: "get"
   });
 };
+
+// 获取定时任务
+export const getCronJobAPI = () => {
+  return axios({
+    url: "/mock/monitor/getCronJob",
+    method: "get"
+  });
+};
