@@ -63,6 +63,7 @@
 
 <script setup lang="ts">
 import { getOnlineuserAPI } from "@/api/modules/monitor/index";
+defineOptions({ name: "onlineuser" });
 const form = ref({
   loginLocation: "",
   userName: "",

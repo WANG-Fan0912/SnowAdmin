@@ -28,8 +28,7 @@ export default [
     method: "get",
     timeout: 300,
     response: ({ query }: any) => {
-      console.log("请求参数", query);
-
+      console.log(query);
       return resultSuccess(crontabLogs);
     }
   }

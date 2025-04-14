@@ -62,11 +62,11 @@
 
 <script setup lang="ts">
 import { getCrontabLogsAPI } from "@/api/modules/monitor/index";
+defineOptions({ name: "crontab-logs" });
 let route = useRoute();
 const openState = ref(dictFilter("taskStatus"));
 
 const form = ref({
-  jobId: null,
   name: "",
   status: null,
   datetimeRange: []
@@ -76,7 +76,6 @@ const search = () => {
 };
 const reset = () => {
   form.value = {
-    jobId: null,
     name: "",
     status: null,
     datetimeRange: []
@@ -105,12 +104,15 @@ const getCrontabLogs = async () => {
   }
 };
 
-onMounted(() => {
+const init = () => {
   if (route.query.id) {
-    form.value.jobId = route.query.id;
     form.value.name = route.query.name;
   }
   getCrontabLogs();
+};
+
+onActivated(() => {
+  init();
 });
 </script>
 

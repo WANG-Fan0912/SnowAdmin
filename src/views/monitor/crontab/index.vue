@@ -142,6 +142,7 @@
 <script setup lang="ts">
 import { getCrontabAPI } from "@/api/modules/monitor/index";
 import { deepClone } from "@/utils";
+defineOptions({ name: "crontab" });
 const router = useRouter();
 const openState = ref(dictFilter("status"));
 const misfirePolicyOption = ref([
