@@ -22,7 +22,6 @@ const themeStore = useThemeConfig();
 let { refreshPage, isTabs, watermark, watermarkStyle, watermarkRotate, watermarkGap } = storeToRefs(themeStore);
 const routerStore = useRoutesConfigStore();
 const { cacheRoutes } = storeToRefs(routerStore);
-
 // 水印配置
 const watermarkConfig = computed(() => {
   return {

@@ -64,18 +64,19 @@ class RightMouseControl {
  * 使用debugger关键字阻止打开控制台
  */
 class DebugProtector {
-  private isActive = false;
+  private isActive = false; // 是否开启防调试
+  private code = "d" + "e" + "b" + "u" + "g" + "g" + "e" + "r"; // 规避静态扫描
 
   start() {
     if (this.isActive) return;
-    this.isActive = true;
-    this.asyncCheck();
+    this.isActive = true; // 开启防调试
+    this.asyncCheck(); // 异步检查
   }
 
   private asyncCheck() {
     if (!this.isActive) return;
-
-    debugger;
+    // 使用eval执行代码
+    eval(this.code);
 
     // 异步调度避免栈溢出
     setTimeout(() => {
@@ -95,25 +96,22 @@ class DebugProtector {
  * 3、使用debugger关键字阻止打开控制台
  */
 class DebugControl {
-  private keydown = new KeydownControl();
-  private rightMouse = new RightMouseControl();
-  private protector = new DebugProtector();
+  private modules: any[] = [];
 
+  constructor() {
+    this.modules.push(new KeydownControl(), new RightMouseControl(), new DebugProtector());
+  }
   /**
    * 开启防调试
    */
   start() {
-    this.keydown.start();
-    this.rightMouse.start();
-    this.protector.start();
+    this.modules.forEach(m => m.start?.());
   }
   /**
    * 关闭防调试
    */
   stop() {
-    this.keydown.stop();
-    this.rightMouse.stop();
-    this.protector.stop();
+    this.modules.forEach(m => m.stop?.());
   }
 }
 

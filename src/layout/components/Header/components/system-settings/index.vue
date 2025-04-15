@@ -116,7 +116,7 @@ const tabsChange = (e: Boolean) => {
   }
 };
 
-// 监听debug开关
+// 监听debug开关;
 const debugControl = new DebugControl();
 watch(
   () => debugPrevention.value,
