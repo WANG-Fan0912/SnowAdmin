@@ -36,7 +36,7 @@ SnowAdmin 是一个清新优雅、高颜值且功能强大的后台管理模板�
 | GitHub | [Github 仓库](https://github.com/WANG-Fan0912/SnowAdmin) |
 | Gitee  | [Gitee 仓库](https://gitee.com/wang_fan_w/SnowAdmin)     |
 
-⚠️主要的维护在github上，提issue/pr请认准github主战场
+> ⚠️主要的维护在github上，提issue/pr请认准github主战场
 
 ### 先行预览
 
