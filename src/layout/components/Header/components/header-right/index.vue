@@ -115,6 +115,7 @@ import { useThemeConfig } from "@/store/modules/theme-config";
 import { useThemeMethods } from "@/hooks/useThemeMethods";
 import { useDevicesSize } from "@/hooks/useDevicesSize";
 import { useRoutesConfigStore } from "@/store/modules/route-config";
+
 const i18n = useI18n();
 const router = useRouter();
 const { isMobile } = useDevicesSize();
@@ -181,7 +182,7 @@ const onUpdate = () => {
 
 // 项目地址
 const onProject = () => {
-  window.open("https://gitee.com/wang_fan_w/SnowAdmin", "_blank");
+  window.open("https://github.com/WANG-Fan0912/SnowAdmin", "_blank");
 };
 
 // 退出登录

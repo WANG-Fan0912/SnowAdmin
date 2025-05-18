@@ -2,7 +2,7 @@
   <div class="snow-page">
     <a-card title="简介">
       <div>
-        <p>SnowAdmin 一款基于 Vue、TypeScript、Vite5、Pinia、arco-design开源的后台管理框架，使用目前最新技术栈开发。</p>
+        <p>SnowAdmin 一款基于 Vue、TypeScript、Vite5、Pinia、arco.design开源的后台管理框架，使用目前最新技术栈开发。</p>
         <p>融合了全新的UI框架，高度可自定义的主题功能使得用户可以根据自身需求轻松定制界面。</p>
         <p>代码全注释，可提供参考和学习。</p>
       </div>
@@ -10,7 +10,7 @@
     <a-card class="margin-top" title="项目信息">
       <a-descriptions :column="2" bordered>
         <a-descriptions-item v-for="item of projectInfo" :key="item.label" :label="item.label">
-          <a-link :href="item.value" v-if="item.link">{{ item.label }}</a-link>
+          <a-link :href="item.value" v-if="item.link" target="_blank">{{ item.label }}</a-link>
           <span v-else>{{ item.value }}</span>
         </a-descriptions-item>
       </a-descriptions>
