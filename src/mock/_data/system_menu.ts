@@ -763,7 +763,7 @@ export const systemMenu = [
     parentId: "0",
     path: "/functions",
     name: "functions",
-    redirect: "/functions",
+    redirect: "/functions/routing-operation",
     meta: {
       title: "functions",
       hide: false,

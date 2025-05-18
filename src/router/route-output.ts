@@ -19,9 +19,10 @@ export function linearArray(tree: any) {
  * 统一处理所有的路由跳转：当前路由高亮、tabs栏数据
  * 处理项目内跳转，存入当前跳转路由和tabs标签栏数据
  * menu和tabs以及手动刷新浏览器等功能只需要跳转即可，缓存和高亮的逻辑这边负责
- * @param {object} name 需要跳转的路由
+ * @param {any} current 需要跳转的路由和路由参数
  */
-export const currentlyRoute = (name: string) => {
+export const currentlyRoute = (current: any) => {
+  const route = deepClone(current);
   const themeStore = useThemeConfig();
   const { isTabs } = storeToRefs(themeStore);
   const store = useRoutesConfigStore(pinia);
@@ -30,22 +31,23 @@ export const currentlyRoute = (name: string) => {
   if (tabsList.value.length == 0 && routeList.value.length != 0) {
     store.setTabs(routeList.value[0]);
   }
-  // 跳转路由是有权限的，缓存跳转路由
-  const { findLinearArray } = useRoutingMethod();
-  const find = findLinearArray(name);
-  if (find === undefined) return;
+
+  // 跳转路由是有权限的，从有权限路由中匹配
+  const { hasRoute } = useRoutingMethod();
+  // 未找到，说明当前跳转路由无权限
+  if (!hasRoute(route.name)) return;
+
   // 存入当前路由-高亮
-  store.setCurrentRoute(find);
+  store.setCurrentRoute(route);
 
   // 如果是外链路由则不做后续任何缓存操作，条件: 有外链 && 非内嵌
-  if (find.meta.link && !find.meta.iframe) return;
-  console.log("跳转存入tabs", tabsList.value, find);
+  if (route.meta.link && !route.meta.iframe) return;
 
   // 存入tabs栏数据，条件：开启tabs
-  if (isTabs.value) store.setTabs(find);
+  if (isTabs.value) store.setTabs(route);
   // 不缓存路由 || 不渲染tabs ，符合任意条件则不缓存路由
-  if (!find.meta.keepAlive || !isTabs.value) return;
-  store.setRouteNames(find.name); // 缓存路由name
+  if (!route.meta.keepAlive || !isTabs.value) return;
+  store.setRouteNames(route.name); // 缓存路由name
 };
 
 /**

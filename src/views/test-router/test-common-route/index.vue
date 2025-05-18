@@ -12,6 +12,7 @@
 </template>
 
 <script setup lang="ts">
+defineOptions({ name: "test-common-route" });
 const route = useRoute();
 </script>
 

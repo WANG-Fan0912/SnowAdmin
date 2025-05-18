@@ -62,8 +62,8 @@
 </template>
 
 <script setup lang="ts">
+defineOptions({ name: "routing-operation" });
 const router = useRouter();
-
 // 普通跳转
 const connom = ref({
   path: "/test-common-route",

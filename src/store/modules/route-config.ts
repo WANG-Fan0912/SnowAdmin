@@ -36,9 +36,11 @@ export const routesConfigStore = () => {
    * @param {object} data 当前tabs路由
    */
   function setTabs(data: Menu.MenuOptions) {
-    // 当前路由在tags中是否存在，不存在则缓存
-    let isExist = tabsList.value.some((item: Menu.MenuOptions) => item.name === data.name);
-    if (isExist) return;
+    // 当前路由在tags中是否存在
+    let index = tabsList.value.findIndex((item: Menu.MenuOptions) => item.name === data.name);
+    // 如果存在，新路由替换旧路由，因为路由存在并不代表本次跳转的参数一致
+    if (index != -1) return tabsList.value.splice(index, 1, data);
+    // 不存在，直接缓存
     tabsList.value.push(data);
   }
   /**
@@ -46,7 +48,7 @@ export const routesConfigStore = () => {
    * @param {object} data 当前路由
    */
   function setCurrentRoute(data: Menu.MenuOptions) {
-    if (currentRoute.value.name && data.name === currentRoute.value.name) return;
+    // 名称一样不代表参数相同，这不用做已存在匹配，直接存储当前路由
     currentRoute.value = data;
   }
   /**

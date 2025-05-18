@@ -58,15 +58,23 @@ const router = useRouter();
 const routerStore = useRoutesConfigStore();
 const { tabsList, currentRoute } = storeToRefs(routerStore);
 
+// 统一处理跳转
+const routerPush = (route: any) => {
+  const { isDynamicRoute } = useRoutingMethod();
+  // 区分动态路由和普通路由
+  if (isDynamicRoute(route.path)) {
+    router.push({ name: route.name, params: route.params });
+  } else {
+    router.push({ path: route.path, query: route.query });
+  }
+};
+
 // 点击标签页，如果标签页存在，则跳转
 const onTabs = (key: string) => {
   const { findTagsList } = useRoutingMethod();
   const find = findTagsList(key);
-  console.log("点击", key, find);
-
-  if (find != undefined) {
-    router.push(find.path);
-  }
+  if (find == undefined) return;
+  routerPush(find);
 };
 
 // 删除当前标签页并跳转到最后一个标签页
@@ -75,7 +83,7 @@ const onDelete = (key: string) => {
   routerStore.removeRouteName(key);
   if (tabsList.value.length == 0) return;
   if (currentRoute.value.name != key) return;
-  router.push(tabsList.value.at(-1).path);
+  routerPush(tabsList.value.at(-1));
 };
 
 // 刷新当前页
@@ -141,7 +149,7 @@ const closeOther = (type: string) => {
   routerStore.removeRouteNames(rightNames);
   // 关闭全部，若当前被关闭则跳转最后一个
   if (tabsList.value.length != 0 && !currentRoute.value.meta.affix && type == "all") {
-    router.push(tabsList.value.at(-1).path);
+    routerPush(tabsList.value.at(-1));
   }
 };
 </script>

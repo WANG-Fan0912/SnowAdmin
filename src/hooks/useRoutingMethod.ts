@@ -1,6 +1,7 @@
 import pinia from "@/store/index";
 import { storeToRefs } from "pinia";
 import { useRoutesConfigStore } from "@/store/modules/route-config";
+
 /**
  * 路由处理hooks，内置多种路由处理场景
  * @returns 路由方法
@@ -15,6 +16,17 @@ export const useRoutingMethod = () => {
     const routerStore = useRoutesConfigStore(pinia);
     const { routeList } = storeToRefs(routerStore);
     return routeList.value.find((item: Menu.MenuOptions) => item.name == key);
+  };
+
+  /**
+   * 从一维路由中判断路由是否存在
+   * @param {string} key 路由的name
+   * @returns 路由是否存在，true存在 false不存在
+   */
+  const hasRoute = (key: string) => {
+    const routerStore = useRoutesConfigStore(pinia);
+    const { routeList } = storeToRefs(routerStore);
+    return routeList.value.some((item: Menu.MenuOptions) => item.name == key);
   };
 
   /**
@@ -39,9 +51,20 @@ export const useRoutingMethod = () => {
     }
   };
 
+  /**
+   * 检测是否是动态匹配路由，如果是动态匹配路由，则path必然带有"/:"字样，例如：/user/:id
+   * @param {string} path 路由path
+   * @returns 是否是动态匹配路由
+   */
+  const isDynamicRoute = (path: string) => {
+    return path.includes("/:");
+  };
+
   return {
     findLinearArray,
     findTagsList,
-    openExternalLinks
+    openExternalLinks,
+    isDynamicRoute,
+    hasRoute
   };
 };

@@ -37,7 +37,6 @@ const router = createRouter({
  * 页面刷新会导致addRoute动态添加的路由失效，需要重新初始化路由
  */
 router.beforeEach(async (to: any, _: any, next: any) => {
-  console.log("去", to);
   NProgress.start(); // 开启进度条
   const store = useUserInfoStore(pinia);
   const { token, account } = storeToRefs(store);
@@ -53,7 +52,7 @@ router.beforeEach(async (to: any, _: any, next: any) => {
     // 3、去登录页，有token，直接重定向到home页
     next("/home");
     // 项目内的跳转，处理跳转路由高亮
-    currentlyRoute(to.name as string);
+    currentlyRoute(to);
   } else {
     // 4、去非登录页，有token，用户信息是否存在，有则放行，否则重新获取路由信息、初始化路由
     const routeStore = useRoutesConfigStore(pinia);
@@ -65,7 +64,13 @@ router.beforeEach(async (to: any, _: any, next: any) => {
       await store.setAccount();
       // 获取路由信息
       await routeStore.initSetRouter();
-      next({ path: to.path, query: to.query, params: to.params });
+      // 判断是否是动态路由
+      const { isDynamicRoute } = useRoutingMethod();
+      if (isDynamicRoute(to.path)) {
+        next({ name: to.name, params: to.params });
+      } else {
+        next({ path: to.path, query: to.query });
+      }
     } else {
       // 获取外链路由的处理函数
       // 所有的路由正常放行，只不过额外判断是否是外链，如果是，则打开新窗口跳转外链
@@ -76,7 +81,7 @@ router.beforeEach(async (to: any, _: any, next: any) => {
       // 动态路由添加过走这里，直接放行
       next();
       // 项目内的跳转，处理跳转路由高亮
-      currentlyRoute(to.name as string);
+      currentlyRoute(to);
     }
   }
 });

@@ -112,7 +112,7 @@ const tabsChange = (e: Boolean) => {
     tabsList.value = [];
     cacheRoutes.value = [];
   } else {
-    currentlyRoute(route.name as string);
+    currentlyRoute(route);
   }
 };
 
