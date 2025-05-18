@@ -22,7 +22,7 @@ export function linearArray(tree: any) {
  * @param {any} current 需要跳转的路由和路由参数
  */
 export const currentlyRoute = (current: any) => {
-  const route = deepClone(current);
+  const route = deepCloneRoute(current);
   const themeStore = useThemeConfig();
   const { isTabs } = storeToRefs(themeStore);
   const store = useRoutesConfigStore(pinia);
@@ -48,6 +48,21 @@ export const currentlyRoute = (current: any) => {
   // 不缓存路由 || 不渲染tabs ，符合任意条件则不缓存路由
   if (!route.meta.keepAlive || !isTabs.value) return;
   store.setRouteNames(route.name); // 缓存路由name
+};
+
+/**
+ * 深拷贝路由，切断与原路由的联系，防止路由参数污染
+ * @param route 当前路由
+ * @returns 深拷贝后的路由
+ */
+export const deepCloneRoute = (route: any) => {
+  return deepClone({
+    path: route.path,
+    name: route.name,
+    meta: route.meta,
+    query: route.query,
+    params: route.params
+  });
 };
 
 /**
