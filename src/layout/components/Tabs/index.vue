@@ -62,6 +62,8 @@ const { tabsList, currentRoute } = storeToRefs(routerStore);
 const onTabs = (key: string) => {
   const { findTagsList } = useRoutingMethod();
   const find = findTagsList(key);
+  console.log("点击", key, find);
+
   if (find != undefined) {
     router.push(find.path);
   }

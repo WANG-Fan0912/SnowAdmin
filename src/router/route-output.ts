@@ -39,6 +39,7 @@ export const currentlyRoute = (name: string) => {
 
   // 如果是外链路由则不做后续任何缓存操作，条件: 有外链 && 非内嵌
   if (find.meta.link && !find.meta.iframe) return;
+  console.log("跳转存入tabs", tabsList.value, find);
 
   // 存入tabs栏数据，条件：开启tabs
   if (isTabs.value) store.setTabs(find);

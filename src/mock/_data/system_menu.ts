@@ -761,6 +761,48 @@ export const systemMenu = [
   {
     id: "09",
     parentId: "0",
+    path: "/functions",
+    name: "functions",
+    redirect: "/functions",
+    meta: {
+      title: "functions",
+      hide: false,
+      disable: false,
+      keepAlive: true,
+      affix: false,
+      link: "",
+      iframe: false,
+      roles: ["admin"],
+      svgIcon: "functions",
+      sort: 9,
+      type: 1
+    },
+    children: null
+  },
+  {
+    id: "0901",
+    parentId: "09",
+    path: "/functions/routing-operation",
+    name: "routing-operation",
+    component: "functions/routing-operation/index",
+    meta: {
+      title: "routing-operation",
+      hide: false,
+      disable: false,
+      keepAlive: true,
+      affix: false,
+      link: "",
+      iframe: false,
+      roles: ["admin"],
+      icon: "icon-menu",
+      sort: 1,
+      type: 2
+    },
+    children: null
+  },
+  {
+    id: "10",
+    parentId: "0",
     path: "/system",
     name: "system",
     redirect: "/system/account",
@@ -774,14 +816,14 @@ export const systemMenu = [
       iframe: false,
       roles: ["admin"],
       svgIcon: "set",
-      sort: 9,
+      sort: 10,
       type: 1
     },
     children: null
   },
   {
-    id: "0901",
-    parentId: "09",
+    id: "1001",
+    parentId: "10",
     path: "/system/account",
     name: "account",
     component: "system/account/account",
@@ -801,8 +843,8 @@ export const systemMenu = [
     children: null
   },
   {
-    id: "0902",
-    parentId: "09",
+    id: "1002",
+    parentId: "10",
     path: "/system/role",
     name: "role",
     component: "system/role/role",
@@ -822,8 +864,8 @@ export const systemMenu = [
     children: null
   },
   {
-    id: "0903",
-    parentId: "09",
+    id: "1003",
+    parentId: "10",
     path: "/system/menu",
     name: "menu",
     component: "system/menu/menu",
@@ -843,8 +885,8 @@ export const systemMenu = [
     children: null
   },
   {
-    id: "0904",
-    parentId: "09",
+    id: "1004",
+    parentId: "10",
     path: "/system/division",
     name: "division",
     component: "system/division/division",
@@ -864,8 +906,8 @@ export const systemMenu = [
     children: null
   },
   {
-    id: "0905",
-    parentId: "09",
+    id: "1005",
+    parentId: "10",
     path: "/system/dictionary",
     name: "dictionary",
     component: "system/dictionary/dictionary",
@@ -885,8 +927,8 @@ export const systemMenu = [
     children: null
   },
   {
-    id: "0906",
-    parentId: "09",
+    id: "1006",
+    parentId: "10",
     path: "/system/log",
     name: "log",
     component: "system/log/log",
@@ -906,7 +948,7 @@ export const systemMenu = [
     children: null
   },
   {
-    id: "10",
+    id: "11",
     parentId: "0",
     path: "/disable-menu",
     name: "disable-menu",
@@ -921,13 +963,13 @@ export const systemMenu = [
       iframe: false,
       roles: ["admin"],
       svgIcon: "switch",
-      sort: 10,
+      sort: 11,
       type: 2
     },
     children: null
   },
   {
-    id: "11",
+    id: "12",
     parentId: "0",
     path: "/hide-menu",
     name: "hide-menu",
@@ -942,13 +984,13 @@ export const systemMenu = [
       iframe: false,
       roles: ["admin"],
       svgIcon: "switch",
-      sort: 11,
+      sort: 12,
       type: 2
     },
     children: null
   },
   {
-    id: "12",
+    id: "13",
     parentId: "0",
     path: "/permission",
     name: "permission",
@@ -963,14 +1005,14 @@ export const systemMenu = [
       iframe: false,
       roles: ["admin", "common"],
       svgIcon: "defend",
-      sort: 12,
+      sort: 13,
       type: 1
     },
     children: null
   },
   {
-    id: "1201",
-    parentId: "12",
+    id: "1301",
+    parentId: "13",
     path: "/permission/btn-perm",
     name: "btn-perm",
     component: "permission/btn-perm/btn-perm",
@@ -990,8 +1032,8 @@ export const systemMenu = [
     children: null
   },
   {
-    id: "1202",
-    parentId: "12",
+    id: "1302",
+    parentId: "13",
     path: "/permission/admin-page",
     name: "admin-page",
     component: "permission/admin-page/admin-page",
@@ -1011,8 +1053,8 @@ export const systemMenu = [
     children: null
   },
   {
-    id: "1203",
-    parentId: "12",
+    id: "1303",
+    parentId: "13",
     path: "/permission/common-page",
     name: "common-page",
     component: "permission/common-page/common-page",
@@ -1032,7 +1074,7 @@ export const systemMenu = [
     children: null
   },
   {
-    id: "13",
+    id: "14",
     parentId: "0",
     path: "/link",
     name: "link",
@@ -1047,14 +1089,14 @@ export const systemMenu = [
       iframe: false,
       roles: ["admin"],
       svgIcon: "link",
-      sort: 13,
+      sort: 14,
       type: 1
     },
     children: null
   },
   {
-    id: "1301",
-    parentId: "13",
+    id: "1401",
+    parentId: "14",
     path: "/link/internal",
     name: "internal",
     redirect: "/link/internal/uigradients",
@@ -1074,8 +1116,8 @@ export const systemMenu = [
     children: null
   },
   {
-    id: "130101",
-    parentId: "1301",
+    id: "140101",
+    parentId: "1401",
     path: "/link/internal/uigradients",
     name: "uigradients",
     component: "link/internal/internal",
@@ -1095,8 +1137,8 @@ export const systemMenu = [
     children: null
   },
   {
-    id: "130102",
-    parentId: "1301",
+    id: "140102",
+    parentId: "1401",
     path: "/link/internal/color-taking-tool",
     name: "color-taking-tool",
     component: "link/internal/internal",
@@ -1116,8 +1158,8 @@ export const systemMenu = [
     children: null
   },
   {
-    id: "130103",
-    parentId: "1301",
+    id: "140103",
+    parentId: "1401",
     path: "/link/internal/grid-generator",
     name: "grid-generator",
     component: "link/internal/internal",
@@ -1137,8 +1179,8 @@ export const systemMenu = [
     children: null
   },
   {
-    id: "1302",
-    parentId: "13",
+    id: "1402",
+    parentId: "14",
     path: "/link/external",
     name: "external",
     redirect: "/link/external/link-vue",
@@ -1158,8 +1200,8 @@ export const systemMenu = [
     children: null
   },
   {
-    id: "130201",
-    parentId: "1302",
+    id: "140201",
+    parentId: "1402",
     path: "/link/external/SnowAdmin-Docs",
     name: "SnowAdmin-Docs",
     component: "link/external/external",
@@ -1179,8 +1221,8 @@ export const systemMenu = [
     children: null
   },
   {
-    id: "130202",
-    parentId: "1302",
+    id: "140202",
+    parentId: "1402",
     path: "/link/external/vue",
     name: "vue",
     component: "link/external/external",
@@ -1200,8 +1242,8 @@ export const systemMenu = [
     children: null
   },
   {
-    id: "130203",
-    parentId: "1302",
+    id: "140203",
+    parentId: "1402",
     path: "/link/external/vite",
     name: "vite",
     component: "link/external/external",
@@ -1221,8 +1263,8 @@ export const systemMenu = [
     children: null
   },
   {
-    id: "130204",
-    parentId: "1302",
+    id: "140204",
+    parentId: "1402",
     path: "/link/external/github",
     name: "github",
     component: "link/external/external",
@@ -1242,8 +1284,8 @@ export const systemMenu = [
     children: null
   },
   {
-    id: "130205",
-    parentId: "1302",
+    id: "140205",
+    parentId: "1402",
     path: "/link/external/juejin",
     name: "juejin",
     component: "link/external/external",
@@ -1263,7 +1305,7 @@ export const systemMenu = [
     children: null
   },
   {
-    id: "14",
+    id: "15",
     parentId: "0",
     path: "/monitor",
     name: "monitor",
@@ -1278,14 +1320,14 @@ export const systemMenu = [
       iframe: false,
       roles: ["admin"],
       svgIcon: "financial-statement",
-      sort: 14,
+      sort: 15,
       type: 1
     },
     children: null
   },
   {
-    id: "1401",
-    parentId: "14",
+    id: "1501",
+    parentId: "15",
     path: "/monitor/onlineuser",
     name: "onlineuser",
     component: "monitor/onlineuser/index",
@@ -1305,8 +1347,8 @@ export const systemMenu = [
     children: null
   },
   {
-    id: "1402",
-    parentId: "14",
+    id: "1502",
+    parentId: "15",
     path: "/monitor/crontab",
     name: "crontab",
     component: "monitor/crontab/index",
@@ -1326,8 +1368,8 @@ export const systemMenu = [
     children: null
   },
   {
-    id: "1403",
-    parentId: "14",
+    id: "1503",
+    parentId: "15",
     path: "/monitor/crontab-logs",
     name: "crontab-logs",
     component: "monitor/crontab-logs/index",
@@ -1347,7 +1389,7 @@ export const systemMenu = [
     children: null
   },
   {
-    id: "15",
+    id: "16",
     parentId: "0",
     path: "/gaodemap",
     name: "gaodemap",
@@ -1362,13 +1404,13 @@ export const systemMenu = [
       iframe: true, // 区分是否内链 true内链 false外链
       roles: ["admin"],
       svgIcon: "amap",
-      sort: 15,
+      sort: 16,
       type: 2
     },
     children: null
   },
   {
-    id: "16",
+    id: "17",
     parentId: "0",
     path: "/i18n",
     name: "i18n",
@@ -1383,13 +1425,13 @@ export const systemMenu = [
       iframe: false,
       roles: ["admin", "common"],
       svgIcon: "earth",
-      sort: 16,
+      sort: 17,
       type: 2
     },
     children: null
   },
   {
-    id: "17",
+    id: "18",
     parentId: "0",
     path: "/about",
     name: "about",
@@ -1404,7 +1446,49 @@ export const systemMenu = [
       iframe: false,
       roles: ["admin", "common"],
       svgIcon: "about",
-      sort: 17,
+      sort: 18,
+      type: 2
+    },
+    children: null
+  },
+  {
+    id: "19",
+    parentId: "0",
+    path: "/test-common-route",
+    name: "test-common-route",
+    component: "test-router/test-common-route/index",
+    meta: {
+      title: "test-common-route",
+      hide: true,
+      disable: false,
+      keepAlive: true,
+      affix: false,
+      link: "",
+      iframe: false,
+      roles: ["admin"],
+      svgIcon: "switch",
+      sort: 19,
+      type: 2
+    },
+    children: null
+  },
+  {
+    id: "20",
+    parentId: "0",
+    path: "/test-dynamic-route/:name/:text",
+    name: "test-dynamic-route",
+    component: "test-router/test-dynamic-route/index",
+    meta: {
+      title: "test-dynamic-route",
+      hide: true,
+      disable: false,
+      keepAlive: true,
+      affix: false,
+      link: "",
+      iframe: false,
+      roles: ["admin"],
+      svgIcon: "switch",
+      sort: 20,
       type: 2
     },
     children: null
@@ -1414,8 +1498,8 @@ export const systemMenu = [
 // 权限数据
 export const permissionData = [
   {
-    id: "120101",
-    parentId: "1201",
+    id: "130101",
+    parentId: "1301",
     meta: {
       title: "新增按钮",
       hide: false,
@@ -1427,8 +1511,8 @@ export const permissionData = [
     }
   },
   {
-    id: "120102",
-    parentId: "1201",
+    id: "130102",
+    parentId: "1301",
     meta: {
       title: "编辑按钮",
       hide: false,
@@ -1440,8 +1524,8 @@ export const permissionData = [
     }
   },
   {
-    id: "120103",
-    parentId: "1201",
+    id: "130103",
+    parentId: "1301",
     meta: {
       title: "删除按钮",
       hide: false,
@@ -1453,8 +1537,8 @@ export const permissionData = [
     }
   },
   {
-    id: "120201",
-    parentId: "1201",
+    id: "130201",
+    parentId: "1301",
     meta: {
       title: "新增按钮-2",
       hide: false,
@@ -1466,8 +1550,8 @@ export const permissionData = [
     }
   },
   {
-    id: "120202",
-    parentId: "1201",
+    id: "130202",
+    parentId: "1301",
     meta: {
       title: "编辑按钮-2",
       hide: false,
@@ -1479,8 +1563,8 @@ export const permissionData = [
     }
   },
   {
-    id: "120203",
-    parentId: "1201",
+    id: "130203",
+    parentId: "1301",
     meta: {
       title: "删除按钮-2",
       hide: false,

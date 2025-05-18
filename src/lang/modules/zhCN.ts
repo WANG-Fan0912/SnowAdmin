@@ -99,6 +99,10 @@ export default {
     ["permission"]: "权限测试",
     ["btn-perm"]: "按钮权限",
     ["admin-page"]: "管理员页面",
-    ["common-page"]: "普通角色页面"
+    ["common-page"]: "普通角色页面",
+    ["functions"]: "常用功能",
+    ["routing-operation"]: "路由操作",
+    ["test-common-route"]: "测试普通路由",
+    ["test-dynamic-route"]: "测试动态路由"
   }
 };

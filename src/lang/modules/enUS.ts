@@ -99,6 +99,10 @@ export default {
     ["permission"]: "permission",
     ["btn-perm"]: "btn perm",
     ["admin-page"]: "admin page",
-    ["common-page"]: "common page"
+    ["common-page"]: "common page",
+    ["functions"]: "functions",
+    ["routing-operation"]: "routing operation",
+    ["test-common-route"]: "test common route",
+    ["test-dynamic-route"]: "test dynamic route"
   }
 };

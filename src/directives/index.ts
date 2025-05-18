@@ -10,7 +10,7 @@ import hasRole from "@/directives/modules/permission/has-role";
 // app就是vue实例，options则是安装函数的参数(可选)
 // install 方法的定义就插件对象，install 方法会在引入插件时自动被 vue 调用，并传参 vue 实例和 options
 
-const list: { [key: string]: Directive } = {
+const group: { [key: string]: Directive } = {
   antiShake,
   throttle,
   custom,
@@ -21,8 +21,8 @@ const list: { [key: string]: Directive } = {
 const directives = {
   install(app: App<Element>) {
     // 将一系列自定义指令对象安装到 Vue 应用实例中
-    for (const key in list) {
-      app.directive(key, list[key]);
+    for (const key in group) {
+      app.directive(key, group[key]);
     }
   }
 };

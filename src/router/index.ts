@@ -37,6 +37,7 @@ const router = createRouter({
  * 页面刷新会导致addRoute动态添加的路由失效，需要重新初始化路由
  */
 router.beforeEach(async (to: any, _: any, next: any) => {
+  console.log("去", to);
   NProgress.start(); // 开启进度条
   const store = useUserInfoStore(pinia);
   const { token, account } = storeToRefs(store);
@@ -64,7 +65,7 @@ router.beforeEach(async (to: any, _: any, next: any) => {
       await store.setAccount();
       // 获取路由信息
       await routeStore.initSetRouter();
-      next({ path: to.path, query: to.query });
+      next({ path: to.path, query: to.query, params: to.params });
     } else {
       // 获取外链路由的处理函数
       // 所有的路由正常放行，只不过额外判断是否是外链，如果是，则打开新窗口跳转外链

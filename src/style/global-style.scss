@@ -38,3 +38,8 @@
   overflow: hidden;
   background: $color-fill-1;
 }
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
