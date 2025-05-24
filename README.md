@@ -9,7 +9,7 @@
 		  <img src="https://img.shields.io/badge/vue_.js-vue3_.x-%2300b42a" alt="Vue">
 		</a>
                 <a href="https://github.com/WANG-Fan0912/SnowAdmin" target="_blank">
-		  <img src="https://img.shields.io/badge/Vite-5x-%2300b42a" alt="Vite">
+		  <img src="https://img.shields.io/badge/Vite-6x-%2311B337" alt="Vite">
 		</a>
                 <a href="https://github.com/WANG-Fan0912/SnowAdmin" target="_blank">
 		  <img src="https://img.shields.io/badge/Arco_Design-2.56.3-%2310b236" alt="Arco-Design">
@@ -83,7 +83,6 @@ SnowAdmin 是一个清新优雅、高颜值且功能强大的后台管理模板�
 - **git**: 你需要 git 来克隆和管理项目版本。
 - **NodeJS**: >=18.12.0，推荐 20.12.0 或更高。
 - **pnpm**: >= 8.7.0，推荐最新版本。
-> 如若启动不了可将Node版本切到20.12.0，pnpm重新安装node_modules后启动
 
 ### 安装使用步骤 📔
 
