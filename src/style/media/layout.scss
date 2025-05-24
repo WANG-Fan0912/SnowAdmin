@@ -1,4 +1,4 @@
-@import "./index.scss";
+@use "@/style/var/index" as *;
 
 // 处理首页数据图大小
 // 页面宽度 大于 0px 小于 992px;
@@ -37,9 +37,9 @@
     padding-bottom: $padding;
   }
   .monthly-analysis {
-    margin-left: $padding;
     width: 600px;
     height: 400px;
     padding-bottom: $padding;
+    margin-left: $padding;
   }
 }

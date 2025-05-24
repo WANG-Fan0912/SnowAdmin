@@ -1,10 +1,10 @@
-import { defineConfig, normalizePath, loadEnv } from "vite";
+import { defineConfig, loadEnv } from "vite";
 import path from "path";
 import { resolve } from "path";
 import { include } from "./build/optimize";
 import postcssPresetEnv from "postcss-preset-env";
 import { createVitePlugins } from "./build/vite-plugin";
-const themePath = normalizePath(path.normalize("./src/style/global-theme.scss"));
+// const themePath = normalizePath(path.normalize("./src/style/global-theme.scss"));
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
@@ -43,8 +43,7 @@ export default defineConfig(({ mode }) => {
       preprocessorOptions: {
         scss: {
           // additionalData的内容会在每个scss文件的开头自动注入
-          additionalData: `@import "${themePath}";
-          `
+          additionalData: `@use "@/style/var/index.scss" as *; `
         }
       }
     },

@@ -28,7 +28,7 @@ const onCollapsed = () => {
 };
 
 // 监听屏幕尺寸变化，PC端自动展开菜单，移动端自动收起
-watch(isPc, (newV: Boolean) => {
+watch(isPc, (newV: boolean) => {
   collapsed.value = newV ? false : true;
 });
 </script>

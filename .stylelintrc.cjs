@@ -11,6 +11,11 @@ module.exports = {
     "stylelint-config-recess-order" // 配置 stylelint css 属性书写顺序插件,
   ],
   overrides: [
+    //  SCSS 文件解析器
+    {
+      files: ["**/*.scss"],
+      customSyntax: "postcss-scss"
+    },
     // 扫描 .vue/html 文件中的 <style> 标签内的样式
     {
       files: ["**/*.{vue,html}"],
@@ -18,6 +23,10 @@ module.exports = {
     }
   ],
   rules: {
+    "declaration-property-value-no-unknown": null, // 关闭属性值校验
+    "scss/dollar-variable-pattern": /.*/, // 允许任意变量名格式
+    "scss/at-rule-no-unknown": true, // 启用 SCSS 的 @规则校验
+    "scss/no-global-function-names": null, // 允许原生 CSS 函数名
     "function-url-quotes": "always", // URL 的引号 "always(必须加上引号)"|"never(没有引号)"
     "color-hex-length": "long", // 指定 16 进制颜色的简写或扩写 "short(16进制简写)"|"long(16进制扩写)"
     "rule-empty-line-before": "never", // 要求或禁止在规则之前的空行 "always(规则之前必须始终有一个空行)"|"never(规则前绝不能有空行)"|"always-multi-line(多行规则之前必须始终有一个空行)"|"never-multi-line(多行规则之前绝不能有空行)"

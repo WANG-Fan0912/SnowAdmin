@@ -207,7 +207,7 @@ const reset = () => {
   getDict();
 };
 
-const open = ref<Boolean>(false);
+const open = ref<boolean>(false);
 const title = ref<string>("");
 const rules = {
   name: [
