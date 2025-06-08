@@ -174,3 +174,20 @@ export const isEmptyObject = (obj: object) => {
   }
   return Object.keys(obj).length === 0 && obj.constructor === Object;
 };
+
+/**
+ * 判断是否为安全环境https或localhost
+ * @returns 是否为安全环境https或localhost
+ */
+export const isSecureEnvironment = () => {
+  const { protocol, hostname } = window.location;
+
+  // 检查协议是否为HTTPS
+  const isHttps = protocol === "https:";
+
+  // 检查主机名是否为localhost或本地IP（支持IPv4和IPv6）
+  const isLocalhost =
+    hostname === "localhost" || hostname === "127.0.0.1" || hostname === "0.0.0.0" || hostname === "[::1]" || hostname === "::1";
+
+  return isHttps || isLocalhost;
+};

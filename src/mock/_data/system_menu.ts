@@ -612,6 +612,27 @@ export const systemMenu = [
     children: null
   },
   {
+    id: "0612",
+    parentId: "06",
+    path: "/component/audio",
+    name: "audio",
+    component: "component/audio/audio",
+    meta: {
+      title: "audio",
+      hide: false,
+      disable: false,
+      keepAlive: true,
+      affix: false,
+      link: "",
+      iframe: false,
+      roles: ["admin"],
+      icon: "icon-menu",
+      sort: 12,
+      type: 2
+    },
+    children: null
+  },
+  {
     id: "07",
     parentId: "0",
     path: "/directive",

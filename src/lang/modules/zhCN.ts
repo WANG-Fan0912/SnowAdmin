@@ -103,6 +103,8 @@ export default {
     ["functions"]: "常用功能",
     ["routing-operation"]: "路由操作",
     ["test-common-route"]: "测试普通路由",
-    ["test-dynamic-route"]: "测试动态路由"
+    ["test-dynamic-route"]: "测试动态路由",
+    ["audio"]: "音频",
+    ["test"]: "测试"
   }
 };

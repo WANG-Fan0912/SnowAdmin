@@ -7,6 +7,7 @@ export {}
 
 declare module "vue" {
   export interface GlobalComponents {
+    AudioVisualizer: (typeof import("./components/audio-visualizer/index.vue"))["default"];
     BarcodeDraw: (typeof import("./components/barcode-draw/index.vue"))["default"];
     CodeView: (typeof import("./components/code-view/index.vue"))["default"];
     ExternalLinkPage: (typeof import("./components/external-link-page/index.vue"))["default"];

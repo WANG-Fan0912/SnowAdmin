@@ -103,6 +103,8 @@ export default {
     ["functions"]: "functions",
     ["routing-operation"]: "routing operation",
     ["test-common-route"]: "test common route",
-    ["test-dynamic-route"]: "test dynamic route"
+    ["test-dynamic-route"]: "test dynamic route",
+    ["audio"]: "audio",
+    ["test"]: "test"
   }
 };
