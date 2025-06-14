@@ -224,7 +224,8 @@ SnowAdmin
 
 使用过程中有各种问题也可以进群交流，欢迎大家积极参与
 
-![SnowAdmin](https://github.com/user-attachments/assets/df70e5f8-cdbd-453f-8778-eb03709e8d78)
+![snow](https://github.com/user-attachments/assets/45ab1b7d-ebe9-4701-9612-c9f1680eaf1b)
+
 
 
 
