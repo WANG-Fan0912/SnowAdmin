@@ -633,6 +633,27 @@ export const systemMenu = [
     children: null
   },
   {
+    id: "0613",
+    parentId: "06",
+    path: "/component/recorder",
+    name: "recorder",
+    component: "component/recorder/recorder",
+    meta: {
+      title: "recorder",
+      hide: false,
+      disable: false,
+      keepAlive: true,
+      affix: false,
+      link: "",
+      iframe: false,
+      roles: ["admin"],
+      icon: "icon-menu",
+      sort: 13,
+      type: 2
+    },
+    children: null
+  },
+  {
     id: "07",
     parentId: "0",
     path: "/directive",

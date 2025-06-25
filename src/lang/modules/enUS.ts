@@ -105,6 +105,7 @@ export default {
     ["test-common-route"]: "test common route",
     ["test-dynamic-route"]: "test dynamic route",
     ["audio"]: "audio",
+    ["recorder"]: "recorder",
     ["test"]: "test"
   }
 };

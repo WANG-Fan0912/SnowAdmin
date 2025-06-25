@@ -101,7 +101,7 @@ const onAudio = (blob: Blob) => {
     <div class="snow-inner">
       <a-alert>本地录音需要https或localhost安全环境，是否为安全环境：{{ isSecureEnvironment() }}</a-alert>
       <a-space direction="vertical" fill>
-        <div :span="18" class="audio-box">
+        <div class="audio-box">
           <AudioVisualizer ref="AudioVisualizerRef" v-model="config" @audio="onAudio" />
         </div>
         <a-space direction="vertical" fill>
