@@ -106,6 +106,7 @@ export default {
     ["test-dynamic-route"]: "测试动态路由",
     ["audio"]: "音频",
     ["recorder"]: "录音",
+    ["virtual-list"]: "虚拟列表",
     ["test"]: "测试"
   }
 };

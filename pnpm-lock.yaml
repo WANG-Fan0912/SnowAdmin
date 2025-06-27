@@ -80,6 +80,9 @@ importers:
       sortablejs:
         specifier: ^1.15.2
         version: 1.15.6
+      uuid:
+        specifier: ^11.1.0
+        version: 11.1.0
       vue:
         specifier: ^3.5.15
         version: 3.5.15(typescript@5.8.3)
@@ -98,6 +101,9 @@ importers:
       vue-router:
         specifier: ^4.3.0
         version: 4.5.1(vue@3.5.15(typescript@5.8.3))
+      vue-virtual-scroller:
+        specifier: 2.0.0-beta.8
+        version: 2.0.0-beta.8(vue@3.5.15(typescript@5.8.3))
       vuedraggable:
         specifier: ^4.1.0
         version: 4.1.0(vue@3.5.15(typescript@5.8.3))
@@ -3371,6 +3377,9 @@ packages:
   minimist@1.2.8:
     resolution: {integrity: sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==}
 
+  mitt@2.1.0:
+    resolution: {integrity: sha512-ILj2TpLiysu2wkBbWjAmww7TkZb65aiQO+DkVdUTBpBXq+MHYiETENkKFMtsJZX1Lf4pe4QOrTSjIfUwN5lRdg==}
+
   mixin-deep@1.3.2:
     resolution: {integrity: sha512-WRoDn//mXBiJ1H40rqa3vH0toePwSsGb45iInWlTySa+Uu4k3tYUSxa2v1KqAiLtvlrSzaExqS1gtk96A9zvEA==}
     engines: {node: '>=0.10.0'}
@@ -4742,6 +4751,10 @@ packages:
     resolution: {integrity: sha512-pMZTvIkT1d+TFGvDOqodOclx0QWkkgi6Tdoa8gC8ffGAAqz9pzPTZWAybbsHHoED/ztMtkv/VoYTYyShUn81hA==}
     engines: {node: '>= 0.4.0'}
 
+  uuid@11.1.0:
+    resolution: {integrity: sha512-0/A9rDy9P7cJ+8w1c9WD9V//9Wj15Ce2MPz8Ri6032usz+NfePxx5AcN3bN+r6ZL6jEo066/yNYB3tn4pQEx+A==}
+    hasBin: true
+
   varint@6.0.0:
     resolution: {integrity: sha512-cXEIW6cfr15lFv563k4GuVuW/fiwjknytD37jIOLSdSWuOI6WnO/oKwmP2FQTU2l01LP8/M5TSAJpzUaGe3uWg==}
 
@@ -4849,11 +4862,21 @@ packages:
     peerDependencies:
       vue: ^3.0.0
 
+  vue-observe-visibility@2.0.0-alpha.1:
+    resolution: {integrity: sha512-flFbp/gs9pZniXR6fans8smv1kDScJ8RS7rEpMjhVabiKeq7Qz3D9+eGsypncjfIyyU84saU88XZ0zjbD6Gq/g==}
+    peerDependencies:
+      vue: ^3.0.0
+
   vue-pick-colors@1.8.0:
     resolution: {integrity: sha512-lIP28A1BZEPp0v0Y6m9lNbsC6jNM2LP+Dc2tJbUXiNRvDgXqBMe/msX3svqjspV4B+SZdPAjx75JY2zem0hA2Q==}
     peerDependencies:
       '@popperjs/core': ^2.11.2
       vue: ^3.2.26
+
+  vue-resize@2.0.0-alpha.1:
+    resolution: {integrity: sha512-7+iqOueLU7uc9NrMfrzbG8hwMqchfVfSzpVlCMeJQe4pyibqyoifDNbKTZvwxZKDvGkB+PdFeKvnGZMoEb8esg==}
+    peerDependencies:
+      vue: ^3.0.0
 
   vue-router@4.5.1:
     resolution: {integrity: sha512-ogAF3P97NPm8fJsE4by9dwSYtDwXIY1nFY9T6DyQnGHd1E2Da94w9JIolpe42LJGIl0DwOHBi8TcRPlPGwbTtw==}
@@ -4865,6 +4888,11 @@ packages:
     hasBin: true
     peerDependencies:
       typescript: '>=5.0.0'
+
+  vue-virtual-scroller@2.0.0-beta.8:
+    resolution: {integrity: sha512-b8/f5NQ5nIEBRTNi6GcPItE4s7kxNHw2AIHLtDp+2QvqdTjVN0FgONwX9cr53jWRgnu+HRLPaWDOR2JPI5MTfQ==}
+    peerDependencies:
+      vue: ^3.2.0
 
   vue@3.5.15:
     resolution: {integrity: sha512-aD9zK4rB43JAMK/5BmS4LdPiEp8Fdh8P1Ve/XNuMF5YRf78fCyPE6FUbQwcaWQ5oZ1R2CD9NKE0FFOVpMR7gEQ==}
@@ -8369,6 +8397,8 @@ snapshots:
 
   minimist@1.2.8: {}
 
+  mitt@2.1.0: {}
+
   mixin-deep@1.3.2:
     dependencies:
       for-in: 1.0.2
@@ -9391,6 +9421,7 @@ snapshots:
       pinyin-pro: 3.26.0
       print-js: 1.6.0
       qrcode: 1.5.4
+      recorder-core: 1.3.25011100
       sortablejs: 1.15.6
       vue: 3.5.15(typescript@5.8.3)
       vue-codemirror6: 1.3.15(@popperjs/core@2.11.8)(core-js@3.42.0)(typescript@5.8.3)(vue@3.5.15(typescript@5.8.3))
@@ -9398,6 +9429,7 @@ snapshots:
       vue-i18n: 10.0.0-alpha.3(vue@3.5.15(typescript@5.8.3))
       vue-pick-colors: 1.8.0(@popperjs/core@2.11.8)(vue@3.5.15(typescript@5.8.3))
       vue-router: 4.5.1(vue@3.5.15(typescript@5.8.3))
+      vue-virtual-scroller: 2.0.0-beta.8(vue@3.5.15(typescript@5.8.3))
       vuedraggable: 4.1.0(vue@3.5.15(typescript@5.8.3))
       xgplayer: 3.0.22(core-js@3.42.0)
     transitivePeerDependencies:
@@ -9939,6 +9971,8 @@ snapshots:
 
   utils-merge@1.0.1: {}
 
+  uuid@11.1.0: {}
+
   varint@6.0.0: {}
 
   vary@1.1.2: {}
@@ -10061,9 +10095,17 @@ snapshots:
       '@vue/devtools-api': 6.6.4
       vue: 3.5.15(typescript@5.8.3)
 
+  vue-observe-visibility@2.0.0-alpha.1(vue@3.5.15(typescript@5.8.3)):
+    dependencies:
+      vue: 3.5.15(typescript@5.8.3)
+
   vue-pick-colors@1.8.0(@popperjs/core@2.11.8)(vue@3.5.15(typescript@5.8.3)):
     dependencies:
       '@popperjs/core': 2.11.8
+      vue: 3.5.15(typescript@5.8.3)
+
+  vue-resize@2.0.0-alpha.1(vue@3.5.15(typescript@5.8.3)):
+    dependencies:
       vue: 3.5.15(typescript@5.8.3)
 
   vue-router@4.5.1(vue@3.5.15(typescript@5.8.3)):
@@ -10076,6 +10118,13 @@ snapshots:
       '@volar/typescript': 2.4.14
       '@vue/language-core': 2.2.10(typescript@5.8.3)
       typescript: 5.8.3
+
+  vue-virtual-scroller@2.0.0-beta.8(vue@3.5.15(typescript@5.8.3)):
+    dependencies:
+      mitt: 2.1.0
+      vue: 3.5.15(typescript@5.8.3)
+      vue-observe-visibility: 2.0.0-alpha.1(vue@3.5.15(typescript@5.8.3))
+      vue-resize: 2.0.0-alpha.1(vue@3.5.15(typescript@5.8.3))
 
   vue@3.5.15(typescript@5.8.3):
     dependencies:

@@ -106,6 +106,7 @@ export default {
     ["test-dynamic-route"]: "test dynamic route",
     ["audio"]: "audio",
     ["recorder"]: "recorder",
+    ["virtual-list"]: "virtual-list",
     ["test"]: "test"
   }
 };

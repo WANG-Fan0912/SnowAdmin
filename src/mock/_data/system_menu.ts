@@ -654,6 +654,27 @@ export const systemMenu = [
     children: null
   },
   {
+    id: "0614",
+    parentId: "06",
+    path: "/component/virtual-list",
+    name: "virtual-list",
+    component: "component/virtual-list/index",
+    meta: {
+      title: "virtual-list",
+      hide: false,
+      disable: false,
+      keepAlive: true,
+      affix: false,
+      link: "",
+      iframe: false,
+      roles: ["admin"],
+      icon: "icon-menu",
+      sort: 14,
+      type: 2
+    },
+    children: null
+  },
+  {
     id: "07",
     parentId: "0",
     path: "/directive",
