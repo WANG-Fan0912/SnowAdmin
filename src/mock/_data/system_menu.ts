@@ -614,11 +614,11 @@ export const systemMenu = [
   {
     id: "0612",
     parentId: "06",
-    path: "/component/audio",
-    name: "audio",
-    component: "component/audio/audio",
+    path: "/component/recorder",
+    name: "recorder",
+    component: "component/recorder/recorder",
     meta: {
-      title: "audio",
+      title: "recorder",
       hide: false,
       disable: false,
       keepAlive: true,
@@ -635,27 +635,6 @@ export const systemMenu = [
   {
     id: "0613",
     parentId: "06",
-    path: "/component/recorder",
-    name: "recorder",
-    component: "component/recorder/recorder",
-    meta: {
-      title: "recorder",
-      hide: false,
-      disable: false,
-      keepAlive: true,
-      affix: false,
-      link: "",
-      iframe: false,
-      roles: ["admin"],
-      icon: "icon-menu",
-      sort: 13,
-      type: 2
-    },
-    children: null
-  },
-  {
-    id: "0614",
-    parentId: "06",
     path: "/component/virtual-list",
     name: "virtual-list",
     component: "component/virtual-list/index",
@@ -669,7 +648,7 @@ export const systemMenu = [
       iframe: false,
       roles: ["admin"],
       icon: "icon-menu",
-      sort: 14,
+      sort: 13,
       type: 2
     },
     children: null
