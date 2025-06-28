@@ -96,13 +96,7 @@ export function findParentsTailRecursive(tree: any, targetKey: string | number, 
  * 获取浏览器默认语言
  * @returns 语言类型
  */
-export function webDefaultLanguage() {
-  if (navigator.language === "zh-CN") {
-    return "zhCN";
-  } else {
-    return "enUS";
-  }
-}
+export const webDefaultLanguage = () => navigator.language;
 
 /**
  * 时间戳转 年月日时分秒
@@ -134,6 +128,24 @@ export const getTimestamp = (timestamp: string | number | null, type: string) =>
     return `${Year}-${Moth}-${Day}`;
   }
   return `${Year}-${Moth}-${Day} ${Hour}:${Minute}:${Seconds}`;
+};
+
+/**
+ * 根据当前日期前推指定日期
+ * @param { number } days 需要前推的天数
+ * @return {Array[]} 是否为空对象 [前推天数的日期，当前日期]
+ */
+export const getDatesForwardDate = (days = 0) => {
+  const today = new Date();
+  const firstDay: any = new Date(today);
+  firstDay.setDate(firstDay.getDate() - days); // 向前推指定天，得到前指定天数的第一天
+
+  const lastDay: any = new Date(today);
+  lastDay.setDate(lastDay.getDate() - 1); // 昨天是前指定天数的最后一天
+
+  const firstDayFormatted = getTimestamp(firstDay, "YYYY-MM-DD");
+  const lastDayFormatted = getTimestamp(lastDay, "YYYY-MM-DD");
+  return [firstDayFormatted, lastDayFormatted];
 };
 
 /**
@@ -190,4 +202,80 @@ export const isSecureEnvironment = () => {
     hostname === "localhost" || hostname === "127.0.0.1" || hostname === "0.0.0.0" || hostname === "[::1]" || hostname === "::1";
 
   return isHttps || isLocalhost;
+};
+
+/**
+ * 将乱序的一维数组根据parentId转化为树形结构
+ * @param {Array[Object]} nodes 对象
+ * @returns {Array[Object]} 组装好的树形结构
+ */
+export const buildTreeOptimized = (nodes: any) => {
+  const nodeMap = new Map(); // 哈希表存储所有节点
+  const roots = []; // 存储顶层节点
+  const duplicates = new Set(); // 检测重复ID
+
+  // 第一次遍历: 注册所有节点 & 检测重复
+  for (const node of nodes) {
+    const id = node.id;
+
+    // 循环引用检测
+    if (node.id === node.parentId) {
+      throw new Error(`循环引用: ${node.id} -> ${node.parentId}`);
+    }
+
+    // 重复ID检测
+    if (nodeMap.has(id)) {
+      duplicates.add(id);
+      continue;
+    }
+
+    // 初始化子节点数组
+    node.children = [];
+    nodeMap.set(id, node);
+  }
+
+  // 输出重复警告
+  if (duplicates.size > 0) {
+    console.warn(`检测到重复ID: ${Array.from(duplicates).join(", ")}`);
+  }
+
+  // 第二次遍历: 构建树结构
+  for (const node of nodes) {
+    const { parentId } = node;
+
+    // 跳过已处理的重复节点
+    if (duplicates.has(node.id)) continue;
+
+    if (parentId === "0") {
+      roots.push(node); // 顶层节点
+    } else if (parentId) {
+      const parent = nodeMap.get(parentId);
+      parent?.children.push(node); // 挂载子节点
+    } else {
+      console.warn(`独立节点 ${node.id}: parentId为空`);
+    }
+  }
+
+  return roots;
+};
+
+/**
+ * 根据指定id递归树查到指定节点
+ * @param {Array[Object]} data 树形结构
+ * @param {string | number} targetId 指定id
+ * @returns {Object} 返回查找到的节点，未找到则返回null
+ */
+export const findCategoryById = (data: any, targetId: any) => {
+  for (const item of data) {
+    if (item.id === targetId) {
+      return item;
+    }
+    if (item.children && item.children.length > 0) {
+      const result: any = findCategoryById(item.children, targetId);
+      if (result) {
+        return result;
+      }
+    }
+  }
+  return null;
 };

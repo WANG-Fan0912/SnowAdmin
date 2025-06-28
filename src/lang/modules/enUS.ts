@@ -107,6 +107,7 @@ export default {
     ["audio"]: "audio",
     ["recorder"]: "recorder",
     ["virtual-list"]: "virtual-list",
+    ["tools"]: "tools",
     ["test"]: "test"
   }
 };
