@@ -906,6 +906,27 @@ export const systemMenu = [
     children: null
   },
   {
+    id: "0905",
+    parentId: "09",
+    path: "/functions/verify-tools",
+    name: "verify-tools",
+    component: "functions/verify-tools/verify-tools",
+    meta: {
+      title: "verify-tools",
+      hide: false,
+      disable: false,
+      keepAlive: true,
+      affix: false,
+      link: "",
+      iframe: false,
+      roles: ["admin"],
+      icon: "icon-menu",
+      sort: 5,
+      type: 2
+    },
+    children: null
+  },
+  {
     id: "10",
     parentId: "0",
     path: "/system",

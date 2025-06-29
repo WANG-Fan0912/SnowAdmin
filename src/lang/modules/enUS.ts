@@ -110,6 +110,7 @@ export default {
     ["common-tools"]: "common tools",
     ["tree-tools"]: "tree-tools",
     ["file-tools"]: "file-tools",
+    ["verify-tools"]: "verify tools",
     ["test"]: "test"
   }
 };

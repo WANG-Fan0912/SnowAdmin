@@ -1,5 +1,5 @@
 /**
- * 处理输入内容，只允许输入数字和小数点，其余的替换为空
+ * 处理输入内容，只允许输入数字和2位小数，其它的替换为空
  * 用于输入框限制输入数字和2位小数的场景
  * @param {string} val 当前值字符串
  * @returns {string} 返回处理后的字符串
@@ -67,7 +67,7 @@ export const verifyTelPhone = (val: string): boolean => {
 };
 
 /**
- * 登录账号 (字母开头，允许5-16字节，允许字母数字下划线)
+ * 登录账号验证 (字母开头，允许5-16字节，允许字母数字下划线)
  * @param {string} val 当前值字符串
  * @returns {boolean} 返回 true: 登录账号正确
  */
@@ -179,7 +179,7 @@ export const verifyIdCard = (val: string): boolean => {
 };
 
 /**
- * 姓名验证
+ * 中文姓名验证
  * @param {string} val 当前值字符串
  * @returns {boolean} 返回 true: 姓名正确
  */
