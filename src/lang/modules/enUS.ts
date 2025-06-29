@@ -109,6 +109,7 @@ export default {
     ["virtual-list"]: "virtual-list",
     ["common-tools"]: "common tools",
     ["tree-tools"]: "tree-tools",
+    ["file-tools"]: "file-tools",
     ["test"]: "test"
   }
 };

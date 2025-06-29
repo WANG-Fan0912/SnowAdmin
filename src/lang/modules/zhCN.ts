@@ -109,6 +109,7 @@ export default {
     ["virtual-list"]: "虚拟列表",
     ["common-tools"]: "常用工具类",
     ["tree-tools"]: "树处理工具类",
+    ["file-tools"]: "文件工具类",
     ["test"]: "测试"
   }
 };

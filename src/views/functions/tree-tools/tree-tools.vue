@@ -5,7 +5,7 @@
       <a-divider />
       <a-space direction="vertical" fill>
         <div>判断code在树形数据中是否存在: treeCodeExist</div>
-        <div>返回true / false，示例: treeCodeExist(treeData, "ABC123", { key: "value", childrenKey: "nodes" })</div>
+        <div>返回true / false，示例: treeCodeExist(treeData, "ABC123", { key: 'id', childrenKey: "children" })</div>
         <div>
           使用方式：
           <a-typography-text code
@@ -16,7 +16,7 @@
       <a-divider />
       <a-space direction="vertical" fill>
         <div>返回指定名称的所有父节点: findParentsTailRecursive</div>
-        <div>示例: findParentsTailRecursive(treeData.value, 'KeyValue')</div>
+        <div>示例: findParentsTailRecursive(treeData, KeyValue)</div>
         <div>
           使用方式：
           <a-typography-text code>findParentsTailRecursive(树数据, 指定key绑定的值)</a-typography-text>

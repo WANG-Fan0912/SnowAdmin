@@ -885,6 +885,27 @@ export const systemMenu = [
     children: null
   },
   {
+    id: "0904",
+    parentId: "09",
+    path: "/functions/file-tools",
+    name: "file-tools",
+    component: "functions/file-tools/file-tools",
+    meta: {
+      title: "file-tools",
+      hide: false,
+      disable: false,
+      keepAlive: true,
+      affix: false,
+      link: "",
+      iframe: false,
+      roles: ["admin"],
+      icon: "icon-menu",
+      sort: 4,
+      type: 2
+    },
+    children: null
+  },
+  {
     id: "10",
     parentId: "0",
     path: "/system",
