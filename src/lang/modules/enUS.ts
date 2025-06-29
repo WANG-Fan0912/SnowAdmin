@@ -108,6 +108,7 @@ export default {
     ["recorder"]: "recorder",
     ["virtual-list"]: "virtual-list",
     ["common-tools"]: "common tools",
+    ["tree-tools"]: "tree-tools",
     ["test"]: "test"
   }
 };

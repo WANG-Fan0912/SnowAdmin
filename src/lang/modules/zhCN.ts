@@ -108,6 +108,7 @@ export default {
     ["recorder"]: "录音",
     ["virtual-list"]: "虚拟列表",
     ["common-tools"]: "常用工具类",
+    ["tree-tools"]: "树处理工具类",
     ["test"]: "测试"
   }
 };

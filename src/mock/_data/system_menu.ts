@@ -864,6 +864,27 @@ export const systemMenu = [
     children: null
   },
   {
+    id: "0903",
+    parentId: "09",
+    path: "/functions/tree-tools",
+    name: "tree-tools",
+    component: "functions/tree-tools/tree-tools",
+    meta: {
+      title: "tree-tools",
+      hide: false,
+      disable: false,
+      keepAlive: true,
+      affix: false,
+      link: "",
+      iframe: false,
+      roles: ["admin"],
+      icon: "icon-menu",
+      sort: 3,
+      type: 2
+    },
+    children: null
+  },
+  {
     id: "10",
     parentId: "0",
     path: "/system",
