@@ -845,11 +845,11 @@ export const systemMenu = [
   {
     id: "0902",
     parentId: "09",
-    path: "/functions/tools",
-    name: "tools",
-    component: "functions/tools/tools",
+    path: "/functions/common-tools",
+    name: "common-tools",
+    component: "functions/common-tools/common-tools",
     meta: {
-      title: "tools",
+      title: "common-tools",
       hide: false,
       disable: false,
       keepAlive: true,

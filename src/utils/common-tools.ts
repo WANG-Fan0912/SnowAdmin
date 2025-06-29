@@ -24,10 +24,10 @@ export const getColorHexColor = () => `#${Math.floor(Math.random() * 0xfffff).to
 
 /**
  * 判断变量数据类型
- * @param { any } obj 需要判断数据类型的变量
+ * @param { any } val 需要判断数据类型的变量
  * @return 数据类型
  */
-export const getObjType = (obj: any) => {
+export const getObjType = (val: any) => {
   const toString = Object.prototype.toString;
   const map: any = {
     "[object Boolean]": "boolean",
@@ -39,19 +39,20 @@ export const getObjType = (obj: any) => {
     "[object RegExp]": "regExp",
     "[object Undefined]": "undefined",
     "[object Null]": "null",
-    "[object Object]": "object"
+    "[object Object]": "object",
+    "[object Symbol]": "symbol"
   };
   // 如果是节点
-  if (obj instanceof Element) {
+  if (val instanceof Element) {
     return "element";
   }
   // 通过toString.call 判断是哪个类型
   // 判断的值为类型[object Boolean]， 通过对象取值返回
-  return map[toString.call(obj)];
+  return map[toString.call(val)];
 };
 
 /**
- * 数组去重
+ * 基本数据类型数组去重
  * @param { array } v 需要去重的数组
  * @return 去重后的数组
  */
@@ -114,6 +115,8 @@ export const Difference = (newObj: any, oldObj: any) => {
 
 /***
  * 删除数组中多个指定元素
+ * 根据指定的key比对是否匹配，匹配则删除，最后返回删除后的数组
+ * arrMoreDeletion(arr, [2,3,4], 'id')
  * @param {array} arr 原数组
  * @param {array} keys 需要删除的key数组
  * @param {string | number} key 根据指定key删除
@@ -241,7 +244,7 @@ export const closest = (arr: number[], num: number) => {
 };
 
 /***
- * 根据上限值计算涨幅和减幅
+ * 根据标准值计算当前值的涨幅和减幅
  * @param {number} current 当前值
  * @param {number} base 标准值
  * @description 返回{ percent: 10, type: 1, text: '涨幅10.00%' }格式

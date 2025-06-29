@@ -107,7 +107,7 @@ export default {
     ["audio"]: "音频",
     ["recorder"]: "录音",
     ["virtual-list"]: "虚拟列表",
-    ["tools"]: "工具类",
+    ["common-tools"]: "常用工具类",
     ["test"]: "测试"
   }
 };
