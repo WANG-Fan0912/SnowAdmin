@@ -150,7 +150,7 @@ export const buildTreeOptimized = (nodes: Menu.MenuOptions[]) => {
       continue;
     }
 
-    // 初始化子节点为null
+    // 初始化子节点为null，这里children必须得是null，因为arco.design的展开列表组件根据数组判断是否显示展开按钮，哪怕是空数组也会显示展开按钮
     node.children = null;
     nodeMap.set(id, node);
   }
@@ -179,7 +179,7 @@ export const buildTreeOptimized = (nodes: Menu.MenuOptions[]) => {
         parent.children.push(node);
       }
     } else {
-      console.warn(`孤儿节点 ${node.id}: parentId为空`);
+      console.warn(`独立节点 ${node.id}: parentId为空`);
     }
   }
 
