@@ -654,6 +654,27 @@ export const systemMenu = [
     children: null
   },
   {
+    id: "0614",
+    parentId: "06",
+    path: "/component/common-layouts",
+    name: "common-layouts",
+    component: "component/common-layouts/index",
+    meta: {
+      title: "common-layouts",
+      hide: false,
+      disable: false,
+      keepAlive: true,
+      affix: false,
+      link: "",
+      iframe: false,
+      roles: ["admin"],
+      icon: "icon-menu",
+      sort: 14,
+      type: 2
+    },
+    children: null
+  },
+  {
     id: "07",
     parentId: "0",
     path: "/directive",

@@ -5,23 +5,24 @@
 // Read more: https://github.com/vuejs/core/pull/3399
 export {}
 
-declare module "vue" {
+declare module 'vue' {
   export interface GlobalComponents {
-    BarcodeDraw: (typeof import("./components/barcode-draw/index.vue"))["default"];
-    CodeView: (typeof import("./components/code-view/index.vue"))["default"];
-    ExternalLinkPage: (typeof import("./components/external-link-page/index.vue"))["default"];
-    FillPage: (typeof import("./components/fill-page/index.vue"))["default"];
-    InternalLinkPage: (typeof import("./components/internal-link-page/index.vue"))["default"];
-    LangProvider: (typeof import("./components/lang-provider/index.vue"))["default"];
-    MainTransition: (typeof import("./components/main-transition/index.vue"))["default"];
-    PinyinPro: (typeof import("./components/pinyin-pro/index.vue"))["default"];
-    QrcodeDraw: (typeof import("./components/qrcode-draw/index.vue"))["default"];
-    RecorderPcm: (typeof import("./components/recorder-pcm/index.vue"))["default"];
-    RouterLink: (typeof import("vue-router"))["RouterLink"];
-    RouterView: (typeof import("vue-router"))["RouterView"];
-    SelectIcon: (typeof import("./components/select-icon/index.vue"))["default"];
-    SvgAndIcon: (typeof import("./components/svg-and-icon/index.vue"))["default"];
-    SvgIcon: (typeof import("./components/svg-icon/index.vue"))["default"];
-    VerifyCode: (typeof import("./components/verify-code/index.vue"))["default"];
+    BarcodeDraw: typeof import('./components/barcode-draw/index.vue')['default']
+    CodeView: typeof import('./components/code-view/index.vue')['default']
+    ExternalLinkPage: typeof import('./components/external-link-page/index.vue')['default']
+    FillPage: (typeof import("./components/fill-page/index.vue"))["default"]
+    FullScreen: typeof import('./components/full-screen/index.vue')['default']
+    InternalLinkPage: typeof import('./components/internal-link-page/index.vue')['default']
+    LangProvider: typeof import('./components/lang-provider/index.vue')['default']
+    MainTransition: typeof import('./components/main-transition/index.vue')['default']
+    PinyinPro: typeof import('./components/pinyin-pro/index.vue')['default']
+    QrcodeDraw: typeof import('./components/qrcode-draw/index.vue')['default']
+    RecorderPcm: typeof import('./components/recorder-pcm/index.vue')['default']
+    RouterLink: typeof import('vue-router')['RouterLink']
+    RouterView: typeof import('vue-router')['RouterView']
+    SelectIcon: typeof import('./components/select-icon/index.vue')['default']
+    SvgAndIcon: typeof import('./components/svg-and-icon/index.vue')['default']
+    SvgIcon: typeof import('./components/svg-icon/index.vue')['default']
+    VerifyCode: typeof import('./components/verify-code/index.vue')['default']
   }
 }

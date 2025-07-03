@@ -111,6 +111,7 @@ export default {
     ["tree-tools"]: "tree-tools",
     ["file-tools"]: "file-tools",
     ["verify-tools"]: "verify tools",
+    ["common-layouts"]: "common layouts",
     ["test"]: "test"
   }
 };

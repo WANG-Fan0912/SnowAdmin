@@ -111,6 +111,7 @@ export default {
     ["tree-tools"]: "树处理工具类",
     ["file-tools"]: "文件工具类",
     ["verify-tools"]: "校验工具类",
+    ["common-layouts"]: "常用布局",
     ["test"]: "测试"
   }
 };
