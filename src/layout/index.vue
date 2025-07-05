@@ -1,8 +1,8 @@
 <template>
   <div>
-    <LangProvider>
+    <s-lang-provider>
       <component :is="layouts[layoutType]" />
-    </LangProvider>
+    </s-lang-provider>
   </div>
 </template>
 

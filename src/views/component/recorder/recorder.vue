@@ -10,7 +10,7 @@
         <a-space direction="vertical" fill>
           <!-- 波形绘制区域 -->
           <div class="waveview-box">
-            <recorder-pcm ref="RecorderPCM" @change="onChange" />
+            <s-recorder-pcm ref="RecorderPCM" @change="onChange" />
           </div>
           <a-space>
             <a-button type="primary" @click="recOpen">打开录音权限</a-button>

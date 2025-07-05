@@ -1,5 +1,5 @@
 <template>
-  <full-screen>
+  <s-full-screen>
     <a-layout class="layout">
       <a-layout-sider class="layout-sider" :collapsed-width="12" :collapsed="collapsed">
         <div class="packup-btn" @click="collapsed = !collapsed">
@@ -10,7 +10,7 @@
       </a-layout-sider>
       <a-layout-content>Content</a-layout-content>
     </a-layout>
-  </full-screen>
+  </s-full-screen>
 </template>
 
 <script setup lang="ts">

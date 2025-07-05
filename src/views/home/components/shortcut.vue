@@ -19,7 +19,7 @@
         class="card-middling row-center card-box"
         :class="'animated-fade-up-' + index"
       >
-        <SvgIcon :name="item.svg" :size="40" />
+        <s-svg-icon :name="item.svg" :size="40" />
         <div class="shortcut-card-label">{{ item.name }}</div>
       </a-col>
     </a-row>

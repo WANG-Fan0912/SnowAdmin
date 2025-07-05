@@ -14,9 +14,9 @@
               <span class="tree-title">{{ node.title }}</span>
             </template>
             <template #icon="node">
-              <SvgIcon name="folder-close" :size="16" v-if="!node.isLeaf && !node.expanded"></SvgIcon>
-              <SvgIcon name="folder-open" :size="16" v-if="!node.isLeaf && node.expanded"></SvgIcon>
-              <SvgIcon name="txt" :size="16" v-if="node.isLeaf"></SvgIcon>
+              <s-svg-icon name="folder-close" :size="16" v-if="!node.isLeaf && !node.expanded"></s-svg-icon>
+              <s-svg-icon name="folder-open" :size="16" v-if="!node.isLeaf && node.expanded"></s-svg-icon>
+              <s-svg-icon name="txt" :size="16" v-if="node.isLeaf"></s-svg-icon>
             </template>
           </a-tree>
         </a-scrollbar>

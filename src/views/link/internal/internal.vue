@@ -1,3 +1,3 @@
 <template>
-  <InternalLinkPage />
+  <s-internal-link-page />
 </template>

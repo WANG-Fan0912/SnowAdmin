@@ -68,21 +68,21 @@
         <!-- 个人中心 -->
         <a-doption @click="onPerson">
           <template #default>
-            <SvgIcon :name="'user'" :size="18" />
+            <s-svg-icon :name="'user'" :size="18" />
             <span class="margin-left-text">{{ $t(`system.personal-information`) }}</span>
           </template>
         </a-doption>
         <!-- 修改密码 -->
         <a-doption @click="onUpdate">
           <template #default>
-            <SvgIcon :name="'lock-pwd'" :size="18" />
+            <s-svg-icon :name="'lock-pwd'" :size="18" />
             <span class="margin-left-text">{{ $t(`system.change-password`) }}</span>
           </template>
         </a-doption>
         <!-- 项目地址 -->
         <a-doption @click="onProject">
           <template #default>
-            <SvgIcon :name="'gitee'" :size="18" />
+            <s-svg-icon :name="'gitee'" :size="18" />
             <span class="margin-left-text">{{ $t(`system.project-address`) }}</span>
           </template>
         </a-doption>
@@ -90,7 +90,7 @@
         <!-- 退出登录 -->
         <a-doption @click="logOut">
           <template #default>
-            <SvgIcon :name="'exit'" :size="18" />
+            <s-svg-icon :name="'exit'" :size="18" />
             <span class="margin-left-text">{{ $t(`system.logout`) }}</span>
           </template>
         </a-doption>
@@ -247,8 +247,8 @@ const logOut = () => {
     }
     .icon_down {
       margin: 0 0 0 5px;
-      transition: transform 0.2s;
       transform: rotate(0deg);
+      transition: transform 0.2s;
     }
   }
 }

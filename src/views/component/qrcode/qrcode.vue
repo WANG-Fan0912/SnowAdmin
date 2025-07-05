@@ -6,14 +6,14 @@
           <div class="code-box">
             <a-card v-for="item in codeList" :key="item.id" :title="item.docs" :style="{ width: '300px' }" hoverable>
               <div class="card-content">
-                <qrcode-draw :tag="item.tag" :text="item.text" :options="item.options" />
+                <s-qrcode-draw :tag="item.tag" :text="item.text" :options="item.options" />
               </div>
             </a-card>
           </div>
         </a-col>
         <a-col :span="12">
           <a-scrollbar style="height: 410px; overflow: auto">
-            <code-view :code-json="codeJson" style="width: 100%" />
+            <s-code-view :code-json="codeJson" style="width: 100%" />
           </a-scrollbar>
         </a-col>
       </a-row>

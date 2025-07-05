@@ -59,7 +59,7 @@
         <a-table-column title="渠道来源" data-index="source">
           <template #cell="{ record }">
             <a-space>
-              <SvgIcon :name="record.sourceSvg" />
+              <s-svg-icon :name="record.sourceSvg" />
               <span>{{ record.source }}</span>
             </a-space>
           </template>

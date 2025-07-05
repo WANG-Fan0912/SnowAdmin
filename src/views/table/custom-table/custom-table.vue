@@ -143,9 +143,9 @@
       >
         <template #content="{ record }">
           <a-space>
-            <SvgIcon :name="'word'" :size="18" v-if="record.content == '图文'" />
-            <SvgIcon :name="'video'" :size="18" v-if="record.content == '视频'" />
-            <SvgIcon :name="'mp3'" :size="18" v-if="record.content == '音频'" />
+            <s-svg-icon :name="'word'" :size="18" v-if="record.content == '图文'" />
+            <s-svg-icon :name="'video'" :size="18" v-if="record.content == '视频'" />
+            <s-svg-icon :name="'mp3'" :size="18" v-if="record.content == '音频'" />
             <span>{{ record.content }}</span>
           </a-space>
         </template>

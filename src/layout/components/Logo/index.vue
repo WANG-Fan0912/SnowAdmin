@@ -1,7 +1,7 @@
 <template>
   <div :class="layoutType == 'layoutHead' ? 'logo_head no-border' : 'logo_head'">
     <div class="logo_box" :class="(collapsed || layoutType == 'layoutHead') && 'padding-unset'">
-      <SvgIcon name="snow" :size="30" />
+      <s-svg-icon name="snow" :size="30" />
       <span :class="isDark ? 'logo_title dark' : 'logo_title'" v-if="isTitle">{{ title }}</span>
     </div>
   </div>
@@ -62,10 +62,10 @@ const isTitle = computed(() => {
     box-sizing: border-box;
     max-width: 140px;
     overflow: hidden;
+    text-overflow: ellipsis;
     font-size: $font-size-title-2;
     font-weight: bold;
     text-align: left;
-    text-overflow: ellipsis;
     white-space: nowrap;
   }
   .dark {

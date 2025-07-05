@@ -4,7 +4,7 @@
       <a-card title="拼音转换" hoverable>
         <a-space direction="vertical" size="large" fill>
           <a-textarea v-model="myText" placeholder="请输入内容" allow-clear />
-          <pinyin-pro
+          <s-pinyin-pro
             v-if="myText"
             :text="myText"
             :options="{
@@ -16,7 +16,7 @@
       </a-card>
       <br />
       <a-card title="默认字符拼音-自定义字体大小" hoverable>
-        <pinyin-pro
+        <s-pinyin-pro
           :text="text"
           :options="{
             resultClass: 'my-text-item'
@@ -25,7 +25,7 @@
       </a-card>
       <br />
       <a-card title="字符拼音-自定义颜色" hoverable>
-        <pinyin-pro
+        <s-pinyin-pro
           :text="text"
           :options="{
             resultClass: 'my-text-item',
@@ -36,7 +36,7 @@
       </a-card>
       <br />
       <a-card title="字符拼音-指定文字颜色" hoverable>
-        <pinyin-pro
+        <s-pinyin-pro
           :text="text"
           :options="{
             resultClass: 'my-text-item',

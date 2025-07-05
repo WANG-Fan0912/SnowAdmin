@@ -3,11 +3,11 @@
     <a-layout-content class="layout-main-content">
       <Tabs v-if="isTabs" />
       <router-view v-slot="{ Component, route }">
-        <MainTransition>
+        <s-main-transition>
           <keep-alive :include="cacheRoutes">
             <component :is="Component" :key="route.name" v-if="refreshPage" />
           </keep-alive>
-        </MainTransition>
+        </s-main-transition>
       </router-view>
     </a-layout-content>
   </a-watermark>

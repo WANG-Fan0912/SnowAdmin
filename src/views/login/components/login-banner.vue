@@ -1,11 +1,11 @@
 <template>
   <div class="banner_box">
     <div class="banner_title">
-      <SvgIcon name="snow" size="25" />
+      <s-svg-icon name="snow" size="25" />
       {{ title }}
     </div>
     <div class="banner_img">
-      <SvgIcon name="数据时代" size="100%" />
+      <s-svg-icon name="数据时代" size="100%" />
     </div>
   </div>
 </template>

@@ -1,3 +1,3 @@
 <template>
-  <ExternalLinkPage />
+  <s-external-link-page />
 </template>

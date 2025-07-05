@@ -12,10 +12,10 @@
       <br />
       <a-card hoverable title="根据角色判断页面是否显示">
         <a-typography-paragraph> <a-typography-text bold> 当前页面权限 </a-typography-text></a-typography-paragraph>
-        <code-view :code-json="pageRule" style="width: 100%" />
+        <s-code-view :code-json="pageRule" style="width: 100%" />
         <br />
         <a-typography-paragraph> <a-typography-text bold> 当前角色权限 </a-typography-text></a-typography-paragraph>
-        <code-view :code-json="roles" style="width: 100%" />
+        <s-code-view :code-json="roles" style="width: 100%" />
       </a-card>
     </div>
   </div>

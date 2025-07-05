@@ -1,7 +1,7 @@
 <template>
   <div class="page-404">
     <div>
-      <SvgIcon name="暂无权限" :size="500" />
+      <s-svg-icon name="暂无权限" :size="500" />
     </div>
     <div class="prompt">
       <div class="title">401</div>

@@ -165,7 +165,7 @@
           <a-row :gutter="24" v-if="[1, 2].includes(addFrom.type)">
             <a-col :span="12">
               <a-form-item field="svgIcon" label="自定义图标" validate-trigger="blur">
-                <SelectIcon type="svg" v-model="addFrom.svgIcon" />
+                <s-select-icon type="svg" v-model="addFrom.svgIcon" />
                 <template #extra>
                   <div>自定义图标优先级高于菜单图标</div>
                 </template>
@@ -173,7 +173,7 @@
             </a-col>
             <a-col :span="12">
               <a-form-item field="icon" label="菜单图标" validate-trigger="blur">
-                <SelectIcon type="arco" v-model="addFrom.icon" />
+                <s-select-icon type="arco" v-model="addFrom.icon" />
               </a-form-item>
             </a-col>
           </a-row>

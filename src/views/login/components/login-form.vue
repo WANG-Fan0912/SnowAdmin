@@ -19,7 +19,7 @@
         <a-form-item field="verifyCode" :hide-asterisk="true">
           <div class="verifyCode">
             <a-input style="width: 160px" v-model="form.verifyCode" allow-clear placeholder="请输入验证码" />
-            <VerifyCode :content-height="30" :font-size-max="30" :content-width="110" @verify-code-change="verifyCodeChange" />
+            <s-verify-code :content-height="30" :font-size-max="30" :content-width="110" @verify-code-change="verifyCodeChange" />
           </div>
         </a-form-item>
         <a-form-item field="remember">

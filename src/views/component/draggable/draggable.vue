@@ -18,7 +18,7 @@
                 <template #item="{ element }">
                   <div class="draggable-list" :class="!animated && 'animated-fade-up-' + element.value">
                     <div class="draggable-inner">
-                      <svg-icon :name="element.svg" :size="30" class="svg-box" />
+                      <s-svg-icon :name="element.svg" :size="30" class="svg-box" />
                       <div>{{ element.label }}</div>
                     </div>
                   </div>
@@ -33,7 +33,7 @@
         </a-col>
         <a-col :xs="24" :sm="24" :md="24" :lg="10" :xl="12" :xxl="12">
           <a-scrollbar style="height: 396px; overflow: auto" outer-class="scrollbar">
-            <code-view :code-json="codeJson" style="width: 500px" />
+            <s-code-view :code-json="codeJson" style="width: 500px" />
           </a-scrollbar>
         </a-col>
       </a-row>

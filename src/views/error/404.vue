@@ -1,7 +1,7 @@
 <template>
   <div class="page-404">
     <div>
-      <SvgIcon name="内容加载失败" :size="500" />
+      <s-svg-icon name="内容加载失败" :size="500" />
     </div>
     <div class="prompt">
       <div class="title">404</div>

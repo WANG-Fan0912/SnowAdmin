@@ -91,7 +91,7 @@
           </a-form>
         </a-col>
         <a-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12" :xxl="12">
-          <CodeView :code-json="codeJson" />
+          <s-code-view :code-json="codeJson" />
         </a-col>
       </a-row>
     </div>

@@ -12,11 +12,11 @@
       <a-card hoverable title="根据用户权限判断">
         <div>
           <a-typography-paragraph> <a-typography-text bold> 当前用户权限 </a-typography-text></a-typography-paragraph>
-          <code-view :code-json="permissions" style="width: 100%" />
+          <s-code-view :code-json="permissions" style="width: 100%" />
           <br />
           <a-row :gutter="[24, 12]">
             <a-col :span="24">
-              <code-view type="vue" :code-json="sysBtn" style="width: 100%" />
+              <s-code-view type="vue" :code-json="sysBtn" style="width: 100%" />
             </a-col>
             <a-col :span="24">
               <a-space>
@@ -30,7 +30,7 @@
           <br />
           <a-row :gutter="[24, 12]">
             <a-col :span="24">
-              <code-view type="vue" :code-json="commonBtn" style="width: 100%" />
+              <s-code-view type="vue" :code-json="commonBtn" style="width: 100%" />
             </a-col>
             <a-col :span="24">
               <a-space>
@@ -47,11 +47,11 @@
       <a-card hoverable title="根据角色权限判断">
         <div>
           <a-typography-paragraph> <a-typography-text bold> 当前角色权限 </a-typography-text></a-typography-paragraph>
-          <code-view :code-json="roles" style="width: 100%" />
+          <s-code-view :code-json="roles" style="width: 100%" />
           <br />
           <a-row :gutter="[24, 12]">
             <a-col :span="24">
-              <code-view type="vue" :code-json="roleBtn" style="width: 100%" />
+              <s-code-view type="vue" :code-json="roleBtn" style="width: 100%" />
             </a-col>
             <a-col :span="24">
               <a-space>
