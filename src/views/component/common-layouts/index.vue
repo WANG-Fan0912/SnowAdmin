@@ -1,50 +1,36 @@
 <template>
-  <s-full-screen>
-    <a-layout class="layout">
-      <a-layout-sider class="layout-sider" :collapsed-width="12" :collapsed="collapsed">
-        <div class="packup-btn" @click="collapsed = !collapsed">
-          <icon-left v-if="!collapsed" />
-          <icon-right v-else />
+  <s-full-page>
+    <s-fold-page v-model:width="siderWidth">
+      <template #sider>
+        <a-menu :style="{ width: '100%', height: '100%' }" :selected-keys="[currentMenu]">
+          <a-menu-item v-for="item in menuData" :key="item.id">{{ item.title }}</a-menu-item>
+        </a-menu>
+      </template>
+      <template #content>
+        <div class="content">
+          <FoldPage v-if="currentMenu == 1" />
         </div>
-        <div v-show="!collapsed">sider</div>
-      </a-layout-sider>
-      <a-layout-content>Content</a-layout-content>
-    </a-layout>
-  </s-full-screen>
+      </template>
+    </s-fold-page>
+  </s-full-page>
 </template>
 
 <script setup lang="ts">
-const collapsed = ref<boolean>(false);
+import FoldPage from "@/views/component/common-layouts/fold-page.vue";
+interface MenuData {
+  id: number;
+  title: string;
+}
+const siderWidth = ref<number>(250);
+const menuData = ref<MenuData[]>([{ id: 1, title: "可折叠布局" }]);
+const currentMenu = ref<number>(1);
 </script>
 
 <style lang="scss" scoped>
-.layout {
+.content {
   height: 100%;
-  box-shadow: $shadow-border-1;
-  .layout-sider {
-    position: relative;
-    border-right: 1px solid cyan;
-    .packup-btn {
-      position: absolute;
-      top: 50%;
-      right: calc(-24px / 2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 24px;
-      height: 24px;
-      background: $color-bg-white;
-      border-radius: 50%;
-      box-shadow: inset 0 0 0 1px $color-border-2;
-      transform: translateY(-50%);
-      transition: all 0.1s;
-      &:hover {
-        transform: translateY(-50%) scale(1.1);
-      }
-    }
-  }
 }
-:deep(.arco-layout-sider-light) {
-  box-shadow: unset;
+:deep(.arco-menu-vertical .arco-menu-inner) {
+  padding: 0;
 }
 </style>
