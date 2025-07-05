@@ -17,6 +17,7 @@ declare module 'vue' {
     SFullPage: typeof import('./components/s-full-page/index.vue')['default']
     SInternalLinkPage: typeof import('./components/s-internal-link-page/index.vue')['default']
     SLangProvider: typeof import('./components/s-lang-provider/index.vue')['default']
+    SLayoutTools: typeof import('./components/s-layout-tools/index.vue')['default']
     SMainTransition: typeof import('./components/s-main-transition/index.vue')['default']
     SPinyinPro: typeof import('./components/s-pinyin-pro/index.vue')['default']
     SQrcodeDraw: typeof import('./components/s-qrcode-draw/index.vue')['default']
