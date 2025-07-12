@@ -3,7 +3,6 @@ import { storeToRefs } from "pinia";
 import { useRoutesConfigStore } from "@/store/modules/route-config";
 import { useThemeConfig } from "@/store/modules/theme-config";
 import { deepClone, arrayFlattened } from "@/utils/index";
-import { useRoutingMethod } from "@/hooks/useRoutingMethod";
 
 /**
  * 路由树转一维数组
@@ -31,11 +30,6 @@ export const currentlyRoute = (current: any) => {
   if (tabsList.value.length == 0 && routeList.value.length != 0) {
     store.setTabs(routeList.value[0]);
   }
-
-  // 跳转路由是有权限的，从有权限路由中匹配
-  const { hasRoute } = useRoutingMethod();
-  // 未找到，说明当前跳转路由无权限
-  if (!hasRoute(route.name)) return;
 
   // 存入当前路由-高亮
   store.setCurrentRoute(route);
