@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 import router from "@/router/index";
+import { staticRoutes } from "@/router/route";
 import { getRoutersAPI } from "@/api/modules/system/index";
 import { moduleReplacement, linearArray } from "@/router/route-output";
 import { getUrlWithParams } from "@/utils/index";
@@ -52,9 +53,10 @@ export const routesConfigStore = () => {
    * @param {object} route 当前tabs路由
    */
   function setTabs(route: Menu.MenuOptions) {
+    // 顶层手动添加的全屏静态路由不参与tabs
+    if (staticRoutes.some(item => item.path == route.path)) return;
     // 当前路由在tags中是否存在
     let index = tabsList.value.findIndex((item: Menu.MenuOptions) => item.path === route.path);
-
     // 不存在，直接缓存
     if (index == -1) return tabsList.value.push(route);
   }
