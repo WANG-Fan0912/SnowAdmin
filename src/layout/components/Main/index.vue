@@ -5,7 +5,7 @@
       <router-view v-slot="{ Component, route }">
         <s-main-transition>
           <keep-alive :include="cacheRoutes">
-            <component :is="Component" :key="route.name" v-if="refreshPage" />
+            <component :is="createComponentWrapper(Component, route)" :key="route.fullPath" v-if="refreshPage" />
           </keep-alive>
         </s-main-transition>
       </router-view>
@@ -22,6 +22,20 @@ const themeStore = useThemeConfig();
 let { refreshPage, isTabs, watermark, watermarkStyle, watermarkRotate, watermarkGap } = storeToRefs(themeStore);
 const routerStore = useRoutesConfigStore();
 const { cacheRoutes } = storeToRefs(routerStore);
+
+// 组件包装器
+const wrapperMap = new Map();
+const createComponentWrapper = (component: any, route: any) => {
+  if (!component) return;
+  const wrapperName = route.fullPath;
+  let wrapper = wrapperMap.get(wrapperName);
+  if (!wrapper) {
+    wrapper = { name: wrapperName, render: () => h(component) };
+    wrapperMap.set(wrapperName, wrapper);
+  }
+  return h(wrapper);
+};
+
 // 水印配置
 const watermarkConfig = computed(() => {
   return {

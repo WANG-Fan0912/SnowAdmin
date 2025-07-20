@@ -21,7 +21,7 @@ import { systemMenu, permissionData } from "../_data/system_menu";
 
 /**
  *  post请求body,get请求query
- *  /mock/menu/getRouters 获取菜单数据
+ *  /mock/menu/getRouters 获取路由数据
  *  /mock/menu/getMenuList 获取菜单列表数据-菜单管理
  *  /mock/menu/getUserPermission 根据角色获取权限数据
  *  /mock/menu/getPermission 获取权限数据

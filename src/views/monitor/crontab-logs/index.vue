@@ -62,8 +62,10 @@
 
 <script setup lang="ts">
 import { getCrontabLogsAPI } from "@/api/modules/monitor/index";
+import { useRoutesConfigStore } from "@/store/modules/route-config";
 defineOptions({ name: "crontab-logs" });
 let route = useRoute();
+const routerStore = useRoutesConfigStore();
 const openState = ref(dictFilter("taskStatus"));
 
 const form = ref({
@@ -111,9 +113,9 @@ const init = () => {
   getCrontabLogs();
 };
 
-onActivated(() => {
-  init();
-});
+init();
+
+routerStore.setTabsTitle(`任务日志${route.query.id ? " - " + route.query.id : ""}`);
 </script>
 
 <style lang="scss" scoped>

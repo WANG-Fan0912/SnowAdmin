@@ -9,19 +9,19 @@
           <a-menu
             v-if="drawing"
             mode="horizontal"
-            :selected-keys="[currentRoute.name]"
+            :selected-keys="[selectedMenu]"
             @menu-item-click="onMenuItem"
             :popup-max-height="600"
           >
-            <template v-for="item in routeTree" :key="item.name">
-              <a-sub-menu v-if="menuShow(item)" :key="item.name" :popup-max-height="600">
+            <template v-for="item in routeTree" :key="item.path">
+              <a-sub-menu v-if="menuShow(item)" :key="item.path" :popup-max-height="600">
                 <template #icon v-if="item.meta.svgIcon || item.meta.icon">
                   <MenuItemIcon :svg-icon="item.meta.svgIcon" :icon="item.meta.icon" />
                 </template>
                 <template #title>{{ $t(`menu.${item.meta.title}`) }}</template>
                 <MenuItem :route-tree="item.children" />
               </a-sub-menu>
-              <a-menu-item v-else-if="aMenuShow(item)" :key="item?.name">
+              <a-menu-item v-else-if="aMenuShow(item)" :key="item?.path">
                 <template #icon v-if="item.meta.svgIcon || item.meta.icon">
                   <MenuItemIcon :svg-icon="item.meta.svgIcon" :icon="item.meta.icon" />
                 </template>
@@ -48,17 +48,18 @@ import Footer from "@/layout/components/Footer/index.vue";
 import MenuItem from "@/layout/components/Menu/menu-item.vue";
 import MenuItemIcon from "@/layout/components/Menu/menu-item-icon.vue";
 import ButtonCollapsed from "@/layout/components/Header/components/button-collapsed/index.vue";
+import { useRoutingMethod } from "@/hooks/useRoutingMethod";
 import { storeToRefs } from "pinia";
 import { useRoutesConfigStore } from "@/store/modules/route-config";
-import { useRoutingMethod } from "@/hooks/useRoutingMethod";
 import { useThemeConfig } from "@/store/modules/theme-config";
 import { useMenuMethod } from "@/hooks/useMenuMethod";
 import { useDevicesSize } from "@/hooks/useDevicesSize";
 defineOptions({ name: "LayoutHead" });
+const route = useRoute();
 const router = useRouter();
 const routerStore = useRoutesConfigStore();
 const themeStore = useThemeConfig();
-const { routeTree, currentRoute } = storeToRefs(routerStore);
+const { routeTree } = storeToRefs(routerStore);
 const { isFooter, language } = storeToRefs(themeStore);
 const { isMobile } = useDevicesSize();
 const { menuShow, aMenuShow } = useMenuMethod();
@@ -69,20 +70,21 @@ watch(language, () => {
   nextTick(() => (drawing.value = true));
 });
 
-/**
- * @description 菜单点击事件
- * @param {String} key
- */
-const onMenuItem = (key: string) => {
-  const { findLinearArray } = useRoutingMethod();
-  const find = findLinearArray(key);
-  // 路由存在则存入并跳转，不存在则跳404
-  if (find) {
-    router.push(find.path);
-  } else {
-    router.push("/404");
+const onMenuItem = (path: string) => router.push(path);
+
+const selectedMenu = computed(() => {
+  const { getAllParentRoute } = useRoutingMethod();
+  const find = getAllParentRoute(route.matched.at(-1).path);
+  if (!find) return "";
+  let path = "";
+  for (let i = find.length - 1; i >= 0; i--) {
+    if (find[i].meta && !find[i].meta.hide) {
+      path = find[i].path;
+      break;
+    }
   }
-};
+  return path;
+});
 </script>
 
 <style lang="scss" scoped>

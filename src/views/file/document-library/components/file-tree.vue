@@ -26,14 +26,14 @@
 </template>
 
 <script setup lang="ts">
-import { findParentsTailRecursive } from "@/utils";
+import { findPathOfParentNode } from "@/utils/tree-tools";
 import { getDocumentLibraryTreeAPI } from "@/api/modules/file/index";
 
 const emit = defineEmits(["onNode"]);
 
 const onNode = (selectedKeys: Array<string>) => {
-  let list = findParentsTailRecursive(treeData.value, selectedKeys[0]);
-  emit("onNode", list);
+  let list = findPathOfParentNode(treeData.value, "key", selectedKeys[0]);
+  emit("onNode", list || []);
 };
 
 const searchKey = ref<string>("");

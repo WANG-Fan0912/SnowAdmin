@@ -11,7 +11,7 @@
               <div>4. 参数是可选的非必填项，可以自由传递</div>
             </a-alert>
             <a-alert style="width: 100%" type="success" class="content" :show-icon="false">
-              <div>路由：/test-common-route</div>
+              <div>路由：/functions/routing-operation/common-route</div>
             </a-alert>
             <a-space direction="vertical" fill>
               <a-input placeholder="请输入路由" allow-clear disabled v-model="connom.path">
@@ -38,7 +38,7 @@
               <div>4. 如果在路由配置中声明了动态参数（如 /:id），则参数是必填的</div>
             </a-alert>
             <a-alert style="width: 100%" type="success" class="content" :show-icon="false">
-              <div>路由：/test-dynamic-route/:name/:text</div>
+              <div>路由：/functions/routing-operation/dynamic-route/:name/:text</div>
             </a-alert>
             <a-space direction="vertical" fill>
               <a-input placeholder="请输入路由" allow-clear disabled v-model="dynamic.name">
@@ -66,7 +66,7 @@ defineOptions({ name: "routing-operation" });
 const router = useRouter();
 // 普通跳转
 const connom = ref({
-  path: "/test-common-route",
+  path: "/functions/routing-operation/common-route",
   query: {
     name: "SnowAdmin",
     text: "月之暗面"
@@ -82,7 +82,7 @@ const onQuery = () => {
 
 // 动态匹配
 const dynamic = ref({
-  name: "test-dynamic-route",
+  name: "dynamic-route",
   params: {
     name: "SnowAdmin",
     text: "月之暗面"

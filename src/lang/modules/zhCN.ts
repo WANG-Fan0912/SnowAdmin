@@ -102,8 +102,8 @@ export default {
     ["common-page"]: "普通角色页面",
     ["functions"]: "常用功能",
     ["routing-operation"]: "路由操作",
-    ["test-common-route"]: "测试普通路由",
-    ["test-dynamic-route"]: "测试动态路由",
+    ["common-route"]: "普通路由",
+    ["dynamic-route"]: "动态路由",
     ["audio"]: "音频",
     ["recorder"]: "录音",
     ["virtual-list"]: "虚拟列表",
@@ -112,6 +112,7 @@ export default {
     ["file-tools"]: "文件工具类",
     ["verify-tools"]: "校验工具类",
     ["common-layouts"]: "常用布局",
+    ["data-screen"]: "数据大屏",
     ["test"]: "测试"
   }
 };

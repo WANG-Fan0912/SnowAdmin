@@ -9,17 +9,17 @@
         <div>
           使用方式：
           <a-typography-text code
-            >treeCodeExist(树数据, 指定的code, { key: code的key, childrenKey: 下级绑定的key比如children })</a-typography-text
+            >treeCodeExist(树数据, key值, { key: key名, childrenKey: 下级绑定的key比如children })</a-typography-text
           >
         </div>
       </a-space>
       <a-divider />
       <a-space direction="vertical" fill>
-        <div>返回指定名称的所有父节点: findParentsTailRecursive</div>
-        <div>示例: findParentsTailRecursive(treeData, KeyValue)</div>
+        <div>返回指定名称的所有父节点: findPathOfParentNode</div>
+        <div>示例: findPathOfParentNode(treeData,key, keyValue)</div>
         <div>
           使用方式：
-          <a-typography-text code>findParentsTailRecursive(树数据, 指定key绑定的值)</a-typography-text>
+          <a-typography-text code>findPathOfParentNode(树数据, 指定的key, 指定key绑定的值)</a-typography-text>
         </div>
       </a-space>
       <a-divider />
@@ -42,11 +42,11 @@
       </a-space>
       <a-divider />
       <a-space direction="vertical" fill>
-        <div>根据id找到对应节点: findCategoryById</div>
-        <div>返回指定id找到对应的节点，示例: findCategoryById(data, targetId)</div>
+        <div>根据指定key找到对应节点: findCategoryById</div>
+        <div>返回指定id找到对应的节点，示例: findCategoryById(tree, key, keyValue)</div>
         <div>
           使用方式：
-          <a-typography-text code>findCategoryById(树数据, 指定的id)</a-typography-text>
+          <a-typography-text code>findCategoryById(树数据, 指定的key, 指定的key绑定的值)</a-typography-text>
         </div>
       </a-space>
     </div>

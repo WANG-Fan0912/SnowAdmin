@@ -27,33 +27,56 @@ export const treeCodeExist = (area: any, value: any, options: { key?: string; ch
 /**
  * 树状结构中查找并返回指定名称的节点的所有父节点
  * @param tree - 要搜索的树状结构。
- * @param targetKey - 要查找的目标节点key。
- * @param parents - 已经遍历过的当前节点的父节点数组。
- * @param index - 当前遍历的索引，用于遍历 tree 数组。
- * @description 函数接受一棵树、节点名称、一个可选的父节点数组（默认为空）和索引（默认为 0）作为参数。
+ * @param key - 指定匹配的key
+ * @param keyValue - 要查找的目标节点key值。
+ * @description 函数接受一棵树、指定的key、目标节点key值
  * @description 如果在树中找到目标节点，函数将返回包含从根节点到目标节点的所有父节点的数组
  * @description 如果树中不存在目标节点，则返回 null。
  * @returns 包含目标节点的所有父节点的数组，如果没有找到则返回 null。
  */
-export const findParentsTailRecursive = (tree: any, targetKey: string | number, parents = [], index = 0): any[] | null => {
-  if (index >= tree.length) {
-    return null;
+export const findPathOfParentNode = (tree: any[], key: string, keyValue: string | number): any[] | null => {
+  // 用于构建链表结构的路径节点
+  class PathNode {
+    constructor(
+      public node: any,
+      public parent: PathNode | null
+    ) {}
   }
 
-  const currentNode = tree[index];
-  const updatedParents = parents.concat(currentNode);
+  // 用栈代替递归（每个元素包含节点和父路径节点）
+  const stack: { node: any; parentPath: PathNode | null }[] = [];
 
-  if (currentNode.key === targetKey) {
-    return updatedParents;
+  // 初始化栈（倒序压入以保持左子树优先）
+  for (let i = tree.length - 1; i >= 0; i--) {
+    stack.push({ node: tree[i], parentPath: null });
   }
 
-  if (currentNode.children) {
-    const result = findParentsTailRecursive(currentNode.children, targetKey, updatedParents) as any;
-    if (result) {
-      return result || []; // 这里直接返回递归调用的结果
+  while (stack.length > 0) {
+    const { node, parentPath } = stack.pop()!;
+    const currentPath = new PathNode(node, parentPath);
+
+    // 找到目标：将链表转为数组
+    if (node[key] === keyValue) {
+      const pathArray: any[] = [];
+      let pointer: PathNode | null = currentPath;
+      while (pointer !== null) {
+        pathArray.unshift(pointer.node); // 反向插入生成正向路径
+        pointer = pointer.parent;
+      }
+      return pathArray;
+    }
+
+    // 处理子节点（倒序压入保证左子树优先）
+    if (node.children) {
+      for (let i = node.children.length - 1; i >= 0; i--) {
+        stack.push({
+          node: node.children[i],
+          parentPath: currentPath // 传递路径链表
+        });
+      }
     }
   }
-  return findParentsTailRecursive(tree, targetKey, parents, index + 1);
+  return null;
 };
 
 /**
@@ -64,14 +87,19 @@ export const findParentsTailRecursive = (tree: any, targetKey: string | number, 
  */
 export const arrayFlattened = (tree: any, term: string) => {
   const result = [];
-  while (tree.length) {
-    const next = tree.pop();
-    if (Array.isArray(next[term])) {
-      tree.push(...next[term]);
+  const stack = [...tree.reverse()];
+
+  while (stack.length) {
+    const node = stack.pop();
+    result.push(node);
+
+    if (Array.isArray(node[term])) {
+      for (let i = 0; i < node[term].length; i++) {
+        stack.push(node[term][i]);
+      }
     }
-    result.push(next);
   }
-  return result.reverse();
+  return result;
 };
 
 /**
@@ -131,21 +159,25 @@ export const buildTreeOptimized = (nodes: any): any => {
 
 /**
  * 根据指定id递归树查到指定节点
- * @param {Array[Object]} data 树形结构
- * @param {string | number} targetId 指定id
- * @returns {Object} 返回查找到的节点，未找到则返回null
+ * @param {Array[Object]} tree 树形结构
+ * @param {string | number} key 指定key
+ * @param {string | number} keyValue key绑定的vaue
+ * @returns {Object | null} 返回查找到的节点，未找到则返回null
  */
-export const findCategoryById = (data: any, targetId: any): any => {
-  for (const item of data) {
-    if (item.id === targetId) {
-      return item;
-    }
-    if (item.children && item.children.length > 0) {
-      const result: any = findCategoryById(item.children, targetId);
-      if (result) {
-        return result;
+export const findCategoryById = (tree: any, key: string, keyValue: any) => {
+  const stack = [...tree].reverse(); // 初始节点逆序入栈
+
+  while (stack.length > 0) {
+    const node = stack.pop();
+    if (node[key] === keyValue) return node;
+
+    if (node.children?.length) {
+      // 子节点逆序入栈（保持原顺序遍历）
+      for (let i = node.children.length - 1; i >= 0; i--) {
+        stack.push(node.children[i]);
       }
     }
   }
+
   return null;
 };

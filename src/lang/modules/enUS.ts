@@ -102,8 +102,8 @@ export default {
     ["common-page"]: "common page",
     ["functions"]: "functions",
     ["routing-operation"]: "routing operation",
-    ["test-common-route"]: "test common route",
-    ["test-dynamic-route"]: "test dynamic route",
+    ["common-route"]: "common route",
+    ["dynamic-route"]: "dynamic route",
     ["audio"]: "audio",
     ["recorder"]: "recorder",
     ["virtual-list"]: "virtual-list",
@@ -112,6 +112,7 @@ export default {
     ["file-tools"]: "file-tools",
     ["verify-tools"]: "verify tools",
     ["common-layouts"]: "common layouts",
+    ["data-screen"]: "data screen",
     ["test"]: "test"
   }
 };

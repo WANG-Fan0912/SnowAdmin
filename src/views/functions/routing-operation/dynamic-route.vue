@@ -5,6 +5,7 @@
         <a-space direction="vertical" fill>
           <div>路由：{{ route.path }}</div>
           <div>参数：{{ JSON.stringify(route.params) }}</div>
+          <a-input :style="{ width: '320px' }" placeholder="请输入内容测试页面缓存" allow-clear v-model="form" />
         </a-space>
       </a-card>
     </div>
@@ -12,8 +13,13 @@
 </template>
 
 <script setup lang="ts">
-defineOptions({ name: "test-dynamic-route" });
+import { useRoutesConfigStore } from "@/store/modules/route-config";
+defineOptions({ name: "dynamic-route" });
+const routerStore = useRoutesConfigStore();
 const route = useRoute();
+const form = ref("");
+
+routerStore.setTabsTitle(`${route.params.name} - ${route.params.text}`);
 </script>
 
 <style lang="scss" scoped></style>

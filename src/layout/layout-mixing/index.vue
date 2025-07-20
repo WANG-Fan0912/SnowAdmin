@@ -17,12 +17,12 @@
           <a-menu
             v-if="drawing"
             mode="horizontal"
-            :selected-keys="[aciveRoute]"
+            :selected-keys="[selectedMenu]"
             @menu-item-click="onMenuItem"
             :popup-max-height="600"
           >
-            <template v-for="item in routeTree" :key="item.name">
-              <a-menu-item v-if="!item.meta.hide" :key="item.name" :popup-max-height="600">
+            <template v-for="item in routeTree" :key="item.path">
+              <a-menu-item v-if="!item.meta.hide" :key="item.path" :popup-max-height="600">
                 <template #icon v-if="item.meta.svgIcon || item.meta.icon">
                   <MenuItemIcon :svg-icon="item.meta.svgIcon" :icon="item.meta.icon" />
                 </template>
@@ -68,25 +68,17 @@ watch(language, () => {
   nextTick(() => (drawing.value = true));
 });
 
-// 由于刷新后，路由信息丢失，所以需要重新获取
-// 混合布局的横向菜单为顶层路由下的一级菜单
-// 这里通过当前路由信息直接获取
-const aciveRoute = computed(() => {
-  getAsideMenu(route.matched[1].name as string);
-  return route.matched[1].name;
-});
-
 // 横向菜单点击事件
 // 将一级菜单下的children给左侧菜单
 // 如果没有children则直接自身菜单给左侧菜单
 const routeList = ref<any>([]);
-const onMenuItem = (key: string) => {
+const onMenuItem = (path: string) => {
   const { findLinearArray } = useRoutingMethod();
-  const find = findLinearArray(key);
+  const find = findLinearArray(path);
   // 路由存在则存入并跳转，不存在则跳404
   if (find) {
     // 给左侧树赋值
-    setAsideMenu(find);
+    setAside(find);
     // 若有重定向，则跳转到重定向的路由
     // 如果有子路由则重定向到自己的第一个菜单
     // 如果没有子路由则说明当前父级是一个菜单，直接跳转
@@ -115,12 +107,21 @@ const setAsideMenu = (find: Menu.MenuOptions) => {
   }
 };
 
-// 首次进入，获取左侧菜单
-const getAsideMenu = (key: string) => {
-  const { findLinearArray } = useRoutingMethod();
-  const find = findLinearArray(key);
-  setAsideMenu(find);
-};
+const setAside = debounce(setAsideMenu, 100);
+
+// 由于刷新后，路由信息丢失，所以需要重新获取
+// 混合布局的横向菜单为顶层路由下的一级菜单
+const selectedMenu = computed(() => {
+  const { getAllParentRoute } = useRoutingMethod();
+  // 动态路由参数会在path拼接，导致匹配失败
+  // 这取matched做路由匹配
+  const find = getAllParentRoute(route.matched.at(-1).path);
+  if (find) {
+    setAside(find[0]);
+    return find[0].path;
+  }
+  return "";
+});
 </script>
 
 <style lang="scss" scoped>

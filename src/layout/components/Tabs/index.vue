@@ -3,13 +3,13 @@
     <a-tabs
       :editable="true"
       :hide-content="true"
-      :active-key="currentRoute.name"
+      :active-key="currentRoute.path"
       size="medium"
       type="line"
       @tab-click="onTabs"
       @delete="onDelete"
     >
-      <a-tab-pane v-for="item of tabsList" :key="item.name" :title="$t(`menu.${item.meta.title}`)" :closable="!item.meta.affix" />
+      <a-tab-pane v-for="item of tabsList" :key="item.path" :title="$t(`menu.${item.meta.title}`)" :closable="!item.meta.affix" />
     </a-tabs>
     <div class="tabs_setting">
       <a-space>
@@ -49,41 +49,25 @@
 </template>
 
 <script setup lang="ts">
-import { useRouter } from "vue-router";
 import { storeToRefs } from "pinia";
 import { useRoutesConfigStore } from "@/store/modules/route-config";
-import { useRoutingMethod } from "@/hooks/useRoutingMethod";
 import { useThemeConfig } from "@/store/modules/theme-config";
 const router = useRouter();
 const routerStore = useRoutesConfigStore();
 const { tabsList, currentRoute } = storeToRefs(routerStore);
 
-// 统一处理跳转
-const routerPush = (route: any) => {
-  const { isDynamicRoute } = useRoutingMethod();
-  // 区分动态路由和普通路由
-  if (isDynamicRoute(route.path)) {
-    router.push({ name: route.name, params: route.params });
-  } else {
-    router.push({ path: route.path, query: route.query });
-  }
-};
-
 // 点击标签页，如果标签页存在，则跳转
 const onTabs = (key: string) => {
-  const { findTagsList } = useRoutingMethod();
-  const find = findTagsList(key);
-  if (find == undefined) return;
-  routerPush(find);
+  router.push(key);
 };
 
 // 删除当前标签页并跳转到最后一个标签页
-const onDelete = (key: string) => {
-  routerStore.removeTabsList(key);
-  routerStore.removeRouteName(key);
+const onDelete = (path: string) => {
+  routerStore.removeTabsList(path);
+  routerStore.removeRouteName(path);
   if (tabsList.value.length == 0) return;
-  if (currentRoute.value.name != key) return;
-  routerPush(tabsList.value.at(-1));
+  if (currentRoute.value.path != path) return;
+  router.push(tabsList.value.at(-1).path);
 };
 
 // 刷新当前页
@@ -95,22 +79,22 @@ const refresh = () => {
   }, 500);
   const themeStore = useThemeConfig();
   themeStore.setRefreshPage(false);
-  currentRoute.value.meta.keepAlive && routerStore.removeRouteName(currentRoute.value.name);
+  currentRoute.value.meta.keepAlive && routerStore.removeRouteName(currentRoute.value.path);
   nextTick(() => {
     themeStore.setRefreshPage(true);
-    currentRoute.value.meta.keepAlive && routerStore.setRouteNames(currentRoute.value.name);
+    currentRoute.value.meta.keepAlive && routerStore.setRoutePaths(currentRoute.value.path);
   });
 };
 
 // 关闭当前
 const closeCurrent = () => {
-  onDelete(currentRoute.value.name);
+  onDelete(currentRoute.value.path);
 };
 
 // 关闭右侧&关闭左侧
 const closeSides = (type: string) => {
   // 获得当前index
-  let currentIndex = tabsList.value.findIndex((item: Menu.MenuOptions) => item.name === currentRoute.value.name);
+  let currentIndex = tabsList.value.findIndex((item: Menu.MenuOptions) => item.path === currentRoute.value.path);
   // 过滤出两侧可关闭的 affix: false 表示可关闭
   let rightList = tabsList.value.filter((item: Menu.MenuOptions, index: number) => {
     if (type == "right") {
@@ -120,11 +104,11 @@ const closeSides = (type: string) => {
     }
   });
   // 返回可关闭名称
-  let rightNames = rightList.map((item: Menu.MenuOptions) => item.name);
+  let rightPaths = rightList.map((item: Menu.MenuOptions) => item.path);
   // 删除右侧
-  tabsList.value = tabsList.value.filter((item: Menu.MenuOptions) => !rightNames.includes(item.name));
+  tabsList.value = tabsList.value.filter((item: Menu.MenuOptions) => !rightPaths.includes(item.path));
   // 删除缓存
-  routerStore.removeRouteNames(rightNames);
+  routerStore.removeRoutePaths(rightPaths);
 };
 
 // 关闭其它&关闭全部
@@ -132,7 +116,7 @@ const closeOther = (type: string) => {
   // 过滤出可关闭项 affix: false 表示可关闭
   let list = tabsList.value.filter((item: Menu.MenuOptions) => {
     if (type == "other") {
-      if (item.name != currentRoute.value.name && !item.meta.affix) {
+      if (item.path != currentRoute.value.path && !item.meta.affix) {
         return item;
       }
     } else {
@@ -142,14 +126,14 @@ const closeOther = (type: string) => {
     }
   });
   // 返回可关闭名称
-  let rightNames = list.map((item: Menu.MenuOptions) => item.name);
+  let rightNames = list.map((item: Menu.MenuOptions) => item.path);
   // 删除可关闭项
-  tabsList.value = tabsList.value.filter((item: Menu.MenuOptions) => !rightNames.includes(item.name));
+  tabsList.value = tabsList.value.filter((item: Menu.MenuOptions) => !rightNames.includes(item.path));
   // 删除缓存
-  routerStore.removeRouteNames(rightNames);
+  routerStore.removeRoutePaths(rightNames);
   // 关闭全部，若当前被关闭则跳转最后一个
   if (tabsList.value.length != 0 && !currentRoute.value.meta.affix && type == "all") {
-    routerPush(tabsList.value.at(-1));
+    router.push(tabsList.value.at(-1).path);
   }
 };
 </script>
@@ -169,8 +153,8 @@ const closeOther = (type: string) => {
       color: $color-text-2;
     }
     .refresh {
-      transition: transform 0.5s;
       transform: rotate(360deg);
+      transition: transform 0.5s;
     }
   }
 }

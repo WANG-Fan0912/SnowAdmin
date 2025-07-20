@@ -1,34 +1,36 @@
 <template>
   <div class="snow-page">
     <div class="snow-inner">
-      <a-space wrap>
-        <a-input v-model="form.name" placeholder="请输入部门名称" allow-clear />
-        <a-select placeholder="部门状态" v-model="form.status" style="width: 120px" allow-clear>
-          <a-option v-for="item in openState" :key="item.value" :value="item.value">{{ item.name }}</a-option>
-        </a-select>
-        <a-button type="primary" @click="search">
-          <template #icon><icon-search /></template>
-          <span>查询</span>
-        </a-button>
-        <a-button @click="reset">
-          <template #icon><icon-refresh /></template>
-          <span>重置</span>
-        </a-button>
-      </a-space>
-
-      <a-row>
-        <a-space wrap>
-          <a-button type="primary" @click="onAdd">
-            <template #icon><icon-plus /></template>
-            <span>新增</span>
-          </a-button>
-          <a-button type="primary" status="danger">
-            <template #icon><icon-delete /></template>
-            <span>删除</span>
-          </a-button>
-        </a-space>
-      </a-row>
-
+      <s-layout-tools>
+        <template #left>
+          <a-space wrap>
+            <a-input v-model="form.name" placeholder="请输入部门名称" allow-clear />
+            <a-select placeholder="部门状态" v-model="form.status" style="width: 120px" allow-clear>
+              <a-option v-for="item in openState" :key="item.value" :value="item.value">{{ item.name }}</a-option>
+            </a-select>
+            <a-button type="primary" @click="search">
+              <template #icon><icon-search /></template>
+              <span>查询</span>
+            </a-button>
+            <a-button @click="reset">
+              <template #icon><icon-refresh /></template>
+              <span>重置</span>
+            </a-button>
+          </a-space>
+        </template>
+        <template #right>
+          <a-space wrap>
+            <a-button type="primary" @click="onAdd">
+              <template #icon><icon-plus /></template>
+              <span>新增</span>
+            </a-button>
+            <a-button type="primary" status="danger">
+              <template #icon><icon-delete /></template>
+              <span>删除</span>
+            </a-button>
+          </a-space>
+        </template>
+      </s-layout-tools>
       <a-table
         ref="tableRef"
         :data="tableData"

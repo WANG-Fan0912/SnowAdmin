@@ -4,6 +4,7 @@ declare namespace Menu {
   interface MenuOptions {
     id: string;
     parentId: string;
+    fullPath?: stirng;
     path: string;
     name: string;
     redirect?: string;

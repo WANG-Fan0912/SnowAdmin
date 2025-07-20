@@ -2,17 +2,8 @@ import pinia from "@/store/index";
 import { storeToRefs } from "pinia";
 import { useRoutesConfigStore } from "@/store/modules/route-config";
 import { useThemeConfig } from "@/store/modules/theme-config";
-import { deepClone, arrayFlattened } from "@/utils/index";
-
-/**
- * 路由树转一维数组
- * @param {array} tree 路由树
- * @returns 一维路由数组
- */
-export function linearArray(tree: any) {
-  const nodes: any = deepClone(tree);
-  return arrayFlattened(nodes, "children");
-}
+import { deepClone } from "@/utils/index";
+import { arrayFlattened } from "@/utils/tree-tools";
 
 /**
  * 统一处理所有的路由跳转：当前路由高亮、tabs栏数据
@@ -30,18 +21,15 @@ export const currentlyRoute = (current: any) => {
   if (tabsList.value.length == 0 && routeList.value.length != 0) {
     store.setTabs(routeList.value[0]);
   }
-
   // 存入当前路由-高亮
   store.setCurrentRoute(route);
-
   // 如果是外链路由则不做后续任何缓存操作，条件: 有外链 && 非内嵌
   if (route.meta.link && !route.meta.iframe) return;
-
   // 存入tabs栏数据，条件：开启tabs
-  if (isTabs.value) store.setTabs(route);
+  if (isTabs.value && !route.meta.isFull) store.setTabs(route);
   // 不缓存路由 || 不渲染tabs ，符合任意条件则不缓存路由
   if (!route.meta.keepAlive || !isTabs.value) return;
-  store.setRouteNames(route.name); // 缓存路由name
+  store.setRoutePaths(route.path); // 缓存路由
 };
 
 /**
@@ -51,7 +39,7 @@ export const currentlyRoute = (current: any) => {
  */
 export const deepCloneRoute = (route: any) => {
   return deepClone({
-    path: route.path,
+    path: route.fullPath,
     name: route.name,
     meta: route.meta,
     query: route.query,
@@ -60,17 +48,13 @@ export const deepCloneRoute = (route: any) => {
 };
 
 /**
- * 模块替换，深层递归，对所有的路由中符合条件的模块进行转换
+ * 模块替换，对路由中的模块进行转换
  * @param {array} tree 过滤角色权限后的树
  */
 export const moduleReplacement = (tree: any) => {
-  if (tree?.length == 0) return [];
-  tree.map((item: any) => {
-    // 模块匹配以及转换
+  tree.forEach((item: any) => {
+    item.children && delete item.children;
     moduleMatch(item);
-    if (item?.children?.length > 0) {
-      item.children = moduleReplacement(item.children);
-    }
   });
   return tree;
 };
@@ -95,3 +79,13 @@ export const moduleMatch = (item: any) => {
     }
   }
 };
+
+/**
+ * 路由树转一维数组
+ * @param {array} tree 路由树
+ * @returns 一维路由数组
+ */
+export function linearArray(tree: any) {
+  const nodes: any = deepClone(tree);
+  return arrayFlattened(nodes, "children");
+}

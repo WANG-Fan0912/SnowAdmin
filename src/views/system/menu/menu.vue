@@ -1,40 +1,44 @@
 <template>
-  <div class="snow-page">
-    <div class="snow-inner">
-      <a-space wrap>
-        <a-input v-model="form.name" placeholder="请输入菜单名称" allow-clear />
-        <a-select v-model="form.hide" placeholder="请选择显示状态" allow-clear style="width: 120px">
-          <a-option v-for="item in openState" :key="item.value" :value="item.value">{{ item.name }}</a-option>
-        </a-select>
-        <a-select v-model="form.disable" placeholder="请选择启用状态" allow-clear style="width: 120px">
-          <a-option v-for="item in openState" :key="item.value" :value="item.value">{{ item.name }}</a-option>
-        </a-select>
-        <a-button type="primary" @click="onSearch">
-          <template #icon><icon-search /></template>
-          <span>查询</span>
-        </a-button>
+  <div class="snow-fill">
+    <div class="snow-fill-inner">
+      <s-layout-tools>
+        <template #left>
+          <a-space wrap>
+            <a-input v-model="form.name" placeholder="请输入菜单名称" allow-clear />
+            <a-select v-model="form.hide" placeholder="请选择显示状态" allow-clear style="width: 120px">
+              <a-option v-for="item in openState" :key="item.value" :value="item.value">{{ item.name }}</a-option>
+            </a-select>
+            <a-select v-model="form.disable" placeholder="请选择启用状态" allow-clear style="width: 120px">
+              <a-option v-for="item in openState" :key="item.value" :value="item.value">{{ item.name }}</a-option>
+            </a-select>
+            <a-button type="primary" @click="onSearch">
+              <template #icon><icon-search /></template>
+              <span>查询</span>
+            </a-button>
 
-        <a-button @click="onReset">
-          <template #icon>
-            <icon-refresh />
-          </template>
-          <template #default>重置</template>
-        </a-button>
-      </a-space>
-      <a-row>
-        <a-space wrap>
-          <a-button type="primary" @click="onAdd">
-            <template #icon><icon-plus /></template>
-            <span>新增</span>
-          </a-button>
-          <a-button type="primary" status="success" @click="onExpand">
-            <template #icon>
-              <icon-swap />
-            </template>
-            <span>{{ expand ? "收起" : "展开" }}</span>
-          </a-button>
-        </a-space>
-      </a-row>
+            <a-button @click="onReset">
+              <template #icon>
+                <icon-refresh />
+              </template>
+              <template #default>重置</template>
+            </a-button>
+          </a-space>
+        </template>
+        <template #right>
+          <a-space wrap>
+            <a-button type="primary" @click="onAdd">
+              <template #icon><icon-plus /></template>
+              <span>新增</span>
+            </a-button>
+            <a-button type="primary" status="success" @click="onExpand">
+              <template #icon>
+                <icon-swap />
+              </template>
+              <span>{{ expand ? "收起" : "展开" }}</span>
+            </a-button>
+          </a-space>
+        </template>
+      </s-layout-tools>
       <a-table
         ref="tableRef"
         :data="tableTree"
@@ -44,7 +48,7 @@
         show-empty-tree
         :pagination="false"
         size="medium"
-        :scroll="{ x: '150%', y: '100%' }"
+        :scroll="{ x: '150%', y: '93%' }"
       >
         <template #columns>
           <a-table-column title="菜单名称">
@@ -113,6 +117,14 @@
               </a-space>
             </template>
           </a-table-column>
+          <a-table-column title="是否全屏" align="center" :width="100">
+            <template #cell="{ record }">
+              <a-space>
+                <a-tag bordered size="small" color="arcoblue" v-if="record.meta.isFull">是</a-tag>
+                <a-tag bordered size="small" color="red" v-else>否</a-tag>
+              </a-space>
+            </template>
+          </a-table-column>
           <a-table-column title="操作" align="center" :width="250" :fixed="'right'">
             <template #cell="{ record }">
               <a-space>
@@ -177,28 +189,46 @@
               </a-form-item>
             </a-col>
           </a-row>
-          <a-form-item v-if="[1, 2].includes(addFrom.type)" field="name" label="菜单名称" validate-trigger="blur">
-            <a-input v-model="addFrom.name" placeholder="请输入菜单名称，如：home" allow-clear @change="nameChange" />
-          </a-form-item>
-          <a-form-item v-if="[1, 2].includes(addFrom.type)" field="path" label="路由路径" validate-trigger="blur">
-            <a-input v-model="addFrom.path" placeholder="请输入路由路径，如：/home" allow-clear disabled />
-          </a-form-item>
           <a-form-item field="title" label="菜单标题" validate-trigger="blur">
-            <a-input v-model="addFrom.title" placeholder="请输入菜单标题" allow-clear />
+            <a-input
+              v-model="addFrom.title"
+              placeholder="请输入菜单标题"
+              allow-clear
+              @input="(e: string) => onTrim(e, 'title')"
+            />
             <template #extra>
               <div>
                 优先匹配国际化Key
-                <span v-if="addFrom.title">menu.{{ addFrom.title }}</span>
+                <a-typography-text code v-if="addFrom.title"> menu.{{ addFrom.title }} </a-typography-text>
                 （无对应Key则直接取标题展示）
               </div>
             </template>
           </a-form-item>
+          <a-form-item v-if="[1, 2].includes(addFrom.type)" field="path" label="路由路径" validate-trigger="blur">
+            <a-input v-model="addFrom.path" placeholder="请输入路由路径，如：/home" allow-clear @input="pathChange" />
+            <template #extra>
+              <div>
+                菜单名称由路径自动生成
+                <a-typography-text code v-if="addFrom.name"> {{ addFrom.name }} </a-typography-text>
+              </div>
+            </template>
+          </a-form-item>
           <a-form-item v-if="addFrom.type == 3" field="permission" label="权限标识" validate-trigger="blur">
-            <a-input v-model="addFrom.permission" placeholder="请输入权限标识，如：sys:btn:add" allow-clear />
+            <a-input
+              v-model="addFrom.permission"
+              placeholder="请输入权限标识，如：sys:btn:add"
+              allow-clear
+              @input="(e: string) => onTrim(e, 'permission')"
+            />
           </a-form-item>
 
           <a-form-item v-if="[1, 2].includes(addFrom.type)" field="redirect" label="路由重定向" validate-trigger="blur">
-            <a-input v-model="addFrom.redirect" placeholder="请输入路由重定向" allow-clear />
+            <a-input
+              v-model="addFrom.redirect"
+              placeholder="请输入路由重定向"
+              allow-clear
+              @input="(e: string) => onTrim(e, 'redirect')"
+            />
           </a-form-item>
           <a-form-item
             v-if="addFrom.type == 2"
@@ -207,7 +237,12 @@
             validate-trigger="blur"
             :disabled="addFrom.isLink"
           >
-            <a-input v-model="addFrom.component" placeholder="请输入组件路径" allow-clear>
+            <a-input
+              v-model="addFrom.component"
+              placeholder="请输入组件路径"
+              allow-clear
+              @input="(e: string) => onTrim(e, 'component')"
+            >
               <template #prepend>@/views/</template>
               <template #append>.vue</template>
             </a-input>
@@ -267,7 +302,13 @@
           <a-form-item field="link" label="外链路径" validate-trigger="blur" v-if="addFrom.type == 2 && addFrom.isLink">
             <a-input v-model="addFrom.link" placeholder="请输入路由路径" allow-clear />
           </a-form-item>
-          <a-form-item field="sort" label="菜单排序" validate-trigger="blur">
+          <a-form-item field="affix" label="全屏显示" validate-trigger="blur" v-if="addFrom.type == 2">
+            <a-switch type="round" v-model="addFrom.isFull">
+              <template #checked> 是 </template>
+              <template #unchecked> 否 </template>
+            </a-switch>
+          </a-form-item>
+          <a-form-item field="sort" label="排序" validate-trigger="blur">
             <a-input-number
               v-model="addFrom.sort"
               :step="1"
@@ -290,7 +331,7 @@
 import MenuItemIcon from "@/layout/components/Menu/menu-item-icon.vue";
 import { getMenuListAPI } from "@/api/modules/system/index";
 import useGlobalProperties from "@/hooks/useGlobalProperties";
-import { deepClone } from "@/utils";
+import { deepClone, getPascalCase } from "@/utils";
 const proxy = useGlobalProperties();
 const openState = ref(dictFilter("status"));
 const form = ref({
@@ -326,6 +367,7 @@ const addFrom = ref<any>({
   icon: "",
   name: "",
   title: "",
+  isFull: false,
   permission: "",
   path: "",
   redirect: "",
@@ -350,6 +392,7 @@ const onAdd = () => {
 const handleOk = async () => {
   let state = await formRef.value.validate();
   if (state) return (open.value = true); // 校验不通过
+  console.log("addFrom.value", addFrom.value);
   arcoMessage("success", "模拟提交成功");
   getMenuList();
 };
@@ -363,6 +406,7 @@ const afterClose = () => {
     icon: "",
     name: "",
     title: "",
+    isFull: false,
     permission: "",
     path: "",
     redirect: "",
@@ -410,10 +454,15 @@ const typeChange = (val: number) => {
   formRef.value.clearValidate();
 };
 
+// 去除空格
+const onTrim = (val: string, key: string) => {
+  addFrom.value[key] = val.trim();
+};
+
 // 菜单名称
-const nameChange = (str: string) => {
-  // 自定关联路由路径
-  addFrom.value.path = str ? "/" + str : "";
+const pathChange = (str: string) => {
+  addFrom.value.path = str.trim();
+  addFrom.value.name = getPascalCase(str.trim().replace(/[./:?=&"-]/g, "_"));
 };
 
 // 是否外链
@@ -507,4 +556,8 @@ const filterTree = (nodes: Menu.MenuOptions[]) => {
 getMenuList();
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+:deep(.arco-typography code) {
+  font-size: 100%;
+}
+</style>

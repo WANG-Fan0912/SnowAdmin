@@ -74,3 +74,21 @@ export const arcoMessage = (type: string, content: string, closable: boolean = f
       break;
   }
 };
+
+/**
+ * 防抖函数
+ * @param fn 要防抖的函数
+ * @param delay 延迟时间（毫秒）
+ * @returns 防抖后的函数
+ */
+export const debounce = <T extends (...args: any[]) => any>(fn: T, delay: number): ((...args: Parameters<T>) => void) => {
+  let timer: NodeJS.Timeout | null = null;
+  return function (this: ThisParameterType<T>, ...args: Parameters<T>) {
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(() => {
+      // 使用 apply 绑定 this 上下文
+      fn.apply(this, args);
+      timer = null;
+    }, delay);
+  };
+};

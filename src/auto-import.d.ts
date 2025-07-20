@@ -11,6 +11,7 @@ declare global {
   const computed: (typeof import("vue"))["computed"];
   const createApp: (typeof import("vue"))["createApp"];
   const customRef: (typeof import("vue"))["customRef"];
+  const debounce: (typeof import("./globals/index"))["debounce"];
   const defineAsyncComponent: (typeof import("vue"))["defineAsyncComponent"];
   const defineComponent: (typeof import("vue"))["defineComponent"];
   const dictFilter: (typeof import("./globals/index"))["dictFilter"];

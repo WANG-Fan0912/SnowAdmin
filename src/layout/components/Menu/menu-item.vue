@@ -1,13 +1,13 @@
 <template>
-  <template v-for="item in props.routeTree" :key="item.name">
-    <a-sub-menu v-if="menuShow(item)" :key="item.name">
+  <template v-for="item in props.routeTree" :key="item.path">
+    <a-sub-menu v-if="menuShow(item)" :key="item.path">
       <template #icon v-if="item.meta.svgIcon || item.meta.icon">
         <MenuItemIcon :svg-icon="item.meta.svgIcon" :icon="item.meta.icon" />
       </template>
       <template #title>{{ $t(`menu.${item.meta.title}`) }}</template>
       <MenuItem :route-tree="item.children" />
     </a-sub-menu>
-    <a-menu-item v-else-if="aMenuShow(item)" :key="item?.name">
+    <a-menu-item v-else-if="aMenuShow(item)" :key="item?.path">
       <template #icon v-if="item.meta.svgIcon || item.meta.icon">
         <MenuItemIcon :svg-icon="item.meta.svgIcon" :icon="item.meta.icon" />
       </template>

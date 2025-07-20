@@ -16,11 +16,12 @@ import { storeToRefs } from "pinia";
 import { useThemeConfig } from "@/store/modules/theme-config";
 import { useRoutesConfigStore } from "@/store/modules/route-config";
 import { useDevicesSize } from "@/hooks/useDevicesSize";
+import { findPathOfParentNode } from "@/utils/tree-tools";
 import { HOME_PATH } from "@/config/index";
 const themeStore = useThemeConfig();
 const { isBreadcrumb, transitionPage } = storeToRefs(themeStore);
 const routesConfigStore = useRoutesConfigStore();
-const { routeList } = storeToRefs(routesConfigStore);
+const { routeTree } = storeToRefs(routesConfigStore);
 const { isMobile } = useDevicesSize();
 const route = useRoute();
 const router = useRouter();
@@ -34,15 +35,11 @@ const router = useRouter();
 const breadcrumb = computed(() => {
   // 如果是首页则直接返回当前路由信息
   if (route.path === HOME_PATH) return [route];
-
-  // 否则返回路径信息
-  return route.matched.map((item: any) => {
-    if (item.name == "layout") {
-      return routeList.value.find((item: any) => item.path == HOME_PATH);
-    } else {
-      return item;
-    }
-  });
+  // 返回路径信息
+  let list = findPathOfParentNode(routeTree.value, "name", route.name);
+  if (!list) return [];
+  if (!routeTree.value[0].children) list.unshift(routeTree.value[0]);
+  return list;
 });
 
 // 页面过渡

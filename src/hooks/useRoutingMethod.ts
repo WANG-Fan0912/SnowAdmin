@@ -1,6 +1,7 @@
 import pinia from "@/store/index";
 import { storeToRefs } from "pinia";
 import { useRoutesConfigStore } from "@/store/modules/route-config";
+import { findCategoryById, findPathOfParentNode } from "@/utils/tree-tools";
 
 /**
  * 路由处理hooks，内置多种路由处理场景
@@ -9,13 +10,24 @@ import { useRoutesConfigStore } from "@/store/modules/route-config";
 export const useRoutingMethod = () => {
   /**
    * 从一维路由中查找路由
-   * @param {string} key 路由的name
+   * @param {string} path 路由的path
    * @returns 查找到的路由，undefined则表示未找到
    */
-  const findLinearArray = (key: string) => {
+  const findLinearArray = (path: string) => {
     const routerStore = useRoutesConfigStore(pinia);
-    const { routeList } = storeToRefs(routerStore);
-    return routeList.value.find((item: Menu.MenuOptions) => item.name == key);
+    const { routeTree } = storeToRefs(routerStore);
+    return findCategoryById(routeTree.value, "path", path);
+  };
+
+  /**
+   * 根据当前路由找到所有直属父级路由
+   * @param {string} path 路由的path
+   * @returns 查找到的所有父级路由，未找到则null
+   */
+  const getAllParentRoute = (path: string) => {
+    const routerStore = useRoutesConfigStore(pinia);
+    const { routeTree } = storeToRefs(routerStore);
+    return findPathOfParentNode(routeTree.value, "path", path);
   };
 
   /**
@@ -62,6 +74,7 @@ export const useRoutingMethod = () => {
 
   return {
     findLinearArray,
+    getAllParentRoute,
     findTagsList,
     openExternalLinks,
     isDynamicRoute,

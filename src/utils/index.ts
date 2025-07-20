@@ -43,56 +43,6 @@ export function deepClone(data: any) {
 }
 
 /**
- * 数组扁平化-多维转一维
- * @param { array } tree 多维数组
- * @param { string } tree 转一维的条件，例如 "children"
- * @returns 一维数组
- */
-export function arrayFlattened(tree: any, term: string) {
-  const result = [];
-  while (tree.length) {
-    const next = tree.pop();
-    if (Array.isArray(next[term])) {
-      tree.push(...next[term]);
-    }
-    result.push(next);
-  }
-  return result.reverse();
-}
-
-/**
- * 在给定的树状结构中，递归地查找并返回指定名称的节点的所有父节点。
- * 函数接受一棵树、目标节点名称以及一个可选的父母节点数组（默认为空）和索引（默认为 0）作为参数。
- * 如果在树中找到目标节点，函数将返回包含从根节点到目标节点的所有父节点的数组。如果树中不存在目标节点，则返回 null。
- *
- * @param tree - 要搜索的树状结构。
- * @param targetKey - 要查找的目标节点key。
- * @param parents - 已经遍历过的当前节点的父节点数组。
- * @param index - 当前遍历的索引，用于遍历 tree 数组。
- * @returns 包含目标节点的所有父节点的数组，如果没有找到则返回 null。
- */
-export function findParentsTailRecursive(tree: any, targetKey: string | number, parents = [], index = 0) {
-  if (index >= tree.length) {
-    return null;
-  }
-
-  const currentNode = tree[index];
-  const updatedParents = parents.concat(currentNode);
-
-  if (currentNode.key === targetKey) {
-    return updatedParents;
-  }
-
-  if (currentNode.children) {
-    const result = findParentsTailRecursive(currentNode.children, targetKey, updatedParents) as any;
-    if (result) {
-      return result || []; // 这里直接返回递归调用的结果
-    }
-  }
-  return findParentsTailRecursive(tree, targetKey, parents, index + 1);
-}
-
-/**
  * 获取浏览器默认语言
  * @returns 语言类型
  */
@@ -205,77 +155,41 @@ export const isSecureEnvironment = () => {
 };
 
 /**
- * 将乱序的一维数组根据parentId转化为树形结构
- * @param {Array[Object]} nodes 对象
- * @returns {Array[Object]} 组装好的树形结构
+ * 获取不同路由模式所对应的 url + params
+ * @returns {String} 返回路径
  */
-export const buildTreeOptimized = (nodes: any) => {
-  const nodeMap = new Map(); // 哈希表存储所有节点
-  const roots = []; // 存储顶层节点
-  const duplicates = new Set(); // 检测重复ID
+export const getUrlWithParams = () => {
+  type UrlParams = {
+    hash: string;
+    history: string;
+  };
 
-  // 第一次遍历: 注册所有节点 & 检测重复
-  for (const node of nodes) {
-    const id = node.id;
-
-    // 循环引用检测
-    if (node.id === node.parentId) {
-      throw new Error(`循环引用: ${node.id} -> ${node.parentId}`);
-    }
-
-    // 重复ID检测
-    if (nodeMap.has(id)) {
-      duplicates.add(id);
-      continue;
-    }
-
-    // 初始化子节点数组
-    node.children = [];
-    nodeMap.set(id, node);
-  }
-
-  // 输出重复警告
-  if (duplicates.size > 0) {
-    console.warn(`检测到重复ID: ${Array.from(duplicates).join(", ")}`);
-  }
-
-  // 第二次遍历: 构建树结构
-  for (const node of nodes) {
-    const { parentId } = node;
-
-    // 跳过已处理的重复节点
-    if (duplicates.has(node.id)) continue;
-
-    if (parentId === "0") {
-      roots.push(node); // 顶层节点
-    } else if (parentId) {
-      const parent = nodeMap.get(parentId);
-      parent?.children.push(node); // 挂载子节点
-    } else {
-      console.warn(`独立节点 ${node.id}: parentId为空`);
-    }
-  }
-
-  return roots;
+  if (typeof window === "undefined") return "";
+  const url: UrlParams = {
+    hash: window.location.hash.substring(1),
+    history: window.location.pathname + window.location.search
+  };
+  const mode = (import.meta.env.VITE_ROUTER_MODE as keyof UrlParams) || "history";
+  return url[mode] || "";
 };
 
 /**
- * 根据指定id递归树查到指定节点
- * @param {Array[Object]} data 树形结构
- * @param {string | number} targetId 指定id
- * @returns {Object} 返回查找到的节点，未找到则返回null
+ * 下划线转驼峰
+ * @param v 下划线字符串
+ * @returns 驼峰字符串
  */
-export const findCategoryById = (data: any, targetId: any) => {
-  for (const item of data) {
-    if (item.id === targetId) {
-      return item;
-    }
-    if (item.children && item.children.length > 0) {
-      const result: any = findCategoryById(item.children, targetId);
-      if (result) {
-        return result;
-      }
-    }
-  }
-  return null;
+export const getPascalCase = (v: string) => {
+  // 处理空字符串情况
+  if (!v) return v;
+
+  // 1. 替换所有下划线序列及其后的首个字符
+  // - 正则 /_+(.)/g 匹配一个或多个下划线后紧跟的任意字符
+  // - 替换函数将匹配的字符转为大写（字母则大写，非字母则原样保留）
+  let result = v.replace(/_+(.)/g, (_, char) => char.toUpperCase());
+
+  // 2. 删除开头和结尾剩余的下划线
+  result = result.replace(/^_+|_+$/g, "");
+
+  // 3. 将首字母转为大写后返回
+  return result.charAt(0).toUpperCase() + result.slice(1);
 };

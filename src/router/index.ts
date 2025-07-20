@@ -42,48 +42,49 @@ router.beforeEach(async (to: any, _: any, next: any) => {
   const { token, account } = storeToRefs(store);
   // console.log("去", to, "来自", from);
   // next()内部加了path等于跳转指定路由会再次触发router.beforeEach，内部无参数等于放行，不会触发router.beforeEach
-  if (to.path === "/login" && !token.value) {
-    // 1、去登录页，无token，放行
-    next();
-  } else if (!token.value) {
-    // 2、没有token，直接重定向到登录页
-    next("/login");
-  } else if (to.path === "/login" && token.value) {
-    // 3、去登录页，有token，直接重定向到home页
-    next("/home");
+
+  // 1、去登录页，无token，放行
+  if (to.path === "/login" && !token.value) return next();
+
+  // 2、没有token，直接重定向到登录页
+  if (!token.value) return next("/login");
+
+  // 3、去登录页，有token，直接重定向到home页
+  if (to.path === "/login" && token.value) {
     // 项目内的跳转，处理跳转路由高亮
     currentlyRoute(to);
-  } else {
-    // 4、去非登录页，有token，用户信息是否存在，有则放行，否则重新获取路由信息、初始化路由
-    const routeStore = useRoutesConfigStore(pinia);
+    return next("/home");
+  }
 
-    // 判断账号信息是否获取，先获取账号信息和路由信息，添加路由后再跳转(页面刷新时触发)
-    // 解决刷新页面404的问题
-    if (isEmptyObject(account.value.user)) {
-      // 获取账号信息
-      await store.setAccount();
-      // 获取路由信息
-      await routeStore.initSetRouter();
-      // 判断是否是动态路由
-      const { isDynamicRoute } = useRoutingMethod();
-      if (isDynamicRoute(to.path)) {
-        next({ name: to.name, params: to.params });
-      } else {
-        next({ path: to.path, query: to.query });
-      }
+  // 4、去非登录页，有token，用户信息是否存在，有则放行，否则重新获取路由信息、初始化路由
+  // 判断账号信息是否获取，先获取账号信息和路由信息，添加路由后再跳转(页面刷新时触发)
+  // 解决刷新页面404的问题
+  if (isEmptyObject(account.value.user)) {
+    const routeStore = useRoutesConfigStore(pinia);
+    // 获取账号信息
+    await store.setAccount();
+    // 获取路由信息
+    await routeStore.initSetRouter();
+
+    // 判断是否是动态路由
+    const { isDynamicRoute } = useRoutingMethod();
+    if (isDynamicRoute(to.path)) {
+      return next({ name: to.name, params: to.params });
     } else {
-      // 获取外链路由的处理函数
-      // 所有的路由正常放行，只不过额外判断是否是外链，如果是，则打开新窗口跳转外链
-      // 外链的页面依旧正常打开，只不过不会参与缓存与tabs显示，符合路由跳转的直觉
-      const { openExternalLinks } = useRoutingMethod();
-      // 处理外链跳转
-      openExternalLinks(to);
-      // 动态路由添加过走这里，直接放行
-      next();
-      // 项目内的跳转，处理跳转路由高亮
-      currentlyRoute(to);
+      return next({ path: to.path, query: to.query });
     }
   }
+
+  // 获取外链路由的处理函数
+  // 所有的路由正常放行，只不过额外判断是否是外链，如果是，则打开新窗口跳转外链
+  // 外链的页面依旧正常打开，只不过不会参与缓存与tabs显示，符合路由跳转的直觉
+  const { openExternalLinks } = useRoutingMethod();
+  // 处理外链跳转
+  openExternalLinks(to);
+  // 项目内的跳转，处理跳转路由高亮
+  currentlyRoute(to);
+  // 动态路由添加过走这里，直接放行
+  next();
 });
 
 // 路由跳转错误

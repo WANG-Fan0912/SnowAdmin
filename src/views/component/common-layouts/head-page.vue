@@ -31,7 +31,7 @@
         </template>
       </s-layout-tools>
     </a-card>
-    <a-card title="搜索栏布局-按钮沉底">
+    <a-card title="搜索栏布局">
       <s-layout-search @search="onSearch" @reset="onReset">
         <template #form>
           <a-grid-item>
