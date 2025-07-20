@@ -23,13 +23,13 @@
  * 路由meta对象参数，我们通常将属性放到meta对象中
  * meta: {
  *   title:     国际化key，无对应Key则直接展示
+ *   isFull:    是否全屏显示，开启条件： true \ false
  *   hide:      是否隐藏此路由，不会显示在菜单树，可以访问
  *   disable:   是否停用此路由-不显示且不可访问
  *   keepAlive: 是否缓存组件
  *   affix:     固定在Tabs栏上-开启后Tabs栏无关闭按钮
  *   link:      是否是超链接菜单，开启外链条件：1、 link：链接地址不为空  2、iframe: false
  *   iframe:    是否内嵌外链窗口，开启条件：1、iframe：true  2、link：链接地址不为空
- *   isFull:    是否全屏显示，开启条件： true \ false
  *   roles:     路由权限标识，取角色权限，超级管理员：admin；普通角色：common
  *   svgIcon:   svg菜单图标，优先级高于icon，取src/assets/svgs内的svg文件
  *   icon:      普通icon菜单图标，默认取arco.design图标
@@ -1488,7 +1488,7 @@ export const systemMenu = [
       disable: false,
       keepAlive: true,
       affix: false,
-      link: "http://101.126.93.137:81/", // 链接
+      link: "http://115.190.79.132:81/", // 链接
       iframe: false, // 区分是否内链 true内链 false外链
       isFull: false,
       roles: ["admin"],
@@ -1686,7 +1686,7 @@ export const systemMenu = [
       keepAlive: true,
       disable: false,
       affix: false,
-      link: "http://101.126.93.137:85/", // 链接
+      link: "http://115.190.79.132:82/", // 链接
       iframe: true, // 区分是否内链 true内链 false外链
       isFull: false,
       roles: ["admin"],

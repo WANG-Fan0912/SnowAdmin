@@ -107,7 +107,7 @@ const setAsideMenu = (find: Menu.MenuOptions) => {
   }
 };
 
-const setAside = debounce(setAsideMenu, 100);
+const setAside = debounce(setAsideMenu, 150);
 
 // 由于刷新后，路由信息丢失，所以需要重新获取
 // 混合布局的横向菜单为顶层路由下的一级菜单
