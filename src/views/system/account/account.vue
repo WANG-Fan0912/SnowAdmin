@@ -127,13 +127,9 @@
             </a-col>
           </a-row>
           <a-row>
-            <a-col :span="24">
-              <a-form-item field="sex" label="性别" validate-trigger="blur">
-                <a-radio-group v-model="addFrom.sex" :options="sexOption">
-                  <template #label="{ data }">
-                    <div>{{ data.name }}</div>
-                  </template>
-                </a-radio-group>
+            <a-col :span="12">
+              <a-form-item field="phone" label="手机号码" validate-trigger="blur">
+                <a-input v-model="addFrom.phone" placeholder="请输入手机号码" allow-clear />
               </a-form-item>
             </a-col>
           </a-row>

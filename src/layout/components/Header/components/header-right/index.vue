@@ -169,14 +169,14 @@ const onLange = (value: string) => {
 // 个人中心
 const onPerson = () => {
   router.push({
-    path: "/personal/userinfo"
+    path: "/system/account"
   });
 };
 
 // 修改密码
 const onUpdate = () => {
   router.push({
-    path: "/personal/user-settings"
+    path: "/system/account"
   });
 };
 
