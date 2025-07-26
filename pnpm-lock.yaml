@@ -88,7 +88,7 @@ importers:
         version: 3.5.15(typescript@5.8.3)
       vue-codemirror6:
         specifier: ^1.3.0
-        version: 1.3.15(@popperjs/core@2.11.8)(core-js@3.42.0)(eslint@9.27.0(jiti@2.4.2))(typescript@5.8.3)(vue@3.5.15(typescript@5.8.3))
+        version: 1.3.15(@popperjs/core@2.11.8)(core-js@3.42.0)(typescript@5.8.3)(vue@3.5.15(typescript@5.8.3))
       vue-color-kit:
         specifier: ^1.0.6
         version: 1.0.6(vue@3.5.15(typescript@5.8.3))
@@ -112,7 +112,7 @@ importers:
         version: 3.0.22(core-js@3.42.0)
     devDependencies:
       '@arco-design/web-vue':
-        specifier: ^2.56.3
+        specifier: ^2.57.0
         version: 2.57.0(vue@3.5.15(typescript@5.8.3))
       '@arco-plugins/vite-vue':
         specifier: ^1.4.5
@@ -9392,7 +9392,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  snow-admin@file:(@popperjs/core@2.11.8)(core-js@3.42.0)(eslint@9.27.0(jiti@2.4.2))(typescript@5.8.3):
+  snow-admin@file:(@popperjs/core@2.11.8)(core-js@3.42.0)(typescript@5.8.3):
     dependencies:
       '@arco-design/color': 0.4.0
       '@codemirror/lang-javascript': 6.2.4
@@ -9420,9 +9420,8 @@ snapshots:
       sortablejs: 1.15.6
       uuid: 11.1.0
       vue: 3.5.15(typescript@5.8.3)
-      vue-codemirror6: 1.3.15(@popperjs/core@2.11.8)(core-js@3.42.0)(eslint@9.27.0(jiti@2.4.2))(typescript@5.8.3)(vue@3.5.15(typescript@5.8.3))
+      vue-codemirror6: 1.3.15(@popperjs/core@2.11.8)(core-js@3.42.0)(typescript@5.8.3)(vue@3.5.15(typescript@5.8.3))
       vue-color-kit: 1.0.6(vue@3.5.15(typescript@5.8.3))
-      vue-eslint-parser: 10.2.0(eslint@9.27.0(jiti@2.4.2))
       vue-i18n: 10.0.0-alpha.3(vue@3.5.15(typescript@5.8.3))
       vue-pick-colors: 1.8.0(@popperjs/core@2.11.8)(vue@3.5.15(typescript@5.8.3))
       vue-router: 4.5.1(vue@3.5.15(typescript@5.8.3))
@@ -9434,8 +9433,6 @@ snapshots:
       - '@vue/composition-api'
       - core-js
       - debug
-      - eslint
-      - supports-color
       - typescript
 
   sortablejs@1.14.0: {}
@@ -10047,7 +10044,7 @@ snapshots:
 
   vscode-uri@3.1.0: {}
 
-  vue-codemirror6@1.3.15(@popperjs/core@2.11.8)(core-js@3.42.0)(eslint@9.27.0(jiti@2.4.2))(typescript@5.8.3)(vue@3.5.15(typescript@5.8.3)):
+  vue-codemirror6@1.3.15(@popperjs/core@2.11.8)(core-js@3.42.0)(typescript@5.8.3)(vue@3.5.15(typescript@5.8.3)):
     dependencies:
       '@codemirror/commands': 6.8.1
       '@codemirror/language': 6.11.0
@@ -10057,15 +10054,13 @@ snapshots:
       codemirror: 6.0.1
       style-mod: 4.1.2
       vue: 3.5.15(typescript@5.8.3)
-      vue-codemirror6: snow-admin@file:(@popperjs/core@2.11.8)(core-js@3.42.0)(eslint@9.27.0(jiti@2.4.2))(typescript@5.8.3)
+      vue-codemirror6: snow-admin@file:(@popperjs/core@2.11.8)(core-js@3.42.0)(typescript@5.8.3)
       vue-demi: 0.14.10(vue@3.5.15(typescript@5.8.3))
     transitivePeerDependencies:
       - '@popperjs/core'
       - '@vue/composition-api'
       - core-js
       - debug
-      - eslint
-      - supports-color
       - typescript
 
   vue-color-kit@1.0.6(vue@3.5.15(typescript@5.8.3)):

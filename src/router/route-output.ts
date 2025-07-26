@@ -1,6 +1,6 @@
 import pinia from "@/store/index";
 import { storeToRefs } from "pinia";
-import { useRoutesConfigStore } from "@/store/modules/route-config";
+import { useRouteConfigStore } from "@/store/modules/route-config";
 import { useThemeConfig } from "@/store/modules/theme-config";
 import { deepClone } from "@/utils/index";
 import { arrayFlattened } from "@/utils/tree-tools";
@@ -15,7 +15,7 @@ export const currentlyRoute = (current: any) => {
   const route = deepCloneRoute(current);
   const themeStore = useThemeConfig();
   const { isTabs } = storeToRefs(themeStore);
-  const store = useRoutesConfigStore(pinia);
+  const store = useRouteConfigStore(pinia);
   const { tabsList, routeList } = storeToRefs(store);
   // tabs无数据则默认添加首页
   if (tabsList.value.length == 0 && routeList.value.length != 0) {

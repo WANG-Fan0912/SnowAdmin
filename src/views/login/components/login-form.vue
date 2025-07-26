@@ -41,10 +41,10 @@
 import { useRouter } from "vue-router";
 import { useUserInfoStore } from "@/store/modules/user-info";
 import { loginAPI } from "@/api/modules/user/index";
-import { useRoutesConfigStore } from "@/store/modules/route-config";
+import { useRouteConfigStore } from "@/store/modules/route-config";
 import { useSystemStore } from "@/store/modules/system";
 let userStores = useUserInfoStore();
-const routeStore = useRoutesConfigStore();
+const routeStore = useRouteConfigStore();
 const router = useRouter();
 const form = ref({
   username: "admin",

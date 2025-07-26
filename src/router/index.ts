@@ -5,7 +5,7 @@ import { staticRoutes, notFoundAndNoPower } from "@/router/route.ts";
 import { currentlyRoute } from "@/router/route-output";
 import { storeToRefs } from "pinia";
 import { useUserInfoStore } from "@/store/modules/user-info";
-import { useRoutesConfigStore } from "@/store/modules/route-config";
+import { useRouteConfigStore } from "@/store/modules/route-config";
 import { useRoutingMethod } from "@/hooks/useRoutingMethod";
 import { isEmptyObject } from "@/utils/index";
 /**
@@ -39,7 +39,9 @@ const router = createRouter({
 router.beforeEach(async (to: any, _: any, next: any) => {
   NProgress.start(); // 开启进度条
   const store = useUserInfoStore(pinia);
+  const routeStore = useRouteConfigStore(pinia);
   const { token, account } = storeToRefs(store);
+  const { routeTree } = storeToRefs(routeStore);
   // console.log("去", to, "来自", from);
   // next()内部加了path等于跳转指定路由会再次触发router.beforeEach，内部无参数等于放行，不会触发router.beforeEach
 
@@ -57,10 +59,10 @@ router.beforeEach(async (to: any, _: any, next: any) => {
   }
 
   // 4、去非登录页，有token，用户信息是否存在，有则放行，否则重新获取路由信息、初始化路由
-  // 判断账号信息是否获取，先获取账号信息和路由信息，添加路由后再跳转(页面刷新时触发)
+  // 判断路由是否获取，先获取账号信息和路由信息，添加路由后再跳转(页面刷新时触发)
   // 解决刷新页面404的问题
-  if (isEmptyObject(account.value.user)) {
-    const routeStore = useRoutesConfigStore(pinia);
+  if (!routeTree.value.length) {
+    const routeStore = useRouteConfigStore(pinia);
     // 获取账号信息
     await store.setAccount();
     // 获取路由信息

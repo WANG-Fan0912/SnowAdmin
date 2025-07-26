@@ -113,6 +113,7 @@ export default {
     ["verify-tools"]: "verify tools",
     ["common-layouts"]: "common layouts",
     ["data-screen"]: "data screen",
+    ["thin-preview"]: "thin preview",
     ["test"]: "test"
   }
 };

@@ -77,7 +77,7 @@
             </a-table-column>
             <a-table-column title="描述" data-index="description" :ellipsis="true" :tooltip="true"></a-table-column>
             <a-table-column title="创建时间" data-index="createTime" :width="180"></a-table-column>
-            <a-table-column title="操作" :width="180" align="center" :fixed="'right'">
+            <a-table-column title="操作" :width="200" align="center" :fixed="'right'">
               <template #cell="{ record }">
                 <a-space>
                   <a-button type="primary" size="mini" @click="onUpdate(record)">
@@ -90,6 +90,13 @@
                       <span>删除</span>
                     </a-button>
                   </a-popconfirm>
+                  <a-tooltip content="用户详情">
+                    <a-button type="primary" status="success" size="mini" @click="onDetail(record)">
+                      <template #icon>
+                        <icon-more />
+                      </template>
+                    </a-button>
+                  </a-tooltip>
                 </a-space>
               </template>
             </a-table-column>
@@ -175,6 +182,7 @@
 import { getDivisionAPI, getAccountAPI, getRoleAPI } from "@/api/modules/system/index";
 import { deepClone } from "@/utils";
 
+const router = useRouter();
 const openState = ref(dictFilter("status"));
 const sexOption = ref(dictFilter("gender"));
 const form = ref({
@@ -280,6 +288,18 @@ const onUpdate = (row: any) => {
   formType.value = 1;
   addFrom.value = deepClone(row);
   open.value = true;
+};
+
+const onDetail = (row: any) => {
+  console.log(row);
+
+  router.push({
+    path: "/system/userinfo",
+    query: {
+      id: row.id,
+      userName: row.userName
+    }
+  });
 };
 
 const loading = ref(false);

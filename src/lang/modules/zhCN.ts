@@ -113,6 +113,7 @@ export default {
     ["verify-tools"]: "校验工具类",
     ["common-layouts"]: "常用布局",
     ["data-screen"]: "数据大屏",
+    ["thin-preview"]: "极简版预览",
     ["test"]: "测试"
   }
 };

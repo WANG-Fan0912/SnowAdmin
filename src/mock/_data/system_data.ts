@@ -159,7 +159,7 @@ export const dictData = [
     list: [
       { id: "012", name: "女", value: 0, status: 1 },
       { id: "011", name: "男", value: 1, status: 1 },
-      { id: "013", name: "未知", value: 2, status: 1 }
+      { id: "013", name: "其它", value: 2, status: 1 }
     ]
   },
   {
@@ -234,7 +234,7 @@ export const accountData = [
     userName: "common",
     nickName: "普通用户",
     email: "2547096351@qq.com",
-    phone: "15888888888",
+    phone: "15222222222",
     sex: 0,
     avatar: "https://ooo.0x0.ooo/2025/04/10/O0ddJI.jpg",
     status: 1,

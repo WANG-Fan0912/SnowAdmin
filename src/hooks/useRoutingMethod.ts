@@ -1,6 +1,6 @@
 import pinia from "@/store/index";
 import { storeToRefs } from "pinia";
-import { useRoutesConfigStore } from "@/store/modules/route-config";
+import { useRouteConfigStore } from "@/store/modules/route-config";
 import { findCategoryById, findPathOfParentNode } from "@/utils/tree-tools";
 
 /**
@@ -14,7 +14,7 @@ export const useRoutingMethod = () => {
    * @returns 查找到的路由，undefined则表示未找到
    */
   const findLinearArray = (path: string) => {
-    const routerStore = useRoutesConfigStore(pinia);
+    const routerStore = useRouteConfigStore(pinia);
     const { routeTree } = storeToRefs(routerStore);
     return findCategoryById(routeTree.value, "path", path);
   };
@@ -25,7 +25,7 @@ export const useRoutingMethod = () => {
    * @returns 查找到的所有父级路由，未找到则null
    */
   const getAllParentRoute = (path: string) => {
-    const routerStore = useRoutesConfigStore(pinia);
+    const routerStore = useRouteConfigStore(pinia);
     const { routeTree } = storeToRefs(routerStore);
     return findPathOfParentNode(routeTree.value, "path", path);
   };
@@ -36,7 +36,7 @@ export const useRoutingMethod = () => {
    * @returns 路由是否存在，true存在 false不存在
    */
   const hasRoute = (key: string) => {
-    const routerStore = useRoutesConfigStore(pinia);
+    const routerStore = useRouteConfigStore(pinia);
     const { routeList } = storeToRefs(routerStore);
     return routeList.value.some((item: Menu.MenuOptions) => item.name == key);
   };
@@ -47,7 +47,7 @@ export const useRoutingMethod = () => {
    * @returns 查找到的路由，undefined则表示未找到
    */
   const findTagsList = (key: string) => {
-    const routerStore = useRoutesConfigStore(pinia);
+    const routerStore = useRouteConfigStore(pinia);
     const { tabsList } = storeToRefs(routerStore);
     return tabsList.value.find((item: Menu.MenuOptions) => item.name == key);
   };

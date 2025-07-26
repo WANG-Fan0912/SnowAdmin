@@ -17,7 +17,7 @@ import { getUrlWithParams } from "@/utils/index";
  * @methods resetRoute 重置动态添加的路由
  * @methods initSetRouter 路由初始化
  */
-export const routesConfigStore = () => {
+export const routeConfigStore = () => {
   const routeTree = ref<any>([]); // 有访问权限的路由树
   const routeList = ref<any>([]); // 有访问权限的一维路由数组
   const cacheRoutes = ref<string[]>([]); // 所有可缓存路由的路由路径
@@ -54,7 +54,9 @@ export const routesConfigStore = () => {
    */
   function setTabs(route: Menu.MenuOptions) {
     // 顶层手动添加的全屏静态路由不参与tabs
-    if (staticRoutes.some(item => item.path == route.path)) return;
+    if (staticRoutes.some(item => item.name == route.name)) return;
+    // 不在可访问的路由中则不参与tabs
+    if (!routeList.value.some((item: any) => item.name == route.name)) return;
     // 当前路由在tags中是否存在
     let index = tabsList.value.findIndex((item: Menu.MenuOptions) => item.path === route.path);
     // 不存在，直接缓存
@@ -100,10 +102,18 @@ export const routesConfigStore = () => {
   async function resetRoute() {
     // 清除标签页数据
     tabsList.value = [];
+    // 清除有访问权限的路由树
+    routeTree.value = [];
+    // 清除所有可缓存路由的路由路径
+    cacheRoutes.value = [];
+    // 清除当前路由
+    currentRoute.value = {};
     // 清除动态添加的路由
     routeList.value.forEach((item: any) => {
       if (router.hasRoute(item.name)) router.removeRoute(item.name);
     });
+    // 清除有访问权限的一维路由数组
+    routeList.value = [];
   }
 
   /**
@@ -154,4 +164,4 @@ export const routesConfigStore = () => {
   };
 };
 
-export const useRoutesConfigStore = defineStore("route-config", routesConfigStore);
+export const useRouteConfigStore = defineStore("route-config", routeConfigStore);

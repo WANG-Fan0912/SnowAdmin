@@ -83,7 +83,7 @@ export const systemMenu = [
       link: "",
       iframe: false,
       isFull: false,
-      roles: ["admin"],
+      roles: ["admin", "common"],
       svgIcon: "set",
       sort: 10,
       type: 1
@@ -218,6 +218,28 @@ export const systemMenu = [
       roles: ["admin"],
       icon: "icon-menu",
       sort: 6,
+      type: 2
+    },
+    children: null
+  },
+  {
+    id: "1007",
+    parentId: "10",
+    path: "/system/userinfo",
+    name: "userinfo",
+    component: "system/userinfo/userinfo",
+    meta: {
+      title: "userinfo",
+      hide: false,
+      disable: false,
+      keepAlive: true,
+      affix: false,
+      link: "",
+      iframe: false,
+      isFull: false,
+      roles: ["admin", "common"],
+      icon: "icon-menu",
+      sort: 7,
       type: 2
     },
     children: null
