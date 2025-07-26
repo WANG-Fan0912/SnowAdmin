@@ -71,11 +71,11 @@ export const systemMenu = [
   {
     id: "21",
     parentId: "0",
-    path: "/data-screen",
-    name: "data-screen",
-    component: "data-screen/data-screen",
+    path: "/thin-preview",
+    name: "thin-preview",
+    component: "thin-preview/thin-preview",
     meta: {
-      title: "data-screen",
+      title: "thin-preview",
       hide: false,
       disable: false,
       keepAlive: false,
@@ -83,8 +83,8 @@ export const systemMenu = [
       link: "",
       iframe: false,
       isFull: true,
-      roles: ["admin", "common"],
-      svgIcon: "data",
+      roles: ["admin"],
+      svgIcon: "propaganda",
       icon: "",
       sort: 2,
       type: 2
@@ -816,72 +816,72 @@ export const systemMenu = [
     },
     children: null
   },
-  {
-    id: "08",
-    parentId: "0",
-    path: "/personal",
-    name: "personal",
-    redirect: "/personal/userinfo",
-    meta: {
-      title: "personal",
-      hide: false,
-      disable: false,
-      keepAlive: true,
-      affix: false,
-      link: "",
-      iframe: false,
-      isFull: false,
-      roles: ["admin"],
-      svgIcon: "user",
-      sort: 8,
-      type: 1
-    },
-    children: null
-  },
-  {
-    id: "0801",
-    parentId: "08",
-    path: "/personal/userinfo",
-    name: "userinfo",
-    component: "personal/userinfo/userinfo",
-    meta: {
-      title: "userinfo",
-      hide: false,
-      disable: false,
-      keepAlive: true,
-      affix: false,
-      link: "",
-      iframe: false,
-      isFull: false,
-      roles: ["admin"],
-      icon: "icon-menu",
-      sort: 1,
-      type: 2
-    },
-    children: null
-  },
-  {
-    id: "0802",
-    parentId: "08",
-    path: "/personal/user-settings",
-    name: "user-settings",
-    component: "personal/user-settings/user-settings",
-    meta: {
-      title: "user-settings",
-      hide: false,
-      disable: false,
-      keepAlive: true,
-      affix: false,
-      link: "",
-      iframe: false,
-      isFull: false,
-      roles: ["admin"],
-      icon: "icon-menu",
-      sort: 2,
-      type: 2
-    },
-    children: null
-  },
+  // {
+  //   id: "08",
+  //   parentId: "0",
+  //   path: "/personal",
+  //   name: "personal",
+  //   redirect: "/personal/userinfo",
+  //   meta: {
+  //     title: "personal",
+  //     hide: false,
+  //     disable: false,
+  //     keepAlive: true,
+  //     affix: false,
+  //     link: "",
+  //     iframe: false,
+  //     isFull: false,
+  //     roles: ["admin"],
+  //     svgIcon: "user",
+  //     sort: 8,
+  //     type: 1
+  //   },
+  //   children: null
+  // },
+  // {
+  //   id: "0801",
+  //   parentId: "08",
+  //   path: "/personal/userinfo",
+  //   name: "userinfo",
+  //   component: "personal/userinfo/userinfo",
+  //   meta: {
+  //     title: "userinfo",
+  //     hide: false,
+  //     disable: false,
+  //     keepAlive: true,
+  //     affix: false,
+  //     link: "",
+  //     iframe: false,
+  //     isFull: false,
+  //     roles: ["admin"],
+  //     icon: "icon-menu",
+  //     sort: 1,
+  //     type: 2
+  //   },
+  //   children: null
+  // },
+  // {
+  //   id: "0802",
+  //   parentId: "08",
+  //   path: "/personal/user-settings",
+  //   name: "user-settings",
+  //   component: "personal/user-settings/user-settings",
+  //   meta: {
+  //     title: "user-settings",
+  //     hide: false,
+  //     disable: false,
+  //     keepAlive: true,
+  //     affix: false,
+  //     link: "",
+  //     iframe: false,
+  //     isFull: false,
+  //     roles: ["admin"],
+  //     icon: "icon-menu",
+  //     sort: 2,
+  //     type: 2
+  //   },
+  //   children: null
+  // },
   {
     id: "09",
     parentId: "0",
@@ -1073,7 +1073,7 @@ export const systemMenu = [
       link: "",
       iframe: false,
       isFull: false,
-      roles: ["admin"],
+      roles: ["admin", "common"],
       svgIcon: "set",
       sort: 10,
       type: 1
@@ -1208,6 +1208,28 @@ export const systemMenu = [
       roles: ["admin"],
       icon: "icon-menu",
       sort: 6,
+      type: 2
+    },
+    children: null
+  },
+  {
+    id: "1007",
+    parentId: "10",
+    path: "/system/userinfo",
+    name: "userinfo",
+    component: "system/userinfo/userinfo",
+    meta: {
+      title: "userinfo",
+      hide: false,
+      disable: false,
+      keepAlive: true,
+      affix: false,
+      link: "",
+      iframe: false,
+      isFull: false,
+      roles: ["admin", "common"],
+      icon: "icon-menu",
+      sort: 7,
       type: 2
     },
     children: null
@@ -1711,7 +1733,7 @@ export const systemMenu = [
       link: "",
       iframe: false,
       isFull: false,
-      roles: ["admin", "common"],
+      roles: ["admin"],
       svgIcon: "earth",
       sort: 17,
       type: 2

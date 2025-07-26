@@ -13,9 +13,9 @@
 </template>
 
 <script setup lang="ts">
-import { useRoutesConfigStore } from "@/store/modules/route-config";
+import { useRouteConfigStore } from "@/store/modules/route-config";
 defineOptions({ name: "dynamic-route" });
-const routerStore = useRoutesConfigStore();
+const routerStore = useRouteConfigStore();
 const route = useRoute();
 const form = ref("");
 

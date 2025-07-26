@@ -31,20 +31,26 @@ export default [
     url: "/mock/user/getUserInfo",
     method: "get",
     timeout: 300,
-    response: ({ headers }: any) => {
+    response: ({ headers, query }: any) => {
       let data: any = {
         user: {}, // 账户信息
         roles: [], // 角色
         permissions: [] // 权限
       };
       let account = deepClone(accountData);
-      // 1、拿账户信息
-      if (headers.authorization == "Admin-Token") {
-        // 管理员账户
-        data.user = account.find((item: any) => item.id == 1);
+
+      // 传入id则通过id匹配，否则通过token匹配
+      if (query.id) {
+        data.user = account.find((item: any) => item.id == query.id);
       } else {
-        // 普通账户
-        data.user = account.find((item: any) => item.id == 2);
+        // 1、拿账户信息
+        if (headers.authorization == "Admin-Token") {
+          // 管理员账户
+          data.user = account.find((item: any) => item.id == 1);
+        } else {
+          // 普通账户
+          data.user = account.find((item: any) => item.id == 2);
+        }
       }
 
       // 2、根据账户拿角色信息

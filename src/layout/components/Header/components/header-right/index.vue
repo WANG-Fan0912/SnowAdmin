@@ -66,14 +66,14 @@
       </div>
       <template #content>
         <!-- 个人中心 -->
-        <a-doption @click="onPerson">
+        <a-doption @click="onPerson(1)">
           <template #default>
             <s-svg-icon :name="'user'" :size="18" />
             <span class="margin-left-text">{{ $t(`system.personal-information`) }}</span>
           </template>
         </a-doption>
         <!-- 修改密码 -->
-        <a-doption @click="onUpdate">
+        <a-doption @click="onPerson(2)">
           <template #default>
             <s-svg-icon :name="'lock-pwd'" :size="18" />
             <span class="margin-left-text">{{ $t(`system.change-password`) }}</span>
@@ -114,7 +114,7 @@ import { useUserInfoStore } from "@/store/modules/user-info";
 import { useThemeConfig } from "@/store/modules/theme-config";
 import { useThemeMethods } from "@/hooks/useThemeMethods";
 import { useDevicesSize } from "@/hooks/useDevicesSize";
-import { useRoutesConfigStore } from "@/store/modules/route-config";
+import { useRouteConfigStore } from "@/store/modules/route-config";
 
 const i18n = useI18n();
 const router = useRouter();
@@ -167,16 +167,14 @@ const onLange = (value: string) => {
 };
 
 // 个人中心
-const onPerson = () => {
+const onPerson = (type: number) => {
   router.push({
-    path: "/personal/userinfo"
-  });
-};
-
-// 修改密码
-const onUpdate = () => {
-  router.push({
-    path: "/personal/user-settings"
+    path: "/system/userinfo",
+    query: {
+      id: account.value.user.id,
+      userName: account.value.user.userName,
+      type
+    }
   });
 };
 
@@ -198,7 +196,7 @@ const logOut = () => {
         await userStore.logOut();
         router.replace("/login");
         // 清除路由数据
-        useRoutesConfigStore().resetRoute();
+        useRouteConfigStore().resetRoute();
         return true;
       } catch {
         return false;

@@ -49,5 +49,5 @@ const userInfoStore = () => {
 };
 
 export const useUserInfoStore = defineStore("user-info", userInfoStore, {
-  persist: persistedstateConfig("user-info", ["token"])
+  persist: persistedstateConfig("user-info", ["token", "account"])
 });

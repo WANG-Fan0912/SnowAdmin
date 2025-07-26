@@ -23,10 +23,10 @@ import Logo from "@/layout/components/Logo/index.vue";
 import Menu from "@/layout/components/Menu/index.vue";
 import { storeToRefs } from "pinia";
 import { useThemeConfig } from "@/store/modules/theme-config";
-import { useRoutesConfigStore } from "@/store/modules/route-config";
+import { useRouteConfigStore } from "@/store/modules/route-config";
 const themeStore = useThemeConfig();
 const { collapsed, asideDark } = storeToRefs(themeStore);
-const routerStore = useRoutesConfigStore();
+const routerStore = useRouteConfigStore();
 const { routeTree } = storeToRefs(routerStore);
 
 const handleCancel = () => {

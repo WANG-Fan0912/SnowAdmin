@@ -50,10 +50,10 @@
 
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
-import { useRoutesConfigStore } from "@/store/modules/route-config";
+import { useRouteConfigStore } from "@/store/modules/route-config";
 import { useThemeConfig } from "@/store/modules/theme-config";
 const router = useRouter();
-const routerStore = useRoutesConfigStore();
+const routerStore = useRouteConfigStore();
 const { tabsList, currentRoute } = storeToRefs(routerStore);
 
 // 点击标签页，如果标签页存在，则跳转

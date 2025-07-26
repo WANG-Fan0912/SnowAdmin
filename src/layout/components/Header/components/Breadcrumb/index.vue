@@ -14,14 +14,14 @@
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
 import { useThemeConfig } from "@/store/modules/theme-config";
-import { useRoutesConfigStore } from "@/store/modules/route-config";
+import { useRouteConfigStore } from "@/store/modules/route-config";
 import { useDevicesSize } from "@/hooks/useDevicesSize";
 import { findPathOfParentNode } from "@/utils/tree-tools";
 import { HOME_PATH } from "@/config/index";
 const themeStore = useThemeConfig();
 const { isBreadcrumb, transitionPage } = storeToRefs(themeStore);
-const routesConfigStore = useRoutesConfigStore();
-const { routeTree } = storeToRefs(routesConfigStore);
+const routeConfigStore = useRouteConfigStore();
+const { routeTree } = storeToRefs(routeConfigStore);
 const { isMobile } = useDevicesSize();
 const route = useRoute();
 const router = useRouter();

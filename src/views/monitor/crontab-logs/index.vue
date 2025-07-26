@@ -62,10 +62,10 @@
 
 <script setup lang="ts">
 import { getCrontabLogsAPI } from "@/api/modules/monitor/index";
-import { useRoutesConfigStore } from "@/store/modules/route-config";
+import { useRouteConfigStore } from "@/store/modules/route-config";
 defineOptions({ name: "crontab-logs" });
 let route = useRoute();
-const routerStore = useRoutesConfigStore();
+const routerStore = useRouteConfigStore();
 const openState = ref(dictFilter("taskStatus"));
 
 const form = ref({

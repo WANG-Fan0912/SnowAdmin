@@ -48,7 +48,7 @@ import HeaderRight from "@/layout/components/Header/components/header-right/inde
 import MenuItemIcon from "@/layout/components/Menu/menu-item-icon.vue";
 import ButtonCollapsed from "@/layout/components/Header/components/button-collapsed/index.vue";
 import Breadcrumb from "@/layout/components/Header/components/Breadcrumb/index.vue";
-import { useRoutesConfigStore } from "@/store/modules/route-config";
+import { useRouteConfigStore } from "@/store/modules/route-config";
 import { useRoutingMethod } from "@/hooks/useRoutingMethod";
 import { storeToRefs } from "pinia";
 import { useThemeConfig } from "@/store/modules/theme-config";
@@ -56,7 +56,7 @@ import { useDevicesSize } from "@/hooks/useDevicesSize";
 defineOptions({ name: "LayoutMixing" });
 const route = useRoute();
 const router = useRouter();
-const routerStore = useRoutesConfigStore();
+const routerStore = useRouteConfigStore();
 const themeStore = useThemeConfig();
 const { isFooter, collapsed, asideDark, language } = storeToRefs(themeStore);
 const { routeTree } = storeToRefs(routerStore);
