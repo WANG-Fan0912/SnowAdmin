@@ -36,6 +36,10 @@ SnowAdmin 是一个清新优雅、高颜值且功能强大的后台管理模板�
 | GitHub | [Github 仓库](https://github.com/WANG-Fan0912/SnowAdmin) |
 | Gitee  | [Gitee 仓库](https://gitee.com/wang_fan_w/SnowAdmin)     |
 
+> 完整版分支：main
+>
+> 极简版分支：main-thin
+>
 > ⚠️主要的维护在github上，提issue/pr请认准github主战场
 >
 > 大家也可以进wx群交流，二维码在介绍末尾
@@ -221,8 +225,8 @@ SnowAdmin
 
 ### 学习 & 交流
 
-|                  SnowAdmin 交流群                  |   
-| :------------------------------------------------: | 
+|                  SnowAdmin 交流群                  |
+| :------------------------------------------------: |
 | ![snow](https://ooo.0x0.ooo/2025/07/20/OYt7m6.png) |
 
 使用过程中有各种问题也可以进群交流，欢迎大家积极参与

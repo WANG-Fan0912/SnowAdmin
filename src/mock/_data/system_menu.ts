@@ -69,29 +69,6 @@ export const systemMenu = [
     children: null // 存储子节点字段，默认为null
   },
   {
-    id: "21",
-    parentId: "0",
-    path: "/thin-preview",
-    name: "thin-preview",
-    component: "thin-preview/thin-preview",
-    meta: {
-      title: "thin-preview",
-      hide: false,
-      disable: false,
-      keepAlive: false,
-      affix: true,
-      link: "",
-      iframe: false,
-      isFull: true,
-      roles: ["admin"],
-      svgIcon: "propaganda",
-      icon: "",
-      sort: 2,
-      type: 2
-    },
-    children: null
-  },
-  {
     id: "02",
     parentId: "0",
     path: "/file",
@@ -1477,6 +1454,28 @@ export const systemMenu = [
     children: null
   },
   {
+    id: "140104",
+    parentId: "1401",
+    path: "/link/internal/gaodemap",
+    name: "gaodemap",
+    component: "link/internal/internal",
+    meta: {
+      title: "amap",
+      hide: false,
+      keepAlive: true,
+      disable: false,
+      affix: false,
+      link: "http://115.190.79.132:82/", // 链接
+      iframe: true, // 区分是否内链 true内链 false外链
+      isFull: false,
+      roles: ["admin"],
+      icon: "icon-menu",
+      sort: 4,
+      type: 2
+    },
+    children: null
+  },
+  {
     id: "1402",
     parentId: "14",
     path: "/link/external",
@@ -1699,20 +1698,21 @@ export const systemMenu = [
   {
     id: "16",
     parentId: "0",
-    path: "/gaodemap",
-    name: "gaodemap",
-    component: "link/internal/internal",
+    path: "/SnowAdmin-Thin",
+    name: "thin-preview",
+    component: "link/external/external",
     meta: {
-      title: "amap",
+      title: "thin-preview",
       hide: false,
-      keepAlive: true,
       disable: false,
-      affix: false,
-      link: "http://115.190.79.132:82/", // 链接
-      iframe: true, // 区分是否内链 true内链 false外链
+      keepAlive: false,
+      affix: true,
+      link: "http://115.190.79.132:83/#/login",
+      iframe: false,
       isFull: false,
       roles: ["admin"],
-      svgIcon: "amap",
+      svgIcon: "propaganda",
+      icon: "",
       sort: 16,
       type: 2
     },
