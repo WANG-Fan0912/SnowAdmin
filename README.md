@@ -2,17 +2,17 @@
 
 <div>
 	<p>
-                <a href="https://github.com/WANG-Fan0912/SnowAdmin" target="_blank">
+    <a href="https://github.com/WANG-Fan0912/SnowAdmin" target="_blank">
 		  <img src="https://img.shields.io/badge/License-MIT-%2343aefc" alt="License">
 		</a>
 		<a href="https://github.com/WANG-Fan0912/SnowAdmin" target="_blank">
 		  <img src="https://img.shields.io/badge/vue_.js-vue3_.x-%2300b42a" alt="Vue">
 		</a>
-                <a href="https://github.com/WANG-Fan0912/SnowAdmin" target="_blank">
+    <a href="https://github.com/WANG-Fan0912/SnowAdmin" target="_blank">
 		  <img src="https://img.shields.io/badge/Vite-6x-%2311B337" alt="Vite">
 		</a>
-                <a href="https://github.com/WANG-Fan0912/SnowAdmin" target="_blank">
-		  <img src="https://img.shields.io/badge/Arco_Design-2.56.3-%2310b236" alt="Arco-Design">
+     <a href="https://github.com/WANG-Fan0912/SnowAdmin" target="_blank">
+		 <img alt="arco.design" src="https://img.shields.io/badge/arco.design-2.57.0-%23%2028%2C175%2C%2063">
 		</a>
 	</p>
 </div>
@@ -44,7 +44,7 @@ SnowAdmin 是一个清新优雅、高颜值且功能强大的后台管理模板�
 >
 > 大家也可以进wx群交流，二维码在介绍末尾
 
-### 先行预览
+### 先行预览 🖼️
 
 ![登录页](https://ooo.0x0.ooo/2025/04/11/O0lhbG.png)
 
@@ -223,11 +223,11 @@ SnowAdmin
 
 感谢以上框架为本项目提供了帮助，项目中的很多设计思想值得参考和学习，再次感谢。
 
-### 学习 & 交流
+### 学习 & 交流 🏫
 
 |                  SnowAdmin 交流群                  |
 | :------------------------------------------------: |
-| ![snow](https://ooo.0x0.ooo/2025/07/20/OYt7m6.png) |
+| ![微信图片_20250726141221](https://github.com/user-attachments/assets/8c1ebf3c-4630-487e-9a54-810fd4d6972c) |
 
 使用过程中有各种问题也可以进群交流，欢迎大家积极参与
 
@@ -249,7 +249,7 @@ SnowAdmin
 
 `SnowAdmin` 是免费和开源的，可免费用于学习、商业使用 。
 
-### 捐赠
+### 捐赠 💖
 
 |                        微信                        |                        支付宝                        |
 | :------------------------------------------------: | :--------------------------------------------------: |
