@@ -184,7 +184,6 @@ import { deepClone } from "@/utils";
 
 const router = useRouter();
 const openState = ref(dictFilter("status"));
-const sexOption = ref(dictFilter("gender"));
 const form = ref({
   name: "",
   phone: "",
