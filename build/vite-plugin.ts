@@ -2,7 +2,6 @@ import vue from "@vitejs/plugin-vue";
 import { resolve } from "path";
 import { PluginOption } from "vite";
 import { vitePluginForArco } from "@arco-plugins/vite-vue";
-import { createHtmlPlugin } from "vite-plugin-html";
 import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
 import AutoImport from "unplugin-auto-import/vite";
 import { ArcoResolver } from "unplugin-vue-components/resolvers";
@@ -21,14 +20,6 @@ export const createVitePlugins = (viteEnv: ViteEnv): (PluginOption | PluginOptio
     eslintPlugin(),
     vitePluginForArco({
       style: "css"
-    }),
-    // 提供ejs模板能力，用于index.html的标题显示
-    createHtmlPlugin({
-      inject: {
-        data: {
-          title: env.VITE_GLOB_APP_TITLE
-        }
-      }
     }),
     createSvgIconsPlugin({
       // 配置src下存放svg的路径，这里表示在src/assets/svgs文件夹下
