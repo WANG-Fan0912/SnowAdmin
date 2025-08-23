@@ -7,16 +7,16 @@
   "author": {
     "name": "WANGFan",
     "email": "2547096351@qq.com",
-    "url": "https://github.com/WANG-Fan0912"
+    "url": "https://github.com/WangFan-io"
   },
   "license": "MIT",
-  "homepage": "https://github.com/WANG-Fan0912/SnowAdmin",
+  "homepage": "https://github.com/WangFan-io/SnowAdmin",
   "repository": {
     "type": "git",
-    "url": "https://github.com/WANG-Fan0912/SnowAdmin.git"
+    "url": "https://github.com/WangFan-io/SnowAdmin.git"
   },
   "bugs": {
-    "url": "https://github.com/WANG-Fan0912/SnowAdmin/issues"
+    "url": "https://github.com/WangFan-io/SnowAdmin/issues"
   },
   "scripts": {
     "dev": "vite",
