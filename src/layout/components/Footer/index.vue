@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 const onFooter = () => {
-  window.open("https://github.com/WANG-Fan0912/SnowAdmin", "_blank");
+  window.open("https://github.com/WangFan-io/SnowAdmin", "_blank");
 };
 </script>
 

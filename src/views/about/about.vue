@@ -40,7 +40,7 @@ const projectInfo: any = [
   {
     label: "GitHub",
     link: true,
-    value: "https://github.com/WANG-Fan0912/SnowAdmin"
+    value: "https://github.com/WangFan-io/SnowAdmin"
   },
   {
     label: "Gitee",

@@ -180,7 +180,7 @@ const onPerson = (type: number) => {
 
 // 项目地址
 const onProject = () => {
-  window.open("https://github.com/WANG-Fan0912/SnowAdmin", "_blank");
+  window.open("https://github.com/WangFan-io/SnowAdmin", "_blank");
 };
 
 // 退出登录
