@@ -38,6 +38,7 @@
     "@codemirror/lang-vue": "^0.1.3",
     "@codemirror/theme-one-dark": "^6.1.2",
     "@fingerprintjs/fingerprintjs": "^4.6.2",
+    "@vue-flow/core": "^1.48.2",
     "@vueuse/core": "^12.4.0",
     "@wangeditor/editor": "^5.1.23",
     "@wangeditor/editor-for-vue": "^5.1.12",

@@ -96,6 +96,7 @@ export default {
     ["division"]: "division",
     ["dictionary"]: "dictionary",
     ["log"]: "log",
+    ["flow-manage"]: "flow manage",
     ["about"]: "about",
     ["link"]: "link",
     ["internal"]: "internal",

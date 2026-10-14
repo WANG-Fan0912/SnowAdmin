@@ -5,7 +5,7 @@ import { frontendRoutes } from "@/router/frontend-routes";
 import { buildRouteTree } from "@/router/route-tools";
 
 /**
- * 路由数据源（方案：数据源切换）
+ * 路由数据源
  * ------------------------------------------------------------------
  * 无论数据从哪来，最终都返回"已过滤权限、已成树、已排序"的同一份结构，
  * 下游（route-config 的 moduleReplacement / addRoute / routeTree）完全不需要关心来源。

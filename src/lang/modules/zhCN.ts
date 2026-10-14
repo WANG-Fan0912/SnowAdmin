@@ -96,6 +96,7 @@ export default {
     ["division"]: "部门管理",
     ["dictionary"]: "字典管理",
     ["log"]: "系统日志",
+    ["flow-manage"]: "流程管理",
     ["about"]: "关于项目",
     ["link"]: "外部链接",
     ["internal"]: "内部",

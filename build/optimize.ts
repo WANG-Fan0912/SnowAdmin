@@ -17,7 +17,8 @@ const include = [
   "@codemirror/lang-json",
   "@codemirror/lang-javascript",
   "@codemirror/lang-vue",
-  "pinyin-pro"
+  "pinyin-pro",
+  "@vue-flow/core"
 ];
 
 /**

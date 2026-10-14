@@ -1225,6 +1225,28 @@ export const frontendRoutes = [
     children: null
   },
   {
+    id: "1008",
+    parentId: "10",
+    path: "/system/flow-manage",
+    name: "flow-manage",
+    component: "system/flow-manage/flow-manage",
+    meta: {
+      title: "flow-manage",
+      hide: false,
+      disable: false,
+      keepAlive: false,
+      affix: false,
+      link: "",
+      iframe: false,
+      isFull: false,
+      roles: ["admin"],
+      icon: "icon-menu",
+      sort: 8,
+      type: 2
+    },
+    children: null
+  },
+  {
     id: "11",
     parentId: "0",
     path: "/disable-menu",
