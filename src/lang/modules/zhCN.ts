@@ -5,6 +5,7 @@ export default {
     ["not-found"]: "未找到页面",
     ["zh-CN"]: "中文",
     ["en-US"]: "English",
+    ["fullpage"]: "页面全屏",
     ["refresh"]: "刷新",
     ["close-current"]: "关闭当前",
     ["close-left-side"]: "关闭左侧",

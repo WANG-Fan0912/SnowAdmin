@@ -159,6 +159,14 @@ let systemList = ref<any>([
     }
   },
   {
+    element: "#system-tabs-fullpage",
+    popover: {
+      title: "页面全屏",
+      description: "将当前页面全屏显示",
+      side: "left"
+    }
+  },
+  {
     element: "#system-tabs-refresh",
     popover: {
       title: "页面刷新",

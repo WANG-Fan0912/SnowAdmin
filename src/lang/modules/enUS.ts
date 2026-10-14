@@ -5,6 +5,7 @@ export default {
     ["not-found"]: "Page not found",
     ["zh-CN"]: "中文",
     ["en-US"]: "English",
+    ["fullpage"]: "fullpage",
     ["refresh"]: "refresh",
     ["close-current"]: "close current",
     ["close-left-side"]: "close left side",
