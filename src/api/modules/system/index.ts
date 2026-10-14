@@ -1,9 +1,12 @@
 import axios from "@/api";
 
+// 是否开启本地mock，mock 的 url 前缀与真实接口不同，这里统一隔离
+const MOCK_FLAG = import.meta.env.VITE_APP_OPEN_MOCK === "true";
+
 // 获取菜单数据
 export const getRoutersAPI = () => {
   return axios({
-    url: "/mock/menu/getRouters",
+    url: MOCK_FLAG ? "/mock/menu/getRouters" : "/menu/getRouters",
     method: "get"
   });
 };

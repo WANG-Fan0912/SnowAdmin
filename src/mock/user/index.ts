@@ -1,7 +1,7 @@
 import type { MockMethod } from "vite-plugin-mock";
 import { resultSuccess, resultError, deepClone } from "../_utils";
 import { accountData } from "../_data/system_data";
-import { permissionData } from "../_data/system_menu";
+import { permissionData } from "../../router/frontend-routes";
 import { roleData } from "../_data/system_data";
 /**
  * post请求body,get请求query
