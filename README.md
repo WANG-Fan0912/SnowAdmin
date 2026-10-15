@@ -9,7 +9,7 @@
 		  <img src="https://img.shields.io/badge/vue_.js-vue3_.x-%2300b42a" alt="Vue">
 		</a>
     <a href="https://github.com/imwangfan/SnowAdmin" target="_blank">
-		  <img src="https://img.shields.io/badge/Vite-6x-%2311B337" alt="Vite">
+		  <img src="https://img.shields.io/badge/Vite-7x-%252300b42a" alt="Vite">
 		</a>
      <a href="https://github.com/imwangfan/SnowAdmin" target="_blank">
 		 <img alt="arco.design" src="https://img.shields.io/badge/arco.design-2.57.0-%23%2028%2C175%2C%2063">
