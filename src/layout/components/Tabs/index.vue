@@ -18,6 +18,17 @@
             <icon-refresh :size="18" @click="refresh" />
           </span>
         </a-tooltip>
+        <a-tooltip
+          :content="$t(`system.${isFullPage ? 'exit-full-screen' : 'fullpage'}`)"
+          id="system-tabs-fullpage"
+          position="bottom"
+          mini
+        >
+          <span @click="toggleFullPage">
+            <icon-fullscreen :size="18" v-if="!isFullPage" />
+            <icon-fullscreen-exit :size="18" v-else />
+          </span>
+        </a-tooltip>
         <a-dropdown trigger="hover" :popup-max-height="false">
           <div class="setting" id="system-tabs-setting"><icon-apps :size="18" /></div>
           <template #content>
@@ -52,6 +63,8 @@
 import { storeToRefs } from "pinia";
 import { useRouteConfigStore } from "@/store/modules/route-config";
 import { useThemeConfig } from "@/store/modules/theme-config";
+import { useFullPage } from "@/hooks/useFullPage";
+const { isFullPage, toggleFullPage } = useFullPage();
 const router = useRouter();
 const routerStore = useRouteConfigStore();
 const { tabsList, currentRoute } = storeToRefs(routerStore);

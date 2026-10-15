@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import router from "@/router/index";
 import { staticRoutes } from "@/router/route";
-import { getRoutersAPI } from "@/api/modules/system/index";
+import { getRoutersTree } from "@/router/route-source";
 import { moduleReplacement, linearArray } from "@/router/route-output";
 import { getUrlWithParams } from "@/utils/index";
 
@@ -118,7 +118,7 @@ export const routeConfigStore = () => {
 
   /**
    * 路由初始化
-   * 1、获取过滤角色权限后排过序的的路由树，后端处理
+   * 1、获取过滤角色权限后排过序的的路由树（数据源：前端路由文件 / mock / 后端接口，见 @/router/route-source）
    * 2、获取路由树转换的一维路由
    * 3、将模块设置为真实模块
    * 4、动态添加路由
@@ -126,8 +126,8 @@ export const routeConfigStore = () => {
    * 6、缓存一维路由
    */
   async function initSetRouter() {
-    // 1、获取过滤角色权限后的树，后端做排序处理
-    let { data } = await getRoutersAPI();
+    // 1、获取过滤角色权限后排过序的树
+    let data = await getRoutersTree();
     // 2、获取路由树转换的一维路由
     let flatRoute = linearArray(data);
     // 3、将模块设置为真实模块

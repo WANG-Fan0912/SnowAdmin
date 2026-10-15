@@ -22,7 +22,7 @@ import Layout from "@/layout/index.vue";
 /**
  * 静态路由 （默认路由）
  * 此路由不要动，用于做静态路由定向，如果要添加路由，请在 `layout-children` 中添加
- * @description 前端控制路由 直接改 mock/_data/system_menu 中的路由，后端控制则不需要
+ * @description 前端控制路由 直接改同级文件 frontend-routes.ts 中的路由，后端控制则不需要
  * @returns 返回路由菜单数据
  */
 export const staticRoutes = [
