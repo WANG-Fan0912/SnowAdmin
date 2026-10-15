@@ -16,23 +16,10 @@ interface FormData {
     content: string;
     contentSize: string;
     status: number | null;
-    createTime: string | null;
+    /** 创建时间范围，两项分别为起止日期，未选择时为空数组 */
+    createTime: string[];
   };
   search: boolean;
-}
-
-interface RowSelection {
-  type: string;
-  showCheckedAll: boolean;
-  onlyCurrent: boolean;
-}
-
-interface Pagination {
-  showPageSize: boolean;
-  showTotal: boolean;
-  current: number;
-  pageSize: number;
-  total: number;
 }
 
 interface Columns {
@@ -48,4 +35,4 @@ interface DensityType {
   label: string;
 }
 
-export type { List, FormData, RowSelection, Pagination, Columns, DensityType };
+export type { List, FormData, Columns, DensityType };

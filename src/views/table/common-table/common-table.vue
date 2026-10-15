@@ -20,7 +20,7 @@
           </a-col>
           <a-col :xs="24" :sm="24" :md="12" :lg="12" :xl="6" :xxl="6">
             <a-space class="search-btn">
-              <a-button type="primary" @click="getCommonTableList">
+              <a-button type="primary" @click="search">
                 <template #icon>
                   <icon-search />
                 </template>
@@ -69,10 +69,10 @@
         :columns="columns"
         :data="data"
         :row-selection="rowSelection"
-        v-model:selectedKeys="selectedKeys"
+        :selected-keys="selectedKeys"
         :pagination="pagination"
-        @page-change="pageChange"
-        @page-size-change="pageSizeChange"
+        @select="select"
+        @select-all="selectAll"
       >
         <template #avatar="{ record }">
           <a-avatar
@@ -107,10 +107,13 @@
 
 <script setup lang="ts">
 import { getCommonTableListAPI } from "@/api/modules/table/index";
-import { List, FormData, RowSelection, Pagination } from "./config";
+import { List, FormData } from "./config";
+import { useTable } from "@/hooks/useTable";
 import { useLayoutModel } from "@/hooks/useLayoutModel";
 
 const { tableFixed } = useLayoutModel();
+
+/** 查询表单状态，只属于本组件，不进 hook */
 const formData = reactive<FormData>({
   form: {
     name: "",
@@ -121,19 +124,18 @@ const formData = reactive<FormData>({
   },
   search: false
 });
-const selectedKeys = ref<string[]>([]);
-const rowSelection = reactive<RowSelection>({
-  type: "checkbox",
-  showCheckedAll: true,
-  onlyCurrent: false
+
+const { data, loading, pagination, search, selectedKeys, rowSelection, select, selectAll } = useTable<List>({
+  // 查询条件在闭包里注入：每次取数读到的都是 formData.form 的最新值，无需 watch
+  listAPI: p => getCommonTableListAPI({ ...p, ...formData.form }),
+  // 行唯一键字段名，与模板的 row-key 保持一致
+  rowKey: "key",
+  // 对应 rowSelection.onlyCurrent = false：翻页保留已选中项
+  crossPageSelect: true,
+  rowSelection: { type: "checkbox", showCheckedAll: true, onlyCurrent: false },
+  onError: () => arcoMessage("error", "列表加载失败，请稍后重试")
 });
-const pagination = ref<Pagination>({ showPageSize: true, showTotal: true, current: 1, pageSize: 10, total: 10 });
-const pageChange = (page: number) => {
-  pagination.value.current = page;
-};
-const pageSizeChange = (pageSize: number) => {
-  pagination.value.pageSize = pageSize;
-};
+
 const columns = [
   {
     title: "姓名",
@@ -176,23 +178,12 @@ const columns = [
   }
 ];
 const formRef = ref();
+
+/** 重置表单后回到第 1 页查询 */
 const onReset = () => {
-  formRef.value.resetFields();
-  getCommonTableList();
+  formRef.value?.resetFields();
+  void search();
 };
-const loading = ref<boolean>(false);
-const data = reactive<List[]>([]);
-const getCommonTableList = async () => {
-  try {
-    loading.value = true;
-    let res = await getCommonTableListAPI();
-    Object.assign(data, res.data.list);
-    pagination.value.total = res.data.total;
-  } finally {
-    loading.value = false;
-  }
-};
-getCommonTableList();
 </script>
 
 <style lang="scss" scoped>

@@ -43,7 +43,6 @@
               批量删除（{{ selectedCount }}）
             </a-button>
             <a-button :disabled="selectedCount === 0" @click="onPrintSelected">查看选中行</a-button>
-            <span class="total-text">共 {{ total }} 条</span>
           </a-space>
         </a-col>
         <a-col :span="12" style="display: flex; align-items: center; justify-content: end">

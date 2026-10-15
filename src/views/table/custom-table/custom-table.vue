@@ -20,7 +20,7 @@
           </a-col>
           <a-col :xs="24" :sm="24" :md="12" :lg="12" :xl="6" :xxl="6">
             <a-space class="search-btn">
-              <a-button type="primary" @click="getCustomTableList">
+              <a-button type="primary" @click="search">
                 <template #icon>
                   <icon-search />
                 </template>
@@ -89,7 +89,7 @@
               下载
             </a-button>
             <a-tooltip content="刷新">
-              <div class="action-icon" @click="getCustomTableList"><icon-refresh size="18" /></div>
+              <div class="action-icon" @click="refresh"><icon-refresh size="18" /></div>
             </a-tooltip>
             <a-dropdown @select="onDensity">
               <a-tooltip content="密度">
@@ -136,10 +136,10 @@
         :columns="columnsShow"
         :data="data"
         :row-selection="rowSelection"
-        v-model:selectedKeys="selectedKeys"
+        :selected-keys="selectedKeys"
         :pagination="pagination"
-        @page-change="pageChange"
-        @page-size-change="pageSizeChange"
+        @select="select"
+        @select-all="selectAll"
       >
         <template #content="{ record }">
           <a-space>
@@ -167,9 +167,12 @@
 
 <script setup lang="ts">
 import { getCustomTableListAPI } from "@/api/modules/table/index";
-import { List, FormData, RowSelection, Pagination, Columns, DensityType } from "./config";
+import { List, FormData, Columns, DensityType } from "./config";
+import { useTable } from "@/hooks/useTable";
 import { deepClone } from "@/utils";
 import Sortable from "sortablejs";
+
+/** 查询表单状态，只属于本组件，不进 hook */
 const formData = reactive<FormData>({
   form: {
     serial: "",
@@ -177,27 +180,38 @@ const formData = reactive<FormData>({
     content: "",
     contentSize: "",
     status: null,
-    createTime: null
+    createTime: []
   },
   search: false
 });
-const selectedKeys = ref<string[]>([]);
-const rowSelection = reactive<RowSelection>({
-  type: "checkbox",
-  showCheckedAll: true,
-  onlyCurrent: false
+
+/**
+ * 组装查询条件：把范围时间拍平成 startTime / endTime。
+ * 未选择时间时两项为 undefined，axios 会自动丢弃，不会把空值带给后端。
+ */
+const buildQuery = (): Record<string, unknown> => {
+  const { createTime, ...rest } = formData.form;
+  const [startTime, endTime] = createTime ?? [];
+  return { ...rest, startTime, endTime };
+};
+
+const { data, loading, pagination, search, refresh, selectedKeys, rowSelection, select, selectAll } = useTable<List>({
+  // 查询条件在闭包里注入：每次取数读到的都是 formData.form 的最新值，无需 watch
+  listAPI: p => getCustomTableListAPI({ ...p, ...buildQuery() }),
+  // 行唯一键字段名，与模板的 row-key 保持一致
+  rowKey: "key",
+  // 对应 rowSelection.onlyCurrent = false：翻页保留已选中项
+  crossPageSelect: true,
+  rowSelection: { type: "checkbox", showCheckedAll: true, onlyCurrent: false },
+  onError: () => arcoMessage("error", "列表加载失败，请稍后重试")
 });
+
 const formRef = ref();
+
+/** 重置表单后回到第 1 页查询 */
 const onReset = () => {
-  formRef.value.resetFields();
-  getCustomTableList();
-};
-const pagination = ref<Pagination>({ showPageSize: true, showTotal: true, current: 1, pageSize: 10, total: 10 });
-const pageChange = (page: number) => {
-  pagination.value.current = page;
-};
-const pageSizeChange = (pageSize: number) => {
-  pagination.value.pageSize = pageSize;
+  formRef.value?.resetFields();
+  void search();
 };
 const columnsShow = ref<Columns[]>([]);
 const columns = ref<Columns[]>([
@@ -252,19 +266,6 @@ const deepColumns = () => {
   columnsShow.value = deepClone(columns.value);
 };
 deepColumns();
-const loading = ref<boolean>(false);
-const data = reactive<List[]>([]);
-const getCustomTableList = async () => {
-  try {
-    loading.value = true;
-    let res = await getCustomTableListAPI();
-    Object.assign(data, res.data.list);
-    pagination.value.total = res.data.total;
-  } finally {
-    loading.value = false;
-  }
-};
-getCustomTableList();
 const densityType = ref<DensityType[]>([
   {
     value: "mini",

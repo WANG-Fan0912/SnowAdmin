@@ -20,18 +20,4 @@ interface FormData {
   search: boolean;
 }
 
-interface RowSelection {
-  type: string;
-  showCheckedAll: boolean;
-  onlyCurrent: boolean;
-}
-
-interface Pagination {
-  showPageSize: boolean;
-  showTotal: boolean;
-  current: number;
-  pageSize: number;
-  total: number;
-}
-
-export type { List, FormData, RowSelection, Pagination };
+export type { List, FormData };
