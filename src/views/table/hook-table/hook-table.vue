@@ -139,7 +139,6 @@ const query = reactive<{ name: string; status: string | undefined }>({
 const {
   data,
   loading,
-  total,
   pagination,
   search,
   refresh,
