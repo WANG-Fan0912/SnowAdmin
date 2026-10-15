@@ -22,9 +22,10 @@ export const resultError = (data: unknown, message: string, code = 500) => {
 
 /**
  * 深拷贝
- * 项目共用工具见 src/utils/index，此处仅做透出，mock 内部保持相对引用
+ * 注意：必须从独立的 deep-clone 模块引入，不能引 utils/index，
+ * 否则会把 import.meta.env 拉进 vite-plugin-mock 的 es2015 打包触发警告
  */
-export { deepClone } from "../utils/index";
+export { deepClone } from "../utils/deep-clone";
 
 /**
  * 说明：路由树的通用处理工具（treeSort / filterByDisable / roleBase / buildTreeOptimized）

@@ -1,4 +1,4 @@
-import { deepClone } from "@/utils/index";
+import { deepClone } from "@/utils/deep-clone";
 
 /**
  * 路由树的处理工具（过滤权限、扁平数组转树、排序）

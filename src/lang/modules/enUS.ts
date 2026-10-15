@@ -55,6 +55,7 @@ export default {
     ["table"]: "table",
     ["common-table"]: "common-table",
     ["custom-table"]: "custom-table",
+    ["hook-table"]: "hook-table",
     ["form"]: "form",
     ["common-form"]: "common-form",
     ["step-form"]: "step-form",

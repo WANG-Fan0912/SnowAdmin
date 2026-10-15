@@ -192,6 +192,28 @@ export const frontendRoutes = [
     children: null
   },
   {
+    id: "0303",
+    parentId: "03",
+    path: "/table/hook-table",
+    name: "hook-table",
+    component: "table/hook-table/hook-table",
+    meta: {
+      title: "hook-table",
+      hide: false,
+      disable: false,
+      keepAlive: true,
+      affix: false,
+      link: "",
+      iframe: false,
+      isFull: false,
+      roles: ["admin"],
+      icon: "icon-menu",
+      sort: 3,
+      type: 2
+    },
+    children: null
+  },
+  {
     id: "04",
     parentId: "0",
     path: "/form",

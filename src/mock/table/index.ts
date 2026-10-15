@@ -1,6 +1,28 @@
 import type { MockMethod } from "vite-plugin-mock";
 import { resultSuccess } from "../_utils";
 
+/** mock 请求参数：get 走 query，post 走 body */
+interface MockRequest {
+  query: Record<string, string>;
+  body: Record<string, unknown>;
+}
+
+/**
+ * useTable 示例页的数据源。
+ * 使用模块级可变数组，删除接口会真实移除元素，用于验证「删完最后一页自动回退页码」。
+ */
+const hookTableData = Array.from({ length: 46 }, (_, index) => ({
+  key: String(index + 1),
+  name: `示例用户 ${index + 1}`,
+  phone: `13${String(index + 1).padStart(9, "0")}`,
+  email: `user${index + 1}@example.com`,
+  address: ["北京市朝阳区", "上海市浦东新区", "广州市天河区", "深圳市南山区"][index % 4],
+  status: index % 3 === 0 ? 0 : 1,
+  gender: index % 3,
+  state: (index % 3) + 1,
+  createTime: `2024-06-${String((index % 28) + 1).padStart(2, "0")} 10:00:00`
+}));
+
 export default [
   {
     url: "/mock/common-table/list",
@@ -228,6 +250,40 @@ export default [
         total: list.length
       };
       return resultSuccess(data);
+    }
+  },
+  {
+    url: "/mock/hook-table/list",
+    method: "get",
+    timeout: 300,
+    response: ({ query }: MockRequest) => {
+      // 兼容两种字段名：默认 current/pageSize，配置 pageParamsMap 后为 pageNum/size
+      const current = Number(query.current ?? query.pageNum ?? 1);
+      const pageSize = Number(query.pageSize ?? query.size ?? 10);
+      const name = String(query.name ?? "").trim();
+      const status = String(query.status ?? "");
+      const filtered = hookTableData.filter(item => {
+        const matchName = name === "" || item.name.includes(name);
+        const matchStatus = status === "" || String(item.status) === status;
+        return matchName && matchStatus;
+      });
+      const start = (current - 1) * pageSize;
+      return resultSuccess({
+        list: filtered.slice(start, start + pageSize),
+        total: filtered.length
+      });
+    }
+  },
+  {
+    url: "/mock/hook-table/delete",
+    method: "post",
+    timeout: 300,
+    response: ({ body }: MockRequest) => {
+      const ids = ((body.ids ?? []) as Array<string | number>).map(String);
+      for (let i = hookTableData.length - 1; i >= 0; i--) {
+        if (ids.includes(hookTableData[i].key)) hookTableData.splice(i, 1);
+      }
+      return resultSuccess({ deleted: ids.length });
     }
   }
 ] as MockMethod[];

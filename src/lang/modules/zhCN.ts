@@ -55,6 +55,7 @@ export default {
     ["table"]: "列表管理",
     ["common-table"]: "普通列表",
     ["custom-table"]: "自定义列表",
+    ["hook-table"]: "Hook 列表",
     ["form"]: "表单管理",
     ["common-form"]: "普通表单",
     ["step-form"]: "分步表单",
